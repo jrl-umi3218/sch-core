@@ -11,7 +11,7 @@ Polyhedron_algorithms::Polyhedron_algorithms(void):fastVertexes_(NULL),lastVerte
 
 }
 
-Polyhedron_algorithms::Polyhedron_algorithms(const Polyhedron_algorithms &p):fastVertexes_(NULL),lastVertexes_(NULL),displayList_(p.displayList_),triangles_(p.triangles_)
+Polyhedron_algorithms::Polyhedron_algorithms(const Polyhedron_algorithms &p):triangles_(p.triangles_),fastVertexes_(NULL),lastVertexes_(NULL),displayList_(p.displayList_)
 {
 	for (unsigned i=0;i<p.vertexes_.size();++i)
 	{
@@ -168,7 +168,6 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
 	}
 
-	int i=0;
 	while (is.find("normal:"))//récupération des normales
 	{
 		is.jumpSeparators(); 
@@ -214,7 +213,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
 	}
 
-	for (unsigned i=0;i<vertexes_.size();i++)
+	for (unsigned int i=0;i<vertexes_.size();i++)
 	{
 		vertexes_[i]->updateFastArrays();
 	}

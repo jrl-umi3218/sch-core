@@ -14,7 +14,7 @@ m_radius(radius), m_center(center),m_neighbors(NULL),m_endneighbors(NULL)
 }
 
 STP_SmallSphere::STP_SmallSphere(const STP_SmallSphere& s):
-m_radius(s.m_radius), m_center(s.m_center), m_VVR(s.m_VVR),STP_Feature(s),m_neighbors(NULL),m_endneighbors(NULL)
+STP_Feature(s), m_radius(s.m_radius), m_center(s.m_center), m_VVR(s.m_VVR),m_neighbors(NULL),m_endneighbors(NULL)
 {
 	m_nextBV.resize(m_VVR.size());
 	updateVector();
@@ -135,7 +135,6 @@ bool STP_SmallSphere::isHereFarthestNeighbour(const Vector3& v)
 
 bool STP_SmallSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 {
-	bool res = true;
 	std::vector<STP_VVR>::const_iterator currentVVR = m_VVR.begin();
 
 	double d=0;
@@ -172,7 +171,7 @@ void STP_SmallSphere::updateVector()
 	m_neighbors=new STP_VVR[m_VVR.size()];
 	m_endneighbors=&(m_neighbors[m_VVR.size()]);
 
-	for (int i=0; i<m_VVR.size();i++)
+	for (size_t i=0; i<m_VVR.size();i++)
 	{
 		m_neighbors[i]=m_VVR[i];
 	}
@@ -242,7 +241,6 @@ bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 
 bool STP_SmallSphere::isHereHybrid(const Vector3& v,int idp)
 {
-	bool res = true;
 	STP_VVR * currentVVR = m_neighbors;
 
 	double d=0;

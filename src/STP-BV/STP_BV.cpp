@@ -133,7 +133,7 @@ void s_PointsComparator::setData(const Point3& axis, const std::vector<Point3>& 
 	m_points = points;
 }
 
-bool s_PointsComparator::operator ()(int id1, int id2) const
+bool s_PointsComparator::operator ()(unsigned int id1, unsigned int id2) const
 {
 	if(id1 >= m_points.size() || id2 >= m_points.size())
 		return false;
@@ -150,7 +150,7 @@ STP_BV::STP_BV():m_fastPatches(NULL),m_lastPatches(NULL),drawnGL_(false)
 
 STP_BV::STP_BV(const STP_BV & bv):m_fastPatches(NULL),m_lastPatches(NULL),drawnGL_(bv.drawnGL_)
 {
-	for (int i=0;i<bv.m_patches.size();i++)
+	for (size_t i=0;i<bv.m_patches.size();i++)
 	{
 		m_patches.push_back(bv.m_patches[i]->clone());
 	}
@@ -159,7 +159,7 @@ STP_BV::STP_BV(const STP_BV & bv):m_fastPatches(NULL),m_lastPatches(NULL),drawnG
 
 STP_BV::~STP_BV()
 {
-	for (int i=0;i<m_patches.size();i++)
+	for (size_t i=0;i<m_patches.size();i++)
 	{
 		delete m_patches[i];
 	}
@@ -174,7 +174,7 @@ STP_BV & STP_BV::operator =(const STP_BV & bv)
 	{
 		drawnGL_=bv.drawnGL_;
 		m_patches.clear();
-		for (int i=0;i<bv.m_patches.size();i++)
+		for (size_t i=0;i<bv.m_patches.size();i++)
 		{
 			m_patches.push_back(bv.m_patches[i]->clone());
 		}
@@ -301,18 +301,15 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 void STP_BV::constructFromFile(const std::string& filename)
 {
 	std::ifstream is;
-	int i, j, k;
+	int i, j;
 	int ssnum, bsnum, tnum;
 	int ssvvrnum;
-	int listID;
 	int outerSTP;
 	Scalar cRadius, sRadius, cosangle;
 	Scalar center[3];
 	Scalar axis[3];
 	std::vector<STP_VVR> ssvvr;
 	STP_VVR dvvr[4];
-	int step = 7;
-	int anglestep = 20;
 	std::vector<Point3> patchesCenter;
 
 	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
@@ -396,10 +393,9 @@ void STP_BV::constructFromFile(const std::string& filename)
 	}
 
 	//torus
-	STP_Torus* t;
+	STP_Torus* t = NULL;
 	bool isRealTorus;
 	int torusCount = 0;
-	double r;
 	//toruslinkedBV relatedBV;
 	Point3 arcCenter;
 	Point3 p1, p2, p3, p4;
@@ -514,7 +510,6 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 
 	drawnGL_=true;
 	std::ifstream is;
-	int i, j, k;
 	int ssnum, bsnum, tnum;
 	int ssvvrnum;
 	int listID;
@@ -548,7 +543,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 		std::cout << "EXCEPTION : the given source file doesn't contain any small spheres." << std::endl;
 		throw std::exception();
 	}
-	for(i = 0 ; i < ssnum ; ++i)
+	for(int i = 0 ; i < ssnum ; ++i)
 	{
 		is >> sRadius >> center[0] >> center[1] >> center[2];
 		ss = new STP_SmallSphere(sRadius, Point3(center[0], center[1], center[2]));
@@ -556,7 +551,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 
 		is >> ssvvrnum;
 		ssvvr.resize(ssvvrnum);
-		for(j = 0 ; j < ssvvrnum ; ++j)
+		for(int j = 0 ; j < ssvvrnum ; ++j)
 		{
 			is >> outerSTP >> cosangle >> axis[0] >> axis[1] >> axis[2];
 			ssvvr[j].m_cosangle = cosangle;
@@ -580,7 +575,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 		std::cout << "EXCEPTION : the given source file doesn't contain any big spheres." << std::endl;
 		throw std::exception();
 	}
-	for(i = 0 ; i < bsnum ; ++i)
+	for(int i = 0 ; i < bsnum ; ++i)
 	{
 		is >> sRadius >> center[0] >> center[1] >> center[2];
 		bigs = new STP_BigSphere(sRadius, Point3(center[0], center[1], center[2]));
@@ -615,7 +610,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 		bigs->setDisplayList(listID);
 
 		//get the VVR info
-		for(j = 0 ; j < 3 ; ++j)
+		for(int j = 0 ; j < 3 ; ++j)
 		{
 			is >> outerSTP >> axis[0] >> axis[1] >> axis[2];
 			dvvr[j].m_cosangle = 0.0;
@@ -629,7 +624,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	}
 
 	//torus
-	STP_Torus* t;
+	STP_Torus* t = NULL;
 	bool isRealTorus;
 	int torusCount = 0;
 	double r;
@@ -647,7 +642,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 		throw std::exception();
 	}
 
-	for(i = 0 ; i < tnum ; ++i)
+	for(int i = 0 ; i < tnum ; ++i)
 	{
 		is >> isRealTorus;
 		if(isRealTorus)
@@ -702,7 +697,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			glEnd();
 			glColor3f(0.74 + i * 0.04, 0.85, 0.95);
 			glBegin(GL_TRIANGLES);
-			for(j = 0 ; j < computedPoints.size() - 1 ; ++j)
+			for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
 			{
 				glVertex3f(computedPoints[j][0], computedPoints[j][1], computedPoints[j][2]);
 				glVertex3f(0.0, 0.0, 0.0);
@@ -734,7 +729,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			glEnd();
 			glColor3f(0.45 + i * 0.04, 0.84, 0.4);
 			glBegin(GL_TRIANGLES);
-			for(int j = 0 ; j < computedPoints.size() - 1 ; ++j)
+			for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
 			{
 				normal=computedPoints[j]^computedPoints[j+1];
 
@@ -764,7 +759,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			glNewList(listID + 2, GL_COMPILE);
 			glColor3f(1.0, 0.59, 0.0);
 			glBegin(GL_TRIANGLES);
-			for(j = 0 ; j < computedPoints.size() - 1 ; ++j)
+			for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
 			{
 
 
@@ -797,7 +792,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			glNewList(listID + 3, GL_COMPILE);
 			glColor3f(1.0, 1.0, 0.3);
 			glBegin(GL_TRIANGLES);
-			for(j = 0 ; j < computedPoints.size() - 1 ; ++j)
+			for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
 			{
 
 
@@ -841,7 +836,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], sRadius, step, &lastArc);
 			r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
 			computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], r, step, &computedPoints);
-			for(j = 1 ; j < step ; ++j)
+			for(int j = 1 ; j < step ; ++j)
 			{
 
 
@@ -859,9 +854,9 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 			glNewList(listID + 4, GL_COMPILE);
 			glColor3f(1, .5, .5);
 			glBegin(GL_TRIANGLES);
-			for(j = 0 ; j < step ; ++j)
+			for(int j = 0 ; j < step ; ++j)
 			{
-				for(k = 0 ; k < step ; ++k)
+				for(int k = 0 ; k < step ; ++k)
 				{   
 					normal = computedPoints[j * (step + 1) + k] - computeLinesCommonPoint(patchesCenter[dvvr[0].m_outerSTP], 
 						patchesCenter[dvvr[1].m_outerSTP],
@@ -1053,7 +1048,7 @@ void STP_BV::updateFastPatches()
 	if (m_patches.size()>0)
 	{
 		m_fastPatches=new STP_Feature*[m_patches.size()];
-		for (int i=0;i<m_patches.size();i++)
+		for (size_t i=0;i<m_patches.size();i++)
 		{
 			m_fastPatches[i]=m_patches[i];	
 		}
@@ -1098,7 +1093,7 @@ Scalar STP_BV::supportH(const Vector3& v) const
 
 	int k;
 
-	/////A.E. : we use the default supportH function, cf DT_Convex.h\\\\\ 
+	//A.E. : we use the default supportH function, cf DT_Convex.h
 	return v*l_Support(v,k);
 }
 
@@ -1157,7 +1152,7 @@ Point3 STP_BV::supportNaive(const Vector3& v) const
 Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
 {
 	STP_Feature* currentBV;
-	/////A.E. : We need to remember the previous Voronoi region we were in\\\\\ 
+	//A.E. : We need to remember the previous Voronoi region we were in 
 
 #ifdef REMEMBER_LAST_FEATURE
 	if (lastFeature!=-1) {
@@ -1170,10 +1165,9 @@ Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
-	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented\\\\\ 
-	/////A.E. : it seems me wrong to begin with 1 
-	int j = 0;
-    int i = 0;
+	//A.E. : the following hash table is not used in the function in its current version and is therefore commented 
+	//A.E. : it seems me wrong to begin with 1 
+    size_t i = 0;
     bool found = false;
 
 
@@ -1212,11 +1206,11 @@ Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
 Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const
 {
 	STP_Feature* currentBV;
-	/////A.E. : We need to remember the previous Voronoi region we were in\\\\\ 
+	//A.E. : We need to remember the previous Voronoi region we were in 
 
 #ifdef REMEMBER_LAST_FEATURE
 	if (lastFeature!=-1)
-		currentBV =currentBV = m_patches[lastFeature];
+		currentBV = m_patches[lastFeature];
 	else
 		currentBV = *(m_patches.begin());//first voronoi region search
 
@@ -1225,12 +1219,12 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 #endif
 
 
-	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented\\\\\ 
+	//A.E. : the following hash table is not used in the function in its current version and is therefore commented 
 
 	bool found = false;
-	/////A.E. : it seems me wrong to begin with 1\\\\\ 
+	//A.E. : it seems me wrong to begin with 1 
 
-    int i = 0;
+    size_t i = 0;
 
 	while( (i < m_patches.size()) && !(found = currentBV->isHereFarthestNeighbourPrime(v)) )
 	{
@@ -1258,7 +1252,7 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 	}
 
 
-	/////A.E. : test avec function naive\\\\\ 
+	//A.E. : test avec function naive 
 
 	return currentBV->support(v);
 }
@@ -1268,11 +1262,11 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 {
 	STP_Feature* currentBV;
-	/////A.E. : We need to remember the previous Voronoi region we were in\\\\\ 
+	//A.E. : We need to remember the previous Voronoi region we were in 
 
 #ifdef REMEMBER_LAST_FEATURE
 	if (lastFeature!=-1)
-		currentBV =currentBV = m_patches[lastFeature];
+		currentBV = m_patches[lastFeature];
 	else
 		currentBV = *(m_patches.begin());//first voronoi region search
 
@@ -1286,7 +1280,7 @@ Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 
 
 	/////A.E. : it seems me wrong to begin with 1
-	int i = 0;
+	size_t i = 0;
 
 
 

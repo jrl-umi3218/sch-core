@@ -6,7 +6,7 @@ using namespace SCD;
 
 const double PI=3.14159265358979323;
 
-S_Object::S_Object():mRot_(1,0,0,0,1,0,0,0,1),trans_(0,0,0),stacks_(50),slices_(100),displist_(-1)
+S_Object::S_Object():displist_(-1),stacks_(50),slices_(100),mRot_(1,0,0,0,1,0,0,0,1),trans_(0,0,0)
 {
 	++stamp_;
 }

@@ -12,8 +12,8 @@ inline short sign(Scalar i)
 }
 
 S_Superellipsoid::S_Superellipsoid(Scalar _a, Scalar _b, Scalar _c, Scalar _epsilon1, Scalar _epsilon2):a_(_a),b_(_b),c_(_c),epsilon1_(_epsilon1),epsilon2_(_epsilon2),
-																										_2_e1on2((2-_epsilon1)/2),_2_e2on2((2-_epsilon2)/2),_2on2_e1(2/(2-_epsilon1)),_2on2_e2(2/(2-_epsilon2))	,
-																										slices_(100),stacks_(50), displist_(-1)
+displist_(-1),slices_(100), stacks_(50),
+_2_e1on2((2-_epsilon1)/2),_2_e2on2((2-_epsilon2)/2),_2on2_e1(2/(2-_epsilon1)),_2on2_e2(2/(2-_epsilon2))
 					
 {
 	if (epsilon1_>2||epsilon2_>2||

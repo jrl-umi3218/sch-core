@@ -17,7 +17,7 @@ m_circle(cNormal, cCenter, cRadius), m_sphereRadius(sRadius)
 }
 
 STP_Torus::STP_Torus(const STP_Torus& t):
-m_circle(t.m_circle.m_normal, t.m_circle.m_center, t.m_circle.m_radius), m_sphereRadius(t.m_sphereRadius),STP_Feature(t)
+STP_Feature(t),m_circle(t.m_circle.m_normal, t.m_circle.m_center, t.m_circle.m_radius), m_sphereRadius(t.m_sphereRadius)
 {
 	m_VVR0 = t.m_VVR0;
 	m_VVR1 = t.m_VVR1;
@@ -100,7 +100,10 @@ bool STP_Torus::isHere(const Vector3& v) const
 bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
-	Scalar tmp1, tmp2, tmp3, tmp4;
+	Scalar tmp1 = 0; 
+  Scalar tmp2 = 0; 
+  Scalar tmp3 = 0; 
+  Scalar tmp4 = 0;
 
 	//std::cout << "test is here torus" << std::endl;
 
@@ -142,7 +145,6 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 					//compare the four values
 					if(tmp2 < tmp1)
 					{
-						int tmp = m_nextBV[0];
 						if(tmp3 < tmp2)
 						{
 							if(tmp4 < tmp3)
@@ -397,7 +399,6 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 					}
 					else
 					{
-						int tmp = m_nextBV[0];
 						m_nextBV[0] = m_nextBV[1];
 						m_nextBV[1] = m_nextBV[0];
 						m_nextBV[2] = m_nextBV[3];
@@ -631,7 +632,6 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 
 bool STP_Torus::isHereFarthestNeighbourPrime(const Vector3& v)
 {
-	bool res = true;
 	Scalar tmp1, tmp2, tmp3, tmp4;
 	
 

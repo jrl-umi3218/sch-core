@@ -12,7 +12,7 @@ m_radius(radius), m_center(center)
 }
 
 STP_BigSphere::STP_BigSphere(const STP_BigSphere& s):
-m_radius(s.m_radius), m_center(s.m_center),STP_Feature(s)
+STP_Feature(s), m_radius(s.m_radius), m_center(s.m_center)
 {
 	m_VVR0 = s.m_VVR0;
 	m_VVR1 = s.m_VVR1;
@@ -80,7 +80,9 @@ bool STP_BigSphere::isHere(const Vector3& v) const
 bool STP_BigSphere::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
-	Scalar tmp1, tmp2, tmp3;
+	Scalar tmp1 = 0;
+  Scalar tmp2 = 0;
+  Scalar tmp3 = 0;
 
 //	std::cout << "test is here big sphere" << std::endl;
 

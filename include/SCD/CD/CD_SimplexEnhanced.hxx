@@ -65,10 +65,10 @@ inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
 
 			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
 			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
-			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchange<char>(a[0],a[(int)f.b1],b);
 
-			s2_=(*this)[a[f.b2]];
-			norm2_= norms(a[f.b2]);
+			s2_=(*this)[a[(int)(f.b2)]];
+			norm2_= norms(a[(int)f.b2]);
 			return;
 		}
 	case CD_Triangle:
@@ -81,14 +81,14 @@ inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
 
 			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
 			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
-			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchange<char>(a[0],a[(int)f.b1],b);
 
-			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
-			CD_SimplexExchange<Scalar>(norm2_,norms(a[f.b2]),cache2);
-			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[(int)f.b2]],cache);
+			CD_SimplexExchange<Scalar>(norm2_,norms(a[(int)f.b2]),cache2);
+			CD_SimplexExchange<char>(a[(int)a[1]],a[(int)a[(int)f.b2]],b);
 
-			s3_=(*this)[a[f.b3]];
-			norm3_= norms(a[f.b3]);
+			s3_=(*this)[a[(int)f.b3]];
+			norm3_= norms(a[(int)f.b3]);
 			return;
 			
 		}
@@ -110,18 +110,18 @@ inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
 			char b;
 			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
 			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
-			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchange<char>(a[0],a[(int)f.b1],b);
 
-			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
-			CD_SimplexExchange<Scalar>(norm2_,norms(a[f.b2]),cache2);
-			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[(int)f.b2]],cache);
+			CD_SimplexExchange<Scalar>(norm2_,norms(a[(int)f.b2]),cache2);
+			CD_SimplexExchange<char>(a[(int)a[1]],a[(int)a[(int)f.b2]],b);
 
-			CD_SimplexExchangeTest<Vector3>(s3_,(*this)[a[f.b3]],cache);
-			CD_SimplexExchange<Scalar>(norm3_,norms(a[f.b3]),cache2);
-			CD_SimplexExchange<char>(a[a[2]],a[a[f.b3]],b);
+			CD_SimplexExchangeTest<Vector3>(s3_,(*this)[a[(int)f.b3]],cache);
+			CD_SimplexExchange<Scalar>(norm3_,norms(a[(int)f.b3]),cache2);
+			CD_SimplexExchange<char>(a[(int)a[2]],a[(int)a[(int)f.b3]],b);
 
-			s4_=(*this)[a[f.b4]];
-			norm4_= norms(a[f.b4]);
+			s4_=(*this)[a[(int)f.b4]];
+			norm4_= norms(a[(int)f.b4]);
 			return ;
 
 		}

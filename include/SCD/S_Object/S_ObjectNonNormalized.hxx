@@ -22,3 +22,4 @@ inline Point3 S_ObjectNonNormalized::support(const Vector3& v,int &LastFeature) 
 	Point3 p(mRot_ * l_Support(vp,LastFeature));
 	return p+trans_;
 }
+

@@ -166,7 +166,6 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 		num_verts=4;
 
 	}
-	Scalar tolerance = epsilon_*s.farthestPointDistance();
     
     num_triangles = 0;
     

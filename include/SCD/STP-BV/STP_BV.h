@@ -110,7 +110,7 @@ namespace SCD
 		*  \param id1
 		*  \param id2
 		*/
-		bool operator ()(int id1, int id2) const;
+		bool operator ()(unsigned int id1, unsigned int id2) const;
 
 		Point3 m_axis;
 		std::vector<Point3> m_points;

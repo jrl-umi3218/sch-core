@@ -95,14 +95,14 @@ namespace SCD
 
 		Scalar GJK();
 		Scalar penetrationDepth();
-		void witPoints(Point3& p1,Point3& p2);
 
 		Point3 p1_,p2_;
 		Scalar distance_;
 
-		Scalar precision_,epsilon_;
 
 		S_ObjectTimeStamp stamp1_,stamp2_;
+
+		Scalar precision_,epsilon_;
 
 		Scalar lambda0_,lambda1_,lambda2_;
 		Scalar det_;
@@ -119,6 +119,7 @@ namespace SCD
 
 		CD_SimplexEnhanced sp_;
 
+		void witPoints(Point3& p1,Point3& p2);
 
 
 		CD_Depth depthPair;
