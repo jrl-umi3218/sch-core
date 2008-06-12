@@ -34,6 +34,9 @@ public:
 
 	void SetRelativePrecision(Scalar);
 
+	void SetEpsilon(Scalar);
+
+
 	S_Object * operator[](unsigned char i)
 	{
 		return (i==0)?sObj1:sObj2;
@@ -53,7 +56,7 @@ private :
 	Point3 p1,p2;
 	Scalar distance;
 
-	Scalar precision;
+	Scalar precision_,epsilon_;
 	
 	S_Object::TimeStamp stamp1,stamp2;
 

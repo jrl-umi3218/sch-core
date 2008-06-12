@@ -18,7 +18,7 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1(obj1),sObj2(obj2),lastDirection(1.0,0.0,0.0),
 lastFeature1(-1),lastFeature2(-1),distance(0),stamp1(sObj1->CheckStamp()),stamp2(sObj2->CheckStamp()), 
-precision(1e-6),s1(Point3()),s2(Point3()),s(Point3()),WitPointsAreComputed(false)
+precision_(1e-6),epsilon_(1e-53),s1(Point3()),s2(Point3()),s(Point3()),WitPointsAreComputed(false)
 {	
 	--stamp1;
 	--stamp2;
@@ -59,9 +59,14 @@ Scalar CD_Pair::ReComputeClosestPoints(Point3& _p1,Point3& _p2)
 
 void CD_Pair::SetRelativePrecision(Scalar s)
 {
-	precision=s*s;
+	precision_=s*s;
 }
 
+
+void CD_Pair::SetEpsilon(Scalar s)
+{
+	epsilon_=s;
+}
 
 Scalar CD_Pair::GetClosestPoints(Point3 &_p1, Point3 &_p2)
 {
@@ -209,13 +214,13 @@ Scalar CD_Pair::GJK()
 
 		}
 
-		if ((v.IsZero())||((dp=proj.normsquared())>=distance)&&(++cntIrregul>200))
+		if ((distance=v.normsquared())<=sp.farthestPointDistance()*epsilon_)//v is considered zero
 		{
 			cont=false;
 		}
 		else
 		{
-			distance=dp;
+			
 
 
 
@@ -226,7 +231,7 @@ Scalar CD_Pair::GJK()
 
 
 
-			if ((distance-proj*sup)<(precision*distance))
+			if ((distance-proj*sup)<(precision_*distance))
 			{
 				cont=false;
 				projectionComputed_=true;

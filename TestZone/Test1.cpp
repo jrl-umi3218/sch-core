@@ -22,7 +22,7 @@
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define DISPLAY_TEST
-//#define MULTI_OBJECTS_TEST
+#define MULTI_OBJECTS_TEST
 //#define NON_STP_BV_OBJECTS
 
 const double AnimationSpeed=0.0003;
