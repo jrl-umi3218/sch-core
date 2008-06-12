@@ -16,21 +16,20 @@
 #include <fstream>
 #include <vector>
 
-
-
 #include "includes.h"
+
 
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define DISPLAY_TEST
-//#define MULTI_OBJECTS_TEST
+#define MULTI_OBJECTS_TEST
 //#define NON_STP_BV_OBJECTS
 
 const double AnimationSpeed=0.0003;
 const double AnimationScale=2;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=3000000;
+const long AnimationEnd=10000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -383,10 +382,7 @@ init (void)
 
 			  stpObjects.push_back(stp);
 			  stpObjects.push_back(stp);
-			  stpObjects.push_back(stp);
-			  stpObjects.push_back(stp);
-			  stpObjects.push_back(stp);
-			  stpObjects.push_back(stp);
+
 
 
 			  
