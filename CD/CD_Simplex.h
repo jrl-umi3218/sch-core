@@ -88,15 +88,23 @@ public:
 
 	/*! 
 	 * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron) 
+	 * \updateVetors must be called after this operator to keep the vectors up to date.
 	 */
-	CD_Simplex& operator+=(const Point3& p);
+	CD_Simplex& operator+=(const Point3&);
 	
 
+	/*! 
+	 * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron) 
+	 * \updateVetors must be called after this operator to keep the vectors up to date.
+	 */
+	CD_Simplex operator+(const Point3&)const;
 
-	CD_Simplex operator+(const Point3& p)const;
-
-
-	void Filter(const CD_SimplexKeptPoints &);
+	/*! 
+	 * \brief Updates the simplex by supressing some vertexes and/or change their order according to a filter
+	 * \param k is the filter used to know wich vertexes will be kept and in wich order
+	 * \updateVetors must be called after this function to keep the vectors up to date.
+	 */
+	void Filter(const CD_SimplexKeptPoints &k);
 
 	/*!
 	 *\brief Gives the distance squared at the origin for a simplex, and according the direction v.
@@ -112,11 +120,6 @@ public:
 	 */
 	CD_Simplex GetClosestSubSimplex(const Point3& p,Vector3& v)const;
 
-	/*!
-	 * \brief optimized version of GetClosestSubSimplex((0,0,0),v) for GJK (the highest index point is the last inserted in the GJK algorithm) 
-	 *		to make it work, updateVectors must be called before.
-	 */
-	CD_Simplex GetClosestSubSimplexGJK(CD_SimplexKeptPoints &k)const;
 	
 	/*!
 	 * \brief Tells if the simplex is affinely dependant or not according to the static variable zero 
@@ -129,11 +132,13 @@ public:
 	 */
 	void updateVectors();
 
+	
+
 	const Vector3& AB () const;
 	const Vector3& AC () const;
 	const Vector3& AD () const;
 
-	private :
+protected :
 	
 
 	Type type;

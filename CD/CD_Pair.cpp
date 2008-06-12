@@ -1,5 +1,6 @@
 #include "CD_Pair.h"
 #include "CD_simplex.h"
+#include "CD_simplexEnhanced.h"
 #include <gl\glut.h>
 #include <iostream>
 
@@ -113,7 +114,7 @@ Scalar CD_Pair::GJK()
 	s2=sup2;
 	s=sup;
 
-	CD_Simplex sp(sup);
+	CD_SimplexEnhanced sp(sup);
 
 	
 	Scalar dp;
@@ -252,16 +253,14 @@ Scalar CD_Pair::GJK()
 					else
 					{
 
-						{
+						s1+=sup1;
+						s2+=sup2;
+						s=sp;
 
-							s1+=sup1;
-							s2+=sup2;
-							s=sp;
-							
-							s1.Filter(k);
-							s2.Filter(k);
+						s1.Filter(k);
+						s2.Filter(k);
 
-						}
+						
 					}
 				}
 			}

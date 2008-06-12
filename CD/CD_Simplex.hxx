@@ -16,6 +16,9 @@ inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3
 {
 }
 
+
+
+
 inline bool CD_Simplex::IsAffinelyDependent() const
 {
 	switch (type)
@@ -252,12 +255,10 @@ inline void CD_Simplex::Filter(const CD_SimplexKeptPoints &f)
 	case 1:
 		type=point;
 		return;
-	case 4:
+	default:
 		type= tetrahedron;
 		return;
-	default:
-		type=point;
-		return;
+
 	}
 }
 

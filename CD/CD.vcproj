@@ -154,6 +154,10 @@
 				RelativePath=".\CD_Simplex.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\CD_SimplexEnhanced.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -174,6 +178,14 @@
 			</File>
 			<File
 				RelativePath=".\CD_Simplex.hxx"
+				>
+			</File>
+			<File
+				RelativePath=".\CD_SimplexEnhanced.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CD_SimplexEnhanced.hxx"
 				>
 			</File>
 		</Filter>
