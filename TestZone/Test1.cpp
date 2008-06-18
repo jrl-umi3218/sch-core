@@ -22,6 +22,7 @@
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define DISPLAY_TEST
+//#define DISPLAY_DISTANCE
 #define MULTI_OBJECTS_TEST
 //#define NON_STP_BV_OBJECTS
 
@@ -589,7 +590,7 @@ display (void)
 		{
 			Point3 p1,p2;
 
-			Scalar d,k;
+			Scalar d;
 
 
 			d=sObj.GetWitnessPoints(i,j,p1,p2);
@@ -608,7 +609,13 @@ display (void)
 		
 #endif
 
-			k=(p1-p2).normsquared();
+#ifdef DISPLAY_DISTANCE
+		std::cout<<d<<std::endl;
+		
+		
+#endif
+
+
 			
 		}
 

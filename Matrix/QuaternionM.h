@@ -13,7 +13,7 @@ namespace MAL_Default
 		QuaternionM<T>()
 		{}
 
-		explicit QuaternionM<T>(const T& x, const T& y, const T& z, const T& w):Vector4D<T>(x,y,z,t)
+		explicit QuaternionM<T>(const T& x, const T& y, const T& z, const T& w):Vector4D<T>(x,y,z,w)
 		{}
 
 

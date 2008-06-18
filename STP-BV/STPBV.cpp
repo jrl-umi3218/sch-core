@@ -35,7 +35,7 @@ const double PI=3.141592653589793238462643383279502884197;
 #define FIRSTSUPPORTPRIME
 //#define TREESUPPORT
 
-//#define PI 3.14159265
+//#define COUNTER
 
 //#define writecout
 //#define writeos
@@ -1654,11 +1654,15 @@ Point3 STPBV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) cons
 	while( (i < m_patchesSize) && !(found = currentBV->isHereFirstNeighbourPrime(v,idp)) )
 	{
 		idp=lastFeature;		
-		lastFeature = currentBV->getNextBVPrime();//go to the neighbour feature which common limit with the current is farthest from the vector
+		lastFeature = currentBV->getNextBVPrime();//go to the neighbour
 
 		currentBV = m_fastPatches[lastFeature];
 		++i;
 	}
+	
+#ifdef COUNTER
+	std::cout<<i<<' ';
+#endif
 
 
 

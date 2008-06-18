@@ -39,35 +39,37 @@ public:
 
 	S_Object * operator[](unsigned char i)
 	{
-		return (i==0)?sObj1:sObj2;
+		return (i==0)?sObj1_:sObj2_;
 	}
 
 
 
 
 private :
-	S_Object* sObj1, * sObj2;
-	Vector3 lastDirection;
-	int lastFeature1,lastFeature2;
+	S_Object* sObj1_, * sObj2_;
+	Vector3 lastDirection_;
+	int lastFeature1_,lastFeature2_;
 
 	Scalar GJK();
 	void WitPoints(Point3& p1,Point3& p2);
 
-	Point3 p1,p2;
-	Scalar distance;
+	Point3 p1_,p2_;
+	Scalar distance_;
 
 	Scalar precision_,epsilon_;
 	
-	S_Object::TimeStamp stamp1,stamp2;
+	S_Object::TimeStamp stamp1_,stamp2_;
 
 	Scalar lambda0_,lambda1_,lambda2_;
-	Scalar det;
+	Scalar det_;
+
 	bool projectionComputed_;
 
+	bool collision_;
 
-	bool WitPointsAreComputed;
+	bool witPointsAreComputed_;
 
-	CD_Simplex s1,s2,s;
+	CD_Simplex s1_,s2_,s_;
 
 
 	

@@ -1,10 +1,12 @@
 #include "CD_Pair.h"
 #include "CD_simplex.h"
 #include "CD_simplexEnhanced.h"
+#include "../CD_Penetration/CD_Depth.h"
 #include <gl\glut.h>
 #include <iostream>
 
 //#define SHOW_LAST_SIMLPEX
+//#define COUNTER
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
@@ -16,12 +18,12 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 
 
-CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1(obj1),sObj2(obj2),lastDirection(1.0,0.0,0.0),
-lastFeature1(-1),lastFeature2(-1),distance(0),stamp1(sObj1->CheckStamp()),stamp2(sObj2->CheckStamp()), 
-precision_(1e-6),epsilon_(1e-53),s1(Point3()),s2(Point3()),s(Point3()),WitPointsAreComputed(false)
+CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
+lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->CheckStamp()),stamp2_(sObj2_->CheckStamp()), 
+precision_(1e-6),epsilon_(1e-53),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false)
 {	
-	--stamp1;
-	--stamp2;
+	--stamp1_;
+	--stamp2_;
 
 }
 
@@ -31,14 +33,14 @@ CD_Pair::~CD_Pair(void)
 
 Scalar CD_Pair::GetDistance()
 {
-	if ((stamp1==sObj1->CheckStamp())&&(stamp2==sObj2->CheckStamp()))
+	if ((stamp1_==sObj1_->CheckStamp())&&(stamp2_==sObj2_->CheckStamp()))
 	{
-		return distance;
+		return distance_;
 	}
 	else
 	{
-		stamp1=sObj1->CheckStamp();
-		stamp2=sObj2->CheckStamp();
+		stamp1_=sObj1_->CheckStamp();
+		stamp2_=sObj2_->CheckStamp();
 		return GJK();
 	}
 
@@ -46,13 +48,13 @@ Scalar CD_Pair::GetDistance()
 
 
 
-Scalar CD_Pair::ReComputeClosestPoints(Point3& _p1,Point3& _p2)
+Scalar CD_Pair::ReComputeClosestPoints(Point3& p1,Point3& p2)
 {
-	stamp1=sObj1->CheckStamp();
-	stamp2=sObj2->CheckStamp();
+	stamp1_=sObj1_->CheckStamp();
+	stamp2_=sObj2_->CheckStamp();
 	GJK();
-	WitPoints(_p1,_p2);
-	return distance;
+	WitPoints(p1,p2);
+	return distance_;
 	
 }
 
@@ -68,29 +70,29 @@ void CD_Pair::SetEpsilon(Scalar s)
 	epsilon_=s;
 }
 
-Scalar CD_Pair::GetClosestPoints(Point3 &_p1, Point3 &_p2)
+Scalar CD_Pair::GetClosestPoints(Point3 &p1, Point3 &p2)
 {
-	if ((stamp1==sObj1->CheckStamp())&&(stamp2==sObj2->CheckStamp()))
+	if ((stamp1_==sObj1_->CheckStamp())&&(stamp2_==sObj2_->CheckStamp()))
 	{
-		if (WitPointsAreComputed)
+		if (!witPointsAreComputed_)
 		{
-			WitPointsAreComputed=true;
+			witPointsAreComputed_=true;
 			WitPoints(p1,p2);
 		}
-		_p1=p1;
-		_p2=p2;
-		return distance;
+		p1=p1_;
+		p2=p2_;
+		return distance_;
 	}
 	else
 	{
 		
 
-		WitPointsAreComputed=true;
-		stamp1=sObj1->CheckStamp();
-		stamp2=sObj2->CheckStamp();
+		witPointsAreComputed_=true;
+		stamp1_=sObj1_->CheckStamp();
+		stamp2_=sObj2_->CheckStamp();
 		GJK();
-		WitPoints(_p1,_p2);
-		return distance;
+		WitPoints(p1,p2);
+		return distance_;
 
 	}
 
@@ -101,31 +103,25 @@ Scalar CD_Pair::GetClosestPoints(Point3 &_p1, Point3 &_p2)
 
 Scalar CD_Pair::GJK()
 {
-	Vector3& v=lastDirection;
+	Vector3& v=lastDirection_;
 
-	WitPointsAreComputed=false;
+	witPointsAreComputed_=false;
 
 		
-	int& lf1=lastFeature1;
-	int& lf2=lastFeature2;
+	int& lf1=lastFeature1_;
+	int& lf2=lastFeature2_;
 
 
-	Point3 sup1=sObj1->Support(v,lf1);
-	Point3 sup2=sObj2->Support(-v,lf2);
+	Point3 sup1=sObj1_->Support(v,lf1);
+	Point3 sup2=sObj2_->Support(-v,lf2);
 
-	Point3 sup=sup1-sup2;
+	Point3 sup(sup1-sup2);
 
-	s1=sup1;
-	s2=sup2;
-	s=sup;
+	s1_=sup1;
+	s2_=sup2;
+	s_=sup;
 
 	CD_SimplexEnhanced sp(sup);
-
-	
-	Scalar dp;
-
-	char cntIrregul=0;
-
 
 	CD_SimplexKeptPoints k;
 
@@ -149,33 +145,44 @@ Scalar CD_Pair::GJK()
 	Vector3 S01;
 	Vector3 S02;
 
-	Scalar a1,a2,a3,a4,a5,a6,det;
+	Scalar a1,a2,a3,a4,a5,a6;
+
+
+#ifdef COUNTER
+
+	int	cnt=0;
+#endif 
 
 
 	while (cont)
 	{
 
-		switch (s.getType())
+#ifdef COUNTER
+
+		cnt++;
+#endif 
+
+		switch (s_.getType())
 		{
 
 		case CD_Simplex::triangle:
 			{
-				S01=s[1]-s[2];
-				S02=s[0]-s[2];
+				S01=s_[1]-s_[2];
+				S02=s_[0]-s_[2];
 
-				a1=S01*s[0],a2=S01*s[1],a3=S01*s[2],a4=S02*s[0],a5=S02*s[1],a6=S02*s[2];
+				a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
 				
 				
 				lambda0_=a2*a6-a3*a5;
 				lambda1_=a3*a4-a1*a6;
 				lambda2_=a1*a5-a2*a4;
-				det=1/(lambda0_+lambda1_+lambda2_);
+				det_=1/(lambda0_+lambda1_+lambda2_);
 				
-				lambda0_*=det;
-				lambda1_*=det;
-				lambda2_*=det;
+				lambda0_*=det_;
+				lambda1_*=det_;
+				lambda2_*=det_;
 
-				proj=s[0]*lambda0_+s[1]*lambda1_+s[2]*lambda2_;
+				proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
 				
 				v=-proj;
 
@@ -187,17 +194,18 @@ Scalar CD_Pair::GJK()
 			{
 
 			
-				S01=s[1]-s[0];
+				S01=s_[1]-s_[0];
 	
-				lambda1_=-(S01*s[0]);
-				lambda0_=S01*s[1];
+				lambda0_=S01*s_[1];
+				lambda1_=-(S01*s_[0]);
+				
 
-				det=1/(lambda0_+lambda1_);
+				det_=1/(lambda0_+lambda1_);
 
-				lambda0_*=det;
-				lambda1_*=det;
+				lambda0_*=det_;
+				lambda1_*=det_;
 
-				proj=s[0]*lambda0_+s[1]*lambda1_;
+				proj=s_[0]*lambda0_+s_[1]*lambda1_;
 				
 				
 				v=-proj;
@@ -207,32 +215,30 @@ Scalar CD_Pair::GJK()
 			}
 		default:
 			{
-				proj=s[0];
+				proj=s_[0];
 				
 				v=-proj;
 			}
 
 		}
 
-		if ((distance=v.normsquared())<=sp.farthestPointDistance()*epsilon_)//v is considered zero
+		if ((distance_=v.normsquared())<=sp.farthestPointDistance()*epsilon_)//v is considered zero
 		{
+			collision_=true;
 			cont=false;
 		}
 		else
 		{
-			
-
-
-
-			sup1=sObj1->Support(v,lf1);
-			sup2=sObj2->Support(-v,lf2);
+			sup1=sObj1_->Support(v,lf1);
+			sup2=sObj2_->Support(-v,lf2);
 
 			sup=sup1-sup2;
 
 
 
-			if ((distance-proj*sup)<(precision_*distance))
+			if ((distance_-proj*sup)<(precision_*distance_))
 			{
+				collision_=false;
 				cont=false;
 				projectionComputed_=true;
 
@@ -241,12 +247,15 @@ Scalar CD_Pair::GJK()
 			{
 
 				sp+=sup;
+				
 				sp.updateVectors();
 
 
 				if (sp.IsAffinelyDependent())
 				{
 					cont=false;
+					collision_=false;
+					projectionComputed_=true;
 				}
 				else
 				{
@@ -254,16 +263,19 @@ Scalar CD_Pair::GJK()
 					sp=sp.GetClosestSubSimplexGJK(k);
 
 					if (sp.getType()==CD_Simplex::tetrahedron)
+					{
 						cont=false;
+						collision_=true;
+					}	
 					else
 					{
 
-						s1+=sup1;
-						s2+=sup2;
-						s=sp;
+						s1_+=sup1;
+						s2_+=sup2;
+						s_=sp;
 
-						s1.Filter(k);
-						s2.Filter(k);
+						s1_.Filter(k);
+						s2_.Filter(k);
 
 						
 					}
@@ -272,14 +284,22 @@ Scalar CD_Pair::GJK()
 		}
 	}
 
+#ifdef COUNTER
+
+	std::cout<<"F "<<cnt<<" ; ";
+#endif 
 	
-	
-	if (sp.getType()==CD_Simplex::tetrahedron)//origin is inside the tetrahedron
+	if (collision_)//Objects are in collision
 	{		
-			return distance=-1;
+		distance_=-CD_Depth::getPenetrationDepth(sObj1_,sObj2_,v,p1_,p2_,sp,s1_,s1_,precision_,epsilon_);
+		if (distance_>=0)
+		{
+			collision_=false;
+			
+		}
 	}
-	else
-		return distance;
+
+	return distance_;
 
 	
 
@@ -291,16 +311,20 @@ Scalar CD_Pair::GJK()
 	
 }
 
-void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
+void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 {
 	Point3 proj;
-	Vector3& v=lastDirection;
+	Vector3& v=lastDirection_;
 	
-	if (distance==-1)
+	if (collision_)
+	{		
+		p1=p1_;
+		p2=p2_;
 		return;
+		
+	}		
 
-
-	switch (s.getType())
+	switch (s_.getType())
 	{
 	
 	case CD_Simplex::triangle:
@@ -309,28 +333,28 @@ void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
 			{
 				if (!projectionComputed_)
 				{
-					Vector3 S01(s[1]-s[2]), S02(s[0]-s[2]);
+					Vector3 S01(s_[1]-s_[2]), S02(s_[0]-s_[2]);
 
-					Scalar a1=S01*s[0],a2=S01*s[1],a3=S01*s[2],a4=S02*s[0],a5=S02*s[1],a6=S02*s[2];
+					Scalar a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
 
 
 					lambda0_=a2*a6-a3*a5;
 					lambda1_=a3*a4-a1*a6;
 					lambda2_=a1*a5-a2*a4;
-					Scalar det=1/(lambda0_+lambda1_+lambda2_);
+					det_=1/(lambda0_+lambda1_+lambda2_);
 
-					lambda0_*=det;
-					lambda1_*=det;
-					lambda2_*=det;
+					lambda0_*=det_;
+					lambda1_*=det_;
+					lambda2_*=det_;
 
-					proj=s[0]*lambda0_+s[1]*lambda1_+s[2]*lambda2_;
+					proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
 
 					v=-proj;
 
 				}
 
-				p1=_p1=s1[0]*lambda0_+s1[1]*lambda1_+s1[2]*lambda2_;
-				p2=_p2=s2[0]*lambda0_+s2[1]*lambda1_+s2[2]*lambda2_;			
+				p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_+s1_[2]*lambda2_;
+				p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_+s2_[2]*lambda2_;			
 
 			}
 		
@@ -369,17 +393,17 @@ void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
 			{
 				
 			
-				Vector3 S01(s[1]-s[0]);
+				Vector3 S01(s_[1]-s_[0]);
 	
-				lambda1_=-(S01*s[0]);
-				lambda0_=S01*s[1];
+				lambda1_=-(S01*s_[0]);
+				lambda0_=S01*s_[1];
 
-				Scalar det=1/(lambda0_+lambda1_);
+				det_=1/(lambda0_+lambda1_);
 
-				lambda0_*=det;
-				lambda1_*=det;
+				lambda0_*=det_;
+				lambda1_*=det_;
 
-				proj=s[0]*lambda0_+s[1]*lambda1_;
+				proj=s_[0]*lambda0_+s_[1]*lambda1_;
 				
 				
 				v=-proj;
@@ -387,8 +411,8 @@ void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
 				
 			}
 
-			p1=_p1=s1[0]*lambda0_+s1[1]*lambda1_;
-			p2=_p2=s2[0]*lambda0_+s2[1]*lambda1_;
+			p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_;
+			p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_;
 
 
 
@@ -414,8 +438,8 @@ void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
 		}
 	default:
 		{
-			p1=_p1=s1[0];
-			p2=_p2=s2[0];
+			p1_=p1=s1_[0];
+			p2_=p2=s2_[0]; 
 
 			return ;
 		}
@@ -425,3 +449,7 @@ void CD_Pair::WitPoints(Point3 &_p1, Point3 &_p2)
 
 	}
 }
+
+
+#undef SHOW_LAST_SIMLPEX
+#undef COUNTER

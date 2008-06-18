@@ -41,7 +41,7 @@ public:
 	/*!
 	 * \brief gives the distance squared between the origin and the furthest simplex vertices
 	 */
-	Scalar farthestPointDistance();
+	Scalar farthestPointDistance()const;
 
 	/*!
 	 * \brief optimized version of GetClosestSubSimplex((0,0,0),v) for GJK (the highest index point is the last inserted in the GJK algorithm) 
