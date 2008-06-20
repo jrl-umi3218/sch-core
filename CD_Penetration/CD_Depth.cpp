@@ -17,7 +17,7 @@ int furthestAxis(Vector3 v)
 {
 	Vector3 vp(fabs(v[0]),fabs(v[1]),fabs(v[2]));
 
-	return v[0] < v[1] ? (v[0] < v[2] ? 0 : 2) : (v[1] < v[2] ? 1 : 2);
+	return vp[0] < vp[1] ? (vp[0] < vp[2] ? 0 : 2) : (vp[1] < vp[2] ? 1 : 2);
 
 }
 
@@ -369,7 +369,10 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
             Scalar far_dist = (yBuf[index]* triangle->getClosest());
 			
             // Make sure the support mapping is OK.
-            assert(far_dist > Scalar(0.0));
+            if (far_dist < Scalar(0.0))
+			{
+				break;
+			}
             Scalar far_dist2 = far_dist * far_dist / triangle->getDist2();
             GEN_set_min(upper_bound2, far_dist2);
 			

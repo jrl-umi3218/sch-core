@@ -2,7 +2,8 @@
 
 #include <stdlib.h>
 #include <GL/glut.h>
-#include <time.h>
+#include <ctime>
+#include <cmath>
 
 #include <string>
 #include <cstdlib>
@@ -20,19 +21,25 @@
 
 
 #define DO_TEST
-//#define OUTPUT_FILE
+#define OUTPUT_FILE
 //#define DISPLAY_TEST
 //#define DISPLAY_DISTANCE
-#define MULTI_OBJECTS_TEST
+//#define MULTI_OBJECTS_TEST
+//#define COLLISION_COUNTERS
 //#define NON_STP_BV_OBJECTS
 
+
+const double DispersionScale=0.01;
 const double AnimationSpeed=0.0003;
-const double AnimationScale=2;
+const double AnimationScale=0.03;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=10000;
+const long AnimationEnd=1000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
+
+
+
 
 
 std::fstream outfile;
@@ -431,7 +438,9 @@ init (void)
   {
 	  
 
-	  sObj[i]->SetPosition(1+7*i%5-3,(5*i%6-3)*(5.0/6),(5*i%7-3)*(5.0/7));
+	  sObj[i]->SetPosition((1+7*i%5-3)*DispersionScale,
+						   (5*i%6-3)*(5.0/6)*DispersionScale,
+						   (5*i%7-3)*(5.0/7)*DispersionScale);
 
 
   }
@@ -657,9 +666,9 @@ void TestAnimation()
 
 	for (int i=0;i<sObj.Size();i++)
 	{
-		position[0] =1+7*i%5-3;
-		position[1] =(5*i%6-3)*(5.0/6);
-		position[2] =(5*i%7-3)*(5.0/7);
+		position[0] =(1+7*i%5-3)*DispersionScale;
+		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
+		position[2] =((5*i%7-3)*(5.0/7))*DispersionScale;
 
 		oldPos.push_back(position);
 
@@ -702,7 +711,10 @@ void TestAnimation()
 #endif	
 
 
-
+#ifdef COLLISION_COUNTERS
+int collCpt=0;
+int totalCpt=0;
+#endif
 
 
 
@@ -761,6 +773,26 @@ void TestAnimation()
 		
 #endif
 
+		
+
+#ifdef COLLISION_COUNTERS
+		for (int k=0;k<sObj.Size();k++)
+		{
+			for (int j=0;j<k;j++)
+			{ 
+				Point3 p1,p2;
+				Scalar distance=sObj.GetWitnessPoints(k,j,p1,p2);
+				if (distance<0)
+					collCpt++;
+				totalCpt++;
+
+			}
+
+
+		}
+
+#endif
+
 #endif
 
 
@@ -786,9 +818,10 @@ void TestAnimation()
 	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) << " : " << ((double)(end - begin) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) << std::endl;
 
 	
-	
+#ifdef COLLISION_COUNTERS
+	std::cout << "Collisions : "<<collCpt<< " Total pairs checked : "<<totalCpt<<std::endl;
 
-
+#endif
 
 	
 }

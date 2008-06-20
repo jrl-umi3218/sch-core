@@ -7,6 +7,8 @@
 
 //#define SHOW_LAST_SIMLPEX
 //#define COUNTER
+//#define SAFE_VERSION
+#define PENETRATION_DEPTH
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
@@ -127,17 +129,9 @@ Scalar CD_Pair::GJK()
 
 	projectionComputed_=false;
 	
-	bool cont;
+	bool cont=true;
 
-	if (v.IsZero())
-	{
-		v.Set(1,0,0);
-		return 0;
-	}
-	else
-	{
-		cont=true;
-	}
+	
 	
 		
 	Point3 proj;
@@ -221,7 +215,6 @@ Scalar CD_Pair::GJK()
 			}
 
 		}
-
 		if ((distance_=v.normsquared())<=sp.farthestPointDistance()*epsilon_)//v is considered zero
 		{
 			collision_=true;
@@ -250,14 +243,15 @@ Scalar CD_Pair::GJK()
 				
 				sp.updateVectors();
 
-
-				if (sp.IsAffinelyDependent())
+#ifndef SAFE_VERSION
+				if (sp.isAffinelyDependent())
 				{
 					cont=false;
 					collision_=false;
 					projectionComputed_=true;
 				}
 				else
+#endif
 				{
 
 					sp=sp.GetClosestSubSimplexGJK(k);
@@ -274,8 +268,8 @@ Scalar CD_Pair::GJK()
 						s2_+=sup2;
 						s_=sp;
 
-						s1_.Filter(k);
-						s2_.Filter(k);
+						s1_.filter(k);
+						s2_.filter(k);
 
 						
 					}
@@ -288,7 +282,7 @@ Scalar CD_Pair::GJK()
 
 	std::cout<<"F "<<cnt<<" ; ";
 #endif 
-	
+#ifdef PENETRATION_DEPTH	
 	if (collision_)//Objects are in collision
 	{		
 		distance_=-CD_Depth::getPenetrationDepth(sObj1_,sObj2_,v,p1_,p2_,sp,s1_,s1_,precision_,epsilon_);
@@ -298,6 +292,7 @@ Scalar CD_Pair::GJK()
 			
 		}
 	}
+#endif
 
 	return distance_;
 

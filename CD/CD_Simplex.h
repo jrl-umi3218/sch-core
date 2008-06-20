@@ -32,7 +32,7 @@ struct CD_SimplexKeptPoints
 		return ((i==0) ? b1: (i==1)? b2: (i==2) ? b3 : b4);
 	}
 
-	void Reset()
+	void reset()
 	{
 		b1=b2=b3=b4=-1;
 	}
@@ -104,12 +104,12 @@ public:
 	 * \param k is the filter used to know wich vertexes will be kept and in wich order
 	 * \updateVetors must be called after this function to keep the vectors up to date.
 	 */
-	void Filter(const CD_SimplexKeptPoints &k);
+	void filter(const CD_SimplexKeptPoints &k);
 
 	/*!
 	 *\brief Gives the distance squared at the origin for a simplex, and according the direction v.
 	 */
-	Scalar SquareDistanceAtOrigin(const Vector3 &v)const;
+	Scalar squareDistanceAtOrigin(const Vector3 &v)const;
 	
 
 
@@ -125,7 +125,7 @@ public:
 	 * \brief Tells if the simplex is affinely dependant or not according to the static variable zero 
 	 *		to make it work, updateVectors must be called before.
 	 */
-	bool IsAffinelyDependent() const;
+	bool isAffinelyDependent() const;
 	
 	/*!
 	 * \brief Updates AB,AC,AD vectors A is the last vertex inserted and B, C and D are previous vertex 

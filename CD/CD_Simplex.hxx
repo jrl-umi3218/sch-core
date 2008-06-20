@@ -19,7 +19,7 @@ inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3
 
 
 
-inline bool CD_Simplex::IsAffinelyDependent() const
+inline bool CD_Simplex::isAffinelyDependent() const
 {
 	switch (type)
 	{
@@ -204,7 +204,7 @@ inline CD_Simplex CD_Simplex::operator+(const Point3& p) const
 
 }
 
-inline void CD_Simplex::Filter(const CD_SimplexKeptPoints &f)
+inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 {
 	unsigned char i=0;
 	unsigned char a;
@@ -262,7 +262,7 @@ inline void CD_Simplex::Filter(const CD_SimplexKeptPoints &f)
 	}
 }
 
-inline Scalar CD_Simplex::SquareDistanceAtOrigin(const Vector3 &v)const
+inline Scalar CD_Simplex::squareDistanceAtOrigin(const Vector3 &v)const
 {
 	switch (type)
 	{

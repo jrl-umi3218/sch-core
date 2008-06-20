@@ -12,7 +12,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 	{
 		if (AC*AO>=0)
 		{
-			k.Reset();
+			k.reset();
 			k.b1=bC;
 			k.b2=bA;
 			return CD_SimplexEnhanced(C,A,normC,normA);
@@ -21,7 +21,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 		{
 			if (AB*AO>=0)
 			{
-				k.Reset();
+				k.reset();
 				k.b1=bA;
 				k.b2=bB;
 				return CD_SimplexEnhanced(A,B,normA,normB);
@@ -29,7 +29,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 			}
 			else
 			{
-				k.Reset();
+				k.reset();
 				k.b1=bA;			
 				return CD_SimplexEnhanced(A,normA);
 			}
@@ -41,7 +41,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 		{
 			if (AB*AO>=0)
 			{
-				k.Reset();
+				k.reset();
 				k.b1=bA;
 				k.b2=bB;
 				return CD_SimplexEnhanced(A,B,normA,normB);
@@ -49,14 +49,14 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 			}
 			else
 			{
-				k.Reset();
+				k.reset();
 				k.b1=bA;	
 				return CD_SimplexEnhanced(A,normA);
 			}
 		}
 		else
 		{
-			k.Reset();
+			k.reset();
 			k.b1=bB;
 			k.b2=bC;
 			k.b3=bA;
@@ -87,14 +87,14 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 			
 			if (ab_*AO>=0)
 			{
-				k.Reset();
+				k.reset();
 				k.b1=0;
 				k.b2=1;
 				return *this;
 			}
 			else
 			{
-				k.Reset();
+				k.reset();
 				k.b1=1;
 				return CD_SimplexEnhanced(S2,norm2_);
 			}
@@ -107,7 +107,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 			{
 				if (ac_*AO>=0)
 				{
-					k.Reset();
+					k.reset();
 					k.b1=1;
 					k.b2=2;
 					return CD_SimplexEnhanced(S2,S3,norm2_,norm3_);
@@ -116,7 +116,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				{
 					if (ab_*AO>=0)
 					{
-						k.Reset();
+						k.reset();
 						k.b1=2;
 						k.b2=0;
 						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
@@ -124,7 +124,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					}
 					else
 					{
-						k.Reset();
+						k.reset();
 						k.b1=2;
 						return CD_SimplexEnhanced(S3,norm3_);
 					}
@@ -136,7 +136,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				{
 					if (ab_*AO>=0)
 					{
-						k.Reset();
+						k.reset();
 						k.b1=2;
 						k.b2=0;
 						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
@@ -144,7 +144,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					}
 					else
 					{
-						k.Reset();
+						k.reset();
 						k.b1=2;
 						return CD_SimplexEnhanced(S3,norm3_);
 					}
@@ -153,7 +153,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				{
 					if (ABC*AO>=0)
 					{
-						k.Reset();
+						k.reset();
 						k.b1=0;
 						k.b2=1;
 						k.b3=2;
@@ -161,7 +161,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					}
 					else
 					{
-						k.Reset();
+						k.reset();
 						k.b1=1;
 						k.b2=0;
 						k.b3=2;
@@ -224,7 +224,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 	
 	default:
 		{
-			k.Reset();
+			k.reset();
 			k.b1=0;
 			return *this;
 		}
