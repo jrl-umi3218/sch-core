@@ -21,20 +21,22 @@
 
 
 #define DO_TEST
-#define OUTPUT_FILE
+//#define OUTPUT_FILE
+#define LINES_DISPLAY
 //#define DISPLAY_TEST
-//#define DISPLAY_DISTANCE
+#define DISPLAY_DISTANCE
 //#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
 //#define NON_STP_BV_OBJECTS
+//#define IRREGULARITIES_COUNTERS
 
 
 const double DispersionScale=0.01;
 const double AnimationSpeed=0.0003;
-const double AnimationScale=0.03;
-const long AnimationBegin=0;
+const double AnimationScale=0.06;
+const long AnimationBegin=61240;
 const long RandomTestEnd=4000;
-const long AnimationEnd=1000;
+const long AnimationEnd=1000000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -302,8 +304,12 @@ init (void)
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_DST_ALPHA);
 
- 
+#ifndef LINES_DISPLAY
  glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+#else
+  glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+  glEnable(GL_LINE_SMOOTH);
+#endif
 
   glEnable(GL_FOG);
   {
@@ -345,10 +351,10 @@ init (void)
 
 
   /*inialize objects*/
-/************************temporary*************************/
+
 #ifdef NON_STP_BV_OBJECTS
-  sObj.AddObject(new S_Box(0.2,0.29,0.17));
-  sObj.AddObject(new S_Box(0.17,0.21,0.25));
+  sObj.AddObject(new S_Box(2,2,2));
+  sObj.AddObject(new S_Box(2,2,2));
   sObj.AddObject(new S_Sphere(0.09));
 
   sObj.AddObject(new S_Superellipsoid(.2,.5,.4,0.4,0.8));
@@ -604,6 +610,7 @@ display (void)
 
 			d=sObj.GetWitnessPoints(i,j,p1,p2);
 
+	
 			
 			
 			glVertex3d(p1[0],p1[1],p1[2]);
@@ -619,7 +626,7 @@ display (void)
 #endif
 
 #ifdef DISPLAY_DISTANCE
-		std::cout<<d<<std::endl;
+		std::cout<<d<<' '<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
 		
 		
 #endif
@@ -711,6 +718,13 @@ void TestAnimation()
 #endif	
 
 
+#ifdef IRREGULARITIES_COUNTERS
+	Scalar previousDistance=2e90;
+	int irrCpt=0;
+
+#endif
+
+
 #ifdef COLLISION_COUNTERS
 int collCpt=0;
 int totalCpt=0;
@@ -773,7 +787,29 @@ int totalCpt=0;
 		
 #endif
 
-		
+#ifdef IRREGULARITIES_COUNTERS
+	Point3 p1,p2;
+	Scalar distance=sObj.GetWitnessPoints(0,1,p1,p2);
+	Scalar distance2=(p1-p2).normsquared();
+	if (previousDistance!=2e90)
+	{
+		if (fabs(fabs(distance)-distance2)>(0.001*(fabs(distance)+distance2)/2))
+		{
+			irrCpt++;
+			std::cout<<"Witness Points Irregularity : "<<i<<' '<<distance<<' '<<distance2<<std::endl;
+		}
+		if (fabs(distance-previousDistance)>0.1)
+		{
+			irrCpt++;
+			std::cout<<"Coherence Irregularity : "<<i;
+		}
+
+	}
+	previousDistance=distance;
+	
+
+
+#endif
 
 #ifdef COLLISION_COUNTERS
 		for (int k=0;k<sObj.Size();k++)
@@ -816,6 +852,10 @@ int totalCpt=0;
 	end=clock();
 
 	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) << " : " << ((double)(end - begin) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) << std::endl;
+
+#ifdef IRREGULARITIES_COUNTERS
+	std::cout<<"Irregularities : "<<irrCpt;
+#endif
 
 	
 #ifdef COLLISION_COUNTERS

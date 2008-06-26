@@ -73,7 +73,7 @@ namespace MAL_Default
 		/*! quatrenion*/
 		explicit Matrix3x3Mod<T> (const QuaternionM<T>& q)
 		{
-			T q0=q[0],q1=q[0],q2=q[0],q3=q[0];
+			T q0=q[0],q1=q[1],q2=q[2],q3=q[3];
 			T d = q0*q0+q1*q1+q2*q2+q3*q3;
 			assert (d != T(0.0));
 			T s = T(2.0) / d;

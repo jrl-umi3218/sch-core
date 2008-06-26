@@ -22,7 +22,7 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
 lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->CheckStamp()),stamp2_(sObj2_->CheckStamp()), 
-precision_(1e-6),epsilon_(1e-53),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false)
+precision_(1e-6),epsilon_(1e-24),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false)
 {	
 	--stamp1_;
 	--stamp2_;
@@ -259,7 +259,10 @@ Scalar CD_Pair::GJK()
 					if (sp.getType()==CD_Simplex::tetrahedron)
 					{
 						cont=false;
+						s1_+=sup1;
+						s2_+=sup2;
 						collision_=true;
+
 					}	
 					else
 					{
@@ -285,7 +288,7 @@ Scalar CD_Pair::GJK()
 #ifdef PENETRATION_DEPTH	
 	if (collision_)//Objects are in collision
 	{		
-		distance_=-CD_Depth::getPenetrationDepth(sObj1_,sObj2_,v,p1_,p2_,sp,s1_,s1_,precision_,epsilon_);
+		distance_=-CD_Depth::getPenetrationDepth(sObj1_,sObj2_,v,p1_,p2_,sp,s1_,s2_,precision_,epsilon_);
 		if (distance_>=0)
 		{
 			collision_=false;
@@ -348,8 +351,16 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 
 				}
 
+				Vector3 test1,test2, test3;
+				test1=s1_[0]-s2_[0];
+				test2=s1_[1]-s2_[1];
+				test3=s1_[2]-s2_[2];
+
 				p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_+s1_[2]*lambda2_;
-				p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_+s2_[2]*lambda2_;			
+				p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_+s2_[2]*lambda2_;
+
+				Scalar test4=(p1_-p2_).normsquared();
+
 
 			}
 		

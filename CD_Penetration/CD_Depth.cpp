@@ -25,25 +25,25 @@ inline int originInTetrahedron(const Vector3& p1, const Vector3& p2,
                                const Vector3& p3, const Vector3& p4)
 {
     Vector3 normal1 = (p2 - p1)^( p3 - p1);
-	if ((normal1* p1) > Scalar(0.0) == (normal1* p4) > Scalar(0.0))
+	if ((normal1* p1) >= Scalar(0.0) == (normal1* p4) > Scalar(0.0))
     {
         return 4;
     }
     
     Vector3 normal2 = (p4 - p2)^( p3 - p2);
-    if ((normal2* p2) > Scalar(0.0) == (normal2* p1) > Scalar(0.0))
+    if ((normal2* p2) >= Scalar(0.0) == (normal2* p1) > Scalar(0.0))
     {
         return 1;
     }
     
     Vector3 normal3 = (p4 - p3)^( p1 - p3);
-    if ((normal3* p3) > Scalar(0.0) == (normal3* p2) > Scalar(0.0))
+    if ((normal3* p3) >= Scalar(0.0) == (normal3* p2) > Scalar(0.0))
     {
         return 2;
     }
     
     Vector3 normal4 = (p2 - p4)^( p1 - p4);
-    if ((normal4* p4) > Scalar(0.0) == (normal4* p3) > Scalar(0.0))
+    if ((normal4* p4) >= Scalar(0.0) == (normal4* p3) > Scalar(0.0))
     {
         return 3; 
     }
@@ -226,6 +226,7 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         }
 	    
         num_verts = 4;
+		
     }
     // Fall through allowed!!
     case 4: 
@@ -270,7 +271,7 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         }
         
         num_verts = 3;
-        
+
     }
     // Fall through allowed!! 
     case 3: 
@@ -421,7 +422,19 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
     
     v = triangle->getClosest();
     p1 = triangle->getClosestPoint(pBuf);    
-    p2 = triangle->getClosestPoint(qBuf);    
-	return (p1-p2).normsquared();
+    p2 = triangle->getClosestPoint(qBuf); 
+
+	Vector3 test3=p1-p2,test4=triangle->getClosestPoint(yBuf);
+
+	Vector3 test6=pBuf[(*triangle)[0]]-qBuf[(*triangle)[0]],
+			test7=pBuf[(*triangle)[1]]-qBuf[(*triangle)[1]],
+			test8=pBuf[(*triangle)[2]]-qBuf[(*triangle)[2]],
+			
+			test9=yBuf[(*triangle)[0]],
+			test10=yBuf[(*triangle)[1]],
+			test11=yBuf[(*triangle)[2]];
+	
+	Scalar test =(p1-p2).normsquared(),test2=v.normsquared(),test5=test4.normsquared();
+	return v.normsquared();
 	
 }

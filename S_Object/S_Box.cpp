@@ -3,7 +3,7 @@
 
 inline short sign(Scalar i)
 {
-	return (i>0)? 1:-1;
+	return (i>0)? 1:(i<0)?-1:0;
 }
 
 S_Box::S_Box(Scalar _a,Scalar _b,Scalar _c):a(fabs(_a/2)),b(fabs(_b/2)),c(fabs(_c/2))
