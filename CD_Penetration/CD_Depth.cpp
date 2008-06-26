@@ -423,18 +423,6 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
     v = triangle->getClosest();
     p1 = triangle->getClosestPoint(pBuf);    
     p2 = triangle->getClosestPoint(qBuf); 
-
-	Vector3 test3=p1-p2,test4=triangle->getClosestPoint(yBuf);
-
-	Vector3 test6=pBuf[(*triangle)[0]]-qBuf[(*triangle)[0]],
-			test7=pBuf[(*triangle)[1]]-qBuf[(*triangle)[1]],
-			test8=pBuf[(*triangle)[2]]-qBuf[(*triangle)[2]],
-			
-			test9=yBuf[(*triangle)[0]],
-			test10=yBuf[(*triangle)[1]],
-			test11=yBuf[(*triangle)[2]];
-	
-	Scalar test =(p1-p2).normsquared(),test2=v.normsquared(),test5=test4.normsquared();
 	return v.normsquared();
 	
 }

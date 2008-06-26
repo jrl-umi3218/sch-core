@@ -32,7 +32,7 @@ int CD_Scene::AddObject(S_Object *O)
 		_pairs.push_back (v);
 		_distances.push_back(vp);
 		
-		for (int j=0;j<i;++j)
+		for (unsigned int j=0;j<i;++j)
 		{
 			_pairs[i].push_back(NULL);
 			_distances[i].push_back(0);
@@ -40,10 +40,10 @@ int CD_Scene::AddObject(S_Object *O)
 		
 		_witness.push_back(vect);
 		
-		for (int k=0;k<=i;++k)
+		for (unsigned int k=0;k<=i;++k)
 		{
 			_witness[i].push_back(point);
-			for (int j=_witness[k].size();j<=i;++j)
+			for (size_t j=_witness[k].size();j<=i;++j)
 				_witness[k].push_back(point);
 		}
 
@@ -57,12 +57,12 @@ int CD_Scene::AddObject(S_Object *O)
 	}
 
 
-	for (int j=0;j<i;j++)
+	for (unsigned int j=0;j<i;j++)
 	{
 		_pairs[i][j]=new CD_Pair(_objects[j],O);
 	}
 
-	for (int j=i+1;j<_objects.size();++j)
+	for (unsigned int j=i+1;j<_objects.size();++j)
 	{
 		_pairs[j][i]=new CD_Pair(O,_objects[j]);
 	}
@@ -74,9 +74,9 @@ int CD_Scene::SceneProximityQuery()
 {
 	int collisions=0;
 	
-	for (int i=0;i<_pairs.size();++i)
+	for (unsigned int i=0;i<_pairs.size();++i)
 	{
-		for (int j=0;j<_pairs[i].size();++j)
+		for (unsigned int j=0;j<_pairs[i].size();++j)
 		{
 			if ((_pairs[i][j]!=NULL)&&((_distances[i][j]=_pairs[i][j]->GetClosestPoints(_witness[i][j],_witness[j][i]))<=0))
 			{

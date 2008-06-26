@@ -22,21 +22,21 @@
 
 #define DO_TEST
 //#define OUTPUT_FILE
-#define LINES_DISPLAY
+//#define LINES_DISPLAY
 //#define DISPLAY_TEST
-#define DISPLAY_DISTANCE
+//#define DISPLAY_DISTANCE
 //#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
 //#define NON_STP_BV_OBJECTS
 //#define IRREGULARITIES_COUNTERS
 
 
-const double DispersionScale=0.01;
+const double DispersionScale=1;
 const double AnimationSpeed=0.0003;
-const double AnimationScale=0.06;
-const long AnimationBegin=61240;
+const double AnimationScale=0.18;
+const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=1000000;
+const long AnimationEnd=10000000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 

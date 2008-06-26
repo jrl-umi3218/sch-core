@@ -255,7 +255,9 @@ Scalar CD_Pair::GJK()
 				{
 
 					sp=sp.GetClosestSubSimplexGJK(k);
-
+					s1_+=sup1;
+					s2_+=sup2;
+					
 					if (sp.getType()==CD_Simplex::tetrahedron)
 					{
 						cont=false;
@@ -266,11 +268,8 @@ Scalar CD_Pair::GJK()
 					}	
 					else
 					{
-
-						s1_+=sup1;
-						s2_+=sup2;
+						
 						s_=sp;
-
 						s1_.filter(k);
 						s2_.filter(k);
 
@@ -351,16 +350,12 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 
 				}
 
-				Vector3 test1,test2, test3;
-				test1=s1_[0]-s2_[0];
-				test2=s1_[1]-s2_[1];
-				test3=s1_[2]-s2_[2];
+				
 
 				p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_+s1_[2]*lambda2_;
 				p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_+s2_[2]*lambda2_;
 
-				Scalar test4=(p1_-p2_).normsquared();
-
+			
 
 			}
 		

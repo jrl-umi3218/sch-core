@@ -53,7 +53,7 @@ public:
 		return _objects[i];
 	}	
 
-	unsigned long Size()
+	size_t Size()
 	{
 		return _objects.size();
 	}
