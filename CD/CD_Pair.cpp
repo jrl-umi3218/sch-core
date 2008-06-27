@@ -5,7 +5,7 @@
 #include <gl\glut.h>
 #include <iostream>
 
-//#define SHOW_LAST_SIMLPEX
+#define SHOW_LAST_SIMLPEX
 //#define COUNTER
 //#define SAFE_VERSION
 #define PENETRATION_DEPTH
@@ -117,7 +117,8 @@ Scalar CD_Pair::GJK()
 	Point3 sup1=sObj1_->Support(v,lf1);
 	Point3 sup2=sObj2_->Support(-v,lf2);
 
-	Point3 sup(sup1-sup2);
+	Point3 sup(sup1);
+	sup-=sup2;
 
 	s1_=sup1;
 	s2_=sup2;
@@ -161,10 +162,17 @@ Scalar CD_Pair::GJK()
 
 		case CD_Simplex::triangle:
 			{
-				S01=s_[1]-s_[2];
-				S02=s_[0]-s_[2];
+				S01=s_[1];
+				S01-=s_[2];
+				S02=s_[0];
+				S02-=s_[2];
 
-				a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
+				a1=S01*s_[0];
+				a2=S01*s_[1];
+				a3=S01*s_[2];
+				a4=S02*s_[0];
+				a5=S02*s_[1];
+				a6=S02*s_[2];
 				
 				
 				lambda0_=a2*a6-a3*a5;
@@ -176,7 +184,9 @@ Scalar CD_Pair::GJK()
 				lambda1_*=det_;
 				lambda2_*=det_;
 
-				proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
+				proj=s_[0]*lambda0_;
+				proj+=s_[1]*lambda1_;
+				proj+=s_[2]*lambda2_;
 				
 				v=-proj;
 
@@ -199,7 +209,8 @@ Scalar CD_Pair::GJK()
 				lambda0_*=det_;
 				lambda1_*=det_;
 
-				proj=s_[0]*lambda0_+s_[1]*lambda1_;
+				proj=s_[0]*lambda0_;
+				proj+=s_[1]*lambda1_;
 				
 				
 				v=-proj;
@@ -225,7 +236,8 @@ Scalar CD_Pair::GJK()
 			sup1=sObj1_->Support(v,lf1);
 			sup2=sObj2_->Support(-v,lf2);
 
-			sup=sup1-sup2;
+			sup=sup1;
+			sup-=sup2;
 
 
 
@@ -299,14 +311,9 @@ Scalar CD_Pair::GJK()
 	return distance_;
 
 	
-
-
-	
-
-
-
 	
 }
+
 
 void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 {
@@ -370,13 +377,15 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
 			glBegin(GL_TRIANGLES);
-			glVertex3d(s1[0][0],s1[0][1],s1[0][2]);
-			glVertex3d(s1[1][0],s1[1][1],s1[1][2]);
-			glVertex3d(s1[2][0],s1[2][1],s1[2][2]);
+			glVertex3d(s1_[0][0],s1_[0][1],s1_[0][2]);
+			glVertex3d(s1_[1][0],s1_[1][1],s1_[1][2]);
+			glVertex3d(s1_[2][0],s1_[2][1],s1_[2][2]);
 
-			glVertex3d(s2[0][0],s2[0][1],s2[0][2]);
-			glVertex3d(s2[1][0],s2[1][1],s2[1][2]);
-			glVertex3d(s2[2][0],s2[2][1],s2[2][2]);
+			glVertex3d(s2_[0][0],s2_[0][1],s2_[0][2]);
+			glVertex3d(s2_[1][0],s2_[1][1],s2_[1][2]);
+			glVertex3d(s2_[2][0],s2_[2][1],s2_[2][2]);
+
+			
 
 		
 			glEnd();
@@ -422,12 +431,12 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
 			glBegin(GL_LINES);
-			glVertex3d(s1[0][0],s1[0][1],s1[0][2]);
-			glVertex3d(s1[1][0],s1[1][1],s1[1][2]);
+			glVertex3d(s1_[0][0],s1_[0][1],s1_[0][2]);
+			glVertex3d(s1_[1][0],s1_[1][1],s1_[1][2]);
 		
 
-			glVertex3d(s2[0][0],s2[0][1],s2[0][2]);
-			glVertex3d(s2[1][0],s2[1][1],s2[1][2]);
+			glVertex3d(s2_[0][0],s2_[0][1],s2_[0][2]);
+			glVertex3d(s2_[1][0],s2_[1][1],s2_[1][2]);
 			
 			glEnd();
 
