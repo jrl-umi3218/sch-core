@@ -160,7 +160,7 @@ Scalar CD_Pair::GJK()
 		switch (s_.getType())
 		{
 
-		case CD_Simplex::triangle:
+		case CD_Triangle:
 			{
 				S01=s_[1];
 				S01-=s_[2];
@@ -194,7 +194,7 @@ Scalar CD_Pair::GJK()
 			
 			}
 
-		case CD_Simplex::segment:
+		case CD_Segment:
 			{
 
 			
@@ -270,7 +270,7 @@ Scalar CD_Pair::GJK()
 					s1_+=sup1;
 					s2_+=sup2;
 					
-					if (sp.getType()==CD_Simplex::tetrahedron)
+					if (sp.getType()==CD_Tetrahedron)
 					{
 						cont=false;
 						s1_+=sup1;
@@ -331,7 +331,7 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 	switch (s_.getType())
 	{
 	
-	case CD_Simplex::triangle:
+	case CD_Triangle:
 		{
 
 			{
@@ -397,7 +397,7 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 			
 		}
 		
-	case CD_Simplex::segment:
+	case CD_Segment:
 		{
 			if (!projectionComputed_)
 			{
