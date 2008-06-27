@@ -121,13 +121,13 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
 
 	switch (s.getType())
 	{
-	case CD_Simplex::point:
+	case CD_Point:
 		pBuf[0]=s1[0];
 		qBuf[0]=s2[0];
 		yBuf[0]=s[0];
 		num_verts=1;
 		break;
-	case CD_Simplex::segment:
+	case CD_Segment:
 		pBuf[0]=s1[0];
 		qBuf[0]=s2[0];
 		yBuf[0]=s[0];
@@ -136,7 +136,7 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
 		yBuf[1]=s[1];
 		num_verts=2;
 		break;
-	case CD_Simplex::triangle:
+	case CD_Triangle:
 		pBuf[0]=s1[0];
 		qBuf[0]=s2[0];
 		yBuf[0]=s[0];

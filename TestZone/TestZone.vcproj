@@ -113,6 +113,7 @@
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
 				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
@@ -133,6 +134,7 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
+				FixedBaseAddress="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -197,6 +199,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\VTune\TestZone.vpj"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

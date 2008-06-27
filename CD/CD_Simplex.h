@@ -10,12 +10,25 @@
 #include "../matrix/SCD_Types.h"
 
 
+
+enum CD_SimplexType 
+	{
+		CD_Point,
+		CD_Segment,
+		CD_Triangle,
+		CD_Tetrahedron,
+		CD_None
+	};
+
+
 /*!
- * tells which points ware kept from the previous smplex
+ * tells which points ware kept from the previous simplex
  */
 struct CD_SimplexKeptPoints
 {
 	char b1,b2,b3,b4;
+
+	CD_SimplexType type;
 
 	inline CD_SimplexKeptPoints()
 	{
@@ -54,15 +67,9 @@ public:
 
 	
 	
-	enum Type 
-	{
-		point,
-		segment,
-		triangle,
-		tetrahedron
-	};
+	
 
-	Type getType()const;
+	CD_SimplexType getType()const;
 	
 
 	
@@ -141,7 +148,7 @@ public:
 protected :
 	
 
-	Type type;
+	CD_SimplexType type;
 
 	Point3 S1,S2,S3,S4;
 	Vector3 ab_,ac_,ad_;

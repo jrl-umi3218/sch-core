@@ -20,7 +20,8 @@ inline Point3 S_Object::Support(const Vector3& v) const
 inline Point3 S_Object::Support(const Vector3& v,int &LastFeature) const
 {
 	Vector3 vp(v);
-	vp= v * mRot; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
+	vp= v; 
+	vp*=mRot; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
 	Scalar norm=v.norm();
 	if (norm>0)
 	{
@@ -33,7 +34,8 @@ inline Point3 S_Object::Support(const Vector3& v,int &LastFeature) const
 	}
 	
 	Point3 p(mRot * N_Support(vp,LastFeature));
-	return p+trans;
+	p+=trans;
+	return p;
 }
 
 inline const S_Object::TimeStamp & S_Object::CheckStamp()const
