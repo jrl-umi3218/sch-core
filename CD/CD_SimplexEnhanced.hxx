@@ -53,7 +53,7 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator=(const CD_SimplexEnhance
 	switch (type)
 	{
 	
-	case triangle:
+	case CD_Triangle:
 		S1=s.S1;
 		S2=s.S2;
 		S3=s.S3;
@@ -62,14 +62,14 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator=(const CD_SimplexEnhance
 		norm3_=s.norm3_;
 
 		return *this;
-	case segment:
+	case CD_Segment:
 		S1=s.S1;
 		S2=s.S2;
 		norm1_=s.norm1_;
 		norm2_=s.norm2_;
 		
 		return *this;
-	case point:
+	case CD_Point:
 		S1=s.S1;
 		norm1_=s.norm1_;
 		
@@ -93,19 +93,19 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
 
 	switch (type)
 	{
-	case point:
+	case CD_Point:
 		S2=p;
 		norm2_=S2.normsquared();
-		type=segment;
+		type=CD_Segment;
 		return *this;	
-	case segment:
+	case CD_Segment:
 		S3=p;
-		type=triangle;
+		type=CD_Triangle;
 		norm2_=S3.normsquared();
 		return *this;
 	default:
 		S4=p;
-		type=tetrahedron;
+		type=CD_Tetrahedron;
 		norm4_=S4.normsquared();
 		return *this;
 	}
@@ -118,15 +118,15 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
 inline CD_SimplexEnhanced CD_SimplexEnhanced::operator+(const Point3& p) const
 {
 
-	if (type==point)
+	if (type==CD_Point)
 	{
 		return CD_SimplexEnhanced(S1,p);
 	}
-	else if (type==segment)
+	else if (type==CD_Segment)
 	{
 		return CD_SimplexEnhanced(S1,S2,p);
 	}
-	else if (type==triangle)
+	else if (type==CD_Triangle)
 	{
 		return CD_SimplexEnhanced(S1,S2,S3,p);
 	}
@@ -141,7 +141,7 @@ inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
 	switch (type)
 	{
 
-	case triangle:
+	case CD_Triangle:
 		if (norm1_>norm2_)
 		{
 			if (norm1_>norm3_)
@@ -165,7 +165,7 @@ inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
 			}
 		}
 
-	case segment:
+	case CD_Segment:
 
 		if (norm1_>norm2_)
 		{
@@ -177,7 +177,7 @@ inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
 		}
 
 		
-	case point:
+	case CD_Point:
 		return norm1_;
 
 	default:
