@@ -20,7 +20,7 @@
 #include "includes.h"
 
 
-//#define DO_TEST
+#define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
 //#define DISPLAY_TEST

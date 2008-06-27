@@ -12,25 +12,25 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 	{
 		if (AC*AO>=0)
 		{
+			k.reset();
 			k.b1=bC;
 			k.b2=bA;
-			k.type=CD_Segment;
 			return CD_SimplexEnhanced(C,A,normC,normA);
 		}
 		else
 		{
 			if (AB*AO>=0)
 			{
+				k.reset();
 				k.b1=bA;
 				k.b2=bB;
-				k.type=CD_Segment;
 				return CD_SimplexEnhanced(A,B,normA,normB);
 
 			}
 			else
 			{
-				k.b1=bA;
-				k.type=CD_Point;
+				k.reset();
+				k.b1=bA;			
 				return CD_SimplexEnhanced(A,normA);
 			}
 		}
@@ -41,25 +41,25 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 		{
 			if (AB*AO>=0)
 			{
+				k.reset();
 				k.b1=bA;
 				k.b2=bB;
-				k.type=CD_Segment;
 				return CD_SimplexEnhanced(A,B,normA,normB);
 
 			}
 			else
 			{
+				k.reset();
 				k.b1=bA;	
-				k.type=CD_Point;
 				return CD_SimplexEnhanced(A,normA);
 			}
 		}
 		else
 		{
+			k.reset();
 			k.b1=bB;
 			k.b2=bC;
 			k.b3=bA;
-			k.type=CD_Triangle;
 			return CD_SimplexEnhanced(B,C,A,normB,normC,normA);
 		}
 	}
@@ -81,23 +81,25 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 	switch (type)
 	{
 	
-	case (CD_Segment):
+	case (segment):
 		{
 			Vector3 AO(-S2);
 			
 			if (ab_*AO>=0)
 			{
-				k.type=CD_None;
+				k.reset();
+				k.b1=0;
+				k.b2=1;
 				return *this;
 			}
 			else
 			{
+				k.reset();
 				k.b1=1;
-				k.type=CD_Point;
 				return CD_SimplexEnhanced(S2,norm2_);
 			}
 		}
-	case (CD_Triangle):
+	case (triangle):
 		{
 			Vector3 AO(-S3);
 			Vector3 ABC(ab_^ac_);
@@ -105,25 +107,25 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 			{
 				if (ac_*AO>=0)
 				{
+					k.reset();
 					k.b1=1;
 					k.b2=2;
-					k.type=CD_Segment;
 					return CD_SimplexEnhanced(S2,S3,norm2_,norm3_);
 				}
 				else
 				{
 					if (ab_*AO>=0)
 					{
+						k.reset();
 						k.b1=2;
 						k.b2=0;
-						k.type=CD_Segment;
 						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
 
 					}
 					else
 					{
+						k.reset();
 						k.b1=2;
-						k.type=CD_Point;
 						return CD_SimplexEnhanced(S3,norm3_);
 					}
 				}
@@ -134,16 +136,16 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				{
 					if (ab_*AO>=0)
 					{
+						k.reset();
 						k.b1=2;
 						k.b2=0;
-						k.type=CD_Segment;
 						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
 
 					}
 					else
 					{
+						k.reset();
 						k.b1=2;
-						k.type=CD_Point;
 						return CD_SimplexEnhanced(S3,norm3_);
 					}
 				}
@@ -151,15 +153,18 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				{
 					if (ABC*AO>=0)
 					{
-						k.type=CD_None;
+						k.reset();
+						k.b1=0;
+						k.b2=1;
+						k.b3=2;
 						return CD_SimplexEnhanced(S1,S2,S3,norm1_,norm2_,norm3_);
 					}
 					else
 					{
+						k.reset();
 						k.b1=1;
 						k.b2=0;
 						k.b3=2;
-						k.type=CD_Triangle;
 						return CD_SimplexEnhanced(S2,S1,S3,norm2_,norm1_,norm3_);
 					}
 				}
@@ -168,7 +173,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 			}
 
 		}	
-	case (CD_Tetrahedron):
+	case (tetrahedron):
 		{
 
 			Vector3 AO(-S4);
@@ -193,10 +198,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					if (d_adb>=0)
 						return GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,S4,S3,S1,norm4_,norm3_,norm1_,k,3,2,0);
 					else
-					{
-						k.type=CD_None;
 						return *this;
-					}
 				}
 			}
 			else
@@ -206,10 +208,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					if (d_acd>=0)
 						return GetClosestSubSimplexCCKWTriangle(ac_,ad_,ACD,AO,S4,S2,S3,norm4_,norm2_,norm3_,k,3,1,2);
 					else
-					{
-						k.type=CD_None;
 						return *this;
-					}
 
 				}
 				else
@@ -217,17 +216,16 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					if (d_adb>=0)
 						return GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,S4,S3,S1,norm4_,norm3_,norm1_,k,3,2,0);
 					else
-					{
-						k.type=CD_None;
 						return *this;
-					}
+
 				}
 			}
 		}
 	
 	default:
 		{
-			k.type=CD_None;
+			k.reset();
+			k.b1=0;
 			return *this;
 		}
 	}

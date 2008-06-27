@@ -264,10 +264,7 @@ Scalar STP_SmallSphere::supportH(const Vector3& v) const
 
 Point3 STP_SmallSphere::support(const Vector3& v) const 
 {
-	Point3 p(v);
-	p*=m_radius;
-	p+=m_center;
-	return p;
+	return m_center + v * m_radius;
 	
 }
 
