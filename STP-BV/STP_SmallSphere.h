@@ -1,5 +1,5 @@
-#ifndef STP_SMALLSPHERE
-#define STP_SMALLSPHERE
+#ifndef _STP_SMALLSPHERE
+#define _STP_SMALLSPHERE
 
 #pragma once
 #include "stp_feature.h"

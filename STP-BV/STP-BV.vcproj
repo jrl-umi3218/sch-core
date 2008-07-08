@@ -146,6 +146,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\STP_BV.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\STP_Feature.cpp"
 				>
 			</File>
@@ -155,10 +159,6 @@
 			</File>
 			<File
 				RelativePath=".\STP_Torus.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\STPBV.cpp"
 				>
 			</File>
 		</Filter>
@@ -172,7 +172,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\STP_BV.h"
+				>
+			</File>
+			<File
 				RelativePath=".\STP_Feature.h"
+				>
+			</File>
+			<File
+				RelativePath=".\STP_Feature.hxx"
 				>
 			</File>
 			<File
@@ -183,10 +191,6 @@
 				RelativePath=".\STP_Torus.h"
 				>
 			</File>
-			<File
-				RelativePath=".\STPBV.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -194,6 +198,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\VTune\STP-BV.vpj"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

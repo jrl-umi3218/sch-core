@@ -1,6 +1,6 @@
 
-#ifndef S_BOX_H
-#define S_BOX_H 
+#ifndef _S_BOX_H
+#define _S_BOX_H 
 
 #pragma once
 

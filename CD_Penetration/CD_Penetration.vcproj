@@ -38,6 +38,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/RTCsu /GS"
 				Optimization="0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

@@ -23,6 +23,7 @@ typedef struct s_STP_VVR
 
 	double isInsidePlane(const Vector3& v) const;
 
+
 	float getDistance(const Vector3& v) const;
 
 	bool isSameLimit(const s_STP_VVR& vvr) const;
@@ -124,5 +125,6 @@ protected:
 
 };
 
+#include "STP_Feature.hxx"
 
 #endif

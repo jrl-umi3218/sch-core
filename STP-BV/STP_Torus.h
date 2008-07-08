@@ -1,5 +1,5 @@
-#ifndef STP_TORUS
-#define STP_TORUS
+#ifndef _STP_TORUS
+#define _STP_TORUS
 
 #pragma once
 #include "stp_feature.h"

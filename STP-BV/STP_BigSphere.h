@@ -1,5 +1,5 @@
-#ifndef STP_BIGSPHERE
-#define STP_BIGSPHERE
+#ifndef _STP_BIGSPHERE
+#define _STP_BIGSPHERE
 
 #pragma once
 #include "stp_feature.h"

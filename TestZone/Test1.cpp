@@ -31,12 +31,12 @@
 //#define IRREGULARITIES_COUNTERS
 
 
-const double DispersionScale=0.3;
+const double DispersionScale=0.162;
 const double AnimationSpeed=0.0003;
 const double AnimationScale=0.18;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=40000;
+const long AnimationEnd=400000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -62,7 +62,8 @@ GLfloat light1_position[] = {-1.0f, 0.0f, 0.2f, 0.0f},  background[]= {0.2,0.2,0
 
 unsigned int CurrentObj;
 
-std::vector<STPBV> stpObjects;
+std::vector<STP_BV> stpObjects;
+std::vector<S_Polyhedron> polyObjects;
 
 void DoTest()
 {
@@ -391,8 +392,8 @@ init (void)
 			  b=true;
 			  testfile.close();
 
-			  STPBV stp;
-			  stp.constructFromFile(s.c_str(), "C:/Mehdi/Projects/solid-3.5.6/VisualC6/STPBVtest/rleg4_32TreeBin", type);
+			  STP_BV stp;
+			  stp.constructFromFile(s.c_str());
 
 			  stpObjects.push_back(stp);
 			  stpObjects.push_back(stp);
@@ -426,18 +427,35 @@ init (void)
   }
 #else
   {
-	  STPBV s;
-	  s.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt", "C:/Mehdi/Projects/solid-3.5.6/VisualC6/STPBVtest/rleg4_32TreeBin", type);
+	  STP_BV s;
+	  s.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
-	  STPBV s2;
-	  s2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt", "C:/Mehdi/Projects/solid-3.5.6/VisualC6/STPBVtest/rleg4_32TreeBin", type);
+	  //STP_BV s2;
+	  //s2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
  
 	  stpObjects.push_back(s);
-	  stpObjects.push_back(s2);
+	  //stpObjects.push_back(s2);
 
  	  sObj.AddObject(&(stpObjects[0]));
     
-	  sObj.AddObject(&(stpObjects[1]));
+	  //sObj.AddObject(&(stpObjects[1]));
+
+
+	  S_Polyhedron P,P2;
+	
+	  P.loadFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
+
+	  P2.loadFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg5_195.ptc");
+	  
+	  //polyObjects.push_back(P);
+	  polyObjects.push_back(P2);
+
+
+	  sObj.AddObject(&(polyObjects[0]));
+	  //sObj.AddObject(&(polyObjects[1]));
+
+
+
   }
 #endif
   for (int i=0;i<sObj.Size();i++)

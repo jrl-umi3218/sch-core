@@ -99,7 +99,7 @@ bool STP_Torus::isHere(const Vector3& v) const
 bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
-	float tmp1, tmp2, tmp3, tmp4;
+	Scalar tmp1, tmp2, tmp3, tmp4;
 
 	//std::cout << "test is here torus" << std::endl;
 
@@ -631,7 +631,7 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 bool STP_Torus::isHereFarthestNeighbourPrime(const Vector3& v)
 {
 	bool res = true;
-	float tmp1, tmp2, tmp3, tmp4;
+	Scalar tmp1, tmp2, tmp3, tmp4;
 	
 
 	//std::cout << "test is here torus" << std::endl;

@@ -220,8 +220,6 @@ bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 	
 	STP_VVR * currentVVR = m_neighbors;
 
-	
-
 	while((currentVVR->isInsidePrime(v)>=0))
 	{
 
@@ -233,10 +231,7 @@ bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 
 	}
 
-
 	m_nextBVPrime = currentVVR->m_outerSTP ;
-	
-	
 
 	return false;
 }
@@ -264,7 +259,8 @@ Scalar STP_SmallSphere::supportH(const Vector3& v) const
 
 Point3 STP_SmallSphere::support(const Vector3& v) const 
 {
-	return m_center + v * m_radius;
+	return m_center+v*m_radius;
+
 	
 }
 

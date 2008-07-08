@@ -36,18 +36,6 @@ bool s_STP_VVR::isInside(const Vector3& v) const
 	return (res >= m_cosangle);
 }
 
-double s_STP_VVR::isInsidePrime(const Vector3& v) const
-{
-	//std::cout << "is inside ?" << std::endl;
-
-
-	return (m_axis*v - m_cosangle);
-}
-
-double s_STP_VVR::isInsidePlane(const Vector3& v)const
-{
-	return m_axis*v;
-}
 
 
 

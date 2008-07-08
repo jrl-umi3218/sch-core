@@ -225,7 +225,6 @@ inline CD_Simplex CD_Simplex::operator+(const Point3& p) const
 inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 {
 
-	//CD_Simplex test=*this;
 	switch (f.type)
 	{
 	case CD_None:
@@ -286,94 +285,6 @@ inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 
 		}
 	}
-	
-	/*switch (f.type)
-	{
-	
-	case CD_Segment:
-		if (*this!=CD_Simplex(test[f.b1],test[f.b2]))
-		{
-			int i=0;
-			i++;
-		}
-		break;
-	case CD_Triangle:
-		if (*this!=CD_Simplex(test[f.b1],test[f.b2],test[f.b3]))
-		{
-			int i=0;
-			i++;
-		}
-		break;
-	case CD_Point:
-		if (*this!=CD_Simplex(test[f.b1]))
-		{
-			int i=0;
-			i++;
-		}
-		break;
-	default:
-		if (*this!=CD_Simplex(test[f.b1],test[f.b2],test[f.b3],test[f.b4]))
-		{
-			int i=0;
-			i++;
-		}
-
-
-	}*/
-	/*unsigned char i=0;
-	unsigned char a;
-	Vector3 s[4];
-
-	switch (type)
-	{
-	
-	case tetrahedron:
-		a=4;
-		break;
-	case triangle:
-		a=3;
-		break;
-	case segment:
-		a=2;
-		break;
-	default :
-		return;
-	}
-
-	
-	for (unsigned char j=0;j<a;++j)
-	{
-		if (f[j]>=0)
-		{		
-			s[i]=(*this)[f[j]];
-			++i;
-		}
-		else
-			break;
-
-	}
-
-	for (unsigned char k=0;k<i;++k)
-	{
-		(*this)[k]=s[k];
-	}
-
-	switch (i)
-	{
-	case 3:
-		type=triangle;
-		return;
-	case 2:
-		type=segment;
-		return;
-	case 1:
-		type=point;
-		return;
-	default:
-		type= tetrahedron;
-		return;
-
-	}*/
 }
 
 inline Scalar CD_Simplex::squareDistanceAtOrigin(const Vector3 &v)const

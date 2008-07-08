@@ -1,6 +1,6 @@
 #pragma once
-#ifndef S_SPHERE_H
-#define S_SPHERE_H
+#ifndef _S_SPHERE_H
+#define _S_SPHERE_H
 
 #include "s_object.h"
 

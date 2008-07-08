@@ -1,5 +1,5 @@
-#ifndef S_SUPERELLIPSOID
-#define S_SUPERELLIPSOID
+#ifndef _S_SUPERELLIPSOID
+#define _S_SUPERELLIPSOID
 
 #pragma once
 

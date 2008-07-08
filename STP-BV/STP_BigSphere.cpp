@@ -77,7 +77,7 @@ bool STP_BigSphere::isHere(const Vector3& v) const
 bool STP_BigSphere::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
-	float tmp1, tmp2, tmp3;
+	Scalar tmp1, tmp2, tmp3;
 
 //	std::cout << "test is here big sphere" << std::endl;
 
@@ -210,7 +210,7 @@ bool STP_BigSphere::isHereFarthestNeighbour(const Vector3& v)
 bool STP_BigSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 {
 	
-	float tmp1, tmp2, tmp3;
+	Scalar tmp1, tmp2, tmp3;
 
 
 //	std::cout << "test is here big sphere" << std::endl;

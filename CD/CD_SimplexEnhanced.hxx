@@ -13,6 +13,8 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 {	
 	norm1_=p1.normsquared();
 	norm2_=p2.normsquared();
+	norm3_=p3.normsquared();
+
 }
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4):CD_Simplex(p1,p2,p3,p4)
@@ -20,7 +22,7 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 	norm1_=p1.normsquared();
 	norm2_=p2.normsquared();
 	norm3_=p3.normsquared();
-
+	norm4_=p3.normsquared();
 }
 
 
@@ -101,7 +103,7 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
 	case CD_Segment:
 		S3=p;
 		type=CD_Triangle;
-		norm2_=S3.normsquared();
+		norm3_=S3.normsquared();
 		return *this;
 	default:
 		S4=p;

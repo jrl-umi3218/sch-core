@@ -117,7 +117,9 @@ Scalar CD_Pair::GJK()
 	Point3 sup1=sObj1_->Support(v,lf1);
 	Point3 sup2=sObj2_->Support(-v,lf2);
 
-	Point3 sup(sup1-sup2);
+	Point3 sup(sup1);
+	
+	sup-=sup2;
 
 	s1_=sup1;
 	s2_=sup2;
@@ -161,8 +163,10 @@ Scalar CD_Pair::GJK()
 
 		case CD_Triangle:
 			{
-				S01=s_[1]-s_[2];
-				S02=s_[0]-s_[2];
+				S01=s_[1];
+				S01-=s_[2];
+				S02=s_[0];
+				S02-=s_[2];
 
 				a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
 				
@@ -188,7 +192,8 @@ Scalar CD_Pair::GJK()
 			{
 
 			
-				S01=s_[1]-s_[0];
+				S01=s_[1];
+				S01-=s_[0];
 	
 				lambda0_=S01*s_[1];
 				lambda1_=-(S01*s_[0]);
@@ -225,7 +230,8 @@ Scalar CD_Pair::GJK()
 			sup1=sObj1_->Support(v,lf1);
 			sup2=sObj2_->Support(-v,lf2);
 
-			sup=sup1-sup2;
+			sup=sup1;
+			sup-=sup2;
 
 
 

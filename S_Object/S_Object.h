@@ -12,7 +12,7 @@
 class S_Object
 {
 
-private:
+protected:
 	virtual Point3 N_Support(const Vector3& v, int& lastFeature)const=0;
 
 
@@ -23,8 +23,8 @@ public:
 	virtual ~S_Object(void);
 
 	
-	Point3 Support(const Vector3& v) const;
-	Point3 Support(const Vector3& v, int & LastFeature) const;
+	virtual Point3 Support(const Vector3& v) const;
+	virtual Point3 Support(const Vector3& v, int & LastFeature) const;
 
 
 	/*! Sets the rotation matrix to Rotation*/
@@ -55,7 +55,7 @@ public:
 
 	void SetTransformation(const Matrix4x4& transformation);
 
-		// composoe the current orientation with Rotation
+	// composes the current orientation with a Rotation
 	void AddRotation(const Matrix3x3& Rotation);
 
 	void AddRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02,

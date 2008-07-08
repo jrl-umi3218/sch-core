@@ -38,6 +38,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/GS /RTCsu"
 				Optimization="0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -57,6 +58,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/GS"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -133,6 +135,7 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
+				FixedBaseAddress="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -169,10 +172,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Test0.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Test1.cpp"
 				>
 			</File>
@@ -182,10 +181,6 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\DisplayObject.h"
-				>
-			</File>
 			<File
 				RelativePath=".\includes.h"
 				>
@@ -197,6 +192,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\VTune\TestZone.vpj"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
