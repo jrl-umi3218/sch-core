@@ -129,11 +129,11 @@ public:
 	virtual STP_BV & operator=(const STP_BV&);
 
 
-	virtual Point3  N_Support(const Vector3& v, int& lastFeature)const;
+	virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
 
-	virtual S_ObjectType S_GetType() const;
+	virtual S_ObjectType getType() const;
 
-	virtual void DrawGL() const;
+	virtual void drawGL() const;
 
 
 	
@@ -259,11 +259,6 @@ public: //DEBUG
 									  const Point3& l2p1, const Point3& l2p2) const;
 
 	
-
-
-	
-
-
 	/*!
 	 *  \brief Computes the center of a surface defined by a list of points
 	 *  \param points vector containing all the points

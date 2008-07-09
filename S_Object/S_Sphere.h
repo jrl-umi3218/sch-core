@@ -8,18 +8,22 @@ class S_Sphere :
 	public S_Object
 {
 public:
-	S_Sphere(const Scalar&);
+	/*!
+	 * \brief constructor
+	 * \param radius, the shpere radius
+ 	 */
+	S_Sphere(const Scalar& radius);
 	virtual ~S_Sphere();
 
-	virtual Point3  N_Support(const Vector3& v, int& lastFeature)const;
+	virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
 
-	virtual S_ObjectType S_GetType() const;
+	virtual S_ObjectType getType() const;
 
-	virtual void DrawGL() const;
+	virtual void drawGL() const;
 
 protected:
-	Scalar radius;
-	int slices, stacks;
+	Scalar radius_;
+	int slices_, stacks_;
 
 
 

@@ -21,7 +21,7 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
-lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->CheckStamp()),stamp2_(sObj2_->CheckStamp()), 
+lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
 precision_(1e-6),epsilon_(1e-24),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false)
 {	
 	--stamp1_;
@@ -33,16 +33,16 @@ CD_Pair::~CD_Pair(void)
 {
 }
 
-Scalar CD_Pair::GetDistance()
+Scalar CD_Pair::getDistance()
 {
-	if ((stamp1_==sObj1_->CheckStamp())&&(stamp2_==sObj2_->CheckStamp()))
+	if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
 	{
 		return distance_;
 	}
 	else
 	{
-		stamp1_=sObj1_->CheckStamp();
-		stamp2_=sObj2_->CheckStamp();
+		stamp1_=sObj1_->checkStamp();
+		stamp2_=sObj2_->checkStamp();
 		return GJK();
 	}
 
@@ -50,36 +50,36 @@ Scalar CD_Pair::GetDistance()
 
 
 
-Scalar CD_Pair::ReComputeClosestPoints(Point3& p1,Point3& p2)
+Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 {
-	stamp1_=sObj1_->CheckStamp();
-	stamp2_=sObj2_->CheckStamp();
+	stamp1_=sObj1_->checkStamp();
+	stamp2_=sObj2_->checkStamp();
 	GJK();
-	WitPoints(p1,p2);
+	witPoints(p1,p2);
 	return distance_;
 	
 }
 
 
-void CD_Pair::SetRelativePrecision(Scalar s)
+void CD_Pair::setRelativePrecision(Scalar s)
 {
 	precision_=s*s;
 }
 
 
-void CD_Pair::SetEpsilon(Scalar s)
+void CD_Pair::setEpsilon(Scalar s)
 {
 	epsilon_=s;
 }
 
-Scalar CD_Pair::GetClosestPoints(Point3 &p1, Point3 &p2)
+Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 {
-	if ((stamp1_==sObj1_->CheckStamp())&&(stamp2_==sObj2_->CheckStamp()))
+	if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
 	{
 		if (!witPointsAreComputed_)
 		{
 			witPointsAreComputed_=true;
-			WitPoints(p1,p2);
+			witPoints(p1,p2);
 		}
 		p1=p1_;
 		p2=p2_;
@@ -90,10 +90,10 @@ Scalar CD_Pair::GetClosestPoints(Point3 &p1, Point3 &p2)
 		
 
 		witPointsAreComputed_=true;
-		stamp1_=sObj1_->CheckStamp();
-		stamp2_=sObj2_->CheckStamp();
+		stamp1_=sObj1_->checkStamp();
+		stamp2_=sObj2_->checkStamp();
 		GJK();
-		WitPoints(p1,p2);
+		witPoints(p1,p2);
 		return distance_;
 
 	}
@@ -114,8 +114,8 @@ Scalar CD_Pair::GJK()
 	int& lf2=lastFeature2_;
 
 
-	Point3 sup1=sObj1_->Support(v,lf1);
-	Point3 sup2=sObj2_->Support(-v,lf2);
+	Point3 sup1=sObj1_->support(v,lf1);
+	Point3 sup2=sObj2_->support(-v,lf2);
 
 	Point3 sup(sup1);
 	
@@ -227,8 +227,8 @@ Scalar CD_Pair::GJK()
 		}
 		else
 		{
-			sup1=sObj1_->Support(v,lf1);
-			sup2=sObj2_->Support(-v,lf2);
+			sup1=sObj1_->support(v,lf1);
+			sup2=sObj2_->support(-v,lf2);
 
 			sup=sup1;
 			sup-=sup2;
@@ -260,7 +260,8 @@ Scalar CD_Pair::GJK()
 #endif
 				{
 
-					sp=sp.GetClosestSubSimplexGJK(k);
+					sp.getClosestSubSimplexGJK(k);
+					sp.filter(k);
 					s1_+=sup1;
 					s2_+=sup2;
 					
@@ -307,14 +308,16 @@ Scalar CD_Pair::GJK()
 	
 
 
-	
-
-
-
-	
 }
 
-void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
+void CD_Pair::setVector(const Vector3 &v)
+{
+	lastDirection_=v;
+}
+
+
+
+void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 {
 	Point3 proj;
 	Vector3& v=lastDirection_;
@@ -376,13 +379,13 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
 			glBegin(GL_TRIANGLES);
-			glVertex3d(s1[0][0],s1[0][1],s1[0][2]);
-			glVertex3d(s1[1][0],s1[1][1],s1[1][2]);
-			glVertex3d(s1[2][0],s1[2][1],s1[2][2]);
+			glVertex3d(s1_[0][0],s1_[0][1],s1_[0][2]);
+			glVertex3d(s1_[1][0],s1_[1][1],s1_[1][2]);
+			glVertex3d(s1_[2][0],s1_[2][1],s1_[2][2]);
 
-			glVertex3d(s2[0][0],s2[0][1],s2[0][2]);
-			glVertex3d(s2[1][0],s2[1][1],s2[1][2]);
-			glVertex3d(s2[2][0],s2[2][1],s2[2][2]);
+			glVertex3d(s2_[0][0],s2_[0][1],s2_[0][2]);
+			glVertex3d(s2_[1][0],s2_[1][1],s2_[1][2]);
+			glVertex3d(s2_[2][0],s2_[2][1],s2_[2][2]);
 
 		
 			glEnd();
@@ -428,12 +431,12 @@ void CD_Pair::WitPoints(Point3 &p1, Point3 &p2)
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
 			glBegin(GL_LINES);
-			glVertex3d(s1[0][0],s1[0][1],s1[0][2]);
-			glVertex3d(s1[1][0],s1[1][1],s1[1][2]);
+			glVertex3d(s1_[0][0],s1_[0][1],s1_[0][2]);
+			glVertex3d(s1_[1][0],s1_[1][1],s1_[1][2]);
 		
 
-			glVertex3d(s2[0][0],s2[0][1],s2[0][2]);
-			glVertex3d(s2[1][0],s2[1][1],s2[1][2]);
+			glVertex3d(s2_[0][0],s2_[0][1],s2_[0][2]);
+			glVertex3d(s2_[1][0],s2_[1][1],s2_[1][2]);
 			
 			glEnd();
 

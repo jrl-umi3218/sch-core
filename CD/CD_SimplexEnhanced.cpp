@@ -6,7 +6,7 @@ inline char sign(Scalar i)
 }
 
 
-inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,const Vector3& AC,const Vector3& ABC,const Vector3& AO,const Point3& A,const Point3& B,const Point3& C, Scalar normA,Scalar normB,Scalar normC, CD_SimplexKeptPoints &k,unsigned char bA,unsigned char bB,unsigned char bC)
+inline void GetClosestSubSimplexCCKWTriangle(const Vector3& AB,const Vector3& AC,const Vector3& ABC,const Vector3& AO,const Point3& A,const Point3& B,const Point3& C, Scalar normA,Scalar normB,Scalar normC, CD_SimplexKeptPoints &k,unsigned char bA,unsigned char bB,unsigned char bC)
 {
 	if ((ABC^AC)*AO>=0)
 	{
@@ -15,7 +15,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 			k.b1=bC;
 			k.b2=bA;
 			k.type=CD_Segment;
-			return CD_SimplexEnhanced(C,A,normC,normA);
+			return;
 		}
 		else
 		{
@@ -24,14 +24,14 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 				k.b1=bA;
 				k.b2=bB;
 				k.type=CD_Segment;
-				return CD_SimplexEnhanced(A,B,normA,normB);
+				return;
 
 			}
 			else
 			{
 				k.b1=bA;
 				k.type=CD_Point;
-				return CD_SimplexEnhanced(A,normA);
+				return;
 			}
 		}
 	}
@@ -44,14 +44,14 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 				k.b1=bA;
 				k.b2=bB;
 				k.type=CD_Segment;
-				return CD_SimplexEnhanced(A,B,normA,normB);
+				return;
 
 			}
 			else
 			{
 				k.b1=bA;	
 				k.type=CD_Point;
-				return CD_SimplexEnhanced(A,normA);
+				return;
 			}
 		}
 		else
@@ -60,7 +60,7 @@ inline CD_SimplexEnhanced GetClosestSubSimplexCCKWTriangle(const Vector3& AB,con
 			k.b2=bC;
 			k.b3=bA;
 			k.type=CD_Triangle;
-			return CD_SimplexEnhanced(B,C,A,normB,normC,normA);
+			return;
 		}
 	}
 
@@ -76,30 +76,30 @@ CD_SimplexEnhanced::~CD_SimplexEnhanced(void)
 }
 
 
-CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
+void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 {
-	switch (type)
+	switch (type_)
 	{
 	
 	case (CD_Segment):
 		{
-			Vector3 AO(-S2);
+			Vector3 AO(-s2_);
 			
 			if (ab_*AO>=0)
 			{
 				k.type=CD_None;
-				return *this;
+				return;
 			}
 			else
 			{
 				k.b1=1;
 				k.type=CD_Point;
-				return CD_SimplexEnhanced(S2,norm2_);
+				return ;
 			}
 		}
 	case (CD_Triangle):
 		{
-			Vector3 AO(-S3);
+			Vector3 AO(-s3_);
 			Vector3 ABC(ab_^ac_);
 			if ((ABC^ac_)*AO>=0)
 			{
@@ -108,7 +108,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					k.b1=1;
 					k.b2=2;
 					k.type=CD_Segment;
-					return CD_SimplexEnhanced(S2,S3,norm2_,norm3_);
+					return ;
 				}
 				else
 				{
@@ -117,14 +117,14 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 						k.b1=2;
 						k.b2=0;
 						k.type=CD_Segment;
-						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
+						return;
 
 					}
 					else
 					{
 						k.b1=2;
 						k.type=CD_Point;
-						return CD_SimplexEnhanced(S3,norm3_);
+						return;
 					}
 				}
 			}
@@ -137,14 +137,14 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 						k.b1=2;
 						k.b2=0;
 						k.type=CD_Segment;
-						return CD_SimplexEnhanced(S3,S1,norm3_,norm1_);
+						return;
 
 					}
 					else
 					{
 						k.b1=2;
 						k.type=CD_Point;
-						return CD_SimplexEnhanced(S3,norm3_);
+						return;
 					}
 				}
 				else
@@ -152,7 +152,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 					if (ABC*AO>=0)
 					{
 						k.type=CD_None;
-						return CD_SimplexEnhanced(S1,S2,S3,norm1_,norm2_,norm3_);
+						return;
 					}
 					else
 					{
@@ -160,7 +160,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 						k.b2=0;
 						k.b3=2;
 						k.type=CD_Triangle;
-						return CD_SimplexEnhanced(S2,S1,S3,norm2_,norm1_,norm3_);
+						return;
 					}
 				}
 
@@ -171,7 +171,7 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 	case (CD_Tetrahedron):
 		{
 
-			Vector3 AO(-S4);
+			Vector3 AO(-s4_);
 			Vector3 ABC(ab_^ac_),ACD(ac_^ad_),ADB(ad_^ab_);
 			Scalar d_abc(ABC*AO),d_acd(ACD*AO),d_adb(ADB*AO);
 			d_abc=(d_abc*d_abc)/ABC.normsquared()*sign(d_abc);
@@ -184,18 +184,28 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				if (d_abc>d_adb)
 				{
 					if (d_abc>=0)
-						return GetClosestSubSimplexCCKWTriangle(ab_,ac_,ABC,AO,S4,S1,S2,norm4_,norm1_,norm2_,k,3,0,1);
+					{
+						GetClosestSubSimplexCCKWTriangle(ab_,ac_,ABC,AO,s4_,s1_,s2_,norm4_,norm1_,norm2_,k,3,0,1);
+						return;
+
+					}
 					else
-						return *this;
+					{
+						k.type=CD_None;
+						return ;
+					}
 				}
 				else
 				{
 					if (d_adb>=0)
-						return GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,S4,S3,S1,norm4_,norm3_,norm1_,k,3,2,0);
+					{
+						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,s4_,s3_,s1_,norm4_,norm3_,norm1_,k,3,2,0);
+						return;
+					}
 					else
 					{
 						k.type=CD_None;
-						return *this;
+						return ;
 					}
 				}
 			}
@@ -204,22 +214,28 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 				if (d_acd>d_adb)
 				{
 					if (d_acd>=0)
-						return GetClosestSubSimplexCCKWTriangle(ac_,ad_,ACD,AO,S4,S2,S3,norm4_,norm2_,norm3_,k,3,1,2);
+					{
+						GetClosestSubSimplexCCKWTriangle(ac_,ad_,ACD,AO,s4_,s2_,s3_,norm4_,norm2_,norm3_,k,3,1,2);
+						return;
+					}
 					else
 					{
 						k.type=CD_None;
-						return *this;
+						return ;
 					}
 
 				}
 				else
 				{
 					if (d_adb>=0)
-						return GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,S4,S3,S1,norm4_,norm3_,norm1_,k,3,2,0);
+					{
+						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,s4_,s3_,s1_,norm4_,norm3_,norm1_,k,3,2,0);
+						return;
+					}
 					else
 					{
 						k.type=CD_None;
-						return *this;
+						return ;
 					}
 				}
 			}
@@ -228,11 +244,11 @@ CD_SimplexEnhanced CD_SimplexEnhanced::GetClosestSubSimplexGJK(CD_SimplexKeptPoi
 	default:
 		{
 			k.type=CD_None;
-			return *this;
+			return ;
 		}
 	}
 
-	return *this;
+	return ;
 
 	
 

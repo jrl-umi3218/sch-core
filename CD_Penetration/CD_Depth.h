@@ -11,7 +11,8 @@ private:
 	CD_Depth(void);
 	virtual ~CD_Depth(void);
 public:
-	static Scalar getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vector3& v, Point3& p1, Point3& p2, const CD_SimplexEnhanced& s,const CD_Simplex& s1,const CD_Simplex& s2,Scalar Precision,Scalar Epsilon);
+	
+	static Scalar getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vector3& v, Point3& p1, Point3& p2, const CD_SimplexEnhanced& s,const CD_Simplex& s1_,const CD_Simplex& s2_,Scalar Precision,Scalar Epsilon);
 };
 
 #endif

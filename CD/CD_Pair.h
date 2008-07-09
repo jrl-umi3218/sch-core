@@ -17,25 +17,42 @@ public:
 	virtual ~CD_Pair(void);
 
 	/*!
-	 *\brief function that returns les distance SQUARED between two convex objects, 
+	 *\brief function that returns les distance SQUARED between two convex objects, and computes the witness points, 
 	 *\param p1 is the witness point on the first object
 	 *\param p2 is the witness point on the second object
 	 */
-	Scalar GetClosestPoints(Point3& p1,Point3& p2);
-	Scalar ReComputeClosestPoints(Point3& p1,Point3& p2);
+	Scalar getClosestPoints(Point3& p1,Point3& p2);
+	
+	/*!
+	 *\brief function that returns les distance SQUARED between two convex objects, retarting the computations from the beginning and computes the witness points,
+	 *\param p1 is the witness point on the first object
+	 *\param p2 is the witness point on the second object
+	 */
+	Scalar reComputeClosestPoints(Point3& p1,Point3& p2);
 	
 	/*!
 	 *\brief function that returns les distance SQUARED between two convex objects, 
-	 *\param p1 is the witness point on the first object
-	 *\param p2 is the witness point on the second object
 	 */
-	Scalar GetDistance();
+	Scalar getDistance();
 
+	/*!
+	 *\brief Intializes the direction vector (the vector between expected closest points) with a given value.
+	 */
+	void setVector(const Vector3 &);
 
-	void SetRelativePrecision(Scalar);
+	/*!
+	 *\brief sets the relative precision of the proximity queries to a given value. Default is 1e-3
+	 */
+	void setRelativePrecision(Scalar);
 
-	void SetEpsilon(Scalar);
+	/*
+	 *\brief Sets the machine epsilon. Default is 1e-24
+	 */
+	void setEpsilon(Scalar);
 
+	/*
+	 *\brief returns the ith object in the scene
+	 */
 
 	S_Object * operator[](unsigned char i)
 	{
@@ -51,14 +68,14 @@ private :
 	int lastFeature1_,lastFeature2_;
 
 	Scalar GJK();
-	void WitPoints(Point3& p1,Point3& p2);
+	void witPoints(Point3& p1,Point3& p2);
 
 	Point3 p1_,p2_;
 	Scalar distance_;
 
 	Scalar precision_,epsilon_;
 	
-	S_Object::TimeStamp stamp1_,stamp2_;
+	S_ObjectTimeStamp stamp1_,stamp2_;
 
 	Scalar lambda0_,lambda1_,lambda2_;
 	Scalar det_;

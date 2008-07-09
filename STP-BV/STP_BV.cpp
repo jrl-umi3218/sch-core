@@ -889,13 +889,13 @@ void STP_BV::updateFastPatches()
 
 
 
-void STP_BV::DrawGL() const
+void STP_BV::drawGL() const
 {
 	glPushMatrix();
 	
 	double d[16];
 
-	GetTransformationMatrix(d);
+	getTransformationMatrix(d);
 
 	glMultMatrixd(d);
 
@@ -919,10 +919,10 @@ Scalar STP_BV::supportH(const Vector3& v) const
 	int k;
 
 	/////A.E. : we use the default supportH function, cf DT_Convex.h\\\\\ 
-	return v*N_Support(v,k);
+	return v*n_Support(v,k);
 }
 
-Point3 STP_BV::N_Support(const Vector3& v,int& lastFeature) const 
+Point3 STP_BV::n_Support(const Vector3& v,int& lastFeature) const 
 {
 
 
@@ -1208,7 +1208,7 @@ bool STP_BV::ray_cast(const Point3& source, const Point3& target,
 	return false;
 }
 
-S_Object::S_ObjectType STP_BV::S_GetType() const
+S_Object::S_ObjectType STP_BV::getType() const
 {
 	return S_Object::TSTP_BV;
 }

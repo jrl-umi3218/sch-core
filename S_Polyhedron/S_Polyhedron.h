@@ -27,14 +27,21 @@ public:
 	
 	const S_Polyhedron& operator =(const S_Polyhedron&);
 
-	virtual void DrawGL() const;
+	virtual void drawGL() const;
+
+   /*
+	* \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options : 
+	* \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" 
+	*/
 	
 	void loadFromFile(const std::string&);
 
-
+	/*! 
+	 *  \brief updates the fast access arrays, must be called after each polyhedron modification
+	 */
 	void updateFastArrays();
 
-	Point3 NaiveSupport(const Vector3& v)const;
+	Point3 naiveSupport(const Vector3& v)const;
 
 	/*! 
 	 *  \brief updates the Neighborhood of the vertexes, must be called on polyhedron 
@@ -42,16 +49,25 @@ public:
 	 */
 	void updateVertexNeighbors();
 
+	/*! 
+	 *  \brief clears the neighbors tables;
+	 */
 	void clearNeighbors();
 
+	/*! 
+	 *  \brief clears all the polyhedron;
+	 */
 	void clear();
 
+	/*
+	 * \brief deletes aal the vertexes that dont have neighbors;
+	 */
 	void deleteVertexesWithoutNeighbors();
 
 
 protected:
-	virtual Point3 N_Support(const Vector3& v, int& lastFeature)const;
-	virtual	S_ObjectType GetType() const;
+	virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
+	virtual	S_ObjectType getType() const;
 
 
 

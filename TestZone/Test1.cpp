@@ -67,7 +67,7 @@ std::vector<S_Polyhedron> polyObjects;
 
 void DoTest()
 {
-	sObj.SceneProximityQuery();
+	sObj.sceneProximityQuery();
 }
 
 
@@ -111,7 +111,7 @@ void RandomTestSupportFunction()
 
 #ifdef DO_TEST
 
-		Point3 p=sObj[CurrentObj]->Support(v);
+		Point3 p=sObj[CurrentObj]->support(v);
 		
 
 
@@ -354,11 +354,11 @@ init (void)
   /*inialize objects*/
 
 #ifdef NON_STP_BV_OBJECTS
-  sObj.AddObject(new S_Box(2,2,2));
-  sObj.AddObject(new S_Box(2,2,2));
-  sObj.AddObject(new S_Sphere(0.09));
+  sObj.addObject(new S_Box(2,2,2));
+  sObj.addObject(new S_Box(2,2,2));
+  sObj.addObject(new S_Sphere(0.09));
 
-  sObj.AddObject(new S_Superellipsoid(.2,.5,.4,0.4,0.8));
+  sObj.addObject(new S_Superellipsoid(.2,.5,.4,0.4,0.8));
 #endif
 
   ArchiveType type;
@@ -416,7 +416,7 @@ init (void)
 
 	  for (int j=0;j<stpObjects.size();j++)
 	  {
-		  sObj.AddObject(&(stpObjects[j]));
+		  sObj.addObject(&(stpObjects[j]));
 
 		  		  
 
@@ -430,15 +430,15 @@ init (void)
 	  STP_BV s;
 	  s.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
-	  //STP_BV s2;
-	  //s2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
+	  //STP_BV s2_;
+	  //s2_.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
  
 	  stpObjects.push_back(s);
-	  //stpObjects.push_back(s2);
+	  //stpObjects.push_back(s2_);
 
- 	  sObj.AddObject(&(stpObjects[0]));
+ 	  sObj.addObject(&(stpObjects[0]));
     
-	  //sObj.AddObject(&(stpObjects[1]));
+	  //sObj.addObject(&(stpObjects[1]));
 
 
 	  S_Polyhedron P,P2;
@@ -451,8 +451,8 @@ init (void)
 	  polyObjects.push_back(P2);
 
 
-	  sObj.AddObject(&(polyObjects[0]));
-	  //sObj.AddObject(&(polyObjects[1]));
+	  sObj.addObject(&(polyObjects[0]));
+	  //sObj.addObject(&(polyObjects[1]));
 
 
 
@@ -462,7 +462,7 @@ init (void)
   {
 	  
 
-	  sObj[i]->SetPosition((1+7*i%5-3)*DispersionScale,
+	  sObj[i]->setPosition((1+7*i%5-3)*DispersionScale,
 						   (5*i%6-3)*(5.0/6)*DispersionScale,
 						   (5*i%7-3)*(5.0/7)*DispersionScale);
 
@@ -579,10 +579,10 @@ display (void)
 
 	for (int i=0;i<sObj.Size();++i)
 	{
-		sObj[i]->DrawGL();
+		sObj[i]->drawGL();
 	}
 
-	Vector3 p=sObj[CurrentObj]->GetPosition();
+	Vector3 p=sObj[CurrentObj]->getPosition();
 	glDisable (GL_LIGHTING);
 
 	glPushMatrix();
@@ -626,7 +626,7 @@ display (void)
 			Scalar d;
 
 
-			d=sObj.GetWitnessPoints(i,j,p1,p2);
+			d=sObj.getWitnessPoints(i,j,p1,p2);
 
 	
 			
@@ -697,8 +697,8 @@ void TestAnimation()
 
 		oldPos.push_back(position);
 
-		sObj[i]->SetOrientation(angle,axe);
-		sObj[i]->SetPosition(position);
+		sObj[i]->setOrientation(angle,axe);
+		sObj[i]->setPosition(position);
 				
 
 	}
@@ -711,7 +711,7 @@ void TestAnimation()
 #ifdef DO_TEST
 
 	
-	sObj.SceneProximityQuery();
+	sObj.sceneProximityQuery();
 
 #endif
 
@@ -766,9 +766,9 @@ int totalCpt=0;
 			angle=4*sin((97-j)*sin(0.2*sin(0.5*AnimationSpeed*i)));
 
 
-			sObj[j]->SetOrientation(angle,axe);
+			sObj[j]->setOrientation(angle,axe);
 
-			sObj[j]->SetPosition( position + Vector3(sin((20*(j%3+1)+2*j)*sin(0.2*AnimationSpeed*i)),
+			sObj[j]->setPosition( position + Vector3(sin((20*(j%3+1)+2*j)*sin(0.2*AnimationSpeed*i)),
 													 sin((71-140*(j%2-1)+2*j)*sin(0.15*AnimationSpeed*i)),
 													 sin((20+((j*5)%7)*5+3*j)*sin(0.2*AnimationSpeed*i)))*AnimationScale);
 
@@ -786,7 +786,7 @@ int totalCpt=0;
 		
 		
 #ifdef DO_TEST
-		sObj.SceneProximityQuery();
+		sObj.sceneProximityQuery();
 
 #ifdef OUTPUT_FILE
 		for (int k=0;k<sObj.Size();k++)
@@ -1046,11 +1046,11 @@ mouseMotion (int x, int y)
 			{
 				rot.z = (y - mouse.y)+(x - mouse.x);
 
-				Vector3 t=sObj[CurrentObj]->GetPosition();
+				Vector3 t=sObj[CurrentObj]->getPosition();
 
-				sObj[CurrentObj]->AddRotation(rot.z*0.02,Vector3(0,0,1));
+				sObj[CurrentObj]->addRotation(rot.z*0.02,Vector3(0,0,1));
 
-				sObj[CurrentObj]->SetPosition(t);
+				sObj[CurrentObj]->setPosition(t);
 
 				
 
@@ -1062,12 +1062,12 @@ mouseMotion (int x, int y)
 				rot.x = (y - mouse.y);
 				rot.y = (x - mouse.x);
 								
-				Vector3 t=sObj[CurrentObj]->GetPosition();
+				Vector3 t=sObj[CurrentObj]->getPosition();
 
-				sObj[CurrentObj]->AddRotation(rot.x*0.02,Vector3(1,0,0));
-				sObj[CurrentObj]->AddRotation(rot.y*0.02,Vector3(0,1,0));
+				sObj[CurrentObj]->addRotation(rot.x*0.02,Vector3(1,0,0));
+				sObj[CurrentObj]->addRotation(rot.y*0.02,Vector3(0,1,0));
 
-				sObj[CurrentObj]->SetPosition(t);
+				sObj[CurrentObj]->setPosition(t);
 			}
 
 	
@@ -1086,7 +1086,7 @@ mouseMotion (int x, int y)
 		}
 		else
 		{
-			sObj[CurrentObj]->AddTranslation((x - mouse.x) *0.007,-(y - mouse.y)*0.007,0);
+			sObj[CurrentObj]->addTranslation((x - mouse.x) *0.007,-(y - mouse.y)*0.007,0);
 		}
 	}
 	else if (mouse.buttons[GLUT_MIDDLE_BUTTON] == GLUT_DOWN)
@@ -1103,7 +1103,7 @@ mouseMotion (int x, int y)
 		}
 		else
 		{
-			sObj[CurrentObj]->AddTranslation(0,0,-((x - mouse.x)+(mouse.y-y))*0.011);
+			sObj[CurrentObj]->addTranslation(0,0,-((x - mouse.x)+(mouse.y-y))*0.011);
 		
 		}
 		

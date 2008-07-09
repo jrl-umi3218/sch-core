@@ -8,98 +8,208 @@
 
 
 
+/*!
+ * \struct the time stamp is used to check if objects moved or not between two proximity queries, if they didn't, computing the distance between them becomes useless.
+ */
+typedef struct _TimeStamp 
+{
+	unsigned long int value1,value2,value3,value4;
+
+	explicit _TimeStamp():value1(0),value2(0),value3(0),value4(0)
+	{}
+
+	bool operator==(const _TimeStamp t)const
+	{
+		return ((value1==t.value1)&&(value2==t.value2));
+	}
+
+	void operator++()
+	{
+		value1++;
+		if (!value1)
+		{	
+			value2++;
+			if (!value2)
+			{	
+				value3++;
+				if (!value3)
+				{	
+					value4++;
+
+				}
+			}
+		}
+	}
+
+	void operator--()
+	{
+		value1--;
+		if (value1==unsigned long int(-1))
+		{	
+			value2--;
+			if (value2==unsigned long int(-1))
+			{	
+				value3--;
+				if (value3==unsigned long int(-1))
+				{	
+					value4--;
+
+				}
+			}
+		}
+
+	}
+
+
+
+
+} S_ObjectTimeStamp;
 
 class S_Object
 {
 
 protected:
-	virtual Point3 N_Support(const Vector3& v, int& lastFeature)const=0;
+   /*! 
+	*  \brief gives the support point for a given normalized vector and a given last feature. Must be overloaded.
+	*  \param v direction vector (normalized)
+	*  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
+	*  \return returns the support point.
+	*/ 
+
+	virtual Point3 n_Support(const Vector3& v, int& lastFeature)const=0;
 
 
 public:
-	
+
 	S_Object(void);
-	
+
 	virtual ~S_Object(void);
 
+	/*! 
+	 *  \brief normalizes the vector and put it in objects coordinates, then calls n_support.
+	 *  \param v direction vector
+	 *  \return returns the support point.
+	 */ 
+	virtual Point3 support(const Vector3& v) const;
 	
-	virtual Point3 Support(const Vector3& v) const;
-	virtual Point3 Support(const Vector3& v, int & LastFeature) const;
+	/*! 
+	 *  \brief version of support with last feature optimization
+	 *  \param v direction vector
+	 *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
+	 *  \return returns the support point.
+	 */ 
+	virtual Point3 support(const Vector3& v, int & LastFeature) const;
+
+	/*
+	 *  \brief Sets the Orientation
+	 */
+	void setOrientation(const Matrix3x3& Rotation);
+
+	void setOrientation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
+						const Scalar& r10,const Scalar& r11,const Scalar& r12,
+						const Scalar& r20,const Scalar& r21,const Scalar& r22);
+
+	void setOrientation(const Quaternion quaternion);
+
+	void setOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
+
+	void setOrientation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
+
+	void setOrientation(const Scalar* const p);
+
+	void setOrientation(const Scalar& angle, const Vector3& axe);
 
 
-	/*! Sets the rotation matrix to Rotation*/
-	void SetOrientation(const Matrix3x3& Rotation);
+	/*!
+	 * \brief Sets the position
+	 */
+	void setPosition(const Vector3& v);
 
-	void SetOrientation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
+	void setPosition(const Scalar& x,const Scalar& y, const Scalar& z);
+
+	void setPosition(const Scalar* const v);
+
+	/*!
+	 * \brief Sets the transformation matrix
+	 */
+
+	void setTransformation(const Matrix4x4& transformation);
+
+	/*!
+	 * \brief composes the current orientation with a Rotation
+	 */
+	
+	void addRotation(const Matrix3x3& Rotation);
+
+	void addRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
 					 const Scalar& r10,const Scalar& r11,const Scalar& r12,
 					 const Scalar& r20,const Scalar& r21,const Scalar& r22);
 
-	void SetOrientation(const Quaternion quaternion);
+	void addRotation(const Quaternion quaternion);
 
-	void SetOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
+	void addRotation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
 
-	void SetOrientation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
+	void addRotation(const Scalar& angle, const Vector3& axe);
 
-	void SetOrientation(const Scalar* const p);
+	void addRotation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
 
-	void SetOrientation(const Scalar& angle, const Vector3& axe);
-
-
+	void addRotation(const Scalar  * const p);
 
 
-	void SetPosition(const Vector3& v);
+	/*!
+	 * \brief adds a translation
+	 */
 
-	void SetPosition(const Scalar& x,const Scalar& y, const Scalar& z);
+	void addTranslation(const Vector3& v);
 
-	void SetPosition(const Scalar* const v);
+	void addTranslation(const Scalar* const v);
 
-	void SetTransformation(const Matrix4x4& transformation);
+	void addTranslation(const Scalar& x,const Scalar& y, const Scalar& z);
 
-	// composes the current orientation with a Rotation
-	void AddRotation(const Matrix3x3& Rotation);
+	/*!
+	 * \brief composes the current transfornation with a scale
+	 */
 
-	void AddRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
-					 const Scalar& r10,const Scalar& r11,const Scalar& r12,
-					 const Scalar& r20,const Scalar& r21,const Scalar& r22);
-
-	void AddRotation(const Quaternion quaternion);
-
-	void AddRotation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
-
-	void AddRotation(const Scalar& angle, const Vector3& axe);
-
-	void AddRotation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
-
-	void AddRotation(const Scalar  * const p);
-
-	void AddTranslation(const Vector3& v);
-
-	void AddTranslation(const Scalar* const v);
-
-	void AddTranslation(const Scalar& x,const Scalar& y, const Scalar& z);
-
+	void addScale(const Scalar& x,const Scalar& y, const Scalar& z);
 	
-	void AddScale(const Scalar& x,const Scalar& y, const Scalar& z);
-	
-	
-	void AddTransformation(const Matrix4x4& transformation);
+	/*!
+	 * \brief composes the current transfornation with transformation matrix one
+	 */
 
-	void ResetTransformation();
-
-	const Vector3& GetPosition()const;
-
-	const Matrix3x3& GetOrientation()const;	
+	void addTransformation(const Matrix4x4& transformation);
 
 
-	void GetTransformationMatrix(Scalar *S) const;
+	/*!
+	 * \brief loads Identity
+	 */
+	void resetTransformation();
 
+	/*!
+	 * \brief returns the position
+	 */
+	const Vector3& getPosition()const;
 
-	virtual void DrawGL() const;
+	/*!
+	 * \brief returns the orientation as a rotation matrix
+	 */
+	const Matrix3x3& getOrientation()const;	
+
+	/*!
+	 * \brief puts the transfomation matrix in a sclar array
+	 */
+	void getTransformationMatrix(Scalar *S) const;
+
+	/*!
+	 * \brief must be overloaded to display the objects in openGl
+	 */
+	virtual void drawGL() const;
 
 
 
 	
-	//type of Solid object
+	/*!
+	 * \brief type of a solid object
+	 */
 		static enum S_ObjectType	
 	{
 		TS_Object,
@@ -114,65 +224,17 @@ public:
 		
 	};
 
-
-	virtual	S_ObjectType GetType() const;
-
-	typedef struct _TimeStamp 
-	{
-		unsigned long int value1,value2,value3,value4;
-
-		explicit _TimeStamp():value1(0),value2(0),value3(0),value4(0)
-		{}
-
-		bool operator==(const _TimeStamp t)const
-		{
-			return ((value1==t.value1)&&(value2==t.value2));
-		}
-
-		void operator++()
-		{
-			value1++;
-			if (!value1)
-			{	
-				value2++;
-				if (!value2)
-				{	
-					value3++;
-					if (!value3)
-					{	
-						value4++;
-
-					}
-				}
-			}
-		}
-
-		void operator--()
-		{
-			value1--;
-			if (value1==unsigned long int(-1))
-			{	
-				value2--;
-				if (value2==unsigned long int(-1))
-				{	
-					value3--;
-					if (value3==unsigned long int(-1))
-					{	
-						value4--;
-
-					}
-				}
-			}
-
-		}
+	/*!
+	 * \brief must be overloaded to return the type
+	 */
+	virtual	S_ObjectType getType() const;
 
 
 
-	
-	} TimeStamp;
-
-
-	const TimeStamp& CheckStamp()const;
+	/*!
+	 * \brief returns the current time stamp
+	 */
+	const S_ObjectTimeStamp& checkStamp()const;
 
 
 	
@@ -186,13 +248,13 @@ protected:
 
 	
 
-	TimeStamp stamp;
+	S_ObjectTimeStamp stamp_;
 	
 
 	
-	Matrix3x3 mRot;
+	Matrix3x3 mRot_;
 	
-	Vector3 trans;
+	Vector3 trans_;
 
 
 

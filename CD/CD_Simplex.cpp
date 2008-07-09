@@ -17,9 +17,3 @@ CD_Simplex::~CD_Simplex(void)
 }
 
 
-CD_Simplex CD_Simplex::GetClosestSubSimplex(const Point3& p,Vector3& v) const
-{
-	return *this;
-	
-
-}

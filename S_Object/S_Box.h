@@ -6,24 +6,32 @@
 
 
 
-#include "s_object.h"
+#include "s_objectnonnormalized.h"
 
 class S_Box :
-	public S_Object
+	public S_ObjectNonNormalized
 {
 public:
+	/*!
+	 * \brief constructor
+	 * \param width, the width of the box (x axis)
+ 	 * \param height, the height of the box (y axis)
+	 * \param depth, the depth of the box (z axis)
+	 */
 	S_Box(Scalar width,Scalar height,Scalar depth);
 	
+
 	virtual ~S_Box(void);
 
-	virtual Point3  N_Support(const Vector3& v, int& lastFeature)const;
+	
+	virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
 
-	virtual S_ObjectType S_GetType() const;
+	virtual S_ObjectType getType() const;
 
-	virtual void DrawGL() const;
+	virtual void drawGL() const;
 
 protected :
-	Scalar a,b,c;
+	Scalar a_,b_,c_;
 
 	
 };

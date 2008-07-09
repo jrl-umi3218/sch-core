@@ -115,51 +115,51 @@ CD_Depth::~CD_Depth(void)
 
 
 Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
-									 const CD_Simplex& s1, const CD_Simplex& s2, Scalar precision,Scalar epsilon)
+									 const CD_Simplex& s1_, const CD_Simplex& s2_, Scalar precision,Scalar epsilon)
 {
 	int num_verts;
 
 	switch (s.getType())
 	{
 	case CD_Point:
-		pBuf[0]=s1[0];
-		qBuf[0]=s2[0];
+		pBuf[0]=s1_[0];
+		qBuf[0]=s2_[0];
 		yBuf[0]=s[0];
 		num_verts=1;
 		break;
 	case CD_Segment:
-		pBuf[0]=s1[0];
-		qBuf[0]=s2[0];
+		pBuf[0]=s1_[0];
+		qBuf[0]=s2_[0];
 		yBuf[0]=s[0];
-		pBuf[1]=s1[1];
-		qBuf[1]=s2[1];
+		pBuf[1]=s1_[1];
+		qBuf[1]=s2_[1];
 		yBuf[1]=s[1];
 		num_verts=2;
 		break;
 	case CD_Triangle:
-		pBuf[0]=s1[0];
-		qBuf[0]=s2[0];
+		pBuf[0]=s1_[0];
+		qBuf[0]=s2_[0];
 		yBuf[0]=s[0];
-		pBuf[1]=s1[1];
-		qBuf[1]=s2[1];
+		pBuf[1]=s1_[1];
+		qBuf[1]=s2_[1];
 		yBuf[1]=s[1];
-		pBuf[2]=s1[2];
-		qBuf[2]=s2[2];
+		pBuf[2]=s1_[2];
+		qBuf[2]=s2_[2];
 		yBuf[2]=s[2];
 		num_verts=3;
 		break;
 	default:
-		pBuf[0]=s1[0];
-		qBuf[0]=s2[0];
+		pBuf[0]=s1_[0];
+		qBuf[0]=s2_[0];
 		yBuf[0]=s[0];
-		pBuf[1]=s1[1];
-		qBuf[1]=s2[1];
+		pBuf[1]=s1_[1];
+		qBuf[1]=s2_[1];
 		yBuf[1]=s[1];
-		pBuf[2]=s1[2];
-		qBuf[2]=s2[2];
+		pBuf[2]=s1_[2];
+		qBuf[2]=s2_[2];
 		yBuf[2]=s[2];
-		pBuf[3]=s1[3];
-		qBuf[3]=s2[3];
+		pBuf[3]=s1_[3];
+		qBuf[3]=s2_[3];
 		yBuf[3]=s[3];
 		num_verts=4;
 
@@ -195,16 +195,16 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         Vector3 aux2 = rot_mat * aux1;
         Vector3 aux3 = rot_mat * aux2;
         
-        pBuf[2] = O1->Support(aux1);
-        qBuf[2] = O2->Support(-aux1);
+        pBuf[2] = O1->support(aux1);
+        qBuf[2] = O2->support(-aux1);
         yBuf[2] = pBuf[2] - qBuf[2];
 	    
-        pBuf[3] = O1->Support(aux2);
-        qBuf[3] = O2->Support(-aux2);
+        pBuf[3] = O1->support(aux2);
+        qBuf[3] = O2->support(-aux2);
         yBuf[3] = pBuf[3] - qBuf[3];
 	    
-        pBuf[4] = O1->Support(aux3);
-        qBuf[4] = O2->Support(-aux3);
+        pBuf[4] = O1->support(aux3);
+        qBuf[4] = O2->support(-aux3);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
         if (originInTetrahedron(yBuf[0], yBuf[2], yBuf[3], yBuf[4]) == 0) 
@@ -283,11 +283,11 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         Vector3 v2     = yBuf[2] - yBuf[0];
         Vector3 vv     = (v1^ v2);
 	    
-        pBuf[3] = O1->Support(vv);
-        qBuf[3] = O2->Support(-vv);
+        pBuf[3] = O1->support(vv);
+        qBuf[3] = O2->support(-vv);
         yBuf[3] = pBuf[3] - qBuf[3];
-        pBuf[4] = O1->Support(-vv);
-        qBuf[4] = O2->Support(vv);
+        pBuf[4] = O1->support(-vv);
+        qBuf[4] = O2->support(vv);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
         Triangle* f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 3);
@@ -362,8 +362,8 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
                 break;
             }
 			
-            pBuf[num_verts] = O1->Support( triangle->getClosest());
-            qBuf[num_verts] = O2->Support(-triangle->getClosest());
+            pBuf[num_verts] = O1->support( triangle->getClosest());
+            qBuf[num_verts] = O2->support(-triangle->getClosest());
             yBuf[num_verts] = pBuf[num_verts] - qBuf[num_verts];
 			
             int index = num_verts++;

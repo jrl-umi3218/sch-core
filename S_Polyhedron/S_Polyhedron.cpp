@@ -138,7 +138,7 @@ void S_Polyhedron::updateFastArrays()
 	}
 }
 
-Point3 S_Polyhedron::NaiveSupport(const Vector3&v)const
+Point3 S_Polyhedron::naiveSupport(const Vector3&v)const
 {
 	S_PolyhedronVertex** current;
 	
@@ -165,7 +165,7 @@ Point3 S_Polyhedron::NaiveSupport(const Vector3&v)const
 	return best;
 }
 
-Point3 S_Polyhedron::N_Support(const Vector3&v,int &lastFeature)const
+Point3 S_Polyhedron::n_Support(const Vector3&v,int &lastFeature)const
 {
 	S_PolyhedronVertex* current;
 	Scalar supportH;
@@ -236,6 +236,9 @@ void S_Polyhedron::deleteVertexesWithoutNeighbors()
 
 void S_Polyhedron::loadFromFile(const std::string& filename)
 {
+
+	clear();
+
 	SimplestParsing is;
 
 	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
@@ -374,7 +377,7 @@ void S_Polyhedron::loadFromFile(const std::string& filename)
 
 }
 
-S_Object::S_ObjectType S_Polyhedron::GetType() const
+S_Object::S_ObjectType S_Polyhedron::getType() const
 {
 	return S_Object::TPolyhedron;
 }
@@ -382,7 +385,7 @@ S_Object::S_ObjectType S_Polyhedron::GetType() const
 	
 	
 
-void S_Polyhedron::DrawGL() const
+void S_Polyhedron::drawGL() const
 {
 	if (displayList_!=-1)
 	{
@@ -390,7 +393,7 @@ void S_Polyhedron::DrawGL() const
 
 		double d[16];
 
-		GetTransformationMatrix(d);
+		getTransformationMatrix(d);
 
 		glMultMatrixd(d);
 

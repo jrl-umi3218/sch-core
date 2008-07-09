@@ -75,10 +75,12 @@ public:
 	
 
 
-	Point3& operator[]( unsigned char);
 	
 
 	const Point3& operator[]( unsigned char) const;
+	
+	Point3& operator[]( unsigned char);
+
 	
 
 	CD_Simplex& operator=(const CD_Simplex& s);
@@ -111,7 +113,7 @@ public:
 	 * \param k is the filter used to know wich vertexes will be kept and in wich order
 	 * \updateVetors must be called after this function to keep the vectors up to date.
 	 */
-	void filter(const CD_SimplexKeptPoints &k);
+	virtual void filter(const CD_SimplexKeptPoints &k);
 
 	/*!
 	 *\brief Gives the distance squared at the origin for a simplex, and according the direction v.
@@ -120,12 +122,8 @@ public:
 	
 
 
-	/*! 
-	 * \brief Gets the closest subsimplex from the simplex to the point p 
-	 * \param p Point p
-	 * \param v Vector retuned telling the direction between p and the closest point in the simplex
-	 */
-	CD_Simplex GetClosestSubSimplex(const Point3& p,Vector3& v)const;
+
+
 
 	
 	/*!
@@ -135,23 +133,35 @@ public:
 	bool isAffinelyDependent() const;
 	
 	/*!
-	 * \brief Updates AB,AC,AD vectors A is the last vertex inserted and B, C and D are previous vertex 
+	 * \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes 
 	 */
 	void updateVectors();
 
 	
-
+	/*!
+	 * \brief Returns AB vector 
+	 */
 	const Vector3& AB () const;
+
+	/*!
+	 * \brief Returns AC vector
+	 */
 	const Vector3& AC () const;
+
+	/*!
+	 * \brief Returns AD vector 
+	 */
 	const Vector3& AD () const;
 
 protected :
 	
 
-	CD_SimplexType type;
+	CD_SimplexType type_;
 
-	Point3 S1,S2,S3,S4;
+	Point3 s1_,s2_,s3_,s4_;
 	Vector3 ab_,ac_,ad_;
+
+
 
 
 

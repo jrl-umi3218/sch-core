@@ -1,24 +1,24 @@
 
 
-inline CD_Simplex::CD_Simplex(const Point3& p):type(CD_Point),S1(p)
+inline CD_Simplex::CD_Simplex(const Point3& p):type_(CD_Point),s1_(p)
 {
 }
 
-inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2):type(CD_Segment),S1(p1),S2(p2)
+inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2):type_(CD_Segment),s1_(p1),s2_(p2)
 {
 }
 
-inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3):type(CD_Triangle),S1(p1),S2(p2),S3(p3)
+inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3):type_(CD_Triangle),s1_(p1),s2_(p2),s3_(p3)
 {	
 }
 
-inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4):type(CD_Tetrahedron),S1(p1),S2(p2),S3(p3),S4(p4)
+inline CD_Simplex::CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4):type_(CD_Tetrahedron),s1_(p1),s2_(p2),s3_(p3),s4_(p4)
 {
 }
 
 
 template <typename T>
-inline void exchangeTest(T &a,T &b,T &c)
+inline void CD_SimplexExchangeTest(T &a,T &b,T &c)
 {
 	if (&a!=&b)
 	{
@@ -29,7 +29,7 @@ inline void exchangeTest(T &a,T &b,T &c)
 }
 
 template <typename T>
-inline void exchange(T &a,T &b,T &c)
+inline void CD_SimplexExchange(T &a,T &b,T &c)
 {
 	c=a;
 	a=b;
@@ -39,7 +39,7 @@ inline void exchange(T &a,T &b,T &c)
 
 inline bool CD_Simplex::isAffinelyDependent() const
 {
-	switch (type)
+	switch (type_)
 	{
 	case CD_Segment:
 		return ab_.normsquared()<=zero;
@@ -74,22 +74,22 @@ inline const Vector3& CD_Simplex::AD() const
 
 inline void CD_Simplex::updateVectors()
 {
-		switch (type)
+		switch (type_)
 	{
 		case CD_Tetrahedron:
 		{
-			ab_=S1-S4;
-			ac_=S2-S4;
-			ad_=S3-S4;
+			ab_=s1_-s4_;
+			ac_=s2_-s4_;
+			ad_=s3_-s4_;
 			return;
 		}
 	case CD_Segment:
-		ab_=S1-S2;
+		ab_=s1_-s2_;
 		return;
 	case CD_Triangle:
 		{
-			ab_=S1-S3;
-			ac_=S2-S3;
+			ab_=s1_-s3_;
+			ac_=s2_-s3_;
 			return;
 		}
 	
@@ -102,7 +102,7 @@ inline void CD_Simplex::updateVectors()
 
 inline CD_SimplexType CD_Simplex::getType() const
 {
-	return type;
+	return type_;
 	
 }
 
@@ -110,38 +110,38 @@ inline CD_SimplexType CD_Simplex::getType() const
 
 inline Point3& CD_Simplex::operator[](unsigned char i)
 {
-	return ((i==0) ? S1: (i==1)? S2: (i==2) ? S3 : S4);
+	return ((i==0) ? s1_: (i==1)? s2_: (i==2) ? s3_ : s4_);
 }
 
 
 inline const Point3& CD_Simplex:: operator[](unsigned char i) const
 {
-	return ((i==0) ? S1: (i==1)? S2: (i==2) ? S3 : S4);
+	return ((i==0) ? s1_: (i==1)? s2_: (i==2) ? s3_ : s4_);
 }
 
 inline CD_Simplex& CD_Simplex::operator=(const CD_Simplex& s)
 {
-	type=s.type;
-	switch (type)
+	type_=s.type_;
+	switch (type_)
 	{
 	
 	case CD_Triangle:
-		S1=s.S1;
-		S2=s.S2;
-		S3=s.S3;
+		s1_=s.s1_;
+		s2_=s.s2_;
+		s3_=s.s3_;
 		return *this;
 	case CD_Segment:
-		S1=s.S1;
-		S2=s.S2;
+		s1_=s.s1_;
+		s2_=s.s2_;
 		return *this;
 	case CD_Point:
-		S1=s.S1;
+		s1_=s.s1_;
 		return *this;
 	default:
-		S1=s.S1;
-		S2=s.S2;
-		S3=s.S3;
-		S4=s.S4;
+		s1_=s.s1_;
+		s2_=s.s2_;
+		s3_=s.s3_;
+		s4_=s.s4_;
 		return *this;
 	}
 }
@@ -149,26 +149,26 @@ inline CD_Simplex& CD_Simplex::operator=(const CD_Simplex& s)
 
 inline CD_Simplex& CD_Simplex::operator=(const Point3& p)
 {
-	type=CD_Point;
-	S1=p;
+	type_=CD_Point;
+	s1_=p;
 	return *this;
 }
 
 
 inline bool CD_Simplex::operator==(const CD_Simplex& s)
 {
-	if (type!=s.type)
+	if (type_!=s.type_)
 		return false;
-	switch (type)
+	switch (type_)
 	{
 	case CD_Triangle:
-		return (S1==s.S1)&&(S2==s.S2)&&(S3==s.S3);
+		return (s1_==s.s1_)&&(s2_==s.s2_)&&(s3_==s.s3_);
 	case CD_Segment:
-		return (S1==s.S1)&&(S2==s.S2);
+		return (s1_==s.s1_)&&(s2_==s.s2_);
 	case CD_Point:
-		return (S1==s.S1);
+		return (s1_==s.s1_);
 	default:
-		return (S1==s.S1)&&(S2==s.S2)&&(S3==s.S3)&&(S4==s.S4);
+		return (s1_==s.s1_)&&(s2_==s.s2_)&&(s3_==s.s3_)&&(s4_==s.s4_);
 	}
 }
 
@@ -182,19 +182,19 @@ inline bool CD_Simplex::operator!=(const CD_Simplex& s)
 inline CD_Simplex& CD_Simplex::operator+=(const Point3& p)
 {
 
-	switch (type)
+	switch (type_)
 	{
 	case CD_Point:
-		S2=p;
-		type=CD_Segment;
+		s2_=p;
+		type_=CD_Segment;
 		return *this;	
 	case CD_Segment:
-		S3=p;
-		type=CD_Triangle;
+		s3_=p;
+		type_=CD_Triangle;
 		return *this;
 	default:
-		S4=p;
-		type=CD_Tetrahedron;
+		s4_=p;
+		type_=CD_Tetrahedron;
 		return *this;
 	}
 	return *this;
@@ -206,17 +206,17 @@ inline CD_Simplex& CD_Simplex::operator+=(const Point3& p)
 inline CD_Simplex CD_Simplex::operator+(const Point3& p) const
 {
 
-	if (type==CD_Point)
+	if (type_==CD_Point)
 	{
-		return CD_Simplex(S1,p);
+		return CD_Simplex(s1_,p);
 	}
-	else if (type==CD_Segment)
+	else if (type_==CD_Segment)
 	{
-		return CD_Simplex(S1,S2,p);
+		return CD_Simplex(s1_,s2_,p);
 	}
-	else if (type==CD_Triangle)
+	else if (type_==CD_Triangle)
 	{
-		return CD_Simplex(S1,S2,S3,p);
+		return CD_Simplex(s1_,s2_,s3_,p);
 	}
 	return *this;
 
@@ -232,55 +232,55 @@ inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 	
 	case CD_Segment:
 		{
-			type=CD_Segment;
+			type_=CD_Segment;
 			Vector3 cache;
 			char a[]={0,1,2,3};
 			char b;
-			exchangeTest<Vector3>(S1,(*this)[f.b1],cache);
-			exchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
 
-			S2=(*this)[a[f.b2]];
+			s2_=(*this)[a[f.b2]];
 			return;
 		}
 	case CD_Triangle:
 		{
-			type=CD_Triangle;
+			type_=CD_Triangle;
 			Vector3 cache;
 			char a[]={0,1,2,3};
 			char b;
-			exchangeTest<Vector3>(S1,(*this)[f.b1],cache);
-			exchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
 
-			exchangeTest<Vector3>(S2,(*this)[a[f.b2]],cache);
-			exchange<char>(a[a[1]],a[a[f.b2]],b);
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
+			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
 
-			S3=(*this)[a[f.b3]];
+			s3_=(*this)[a[f.b3]];
 			return;
 			
 		}
 	case CD_Point:
 		{
 			Vector3 cache;
-			type=CD_Point;
-			S1=(*this)[f.b1];
+			type_=CD_Point;
+			s1_=(*this)[f.b1];
 			return;
 		}
 	default:
 		{
-			type=CD_Tetrahedron;
+			type_=CD_Tetrahedron;
 			Vector3 cache;
 			char a[]={0,1,2,3};
 			char b;
-			exchangeTest<Vector3>(S1,(*this)[f.b1],cache);
-			exchange<char>(a[0],a[f.b1],b);
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
 
-			exchangeTest<Vector3>(S2,(*this)[a[f.b2]],cache);
-			exchange<char>(a[a[1]],a[a[f.b2]],b);
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
+			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
 
-			exchangeTest<Vector3>(S3,(*this)[a[f.b3]],cache);
-			exchange<char>(a[a[2]],a[a[f.b3]],b);
+			CD_SimplexExchangeTest<Vector3>(s3_,(*this)[a[f.b3]],cache);
+			CD_SimplexExchange<char>(a[a[2]],a[a[f.b3]],b);
 
-			S4=(*this)[a[f.b4]];
+			s4_=(*this)[a[f.b4]];
 			return ;
 
 		}
@@ -289,15 +289,15 @@ inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 
 inline Scalar CD_Simplex::squareDistanceAtOrigin(const Vector3 &v)const
 {
-	switch (type)
+	switch (type_)
 	{
 	case CD_Point:
-		return S1.normsquared();
+		return s1_.normsquared();
 
 	default:
 		
 
-		Scalar d(v*S2);
+		Scalar d(v*s2_);
 		return d*d/v.normsquared();
 	
 	}

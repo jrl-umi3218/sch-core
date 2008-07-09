@@ -25,7 +25,98 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 	norm4_=p3.normsquared();
 }
 
+inline Scalar& CD_SimplexEnhanced::norms(const char i)
+{
+	return ((i==0) ? norm1_: (i==1)? norm2_: (i==2) ? norm3_ : norm4_);
 
+}
+
+inline Scalar CD_SimplexEnhanced::norms(const char i) const
+{
+	return ((i==0) ? norm1_: (i==1)? norm2_: (i==2) ? norm3_ : norm4_);
+
+}
+
+inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
+{
+
+	switch (f.type)
+	{
+	case CD_None:
+		return;
+	
+	case CD_Segment:
+		{
+			type_=CD_Segment;
+			Vector3 cache;
+			Scalar cache2;
+			char a[]={0,1,2,3};
+			char b;
+
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+
+			s2_=(*this)[a[f.b2]];
+			norm2_= norms(a[f.b2]);
+			return;
+		}
+	case CD_Triangle:
+		{
+			type_=CD_Triangle;
+			Vector3 cache;
+			Scalar cache2;
+			char a[]={0,1,2,3};
+			char b;
+
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
+			CD_SimplexExchange<Scalar>(norm2_,norms(a[f.b2]),cache2);
+			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
+
+			s3_=(*this)[a[f.b3]];
+			norm3_= norms(a[f.b3]);
+			return;
+			
+		}
+	case CD_Point:
+		{
+			Vector3 cache;
+			type_=CD_Point;
+			s1_=(*this)[f.b1];
+			norm1_= norms(f.b1);
+			return;
+		}
+	default:
+		{
+			type_=CD_Tetrahedron;
+			Vector3 cache;
+			Scalar cache2;
+
+			char a[]={0,1,2,3};
+			char b;
+			CD_SimplexExchangeTest<Vector3>(s1_,(*this)[f.b1],cache);
+			CD_SimplexExchange<Scalar>(norm1_,norms(f.b1),cache2);
+			CD_SimplexExchange<char>(a[0],a[f.b1],b);
+
+			CD_SimplexExchangeTest<Vector3>(s2_,(*this)[a[f.b2]],cache);
+			CD_SimplexExchange<Scalar>(norm2_,norms(a[f.b2]),cache2);
+			CD_SimplexExchange<char>(a[a[1]],a[a[f.b2]],b);
+
+			CD_SimplexExchangeTest<Vector3>(s3_,(*this)[a[f.b3]],cache);
+			CD_SimplexExchange<Scalar>(norm3_,norms(a[f.b3]),cache2);
+			CD_SimplexExchange<char>(a[a[2]],a[a[f.b3]],b);
+
+			s4_=(*this)[a[f.b4]];
+			norm4_= norms(a[f.b4]);
+			return ;
+
+		}
+	}
+}
 
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p,Scalar norm):CD_Simplex(p),norm1_(norm)
@@ -51,36 +142,36 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator=(const CD_SimplexEnhance
 	if (this==&s)
 		return *this;
 
-	type=s.type;
-	switch (type)
+	type_=s.type_;
+	switch (type_)
 	{
 	
 	case CD_Triangle:
-		S1=s.S1;
-		S2=s.S2;
-		S3=s.S3;
+		s1_=s.s1_;
+		s2_=s.s2_;
+		s3_=s.s3_;
 		norm1_=s.norm1_;
 		norm2_=s.norm2_;
 		norm3_=s.norm3_;
 
 		return *this;
 	case CD_Segment:
-		S1=s.S1;
-		S2=s.S2;
+		s1_=s.s1_;
+		s2_=s.s2_;
 		norm1_=s.norm1_;
 		norm2_=s.norm2_;
 		
 		return *this;
 	case CD_Point:
-		S1=s.S1;
+		s1_=s.s1_;
 		norm1_=s.norm1_;
 		
 		return *this;
 	default:
-		S1=s.S1;
-		S2=s.S2;
-		S3=s.S3;
-		S4=s.S4;
+		s1_=s.s1_;
+		s2_=s.s2_;
+		s3_=s.s3_;
+		s4_=s.s4_;
 		norm1_=s.norm1_;
 		norm2_=s.norm2_;
 		norm3_=s.norm3_;
@@ -93,22 +184,22 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator=(const CD_SimplexEnhance
 inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
 {
 
-	switch (type)
+	switch (type_)
 	{
 	case CD_Point:
-		S2=p;
-		norm2_=S2.normsquared();
-		type=CD_Segment;
+		s2_=p;
+		norm2_=s2_.normsquared();
+		type_=CD_Segment;
 		return *this;	
 	case CD_Segment:
-		S3=p;
-		type=CD_Triangle;
-		norm3_=S3.normsquared();
+		s3_=p;
+		type_=CD_Triangle;
+		norm3_=s3_.normsquared();
 		return *this;
 	default:
-		S4=p;
-		type=CD_Tetrahedron;
-		norm4_=S4.normsquared();
+		s4_=p;
+		type_=CD_Tetrahedron;
+		norm4_=s4_.normsquared();
 		return *this;
 	}
 	return *this;
@@ -120,17 +211,17 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
 inline CD_SimplexEnhanced CD_SimplexEnhanced::operator+(const Point3& p) const
 {
 
-	if (type==CD_Point)
+	if (type_==CD_Point)
 	{
-		return CD_SimplexEnhanced(S1,p);
+		return CD_SimplexEnhanced(s1_,p);
 	}
-	else if (type==CD_Segment)
+	else if (type_==CD_Segment)
 	{
-		return CD_SimplexEnhanced(S1,S2,p);
+		return CD_SimplexEnhanced(s1_,s2_,p);
 	}
-	else if (type==CD_Triangle)
+	else if (type_==CD_Triangle)
 	{
-		return CD_SimplexEnhanced(S1,S2,S3,p);
+		return CD_SimplexEnhanced(s1_,s2_,s3_,p);
 	}
 	return *this;
 
@@ -140,7 +231,7 @@ inline CD_SimplexEnhanced CD_SimplexEnhanced::operator+(const Point3& p) const
 inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
 {
 	
-	switch (type)
+	switch (type_)
 	{
 
 	case CD_Triangle:

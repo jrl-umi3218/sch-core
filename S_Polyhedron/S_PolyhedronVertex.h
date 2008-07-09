@@ -30,19 +30,56 @@ public:
 	 */
 	virtual S_PolyhedronVertex* clone();
 
+	/*
+	 * \brief clears the Neighbors
+	 */
 	void clearNeighbors();
 	
 
+	/*
+	 * \brief checks if this is the support point of the polyhedron in some given direction
+	 * \param direction the direction vector
+ 	 * \param cuurentsupportH, is the support height of this points, usually given by a neighbor
+	 * \return returns a boolean answer and stores the next vertex and its support height in case it is not the support 
+ 	 */
 	virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
+
+	
+	/*
+	 * \brief checks if this is the support point of the polyhedron in some given direction
+	 * \param direction the direction vector
+	 * \return returns a boolean answer and stores the next vertex and its support height in case it is not the support 
+ 	 */
 	virtual bool isHere(const Vector3& direction);
 
+	/*
+	 * \brief updates fast access neighbors array, must be called at each neighbors modification
+ 	 */
 	void updateFastArrays();
 
+	/*
+	 * \brief sets the number of the vertex in the polyhedron
+ 	 */
 	void setNumber(unsigned int);
+	
+	/*
+	 * \brief gets the number of the vertex in the polyhedron
+ 	 */
 	unsigned int getNumber()const;
 
+	/*
+	 * \brief gets the next vertex in a support point search
+ 	 */
 	S_PolyhedronVertex* getNextVertex()const;
+
+	/*
+	 * \brief gets the next vertex support height
+ 	 */
 	Scalar getNextVertexH()const;
+
+	/*
+	 * \brief gets the number of neighbors
+	 */
 
 	unsigned getNumNeighbors()const;
 

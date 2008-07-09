@@ -22,6 +22,29 @@ public:
 
 	virtual ~CD_SimplexEnhanced(void);
 
+
+	/*! 
+	 * \brief Updates the simplex by supressing some vertexes and/or change their order according to a filter
+	 * \param k is the filter used to know wich vertexes will be kept and in wich order
+	 * \updateVetors must be called after this function to keep the vectors up to date.
+	 */
+	virtual void filter(const CD_SimplexKeptPoints &k);
+
+	/*
+	 * \brief returns the distances of the simplex points to the origin
+	 */
+	Scalar norms(const char i)const;
+	
+	/*
+	 * \brief returns the distances of the simplex points to the origin
+	 */
+	Scalar& norms(const char i);
+
+
+
+	using CD_Simplex::operator [];
+
+
 	CD_SimplexEnhanced& operator =(const CD_SimplexEnhanced&);
 
 	/*! 
@@ -47,11 +70,14 @@ public:
 	 * \brief optimized version of GetClosestSubSimplex((0,0,0),v) for GJK (the highest index point is the last inserted in the GJK algorithm) 
 	 *		to make it work, updateVectors must be called before.
 	 */
-	CD_SimplexEnhanced GetClosestSubSimplexGJK(CD_SimplexKeptPoints &k)const;
+	void getClosestSubSimplexGJK(CD_SimplexKeptPoints &k)const;
 	
 
 protected:
 	Scalar norm1_,norm2_,norm3_,norm4_;
+
+
+
 
 };
 

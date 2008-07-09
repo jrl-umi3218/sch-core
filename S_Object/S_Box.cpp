@@ -3,10 +3,10 @@
 
 inline short sign(Scalar i)
 {
-	return (i>0)? 1:(i<0)?-1:0;
+	return (i>0)? 1:-1;
 }
 
-S_Box::S_Box(Scalar _a,Scalar _b,Scalar _c):a(fabs(_a/2)),b(fabs(_b/2)),c(fabs(_c/2))
+S_Box::S_Box(Scalar _a,Scalar _b,Scalar _c):a_(fabs(_a/2)),b_(fabs(_b/2)),c_(fabs(_c/2))
 {
 
 }
@@ -15,18 +15,18 @@ S_Box::~S_Box(void)
 {
 }
 
-Point3  S_Box::N_Support(const Vector3& v, int& lastFeature)const
+Point3  S_Box::n_Support(const Vector3& v, int& lastFeature)const
 {
-	return Point3(sign(v[0])*a,sign(v[1])*b,sign(v[2])*c);
+	return Point3(sign(v[0])*a_,sign(v[1])*b_,sign(v[2])*c_);
 	
 }
 
-S_Object::S_ObjectType S_Box::S_GetType() const
+S_Object::S_ObjectType S_Box::getType() const
 {
 	return S_Object::TBox;
 }
 
-void S_Box::DrawGL() const
+void S_Box::drawGL() const
 {
 
 
@@ -35,11 +35,11 @@ void S_Box::DrawGL() const
 	
 	double d[16];
 
-	GetTransformationMatrix(d);
+	getTransformationMatrix(d);
 
 	glMultMatrixd(d);
 
-	Point3 x(a,b,c), n(-a,-b,-c);
+	Point3 x(a_,b_,c_), n(-a_,-b_,-c_);
 
 	glBegin(GL_QUADS);
  
