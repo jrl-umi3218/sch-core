@@ -1,7 +1,6 @@
 #include "CD_Pair.h"
 #include "CD_simplex.h"
 #include "CD_simplexEnhanced.h"
-#include "../CD_Penetration/CD_Depth.h"
 #include <gl\glut.h>
 #include <iostream>
 
@@ -9,6 +8,9 @@
 //#define COUNTER
 //#define SAFE_VERSION
 #define PENETRATION_DEPTH
+
+#define _EPSILON_ 1e-24
+#define _PRECISION_ 1e-6
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
@@ -22,10 +24,15 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
 lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
-precision_(1e-6),epsilon_(1e-24),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false)
+precision_(_PRECISION_),epsilon_(_EPSILON_),s1_(Point3()),s2_(Point3()),s_(Point3()),witPointsAreComputed_(false),depthPair(obj1,obj2)
 {	
 	--stamp1_;
 	--stamp2_;
+
+	depthPair.setRelativePrecision(_PRECISION_);
+	depthPair.setEpsilon(_EPSILON_);
+
+
 
 }
 
@@ -64,12 +71,14 @@ Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 void CD_Pair::setRelativePrecision(Scalar s)
 {
 	precision_=s*s;
+	depthPair.setRelativePrecision(s);
 }
 
 
 void CD_Pair::setEpsilon(Scalar s)
 {
 	epsilon_=s;
+	depthPair.setEpsilon(s);
 }
 
 Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
@@ -294,7 +303,7 @@ Scalar CD_Pair::GJK()
 #ifdef PENETRATION_DEPTH	
 	if (collision_)//Objects are in collision
 	{		
-		distance_=-CD_Depth::getPenetrationDepth(sObj1_,sObj2_,v,p1_,p2_,sp,s1_,s2_,precision_,epsilon_);
+		distance_=-depthPair.getPenetrationDepth(v,p1_,p2_,sp,s1_,s2_);
 		if (distance_>=0)
 		{
 			collision_=false;

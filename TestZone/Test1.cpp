@@ -24,7 +24,7 @@
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
 //#define DISPLAY_TEST
-//#define DISPLAY_DISTANCE
+#define DISPLAY_DISTANCE
 //#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
 //#define NON_STP_BV_OBJECTS
@@ -427,7 +427,7 @@ init (void)
   }
 #else
   {
-	  STP_BV s;
+/*	  STP_BV s;
 	  s.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
 	  //STP_BV s2_;
@@ -438,7 +438,7 @@ init (void)
 
  	  sObj.addObject(&(stpObjects[0]));
     
-	  //sObj.addObject(&(stpObjects[1]));
+	  //sObj.addObject(&(stpObjects[1]));*/
 
 
 	  S_Polyhedron P,P2;
@@ -447,12 +447,12 @@ init (void)
 
 	  P2.loadFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg5_195.ptc");
 	  
-	  //polyObjects.push_back(P);
+	  polyObjects.push_back(P);
 	  polyObjects.push_back(P2);
 
 
 	  sObj.addObject(&(polyObjects[0]));
-	  //sObj.addObject(&(polyObjects[1]));
+	  sObj.addObject(&(polyObjects[1]));
 
 
 

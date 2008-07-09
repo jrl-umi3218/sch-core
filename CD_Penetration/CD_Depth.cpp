@@ -2,6 +2,9 @@
 #include "DT_triEdge.h"
 #include <algorithm>
 
+#define _EPSILON_ 1e-24
+#define _PRECISION_ 1e-6
+
 
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
@@ -104,9 +107,6 @@ inline const T& GEN_max(const T& a, const T& b)
   return  a < b ? b : a;
 }
 
-CD_Depth::CD_Depth(void)
-{
-}
 
 CD_Depth::~CD_Depth(void)
 {
@@ -114,8 +114,8 @@ CD_Depth::~CD_Depth(void)
 
 
 
-Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
-									 const CD_Simplex& s1_, const CD_Simplex& s2_, Scalar precision,Scalar epsilon)
+Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
+									 const CD_Simplex& s1_, const CD_Simplex& s2_)
 {
 	int num_verts;
 
@@ -164,7 +164,7 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
 		num_verts=4;
 
 	}
-	Scalar tolerance = epsilon*s.farthestPointDistance();
+	Scalar tolerance = epsilon_*s.farthestPointDistance();
     
     num_triangles = 0;
     
@@ -195,16 +195,16 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         Vector3 aux2 = rot_mat * aux1;
         Vector3 aux3 = rot_mat * aux2;
         
-        pBuf[2] = O1->support(aux1);
-        qBuf[2] = O2->support(-aux1);
+        pBuf[2] = sObj1_->support(aux1);
+        qBuf[2] = sObj2_->support(-aux1);
         yBuf[2] = pBuf[2] - qBuf[2];
 	    
-        pBuf[3] = O1->support(aux2);
-        qBuf[3] = O2->support(-aux2);
+        pBuf[3] = sObj1_->support(aux2);
+        qBuf[3] = sObj2_->support(-aux2);
         yBuf[3] = pBuf[3] - qBuf[3];
 	    
-        pBuf[4] = O1->support(aux3);
-        qBuf[4] = O2->support(-aux3);
+        pBuf[4] = sObj1_->support(aux3);
+        qBuf[4] = sObj2_->support(-aux3);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
         if (originInTetrahedron(yBuf[0], yBuf[2], yBuf[3], yBuf[4]) == 0) 
@@ -283,11 +283,11 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
         Vector3 v2     = yBuf[2] - yBuf[0];
         Vector3 vv     = (v1^ v2);
 	    
-        pBuf[3] = O1->support(vv);
-        qBuf[3] = O2->support(-vv);
+        pBuf[3] = sObj1_->support(vv);
+        qBuf[3] = sObj2_->support(-vv);
         yBuf[3] = pBuf[3] - qBuf[3];
-        pBuf[4] = O1->support(-vv);
-        qBuf[4] = O2->support(vv);
+        pBuf[4] = sObj1_->support(-vv);
+        qBuf[4] = sObj2_->support(vv);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
         Triangle* f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 3);
@@ -362,8 +362,8 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
                 break;
             }
 			
-            pBuf[num_verts] = O1->support( triangle->getClosest());
-            qBuf[num_verts] = O2->support(-triangle->getClosest());
+            pBuf[num_verts] = sObj1_->support( triangle->getClosest());
+            qBuf[num_verts] = sObj2_->support(-triangle->getClosest());
             yBuf[num_verts] = pBuf[num_verts] - qBuf[num_verts];
 			
             int index = num_verts++;
@@ -378,7 +378,7 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
             GEN_set_min(upper_bound2, far_dist2);
 			
             Scalar error = far_dist - triangle->getDist2();
-            if (error <= GEN_max(precision * far_dist, epsilon)
+            if (error <= GEN_max(precision_ * far_dist, epsilon_)
 #if 1
                 || yBuf[index] == yBuf[(*triangle)[0]] 
                 || yBuf[index] == yBuf[(*triangle)[1]]
@@ -425,4 +425,19 @@ Scalar CD_Depth::getPenetrationDepth(const S_Object* O1, const S_Object* O2,Vect
     p2 = triangle->getClosestPoint(qBuf); 
 	return v.normsquared();
 	
+}
+
+CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(_PRECISION_),epsilon_(_EPSILON_)
+{
+	
+}
+
+void CD_Depth::setEpsilon(Scalar s)
+{
+	epsilon_=s;
+}
+
+void CD_Depth::setRelativePrecision(Scalar s)
+{
+	precision_=s*s;
 }

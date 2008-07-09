@@ -7,6 +7,7 @@
 
 #include "../S_Object/S_Object.h"
 #include "CD_Simplex.h"
+#include "../CD_Penetration/CD_Depth.h"
 
 class CD_Pair
 {
@@ -87,6 +88,8 @@ private :
 	bool witPointsAreComputed_;
 
 	CD_Simplex s1_,s2_,s_;
+
+	CD_Depth depthPair;
 
 
 	
