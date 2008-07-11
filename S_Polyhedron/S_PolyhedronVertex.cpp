@@ -1,5 +1,7 @@
 #include "S_PolyhedronVertex.h"
 
+
+using namespace SCD;
 S_PolyhedronVertex::S_PolyhedronVertex(void):fastNeighbors_(NULL),endNeighbors_(NULL)
 {
 }

@@ -6,6 +6,8 @@
 #define _PRECISION_ 1e-6
 
 
+using namespace SCD;
+
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
 
@@ -13,7 +15,7 @@ static Point3  pBuf[MaxSupportPoints];
 static Point3  qBuf[MaxSupportPoints];
 static Vector3 yBuf[MaxSupportPoints];
 
-static Triangle *triangleHeap[MaxFacets];
+static Depth_Triangle *triangleHeap[MaxFacets];
 static int  num_triangles;
 
 int furthestAxis(Vector3 v)
@@ -58,14 +60,14 @@ class TriangleComp
 {
 public:
     
-    bool operator()(const Triangle *face1, const Triangle *face2) 
+    bool operator()(const  Depth_Triangle *face1, const  Depth_Triangle *face2) 
     { 
         return face1->getDist2() > face2->getDist2();
     }
 } triangleComp;
 
 
-inline void addCandidate(Triangle *triangle, Scalar upper2) 
+inline void addCandidate(Depth_Triangle *triangle, Scalar upper2) 
 {
     if (triangle->isClosestInternal() && triangle->getDist2() <= upper2)
     {
@@ -235,10 +237,10 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         
         if (bad_vertex == 0)
         {
-            Triangle *f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 2);
-            Triangle *f1 = g_triangleStore.newTriangle(yBuf, 0, 3, 1);
-            Triangle *f2 = g_triangleStore.newTriangle(yBuf, 0, 2, 3);
-            Triangle *f3 = g_triangleStore.newTriangle(yBuf, 1, 3, 2);
+            Depth_Triangle *f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 2);
+            Depth_Triangle *f1 = g_triangleStore.newTriangle(yBuf, 0, 3, 1);
+            Depth_Triangle *f2 = g_triangleStore.newTriangle(yBuf, 0, 2, 3);
+            Depth_Triangle *f3 = g_triangleStore.newTriangle(yBuf, 1, 3, 2);
             
             if (!(f0 && f0->getDist2() > Scalar(0.0) &&
                   f1 && f1->getDist2() > Scalar(0.0) &&
@@ -248,12 +250,12 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 				return 0;
 			}
             
-            link(Edge(f0, 0), Edge(f1, 2));
-            link(Edge(f0, 1), Edge(f3, 2));
-            link(Edge(f0, 2), Edge(f2, 0));
-            link(Edge(f1, 0), Edge(f2, 2));
-            link(Edge(f1, 1), Edge(f3, 0));
-            link(Edge(f2, 1), Edge(f3, 1));
+            link(Depth_Edge(f0, 0), Depth_Edge(f1, 2));
+            link(Depth_Edge(f0, 1), Depth_Edge(f3, 2));
+            link(Depth_Edge(f0, 2), Depth_Edge(f2, 0));
+            link(Depth_Edge(f1, 0), Depth_Edge(f2, 2));
+            link(Depth_Edge(f1, 1), Depth_Edge(f3, 0));
+            link(Depth_Edge(f2, 1), Depth_Edge(f3, 1));
             
             addCandidate(f0, INFINITY);
             addCandidate(f1, INFINITY);
@@ -290,12 +292,12 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         qBuf[4] = sObj2_->support(vv);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
-        Triangle* f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 3);
-        Triangle* f1 = g_triangleStore.newTriangle(yBuf, 1, 2, 3);
-        Triangle* f2 = g_triangleStore.newTriangle(yBuf, 2, 0, 3); 
-        Triangle* f3 = g_triangleStore.newTriangle(yBuf, 0, 2, 4);
-        Triangle* f4 = g_triangleStore.newTriangle(yBuf, 2, 1, 4);
-        Triangle* f5 = g_triangleStore.newTriangle(yBuf, 1, 0, 4);
+        Depth_Triangle* f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 3);
+        Depth_Triangle* f1 = g_triangleStore.newTriangle(yBuf, 1, 2, 3);
+        Depth_Triangle* f2 = g_triangleStore.newTriangle(yBuf, 2, 0, 3); 
+        Depth_Triangle* f3 = g_triangleStore.newTriangle(yBuf, 0, 2, 4);
+        Depth_Triangle* f4 = g_triangleStore.newTriangle(yBuf, 2, 1, 4);
+        Depth_Triangle* f5 = g_triangleStore.newTriangle(yBuf, 1, 0, 4);
         
         if (!(f0 && f0->getDist2() > Scalar(0.0) &&
               f1 && f1->getDist2() > Scalar(0.0) &&
@@ -307,17 +309,17 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
             return false;
         }
         
-        link(Edge(f0, 1), Edge(f1, 2));
-        link(Edge(f1, 1), Edge(f2, 2));
-        link(Edge(f2, 1), Edge(f0, 2));
+        link(Depth_Edge(f0, 1), Depth_Edge(f1, 2));
+        link(Depth_Edge(f1, 1), Depth_Edge(f2, 2));
+        link(Depth_Edge(f2, 1), Depth_Edge(f0, 2));
         
-        link(Edge(f0, 0), Edge(f5, 0));
-        link(Edge(f1, 0), Edge(f4, 0));
-        link(Edge(f2, 0), Edge(f3, 0));
+        link(Depth_Edge(f0, 0), Depth_Edge(f5, 0));
+        link(Depth_Edge(f1, 0), Depth_Edge(f4, 0));
+        link(Depth_Edge(f2, 0), Depth_Edge(f3, 0));
         
-        link(Edge(f3, 1), Edge(f4, 2));
-        link(Edge(f4, 1), Edge(f5, 2));
-        link(Edge(f5, 1), Edge(f3, 2));
+        link(Depth_Edge(f3, 1), Depth_Edge(f4, 2));
+        link(Depth_Edge(f4, 1), Depth_Edge(f5, 2));
+        link(Depth_Edge(f5, 1), Depth_Edge(f3, 2));
 	    
         addCandidate(f0, INFINITY);
         addCandidate(f1, INFINITY);
@@ -341,7 +343,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     
     // at least one triangle on the heap.	
     
-    Triangle *triangle = 0;
+    Depth_Triangle *triangle = 0;
     
     Scalar upper_bound2 = INFINITY; 	
     
@@ -405,7 +407,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 			
             while (i != g_triangleStore.getFree())
             {
-                Triangle *newTriangle = &g_triangleStore[i];
+                Depth_Triangle *newTriangle = &g_triangleStore[i];
                 //assert(triangle->getDist2() <= newTriangle->getDist2());
                 
                 addCandidate(newTriangle, upper_bound2);

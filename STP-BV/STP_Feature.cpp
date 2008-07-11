@@ -3,6 +3,8 @@
 
 #include <GL/glut.h>
 
+
+using namespace SCD;
 s_STP_VVR::s_STP_VVR():
 m_axis(0.0, 0.0, 0.0), m_cosangle(0.0)
 {

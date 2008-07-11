@@ -1,5 +1,8 @@
 #include "CD_Scene.h"
 
+
+using namespace SCD;
+
 CD_Scene::CD_Scene(void)
 {
 }

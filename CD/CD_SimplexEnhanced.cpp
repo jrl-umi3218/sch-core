@@ -1,5 +1,8 @@
 #include "CD_SimplexEnhanced.h"
 
+
+using namespace SCD;
+
 inline char sign(Scalar i)
 {
 	return (i>0)? 1:-1;

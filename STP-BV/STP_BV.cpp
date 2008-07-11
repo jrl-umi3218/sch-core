@@ -70,6 +70,8 @@ const double PI=3.141592653589793238462643383279502884197;
 #endif
 
 
+using namespace SCD;
+
 s_Triangle::s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3):
 m_vertex1(vertex1), m_vertex2(vertex2), m_vertex3(vertex3)
 {

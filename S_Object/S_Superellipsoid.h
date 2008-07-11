@@ -6,25 +6,29 @@
 
 #include "s_object.h"
 
-class S_Superellipsoid :
-	public S_Object
+namespace SCD
 {
-public:
-	S_Superellipsoid(Scalar a,Scalar b,Scalar c,Scalar epsilon1,Scalar epsilon2);
-	virtual ~S_Superellipsoid(void);
 
-	virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
+	class S_Superellipsoid :
+		public S_Object
+	{
+	public:
+		S_Superellipsoid(Scalar a,Scalar b,Scalar c,Scalar epsilon1,Scalar epsilon2);
+		virtual ~S_Superellipsoid(void);
 
-	virtual S_ObjectType getType() const;
+		virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
 
-	virtual void drawGL() const;
+		virtual S_ObjectType getType() const;
 
-protected:
-	Scalar a_,b_,c_,epsilon1_,epsilon2_;
-	int displist_;
-	int slices_, stacks_;
+		virtual void drawGL() const;
+
+	protected:
+		Scalar a_,b_,c_,epsilon1_,epsilon2_;
+		int displist_;
+		int slices_, stacks_;
 
 
-};
+	};
+}
 
 #endif

@@ -3,6 +3,9 @@
 
 #include <GL/glut.h>
 
+
+using namespace SCD;
+
 STP_BigSphere::STP_BigSphere(Scalar radius, Point3 center):
 m_radius(radius), m_center(center)
 {

@@ -10,6 +10,7 @@
 
 
 
+using namespace SCD;
 
 
 S_Polyhedron::S_Polyhedron(void):fastVertexes_(NULL),lastVertexes_(NULL),displayList_(-1)
@@ -239,7 +240,7 @@ void S_Polyhedron::loadFromFile(const std::string& filename)
 
 	clear();
 
-	SimplestParsing is;
+	FileParsing::SimplestParsing is;
 
 	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
 

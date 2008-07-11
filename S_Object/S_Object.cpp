@@ -1,5 +1,7 @@
 #include "S_Object.h"
 
+using namespace SCD;
+
 S_Object::S_Object():mRot_(1,0,0,0,1,0,0,0,1),trans_(0,0,0)
 {
 	++stamp_;

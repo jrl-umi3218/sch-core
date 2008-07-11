@@ -1,6 +1,9 @@
 #include "S_Box.h"
 #include <GL/glut.h>
 
+
+using namespace SCD;
+
 inline short sign(Scalar i)
 {
 	return (i>0)? 1:-1;

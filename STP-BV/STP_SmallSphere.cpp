@@ -5,6 +5,9 @@
 #include <GL/glut.h>
 #include <map>
 
+
+using namespace SCD;
+
 STP_SmallSphere::STP_SmallSphere(Scalar radius, Point3 center):
 m_radius(radius), m_center(center),m_neighbors(NULL),m_endneighbors(NULL)
 {

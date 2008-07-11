@@ -1,7 +1,7 @@
 #include "SimplestParsing.h"
 #include <iostream>
 
-
+using namespace FileParsing;
 
 SimplestParsing::SimplestParsing()
 {

@@ -1,5 +1,8 @@
 #include "CD_Simplex.h"
 
+
+using namespace SCD;
+
 const Scalar CD_Simplex::zero =__ZERO;
 const Scalar CD_Simplex::zero2=__ZERO*__ZERO;
 const Scalar CD_Simplex::zero3=__ZERO*__ZERO*__ZERO;

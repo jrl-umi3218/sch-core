@@ -23,7 +23,7 @@
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
-//#define DISPLAY_TEST
+#define DISPLAY_TEST
 #define DISPLAY_DISTANCE
 //#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
@@ -42,7 +42,7 @@ const double PI=3.141592653589793238462643383279;
 
 
 
-
+using namespace SCD;
 
 std::fstream outfile;
 
@@ -354,11 +354,11 @@ init (void)
   /*inialize objects*/
 
 #ifdef NON_STP_BV_OBJECTS
-  sObj.addObject(new S_Box(2,2,2));
-  sObj.addObject(new S_Box(2,2,2));
+ // sObj.addObject(new S_Box(0.2,0.2,0.2));
+//  sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Sphere(0.09));
 
-  sObj.addObject(new S_Superellipsoid(.2,.5,.4,0.4,0.8));
+  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));
 #endif
 
   ArchiveType type;
@@ -430,15 +430,15 @@ init (void)
 /*	  STP_BV s;
 	  s.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
-	  //STP_BV s2_;
-	  //s2_.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
+	  STP_BV s2_;
+	  s2_.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
  
 	  stpObjects.push_back(s);
-	  //stpObjects.push_back(s2_);
+	  stpObjects.push_back(s2_);
 
  	  sObj.addObject(&(stpObjects[0]));
     
-	  //sObj.addObject(&(stpObjects[1]));*/
+	  sObj.addObject(&(stpObjects[1]));*/
 
 
 	  S_Polyhedron P,P2;
@@ -571,7 +571,7 @@ display (void)
 
 	
 
-	glColor3d(0.6,0.7,0.6);
+	glColor4d(0.6,0.7,0.6,0.5);
 
 	
 	
@@ -613,6 +613,7 @@ display (void)
 	
 
 	glColor3d(1,1,0.2);
+
 	
 	
 	
@@ -654,6 +655,7 @@ display (void)
 		}
 
 	}
+
 	
 	glEnd();
 	

@@ -4,6 +4,7 @@
 #include <GL/glut.h>
 
 
+using namespace SCD;
 S_Sphere::S_Sphere(const Scalar& Rad): radius_(Rad),slices_(100),stacks_(50)
 {
 }

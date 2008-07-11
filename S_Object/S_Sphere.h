@@ -4,29 +4,33 @@
 
 #include "s_object.h"
 
-class S_Sphere :
-	public S_Object
+namespace SCD
 {
-public:
-	/*!
-	 * \brief constructor
-	 * \param radius, the shpere radius
- 	 */
-	S_Sphere(const Scalar& radius);
-	virtual ~S_Sphere();
 
-	virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
+	class S_Sphere :
+		public S_Object
+	{
+	public:
+		/*!
+		* \brief constructor
+		* \param radius, the shpere radius
+		*/
+		S_Sphere(const Scalar& radius);
+		virtual ~S_Sphere();
 
-	virtual S_ObjectType getType() const;
+		virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
 
-	virtual void drawGL() const;
+		virtual S_ObjectType getType() const;
 
-protected:
-	Scalar radius_;
-	int slices_, stacks_;
+		virtual void drawGL() const;
+
+	protected:
+		Scalar radius_;
+		int slices_, stacks_;
 
 
 
-};
+	};
+}
 
 #endif

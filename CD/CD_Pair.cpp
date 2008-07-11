@@ -12,6 +12,9 @@
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
 
+
+using namespace SCD;
+
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
 	Matrix3x3 B;
@@ -71,7 +74,7 @@ Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 void CD_Pair::setRelativePrecision(Scalar s)
 {
 	precision_=s*s;
-	depthPair.setRelativePrecision(s);
+	depthPair.setRelativePrecision(s*s);
 }
 
 

@@ -23,9 +23,14 @@
 
 #include "DT_TriEdge.h"
 
-TriangleStore g_triangleStore;
+using namespace SCD;
 
-bool link(const Edge& edge0, const Edge& edge1) 
+namespace SCD
+{
+	Depth_TriangleStore g_triangleStore;
+}
+
+bool SCD::link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
 {
 	bool ok = edge0.getSource() == edge1.getTarget() && edge0.getTarget() == edge1.getSource();
     
@@ -40,7 +45,7 @@ bool link(const Edge& edge0, const Edge& edge1)
     return ok;
 }
 
-void half_link(const Edge& edge0, const Edge& edge1) 
+void SCD::half_link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
 {
 	assert(edge0.getSource() == edge1.getTarget() && edge0.getTarget() == edge1.getSource());
     
@@ -48,7 +53,7 @@ void half_link(const Edge& edge0, const Edge& edge1)
 }
 
 
-bool Triangle::computeClosest(const Vector3 *verts)
+bool Depth_Triangle::computeClosest(const Vector3 *verts)
 {
     const Vector3& p0 = verts[m_indices[0]]; 
 
@@ -75,17 +80,17 @@ bool Triangle::computeClosest(const Vector3 *verts)
     return false;
 } 
 
-bool Edge::silhouette(const Vector3 *verts, Index_t index, TriangleStore& triangleStore) const 
+bool Depth_Edge::silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore) const 
 {
     if (!m_triangle->isObsolete()) 
     {
 		if (!m_triangle->isVisibleFrom(verts, index)) 
         {
-			Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
+			Depth_Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
 
 			if (triangle)
 			{
-				half_link(Edge(triangle, 1), *this);
+				half_link(Depth_Edge(triangle, 1), *this);
 				return true;
 			}
 
@@ -101,11 +106,11 @@ bool Edge::silhouette(const Vector3 *verts, Index_t index, TriangleStore& triang
 			{
 				m_triangle->setObsolete(false);
 				
-				Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
+				Depth_Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
 
 				if (triangle)
 				{
-					half_link(Edge(triangle, 1), *this);
+					half_link(Depth_Edge(triangle, 1), *this);
 					return true;
 				}
 
@@ -117,11 +122,11 @@ bool Edge::silhouette(const Vector3 *verts, Index_t index, TriangleStore& triang
 
 				triangleStore.setFree(backup);
 								
-				Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
+				Depth_Triangle *triangle = triangleStore.newTriangle(verts, index, getTarget(), getSource());
 
 				if (triangle)
 				{
-					half_link(Edge(triangle, 1), *this);
+					half_link(Depth_Edge(triangle, 1), *this);
 					return true;
 				}
 
@@ -133,7 +138,7 @@ bool Edge::silhouette(const Vector3 *verts, Index_t index, TriangleStore& triang
 	return true;
 }
 
-bool Triangle::silhouette(const Vector3 *verts, Index_t index, TriangleStore& triangleStore) 
+bool Depth_Triangle::silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore) 
 {
 	//assert(isVisibleFrom(verts, index));
 
@@ -150,9 +155,9 @@ bool Triangle::silhouette(const Vector3 *verts, Index_t index, TriangleStore& tr
 		int i, j;
 		for (i = first, j = triangleStore.getFree()-1; i != triangleStore.getFree(); j = i++)
 		{
-			Triangle *triangle = &triangleStore[i];
-			half_link(triangle->getAdjEdge(1), Edge(triangle, 1));
-            if (!link(Edge(triangle, 0), Edge(&triangleStore[j], 2)))
+			Depth_Triangle *triangle = &triangleStore[i];
+			half_link(triangle->getAdjEdge(1), Depth_Edge(triangle, 1));
+            if (!link(Depth_Edge(triangle, 0), Depth_Edge(&triangleStore[j], 2)))
             {
                 return false;
             }

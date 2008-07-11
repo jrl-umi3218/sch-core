@@ -4,6 +4,9 @@
 #pragma once
 #include "s_object.h"
 
+namespace SCD
+{
+
 class S_ObjectNonNormalized :
 	public S_Object
 {
@@ -28,5 +31,7 @@ public:
 };
 
 #include "S_ObjectNonNormalized.hxx"
+
+}
 
 #endif

@@ -4,6 +4,8 @@
 
 const double PI=3.14159265358979323;
 
+using namespace SCD;
+
 inline short sign(Scalar i)
 {
 	return (i>0)? 1:-1;
