@@ -19,25 +19,15 @@ Point3 S_Sphere::n_Support(const Vector3& v, int& lastFeature)const
 	return v*radius_;
 }
 
+
 S_Object::S_ObjectType S_Sphere::getType() const
 {
 	return S_Object::TSphere;
 }
 
-void S_Sphere::drawGL() const
+void S_Sphere::drawGLInLocalCordinates()
 {
-	glPushMatrix();
-	
-	double d[16];
-
-	getTransformationMatrix(d);
-
-	glMultMatrixd(d);
-
 	glutSolidSphere(radius_,100,50);
 	
-	glPopMatrix();
-
-
 }
 

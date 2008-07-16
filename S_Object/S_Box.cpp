@@ -29,18 +29,8 @@ S_Object::S_ObjectType S_Box::getType() const
 	return S_Object::TBox;
 }
 
-void S_Box::drawGL() const
+void S_Box::drawGLInLocalCordinates()
 {
-
-
-	
-	glPushMatrix();
-	
-	double d[16];
-
-	getTransformationMatrix(d);
-
-	glMultMatrixd(d);
 
 	Point3 x(a_,b_,c_), n(-a_,-b_,-c_);
 
@@ -84,8 +74,6 @@ void S_Box::drawGL() const
       
     glEnd();
 
-	glPopMatrix();
 
-	
 
 }

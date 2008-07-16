@@ -20,7 +20,7 @@ namespace SCD
 
 		virtual S_ObjectType getType() const;
 
-		virtual void drawGL() const;
+		virtual void drawGLInLocalCordinates();
 
 	protected:
 		Scalar a_,b_,c_,epsilon1_,epsilon2_;

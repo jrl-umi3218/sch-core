@@ -22,7 +22,7 @@ namespace SCD
 
 		virtual S_ObjectType getType() const;
 
-		virtual void drawGL() const;
+		virtual void drawGLInLocalCordinates();
 
 	protected:
 		Scalar radius_;

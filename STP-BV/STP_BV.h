@@ -136,8 +136,16 @@ namespace SCD
 
 		virtual S_ObjectType getType() const;
 
-		virtual void drawGL() const;
+		virtual void drawGLInLocalCordinates();
 
+
+
+		/*!
+		*  \brief Constructs the object from a file describing its STP_BV decomposition
+		*  \param filename path to the file describing the STP_BV decomposition of the object
+		*
+		*/
+		virtual void constructFromFile(const std::string& filename);
 
 
 		/*!
@@ -146,7 +154,8 @@ namespace SCD
 		*
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
-		void constructFromFile(const std::string& filename);
+		virtual void constructFromFileWithGL(const std::string& filename);
+
 
 		/*!
 		*  \brief 
@@ -286,6 +295,7 @@ namespace SCD
 		STP_Feature * * m_fastPatches;
 		STP_Feature * * m_lastPatches;
 		int m_patchesSize;
+		bool drawnGL_;
 
 	};
 }

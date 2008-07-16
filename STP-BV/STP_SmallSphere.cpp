@@ -72,7 +72,7 @@ void STP_SmallSphere::print() const
 void STP_SmallSphere::GLdisplay() const
 {
 	glPushMatrix();
-	glColor3f(1.0, 0.0, 0.0);
+	glColor3f(.80, 0.0, 0.0);
 	glTranslatef(m_center[0], m_center[1], m_center[2]);
 	glutSolidSphere(m_radius, 20, 20);
 	glPopMatrix();

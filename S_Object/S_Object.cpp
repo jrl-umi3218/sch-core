@@ -1,4 +1,5 @@
 #include "S_Object.h"
+#include "gl/Glut.h"
 
 using namespace SCD;
 
@@ -253,6 +254,32 @@ void S_Object::resetTransformation()
 }
 
 
-void S_Object::drawGL() const
+void S_Object::drawGL()
 {
+
+	glPushMatrix();
+
+	double d[16];
+
+	getTransformationMatrix(d);
+
+	glMultMatrixd(d);
+
+	drawGLInLocalCordinates();
+
+	glPopMatrix();
+}
+
+void S_Object::drawGLInLocalCordinates()
+{
+}
+
+
+void S_Object::constructFromFile(const std::string &filename)
+{
+}
+
+void S_Object::constructFromFileWithGL(const std::string &filename)
+{
+	constructFromFile(filename);
 }

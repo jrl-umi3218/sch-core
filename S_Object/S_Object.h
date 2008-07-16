@@ -101,6 +101,17 @@ namespace SCD
 		*/ 
 		virtual Point3 support(const Vector3& v, int & LastFeature) const;
 
+		
+		/*
+		*  \brief Constructs the Object from a file
+		*/
+		virtual void constructFromFile(const std::string& filename);
+
+	   /*
+		*  \brief Constructs the Object from a file and prepares the openGL display, default is to call construct from file
+		*/
+		virtual void constructFromFileWithGL(const std::string& filename);
+
 		/*
 		*  \brief Sets the Orientation
 		*/
@@ -158,7 +169,8 @@ namespace SCD
 
 
 		/*!
-		* \brief adds a translation
+		* \name Adds a translation
+		* @{
 		*/
 
 		void addTranslation(const Vector3& v);
@@ -166,6 +178,8 @@ namespace SCD
 		void addTranslation(const Scalar* const v);
 
 		void addTranslation(const Scalar& x,const Scalar& y, const Scalar& z);
+
+		/*! @} */
 
 		/*!
 		* \brief composes the current transfornation with a scale
@@ -201,9 +215,14 @@ namespace SCD
 		void getTransformationMatrix(Scalar *S) const;
 
 		/*!
-		* \brief must be overloaded to display the objects in openGl
+		* \brief Displays the objects in openGl. default is to load unviverse cordinates and call drawGLInLocalCordinates()
 		*/
-		virtual void drawGL() const;
+		virtual void drawGL();
+
+	   /*!
+		* \brief must be overloaded to display the objects in openGl in local cordinates
+		*/
+		virtual void drawGLInLocalCordinates();
 
 
 

@@ -306,7 +306,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
               f4 && f4->getDist2() > Scalar(0.0) &&
               f5 && f5->getDist2() > Scalar(0.0)))
         {
-            return false;
+            return 0;
         }
         
         link(Depth_Edge(f0, 1), Depth_Edge(f1, 2));

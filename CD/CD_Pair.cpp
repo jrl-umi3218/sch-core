@@ -117,6 +117,7 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 
 Scalar CD_Pair::GJK()
 {
+
 	Vector3& v=lastDirection_;
 
 	witPointsAreComputed_=false;

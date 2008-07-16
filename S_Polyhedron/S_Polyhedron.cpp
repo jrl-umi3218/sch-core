@@ -78,7 +78,7 @@ void S_Polyhedron::updateVertexNeighbors()
 {
 	for (unsigned i=0;i<triangles_.size();++i)
 	{
-			//updatingNeighbors
+		//updatingNeighbors
 		vertexes_[triangles_[i].a]->addNeighbor(vertexes_[triangles_[i].b]);
 		vertexes_[triangles_[i].a]->addNeighbor(vertexes_[triangles_[i].c]);
 
@@ -142,13 +142,13 @@ void S_Polyhedron::updateFastArrays()
 Point3 S_Polyhedron::naiveSupport(const Vector3&v)const
 {
 	S_PolyhedronVertex** current;
-	
+
 	current=fastVertexes_;
-	
+
 	Scalar supportH=(*current)->supportH(v);
 
 	Vector3 best=(*current)->getCordinates();
-	
+
 	current++;
 
 	while (current<lastVertexes_)
@@ -159,7 +159,7 @@ Point3 S_Polyhedron::naiveSupport(const Vector3&v)const
 			supportH=(*current)->supportH(v);
 			best=(*current)->getCordinates();
 		}
-		
+
 		current++;
 	}
 
@@ -235,7 +235,7 @@ void S_Polyhedron::deleteVertexesWithoutNeighbors()
 
 }
 
-void S_Polyhedron::loadFromFile(const std::string& filename)
+void S_Polyhedron::constructFromFile(const std::string& filename)
 {
 
 	clear();
@@ -273,7 +273,7 @@ void S_Polyhedron::loadFromFile(const std::string& filename)
 		v->setCordinates(y[0],y[1],y[2]);
 		v->setNumber(unsigned (vertexes_.size()));
 		vertexes_.push_back(v);
-		
+
 	}
 
 	int i=0;
@@ -303,7 +303,7 @@ void S_Polyhedron::loadFromFile(const std::string& filename)
 		is.find("p");
 		is.jumpSeparators(); 
 		is()>>t.c;
-		
+
 
 
 		//updatingNeighbors
@@ -321,56 +321,13 @@ void S_Polyhedron::loadFromFile(const std::string& filename)
 
 
 	}
-	
+
 	for (unsigned i=0;i<vertexes_.size();i++)
 	{
 		vertexes_[i]->updateFastArrays();
 	}
 
 	deleteVertexesWithoutNeighbors();
-
-
-	/*OpenGL displaylist*/
-	
-	displayList_=glGenLists(1);
-
-	glNewList(displayList_,GL_COMPILE);
-
-	glBegin(GL_TRIANGLES);
-
-	
-	glColor3d(0.6,0.8,0.7);
-
-	for (unsigned i=0;i<triangles_.size();i++)
-	{
-		glNormal3d(triangles_[i].normal[0],triangles_[i].normal[1],triangles_[i].normal[2]);
-
-		
-		glVertex3d(vertexes_[triangles_[i].a]->getCordinates()[0],
-				   vertexes_[triangles_[i].a]->getCordinates()[1],
-				   vertexes_[triangles_[i].a]->getCordinates()[2]);
-
-		glVertex3d(vertexes_[triangles_[i].b]->getCordinates()[0],
-				   vertexes_[triangles_[i].b]->getCordinates()[1],
-				   vertexes_[triangles_[i].b]->getCordinates()[2]);
-
-		glVertex3d(vertexes_[triangles_[i].c]->getCordinates()[0],
-				   vertexes_[triangles_[i].c]->getCordinates()[1],
-				   vertexes_[triangles_[i].c]->getCordinates()[2]);
-	}
-
-	
-
-
-	glEnd();
-
-	
-
-	glEndList();
-
-	std::cout << "CREATION SUCCEDED"<< std::endl<< std::endl<< std::endl;
-
-
 
 
 
@@ -383,27 +340,70 @@ S_Object::S_ObjectType S_Polyhedron::getType() const
 	return S_Object::TPolyhedron;
 }
 
-	
-	
 
-void S_Polyhedron::drawGL() const
+
+
+void S_Polyhedron::drawGLInLocalCordinates()
 {
-	if (displayList_!=-1)
+	if (vertexes_.size()>0)
 	{
-		glPushMatrix();
 
-		double d[16];
+		if (displayList_==-1)
+		{
+			/*OpenGL displaylist*/
 
-		getTransformationMatrix(d);
+			displayList_=glGenLists(1);
 
-		glMultMatrixd(d);
+			glNewList(displayList_,GL_COMPILE);
+
+			glBegin(GL_TRIANGLES);
+
+
+			glColor3d(0.6,0.8,0.7);
+
+			for (unsigned i=0;i<triangles_.size();i++)
+			{
+				glNormal3d(triangles_[i].normal[0],triangles_[i].normal[1],triangles_[i].normal[2]);
+
+
+				glVertex3d(vertexes_[triangles_[i].a]->getCordinates()[0],
+					vertexes_[triangles_[i].a]->getCordinates()[1],
+					vertexes_[triangles_[i].a]->getCordinates()[2]);
+
+				glVertex3d(vertexes_[triangles_[i].b]->getCordinates()[0],
+					vertexes_[triangles_[i].b]->getCordinates()[1],
+					vertexes_[triangles_[i].b]->getCordinates()[2]);
+
+				glVertex3d(vertexes_[triangles_[i].c]->getCordinates()[0],
+					vertexes_[triangles_[i].c]->getCordinates()[1],
+					vertexes_[triangles_[i].c]->getCordinates()[2]);
+			}
+
+
+
+
+			glEnd();
+
+
+
+			glEndList();
+
+			std::cout << "CREATION SUCCEDED"<< std::endl<< std::endl<< std::endl;
+
+
+
+
+
+		}
+
+	
+
 
 		glCallList(displayList_);
 
-		glEnd();
 
-		glPopMatrix();
 	}
+
 }
 
 
