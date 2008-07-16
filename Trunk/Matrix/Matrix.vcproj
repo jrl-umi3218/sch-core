@@ -19,6 +19,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
+			InheritedPropertySheets="..\No_DLL.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -79,6 +80,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			InheritedPropertySheets="..\No_DLL.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
