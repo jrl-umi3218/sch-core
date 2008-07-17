@@ -19,7 +19,6 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\No_DLL.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -43,7 +42,7 @@
 				Optimization="0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
@@ -81,7 +80,6 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\No_DLL.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -102,7 +100,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				RuntimeLibrary="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
