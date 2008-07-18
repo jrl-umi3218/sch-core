@@ -74,7 +74,7 @@ Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 void CD_Pair::setRelativePrecision(Scalar s)
 {
 	precision_=s*s;
-	depthPair.setRelativePrecision(s*s);
+	depthPair.setRelativePrecision(s);
 }
 
 
@@ -101,11 +101,12 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 	{
 		
 
-		witPointsAreComputed_=true;
+		
 		stamp1_=sObj1_->checkStamp();
 		stamp2_=sObj2_->checkStamp();
 		GJK();
 		witPoints(p1,p2);
+		witPointsAreComputed_=true;
 		return distance_;
 
 	}
@@ -312,6 +313,10 @@ Scalar CD_Pair::GJK()
 		{
 			collision_=false;
 			
+		}
+		else
+		{
+			v.Set(0,1,0);
 		}
 	}
 #endif

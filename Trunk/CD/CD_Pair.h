@@ -28,7 +28,7 @@ namespace SCD
 		Scalar getClosestPoints(Point3& p1,Point3& p2);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, retarting the computations from the beginning and computes the witness points,
+		*\brief function that returns les distance SQUARED between two convex objects, restarting the computations from the beginning and computes the witness points,
 		*\param p1 is the witness point on the first object
 		*\param p2 is the witness point on the second object
 		*/
@@ -45,9 +45,9 @@ namespace SCD
 		void setVector(const Vector3 &);
 
 		/*!
-		*\brief sets the relative precision of the proximity queries to a given value. Default is 1e-3
+		*\brief sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3. 
 		*/
-		void setRelativePrecision(Scalar);
+		void setRelativePrecision(Scalar precision);
 
 		/*
 		*\brief Sets the machine epsilon. Default is 1e-24
@@ -55,7 +55,7 @@ namespace SCD
 		void setEpsilon(Scalar);
 
 		/*
-		*\brief returns the ith object in the scene
+		*\brief returns a pointer to the ith object in the pair
 		*/
 
 		S_Object * operator[](unsigned char i)

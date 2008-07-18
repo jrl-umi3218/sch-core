@@ -429,7 +429,7 @@ init (void)
   }
 #else
   {
-	 STP_BV s;
+	/* STP_BV s;
 	  s.constructFromFileWithGL("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
 	  STP_BV s2_;
@@ -456,7 +456,7 @@ init (void)
 	  sObj.addObject(&(polyObjects[0]));
 	  sObj.addObject(&(polyObjects[1]));
 
-
+*/
 
   }
 #endif
