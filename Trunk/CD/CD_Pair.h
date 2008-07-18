@@ -15,6 +15,13 @@ namespace SCD
 	class CD_Pair
 	{
 	public:
+
+	   /*!
+		*\brief constructor 
+		*\IMPORTANT: to create a CD::Pair, two CD::S_Objects must have been created before, these objects moust not be destroyed before this instance
+		*\param Obj1 is a pointer to the first object
+		*\param Obj1 is a pointer to the second object
+		*/
 		CD_Pair(S_Object *Obj1, S_Object *Obj2);
 
 

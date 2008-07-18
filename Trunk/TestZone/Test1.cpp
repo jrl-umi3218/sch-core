@@ -355,12 +355,12 @@ init (void)
   /*inialize objects*/
 
 #ifdef NON_STP_BV_OBJECTS
-  /*sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Box(0.2,0.2,0.2));*/
+  sObj.addObject(new S_Box(0.2,0.2,0.2));
+  sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Sphere(0.1));
   sObj.addObject(new S_Sphere(1));
 
- /* sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));*/
+  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));
 #endif
 
   ArchiveType type;
@@ -429,7 +429,7 @@ init (void)
   }
 #else
   {
-	/* STP_BV s;
+	 STP_BV s;
 	  s.constructFromFileWithGL("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
 
 	  STP_BV s2_;
@@ -456,7 +456,7 @@ init (void)
 	  sObj.addObject(&(polyObjects[0]));
 	  sObj.addObject(&(polyObjects[1]));
 
-*/
+
 
   }
 #endif
