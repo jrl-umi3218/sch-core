@@ -22,21 +22,21 @@
 
 #define DO_TEST
 //#define OUTPUT_FILE
-#define LINES_DISPLAY
-#define DISPLAY_TEST
-#define DISPLAY_DISTANCE
-//#define MULTI_OBJECTS_TEST
+//#define LINES_DISPLAY
+//#define DISPLAY_TEST
+//#define DISPLAY_DISTANCE
+#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
-#define NON_STP_BV_OBJECTS
+//#define NON_STP_BV_OBJECTS
 //#define IRREGULARITIES_COUNTERS
 
 
-const double DispersionScale=0.162;
+const double DispersionScale=0.5;
 const double AnimationSpeed=0.0003;
 const double AnimationScale=0.18;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=400000;
+const long AnimationEnd=5000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -357,10 +357,10 @@ init (void)
 #ifdef NON_STP_BV_OBJECTS
   sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Sphere(0.1));
+ /* sObj.addObject(new S_Sphere(0.1));
   sObj.addObject(new S_Sphere(1));
 
-  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));
+  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));*/
 #endif
 
   ArchiveType type;
@@ -376,7 +376,7 @@ init (void)
 		  std::string s;		
 		  s="";
 		  std::stringstream istr;
-		  istr<<std::string("C:/Mehdi/nuage points/pobj (")<<i<<").txt";
+		  istr<<std::string("C:/Mehdi/nuage points/simplifies/nuage points/obj (")<<i<<").txt";
 
 
 		  getline(istr,s);
@@ -395,10 +395,10 @@ init (void)
 			  testfile.close();
 
 			  STP_BV stp;
-			  stp.constructFromFile(s.c_str());
+			  stp.constructFromFileWithGL(s.c_str());
 
 			  stpObjects.push_back(stp);
-			  stpObjects.push_back(stp);
+			//  stpObjects.push_back(stp);
 
 
 

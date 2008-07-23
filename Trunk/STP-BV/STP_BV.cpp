@@ -326,7 +326,8 @@ void STP_BV::constructFromFile(const std::string& filename)
 
 	//small spheres
 	STP_SmallSphere* ss;
-	is >> ssnum;
+	double _r,_R;
+	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
 		std::cout << "EXCEPTION : the given source file doesn't contain any small spheres." << std::endl;
@@ -538,7 +539,8 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 
 	//small spheres
 	STP_SmallSphere* ss;
-	is >> ssnum;
+	double _r,_R;
+	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
 		std::cout << "EXCEPTION : the given source file doesn't contain any small spheres." << std::endl;
@@ -1362,12 +1364,8 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 
 	if(!found)
 	{
-
 		std::cout << "Probleme zuo first prime !!!" << std::endl;
-		if(m_patches.begin() != m_patches.end())
-			return (*m_patches.begin())->support(v);
-		else
-			return Point3(0.0, 0.0, 0.0);
+		return supportNaive(v);
 	}
 
 
