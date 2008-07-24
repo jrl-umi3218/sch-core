@@ -2,7 +2,7 @@ inline Point3 S_Object::support(const Vector3& v) const
 {
 	Vector3 vp(v);
 	vp=v*mRot_; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
-	Scalar norm=v.norm();
+	Scalar norm=vp.norm();
 	if (norm>0)
 	{
 		vp/=norm;
@@ -21,7 +21,7 @@ inline Point3 S_Object::support(const Vector3& v,int &LastFeature) const
 {
 	Vector3 vp(v);
 	vp= v * mRot_; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
-	Scalar norm=v.norm();
+	Scalar norm=vp.norm();
 	if (norm>0)
 	{
 		vp/=norm;

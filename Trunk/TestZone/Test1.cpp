@@ -23,20 +23,20 @@
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
-//#define DISPLAY_TEST
-//#define DISPLAY_DISTANCE
-#define MULTI_OBJECTS_TEST
+#define DISPLAY_TEST
+#define DISPLAY_DISTANCE
+//#define MULTI_OBJECTS_TEST
 //#define COLLISION_COUNTERS
 //#define NON_STP_BV_OBJECTS
 //#define IRREGULARITIES_COUNTERS
 
 
 const double DispersionScale=0.5;
-const double AnimationSpeed=0.0003;
+const double AnimationSpeed=0.3;
 const double AnimationScale=0.18;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=5000;
+const long AnimationEnd=500;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -430,10 +430,10 @@ init (void)
 #else
   {
 	 STP_BV s;
-	  s.constructFromFileWithGL("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (11).txt");
+	  s.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (3).txt");
 
 	  STP_BV s2_;
-	  s2_.constructFromFileWithGL("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/obj (12).txt");
+	  s2_.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (1).txt");
  
 	  stpObjects.push_back(s);
 	  stpObjects.push_back(s2_);
@@ -443,7 +443,7 @@ init (void)
 	  sObj.addObject(&(stpObjects[1]));
 
 
-	 S_Polyhedron P,P2;
+/*	 S_Polyhedron P,P2;
 	
 	  P.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
 
@@ -454,7 +454,7 @@ init (void)
 
 
 	  sObj.addObject(&(polyObjects[0]));
-	  sObj.addObject(&(polyObjects[1]));
+	  sObj.addObject(&(polyObjects[1]));*/
 
 
 
@@ -647,7 +647,7 @@ display (void)
 #endif
 
 #ifdef DISPLAY_DISTANCE
-		std::cout<<d<<' '<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
+		std::cout<<d<<std::endl;//<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
 		
 		
 #endif
@@ -670,6 +670,226 @@ display (void)
 	
 	
 }
+
+void TestPrecision()
+{
+	Vector3 position;
+	
+	Vector3 axe;
+	double angle;
+	
+	position[0] =position[1] =	position[2] =3;
+
+
+
+	axe[0] =  0;
+	axe[1] = 0;
+	axe[2] =  1;
+
+
+	angle=0;
+
+	std::vector<Vector3> oldPos;
+
+	
+
+	for (int i=0;i<sObj.Size();i++)
+	{
+		position[0] =(1+7*i%5-3)*DispersionScale;
+		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
+		position[2] =((5*i%7-3)*(5.0/7))*DispersionScale;
+
+		oldPos.push_back(position);
+
+		sObj[i]->setOrientation(angle,axe);
+		sObj[i]->setPosition(position);
+				
+
+	}
+
+	std::cout.precision(18);
+
+	
+
+	
+
+
+#ifdef DO_TEST
+
+	
+	sObj.sceneProximityQuery();
+
+#endif
+
+#ifdef DISPLAY_TEST
+	display();
+#endif
+
+	clock_t begin, end;
+
+	begin=clock();
+
+#ifdef OUTPUT_FILE
+
+	std::fstream outfile;
+
+	
+
+	outfile.open("c:/mehdi/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	
+	outfile.precision(18);
+
+#endif	
+
+
+#ifdef IRREGULARITIES_COUNTERS
+	Scalar previousDistance=2e90;
+	int irrCpt=0;
+
+#endif
+
+
+#ifdef COLLISION_COUNTERS
+int collCpt=0;
+int totalCpt=0;
+#endif
+
+
+
+
+
+	for (long i=AnimationBegin; i<AnimationEnd; i++)
+	{
+		axe[0] =  sin((42)*sin(0.2*AnimationSpeed)*(i%87%3));
+		axe[1] =  sin((-43)*sin(0.2*AnimationSpeed)*(i%73%3));
+		axe[2] =  cos((83)*sin(0.1*AnimationSpeed)*(i%89%3));
+
+		angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed))*(i%79%3));
+		
+		/*sObj[j]->addTranslation(Vector3(sin((20*(1))*sin(0.2*AnimationSpeed))*(i%67%3),
+		sin((71-140*(1))*sin(0.15*AnimationSpeed))*(i%59%3),
+		sin((20)*sin(0.2*AnimationSpeed*(i%93%3))))*AnimationScale);
+
+		*/
+
+		for (int j=0;j<sObj.Size();j++)
+		{
+			
+			sObj[j]->addRotation(angle,axe);
+	
+
+		}
+
+		
+		
+
+
+	
+
+		
+		
+#ifdef DO_TEST
+		sObj.sceneProximityQuery();
+
+#ifdef OUTPUT_FILE
+		for (int k=0;k<sObj.Size();k++)
+		{
+			for (int j=0;j<k;j++)
+			{ 
+				Point3 p1,p2;
+				Scalar distance=sObj.GetWitnessPoints(k,j,p1,p2);
+				outfile<<p1<<p2<<distance<<std::endl;
+	
+			
+			}
+			
+			
+		}
+		
+#endif
+
+#ifdef IRREGULARITIES_COUNTERS
+	Point3 p1,p2;
+	Scalar distance=sObj.GetWitnessPoints(0,1,p1,p2);
+	Scalar distance2=(p1-p2).normsquared();
+	if (previousDistance!=2e90)
+	{
+		if (fabs(fabs(distance)-distance2)>(0.001*(fabs(distance)+distance2)/2))
+		{
+			irrCpt++;
+			std::cout<<"Witness Points Irregularity : "<<i<<' '<<distance<<' '<<distance2<<std::endl;
+		}
+		if (fabs(distance-previousDistance)>0.1)
+		{
+			irrCpt++;
+			std::cout<<"Coherence Irregularity : "<<i;
+		}
+
+	}
+	previousDistance=distance;
+	
+
+
+#endif
+
+#ifdef COLLISION_COUNTERS
+		for (int k=0;k<sObj.Size();k++)
+		{
+			for (int j=0;j<k;j++)
+			{ 
+				Point3 p1,p2;
+				Scalar distance=sObj.GetWitnessPoints(k,j,p1,p2);
+				if (distance<0)
+					collCpt++;
+				totalCpt++;
+
+			}
+
+
+		}
+
+#endif
+
+#endif
+
+
+		
+
+
+#ifdef DISPLAY_TEST
+		display();
+#endif
+
+
+
+
+
+	}
+
+#ifdef OUTPUT_FILE
+	outfile.close();
+#endif
+
+	end=clock();
+
+	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) << " : " << ((double)(end - begin) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) << std::endl;
+
+#ifdef IRREGULARITIES_COUNTERS
+	std::cout<<"Irregularities : "<<irrCpt;
+#endif
+
+	
+#ifdef COLLISION_COUNTERS
+	std::cout << "Collisions : "<<collCpt<< " Total pairs checked : "<<totalCpt<<std::endl;
+
+#endif
+
+	
+}
+
+
+
+
 
 void TestAnimation()
 {
@@ -936,6 +1156,10 @@ keyPress (unsigned char key, int x, int y)
 
   case '1':
 	  TestAnimation();
+	  break;
+
+   case '2':
+	  TestPrecision();
 	  break;
 	  
   }

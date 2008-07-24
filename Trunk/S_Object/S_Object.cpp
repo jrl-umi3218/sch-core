@@ -116,7 +116,7 @@ void S_Object::addRotation(const Quaternion quaternion)
 {
 	++stamp_;
 	Matrix3x3 m(quaternion);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;	
 	
 }
@@ -126,7 +126,7 @@ void S_Object::addRotation(const Scalar& q0,const Scalar& q1,const Scalar& q2,co
 {
 	++stamp_;
 	Matrix3x3 m(q0,q1,q2,q3);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;	
 }
 
@@ -134,7 +134,7 @@ void S_Object::addRotation(const Scalar& s, const Vector3& v)
 {
 	++stamp_;
 	Matrix3x3 m(s,v);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;
 	
 }
@@ -147,7 +147,7 @@ void S_Object::addRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02
 	Matrix3x3 m( r00, r01, r02,
 				 r10, r11, r12, 
 				 r20, r21, r22);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;
 
 	
@@ -164,7 +164,7 @@ void S_Object::addRotation(const Scalar* const p)
 
 	++stamp_;
 	Matrix3x3 m(p);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;
 	
 }
@@ -173,7 +173,7 @@ void S_Object::addRotation(const Scalar &yaw, const Scalar &pitch, const Scalar 
 {
 	++stamp_;
 	Matrix3x3 m(yaw,pitch,roll);
-	mRot_*=m;
+	mRot_=m*mRot_;
 	trans_=m*trans_;
 	
 }

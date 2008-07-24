@@ -223,6 +223,7 @@ bool STP_BigSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 	tmp1 = m_VVR0.isInsidePrime(v);
 	tmp2 = m_VVR1.isInsidePrime(v);
 	tmp3 = m_VVR2.isInsidePrime(v);
+
 	
 
 

@@ -10,7 +10,7 @@
 #define PENETRATION_DEPTH
 
 #define _EPSILON_ 1e-24
-#define _PRECISION_ 1e-6
+#define _PRECISION_ 1e-16
 
 
 using namespace SCD;
@@ -249,7 +249,7 @@ Scalar CD_Pair::GJK()
 
 
 
-			if ((distance_-proj*sup)<(precision_*distance_))
+			if ((distance_-proj*sup)<(precision_*distance_))//precision reached
 			{
 				collision_=false;
 				cont=false;

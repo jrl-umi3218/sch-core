@@ -329,6 +329,36 @@ namespace MAL_Default
 			return vr;
 		}
 
+		Matrix3x3<T> operator *(const Matrix3x3<T>& B) const
+		{
+			return Matrix3x3<T>( 
+			 m[0] * B.m[0] + m[1] * B.m[3] + m[2] * B.m[6],
+			 m[0] * B.m[1] + m[1] * B.m[4] + m[2] * B.m[7],
+			 m[0] * B.m[2] + m[1] * B.m[5] + m[2] * B.m[8],
+			 m[3] * B.m[0] + m[4] * B.m[3] + m[5] * B.m[6],
+			 m[3] * B.m[1] + m[4] * B.m[4] + m[5] * B.m[7],
+			 m[3] * B.m[2] + m[4] * B.m[5] + m[5] * B.m[8],
+			 m[6] * B.m[0] + m[7] * B.m[3] + m[8] * B.m[6],
+			 m[6] * B.m[1] + m[7] * B.m[4] + m[8] * B.m[7],
+			 m[6] * B.m[2] + m[7] * B.m[5] + m[8] * B.m[8]);
+			 
+		}
+
+		void operator *=(const Matrix3x3<T>& B) 
+		{
+			Matrix3x3<T> temp(*this);
+			m[0] = temp.m[0] * B.m[0] + temp.m[1] * B.m[3] + temp.m[2] * B.m[6];
+			m[1] = temp.m[0] * B.m[1] + temp.m[1] * B.m[4] + temp.m[2] * B.m[7];
+			m[2] = temp.m[0] * B.m[2] + temp.m[1] * B.m[5] + temp.m[2] * B.m[8];
+			m[3] = temp.m[3] * B.m[0] + temp.m[4] * B.m[3] + temp.m[5] * B.m[6];
+			m[4] = temp.m[3] * B.m[1] + temp.m[4] * B.m[4] + temp.m[5] * B.m[7];
+			m[5] = temp.m[3] * B.m[2] + temp.m[4] * B.m[5] + temp.m[5] * B.m[8];
+			m[6] = temp.m[6] * B.m[0] + temp.m[7] * B.m[3] + temp.m[8] * B.m[6];
+			m[7] = temp.m[6] * B.m[1] + temp.m[7] * B.m[4] + temp.m[8] * B.m[7];
+			m[8] = temp.m[6] * B.m[2] + temp.m[7] * B.m[5] + temp.m[8] * B.m[8]; 
+
+		}
+
 
 
 

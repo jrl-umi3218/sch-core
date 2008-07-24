@@ -1105,7 +1105,7 @@ Point3 STP_BV::n_Support(const Vector3& v,int& lastFeature) const
 
 
 #ifdef NAIVESUPPORT
-	return supportNaive(v,lastFeature);
+	return supportNaive(v);
 #endif
 #ifdef FARTHESTSUPPORT
 	return supportFarthestNeighbour(v,lastFeature);
@@ -1245,6 +1245,7 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 	if(!found)
 	{
 		std::cout << "Probleme zuo farthest !!!" << std::endl;
+		return supportNaive(v);
 		if(m_patches.begin() != m_patches.end())
 			return (*m_patches.begin())->support(v);
 		else
@@ -1365,7 +1366,7 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 	if(!found)
 	{
 		std::cout << "Probleme zuo first prime !!!" << std::endl;
-		return supportNaive(v);
+		return supportFarthestNeighbourPrime(v,lastFeature);
 	}
 
 
