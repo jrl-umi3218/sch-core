@@ -35,6 +35,8 @@ const double PI=3.141592653589793238462643383279502884197;
 #define FIRSTSUPPORTPRIME
 //#define TREESUPPORT
 
+//#define SUPPORT_DEBUG
+
 //#define COUNTER
 
 //#define writecout
@@ -1244,7 +1246,9 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 
 	if(!found)
 	{
+#ifdef SUPPORT_DEBUG
 		std::cout << "Probleme zuo farthest !!!" << std::endl;
+#endif
 		return supportNaive(v);
 		if(m_patches.begin() != m_patches.end())
 			return (*m_patches.begin())->support(v);
@@ -1365,7 +1369,9 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 
 	if(!found)
 	{
+#ifdef SUPPORT_DEBUG
 		std::cout << "Probleme zuo first prime !!!" << std::endl;
+#endif
 		return supportFarthestNeighbourPrime(v,lastFeature);
 	}
 

@@ -74,6 +74,13 @@ namespace SCD
 		*/
 		void getClosestSubSimplexGJK(CD_SimplexKeptPoints &k)const;
 
+		
+		/*!
+		* \brief Tells if the simplex is affinely dependant or not according to the static variable zero 
+		*		to make it work, updateVectors must be called before.
+		*/
+		bool isAffinelyDependent() const;
+
 
 	protected:
 		Scalar norm1_,norm2_,norm3_,norm4_;

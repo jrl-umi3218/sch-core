@@ -118,15 +118,12 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 
 Scalar CD_Pair::GJK()
 {
-
 	Vector3& v=lastDirection_;
 
 	witPointsAreComputed_=false;
 
-		
 	int& lf1=lastFeature1_;
 	int& lf2=lastFeature2_;
-
 
 	Point3 sup1=sObj1_->support(v,lf1);
 	Point3 sup2=sObj2_->support(-v,lf2);
@@ -146,9 +143,6 @@ Scalar CD_Pair::GJK()
 	projectionComputed_=false;
 	
 	bool cont=true;
-
-	
-	
 		
 	Point3 proj;
 
@@ -181,55 +175,39 @@ Scalar CD_Pair::GJK()
 				S01-=s_[2];
 				S02=s_[0];
 				S02-=s_[2];
-
 				a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
-				
 				
 				lambda0_=a2*a6-a3*a5;
 				lambda1_=a3*a4-a1*a6;
 				lambda2_=a1*a5-a2*a4;
 				det_=1/(lambda0_+lambda1_+lambda2_);
-				
 				lambda0_*=det_;
 				lambda1_*=det_;
 				lambda2_*=det_;
 
 				proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
-				
 				v=-proj;
-
 				break;
-			
 			}
 
 		case CD_Segment:
 			{
-
-			
 				S01=s_[1];
 				S01-=s_[0];
 	
 				lambda0_=S01*s_[1];
 				lambda1_=-(S01*s_[0]);
-				
-
 				det_=1/(lambda0_+lambda1_);
-
 				lambda0_*=det_;
 				lambda1_*=det_;
 
 				proj=s_[0]*lambda0_+s_[1]*lambda1_;
-				
-				
 				v=-proj;
-
 				break;
-
 			}
 		default:
 			{
 				proj=s_[0];
-				
 				v=-proj;
 			}
 
@@ -243,26 +221,19 @@ Scalar CD_Pair::GJK()
 		{
 			sup1=sObj1_->support(v,lf1);
 			sup2=sObj2_->support(-v,lf2);
-
 			sup=sup1;
 			sup-=sup2;
-
-
 
 			if ((distance_-proj*sup)<(precision_*distance_))//precision reached
 			{
 				collision_=false;
 				cont=false;
 				projectionComputed_=true;
-
 			}
 			else
 			{
-
 				sp+=sup;
-				
 				sp.updateVectors();
-
 #ifndef SAFE_VERSION
 				if (sp.isAffinelyDependent())
 				{
@@ -273,28 +244,23 @@ Scalar CD_Pair::GJK()
 				else
 #endif
 				{
-
 					sp.getClosestSubSimplexGJK(k);
 					sp.filter(k);
 					s1_+=sup1;
 					s2_+=sup2;
-					
+
 					if (sp.getType()==CD_Tetrahedron)
 					{
 						cont=false;
 						s1_+=sup1;
 						s2_+=sup2;
 						collision_=true;
-
 					}	
 					else
 					{
-						
 						s_=sp;
 						s1_.filter(k);
 						s2_.filter(k);
-
-						
 					}
 				}
 			}

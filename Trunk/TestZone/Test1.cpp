@@ -19,20 +19,20 @@
 
 #include "includes.h"
 
-
+//#define NON_STP_BV_OBJECTS
+#define DISPLAY_DISTANCE
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
 #define DISPLAY_TEST
-#define DISPLAY_DISTANCE
 //#define MULTI_OBJECTS_TEST
+//#define TEST_HOLD
 //#define COLLISION_COUNTERS
-//#define NON_STP_BV_OBJECTS
 //#define IRREGULARITIES_COUNTERS
 
 
 const double DispersionScale=0.5;
-const double AnimationSpeed=0.3;
+const double AnimationSpeed=0.03;
 const double AnimationScale=0.18;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
@@ -693,20 +693,7 @@ void TestPrecision()
 
 	
 
-	for (int i=0;i<sObj.Size();i++)
-	{
-		position[0] =(1+7*i%5-3)*DispersionScale;
-		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
-		position[2] =((5*i%7-3)*(5.0/7))*DispersionScale;
-
-		oldPos.push_back(position);
-
-		sObj[i]->setOrientation(angle,axe);
-		sObj[i]->setPosition(position);
-				
-
-	}
-
+	
 	std::cout.precision(18);
 
 	
@@ -853,7 +840,11 @@ int totalCpt=0;
 #endif
 
 
-		
+#ifdef TEST_HOLD
+		std::cout<<i<<std::endl;
+		system("pause");
+
+#endif	
 
 
 #ifdef DISPLAY_TEST
@@ -1052,6 +1043,9 @@ int totalCpt=0;
 
 
 #endif
+
+
+
 
 #ifdef COLLISION_COUNTERS
 		for (int k=0;k<sObj.Size();k++)

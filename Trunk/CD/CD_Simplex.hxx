@@ -37,22 +37,7 @@ inline void CD_SimplexExchange(T &a,T &b,T &c)
 }
 
 
-inline bool CD_Simplex::isAffinelyDependent() const
-{
-	switch (type_)
-	{
-	case CD_Segment:
-		return ab_.normsquared()<=zero;
-	case CD_Triangle:
-		{
-			return (ab_^ac_).normsquared()<=zero4;
-		}
-	case CD_Tetrahedron:
-		return fabs(Matrix3x3(ab_,ac_,ad_).determinant())<=zero3;
-	default:
-		return false;
-	}
-}
+
 
 inline const Vector3& CD_Simplex::AB() const
 {

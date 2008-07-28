@@ -3,10 +3,10 @@
 
 using namespace SCD;
 
-const Scalar CD_Simplex::zero =__ZERO;
-const Scalar CD_Simplex::zero2=__ZERO*__ZERO;
-const Scalar CD_Simplex::zero3=__ZERO*__ZERO*__ZERO;
-const Scalar CD_Simplex::zero4=__ZERO*__ZERO*__ZERO*__ZERO;
+const Scalar CD_Simplex::zero_ =__ZERO;
+const Scalar CD_Simplex::zero2_=__ZERO*__ZERO;
+const Scalar CD_Simplex::zero3_=__ZERO*__ZERO*__ZERO;
+const Scalar CD_Simplex::zero4_=__ZERO*__ZERO*__ZERO*__ZERO;
 
 
 	/*! 

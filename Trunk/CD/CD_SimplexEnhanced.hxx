@@ -332,3 +332,19 @@ inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
 
 }
 
+inline bool CD_SimplexEnhanced::isAffinelyDependent() const
+{
+	switch (type_)
+	{
+	case CD_Segment:
+		return ab_.normsquared()<=zero_*farthestPointDistance();
+	case CD_Triangle:
+		{
+			return (ab_^ac_).normsquared()<=zero_*farthestPointDistance();
+		}
+	case CD_Tetrahedron:
+		return fabs(Matrix3x3(ab_,ac_,ad_).determinant())<=zero_*farthestPointDistance();
+	default:
+		return false;
+	}
+}

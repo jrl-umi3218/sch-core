@@ -5,7 +5,7 @@
 #pragma once
 
 
-#define __ZERO 0
+#define __ZERO 1e-18
 
 #include "../matrix/SCD_Types.h"
 
@@ -127,11 +127,6 @@ namespace SCD
 
 
 
-		/*!
-		* \brief Tells if the simplex is affinely dependant or not according to the static variable zero 
-		*		to make it work, updateVectors must be called before.
-		*/
-		bool isAffinelyDependent() const;
 
 		/*!
 		* \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes 
@@ -166,10 +161,10 @@ namespace SCD
 
 
 
-		static const Scalar zero;
-		static const Scalar zero2;
-		static const Scalar zero3;
-		static const Scalar zero4;
+		static const Scalar zero_;
+		static const Scalar zero2_;
+		static const Scalar zero3_;
+		static const Scalar zero4_;
 
 	};
 
