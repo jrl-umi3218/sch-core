@@ -22,7 +22,7 @@
 //#define NON_STP_BV_OBJECTS
 #define DISPLAY_DISTANCE
 #define DO_TEST
-//#define OUTPUT_FILE
+#define OUTPUT_FILE
 //#define LINES_DISPLAY
 #define DISPLAY_TEST
 //#define MULTI_OBJECTS_TEST
@@ -32,11 +32,11 @@
 
 
 const double DispersionScale=0.5;
-const double AnimationSpeed=0.03;
-const double AnimationScale=0.18;
+const double AnimationSpeed=0.003;
+const double AnimationScale=0.5;
 const long AnimationBegin=0;
 const long RandomTestEnd=4000;
-const long AnimationEnd=500;
+const long AnimationEnd=1000000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -357,10 +357,10 @@ init (void)
 #ifdef NON_STP_BV_OBJECTS
   sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Box(0.2,0.2,0.2));
- /* sObj.addObject(new S_Sphere(0.1));
+  sObj.addObject(new S_Sphere(0.1));
   sObj.addObject(new S_Sphere(1));
 
-  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));*/
+  sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));
 #endif
 
   ArchiveType type;
@@ -647,7 +647,7 @@ display (void)
 #endif
 
 #ifdef DISPLAY_DISTANCE
-		std::cout<<d<<std::endl;//<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
+		std::cout<<d<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
 		
 		
 #endif
@@ -784,7 +784,7 @@ int totalCpt=0;
 			for (int j=0;j<k;j++)
 			{ 
 				Point3 p1,p2;
-				Scalar distance=sObj.GetWitnessPoints(k,j,p1,p2);
+				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
 				outfile<<p1<<p2<<distance<<std::endl;
 	
 			
@@ -1009,7 +1009,7 @@ int totalCpt=0;
 			for (int j=0;j<k;j++)
 			{ 
 				Point3 p1,p2;
-				Scalar distance=sObj.GetWitnessPoints(k,j,p1,p2);
+				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
 				outfile<<p1<<p2<<distance<<std::endl;
 	
 			

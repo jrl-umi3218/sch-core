@@ -37,6 +37,16 @@ inline Scalar CD_SimplexEnhanced::norms(const char i) const
 
 }
 
+inline Scalar CD_SimplexEnhanced::square_(const Scalar& a)
+{
+	return a*a;
+}
+
+inline Scalar CD_SimplexEnhanced::cube_(const Scalar& a)
+{
+	return a*a;
+}
+
 inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
 {
 
@@ -229,6 +239,7 @@ inline CD_SimplexEnhanced CD_SimplexEnhanced::operator+(const Point3& p) const
 
 
 inline Scalar CD_SimplexEnhanced::farthestPointDistance() const
+
 {
 	
 	switch (type_)
@@ -340,10 +351,10 @@ inline bool CD_SimplexEnhanced::isAffinelyDependent() const
 		return ab_.normsquared()<=zero_*farthestPointDistance();
 	case CD_Triangle:
 		{
-			return (ab_^ac_).normsquared()<=zero_*farthestPointDistance();
+			return (ab_^ac_).normsquared()<=square_(zero_*farthestPointDistance());
 		}
 	case CD_Tetrahedron:
-		return fabs(Matrix3x3(ab_,ac_,ad_).determinant())<=zero_*farthestPointDistance();
+		return square_(fabs(Matrix3x3(ab_,ac_,ad_).determinant()))<=cube_(zero_*farthestPointDistance());
 	default:
 		return false;
 	}

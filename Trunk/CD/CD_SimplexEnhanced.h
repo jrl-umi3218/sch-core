@@ -1,5 +1,5 @@
-#ifndef CD_SIMPLEX_ENHANCED_H
-#define CD_SIMPLEX_ENHANCED_H
+#ifndef _CD_SIMPLEX_ENHANCED_H
+#define _CD_SIMPLEX_ENHANCED_H
 
 #pragma once
 #include "cd_simplex.h"
@@ -84,6 +84,11 @@ namespace SCD
 
 	protected:
 		Scalar norm1_,norm2_,norm3_,norm4_;
+
+	private:
+		static Scalar square_(const Scalar& a);
+		static Scalar cube_(const Scalar& a);
+
 
 
 

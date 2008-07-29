@@ -12,7 +12,6 @@
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-16
 
-
 using namespace SCD;
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
