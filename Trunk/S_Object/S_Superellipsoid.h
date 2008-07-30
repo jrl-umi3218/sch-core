@@ -4,13 +4,13 @@
 #pragma once
 
 
-#include "s_object.h"
+#include "s_objectnonnormalized.h"
 
 namespace SCD
 {
 
 	class S_Superellipsoid :
-		public S_Object
+		public S_ObjectNonNormalized
 	{
 	public:
 		S_Superellipsoid(Scalar a,Scalar b,Scalar c,Scalar epsilon1,Scalar epsilon2);

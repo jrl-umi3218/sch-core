@@ -19,7 +19,7 @@
 
 #include "includes.h"
 
-//#define NON_STP_BV_OBJECTS
+#define NON_STP_BV_OBJECTS
 #define DISPLAY_DISTANCE
 #define DO_TEST
 #define OUTPUT_FILE
@@ -355,10 +355,10 @@ init (void)
   /*inialize objects*/
 
 #ifdef NON_STP_BV_OBJECTS
-  sObj.addObject(new S_Box(0.2,0.2,0.2));
+/*  sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Sphere(0.1));
-  sObj.addObject(new S_Sphere(1));
+  sObj.addObject(new S_Sphere(1));*/
 
   sObj.addObject(new S_Superellipsoid(.1,.2,.15,0.4,0.8));
 #endif
@@ -429,32 +429,32 @@ init (void)
   }
 #else
   {
-	 STP_BV s;
-	  s.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (3).txt");
+	 //STP_BV s;
+	 // s.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (3).txt");
 
-	  STP_BV s2_;
-	  s2_.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (1).txt");
+	 // STP_BV s2_;
+	 // s2_.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (1).txt");
  
-	  stpObjects.push_back(s);
-	  stpObjects.push_back(s2_);
+	 // stpObjects.push_back(s);
+	 // stpObjects.push_back(s2_);
 
- 	  sObj.addObject(&(stpObjects[0]));
-    
-	  sObj.addObject(&(stpObjects[1]));
+ 	//  sObj.addObject(&(stpObjects[0]));
+  //  
+	 // sObj.addObject(&(stpObjects[1]));
 
 
-/*	 S_Polyhedron P,P2;
+	 S_Polyhedron P,P2;
 	
-	  P.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
+	 // P.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
 
 	  P2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg5_195.ptc");
-	  
-	  polyObjects.push_back(P);
+	  //
+	  //polyObjects.push_back(P);
 	  polyObjects.push_back(P2);
 
 
 	  sObj.addObject(&(polyObjects[0]));
-	  sObj.addObject(&(polyObjects[1]));*/
+	  //sObj.addObject(&(polyObjects[1]));
 
 
 

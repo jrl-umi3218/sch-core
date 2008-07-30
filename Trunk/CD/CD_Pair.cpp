@@ -4,7 +4,7 @@
 #include <gl\glut.h>
 #include <iostream>
 
-//#define SHOW_LAST_SIMLPEX
+#define SHOW_LAST_SIMLPEX
 //#define COUNTER
 //#define SAFE_VERSION
 #define PENETRATION_DEPTH

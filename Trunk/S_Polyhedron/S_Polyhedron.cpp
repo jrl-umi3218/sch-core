@@ -329,6 +329,8 @@ void S_Polyhedron::constructFromFile(const std::string& filename)
 
 	deleteVertexesWithoutNeighbors();
 
+	std::cout << "CREATION SUCCEDED" << std::endl<< std::endl;
+
 
 
 
