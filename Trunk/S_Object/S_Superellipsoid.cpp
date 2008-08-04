@@ -11,8 +11,17 @@ inline short sign(Scalar i)
 	return (i>0)? 1:-1;
 }
 
-S_Superellipsoid::S_Superellipsoid(Scalar _a, Scalar _b, Scalar _c, Scalar _epsilon1, Scalar _epsilon2):a_(_a),b_(_b),c_(_c),epsilon1_(_epsilon1),epsilon2_(_epsilon2),slices_(100),stacks_(50), displist_(-1)
+S_Superellipsoid::S_Superellipsoid(Scalar _a, Scalar _b, Scalar _c, Scalar _epsilon1, Scalar _epsilon2):a_(_a),b_(_b),c_(_c),epsilon1_(_epsilon1),epsilon2_(_epsilon2),
+																										_2_e1on2((2-_epsilon1)/2),_2_e2on2((2-_epsilon2)/2),_2on2_e1(2/(2-_epsilon1)),_2on2_e2(2/(2-_epsilon2))	,
+																										slices_(100),stacks_(50), displist_(-1)
+					
 {
+	if (epsilon1_>2||epsilon2_>2||
+		epsilon1_<0||epsilon2_<0)
+	{
+		std::cout<<"SUPERELLIPSOIDS EPSILON1 AND EPSILON2 MUST BE BETWEEN 0 AND 2";
+		throw;
+	}
 
 
 
@@ -28,54 +37,136 @@ S_Superellipsoid::~S_Superellipsoid(void)
 
 Point3 S_Superellipsoid::n_Support(const Vector3& v, int& lastFeature)const
 {
-	Scalar N,D,teta,phi,cp;
-	
-	if (v[0]==0)
-	{
-		phi = PI/2.0;
-		cp=0;
-		N = v[2]*c_;
-		D = v[1]*b_;
-		teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
 
+	Scalar anx,bny,cnz;
+
+	anx=a_*fabs(v[0]);
+	bny=b_*fabs(v[1]);
+	cnz=c_*fabs(v[2]);
+
+	Scalar tp1,tp2,cp2,sp2,sp2e,cp2e,spe,cpe,
+		   tt1,tt2,ct2,st2,st2e,ct2e,ste,cte;
+
+	
+	if (anx==0)
+	{
+		if (bny==0)
+		{
+			return Point3(0,0,c_*sign(v[2]));
+		}
+		else
+		{
+			cp2=0;
+			sp2=1;
+			cp2e=0;
+			sp2e=1;		
+			cpe=0;
+			spe=1;
+			tt1=cnz/bny;
+		}
 	}
 	else
 	{
+		tp1=bny/anx;
+		tp2=pow(tp1,_2on2_e2);
+		cp2=1/(tp2+1);
 
+		if (cp2==1)
+		{
+			sp2=0;
+			cp2e=1;
+			sp2e=0;		
+			cpe=1;
+			spe=0;
+			tt1=cnz/anx;
+		}
+		else
+		{
+			
+			sp2=1-cp2;
+			sp2e=pow(sp2,_2_e2on2);
+			cp2e=sp2e/tp1;
+			spe=sp2/sp2e;
+			cpe=cp2/cp2e;
+			tt1=cnz*sp2e/bny;
+		}
+	}
+	
+	
+	tt2=pow(tt1,_2on2_e1);
+	ct2=1/(tt2+1);
+
+	if (ct2==1)
+	{
+		return Point3(a_*cpe*sign(v[0]),b_*spe*sign(v[1]),0);
+	}
+	else
+	{
 		
-		N = v[1]*b_;
-		D = v[0]*a_;
-		phi = atan(pow(fabs(N/D), (1/(2-epsilon2_))));
-		//D = N / power(abs(sin(v)),2-e(2));
-
-		cp = fabs(cos(phi));
-
-		D /=  pow(cp,2-epsilon2_);
-
-		N = v[2]*c_;
-
-		teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
+		st2=1-ct2;
+		st2e=pow(st2,_2_e1on2);
+		ct2e=st2e/tt1;
+		ste=st2/st2e;
+		cte=ct2/ct2e;
+		return Point3(a_*cte*cpe*sign(v[0]),
+					  b_*cte*spe*sign(v[1]),
+					  c_*ste*sign(v[2]));
 	}
 
-	// Computing the support point
-
-	Scalar st,sp,ct,sx,sy,sz,ctep;
 	
-	st = fabs(sin(teta));
-	ct = fabs(cos(teta));
+
+
+
 	
-	sp = fabs(sin(phi));
+
+	//Scalar N,D,teta,phi,cp;
+	//
+	//if (v[0]==0)
+	//{
+	//	phi = PI/2.0;
+	//	cp=0;
+	//	N = v[2]*c_;
+	//	D = v[1]*b_;
+	//	teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
+
+	//}
+	//else
+	//{
+
+	//	
+	//	N = v[1]*b_;
+	//	D = v[0]*a_;
+	//	phi = atan(pow(fabs(N/D), (1/(2-epsilon2_))));
+	//	//D = N / power(abs(sin(v)),2-e(2));
+
+	//	cp = fabs(cos(phi));
+
+	//	D /=  pow(cp,2-epsilon2_);
+
+	//	N = v[2]*c_;
+
+	//	teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
+	//}
+
+	//// Computing the support point
+
+	//Scalar st,sp,ct,sx,sy,sz,ctep;
+	//
+	//st = fabs(sin(teta));
+	//ct = fabs(cos(teta));
+	//
+	//sp = fabs(sin(phi));
 
 
-	sx = sign(v[0]);
-	sy = sign(v[1]);
-	sz = sign(v[2]);
+	//sx = sign(v[0]);
+	//sy = sign(v[1]);
+	//sz = sign(v[2]);
 
-	ctep=pow(ct,epsilon1_);
+	//ctep=pow(ct,epsilon1_);
 
-	return Point3( a_ * sx * ctep * pow(cp,epsilon2_),
-				   b_ * sy * ctep * pow(sp,epsilon2_),
-				   c_ * sz * pow(st,epsilon1_));
+	//return Point3( a_ * sx * ctep * pow(cp,epsilon2_),
+	//			   b_ * sy * ctep * pow(sp,epsilon2_),
+	//			   c_ * sz * pow(st,epsilon1_));
 
 }
 
@@ -127,7 +218,7 @@ void S_Superellipsoid::drawGLInLocalCordinates()
 				Vector3 n((1/a_)*pow(fabs(c1),2-epsilon1_)*pow(fabs(c2),2-epsilon2_)*sign(c1)*sign(c2),
 					(1/b_)*pow(fabs(c1),2-epsilon1_)*pow(fabs(s2),2-epsilon2_)*sign(s2)*sign(c1),
 					(1/c_)*pow(fabs(s1),2-epsilon1_)*sign(s1));
-
+				
 				n.normalize();
 
 				normals.push_back(n);

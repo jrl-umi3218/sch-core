@@ -220,7 +220,7 @@ namespace SCD
 		virtual void drawGL();
 
 	   /*!
-		* \brief must be overloaded to display the objects in openGl in local cordinates
+		* \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
 		*/
 		virtual void drawGLInLocalCordinates();
 
@@ -270,7 +270,9 @@ namespace SCD
 
 		S_ObjectTimeStamp stamp_;
 
+		int displist_;
 
+		int stacks_,slices_;
 
 		Matrix3x3 mRot_;
 

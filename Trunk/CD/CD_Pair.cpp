@@ -10,7 +10,7 @@
 #define PENETRATION_DEPTH
 
 #define _EPSILON_ 1e-24
-#define _PRECISION_ 1e-16
+#define _PRECISION_ 1e-6
 
 using namespace SCD;
 

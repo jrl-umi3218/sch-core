@@ -27,6 +27,9 @@ namespace SCD
 		int displist_;
 		int slices_, stacks_;
 
+		Scalar _2_e1on2,_2_e2on2,_2on2_e1,_2on2_e2;
+
+
 
 	};
 }
