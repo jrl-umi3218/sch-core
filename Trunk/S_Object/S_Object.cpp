@@ -224,10 +224,6 @@ void S_Object::setTransformation(const Matrix4x4& t)
 	setPosition(t(0,3),t(1,3),t(2,3));
 }
 
-
-
-
-
 void S_Object::addTransformation(const Matrix4x4& tr)
 {
 	++stamp_;
