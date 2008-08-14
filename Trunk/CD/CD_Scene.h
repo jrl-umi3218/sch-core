@@ -58,7 +58,7 @@ namespace SCD
 			return objects_[i];
 		}	
 
-		size_t Size()
+		size_t size()
 		{
 			return objects_.size();
 		}

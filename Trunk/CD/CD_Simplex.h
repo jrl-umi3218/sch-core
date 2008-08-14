@@ -5,7 +5,6 @@
 #pragma once
 
 
-#define __ZERO 1e-18
 
 #include "../matrix/SCD_Types.h"
 

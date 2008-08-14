@@ -19,13 +19,13 @@
 
 #include "includes.h"
 
-//#define NON_STP_BV_OBJECTS
+#define NON_STP_BV_OBJECTS
 //#define DISPLAY_DISTANCE
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
 //#define DISPLAY_TEST
-//#define MULTI_OBJECTS_TEST
+#define MULTI_OBJECTS_TEST
 //#define TEST_HOLD
 //#define COLLISION_COUNTERS
 //#define IRREGULARITIES_COUNTERS
@@ -35,8 +35,8 @@ const double DispersionScale=0.5;
 const double AnimationSpeed=0.003;
 const double AnimationScale=0.9;
 const long AnimationBegin=0;
-const long RandomTestEnd=4000;
-const long AnimationEnd=1000000;
+const long RandomTestEnd=100000000;
+const long AnimationEnd=1000000000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -125,6 +125,92 @@ void RandomTestSupportFunction()
 
 #endif
 
+
+
+
+
+	}
+
+#ifdef OUTPUT_FILE
+	outfile.close();
+#endif
+
+	end=clock();
+
+	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) <<  std::endl;
+
+	
+
+	
+
+
+
+	
+}
+
+
+
+
+
+
+
+
+
+void RandomTestSupportFunctionAllObjects()
+{
+	
+
+	
+
+	clock_t begin, end;
+
+	begin=clock();
+
+#ifdef OUTPUT_FILE
+
+	std::fstream outfile;
+
+	outfile.open("c:/mehdi/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.precision(18);
+#endif	
+
+	
+
+
+	srand(time(NULL)); 
+	for (long j=0;j<RandomTestEnd;j++)
+	{
+		
+		double a = (rand()/double(RAND_MAX)) ;
+		double b = (rand()/double(RAND_MAX)) ;
+		double c = (rand()/double(RAND_MAX)) ;
+		double d = (rand()/double(RAND_MAX)) ;
+
+		
+
+		
+
+
+		Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+
+#ifdef DO_TEST
+		for(int i=0;i<sObj.size();i++)
+		{
+			Point3 p=sObj[i]->support(v);
+		
+
+
+
+
+#ifdef OUTPUT_FILE
+		outfile<<p<<std::endl;
+		
+		
+#endif
+		}
+
+#endif
+		
 
 
 
@@ -358,9 +444,9 @@ init (void)
 /*  sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Box(0.2,0.2,0.2));
   sObj.addObject(new S_Sphere(0.1));
-  sObj.addObject(new S_Sphere(1));*/
+  sObj.addObject(new S_Sphere(1));
 
-  sObj.addObject(new S_Superellipsoid(.05,.1,.075,1.8,0.2));
+  sObj.addObject(new S_Superellipsoid(.05,.1,.075,1.8,0.2));*/
 #endif
 
   ArchiveType type;
@@ -429,38 +515,38 @@ init (void)
   }
 #else
   {
-	 STP_BV s;
-	 s.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/lleg2_1.txt");
+	  STP_BV s;
+	  s.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (1).txt");
 
-	 // STP_BV s2_;
-	 // s2_.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/lleg5_1.txt");
- 
-	 stpObjects.push_back(s);
-	 // stpObjects.push_back(s2_);
+	  STP_BV s2_;
+	  s2_.constructFromFileWithGL("C:/Mehdi/nuage points/simplifies/nuage points/obj (3).txt");
 
- 	 sObj.addObject(&(stpObjects[0]));
-    
-	 // //sObj.addObject(&(stpObjects[1]));
+	  stpObjects.push_back(s);
+	  stpObjects.push_back(s2_);
+
+	  sObj.addObject(&(stpObjects[0]));
+
+	  sObj.addObject(&(stpObjects[1]));
 
 
-	 S_Polyhedron P,P2;
+	 //S_Polyhedron P,P2;
 	
-	 P.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
+	 //P.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg2_256.ptc");
 
-	  //P2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg5_195.ptc");
-	 
-	  polyObjects.push_back(P);
-	  //polyObjects.push_back(P2);
+	 // //P2.constructFromFile("C:/Mehdi/Projects/solid-3.5.6/src/STPBVtest/OTPlleg5_195.ptc");
+	 //
+	 // polyObjects.push_back(P);
+	 // //polyObjects.push_back(P2);
 
 
-	  sObj.addObject(&(polyObjects[0]));
-	  //sObj.addObject(&(polyObjects[1]));
+	 // sObj.addObject(&(polyObjects[0]));
+	 // //sObj.addObject(&(polyObjects[1]));
 
 
 
   }
 #endif
-  for (int i=0;i<sObj.Size();i++)
+  for (int i=0;i<sObj.size();i++)
   {
 	  
 
@@ -579,7 +665,7 @@ display (void)
 	
 
 
-	for (int i=0;i<sObj.Size();++i)
+	for (int i=0;i<sObj.size();++i)
 	{
 		sObj[i]->drawGL();
 	}
@@ -620,7 +706,7 @@ display (void)
 	
 	
 	glBegin(GL_LINES);
-	for (int i=0;i<sObj.Size();++i)
+	for (int i=0;i<sObj.size();++i)
 	{
 		for (int j=0;j<i;++j)
 		{
@@ -759,7 +845,7 @@ int totalCpt=0;
 
 		*/
 
-		for (int j=0;j<sObj.Size();j++)
+		for (int j=0;j<sObj.size();j++)
 		{
 			
 			sObj[j]->addRotation(angle,axe);
@@ -904,7 +990,7 @@ void TestAnimation()
 
 	
 
-	for (int i=0;i<sObj.Size();i++)
+	for (int i=0;i<sObj.size();i++)
 	{
 		position[0] =(1+7*i%5-3)*DispersionScale;
 		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
@@ -970,7 +1056,7 @@ int totalCpt=0;
 	for (long i=AnimationBegin; i<AnimationEnd; i++)
 	{
 		
-		for (int j=0;j<sObj.Size();j++)
+		for (int j=0;j<sObj.size();j++)
 		{
 			position=oldPos[j];
 
@@ -1075,6 +1161,22 @@ int totalCpt=0;
 
 #endif	
 
+#ifdef DISPLAY_DISTANCE
+
+		for (int k=0;k<sObj.Size();k++)
+		{
+			for (int j=0;j<k;j++)
+			{ 
+				Point3 p1,p2;
+				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
+				std::cout<<distance<<std::endl;
+			}
+
+
+		}
+
+#endif
+
 #ifdef DISPLAY_TEST
 		display();
 #endif
@@ -1142,24 +1244,29 @@ keyPress (unsigned char key, int x, int y)
 
 
   case 32:
-	  CurrentObj=(++CurrentObj)%sObj.Size();
+	  CurrentObj=(++CurrentObj)%sObj.size();
 	  break;
   case 8:
-	  CurrentObj=(--CurrentObj)%sObj.Size();
+	  CurrentObj=(--CurrentObj)%sObj.size();
 	  break;
 
   case '0':
 	  RandomTestSupportFunction();
 	  break;
 
+
   case '1':
 	  TestAnimation();
 	  break;
 
-   case '2':
+  case '2':
 	  TestPrecision();
 	  break;
-	  
+
+  case '3':
+	  RandomTestSupportFunctionAllObjects();
+	  break;
+
   }
 
  

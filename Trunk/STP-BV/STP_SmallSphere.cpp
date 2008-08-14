@@ -240,6 +240,36 @@ bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 }
 
 
+bool STP_SmallSphere::isHereHybrid(const Vector3& v,int idp)
+{
+	bool res = true;
+	STP_VVR * currentVVR = m_neighbors;
+
+	double d=0;
+	double dp;
+
+
+	//std::cout << "test is here small sphere" << std::endl;
+
+	while( currentVVR !=  m_endneighbors )
+	{
+
+		dp=currentVVR->isInsidePrime(v);
+		if (d>dp)
+		{
+			m_nextBVPrime=currentVVR->m_outerSTP;
+			d=dp;
+
+		}
+		++currentVVR;
+	}
+
+	if (d==0)
+		return true;
+	else
+		return false;
+}
+
 
 int STP_SmallSphere::getNextBV(unsigned int id) const
 {

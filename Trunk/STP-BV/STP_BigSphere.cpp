@@ -331,6 +331,39 @@ bool STP_BigSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 
 
 
+
+bool STP_BigSphere::isHereHybrid(const Vector3& v,int idp)
+{
+		
+//	std::cout << "test is here big sphere" << std::endl;
+
+	
+	if((m_VVR0.m_outerSTP!=idp)&&(m_VVR0.isInsidePlane(v)<0))
+	{
+		m_nextBVPrime = m_VVR0.m_outerSTP;
+		return false;
+
+	}
+	if((m_VVR1.m_outerSTP!=idp)&&(m_VVR1.isInsidePlane(v)<0))
+	{
+		m_nextBVPrime = m_VVR1.m_outerSTP;
+		return false;
+
+	}
+	if((m_VVR2.m_outerSTP!=idp)&&(m_VVR2.isInsidePlane(v)<0))
+	{
+		m_nextBVPrime = m_VVR2.m_outerSTP;
+		return false;
+
+	}
+	return true;
+	
+}
+
+
+
+
+
 int STP_BigSphere::getNextBV(unsigned int id) const
 {
 	if(id < 3)

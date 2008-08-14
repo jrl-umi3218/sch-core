@@ -746,9 +746,6 @@ bool STP_Torus::isHereFirstNeighbour(const Vector3& v)
 bool STP_Torus::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 {
 
-
-
-
 	if((m_VVR2.m_outerSTP!=idp)&&(m_VVR2.isInsidePlane(v)>0))//begin with big spheres limits
 	{
 		m_nextBVPrime = m_VVR2.m_outerSTP;
@@ -775,6 +772,36 @@ bool STP_Torus::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 	return true;
 	
 }
+
+
+bool STP_Torus::isHereHybrid(const Vector3& v,int idp)
+{
+	if((m_VVR2.m_outerSTP!=idp)&&(m_VVR2.isInsidePlane(v)>0))//begin with big spheres limits
+	{
+		m_nextBVPrime = m_VVR2.m_outerSTP;
+		return false;
+	}
+	if((m_VVR3.m_outerSTP!=idp)&&(m_VVR3.isInsidePlane(v)>0))
+	{
+		m_nextBVPrime = m_VVR3.m_outerSTP;
+		return false;
+	}
+
+	if((m_VVR0.m_outerSTP!=idp)&&(m_VVR0.isInsidePrime(v)>0))//small spheres
+	{
+		m_nextBVPrime = m_VVR0.m_outerSTP;
+		return false;
+	}
+	if((m_VVR1.m_outerSTP!=idp)&&(m_VVR1.isInsidePrime(v)>0))
+	{
+		m_nextBVPrime = m_VVR1.m_outerSTP;
+		return false;
+	}
+
+	return true;
+}
+
+
 
 
 int STP_Torus::getNextBV(unsigned int id) const

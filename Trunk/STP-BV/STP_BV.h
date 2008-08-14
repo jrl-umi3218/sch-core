@@ -209,6 +209,12 @@ namespace SCD
 		*  \param v direction
 		*/
 
+			virtual Point3 supportHybrid(const Vector3& v,int& lastFeature) const;
+		/*! 
+		*  \brief
+		*  \param v direction
+		*/
+
 
 		virtual Point3 supportFirstNeighbour(const Vector3& v,int& lastFeature) const;
 		/*!

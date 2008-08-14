@@ -113,6 +113,7 @@ namespace SCD
 		virtual bool isHereFarthestNeighbourPrime(const Vector3& v) = 0;
 		virtual bool isHereFirstNeighbour(const Vector3& v) = 0;
 		virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) = 0;
+		virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
 		virtual int getNextBV(unsigned int id) const= 0;
 		virtual int getNextBVPrime() const=0 ;
 

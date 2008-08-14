@@ -32,10 +32,11 @@ const double PI=3.141592653589793238462643383279502884197;
 //#define FARTHESTSUPPORT
 //#define FARTHESTSUPPORTPRIME
 //#define FIRSTSUPPORT
-#define FIRSTSUPPORTPRIME
+//#define FIRSTSUPPORTPRIME
+#define HYBRIDSUPPORT
 //#define TREESUPPORT
 
-//#define SUPPORT_DEBUG
+#define SUPPORT_DEBUG
 
 //#define COUNTER
 
@@ -1121,7 +1122,9 @@ Point3 STP_BV::n_Support(const Vector3& v,int& lastFeature) const
 #ifdef FIRSTSUPPORTPRIME
 	return supportFirstNeighbourPrime(v,lastFeature);
 #endif
-
+#ifdef HYBRIDSUPPORT
+	return supportHybrid(v,lastFeature);
+#endif
 #ifdef TREESUPPORT
 	return supportTree(vp);
 #endif
@@ -1379,6 +1382,67 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 
 	return currentBV->support(v);
 }
+
+
+
+
+
+Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
+{
+	STP_Feature* currentBV;
+
+#ifdef REMEMBER_LAST_FEATURE
+	if (lastFeature!=-1)
+		currentBV =m_fastPatches[lastFeature];
+	else
+	{
+		currentBV = *m_fastPatches;//first voronoi region search
+		lastFeature=0;
+	}
+
+#else
+	currentBV = *(m_patches.begin());//first voronoi region search
+#endif
+
+
+
+	bool found = false;
+
+
+	int i = 0;
+	int idp=-1; //previous id (used to remember from witch vvr we arrived in the current
+
+
+	while( (i < m_patchesSize) && !(found = currentBV->isHereHybrid(v,idp)) )
+	{
+		idp=lastFeature;		
+		lastFeature = currentBV->getNextBVPrime();//go to the neighbour
+
+		currentBV = m_fastPatches[lastFeature];
+		++i;
+	}
+
+#ifdef COUNTER
+	std::cout<<i<<' ';
+#endif
+
+
+
+
+	if(!found)
+	{
+#ifdef SUPPORT_DEBUG
+		std::cout << "Probleme zuo hybrid !!!" << std::endl;
+#endif
+		return supportFarthestNeighbourPrime(v,lastFeature);
+	}
+
+
+
+	return currentBV->support(v);
+}
+
+
 
 
 

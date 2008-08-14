@@ -40,6 +40,7 @@ namespace SCD
 		virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
 		virtual bool isHereFirstNeighbour(const Vector3& v);
 		virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
+		virtual bool isHereHybrid(const Vector3& v,int idp) ;
 		virtual int getNextBV(unsigned int id) const;
 		virtual Scalar supportH(const Vector3& v) const;
 		virtual Point3 support(const Vector3& v) const;
