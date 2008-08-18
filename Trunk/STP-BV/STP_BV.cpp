@@ -1075,16 +1075,16 @@ void STP_BV::updateFastPatches()
 
 
 
-void STP_BV::drawGLInLocalCordinates()
-{
-	if (drawnGL_)
-	{
-
-		for(std::vector<STP_Feature*>::const_iterator it = m_patches.begin() ; it != m_patches.end() ; ++it)
-			(*it)->GLdisplay();
-
-	}
-}
+//void STP_BV::drawGLInLocalCordinates()
+//{
+//	if (drawnGL_)
+//	{
+//
+//		for(std::vector<STP_Feature*>::const_iterator it = m_patches.begin() ; it != m_patches.end() ; ++it)
+//			(*it)->GLdisplay();
+//
+//	}
+//}
 
 void STP_BV::GLdisplayVVR() const
 {
