@@ -136,7 +136,7 @@ namespace SCD
 
 		virtual S_ObjectType getType() const;
 
-	//	virtual void drawGLInLocalCordinates();
+		virtual void drawGLInLocalCordinates();
 
 
 
