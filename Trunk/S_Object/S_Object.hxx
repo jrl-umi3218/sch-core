@@ -17,6 +17,7 @@ inline Point3 S_Object::support(const Vector3& v) const
 	return p+trans_;
 }
 
+
 inline Point3 S_Object::support(const Vector3& v,int &LastFeature) const
 {
 	Vector3 vp(v);

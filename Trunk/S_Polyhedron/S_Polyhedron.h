@@ -4,6 +4,7 @@
 #pragma once
 #include "..\s_object\s_objectNonNormalized.h"
 #include "S_polyhedronvertex.h"
+#include "Polyhedron_algorithms.h"
 
 #include <string>
 #include <vector>
@@ -11,11 +12,7 @@
 namespace SCD
 {
 
-	struct S_PolyhedronTriangle
-	{
-		unsigned int a,b,c;
-		Vector3 normal;
-	};
+	
 
 	class S_Polyhedron :
 		public S_ObjectNonNormalized
@@ -77,13 +74,7 @@ namespace SCD
 
 	protected:
 
-		std::vector<S_PolyhedronVertex*> vertexes_;
-
-		std::vector<S_PolyhedronTriangle> triangles_;
-
-		S_PolyhedronVertex ** fastVertexes_;
-		S_PolyhedronVertex ** lastVertexes_;
-		int displayList_;
+		Polyhedron_algorithms poly;
 
 
 

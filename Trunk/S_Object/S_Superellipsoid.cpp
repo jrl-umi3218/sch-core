@@ -113,60 +113,8 @@ Point3 S_Superellipsoid::n_Support(const Vector3& v, int& lastFeature)const
 					  c_*ste*sign(v[2]));
 	}
 
-	
 
 
-
-	
-
-	//Scalar N,D,teta,phi,cp;
-	//
-	//if (v[0]==0)
-	//{
-	//	phi = PI/2.0;
-	//	cp=0;
-	//	N = v[2]*c_;
-	//	D = v[1]*b_;
-	//	teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
-
-	//}
-	//else
-	//{
-
-	//	
-	//	N = v[1]*b_;
-	//	D = v[0]*a_;
-	//	phi = atan(pow(fabs(N/D), (1/(2-epsilon2_))));
-	//	//D = N / power(abs(sin(v)),2-e(2));
-
-	//	cp = fabs(cos(phi));
-
-	//	D /=  pow(cp,2-epsilon2_);
-
-	//	N = v[2]*c_;
-
-	//	teta = atan(pow(fabs(N/D), (1/(2-epsilon1_))));
-	//}
-
-	//// Computing the support point
-
-	//Scalar st,sp,ct,sx,sy,sz,ctep;
-	//
-	//st = fabs(sin(teta));
-	//ct = fabs(cos(teta));
-	//
-	//sp = fabs(sin(phi));
-
-
-	//sx = sign(v[0]);
-	//sy = sign(v[1]);
-	//sz = sign(v[2]);
-
-	//ctep=pow(ct,epsilon1_);
-
-	//return Point3( a_ * sx * ctep * pow(cp,epsilon2_),
-	//			   b_ * sy * ctep * pow(sp,epsilon2_),
-	//			   c_ * sz * pow(st,epsilon1_));
 
 }
 

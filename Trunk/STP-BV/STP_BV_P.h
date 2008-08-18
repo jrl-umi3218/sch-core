@@ -15,7 +15,11 @@ namespace SCD
 
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
-		*  \param filename path to the file describing the STP_BV decomposition of the object
+		*  \param filename path to the file describing the STP_BV decomposition of the object 
+		*  \another file in the same folder with the same name but with ".otp" at the end must exist must be 
+		*  \ in the format of Qhull conconvex.exe output, called with these options : 
+		*  \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" it will describe the convex hull of the polyhedric shape of the stpbv
+		*  \ (example: in the folder : "home\" there are two files ; the STP_BV file : "home\STPBV.txt", and the Qhull output : "home\STPBV.txt.otp")
 		*
 		*/
 		virtual void constructFromFile(const std::string& filename);

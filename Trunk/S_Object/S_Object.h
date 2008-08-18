@@ -240,7 +240,8 @@ namespace SCD
 			TCylinder,
 			TSphere,
 			TBox,
-			TSuperellipsoid
+			TSuperellipsoid,
+			TSTP_BV_WithPolyhedron
 
 		};
 

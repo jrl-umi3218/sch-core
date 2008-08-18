@@ -6,7 +6,7 @@
 
 
 #include "../S_Object/S_Object.h"
-#include "CD_Simplex.h"
+#include "CD_SimplexEnhanced.h"
 #include "../CD_Penetration/CD_Depth.h"
 
 namespace SCD
@@ -42,9 +42,14 @@ namespace SCD
 		Scalar reComputeClosestPoints(Point3& p1,Point3& p2);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, the distance is set to negative if interpentration
+		*\brief function that returns les distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case
 		*/
 		Scalar getDistance();
+
+		/*!
+		*\brief function that returns les distance SQUARED between two convex objects, the distance is set to negative if interpentration
+		*/
+		Scalar getDistanceWithoutPenetrationDepth();
 
 		/*!
 		*\brief Intializes the direction vector (the vector between expected closest points) with a given value.
@@ -52,7 +57,8 @@ namespace SCD
 		void setVector(const Vector3 &);
 
 		/*!
-		*\brief sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3. 
+		*\brief sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3.
+		*\ if you want to make juste a boolean request put precision=1 and call getDistanceWithoutPenetrationDepth(), just check if the result is positive
 		*/
 		void setRelativePrecision(Scalar precision);
 
@@ -70,6 +76,10 @@ namespace SCD
 			return (i==0)?sObj1_:sObj2_;
 		}
 
+		/*
+		*\brief Sets if the pair computes penetration or not
+		*/
+
 
 
 
@@ -79,6 +89,7 @@ namespace SCD
 		int lastFeature1_,lastFeature2_;
 
 		Scalar GJK();
+		Scalar penetrationDepth();
 		void witPoints(Point3& p1,Point3& p2);
 
 		Point3 p1_,p2_;
@@ -97,7 +108,13 @@ namespace SCD
 
 		bool witPointsAreComputed_;
 
+		bool computePenetration;
+
 		CD_Simplex s1_,s2_,s_;
+
+		CD_SimplexEnhanced sp_;
+
+
 
 		CD_Depth depthPair;
 
