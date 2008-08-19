@@ -149,6 +149,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\STP_BV_P.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\STP_Feature.cpp"
 				>
 			</File>
@@ -172,6 +176,10 @@
 			</File>
 			<File
 				RelativePath=".\STP_BV.h"
+				>
+			</File>
+			<File
+				RelativePath=".\STP_BV_P.h"
 				>
 			</File>
 			<File
