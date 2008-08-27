@@ -11,12 +11,12 @@ using namespace SCD;
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
 
-static Point3  pBuf[MaxSupportPoints];
-static Point3  qBuf[MaxSupportPoints];
-static Vector3 yBuf[MaxSupportPoints];
+Point3  pBuf[MaxSupportPoints];
+Point3  qBuf[MaxSupportPoints];
+Vector3 yBuf[MaxSupportPoints];
 
-static Depth_Triangle *triangleHeap[MaxFacets];
-static int  num_triangles;
+Depth_Triangle *triangleHeap[MaxFacets];
+int  num_triangles;
 
 int furthestAxis(Vector3 v)
 {

@@ -292,6 +292,13 @@ namespace SCD
 		void updateFastPatches();
 
 
+		/*!
+		*  \brief returns the vertex number in the STP-BV
+		* 
+		*/
+		int getFeaturesNumber();
+
+
 
 
 

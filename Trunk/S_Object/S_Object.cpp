@@ -247,7 +247,7 @@ void S_Object::resetTransformation()
 	++stamp_;
 	setOrientation(1,0,0,
 				   0,1,0,
-				   0,1,0);
+				   0,0,1);
 	setPosition(0,0,0);
 
 }

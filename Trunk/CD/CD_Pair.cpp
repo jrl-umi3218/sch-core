@@ -149,6 +149,8 @@ Scalar CD_Pair::penetrationDepth()
 		{
 			lastDirection_.Set(0,1,0);
 		}
+
+		return distance_;
 	}
 	else
 	{

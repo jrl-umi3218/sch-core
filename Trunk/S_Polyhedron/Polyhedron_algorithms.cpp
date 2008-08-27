@@ -221,7 +221,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
 	deleteVertexesWithoutNeighbors();
 
-	std::cout << "CREATION SUCCEDED" << std::endl<< std::endl;
+	std::cout << "CREATION SUCCEEDED" << std::endl<< std::endl;
 
 
 

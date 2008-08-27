@@ -20,7 +20,7 @@
 #include "includes.h"
 
 //#define NON_STP_BV_OBJECTS
-#define DISPLAY_DISTANCE
+//#define DISPLAY_DISTANCE
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
@@ -32,11 +32,11 @@
 
 
 const double DispersionScale=0.5;
-const double AnimationSpeed=30;
-const double AnimationScale=0.9;
+const double AnimationSpeed=3;
+const double AnimationScale=1.2;
 const long AnimationBegin=0;
 const long RandomTestEnd=10000000;
-const long AnimationEnd=3000000;
+const long AnimationEnd=10000000;
 const double AngleSteps=360;
 const double PI=3.141592653589793238462643383279;
 
@@ -442,13 +442,13 @@ init (void)
 	/*inialize objects*/
 
 #ifdef NON_STP_BV_OBJECTS
-	/*  sObj.addObject(new S_Box(0.2,0.2,0.2));
 	sObj.addObject(new S_Box(0.2,0.2,0.2));
-	sObj.addObject(new S_Sphere(0.1));
-	sObj.addObject(new S_Sphere(1));*/
+	//sObj.addObject(new S_Box(0.2,0.2,0.2));
+	/*sObj.addObject(new S_Sphere(0.1));
+	sObj.addObject(new S_Sphere(1));
 
-	//sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
-	sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
+	sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
+	sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));*/
 
 #endif
 
@@ -465,8 +465,8 @@ init (void)
 			std::string s;		
 			s="";
 			std::stringstream istr;
-			istr<<std::string("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(")<<i<<").txt";
-
+			istr<<std::string("C:/Mehdi/nuage_points/simplifies/testspace/jobj(")<<i<<").txt";
+							   
 
 			getline(istr,s);
 
@@ -483,10 +483,11 @@ init (void)
 				b=true;
 				testfile.close();
 
-				STP_BV stp;
+				//STP_BV stp;
+				STP_BV_P stp;
 				stp.constructFromFileWithGL(s.c_str());
 
-				stpObjects.push_back(stp);
+				stppObjects.push_back(stp);
 				//  stpObjects.push_back(stp);
 
 
@@ -505,9 +506,9 @@ init (void)
 
 		}	while(b);
 
-		for (int j=0;j<stpObjects.size();j++)
+		for (int j=0;j<stppObjects.size();j++)
 		{
-			sObj.addObject(&(stpObjects[j]));
+			sObj.addObject(&(stppObjects[j]));
 
 
 
@@ -518,36 +519,36 @@ init (void)
 	}
 #else
 	{
-		//STP_BV s;
-		//s.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt");
-		//stpObjects.push_back(s);
+		STP_BV s;
+		s.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(7).txt");
+		stpObjects.push_back(s);
 
-		//STP_BV s2_;
-		//s2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
-		//stpObjects.push_back(s2_);
+		/*STP_BV s2_;
+		s2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
+		stpObjects.push_back(s2_);*/
 
 
-		//sObj.addObject(&(stpObjects[0]));
+		sObj.addObject(&(stpObjects[0]));
 		//sObj.addObject(&(stpObjects[1]));
 
 
-		STP_BV_P sp;
-		sp.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt");
-		stppObjects.push_back(sp);
+		//STP_BV_P sp;
+		//sp.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt");
+		//stppObjects.push_back(sp);
 
-		STP_BV_P sp2_;
-		sp2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
-		stppObjects.push_back(sp2_);
-
-
-		sObj.addObject(&(stppObjects[0]));
-		sObj.addObject(&(stppObjects[1]));
+		//STP_BV_P sp2_;
+		//sp2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
+		//stppObjects.push_back(sp2_);
 
 
+		//sObj.addObject(&(stppObjects[0]));
+		//sObj.addObject(&(stppObjects[1]));
 
-		//S_Polyhedron P;
-		//P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt.otp");
-		//polyObjects.push_back(P);
+
+
+		S_Polyhedron P;
+		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt.otp");
+		polyObjects.push_back(P);
 
 		//S_Polyhedron P2;
 		//P2.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt.otp");
@@ -555,7 +556,7 @@ init (void)
 
 
 
-		//sObj.addObject(&(polyObjects[0]));
+		sObj.addObject(&(polyObjects[0]));
 		//sObj.addObject(&(polyObjects[1]));
 
 
@@ -1232,6 +1233,205 @@ void TestAnimation()
 * keyPress - key press glut callback function.
 * Called when user press a key.
 */
+
+void GeneralTest()
+{
+	std::fstream outfile;
+	outfile.open("c:/mehdi/Generaltestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.precision(18);
+
+
+
+	for (int k=0;k<stppObjects.size();k++)
+	{
+		CD_Scene testscene;
+		testscene.addObject(sObj[0]);
+
+		sObj[0]->resetTransformation();
+
+		testscene.addObject(&(stppObjects[k]));
+		
+		Vector3 position;
+
+		position[0] =(1+7%5-3)*DispersionScale;
+		position[1] =((5%6-3)*(5.0/6))*DispersionScale;
+		position[2] =((5%7-3)*(5.0/7))*DispersionScale;
+
+
+		Vector3 axe;
+		double angle;
+		axe[0] =  0;
+		axe[1] = 0;
+		axe[2] =  1;
+
+
+		angle=0;
+
+
+		
+
+		testscene[1]->setOrientation(angle,axe);
+		testscene[1]->setPosition(position);
+		
+		testscene.sceneProximityQuery();
+
+		#ifdef DISPLAY_TEST
+			display();
+		#endif
+		
+		clock_t begin, end;
+
+		begin=clock();
+
+
+		for (long j=0;j<RandomTestEnd;j++)
+		{
+
+			double a = (rand()/double(RAND_MAX)) ;
+			double b = (rand()/double(RAND_MAX)) ;
+			double c = (rand()/double(RAND_MAX)) ;
+			double d = (rand()/double(RAND_MAX)) ;
+
+
+
+
+
+
+			Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+
+
+		}
+
+
+		end=clock();
+
+		double lostTime=end-begin;
+		
+		begin=clock();
+
+
+		for (long j=0;j<RandomTestEnd;j++)
+		{
+
+			double a = (rand()/double(RAND_MAX)) ;
+			double b = (rand()/double(RAND_MAX)) ;
+			double c = (rand()/double(RAND_MAX)) ;
+			double d = (rand()/double(RAND_MAX)) ;
+
+
+
+
+
+
+			Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+
+#ifdef DO_TEST
+
+			Point3 p=testscene[1]->support(v);
+
+
+
+
+
+#ifdef OUTPUT_FILE
+			outfile<<p<<std::endl;
+
+
+#endif
+
+#endif
+
+
+
+
+
+		}
+
+#ifdef OUTPUT_FILE
+		outfile.close();
+#endif
+
+		end=clock();
+
+		outfile <<stppObjects[k].getFeaturesNumber()<<' '<< ((double)(end- begin-lostTime) / CLOCKS_PER_SEC) <<" "<<((double)(end- begin-lostTime) / CLOCKS_PER_SEC)/RandomTestEnd<<' ';
+		std::cout<< k<<" " <<stppObjects[k].getFeaturesNumber()<<' '<< ((double)(end- begin-lostTime) / CLOCKS_PER_SEC) <<" "<<((double)(end- begin-lostTime) / CLOCKS_PER_SEC)/RandomTestEnd<<' ';
+
+
+		begin=clock();
+
+		for (long i=AnimationBegin; i<AnimationEnd; i++)
+		{
+			axe[0] =  sin((42)*sin(0.2*AnimationSpeed*i));
+			axe[1] =  sin((-43)*sin(0.2*AnimationSpeed*i));
+			axe[2] =  cos((83)*sin(0.1*AnimationSpeed*i));
+
+			angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed*i)));
+
+
+			testscene[1]->setOrientation(angle,axe);
+
+			testscene[1]->setPosition( position + Vector3(sin((20*(1))*sin(0.2*AnimationSpeed*i)),
+				sin((71-140*(1))*sin(0.15*AnimationSpeed*i)),
+				sin((20)*sin(0.2*AnimationSpeed*i)))*AnimationScale);
+
+		}
+
+		end=clock();
+
+		lostTime=end-begin;
+
+		begin=clock();
+
+		for (long i=AnimationBegin; i<AnimationEnd; i++)
+		{
+			
+
+			axe[0] =  sin((42)*sin(0.2*AnimationSpeed*i));
+			axe[1] =  sin((-43)*sin(0.2*AnimationSpeed*i));
+			axe[2] =  cos((83)*sin(0.1*AnimationSpeed*i));
+
+			angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed*i)));
+
+
+			testscene[1]->setOrientation(angle,axe);
+
+			testscene[1]->setPosition( position + Vector3(sin((20*(1))*sin(0.2*AnimationSpeed*i)),
+				sin((71-140*(1))*sin(0.15*AnimationSpeed*i)),
+				sin((20)*sin(0.2*AnimationSpeed*i)))*AnimationScale);
+			
+#ifdef DO_TEST
+			testscene.sceneProximityQuery();
+#endif
+
+#ifdef TEST_HOLD
+			std::cout<<i<<std::endl;
+			system("pause");
+
+#endif	
+
+#ifdef DISPLAY_TEST
+			display();
+		
+#endif
+		}
+		end=clock();
+		outfile <<((double)(end- begin-lostTime) / CLOCKS_PER_SEC) << " " << ((double)(end - begin-lostTime) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) <<  std::endl;
+		std::cout <<((double)(end- begin-lostTime) / CLOCKS_PER_SEC) << " " << ((double)(end - begin-lostTime) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) <<  std::endl;
+
+	}
+
+
+
+	
+
+
+outfile.close();
+
+}
+
+
+
+
 static void
 keyPress (unsigned char key, int x, int y)
 {
@@ -1282,6 +1482,10 @@ keyPress (unsigned char key, int x, int y)
 
 	case '3':
 		RandomTestSupportFunctionAllObjects();
+		break;
+
+	case '5':
+		GeneralTest();
 		break;
 
 	}
