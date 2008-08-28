@@ -78,8 +78,6 @@ void RandomTestSupportFunction()
 
 
 
-	glGet
-
 	clock_t begin, end;
 
 	begin=clock();

@@ -2,11 +2,14 @@
 
 #include "CD_Simplex.h"
 
+
+using namespace SCD;
+
 typedef std::numeric_limits< Scalar > dl;
 
 
 
-using namespace SCD;
+
 
 const Scalar CD_Simplex::zero_ =pow(double(10),-(dl::digits10));
 const Scalar CD_Simplex::zero2_=zero_*zero_;
