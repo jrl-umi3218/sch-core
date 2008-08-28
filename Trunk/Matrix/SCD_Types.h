@@ -10,17 +10,18 @@
 #include "QuaternionM.h"
 #include <cfloat>
 
+namespace SCD
+{
+	typedef  double  Scalar;
+	typedef  MAL_Default::Vector3Mod<Scalar> Vector3;
+	typedef  MAL_Default::Vector4D<Scalar> Vector4;
+	typedef  Vector3 Point3;
+	typedef  MAL_Default::Matrix3x3Mod<Scalar> Matrix3x3;
+	typedef  MAL_Default::QuaternionM<Scalar> Quaternion;
+	typedef  MAL_Default::Matrix4x4D<Scalar> Matrix4x4;
 
-typedef  double  Scalar;
-typedef  MAL_Default::Vector3Mod<Scalar> Vector3;
-typedef  MAL_Default::Vector4D<Scalar> Vector4;
-typedef  Vector3 Point3;
-typedef  MAL_Default::Matrix3x3Mod<Scalar> Matrix3x3;
-typedef  MAL_Default::QuaternionM<Scalar> Quaternion;
-typedef  MAL_Default::Matrix4x4D<Scalar> Matrix4x4;
-
-const Scalar INFINITY(DBL_MAX);
-
+	const Scalar INFINITY(DBL_MAX);
+}
 
 
 

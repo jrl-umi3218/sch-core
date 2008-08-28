@@ -42,14 +42,21 @@ namespace SCD
 		Scalar reComputeClosestPoints(Point3& p1,Point3& p2);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case
+		*\brief function that returns les distance SQUARED between two convex objects, the distance is set to negative if interpentration
 		*/
 		Scalar getDistance();
 
+
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, the distance is set to negative if interpentration
+		*\brief function that returns les distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case
 		*/
 		Scalar getDistanceWithoutPenetrationDepth();
+
+		/*
+		* brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
+		*/
+
+		bool isInCollision();
 
 		/*!
 		*\brief Intializes the direction vector (the vector between expected closest points) with a given value.
@@ -58,7 +65,6 @@ namespace SCD
 
 		/*!
 		*\brief sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3.
-		*\ if you want to make juste a boolean request put precision=1 and call getDistanceWithoutPenetrationDepth(), just check if the result is positive
 		*/
 		void setRelativePrecision(Scalar precision);
 
@@ -76,9 +82,8 @@ namespace SCD
 			return (i==0)?sObj1_:sObj2_;
 		}
 
-		/*
-		*\brief Sets if the pair computes penetration or not
-		*/
+
+
 
 
 

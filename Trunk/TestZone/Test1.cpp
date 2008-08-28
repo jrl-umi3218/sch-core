@@ -24,17 +24,17 @@
 #define DO_TEST
 //#define OUTPUT_FILE
 //#define LINES_DISPLAY
-//#define DISPLAY_TEST
+#define DISPLAY_TEST
 //#define MULTI_OBJECTS_TEST
 //#define TEST_HOLD
 //#define COLLISION_COUNTERS
 //#define IRREGULARITIES_COUNTERS
 
 
-const double DispersionScale=0.5;
-const double AnimationSpeed=3;
-const double AnimationScale=1.2;
-const long AnimationBegin=0;
+const double DispersionScale=0.2;
+const double AnimationSpeed=0.003;
+const double AnimationScale=0.6;
+const long AnimationBegin=1000;
 const long RandomTestEnd=10000000;
 const long AnimationEnd=10000000;
 const double AngleSteps=360;
@@ -78,6 +78,7 @@ void RandomTestSupportFunction()
 
 
 
+	glGet
 
 	clock_t begin, end;
 
@@ -520,7 +521,7 @@ init (void)
 #else
 	{
 		STP_BV s;
-		s.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(7).txt");
+		s.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/larm4_1.txt");
 		stpObjects.push_back(s);
 
 		/*STP_BV s2_;
@@ -547,7 +548,7 @@ init (void)
 
 
 		S_Polyhedron P;
-		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt.otp");
+		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(4).txt.otp");
 		polyObjects.push_back(P);
 
 		//S_Polyhedron P2;
@@ -609,7 +610,7 @@ reshape (int w, int h)
 
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
-	gluPerspective (45.0, (GLfloat)w/(GLfloat)h, 0.1, 1000.0);
+	gluPerspective (20.0, (GLfloat)w/(GLfloat)h, 0.1, 1000.0);
 
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();

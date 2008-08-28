@@ -229,6 +229,7 @@ namespace SCD
 
 		/*!
 		* \brief type of a solid object
+		* use it and die.
 		*/
 		static enum S_ObjectType	
 		{

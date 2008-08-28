@@ -140,12 +140,7 @@ Scalar CD_Pair::penetrationDepth()
 	if (collision_)//Objects are in collision
 	{		
 		distance_=-depthPair.getPenetrationDepth(lastDirection_,p1_,p2_,sp_,s1_,s2_);
-		if (distance_>=0)
-		{
-			collision_=false;
-
-		}
-		else
+		if (distance_<0)
 		{
 			lastDirection_.Set(0,1,0);
 		}
@@ -478,6 +473,22 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 	}
 }
 
+
+bool CD_Pair::isInCollision()
+{
+	if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
+	{
+		return collision_;
+	}
+	else
+	{
+		Scalar prec=precision_;
+		precision_=1;
+		GJK();
+		precision_=prec;
+		return collision_;
+	}
+}
 
 #undef SHOW_LAST_SIMLPEX
 #undef COUNTER
