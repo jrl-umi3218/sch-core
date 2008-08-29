@@ -100,6 +100,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				RuntimeLibrary="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
