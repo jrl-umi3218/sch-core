@@ -22,11 +22,11 @@ void STP_BV_P::constructFromFileWithGL(const std::string &filename)
 	poly.openFromFile(filename+std::string(".otp"));
 }
 
-Point3 STP_BV_P::n_Support(const Vector3 &v,int &lastFeature) const
+Point3 STP_BV_P::l_Support(const Vector3 &v,int &lastFeature) const
 {
 	poly.support(v,lastFeature);
 	int k=lastFeature;
-	return STP_BV::n_Support(v,k);
+	return STP_BV::l_Support(v,k);
 }
 
 void STP_BV_P::drawGLInLocalCordinates()

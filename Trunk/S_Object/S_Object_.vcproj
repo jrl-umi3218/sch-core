@@ -156,6 +156,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\S_ObjectNormalized.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\S_Sphere.cpp"
 				>
 			</File>
@@ -187,6 +191,14 @@
 			</File>
 			<File
 				RelativePath=".\S_ObjectNonNormalized.hxx"
+				>
+			</File>
+			<File
+				RelativePath=".\S_ObjectNormalized.h"
+				>
+			</File>
+			<File
+				RelativePath=".\S_ObjectNormalized.hxx"
 				>
 			</File>
 			<File

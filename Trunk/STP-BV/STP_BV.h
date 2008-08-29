@@ -2,7 +2,7 @@
 #define __STP_BV_H
 
 #pragma once
-#include "..\s_object\s_object.h"
+#include "..\s_object\s_objectnormalized.h"
 #include "STP_Feature.h"
 
 
@@ -118,7 +118,7 @@ namespace SCD
 
 
 	class STP_BV :
-		public S_Object
+		public S_ObjectNormalized
 	{
 	public:
 		STP_BV(void);
@@ -132,7 +132,7 @@ namespace SCD
 		virtual STP_BV & operator=(const STP_BV&);
 
 
-		virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
+		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
 		virtual S_ObjectType getType() const;
 

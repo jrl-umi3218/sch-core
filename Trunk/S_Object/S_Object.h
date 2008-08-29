@@ -66,18 +66,19 @@ namespace SCD
 
 	} S_ObjectTimeStamp;
 
+	/*IMPORTANT !!!! DO NOT INHERIT FROM THIS CLASS, YOU MUST CHOOSE IF YOU NEED VECTOR NORMALIZATION OR NOT IN YOUR SUPPORT FUNCTION AND INHERIT FROM S_ObjectNormalized or S_ObjectNonNormalized*/
 	class S_Object
 	{
 
 	protected:
 		/*! 
-		*  \brief gives the support point for a given normalized vector and a given last feature. Must be overloaded.
+		*  \brief gives the support point for a given vector in local cordinates and a given last feature. MUST BE OVERLOADED.
 		*  \param v direction vector (normalized)
 		*  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
 		*  \return returns the support point.
 		*/ 
 
-		virtual Point3 n_Support(const Vector3& v, int& lastFeature)const=0;
+		virtual Point3 l_Support(const Vector3& v, int& lastFeature)const=0;
 
 
 	public:
@@ -87,19 +88,19 @@ namespace SCD
 		virtual ~S_Object(void);
 
 		/*! 
-		*  \brief normalizes the vector and put it in objects coordinates, then calls n_support.
+		*  \brief put it in objects coordinates, then calls l_support. DO NOT OVERLOAD IT UNLESS YOU KNOW WHAT YOU ARE DOING (if you want to define the support function, overload l_support)
 		*  \param v direction vector
 		*  \return returns the support point.
 		*/ 
-		virtual Point3 support(const Vector3& v) const;
+		virtual Point3 support(const Vector3& v) const=0;
 
 		/*! 
 		*  \brief version of support with last feature optimization
 		*  \param v direction vector
-		*  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
+		*  \param lastFeature tells in which feature we were in last query, and returns the new one. very important in spatio-temporal coherence
 		*  \return returns the support point.
 		*/ 
-		virtual Point3 support(const Vector3& v, int & LastFeature) const;
+		virtual Point3 support(const Vector3& v, int & LastFeature) const=0;
 
 		
 		/*
@@ -228,8 +229,7 @@ namespace SCD
 
 
 		/*!
-		* \brief type of a solid object
-		* use it and die.
+		* \brief type of a solid object. Don't use it to cast !
 		*/
 		static enum S_ObjectType	
 		{

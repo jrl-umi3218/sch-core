@@ -11,7 +11,7 @@ namespace SCD
 
 		STP_BV_P(void);
 		
-		virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
+		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition

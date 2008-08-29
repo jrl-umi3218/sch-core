@@ -16,7 +16,7 @@ namespace SCD
 		S_Superellipsoid(Scalar a,Scalar b,Scalar c,Scalar epsilon1,Scalar epsilon2);
 		virtual ~S_Superellipsoid(void);
 
-		virtual Point3  n_Support(const Vector3& v, int& lastFeature)const;
+		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
 		virtual S_ObjectType getType() const;
 

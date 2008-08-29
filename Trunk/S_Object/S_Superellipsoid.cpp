@@ -35,7 +35,7 @@ S_Superellipsoid::~S_Superellipsoid(void)
 
 
 
-Point3 S_Superellipsoid::n_Support(const Vector3& v, int& lastFeature)const
+Point3 S_Superellipsoid::l_Support(const Vector3& v, int& lastFeature)const
 {
 
 	Scalar anx,bny,cnz;

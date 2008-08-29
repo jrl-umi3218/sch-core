@@ -66,7 +66,7 @@ namespace SCD
 
 
 	protected:
-		virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
+		virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 		virtual	S_ObjectType getType() const;
 
 

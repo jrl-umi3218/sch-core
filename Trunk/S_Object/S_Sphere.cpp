@@ -14,7 +14,7 @@ S_Sphere::~S_Sphere(void)
 }
 
 
-Point3 S_Sphere::n_Support(const Vector3& v, int& lastFeature)const
+Point3 S_Sphere::l_Support(const Vector3& v, int& lastFeature)const
 {
 	return v*radius_;
 }

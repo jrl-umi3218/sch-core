@@ -280,11 +280,11 @@ void S_Object::drawGLInLocalCordinates()
 
 		displist_=glGenLists(1);
 
-		points.push_back(n_Support(Vector3(0,0,1),lastfeature));
+		points.push_back(l_Support(Vector3(0,0,1),lastfeature));
 		normals.push_back(Vector3(0,0,1));
 
 		normals.push_back(Vector3(0,0,-1));
-		points.push_back(n_Support(Vector3(0,0,-1),lastfeature));
+		points.push_back(l_Support(Vector3(0,0,-1),lastfeature));
 
 		Scalar c2,c1,s1,s2;
 
@@ -304,7 +304,7 @@ void S_Object::drawGLInLocalCordinates()
 				s1=sin(latt);
 				s2=sin(longit);
 
-				points.push_back(n_Support(Vector3(c1*c2,c1*s2,s1),lastfeature));
+				points.push_back(l_Support(Vector3(c1*c2,c1*s2,s1),lastfeature));
 
 				Vector3 n(c1*c2,c1*s2,s1);
 

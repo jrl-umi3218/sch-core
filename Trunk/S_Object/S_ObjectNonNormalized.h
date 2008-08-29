@@ -15,14 +15,14 @@ public:
 	~S_ObjectNonNormalized(void);
 
 	/*! 
-	 *  \brief put the vector in objects coordinates, then calls n_support, without normalizing it
+	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
 	 *  \param v direction vector
 	 *  \return returns the support point.
 	 */ 	
 	virtual Point3 support(const Vector3& v) const;
 
 	/*! 
-	 *  \brief put the vector in objects coordinates, then calls n_support, without normalizing it
+	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
 	 *  \param v direction vector
      *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
 	 *  \return returns the support point.

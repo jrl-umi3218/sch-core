@@ -2,13 +2,13 @@
 #ifndef _S_SPHERE_H
 #define _S_SPHERE_H
 
-#include "s_object.h"
+#include "s_objectnormalized.h"
 
 namespace SCD
 {
 
 	class S_Sphere :
-		public S_Object
+		public S_ObjectNormalized
 	{
 	public:
 		/*!
@@ -18,7 +18,7 @@ namespace SCD
 		S_Sphere(const Scalar& radius);
 		virtual ~S_Sphere();
 
-		virtual Point3 n_Support(const Vector3& v, int& lastFeature)const;
+		virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 
 		virtual S_ObjectType getType() const;
 

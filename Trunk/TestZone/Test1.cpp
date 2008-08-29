@@ -19,7 +19,7 @@
 
 #include "includes.h"
 
-//#define NON_STP_BV_OBJECTS
+#define NON_STP_BV_OBJECTS
 //#define DISPLAY_DISTANCE
 #define DO_TEST
 //#define OUTPUT_FILE
@@ -442,12 +442,12 @@ init (void)
 
 #ifdef NON_STP_BV_OBJECTS
 	sObj.addObject(new S_Box(0.2,0.2,0.2));
-	//sObj.addObject(new S_Box(0.2,0.2,0.2));
-	/*sObj.addObject(new S_Sphere(0.1));
-	sObj.addObject(new S_Sphere(1));
+	sObj.addObject(new S_Box(0.2,0.2,0.2));
+	sObj.addObject(new S_Sphere(0.1));
+	sObj.addObject(new S_Sphere(0.12));
 
 	sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
-	sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));*/
+	sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
 
 #endif
 

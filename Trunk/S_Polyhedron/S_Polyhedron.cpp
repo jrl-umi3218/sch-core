@@ -62,7 +62,7 @@ Point3 S_Polyhedron::naiveSupport(const Vector3& v)const
 	return poly.naiveSupport(v);
 }
 
-Point3 S_Polyhedron::n_Support(const Vector3& v,int &lastFeature)const
+Point3 S_Polyhedron::l_Support(const Vector3& v,int &lastFeature)const
 {
 	return poly.support(v,lastFeature);
 }

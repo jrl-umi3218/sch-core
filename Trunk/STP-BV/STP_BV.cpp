@@ -1100,10 +1100,10 @@ Scalar STP_BV::supportH(const Vector3& v) const
 	int k;
 
 	/////A.E. : we use the default supportH function, cf DT_Convex.h\\\\\ 
-	return v*n_Support(v,k);
+	return v*l_Support(v,k);
 }
 
-Point3 STP_BV::n_Support(const Vector3& v,int& lastFeature) const 
+Point3 STP_BV::l_Support(const Vector3& v,int& lastFeature) const 
 {
 
 
