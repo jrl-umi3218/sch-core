@@ -1,0 +1,1 @@
+#include "../S_Object/S_Superellipsoid.h"
