@@ -12,8 +12,9 @@ add_definitions(
 )
 
 ADD_LIBRARY( s_object SHARED ${SOURCES} )
+target_link_libraries(s_object ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 SET_TARGET_PROPERTIES( s_object
     PROPERTIES
-    COMPILE_FLAGS ${${PROJECT_NAME}_CXXFLAGS}
+    LIBRARY_OUTPUT_DIRECTORY ../lib
 )
 

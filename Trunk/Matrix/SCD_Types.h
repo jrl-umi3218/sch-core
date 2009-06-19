@@ -3,11 +3,11 @@
 #ifndef SCD_TYPES
 #define SCD_TYPES
 
-#include "SmallVector3mod.h"
-#include "SmallVector4Default.h"
-#include "SmallMatrix3x3mod.h"
-#include "SmallMatrix4x4Default.h"
-#include "QuaternionM.h"
+#include <Matrix/SmallVector3Mod.h>
+#include <Matrix/SmallVector4Default.h>
+#include <Matrix/SmallMatrix3x3Mod.h>
+#include <Matrix/SmallMatrix4x4Default.h>
+#include <Matrix/QuaternionM.h>
 #include <cfloat>
 
 namespace SCD
@@ -20,7 +20,7 @@ namespace SCD
 	typedef  MAL_Default::QuaternionM<Scalar> Quaternion;
 	typedef  MAL_Default::Matrix4x4D<Scalar> Matrix4x4;
 
-	const Scalar INFINITY(DBL_MAX);
+    static const Scalar infinity = DBL_MAX;
 }
 
 

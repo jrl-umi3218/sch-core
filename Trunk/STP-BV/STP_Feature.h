@@ -8,8 +8,9 @@
 #pragma once
 
 
-#include "../matrix/scd_types.h"
+#include <Matrix/SCD_Types.h>
 #include <vector>
+#include <cstdlib>
 namespace SCD
 {
 	typedef struct s_STP_VVR
@@ -127,6 +128,6 @@ namespace SCD
 
 	};
 
-#include "STP_Feature.hxx"
+#include <STP-BV/STP_Feature.hxx>
 }
 #endif

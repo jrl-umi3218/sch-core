@@ -1,5 +1,3 @@
-project( STP-BV )
-
 set(SOURCES 
   STP_BigSphere.cpp
   STP_BV.cpp
@@ -13,5 +11,10 @@ set(SOURCES
 add_definitions( 
 )
 
-add_library( STP-BV STATIC ${SOURCES} )
+ADD_LIBRARY( stp-bv SHARED ${SOURCES} )
+target_link_libraries(stp-bv ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+SET_TARGET_PROPERTIES( stp-bv
+    PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ../lib
+)
 

@@ -1,5 +1,5 @@
 #include "CD_Depth.h"
-#include "DT_triEdge.h"
+#include "DT_TriEdge.h"
 #include <algorithm>
 
 #define _EPSILON_ 1e-24
@@ -257,10 +257,10 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
             link(Depth_Edge(f1, 1), Depth_Edge(f3, 0));
             link(Depth_Edge(f2, 1), Depth_Edge(f3, 1));
             
-            addCandidate(f0, INFINITY);
-            addCandidate(f1, INFINITY);
-            addCandidate(f2, INFINITY);
-            addCandidate(f3, INFINITY);
+            addCandidate(f0, infinity);
+            addCandidate(f1, infinity);
+            addCandidate(f2, infinity);
+            addCandidate(f3, infinity);
             break;
         }
         
@@ -321,12 +321,12 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         link(Depth_Edge(f4, 1), Depth_Edge(f5, 2));
         link(Depth_Edge(f5, 1), Depth_Edge(f3, 2));
 	    
-        addCandidate(f0, INFINITY);
-        addCandidate(f1, INFINITY);
-        addCandidate(f2, INFINITY);
-        addCandidate(f3, INFINITY);  
-        addCandidate(f4, INFINITY);
-        addCandidate(f5, INFINITY);
+        addCandidate(f0, infinity);
+        addCandidate(f1, infinity);
+        addCandidate(f2, infinity);
+        addCandidate(f3, infinity);  
+        addCandidate(f4, infinity);
+        addCandidate(f5, infinity);
 	    
         num_verts = 5;
     }
@@ -345,7 +345,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     
     Depth_Triangle *triangle = 0;
     
-    Scalar upper_bound2 = INFINITY; 	
+    Scalar upper_bound2 = infinity; 	
     
     do 
     {

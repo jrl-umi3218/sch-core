@@ -1,7 +1,7 @@
 #include "CD_Pair.h"
-#include "CD_simplex.h"
-#include "CD_simplexEnhanced.h"
-#include <gl\glut.h>
+#include "CD_Simplex.h"
+#include "CD_SimplexEnhanced.h"
+#include <GL/glut.h>
 #include <iostream>
 
 //#define SHOW_LAST_SIMLPEX

@@ -2,8 +2,8 @@
 #define __STP_BV_H
 
 #pragma once
-#include "..\s_object\s_objectnormalized.h"
-#include "STP_Feature.h"
+#include <S_Object/S_ObjectNormalized.h>
+#include <STP-BV/STP_Feature.h>
 
 
 #include <vector>

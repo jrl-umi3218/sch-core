@@ -1,5 +1,3 @@
-project( S_Polyhedron )
-
 set(SOURCES 
   Polyhedron_algorithms.cpp
   S_Polyhedron.cpp
@@ -10,5 +8,10 @@ set(SOURCES
 add_definitions( 
 )
 
-add_library( S_Polyhedron STATIC ${SOURCES} )
+add_library( s_polyhedron SHARED ${SOURCES} )
+target_link_libraries(s_polyhedron ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+SET_TARGET_PROPERTIES( s_polyhedron
+    PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ../lib
+)
 

@@ -4,7 +4,7 @@
 #define _S_OBJECT
 
 
-#include "../matrix/SCD_Types.h"
+#include <Matrix/SCD_Types.h>
 
 namespace SCD
 {
@@ -45,13 +45,13 @@ namespace SCD
 		void operator--()
 		{
 			value1--;
-			if (value1==unsigned long int(-1))
+			if (value1==(unsigned long int)(-1))
 			{	
 				value2--;
-				if (value2==unsigned long int(-1))
+				if (value2==(unsigned long int)(-1))
 				{	
 					value3--;
-					if (value3==unsigned long int(-1))
+					if (value3==(unsigned long int)(-1))
 					{	
 						value4--;
 
@@ -231,7 +231,7 @@ namespace SCD
 		/*!
 		* \brief type of a solid object. Don't use it to cast !
 		*/
-		static enum S_ObjectType	
+		enum S_ObjectType	
 		{
 			TS_Object,
 			TPoint,
@@ -286,6 +286,6 @@ namespace SCD
 	};
 
 
-#include "S_Object.hxx"
+#include <S_Object/S_Object.hxx>
 }
 #endif

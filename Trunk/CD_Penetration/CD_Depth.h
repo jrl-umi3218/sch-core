@@ -2,8 +2,8 @@
 #define _CD_DEPTH
 
 #pragma once
-#include "../S_Object/S_Object.h"
-#include "../CD/CD_SimplexEnhanced.h"
+#include <S_Object/S_Object.h>
+#include <CD/CD_SimplexEnhanced.h>
 
 namespace SCD
 {

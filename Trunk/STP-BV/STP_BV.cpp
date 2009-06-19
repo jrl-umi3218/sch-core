@@ -11,7 +11,6 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <iostream>
 #include <fstream>
 #include <GL/glut.h>
-#include <hash_map>
 #include <exception>
 
 
@@ -1161,21 +1160,21 @@ Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
 	/////A.E. : We need to remember the previous Voronoi region we were in\\\\\ 
 
 #ifdef REMEMBER_LAST_FEATURE
-	if (lastFeature!=-1)
-		currentBV =currentBV = m_patches[lastFeature];
-	else
+	if (lastFeature!=-1) {
+		currentBV = m_patches[lastFeature];
+    }
+	else {
 		currentBV = *(m_patches.begin());//first voronoi region search
-
+    }
 #else
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
 	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented\\\\\ 
-	bool found = false;
-	/////A.E. : it seems me wrong to begin with 1\\\\\ 
-	int i = 0;
+	/////A.E. : it seems me wrong to begin with 1 
 	int j = 0;
-
+    int i = 0;
+    bool found = false;
 
 
 
@@ -1231,8 +1230,7 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 	bool found = false;
 	/////A.E. : it seems me wrong to begin with 1\\\\\ 
 
-	int i = 0;
-
+    int i = 0;
 
 	while( (i < m_patches.size()) && !(found = currentBV->isHereFarthestNeighbourPrime(v)) )
 	{
@@ -1282,12 +1280,12 @@ Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
-	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented\\\\\ 
+	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented
 	bool found = false;
 
 
 
-	/////A.E. : it seems me wrong to begin with 1\\\\\ 
+	/////A.E. : it seems me wrong to begin with 1
 	int i = 0;
 
 

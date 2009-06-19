@@ -2,7 +2,7 @@
 #define _STP_BIGSPHERE
 
 #pragma once
-#include "stp_feature.h"
+#include <STP-BV/STP_Feature.h>
 
 
 namespace SCD

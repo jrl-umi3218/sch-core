@@ -6,7 +6,7 @@
 
 
 
-#include "s_objectnonnormalized.h"
+#include <S_Object/S_ObjectNonNormalized.h>
 
 namespace SCD
 {

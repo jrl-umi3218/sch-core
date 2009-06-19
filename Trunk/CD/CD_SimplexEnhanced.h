@@ -2,7 +2,7 @@
 #define _CD_SIMPLEX_ENHANCED_H
 
 #pragma once
-#include "cd_simplex.h"
+#include <CD/CD_Simplex.h>
 
 namespace SCD
 {

@@ -2,7 +2,7 @@
 #ifndef _S_SPHERE_H
 #define _S_SPHERE_H
 
-#include "s_objectnormalized.h"
+#include <S_Object/S_ObjectNormalized.h>
 
 namespace SCD
 {

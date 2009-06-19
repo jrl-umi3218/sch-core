@@ -1,6 +1,6 @@
 #pragma once
-#include "stp_bv.h"
-#include "..\s_Polyhedron\polyhedron_algorithms.h"
+#include <STP-BV/STP_BV.h>
+#include <S_Polyhedron/Polyhedron_algorithms.h>
 
 namespace SCD
 {

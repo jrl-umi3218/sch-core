@@ -170,7 +170,7 @@ namespace MAL_Default
       /*! Multiplication operator with a constant */
       Matrix4x4D<T> operator * (const double & r) 	
       {	
-	struct Matrix4x4<T> result;
+	struct Matrix4x4D<T> result;
 	result.m[0] = m[0] * r;
 	result.m[1] = m[1] * r;
 	result.m[2] = m[2] * r;
@@ -334,7 +334,7 @@ namespace MAL_Default
 	  {
 	    for(int j=0;j<4;j++)
 	      os << A.m[i*4+j] << " ";
-	    os << endl;
+	    os << std::endl;
 	  }
 	return os;
       }

@@ -3,7 +3,7 @@
 
 #pragma once
 #include <vector>
-#include "../Matrix/SCD_Types.h"
+#include <Matrix/SCD_Types.h>
 
 namespace SCD
 {
@@ -107,6 +107,6 @@ namespace SCD
 	};
 
 
-#include "S_PolyhedronVertex.hxx"
+#include <S_Polyhedron/S_PolyhedronVertex.hxx>
 }
 #endif

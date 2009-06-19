@@ -5,8 +5,8 @@
 
 #include <iostream>
 #include <cmath>
-#include "smallvector3default.h"
-#include "smallmatrix3x3Default.h"
+#include <Matrix/SmallVector3Default.h>
+#include <Matrix/SmallMatrix3x3Default.h>
 
 
 namespace MAL_Default
@@ -22,50 +22,50 @@ namespace MAL_Default
 		explicit Vector3Mod<T>()
 		{}
 
-		explicit Vector3Mod<T>(const T& x, const T& y, const T& z):Vector3D(x,y,z)
+		explicit Vector3Mod<T>(const T& x, const T& y, const T& z):Vector3D<T>(x,y,z)
 		{}
 
 	
-		explicit Vector3Mod<T>(const T* const p):Vector3D(p[0],p[1],p[2])
+		explicit Vector3Mod<T>(const T* const p):Vector3D<T>(p[0],p[1],p[2])
 		{}
 
 		void Set(const T& x, const T& y, const T& z)
 		{
-			m_x=x;
-			m_y=y;
-			m_z=z;
+			this->m_x=x;
+			this->m_y=y;
+			this->m_z=z;
 		}
 
 	
 		void Set(const T* const p)
 		{
-			m_x=p[0];
-			m_y=p[1];
-			m_z=p[2];
+			this->m_x=p[0];
+			this->m_y=p[1];
+			this->m_z=p[2];
 		}
 
 
 		inline const Vector3Mod<T> operator= (const struct Vector3D<T> &v)
 		{
-			m_x = v.m_x;
-			m_y = v.m_y;
-			m_z = v.m_z;
+			this->m_x = v.m_x;
+			this->m_y = v.m_y;
+			this->m_z = v.m_z;
 			return *this;
 		}
 
 		/*! Unary operator - */
 		inline const Vector3Mod<T> operator-() const
 		{
-			return Vector3Mod<T>(-m_x, -m_y, -m_z);
+			return Vector3Mod<T>(-(this->m_x), -(this->m_y), -(this->m_z));
 		}
 
 
 		inline const Vector3Mod<T> operator+ (const struct Vector3D<T> &v) const
 		{
 			Vector3Mod<T> vr;
-			vr.m_x = m_x + v.m_x;
-			vr.m_y = m_y + v.m_y;
-			vr.m_z = m_z + v.m_z;
+			vr.m_x = this->m_x + v.m_x;
+			vr.m_y = this->m_y + v.m_y;
+			vr.m_z = this->m_z + v.m_z;
 			return vr;
 		}
 
@@ -75,9 +75,9 @@ namespace MAL_Default
 		inline const Vector3Mod<T> operator- (const struct Vector3D<T> &v) const
 		{
 			Vector3Mod<T> vr;
-			vr.m_x = m_x - v.m_x;
-			vr.m_y = m_y - v.m_y;
-			vr.m_z = m_z - v.m_z;
+			vr.m_x = this->m_x - v.m_x;
+			vr.m_y = this->m_y - v.m_y;
+			vr.m_z = this->m_z - v.m_z;
 			return vr;
 		}
 
@@ -85,24 +85,24 @@ namespace MAL_Default
 		inline Vector3Mod<T> operator* (const T& t) const
 		{
 			Vector3Mod<T> vr;
-			vr.m_x = m_x * t;
-			vr.m_y = m_y * t;
-			vr.m_z = m_z * t;
+			vr.m_x = this->m_x * t;
+			vr.m_y = this->m_y * t;
+			vr.m_z = this->m_z * t;
 			return vr;
 		}
 
 		/*! Binary operator * : dot product */
 		inline T operator* (const Vector3D<T>& v) const
 		{
-			return m_x * v.m_x + m_y * v.m_y + m_z * v.m_z ;
+			return this->m_x * v.m_x + this->m_y * v.m_y + this->m_z * v.m_z ;
 		}
 
 		/*! Binary operator *= */
 		inline void operator*= (const T &t) 
 		{
-			m_x = m_x*t;
-			m_y = m_y*t;
-			m_z = m_z*t;
+			this->m_x = this->m_x*t;
+			this->m_y = this->m_y*t;
+			this->m_z = this->m_z*t;
 		}
 
 
@@ -110,9 +110,9 @@ namespace MAL_Default
 		inline Vector3Mod<T> operator*(const Matrix3x3<T>& m)const 
 		{
 
-			Vector3Mod<T> vr(m_x*m[0]+m_y*m[3]+m_z*m[6],
-						     m_x*m[1]+m_y*m[4]+m_z*m[7],
-						     m_x*m[2]+m_y*m[5]+m_z*m[8]);
+			Vector3Mod<T> vr(this->m_x*m[0]+this->m_y*m[3]+this->m_z*m[6],
+						     this->m_x*m[1]+this->m_y*m[4]+this->m_z*m[7],
+						     this->m_x*m[2]+this->m_y*m[5]+this->m_z*m[8]);
 			return vr;
 			
 		}
@@ -120,12 +120,12 @@ namespace MAL_Default
 		inline void operator*=(const Matrix3x3<T> m) 
 		{
 
-			T x=m_x*m[0]+m_y*m[3]+m_z*m[6],
-			  y=m_x*m[1]+m_y*m[4]+m_z*m[7];
-			 m_z=m_x*m[2]+m_y*m[5]+m_z*m[8];
+			T x=this->m_x*m[0]+this->m_y*m[3]+this->m_z*m[6],
+			  y=this->m_x*m[1]+this->m_y*m[4]+this->m_z*m[7];
+			 this->m_z=this->m_x*m[2]+this->m_y*m[5]+this->m_z*m[8];
 
-			m_x = x;
-			m_y = y;
+			this->m_x = x;
+			this->m_y = y;
 			
 		}
 
@@ -138,18 +138,18 @@ namespace MAL_Default
 		inline Vector3Mod<T> operator/ (const T &t) const
 		{
 			Vector3Mod<T> vr;
-			vr.m_x = m_x/t;
-			vr.m_y = m_y/t;
-			vr.m_z = m_z/t;
+			vr.m_x = this->m_x/t;
+			vr.m_y = this->m_y/t;
+			vr.m_z = this->m_z/t;
 			return vr;
 		}
 
 		inline Vector3Mod<T> operator ^ (const Vector3D<T>& v2) const
 		{
 			Vector3Mod<T> vr;
-			vr.m_x = m_y*v2.m_z - v2.m_y*m_z;
-			vr.m_y = m_z*v2.m_x - v2.m_z*m_x;
-			vr.m_z = m_x*v2.m_y - v2.m_x*m_y;
+			vr.m_x = this->m_y*v2.m_z - v2.m_y*this->m_z;
+			vr.m_y = this->m_z*v2.m_x - v2.m_z*this->m_x;
+			vr.m_z = this->m_x*v2.m_y - v2.m_x*this->m_y;
 			return vr;
 		}
 
@@ -168,5 +168,5 @@ namespace MAL_Default
 	};
 };
 
-#include "SmallMatrix3x3Mod.h"
+#include <Matrix/SmallMatrix3x3Mod.h>
 #endif

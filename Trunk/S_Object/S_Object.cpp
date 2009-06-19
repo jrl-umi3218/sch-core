@@ -1,5 +1,5 @@
 #include "S_Object.h"
-#include "gl/Glut.h"
+#include "GL/glut.h"
 #include <vector>
 
 using namespace SCD;

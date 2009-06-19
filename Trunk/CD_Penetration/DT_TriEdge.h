@@ -27,7 +27,7 @@
 #include <vector>
 #include <iostream>
 
-#include "../matrix/SCD_Types.h"
+#include <Matrix/SCD_Types.h>
 
 //#define DEBUG
 

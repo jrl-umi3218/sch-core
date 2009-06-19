@@ -1,6 +1,6 @@
 #include "S_Superellipsoid.h"
 #include <vector>
-#include <gl\glut.h>
+#include <GL/glut.h>
 
 const double PI=3.14159265358979323;
 

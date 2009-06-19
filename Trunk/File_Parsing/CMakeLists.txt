@@ -1,5 +1,3 @@
-project( File_Parsing )
-
 set(SOURCES 
   SimplestParsing.cpp
 )
@@ -8,5 +6,9 @@ set(SOURCES
 add_definitions( 
 )
 
-add_library( File_Parsing STATIC ${SOURCES} )
+add_library( file_parsing SHARED ${SOURCES} )
+SET_TARGET_PROPERTIES( file_parsing
+    PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ../lib
+)
 

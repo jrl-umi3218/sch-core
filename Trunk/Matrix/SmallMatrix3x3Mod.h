@@ -4,9 +4,9 @@
 #define _MATRIX3D_MAL_MOD_
 
 #include <cassert>
-#include "SmallMatrix3x3Default.h"
+#include <Matrix/SmallMatrix3x3Default.h>
 
-#include "QuaternionM.h"
+#include <Matrix/QuaternionM.h>
 
 namespace MAL_Default
 {
@@ -19,25 +19,25 @@ namespace MAL_Default
 		/*! Defaut constructor. */
 		explicit Matrix3x3Mod<T>() 
 		{ 
-			m[0]=0.0; m[1] = 0.0; m[2]=0.0;
-			m[3]=0.0; m[4] = 0.0; m[5]=0.0;
-			m[6]=0.0; m[7] = 0.0; m[8]=0.0;
+			this->m[0]=0.0; this->m[1] = 0.0; this->m[2]=0.0;
+			this->m[3]=0.0; this->m[4] = 0.0; this->m[5]=0.0;
+			this->m[6]=0.0; this->m[7] = 0.0; this->m[8]=0.0;
 		}
 
 		/*! Constructor from a scalar */
 		explicit Matrix3x3Mod<T> (const T& x)
 		{
-			m[0]=x; m[1] = x; m[2]=x;
-			m[3]=x; m[4] = x; m[5]=x;
-			m[6]=x; m[7] = x; m[8]=x;
+			this->m[0]=x; this->m[1] = x; this->m[2]=x;
+			this->m[3]=x; this->m[4] = x; this->m[5]=x;
+			this->m[6]=x; this->m[7] = x; this->m[8]=x;
 		}
 
 		/*! Constructor from a pointer */
 		explicit Matrix3x3Mod<T> (const T* const  x)
 		{
-			m[0]=x[0]; m[1] = x[1]; m[2]=x[2];
-			m[3]=x[3]; m[4] = x[4]; m[5]=x[5];
-			m[6]=x[6]; m[7] = x[7]; m[8]=x[8];
+			this->m[0]=x[0]; this->m[1] = x[1]; this->m[2]=x[2];
+			this->m[3]=x[3]; this->m[4] = x[4]; this->m[5]=x[5];
+			this->m[6]=x[6]; this->m[7] = x[7]; this->m[8]=x[8];
 		}
 
 		/*! Constructor from 9 scalar */
@@ -47,26 +47,26 @@ namespace MAL_Default
 			const T x6, const T x7, const T x8
 			)
 		{
-			m[0]=x0; m[1] = x1; m[2]=x2;
-			m[3]=x3; m[4] = x4; m[5]=x5;
-			m[6]=x6; m[7] = x7; m[8]=x8;
+			this->m[0]=x0; this->m[1] = x1; this->m[2]=x2;
+			this->m[3]=x3; this->m[4] = x4; this->m[5]=x5;
+			this->m[6]=x6; this->m[7] = x7; this->m[8]=x8;
 		}
 
 		/*! constructor */
 		Matrix3x3Mod<T> (const struct Matrix3x3<T> &v)
 		{
-			m[0] = v.m[0]; m[1] = v.m[1]; m[2] = v.m[2];
-			m[3] = v.m[3]; m[4] = v.m[4]; m[5] = v.m[5];
-			m[6] = v.m[6]; m[7] = v.m[7]; m[8] = v.m[8];
+		 this->m[0] = v.m[0]; this->m[1] = v.m[1]; this->m[2] = v.m[2];
+		 this->m[3] = v.m[3]; this->m[4] = v.m[4]; this->m[5] = v.m[5];
+		 this->m[6] = v.m[6]; this->m[7] = v.m[7]; this->m[8] = v.m[8];
 		}
 
 		/*! constructor taking three columns vector*/
 
 		explicit Matrix3x3Mod<T> (const Vector3D<T> V1,const Vector3D<T> V2,const Vector3D<T> V3)
 		{
-			m[0] = V1[0]; m[1] =V2[0]; m[2] = V3[0];
-			m[3] = V1[1]; m[4] =V2[1]; m[5] = V3[1];
-			m[6] = V1[2]; m[7] =V2[2]; m[8] = V3[2];
+		 this->m[0] = V1[0]; this->m[1] =V2[0]; this->m[2] = V3[0];
+		 this->m[3] = V1[1]; this->m[4] =V2[1]; this->m[5] = V3[1];
+		 this->m[6] = V1[2]; this->m[7] =V2[2]; this->m[8] = V3[2];
 
 		}
 
@@ -81,15 +81,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz), 
-				m[1]=xy - wz, 
-				m[2]=xz + wy,
-				m[3]=xy + wz, 
-				m[4]=T(1.0) - (xx + zz), 
-				m[5]=yz - wx,
-				m[6]=xz - wy, 
-				m[7]=yz + wx, 
-				m[8]=T(1.0) - (xx + yy);
+		 this->m[0]=T(1.0) - (yy + zz), 
+			 this->m[1]=xy - wz, 
+			 this->m[2]=xz + wy,
+			 this->m[3]=xy + wz, 
+			 this->m[4]=T(1.0) - (xx + zz), 
+			 this->m[5]=yz - wx,
+			 this->m[6]=xz - wy, 
+			 this->m[7]=yz + wx, 
+			 this->m[8]=T(1.0) - (xx + yy);
 		}
 
 
@@ -104,15 +104,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz); 
-			m[1]=xy - wz; 
-			m[2]=xz + wy;
-			m[3]=xy + wz; 
-			m[4]=T(1.0) - (xx + zz); 
-			m[5]=yz - wx;
-			m[6]=xz - wy; 
-			m[7]=yz + wx; 
-			m[8]=T(1.0) - (xx + yy);
+		    this->m[0]=T(1.0) - (yy + zz); 
+		    this->m[1]=xy - wz; 
+		    this->m[2]=xz + wy;
+		    this->m[3]=xy + wz; 
+		    this->m[4]=T(1.0) - (xx + zz); 
+		    this->m[5]=yz - wx;
+		    this->m[6]=xz - wy; 
+		    this->m[7]=yz + wx; 
+		    this->m[8]=T(1.0) - (xx + yy);
 		}
 
 
@@ -135,15 +135,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz); 
-			m[1]=xy - wz; 
-			m[2]=xz + wy;
-			m[3]=xy + wz; 
-			m[4]=T(1.0) - (xx + zz); 
-			m[5]=yz - wx;
-			m[6]=xz - wy; 
-			m[7]=yz + wx; 
-			m[8]=T(1.0) - (xx + yy);
+			this->m[0]=T(1.0) - (yy + zz); 
+			this->m[1]=xy - wz; 
+			this->m[2]=xz + wy;
+			this->m[3]=xy + wz; 
+			this->m[4]=T(1.0) - (xx + zz); 
+			this->m[5]=yz - wx;
+			this->m[6]=xz - wy; 
+			this->m[7]=yz + wx; 
+			this->m[8]=T(1.0) - (xx + yy);
 		}
 
 		
@@ -161,15 +161,15 @@ namespace MAL_Default
 			T sc = sy * cr; 
 			T ss = sy * sr;
 			
-			m[0]= cc + sp * ss;
-			m[1]= cs - sp * sc;
-			m[2]= -sy * cp;
-			m[3]= -cp * sr;
-			m[4]= cp * cr;
-			m[5]=  -sp;
-			m[6]= sc - sp * cs;
-			m[7]= ss + sp * cc;
-			m[8]= cy * cp;
+			this->m[0]= cc + sp * ss;
+			this->m[1]= cs - sp * sc;
+			this->m[2]= -sy * cp;
+			this->m[3]= -cp * sr;
+			this->m[4]= cp * cr;
+			this->m[5]=  -sp;
+			this->m[6]= sc - sp * cs;
+			this->m[7]= ss + sp * cc;
+			this->m[8]= cy * cp;
 		}
 
 						/*! set from 9 scalar */
@@ -179,9 +179,9 @@ namespace MAL_Default
 			const T x6, const T x7, const T x8
 			)
 		{
-			m[0]=x0; m[1] = x1; m[2]=x2;
-			m[3]=x3; m[4] = x4; m[5]=x5;
-			m[6]=x6; m[7] = x7; m[8]=x8;
+			this->m[0]=x0; this->m[1] = x1; this->m[2]=x2;
+			this->m[3]=x3; this->m[4] = x4; this->m[5]=x5;
+			this->m[6]=x6; this->m[7] = x7; this->m[8]=x8;
 		}
 
 
@@ -204,15 +204,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz); 
-			m[1]=xy - wz; 
-			m[2]=xz + wy;
-			m[3]=xy + wz; 
-			m[4]=T(1.0) - (xx + zz); 
-			m[5]=yz - wx;
-			m[6]=xz - wy; 
-			m[7]=yz + wx; 
-			m[8]=T(1.0) - (xx + yy);
+			this->m[0]=T(1.0) - (yy + zz); 
+			this->m[1]=xy - wz; 
+			this->m[2]=xz + wy;
+			this->m[3]=xy + wz; 
+			this->m[4]=T(1.0) - (xx + zz); 
+			this->m[5]=yz - wx;
+			this->m[6]=xz - wy; 
+			this->m[7]=yz + wx; 
+			this->m[8]=T(1.0) - (xx + yy);
 		}
 
 
@@ -220,9 +220,9 @@ namespace MAL_Default
 		/*! Set from a pointer */
 		void Set(const T* const x)
 		{
-			m[0]=x[0]; m[1] = x[1]; m[2]=x[2];
-			m[3]=x[3]; m[4] = x[4]; m[5]=x[5];
-			m[6]=x[6]; m[7] = x[7]; m[8]=x[8];
+			this->m[0]=x[0]; this->m[1] = x[1]; this->m[2]=x[2];
+			this->m[3]=x[3]; this->m[4] = x[4]; this->m[5]=x[5];
+			this->m[6]=x[6]; this->m[7] = x[7]; this->m[8]=x[8];
 		}
 
 
@@ -237,15 +237,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz), 
-			m[1]=xy - wz, 
-			m[2]=xz + wy,
-			m[3]=xy + wz, 
-			m[4]=T(1.0) - (xx + zz), 
-			m[5]=yz - wx,
-			m[6]=xz - wy, 
-			m[7]=yz + wx, 
-			m[8]=T(1.0) - (xx + yy);
+			this->m[0]=T(1.0) - (yy + zz), 
+			this->m[1]=xy - wz, 
+			this->m[2]=xz + wy,
+			this->m[3]=xy + wz, 
+			this->m[4]=T(1.0) - (xx + zz), 
+			this->m[5]=yz - wx,
+			this->m[6]=xz - wy, 
+			this->m[7]=yz + wx, 
+			this->m[8]=T(1.0) - (xx + yy);
 		}
 
 		/*! quatrenion*/
@@ -258,15 +258,15 @@ namespace MAL_Default
 			T wx = q3 * xs,  wy = q3 * ys,  wz = q3 * zs;
 			T xx = q0 * xs,  xy = q0 * ys,  xz = q0 * zs;
 			T yy = q1 * ys,  yz = q1 * zs,  zz = q2 * zs;
-			m[0]=T(1.0) - (yy + zz); 
-			m[1]=xy - wz; 
-			m[2]=xz + wy;
-			m[3]=xy + wz; 
-			m[4]=T(1.0) - (xx + zz); 
-			m[5]=yz - wx;
-			m[6]=xz - wy; 
-			m[7]=yz + wx; 
-			m[8]=T(1.0) - (xx + yy);
+			this->m[0]=T(1.0) - (yy + zz); 
+			this->m[1]=xy - wz; 
+			this->m[2]=xz + wy;
+			this->m[3]=xy + wz; 
+			this->m[4]=T(1.0) - (xx + zz); 
+			this->m[5]=yz - wx;
+			this->m[6]=xz - wy; 
+			this->m[7]=yz + wx; 
+			this->m[8]=T(1.0) - (xx + yy);
 		}
 
 		/*!Euler*/
@@ -283,32 +283,32 @@ namespace MAL_Default
 			T sc = sy * cr; 
 			T ss = sy * sr;
 			
-			m[0]= cc + sp * ss;
-			m[1]= cs - sp * sc;
-			m[2]= -sy * cp;
-			m[3]= -cp * sr;
-			m[4]= cp * cr;
-			m[5]=  -sp;
-			m[6]= sc - sp * cs;
-			m[7]= ss + sp * cc;
-			m[8]= cy * cp;
+			this->m[0]= cc + sp * ss;
+			this->m[1]= cs - sp * sc;
+			this->m[2]= -sy * cp;
+			this->m[3]= -cp * sr;
+			this->m[4]= cp * cr;
+			this->m[5]=  -sp;
+			this->m[6]= sc - sp * cs;
+			this->m[7]= ss + sp * cc;
+			this->m[8]= cy * cp;
 		}
 
 		/*! Transposition */
 		Matrix3x3<T>& TransposeIt()
 		{
 			T t;
-			t=m[1];
-			m[1]=m[3];
-			m[3]=t;
+			t=this->m[1];
+			this->m[1]=this->m[3];
+			this->m[3]=t;
 
-			t=m[2];
-			m[2]=m[6];
-			m[6]=t;
+			t=this->m[2];
+			this->m[2]=this->m[6];
+			this->m[6]=t;
 			
-			t=m[5];
-			m[5]=m[7];
-			m[7]=t;
+			t=this->m[5];
+			this->m[5]=this->m[7];
+			this->m[7]=t;
 
 			return *this;
 		}
@@ -316,46 +316,46 @@ namespace MAL_Default
 		/*! Transposition */
 		Matrix3x3<T> Transpose() const
 		{
-			return Matrix3x3<T> (m[0],m[3],m[6],
-								  m[1],m[4],m[7],
-								  m[2],m[5],m[8]);
+			return Matrix3x3<T> (this->m[0],this->m[3],this->m[6],
+								  this->m[1],this->m[4],this->m[7],
+								  this->m[2],this->m[5],this->m[8]);
 		}
 
 		Vector3Mod<T> operator *(const Vector3D<T>& v) const
 		{
-			Vector3Mod<T> vr(m[0]*v[0]+m[1]*v[1]+m[2]*v[2],
-									m[3]*v[0]+m[4]*v[1]+m[5]*v[2],
-									m[6]*v[0]+m[7]*v[1]+m[8]*v[2]);
+			Vector3Mod<T> vr(this->m[0]*v[0]+this->m[1]*v[1]+this->m[2]*v[2],
+									this->m[3]*v[0]+this->m[4]*v[1]+this->m[5]*v[2],
+									this->m[6]*v[0]+this->m[7]*v[1]+this->m[8]*v[2]);
 			return vr;
 		}
 
 		Matrix3x3<T> operator *(const Matrix3x3<T>& B) const
 		{
 			return Matrix3x3<T>( 
-			 m[0] * B.m[0] + m[1] * B.m[3] + m[2] * B.m[6],
-			 m[0] * B.m[1] + m[1] * B.m[4] + m[2] * B.m[7],
-			 m[0] * B.m[2] + m[1] * B.m[5] + m[2] * B.m[8],
-			 m[3] * B.m[0] + m[4] * B.m[3] + m[5] * B.m[6],
-			 m[3] * B.m[1] + m[4] * B.m[4] + m[5] * B.m[7],
-			 m[3] * B.m[2] + m[4] * B.m[5] + m[5] * B.m[8],
-			 m[6] * B.m[0] + m[7] * B.m[3] + m[8] * B.m[6],
-			 m[6] * B.m[1] + m[7] * B.m[4] + m[8] * B.m[7],
-			 m[6] * B.m[2] + m[7] * B.m[5] + m[8] * B.m[8]);
+			 this->m[0] * B.m[0] + this->m[1] * B.m[3] + this->m[2] * B.m[6],
+			 this->m[0] * B.m[1] + this->m[1] * B.m[4] + this->m[2] * B.m[7],
+			 this->m[0] * B.m[2] + this->m[1] * B.m[5] + this->m[2] * B.m[8],
+			 this->m[3] * B.m[0] + this->m[4] * B.m[3] + this->m[5] * B.m[6],
+			 this->m[3] * B.m[1] + this->m[4] * B.m[4] + this->m[5] * B.m[7],
+			 this->m[3] * B.m[2] + this->m[4] * B.m[5] + this->m[5] * B.m[8],
+			 this->m[6] * B.m[0] + this->m[7] * B.m[3] + this->m[8] * B.m[6],
+			 this->m[6] * B.m[1] + this->m[7] * B.m[4] + this->m[8] * B.m[7],
+			 this->m[6] * B.m[2] + this->m[7] * B.m[5] + this->m[8] * B.m[8]);
 			 
 		}
 
 		void operator *=(const Matrix3x3<T>& B) 
 		{
 			Matrix3x3<T> temp(*this);
-			m[0] = temp.m[0] * B.m[0] + temp.m[1] * B.m[3] + temp.m[2] * B.m[6];
-			m[1] = temp.m[0] * B.m[1] + temp.m[1] * B.m[4] + temp.m[2] * B.m[7];
-			m[2] = temp.m[0] * B.m[2] + temp.m[1] * B.m[5] + temp.m[2] * B.m[8];
-			m[3] = temp.m[3] * B.m[0] + temp.m[4] * B.m[3] + temp.m[5] * B.m[6];
-			m[4] = temp.m[3] * B.m[1] + temp.m[4] * B.m[4] + temp.m[5] * B.m[7];
-			m[5] = temp.m[3] * B.m[2] + temp.m[4] * B.m[5] + temp.m[5] * B.m[8];
-			m[6] = temp.m[6] * B.m[0] + temp.m[7] * B.m[3] + temp.m[8] * B.m[6];
-			m[7] = temp.m[6] * B.m[1] + temp.m[7] * B.m[4] + temp.m[8] * B.m[7];
-			m[8] = temp.m[6] * B.m[2] + temp.m[7] * B.m[5] + temp.m[8] * B.m[8]; 
+			this->m[0] = temp.m[0] * B.m[0] + temp.m[1] * B.m[3] + temp.m[2] * B.m[6];
+			this->m[1] = temp.m[0] * B.m[1] + temp.m[1] * B.m[4] + temp.m[2] * B.m[7];
+			this->m[2] = temp.m[0] * B.m[2] + temp.m[1] * B.m[5] + temp.m[2] * B.m[8];
+			this->m[3] = temp.m[3] * B.m[0] + temp.m[4] * B.m[3] + temp.m[5] * B.m[6];
+			this->m[4] = temp.m[3] * B.m[1] + temp.m[4] * B.m[4] + temp.m[5] * B.m[7];
+			this->m[5] = temp.m[3] * B.m[2] + temp.m[4] * B.m[5] + temp.m[5] * B.m[8];
+			this->m[6] = temp.m[6] * B.m[0] + temp.m[7] * B.m[3] + temp.m[8] * B.m[6];
+			this->m[7] = temp.m[6] * B.m[1] + temp.m[7] * B.m[4] + temp.m[8] * B.m[7];
+			this->m[8] = temp.m[6] * B.m[2] + temp.m[7] * B.m[5] + temp.m[8] * B.m[8]; 
 
 		}
 

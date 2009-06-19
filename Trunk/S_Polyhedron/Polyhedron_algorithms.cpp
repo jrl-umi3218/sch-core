@@ -1,7 +1,7 @@
 #include "Polyhedron_algorithms.h"
-#include<GL/Glut.h>
+#include <GL/glut.h>
 
-#include "../File_Parsing/SimplestParsing.h"
+#include <File_Parsing/SimplestParsing.h>
 
 
 using namespace SCD;

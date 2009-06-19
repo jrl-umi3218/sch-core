@@ -5,9 +5,9 @@
 #pragma once
 
 
-#include "../S_Object/S_Object.h"
-#include "CD_SimplexEnhanced.h"
-#include "../CD_Penetration/CD_Depth.h"
+#include <S_Object/S_Object.h>
+#include <CD/CD_SimplexEnhanced.h>
+#include <CD_Penetration/CD_Depth.h>
 
 namespace SCD
 {

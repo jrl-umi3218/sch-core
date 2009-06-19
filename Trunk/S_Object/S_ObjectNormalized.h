@@ -1,5 +1,5 @@
 #pragma once
-#include "s_object.h"
+#include <S_Object/S_Object.h>
 
 #ifndef _S_OBJECTNORMALIZED_H
 #define _S_OBJECTNORMALIZED_H
@@ -30,7 +30,7 @@ namespace SCD
 		virtual Point3 support(const Vector3& v, int & LastFeature) const;
 	};
 
-#include "S_ObjectNormalized.hxx"
+#include <S_Object/S_ObjectNormalized.hxx>
 
 }
 

@@ -18,19 +18,19 @@
  */
 
 #include <cstring>
-#include "boost/numeric/bindings/traits/ublas_matrix.hpp"
-#include "boost/numeric/bindings/traits/std_vector.hpp"
-#include "boost/numeric/bindings/traits/std_vector.hpp"
+#include <boost/numeric/bindings/traits/ublas_matrix.hpp>
+#include <boost/numeric/bindings/traits/std_vector.hpp>
+#include <boost/numeric/bindings/traits/std_vector.hpp>
 
-#include "boost/numeric/ublas/matrix_proxy.hpp"
-#include "boost/numeric/ublas/matrix.hpp"
-#include "boost/numeric/ublas/io.hpp"
-#include "boost/numeric/bindings/lapack/gesvd.hpp"
-#include "boost/numeric/ublas/operation.hpp"
-#include "boost/numeric/ublas/vector.hpp"
-#include "boost/numeric/ublas/vector_proxy.hpp"
-#include "boost/numeric/ublas/triangular.hpp"
-#include "boost/numeric/ublas/lu.hpp"
+#include <boost/numeric/ublas/matrix_proxy.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/io.hpp>
+#include <boost/numeric/bindings/lapack/gesvd.hpp>
+#include <boost/numeric/ublas/operation.hpp>
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/vector_proxy.hpp>
+#include <boost/numeric/ublas/triangular.hpp>
+#include <boost/numeric/ublas/lu.hpp>
 
 namespace ublas = boost::numeric::ublas;
 namespace traits = boost::numeric::bindings::traits;

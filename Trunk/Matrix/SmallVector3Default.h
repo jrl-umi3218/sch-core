@@ -237,7 +237,7 @@ typedef MAL_Default::Vector3D<double> vector3d;
 	name[i]
 
 
-#include "SmallMatrix3x3Default.h"
+#include <Matrix/SmallMatrix3x3Default.h>
 
 
 #endif /* _VECTOR3D_PATTERNGENERATOR_JRL_ */

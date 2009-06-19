@@ -3,8 +3,8 @@
 #ifndef _POLYHEDRON_ALGORITHMS
 #define _POLYHEDRON_ALGORITHMS
 
-#include "../Matrix/SCD_Types.h"
-#include "S_polyhedronvertex.h"
+#include <Matrix/SCD_Types.h>
+#include <S_Polyhedron/S_PolyhedronVertex.h>
 
 #include <string>
 #include <vector>

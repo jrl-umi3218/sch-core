@@ -7,8 +7,8 @@
 
 
 #include <vector>
-#include "../S_Object/S_object.h"
-#include "CD_PAIR.h"
+#include <S_Object/S_Object.h>
+#include <CD/CD_Pair.h>
 
 
 namespace SCD

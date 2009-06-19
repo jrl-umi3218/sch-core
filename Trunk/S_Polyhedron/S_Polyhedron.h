@@ -2,9 +2,9 @@
 #define _S_POLYHEDRON
 
 #pragma once
-#include "..\s_object\s_objectNonNormalized.h"
-#include "S_polyhedronvertex.h"
-#include "Polyhedron_algorithms.h"
+#include <S_Object/S_ObjectNonNormalized.h>
+#include <S_Polyhedron/S_PolyhedronVertex.h>
+#include <S_Polyhedron/Polyhedron_algorithms.h>
 
 #include <string>
 #include <vector>

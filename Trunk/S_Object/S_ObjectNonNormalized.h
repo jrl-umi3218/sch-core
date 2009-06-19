@@ -2,7 +2,7 @@
 #define __S_OBJECTNONNORMALIZED
 
 #pragma once
-#include "s_object.h"
+#include <S_Object/S_Object.h>
 
 namespace SCD
 {
@@ -30,7 +30,7 @@ public:
 	virtual Point3 support(const Vector3& v, int & LastFeature) const;
 };
 
-#include "S_ObjectNonNormalized.hxx"
+#include <S_Object/S_ObjectNonNormalized.hxx>
 
 }
 

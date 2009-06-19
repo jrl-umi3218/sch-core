@@ -2,7 +2,7 @@
 #define _STP_SMALLSPHERE
 
 #pragma once
-#include "stp_feature.h"
+#include <STP-BV/STP_Feature.h>
 #include <vector>
 
 /*!  \class STP_SmallSphere

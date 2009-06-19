@@ -21,7 +21,10 @@ IF(UNIX)
   SET(${PROJECT_NAME}_CXXFLAGS "-DUNIX" )
 ENDIF(UNIX)
 
-SET(${PROJECT_NAME}_CXXFLAGS "-I ~/devel-src/SCD/Trunk" )
+include_directories(${PROJECT_SOURCE_DIR})
+find_package(GLUT)
+find_package(OpenGL)
+
 
 add_subdirectory(CD)
 add_subdirectory(CD_Penetration)
