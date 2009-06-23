@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="File_Parsing"
 	ProjectGUID="{366CE364-48A7-4185-AE16-9B81F1DF1270}"
 	RootNamespace="File_Parsering"
@@ -40,6 +40,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/RTCsu /GS"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
