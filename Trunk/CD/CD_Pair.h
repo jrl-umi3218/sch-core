@@ -28,27 +28,27 @@ namespace SCD
 		virtual ~CD_Pair(void);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, and computes the witness points, the distance is set to negative if interpentration
+		*\brief function that returns the distance SQUARED between two convex objects, and computes the witness points, the distance is set to negative if interpentration
 		*\param p1 is the witness point on the first object
 		*\param p2 is the witness point on the second object
 		*/
 		Scalar getClosestPoints(Point3& p1,Point3& p2);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, restarting the computations from the beginning and computes the witness points, the distance is set to negative if interpentration
+		*\brief function that returns the distance SQUARED between two convex objects, restarting the computations from the beginning and computes the witness points, the distance is set to negative if interpentration
 		*\param p1 is the witness point on the first object
 		*\param p2 is the witness point on the second object
 		*/
 		Scalar reComputeClosestPoints(Point3& p1,Point3& p2);
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, the distance is set to negative if interpentration
+		*\brief function that returns the distance SQUARED between two convex objects, the distance is set to negative if interpentration
 		*/
 		Scalar getDistance();
 
 
 		/*!
-		*\brief function that returns les distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case
+		*\brief function that returns the distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case
 		*/
 		Scalar getDistanceWithoutPenetrationDepth();
 
