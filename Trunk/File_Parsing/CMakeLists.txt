@@ -2,6 +2,9 @@ set(SOURCES
   SimplestParsing.cpp
 )
 
+set(HEADERS
+  SimplestParsing.h
+)
 
 add_definitions( 
 )
@@ -12,3 +15,10 @@ SET_TARGET_PROPERTIES( file_parsing
     LIBRARY_OUTPUT_DIRECTORY ../lib
 )
 
+INSTALL(FILES ${HEADERS}
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}/File_Parsing
+      PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
+)
+
+INSTALL(TARGETS file_parsing
+    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/SCD)

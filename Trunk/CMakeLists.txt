@@ -33,3 +33,14 @@ add_subdirectory(Matrix)
 add_subdirectory(S_Object)
 add_subdirectory(S_Polyhedron)
 add_subdirectory(STP-BV)
+
+# Build a pkgconfig file
+SET(install_pkg_libdir "\${libdir}")
+SET(install_pkg_include_dir "\${includedir}")
+
+CONFIGURE_FILE(${${PROJECT_NAME}_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake
+          ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc)
+INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig
+    PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
+)

@@ -4,6 +4,12 @@ set(SOURCES
   S_PolyhedronVertex.cpp
 )
 
+set(HEADERS
+  Polyhedron_algorithms.h
+  S_Polyhedron.h
+  S_PolyhedronVertex.h
+  S_PolyhedronVertex.hxx
+)
 
 add_definitions( 
 )
@@ -15,3 +21,10 @@ SET_TARGET_PROPERTIES( s_polyhedron
     LIBRARY_OUTPUT_DIRECTORY ../lib
 )
 
+INSTALL(FILES ${HEADERS}
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}/S_Polyhedron
+      PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
+)
+
+INSTALL(TARGETS s_polyhedron
+    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/SCD)
