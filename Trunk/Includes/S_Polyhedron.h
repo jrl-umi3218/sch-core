@@ -1,1 +1,0 @@
-#include "../S_Polyhedron/S_Polyhedron.h"

@@ -21,18 +21,12 @@ IF(UNIX)
   SET(${PROJECT_NAME}_CXXFLAGS "-DUNIX" )
 ENDIF(UNIX)
 
-include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/include)
 find_package(GLUT)
 find_package(OpenGL)
 
-
-add_subdirectory(CD)
-add_subdirectory(CD_Penetration)
-add_subdirectory(File_Parsing)
-add_subdirectory(Matrix)
-add_subdirectory(S_Object)
-add_subdirectory(S_Polyhedron)
-add_subdirectory(STP-BV)
+add_subdirectory(include/SCD/)
+add_subdirectory(src)
 
 # Build a pkgconfig file
 SET(install_pkg_libdir "\${libdir}")
