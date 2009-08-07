@@ -344,7 +344,6 @@ namespace MAL_Default
     };
 
 };
-typedef MAL_Default::Matrix4x4D<double> matrix4d;
 
 #define MAL_S4x4_MATRIX(name,type) \
   MAL_Default::Matrix4x4D<type> name

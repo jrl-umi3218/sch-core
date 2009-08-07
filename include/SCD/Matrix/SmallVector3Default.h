@@ -206,8 +206,6 @@ namespace MAL_Default
 	};
 };
 
-typedef MAL_Default::Vector3D<double> vector3d;
-
 #define MAL_S3_VECTOR(name,type)		\
 	MAL_Default::Vector3D<type> name
 

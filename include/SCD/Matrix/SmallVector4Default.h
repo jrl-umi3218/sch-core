@@ -190,8 +190,6 @@ namespace MAL_Default
 };
 
 
-typedef MAL_Default::Vector4D<double> vector4d;
-
 #define MAL_S4_VECTOR(name,type)		\
 	MAL_Default::Vector4D<type> name
 

@@ -330,7 +330,6 @@ namespace MAL_Default
 	};
 
 };
-typedef MAL_Default::Matrix3x3<double> matrix3d;
 
 #define MAL_S3x3_MATRIX(name,type) \
 	MAL_Default::Matrix3x3<type> name
