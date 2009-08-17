@@ -312,7 +312,6 @@ void STP_BV::constructFromFile(const std::string& filename)
 	STP_VVR dvvr[4];
 	std::vector<Point3> patchesCenter;
 
-	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
 #ifdef writeos2
 	os2 << "DEBUT CREATION OBJET" << std::endl;
 #endif
@@ -497,7 +496,6 @@ void STP_BV::constructFromFile(const std::string& filename)
 #ifdef writeos
 	os.close(); //DEBUG
 #endif
-	std::cout << "OBJECT CREATED" << std::endl << std::endl << std::endl;
 }
 
 
@@ -523,7 +521,6 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	int anglestep = 20;
 	std::vector<Point3> patchesCenter;
 
-	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
 #ifdef writeos2
 	os2 << "DEBUT CREATION OBJET" << std::endl;
 #endif
@@ -965,7 +962,6 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 #ifdef writeos
 	os.close(); //DEBUG
 #endif
-	std::cout << "OBJECT CREATED" << std::endl << std::endl << std::endl;
 }
 
 

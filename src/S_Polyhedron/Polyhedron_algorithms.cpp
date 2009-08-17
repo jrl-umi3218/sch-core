@@ -109,8 +109,6 @@ void Polyhedron_algorithms::drawGL()
 
 			glEndList();
 
-			std::cout << "CREATION SUCCEDED"<< std::endl<< std::endl<< std::endl;
-
 
 
 
@@ -133,8 +131,6 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 		clear();
 
 	FileParsing::SimplestParsing is;
-
-	std::cout << std::endl << "START OBJECT CREATION" << std::endl;
 
 	is().open(filename.c_str());
 	if(!is().is_open())
@@ -219,9 +215,6 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 	}
 
 	deleteVertexesWithoutNeighbors();
-
-	std::cout << "CREATION SUCCEEDED" << std::endl<< std::endl;
-
 
 
 }
