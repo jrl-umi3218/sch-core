@@ -21,10 +21,12 @@ IF(UNIX)
   SET(${PROJECT_NAME}_CXXFLAGS "-DUNIX" )
 ENDIF(UNIX)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+set(Boost_ADDITIONAL_VERSIONS "1.39" "1.39.0" CACHE PATH "Additional versions of boost")
+find_package(Boost)
 find_package(GLUT)
 find_package(OpenGL)
 
+include_directories(${PROJECT_SOURCE_DIR}/include  ${Boost_INCLUDE_DIR})
 # Optimisation flags when building with RELEASE
 #----------------------------------------------
 IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
