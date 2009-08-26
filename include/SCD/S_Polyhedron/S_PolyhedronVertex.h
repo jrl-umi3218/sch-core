@@ -86,7 +86,17 @@ namespace SCD
 
 		unsigned getNumNeighbors()const;
 
-
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & cordinates_;
+      ar & neighbors_;
+      //ar & fastNeighbors_;
+      //ar & endNeighbors_;
+      ar & number_;
+      //ar & nextVertex_;
+      ar & nextVertexH_;
+    }
 
 	private:
 

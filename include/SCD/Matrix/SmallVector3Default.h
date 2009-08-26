@@ -25,6 +25,14 @@ namespace MAL_Default
 
 		T m_x,m_y,m_z;
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_x;
+      ar & m_y;
+      ar & m_z;
+    }
+
 		/*! Basic constructor: all the field 
 		are set to zero. */
 		explicit Vector3D():m_x(0.0), m_y(0.0), m_z(0.0)

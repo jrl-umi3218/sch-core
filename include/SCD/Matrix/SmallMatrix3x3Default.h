@@ -15,6 +15,12 @@ namespace MAL_Default
 		/*! The data array. */
 		T m[9];
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m;
+    }
+  
 		/*! Defaut constructor. */
 		explicit Matrix3x3<T>() 
 		{ 

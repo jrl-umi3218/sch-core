@@ -6,6 +6,8 @@
 #include <SCD/S_Polyhedron/S_PolyhedronVertex.h>
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
 
+#include <boost/serialization/base_object.hpp>
+
 #include <string>
 #include <vector>
 
@@ -66,7 +68,12 @@ namespace SCD
 		*/
 		void deleteVertexesWithoutNeighbors();
 
-
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      boost::serialization::base_object<S_ObjectNonNormalized>(*this);
+      ar & poly;
+    }
 	protected:
 		virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 		virtual	S_ObjectType getType() const;

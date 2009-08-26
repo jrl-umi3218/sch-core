@@ -4,6 +4,8 @@
 #pragma once
 #include <SCD/S_Object/S_Object.h>
 
+#include <boost/serialization/base_object.hpp>
+
 namespace SCD
 {
 
@@ -28,6 +30,12 @@ public:
 	 *  \return returns the support point.
 	 */
 	virtual Point3 support(const Vector3& v, int & LastFeature) const;
+
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+    boost::serialization::base_object<S_Object>(*this);
+  }
 };
 
 #include <SCD/S_Object/S_ObjectNonNormalized.hxx>
