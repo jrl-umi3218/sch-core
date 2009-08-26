@@ -12,7 +12,7 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <fstream>
 #include <GL/glut.h>
 #include <exception>
-
+#include <sstream>
 
 
 
@@ -300,7 +300,7 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 
 void STP_BV::constructFromFile(const std::string& filename)
 {
-	std::ifstream is;
+	std::ifstream tmp_is;
 	int i, j;
 	int ssnum, bsnum, tnum;
 	int ssvvrnum;
@@ -315,12 +315,25 @@ void STP_BV::constructFromFile(const std::string& filename)
 #ifdef writeos2
 	os2 << "DEBUT CREATION OBJET" << std::endl;
 #endif
-	is.open(filename.c_str());
-	if(!is.is_open())
+	tmp_is.open(filename.c_str());
+	if(!tmp_is.is_open())
 	{
 		std::cout << "EXCEPTION : pas reussi a ouvrir le fichier" << std::endl;
 		throw std::exception();
 	}
+
+  std::string strbuf;
+  const unsigned BUF_SIZE = 500000;
+  char buf[BUF_SIZE];
+  unsigned n = 0;
+  do
+  {
+    n = tmp_is.readsome(buf, BUF_SIZE);
+    strbuf += std::string(buf, n);
+  }
+  while(n == BUF_SIZE);
+
+  std::stringstream is(strbuf);
 
 	//small spheres
 	STP_SmallSphere* ss;
@@ -450,7 +463,6 @@ void STP_BV::constructFromFile(const std::string& filename)
 		}
 	}
 
-	is.close();
 	updateFastPatches();
 
 

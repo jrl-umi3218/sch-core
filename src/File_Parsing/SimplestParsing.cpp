@@ -1,5 +1,6 @@
 #include <SCD/File_Parsing/SimplestParsing.h>
 #include <iostream>
+#include <fstream>
 
 using namespace FileParsing;
 
@@ -10,12 +11,34 @@ SimplestParsing::SimplestParsing()
 
 SimplestParsing::~SimplestParsing()
 {
-	if (stream_.is_open())
-	{
-		stream_.close();
-	}
 }
-std::ifstream& SimplestParsing::operator()()
+
+void SimplestParsing::load(const char* filename)
+{
+  std::ifstream tmp_is(filename);
+
+  if(!tmp_is.is_open())
+  {
+	  std::cout << "EXCEPTION : Unable to open File " << filename << std::endl;
+		throw std::exception();
+  }
+
+  std::string strbuf;
+  const unsigned BUF_SIZE = 500000;
+  char buf[BUF_SIZE];
+
+  unsigned n = 0;
+  do
+  {
+    n = tmp_is.readsome(buf, BUF_SIZE);
+    strbuf += std::string(buf, n);
+  }
+  while(n == BUF_SIZE);
+
+  stream_.str(strbuf);
+}
+
+std::stringstream& SimplestParsing::operator()()
 {
 	return stream_;
 }
@@ -91,3 +114,4 @@ bool SimplestParsing::checkIfNextString(const std::string & s)
 	}
 
 }
+

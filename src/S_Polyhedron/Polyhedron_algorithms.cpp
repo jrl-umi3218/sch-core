@@ -128,16 +128,11 @@ void Polyhedron_algorithms::drawGL()
 
 void Polyhedron_algorithms::openFromFile(const std::string &filename)
 {
-		clear();
+	clear();
 
 	FileParsing::SimplestParsing is;
 
-	is().open(filename.c_str());
-	if(!is().is_open())
-	{
-		std::cout << "EXCEPTION : Unable to open File" << std::endl;
-		throw std::exception();
-	}
+  is.load(filename.c_str());
 
 	int ent;
 	is.jumpSeparators();  

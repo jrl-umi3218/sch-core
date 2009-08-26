@@ -1,7 +1,7 @@
 #pragma once
 #include <exception>
 #include <iostream>
-#include <fstream>
+#include <sstream>
 #include <string.h>
 
 namespace FileParsing
@@ -16,7 +16,7 @@ namespace FileParsing
 		/*!
 		*\brief returns the ifstream of the instance
 		*/
-		std::ifstream& operator()();
+		std::stringstream& operator()();
 
 		/*!
 		*\brief looks for the string in the file (non optimized version, efficient with small files). The stream at the end of exectution is either just at the end of found string or at the end of the file if not found
@@ -36,8 +36,13 @@ namespace FileParsing
 		*/
 		bool jumpSeparators();
 
+    /*!
+     *\brief Opens a file and stores its content into a buffer.
+     */
+    void load(const char* filename);
+
 	private:
-		std::ifstream stream_;
+		std::stringstream stream_;
 
 
 	};
