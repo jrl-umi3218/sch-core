@@ -10,7 +10,11 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <SCD/STP-BV/STP_BV.h>
 #include <iostream>
 #include <fstream>
+
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
+
 #include <exception>
 #include <sstream>
 
@@ -237,13 +241,13 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 
 }
 
+#ifdef WITH_OPENGL
 void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2, 
 									  double cosangle, Vector3 axis, int step, 
 									  std::vector<Point3>* res)
 {
 	//axis.normalize(); //we're supposed to use already normalized axes in this programm
 
-	double matrix[16]; // this will be passed to OpenGL functions so it has to be a double
 	Point3 tmp1, tmp2;
 	Point3 startp = p1 - axis*(p1*axis);
 	Point3 endp = p2 -  axis* (p2*axis);
@@ -255,6 +259,7 @@ void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2,
 
 	res->push_back(p1);
 
+	double matrix[16]; // this will be passed to OpenGL functions so it has to be a double
 	glPushMatrix();
 	glLoadIdentity();
 	glRotatef(angle, axis[0], axis[1], axis[2]);
@@ -270,6 +275,7 @@ void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2,
 	}
 	res->push_back(p2);
 }
+#endif
 
 Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2, 
 									   const Point3& l2p1, const Point3& l2p2) const
@@ -515,6 +521,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 
 
 
+#ifdef WITH_OPENGL
 void STP_BV::constructFromFileWithGL(const std::string& filename)
 {
 
@@ -975,7 +982,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	os.close(); //DEBUG
 #endif
 }
-
+#endif //WITH_OPENGL
 
 
 
@@ -1077,6 +1084,7 @@ void STP_BV::updateFastPatches()
 
 
 
+#ifdef WITH_OPENGL
 void STP_BV::drawGLInLocalCordinates()
 {
 	if (drawnGL_)
@@ -1093,7 +1101,7 @@ void STP_BV::GLdisplayVVR() const
 	for(std::vector<STP_Feature*>::const_iterator it = m_patches.begin() ; it != m_patches.end() ; ++it)
 		(*it)->GLdisplayVVR();
 }
-
+#endif
 
 
 Scalar STP_BV::supportH(const Vector3& v) const 

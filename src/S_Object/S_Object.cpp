@@ -1,5 +1,9 @@
 #include <SCD/S_Object/S_Object.h>
+
+#ifdef WITH_OPENGL
 #include "GL/glut.h"
+#endif
+
 #include <vector>
 
 using namespace SCD;
@@ -253,6 +257,7 @@ void S_Object::resetTransformation()
 }
 
 
+#ifdef WITH_OPENGL
 void S_Object::drawGL()
 {
 
@@ -372,13 +377,16 @@ void S_Object::drawGLInLocalCordinates()
 
 	glCallList(displist_);
 }
+#endif //WITH_OPENGL
 
 
 void S_Object::constructFromFile(const std::string &filename)
 {
 }
 
+#ifdef WITH_OPENGL
 void S_Object::constructFromFileWithGL(const std::string &filename)
 {
 	constructFromFile(filename);
 }
+#endif

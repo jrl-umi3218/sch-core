@@ -1,6 +1,8 @@
 #include <SCD/STP-BV/STP_Torus.h>
 
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 
 using namespace SCD;
@@ -51,6 +53,7 @@ void STP_Torus::print() const
 	std::cout << "sphere radius : " << this->m_sphereRadius << std::endl << std::endl;
 }
 
+#ifdef WITH_OPENGL
 void STP_Torus::GLdisplayVVR() const
 {
 	glPushMatrix();
@@ -67,6 +70,7 @@ void STP_Torus::GLdisplayVVR() const
 	glPopMatrix();
 	
 }
+#endif
 
 bool STP_Torus::isHere(const Vector3& v) const
 {

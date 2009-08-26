@@ -25,6 +25,7 @@ namespace SCD
 		virtual void constructFromFile(const std::string& filename);
 
 
+    #ifdef WITH_OPENGL
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
 		*  \param filename path to the file describing the STP_BV decomposition of the object
@@ -34,6 +35,7 @@ namespace SCD
 		virtual void constructFromFileWithGL(const std::string& filename);
 
 		virtual void drawGLInLocalCordinates();
+    #endif
 
 		virtual ~STP_BV_P(void);
 

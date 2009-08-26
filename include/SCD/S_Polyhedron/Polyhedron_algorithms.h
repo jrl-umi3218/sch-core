@@ -32,11 +32,13 @@ namespace SCD
 
 
 
+    #ifdef WITH_OPENGL
 		/*
 		*\brief Draws the Polyhedron in OpenGL
 		*/
 
 		virtual void drawGL();
+    #endif
 
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification

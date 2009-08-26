@@ -1,6 +1,9 @@
 #include <SCD/S_Object/S_Superellipsoid.h>
 #include <vector>
+
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 const double PI=3.14159265358979323;
 
@@ -124,6 +127,7 @@ S_Object::S_ObjectType S_Superellipsoid::getType() const
 }
 
 
+#ifdef WITH_OPENGL
 void S_Superellipsoid::drawGLInLocalCordinates()
 {
 
@@ -267,3 +271,4 @@ void S_Superellipsoid::drawGLInLocalCordinates()
 
 
 }
+#endif // WITH_OPENGL

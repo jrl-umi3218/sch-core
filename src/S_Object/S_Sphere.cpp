@@ -1,7 +1,9 @@
 
 
 #include <SCD/S_Object/S_Sphere.h>
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 
 using namespace SCD;
@@ -25,9 +27,10 @@ S_Object::S_ObjectType S_Sphere::getType() const
 	return S_Object::TSphere;
 }
 
+#ifdef WITH_OPENGL
 void S_Sphere::drawGLInLocalCordinates()
 {
 	glutSolidSphere(radius_,100,50);
 	
 }
-
+#endif

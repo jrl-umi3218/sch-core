@@ -102,8 +102,10 @@ namespace SCD
 		void setDisplayList(int l) {m_displayList = l;}
 
 		virtual void print() const = 0;
+    #ifdef WITH_OPENGL
 		virtual void GLdisplay() const;
 		virtual void GLdisplayVVR() const = 0;
+    #endif
 
 		virtual STP_Feature* clone() const =0;
 

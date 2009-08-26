@@ -2,7 +2,11 @@
 
 #include <math.h>
 #include <iostream>
+
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
+
 #include <map>
 
 
@@ -69,6 +73,7 @@ void STP_SmallSphere::print() const
 	std::cout << "radius : " << m_radius << std::endl << std::endl;
 }
 
+#ifdef WITH_OPENGL
 void STP_SmallSphere::GLdisplay() const
 {
 	glPushMatrix();
@@ -87,6 +92,7 @@ void STP_SmallSphere::GLdisplayVVR() const
 		glPopMatrix();
 	}*/
 }
+#endif
 
 bool STP_SmallSphere::isHere(const Vector3& v) const
 {

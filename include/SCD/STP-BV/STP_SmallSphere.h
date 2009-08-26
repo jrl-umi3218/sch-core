@@ -31,9 +31,11 @@ namespace SCD
 		void setVVR(const std::vector<STP_VVR>& vvr);
 
 		virtual void print() const;
+    #ifdef WITH_OPENGL
 		virtual void GLdisplay() const;
 		void GLdisplayBVVVRaxes() const;
 		virtual void GLdisplayVVR() const;
+    #endif
 
 		virtual bool isHere(const Vector3& v) const;
 		virtual bool isHereFarthestNeighbour(const Vector3& v);

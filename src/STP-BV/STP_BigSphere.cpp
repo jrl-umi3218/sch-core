@@ -1,7 +1,9 @@
 #include <SCD/STP-BV/STP_BigSphere.h>
 #include <SCD/STP-BV/STP_BigSphere.h>
 
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 
 using namespace SCD;
@@ -45,6 +47,7 @@ void STP_BigSphere::print() const
 	std::cout << "radius : " << m_radius << std::endl << std::endl;
 }
 
+#ifdef WITH_OPENGL
 void STP_BigSphere::GLdisplayVVR() const
 {
 	glPushMatrix();
@@ -57,7 +60,7 @@ void STP_BigSphere::GLdisplayVVR() const
 	glCallList(m_VVR2.m_displayList);
 	glPopMatrix();
 }
-
+#endif
 
 bool STP_BigSphere::isHere(const Vector3& v) const
 {

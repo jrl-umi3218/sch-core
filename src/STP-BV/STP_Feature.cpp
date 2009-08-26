@@ -1,7 +1,9 @@
 #include <SCD/STP-BV/STP_Feature.h>
 
 
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 
 using namespace SCD;
@@ -169,6 +171,7 @@ STP_Feature::~STP_Feature()
 {
 }
 
+#ifdef WITH_OPENGL
 void STP_Feature::GLdisplay() const
 {
 	if(glIsList(m_displayList))
@@ -178,3 +181,4 @@ void STP_Feature::GLdisplay() const
 		glPopMatrix();
 	}
 }
+#endif

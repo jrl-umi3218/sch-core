@@ -136,7 +136,9 @@ namespace SCD
 
 		virtual S_ObjectType getType() const;
 
+    #ifdef WITH_OPENGL
 		virtual void drawGLInLocalCordinates();
+    #endif
 
 
 
@@ -148,6 +150,7 @@ namespace SCD
 		virtual void constructFromFile(const std::string& filename);
 
 
+    #ifdef WITH_OPENGL
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
 		*  \param filename path to the file describing the STP_BV decomposition of the object
@@ -155,6 +158,7 @@ namespace SCD
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
 		virtual void constructFromFileWithGL(const std::string& filename);
+    #endif
 
 
 		/*!
@@ -172,10 +176,12 @@ namespace SCD
 		void addPatch(STP_Feature* patch);
 
 
+    #ifdef WITH_OPENGL
 		/*! 
 		*  \brief Displays the limits of the object's voronoi regions
 		*/
 		void GLdisplayVVR() const;
+    #endif
 		/*!
 		*  \brief Print the support tree in a file
 		*  \param filename name of the file
@@ -255,6 +261,7 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
+    #ifdef WITH_OPENGL
 		/*!
 		*  \brief Computes the points of
 		*  \param p1 first point
@@ -265,6 +272,7 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
+    #endif
 		/*!
 		*  \brief Computes the intersection of two segments
 		*  \param l1p1 first point of the first line

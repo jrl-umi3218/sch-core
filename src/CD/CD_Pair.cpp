@@ -1,7 +1,11 @@
 #include <SCD/CD/CD_Pair.h>
 #include <SCD/CD/CD_Simplex.h>
 #include <SCD/CD/CD_SimplexEnhanced.h>
+
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif 
+
 #include <iostream>
 
 //#define SHOW_LAST_SIMLPEX
@@ -388,7 +392,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 
-
+#ifdef WITH_OPENGL
 #ifdef SHOW_LAST_SIMLPEX
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
@@ -406,6 +410,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 			glEnable(GL_DEPTH_TEST);
 #endif
+#endif // WITH_OPENGL
 
 			return;
 
@@ -440,6 +445,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 
+#ifdef WITH_OPENGL
 #ifdef SHOW_LAST_SIMLPEX
 
 			glDisable(GL_DEPTH_TEST);
@@ -458,6 +464,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 #endif
+#endif // WITH_OPENGL
 			return ;
 		}
 	default:

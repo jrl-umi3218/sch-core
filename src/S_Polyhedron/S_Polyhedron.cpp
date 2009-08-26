@@ -5,8 +5,9 @@
 
 #include <SCD/File_Parsing/SimplestParsing.h>
 
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
-
+#endif
 
 
 
@@ -87,11 +88,10 @@ S_Object::S_ObjectType S_Polyhedron::getType() const
 
 
 
-
+#ifdef WITH_OPENGL
 void S_Polyhedron::drawGLInLocalCordinates()
 {
 	poly.drawGL();
 
 }
-
-
+#endif

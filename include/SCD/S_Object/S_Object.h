@@ -108,10 +108,12 @@ namespace SCD
 		*/
 		virtual void constructFromFile(const std::string& filename);
 
+    #ifdef WITH_OPENGL
 	   /*
 		*  \brief Constructs the Object from a file and prepares the openGL display, default is to call construct from file
 		*/
 		virtual void constructFromFileWithGL(const std::string& filename);
+    #endif
 
 		/*
 		*  \brief Sets the Orientation
@@ -215,6 +217,7 @@ namespace SCD
 		*/
 		void getTransformationMatrix(Scalar *S) const;
 
+    #ifdef WITH_OPENGL
 		/*!
 		* \brief Displays the objects in openGl. default is to load unviverse cordinates and call drawGLInLocalCordinates()
 		*/
@@ -224,6 +227,7 @@ namespace SCD
 		* \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
 		*/
 		virtual void drawGLInLocalCordinates();
+    #endif
 
 
 

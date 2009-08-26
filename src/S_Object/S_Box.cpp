@@ -1,5 +1,8 @@
 #include <SCD/S_Object/S_Box.h>
+
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 
 using namespace SCD;
@@ -29,6 +32,7 @@ S_Object::S_ObjectType S_Box::getType() const
 	return S_Object::TBox;
 }
 
+#ifdef WITH_OPENGL
 void S_Box::drawGLInLocalCordinates()
 {
 
@@ -77,3 +81,4 @@ void S_Box::drawGLInLocalCordinates()
 
 
 }
+#endif // WITH_OPENGL

@@ -1,5 +1,7 @@
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
+#endif
 
 #include <SCD/File_Parsing/SimplestParsing.h>
 
@@ -64,6 +66,7 @@ const Polyhedron_algorithms& Polyhedron_algorithms::operator =(const Polyhedron_
 
 
 
+#ifdef WITH_OPENGL
 void Polyhedron_algorithms::drawGL()
 {
 	if (vertexes_.size()>0)
@@ -125,6 +128,7 @@ void Polyhedron_algorithms::drawGL()
 
 
 }
+#endif
 
 void Polyhedron_algorithms::openFromFile(const std::string &filename)
 {
