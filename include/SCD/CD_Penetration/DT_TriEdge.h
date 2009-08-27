@@ -137,8 +137,8 @@ namespace SCD
 
 		SCD_API bool silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore); 
 
-		SCD_API friend bool link(const Depth_Edge& edge0, const Depth_Edge& edge1);
-		SCD_API friend void half_link(const Depth_Edge& edge0, const Depth_Edge& edge1);
+		friend bool link(const Depth_Edge& edge0, const Depth_Edge& edge1);
+		friend void half_link(const Depth_Edge& edge0, const Depth_Edge& edge1);
 	};
 
 
