@@ -15,7 +15,7 @@ endmacro(InstallFiles)
 SET(HEADERS_ROOT
   scd_api.h
 )
-InstallFiles(${HEADERS_ROOT}  "./")
+InstallFiles(HEADERS_ROOT  "")
 
 
 SET(HEADERS_CD

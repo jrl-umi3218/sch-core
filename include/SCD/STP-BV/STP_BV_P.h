@@ -1,6 +1,3 @@
-#ifndef __STP_BV_P_H
-#define __STP_BV_P_H
-
 #pragma once
 #include <SCD/scd_api.h>
 #include <SCD/STP-BV/STP_BV.h>
@@ -53,5 +50,4 @@ namespace SCD
 
 
 	};
-}#endif
-
+}
