@@ -3,6 +3,7 @@
 
 #pragma once
 #include <vector>
+#include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
 
 namespace SCD
@@ -11,32 +12,32 @@ namespace SCD
 	class S_PolyhedronVertex
 	{
 	public:
-		S_PolyhedronVertex(void);
+		SCD_API S_PolyhedronVertex(void);
 
 
-		virtual ~S_PolyhedronVertex(void);
+		SCD_API virtual ~S_PolyhedronVertex(void);
 
 
 
-		void addNeighbor(S_PolyhedronVertex*);
+		SCD_API void addNeighbor(S_PolyhedronVertex*);
 
-		Scalar supportH(const Vector3& direction)const;
+		SCD_API Scalar supportH(const Vector3& direction)const;
 
-		void setCordinates(const Vector3& v);
+		SCD_API void setCordinates(const Vector3& v);
 
-		void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
+		SCD_API void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
 
-		const Vector3& getCordinates()const;
+		SCD_API const Vector3& getCordinates()const;
 
 		/*! 
 		*  \brief Gives a copy of the current vertex, without the neighbors array, keeping just the cordinates and the number
 		*/
-		virtual S_PolyhedronVertex* clone();
+		SCD_API virtual S_PolyhedronVertex* clone();
 
 		/*
 		* \brief clears the Neighbors
 		*/
-		void clearNeighbors();
+		SCD_API void clearNeighbors();
 
 
 		/*
@@ -45,7 +46,7 @@ namespace SCD
 		* \param cuurentsupportH, is the support height of this points, usually given by a neighbor
 		* \return returns a boolean answer and stores the next vertex and its support height in case it is not the support 
 		*/
-		virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
+		SCD_API virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
 
 
 		/*
@@ -53,38 +54,38 @@ namespace SCD
 		* \param direction the direction vector
 		* \return returns a boolean answer and stores the next vertex and its support height in case it is not the support 
 		*/
-		virtual bool isHere(const Vector3& direction);
+		SCD_API virtual bool isHere(const Vector3& direction);
 
 		/*
 		* \brief updates fast access neighbors array, must be called at each neighbors modification
 		*/
-		void updateFastArrays();
+		SCD_API void updateFastArrays();
 
 		/*
 		* \brief sets the number of the vertex in the polyhedron
 		*/
-		void setNumber(unsigned int);
+		SCD_API void setNumber(unsigned int);
 
 		/*
 		* \brief gets the number of the vertex in the polyhedron
 		*/
-		unsigned int getNumber()const;
+		SCD_API unsigned int getNumber()const;
 
 		/*
 		* \brief gets the next vertex in a support point search
 		*/
-		S_PolyhedronVertex* getNextVertex()const;
+		SCD_API S_PolyhedronVertex* getNextVertex()const;
 
 		/*
 		* \brief gets the next vertex support height
 		*/
-		Scalar getNextVertexH()const;
+		SCD_API Scalar getNextVertexH()const;
 
 		/*
 		* \brief gets the number of neighbors
 		*/
 
-		unsigned getNumNeighbors()const;
+		SCD_API unsigned getNumNeighbors()const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)

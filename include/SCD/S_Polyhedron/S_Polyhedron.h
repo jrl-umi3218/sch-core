@@ -2,6 +2,7 @@
 #define _S_POLYHEDRON
 
 #pragma once
+#include <SCD/scd_api.h>
 #include <SCD/S_Object/S_ObjectNonNormalized.h>
 #include <SCD/S_Polyhedron/S_PolyhedronVertex.h>
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
@@ -20,17 +21,17 @@ namespace SCD
 		public S_ObjectNonNormalized
 	{
 	public:
-		S_Polyhedron(void);
+		SCD_API S_Polyhedron(void);
 
-		S_Polyhedron(const S_Polyhedron&);
+		SCD_API S_Polyhedron(const S_Polyhedron&);
 
 
-		virtual ~S_Polyhedron(void);
+		SCD_API virtual ~S_Polyhedron(void);
 
-		const S_Polyhedron& operator =(const S_Polyhedron&);
+		SCD_API const S_Polyhedron& operator =(const S_Polyhedron&);
 
     #ifdef WITH_OPENGL
-		virtual void drawGLInLocalCordinates();
+		SCD_API virtual void drawGLInLocalCordinates();
     #endif
 
 		/*
@@ -38,35 +39,35 @@ namespace SCD
 		* \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" 
 		*/
 
-		virtual void constructFromFile(const std::string& filename);
+		SCD_API virtual void constructFromFile(const std::string& filename);
 
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification
 		*/
-		void updateFastArrays();
+		SCD_API void updateFastArrays();
 
-		Point3 naiveSupport(const Vector3& v)const;
+		SCD_API Point3 naiveSupport(const Vector3& v)const;
 
 		/*! 
 		*  \brief updates the Neighborhood of the vertexes, must be called on polyhedron 
 		*  \which vertexes have no neighbors, or after calling clearNeighbors.
 		*/
-		void updateVertexNeighbors();
+		SCD_API void updateVertexNeighbors();
 
 		/*! 
 		*  \brief clears the neighbors tables;
 		*/
-		void clearNeighbors();
+		SCD_API void clearNeighbors();
 
 		/*! 
 		*  \brief clears all the polyhedron;
 		*/
-		void clear();
+		SCD_API void clear();
 
 		/*
 		* \brief deletes aal the vertexes that dont have neighbors;
 		*/
-		void deleteVertexesWithoutNeighbors();
+		SCD_API void deleteVertexesWithoutNeighbors();
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
@@ -75,8 +76,8 @@ namespace SCD
       ar & poly;
     }
 	protected:
-		virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-		virtual	S_ObjectType getType() const;
+		SCD_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
+		SCD_API virtual	S_ObjectType getType() const;
 
 
 

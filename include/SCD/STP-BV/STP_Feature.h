@@ -8,6 +8,7 @@
 #pragma once
 
 
+#include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
 #include <vector>
 #include <cstdlib>
@@ -97,28 +98,28 @@ namespace SCD
 	{
 	public:
 
-		virtual ~STP_Feature(void);
+		SCD_API virtual ~STP_Feature(void);
 
-		void setDisplayList(int l) {m_displayList = l;}
+		SCD_API void setDisplayList(int l) {m_displayList = l;}
 
-		virtual void print() const = 0;
+		SCD_API virtual void print() const = 0;
     #ifdef WITH_OPENGL
-		virtual void GLdisplay() const;
-		virtual void GLdisplayVVR() const = 0;
+		SCD_API virtual void GLdisplay() const;
+		SCD_API virtual void GLdisplayVVR() const = 0;
     #endif
 
-		virtual STP_Feature* clone() const =0;
+		SCD_API virtual STP_Feature* clone() const =0;
 
-		virtual Point3 support(const Vector3& v) const=0;
+		SCD_API virtual Point3 support(const Vector3& v) const=0;
 
-		virtual bool isHere(const Vector3& v) const = 0;
-		virtual bool isHereFarthestNeighbour(const Vector3& v) = 0;
-		virtual bool isHereFarthestNeighbourPrime(const Vector3& v) = 0;
-		virtual bool isHereFirstNeighbour(const Vector3& v) = 0;
-		virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) = 0;
-		virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
-		virtual int getNextBV(unsigned int id) const= 0;
-		virtual int getNextBVPrime() const=0 ;
+		SCD_API virtual bool isHere(const Vector3& v) const = 0;
+		SCD_API virtual bool isHereFarthestNeighbour(const Vector3& v) = 0;
+		SCD_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v) = 0;
+		SCD_API virtual bool isHereFirstNeighbour(const Vector3& v) = 0;
+		SCD_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) = 0;
+		SCD_API virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
+		SCD_API virtual int getNextBV(unsigned int id) const= 0;
+		SCD_API virtual int getNextBVPrime() const=0 ;
 
 	protected:
 		STP_Feature(void);

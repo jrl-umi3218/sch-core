@@ -27,6 +27,7 @@
 #include <vector>
 #include <iostream>
 
+#include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
 
 //#define DEBUG
@@ -83,8 +84,8 @@ namespace SCD
 		Scalar   m_dist2;
 
 	public:
-		Depth_Triangle() {}
-		Depth_Triangle(Index_t i0, Index_t i1, Index_t i2) 
+		SCD_API Depth_Triangle() {}
+		SCD_API Depth_Triangle(Index_t i0, Index_t i1, Index_t i2) 
 			:	m_obsolete(false) 
 		{
 			m_indices[0] = i0; 
@@ -92,11 +93,11 @@ namespace SCD
 			m_indices[2] = i2;
 		}
 
-		Index_t operator[](int i) const { return m_indices[i]; } 
+		SCD_API Index_t operator[](int i) const { return m_indices[i]; } 
 
-		const Depth_Edge& getAdjEdge(int i) const { return m_adjEdges[i]; }
+		SCD_API const Depth_Edge& getAdjEdge(int i) const { return m_adjEdges[i]; }
 
-		void setObsolete(bool obsolete) 
+		SCD_API void setObsolete(bool obsolete) 
 		{ 
 #ifdef DEBUG
 			std::cout << "Triangle " <<  m_indices[0] << ' ' << m_indices[1] << ' ' << m_indices[2] << " obsolete" << std::endl;
@@ -104,29 +105,29 @@ namespace SCD
 			m_obsolete = obsolete; 
 		}
 
-		bool isObsolete() const { return m_obsolete; }
+		SCD_API bool isObsolete() const { return m_obsolete; }
 
 
-		bool computeClosest(const Vector3 *verts);
+		SCD_API bool computeClosest(const Vector3 *verts);
 
-		const Vector3& getClosest() const { return m_closest; } 
+		SCD_API const Vector3& getClosest() const { return m_closest; } 
 
-		bool isClosestInternal() const
+		SCD_API bool isClosestInternal() const
 		{ 
 			return m_lambda1 >= Scalar(0.0) && 
 				m_lambda2 >= Scalar(0.0) && 
 				m_lambda1 + m_lambda2 <= m_det;
 		} 
 
-		bool isVisibleFrom(const Vector3 *verts, Index_t index) const
+		SCD_API bool isVisibleFrom(const Vector3 *verts, Index_t index) const
 		{
 			Vector3 lever = verts[index] - m_closest;
 			return (m_closest* lever) > Scalar(0.0);
 		}
 
-		Scalar getDist2() const { return m_dist2; }
+		SCD_API Scalar getDist2() const { return m_dist2; }
 
-		Vector3 getClosestPoint(const Vector3 *points) const 
+		SCD_API Vector3 getClosestPoint(const Vector3 *points) const 
 		{
 			const Vector3& p0 = points[m_indices[0]];
 
@@ -134,10 +135,10 @@ namespace SCD
 				(points[m_indices[2]] - p0)*m_lambda2) / m_det;
 		}
 
-		bool silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore); 
+		SCD_API bool silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore); 
 
-		friend bool link(const Depth_Edge& edge0, const Depth_Edge& edge1);
-		friend void half_link(const Depth_Edge& edge0, const Depth_Edge& edge1);
+		SCD_API friend bool link(const Depth_Edge& edge0, const Depth_Edge& edge1);
+		SCD_API friend void half_link(const Depth_Edge& edge0, const Depth_Edge& edge1);
 	};
 
 
@@ -151,21 +152,21 @@ namespace SCD
 		Depth_Triangle m_triangles[MaxTriangles];
 		int      m_free;
 	public:
-		Depth_TriangleStore()
+		SCD_API Depth_TriangleStore()
 			: m_free(0)
 		{}
 
-		void clear() { m_free = 0; }
+		SCD_API void clear() { m_free = 0; }
 
-		int getFree() const { return m_free; }
+		SCD_API int getFree() const { return m_free; }
 
-		Depth_Triangle& operator[](int i) { return m_triangles[i]; }
-		Depth_Triangle& last() { return m_triangles[m_free - 1]; }
+		SCD_API Depth_Triangle& operator[](int i) { return m_triangles[i]; }
+		SCD_API Depth_Triangle& last() { return m_triangles[m_free - 1]; }
 
-		void setFree(int backup) { m_free = backup; }
+		SCD_API void setFree(int backup) { m_free = backup; }
 
 
-		Depth_Triangle *newTriangle(const Vector3 *verts, Index_t i0, Index_t i1, Index_t i2) 
+		SCD_API Depth_Triangle *newTriangle(const Vector3 *verts, Index_t i0, Index_t i1, Index_t i2) 
 		{ 
 			Depth_Triangle *newTriangle = 0;
 			if (m_free != MaxTriangles)

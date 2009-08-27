@@ -1,4 +1,8 @@
+#ifndef __STP_BV_P_H
+#define __STP_BV_P_H
+
 #pragma once
+#include <SCD/scd_api.h>
 #include <SCD/STP-BV/STP_BV.h>
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
 
@@ -9,9 +13,9 @@ namespace SCD
 	{
 	public:		
 
-		STP_BV_P(void);
+		SCD_API STP_BV_P(void);
 		
-		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+		SCD_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
@@ -22,7 +26,7 @@ namespace SCD
 		*  \ (example: in the folder : "home\" there are two files ; the STP_BV file : "home\STPBV.txt", and the Qhull output : "home\STPBV.txt.otp")
 		*
 		*/
-		virtual void constructFromFile(const std::string& filename);
+		SCD_API virtual void constructFromFile(const std::string& filename);
 
 
     #ifdef WITH_OPENGL
@@ -32,14 +36,14 @@ namespace SCD
 		*
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
-		virtual void constructFromFileWithGL(const std::string& filename);
+		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
 
-		virtual void drawGLInLocalCordinates();
+		SCD_API virtual void drawGLInLocalCordinates();
     #endif
 
-		virtual ~STP_BV_P(void);
+		SCD_API virtual ~STP_BV_P(void);
 
-		virtual S_ObjectType getType() const;
+		SCD_API virtual S_ObjectType getType() const;
 
 
 
@@ -49,4 +53,5 @@ namespace SCD
 
 
 	};
-}
+}#endif
+

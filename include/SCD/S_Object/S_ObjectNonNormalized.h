@@ -2,6 +2,7 @@
 #define __S_OBJECTNONNORMALIZED
 
 #pragma once
+#include <SCD/scd_api.h>
 #include <SCD/S_Object/S_Object.h>
 
 #include <boost/serialization/base_object.hpp>
@@ -13,15 +14,15 @@ class S_ObjectNonNormalized :
 	public S_Object
 {
 public:
-	S_ObjectNonNormalized(void);
-	~S_ObjectNonNormalized(void);
+	SCD_API S_ObjectNonNormalized(void);
+	SCD_API ~S_ObjectNonNormalized(void);
 
 	/*! 
 	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
 	 *  \param v direction vector
 	 *  \return returns the support point.
 	 */ 	
-	virtual Point3 support(const Vector3& v) const;
+	SCD_API virtual Point3 support(const Vector3& v) const;
 
 	/*! 
 	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
@@ -29,7 +30,7 @@ public:
      *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
 	 *  \return returns the support point.
 	 */
-	virtual Point3 support(const Vector3& v, int & LastFeature) const;
+	SCD_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
 
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)

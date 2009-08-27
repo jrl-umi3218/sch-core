@@ -6,6 +6,7 @@
 
 
 
+#include <SCD/scd_api.h>
 #include <SCD/S_Object/S_ObjectNonNormalized.h>
 
 namespace SCD
@@ -21,18 +22,18 @@ namespace SCD
 		* \param height, the height of the box (y axis)
 		* \param depth, the depth of the box (z axis)
 		*/
-		S_Box(Scalar width,Scalar height,Scalar depth);
+		SCD_API S_Box(Scalar width,Scalar height,Scalar depth);
 
 
-		virtual ~S_Box(void);
+		SCD_API virtual ~S_Box(void);
 
 
-		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+		SCD_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
-		virtual S_ObjectType getType() const;
+		SCD_API virtual S_ObjectType getType() const;
 
     #ifdef WITH_OPENGL
-		virtual void drawGLInLocalCordinates();
+		SCD_API virtual void drawGLInLocalCordinates();
     #endif
 
 	protected :

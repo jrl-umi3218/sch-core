@@ -2,6 +2,7 @@
 #define __STP_BV_H
 
 #pragma once
+#include <SCD/scd_api.h>
 #include <SCD/S_Object/S_ObjectNormalized.h>
 #include <SCD/STP-BV/STP_Feature.h>
 
@@ -121,23 +122,23 @@ namespace SCD
 		public S_ObjectNormalized
 	{
 	public:
-		STP_BV(void);
-		STP_BV(const STP_BV&);
+		SCD_API STP_BV(void);
+		SCD_API STP_BV(const STP_BV&);
 
 
-		virtual ~STP_BV(void);
+		SCD_API virtual ~STP_BV(void);
 
 
 
-		virtual STP_BV & operator=(const STP_BV&);
+		SCD_API virtual STP_BV & operator=(const STP_BV&);
 
 
-		virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+		SCD_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
-		virtual S_ObjectType getType() const;
+		SCD_API virtual S_ObjectType getType() const;
 
     #ifdef WITH_OPENGL
-		virtual void drawGLInLocalCordinates();
+		SCD_API virtual void drawGLInLocalCordinates();
     #endif
 
 
@@ -147,7 +148,7 @@ namespace SCD
 		*  \param filename path to the file describing the STP_BV decomposition of the object
 		*
 		*/
-		virtual void constructFromFile(const std::string& filename);
+		SCD_API virtual void constructFromFile(const std::string& filename);
 
 
     #ifdef WITH_OPENGL
@@ -157,7 +158,7 @@ namespace SCD
 		*
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
-		virtual void constructFromFileWithGL(const std::string& filename);
+		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
     #endif
 
 
@@ -167,68 +168,68 @@ namespace SCD
 		*  \param type kind of Boost archive to use. Currently either BINARY_ARCHIVE or TEXT_ARCHIVE (this is default value)
 		*  \warning Binary archives are platform dependent.
 		*/
-		void saveTreeInFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
+		SCD_API void saveTreeInFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
 
 		/*!
 		*  \brief Adds a bouding volume to the object
 		*  \param patch bounding volume to add to the object
 		*/
-		void addPatch(STP_Feature* patch);
+		SCD_API void addPatch(STP_Feature* patch);
 
 
     #ifdef WITH_OPENGL
 		/*! 
 		*  \brief Displays the limits of the object's voronoi regions
 		*/
-		void GLdisplayVVR() const;
+		SCD_API void GLdisplayVVR() const;
     #endif
 		/*!
 		*  \brief Print the support tree in a file
 		*  \param filename name of the file
 		*/
-		void printSupportTree(std::string filename) const;
+		SCD_API void printSupportTree(std::string filename) const;
 
 		/*!
 		*  \brief
 		*  \param v direction
 		*/
-		virtual Scalar supportH(const Vector3& v) const;
+		SCD_API virtual Scalar supportH(const Vector3& v) const;
 
 		/*!
 		*  \brief
 		*  \param v direction
 		*/
-		virtual Point3 supportNaive(const Vector3& v) const;
+		SCD_API virtual Point3 supportNaive(const Vector3& v) const;
 		/*!
 		*  \brief
 		*  \param v direction
 		*/
-		virtual Point3 supportFarthestNeighbour(const Vector3& v,int& lastFeature) const;
+		SCD_API virtual Point3 supportFarthestNeighbour(const Vector3& v,int& lastFeature) const;
 		/*!
 		*  \brief
 		*  \param v direction
 		*/
 
-		virtual Point3 supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const;
+		SCD_API virtual Point3 supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const;
 		/*! 
 		*  \brief
 		*  \param v direction
 		*/
 
-			virtual Point3 supportHybrid(const Vector3& v,int& lastFeature) const;
+		SCD_API virtual Point3 supportHybrid(const Vector3& v,int& lastFeature) const;
 		/*! 
 		*  \brief
 		*  \param v direction
 		*/
 
 
-		virtual Point3 supportFirstNeighbour(const Vector3& v,int& lastFeature) const;
+		SCD_API virtual Point3 supportFirstNeighbour(const Vector3& v,int& lastFeature) const;
 		/*!
 		*  \brief gives the support for a vector using the First neighbour method.
 		*  \param v direction
 		*/
 
-		virtual Point3 supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) const;
+		SCD_API virtual Point3 supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) const;
 
 
 		/*!
@@ -238,7 +239,7 @@ namespace SCD
 		*  \param param
 		*  \param normal
 		*/
-		virtual bool ray_cast(const Point3& source, const Point3& target,
+		SCD_API virtual bool ray_cast(const Point3& source, const Point3& target,
 			Scalar& param, Vector3& normal) const;
 	public: //DEBUG
 		//protected:
@@ -249,7 +250,7 @@ namespace SCD
 		*
 		* This uses Boost serialization library.
 		*/
-		void loadTreeFromFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
+		SCD_API void loadTreeFromFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
 
 		/*!
 		*  \brief Computes the points of an arc
@@ -260,7 +261,7 @@ namespace SCD
 		*  \param step number of subdivisions
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
-		void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
+		SCD_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
     #ifdef WITH_OPENGL
 		/*!
 		*  \brief Computes the points of
@@ -271,7 +272,7 @@ namespace SCD
 		*  \param step number of subdivision
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
-		void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
+		SCD_API void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
     #endif
 		/*!
 		*  \brief Computes the intersection of two segments
@@ -281,7 +282,7 @@ namespace SCD
 		*  \param l2p2 last point of the second line
 		*  \return the result
 		*/
-		Point3 computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
+		SCD_API Point3 computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 			const Point3& l2p1, const Point3& l2p2) const;
 
 
@@ -290,21 +291,21 @@ namespace SCD
 		*  \param points vector containing all the points
 		*  \return the center
 		*/
-		Point3 computeCenter(const std::vector<Point3>& points);
+		SCD_API Point3 computeCenter(const std::vector<Point3>& points);
 
 
 		/*!
 		*  \brief Updates the dynamical array fastPatches. Must be called after each patches modification
 		* 
 		*/
-		void updateFastPatches();
+		SCD_API void updateFastPatches();
 
 
 		/*!
 		*  \brief returns the vertex number in the STP-BV
 		* 
 		*/
-		int getFeaturesNumber();
+		SCD_API int getFeaturesNumber();
 
 
 

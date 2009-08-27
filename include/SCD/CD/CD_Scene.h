@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include <SCD/scd_api.h>
 #include <SCD/S_Object/S_Object.h>
 #include <SCD/CD/CD_Pair.h>
 
@@ -18,24 +19,24 @@ namespace SCD
 
 
 	public:
-		CD_Scene(void);
-		virtual ~CD_Scene(void);
+		SCD_API CD_Scene(void);
+		SCD_API virtual ~CD_Scene(void);
 
 		/*! 
 		* \brief Add Object to scene, returns an index that must be kept for collision detection 
 		*/
-		int addObject(S_Object* O);
+		SCD_API int addObject(S_Object* O);
 
 		/*!
 		* \brief Withdraw an object 
 		*/
-		void withdrawObject( int a);
+		SCD_API void withdrawObject( int a);
 
-		void ignorePair( int a, int b);
+		SCD_API void ignorePair( int a, int b);
 
-		void considerPair( int a, int b);
+		SCD_API void considerPair( int a, int b);
 
-		CD_Pair* operator()( int a, int b) const
+		SCD_API CD_Pair* operator()( int a, int b) const
 		{
 			if (a!=b)
 			{
@@ -46,19 +47,19 @@ namespace SCD
 		}
 
 
-		int  sceneProximityQuery();
+		SCD_API int  sceneProximityQuery();
 
 
 
 
 
 
-		S_Object * operator[](unsigned char i)const
+		SCD_API S_Object * operator[](unsigned char i)const
 		{
 			return objects_[i];
 		}	
 
-		size_t size()
+		SCD_API size_t size()
 		{
 			return objects_.size();
 		}
@@ -67,7 +68,7 @@ namespace SCD
 		/*!
 		*\brief Doesn't Compute the closest points, just gives the result of last computations.
 		*/
-		Scalar getWitnessPoints(int a, int b,Point3 &p1,Point3 &p2)
+		SCD_API Scalar getWitnessPoints(int a, int b,Point3 &p1,Point3 &p2)
 		{
 			if (a!=b)
 			{

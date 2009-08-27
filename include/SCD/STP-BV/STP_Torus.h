@@ -2,6 +2,7 @@
 #define _STP_TORUS
 
 #pragma once
+#include <SCD/scd_api.h>
 #include <SCD/STP-BV/STP_Feature.h>
 
 namespace SCD
@@ -35,33 +36,33 @@ namespace SCD
 		public STP_Feature
 	{
 	public:
-		STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
-		STP_Torus(const STP_Torus& t);
-		~STP_Torus();
+		SCD_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
+		SCD_API STP_Torus(const STP_Torus& t);
+		SCD_API ~STP_Torus();
 
-		void setVVR(const STP_VVR* vvr);
+		SCD_API void setVVR(const STP_VVR* vvr);
 
-		virtual void print() const;
+		SCD_API virtual void print() const;
     #ifdef WITH_OPENGL
-		void GLdisplayBVVVRaxes() const;
-		virtual void GLdisplayVVR() const;
+		SCD_API void GLdisplayBVVVRaxes() const;
+		SCD_API virtual void GLdisplayVVR() const;
     #endif
 
-		virtual bool isHere(const Vector3& v) const;
-		virtual bool isHereFarthestNeighbour(const Vector3& v);
-		virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
-		virtual bool isHereFirstNeighbour(const Vector3& v);
-		virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
-		virtual bool isHereHybrid(const Vector3& v,int idp) ;
-		virtual int getNextBV(unsigned int id) const;
-		virtual int getNextBVPrime() const
+		SCD_API virtual bool isHere(const Vector3& v) const;
+		SCD_API virtual bool isHereFarthestNeighbour(const Vector3& v);
+		SCD_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
+		SCD_API virtual bool isHereFirstNeighbour(const Vector3& v);
+		SCD_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
+		SCD_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
+		SCD_API virtual int getNextBV(unsigned int id) const;
+		SCD_API virtual int getNextBVPrime() const
 		{
 			return m_nextBVPrime;	
 		}
-		virtual Scalar supportH(const Vector3& v) const;
-		virtual Point3 support(const Vector3& v) const;
+		SCD_API virtual Scalar supportH(const Vector3& v) const;
+		SCD_API virtual Point3 support(const Vector3& v) const;
 
-		virtual STP_Feature* clone() const;
+		SCD_API virtual STP_Feature* clone() const;
 
 
 	protected:
