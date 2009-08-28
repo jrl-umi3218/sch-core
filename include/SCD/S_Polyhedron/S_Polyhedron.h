@@ -87,14 +87,14 @@ namespace SCD
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const
     {
-      boost::serialization::base_object<S_ObjectNonNormalized>(*this);
+      ar & boost::serialization::base_object<S_ObjectNonNormalized>(*this);
       ar & poly;
     }
 
     template<class Archive>
     void load(Archive & ar, const unsigned int version)
     {
-      boost::serialization::base_object<S_ObjectNonNormalized>(*this);
+      ar & boost::serialization::base_object<S_ObjectNonNormalized>(*this);
       ar & poly;
       updateFastArrays();
       updateVertexNeighbors();
