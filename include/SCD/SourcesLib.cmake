@@ -89,4 +89,4 @@ SET(HEADERS_STP_BV
   STP-BV/STP_Torus.h
   STP-BV/STP_Feature.hxx
 )
-InstallFiles(HEADERS_STP_BV  "STP_BV")
+InstallFiles(HEADERS_STP_BV  "STP-BV")
