@@ -205,7 +205,6 @@ Scalar CD_Pair::GJK()
 	int	cnt=0;
 #endif 
 
-
 	while (cont)
 	{
 
@@ -213,7 +212,6 @@ Scalar CD_Pair::GJK()
 
 		cnt++;
 #endif 
-
 		switch (s_.getType())
 		{
 

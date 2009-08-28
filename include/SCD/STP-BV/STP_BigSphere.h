@@ -5,6 +5,9 @@
 #include <SCD/scd_api.h>
 #include <SCD/STP-BV/STP_Feature.h>
 
+#include <boost/serialization/base_object.hpp>
+
+
 
 namespace SCD
 {
@@ -13,6 +16,7 @@ namespace SCD
 	{
 
 	public:
+    SCD_API STP_BigSphere();
 		SCD_API STP_BigSphere(Scalar radius, Point3 center);
 		SCD_API STP_BigSphere(const STP_BigSphere& s);
 		SCD_API ~STP_BigSphere();
@@ -49,6 +53,16 @@ namespace SCD
 			return m_nextBVPrime;	
 		}
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<STP_Feature>(*this);
+      ar & m_radius & m_center & m_VVR0 & m_VVR1 & m_VVR2; 
+      m_nextBV[0] = m_VVR0.m_outerSTP;
+      m_nextBV[1] = m_VVR1.m_outerSTP;
+      m_nextBV[2] = m_VVR2.m_outerSTP;
+    }
+    
 	protected:
 		Scalar m_radius;
 		Point3 m_center;
@@ -56,4 +70,5 @@ namespace SCD
 		int m_nextBV[3];
 	};
 }
+
 #endif

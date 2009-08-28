@@ -34,6 +34,12 @@ namespace SCD
 		s_STP_VVR& operator=(const s_STP_VVR& vvr);
 		bool operator==(const s_STP_VVR& vvr) const;
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_axis & m_cosangle & m_outerSTP & m_displayList;
+    }
+
 		Vector3 m_axis;
 		Scalar m_cosangle;
 		int m_outerSTP;
@@ -62,6 +68,12 @@ namespace SCD
 		s_STN_VVR& operator=(const s_STN_VVR& vvr);
 		bool operator==(const s_STN_VVR& vvr) const;
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_axis & m_cosangle & m_outerSTP & m_displayList;
+    }
+
 		Vector3 m_axis;
 		Scalar m_cosangle;
 		int m_outerSTP;
@@ -78,6 +90,12 @@ namespace SCD
 	*/
 	typedef struct s_STP_STBVData
 	{
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_points & m_VVRlimits & m_reverse & m_BVID;
+    }
+
 		std::vector<Point3> m_points;
 		std::vector<STN_VVR> m_VVRlimits;
 		std::vector<bool> m_reverse;
@@ -120,6 +138,12 @@ namespace SCD
 		SCD_API virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
 		SCD_API virtual int getNextBV(unsigned int id) const= 0;
 		SCD_API virtual int getNextBVPrime() const=0 ;
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_displayList & m_nextBVPrime;
+    }
 
 	protected:
 		STP_Feature(void);

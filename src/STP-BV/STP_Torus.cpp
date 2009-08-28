@@ -4,13 +4,16 @@
 #include <GL/glut.h>
 #endif
 
-
 using namespace SCD;
 
 s_STP_Circle::s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius):
 m_normal(normal), m_center(center), m_radius(radius)
 {
 	m_normal.normalize();
+}
+
+STP_Torus::STP_Torus() 
+{
 }
 
 STP_Torus::STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius):
@@ -871,3 +874,4 @@ STP_Feature* STP_Torus::clone() const
 {
 	return new STP_Torus(*this);
 }
+

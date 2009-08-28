@@ -8,6 +8,10 @@
 
 using namespace SCD;
 
+STP_BigSphere::STP_BigSphere()  
+{
+}
+
 STP_BigSphere::STP_BigSphere(Scalar radius, Point3 center):
 m_radius(radius), m_center(center)
 {
@@ -441,3 +445,4 @@ STP_Feature* STP_BigSphere::clone() const
 {
 	return new STP_BigSphere(*this);
 }
+

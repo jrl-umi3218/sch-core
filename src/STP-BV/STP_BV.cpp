@@ -11,6 +11,12 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <iostream>
 #include <fstream>
 
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/serialization.hpp>
+#include <boost/serialization/base_object.hpp>
+#include <boost/serialization/vector.hpp>
+
 #ifdef WITH_OPENGL
 #include <GL/glut.h>
 #endif
@@ -22,9 +28,15 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 
 
 
+/* Necessary includes and macro call for polymorph pointer serialization */
+#include <boost/serialization/export.hpp>
 #include <SCD/STP-BV/STP_SmallSphere.h>
 #include <SCD/STP-BV/STP_BigSphere.h>
 #include <SCD/STP-BV/STP_Torus.h>
+BOOST_CLASS_EXPORT(SCD::STP_Torus)
+BOOST_CLASS_EXPORT(SCD::STP_SmallSphere)
+BOOST_CLASS_EXPORT(SCD::STP_BigSphere)
+
 
 const double PI=3.141592653589793238462643383279502884197;
 
@@ -516,9 +528,31 @@ void STP_BV::constructFromFile(const std::string& filename)
 #endif
 }
 
+void STP_BV::loadFromBinary(const std::string & filename)
+{
+  try 
+  {
+    std::ifstream ifs(filename.c_str(), std::ios::binary);
+    boost::archive::binary_iarchive ia(ifs);
+    ia >> *this;
+  }
+  catch(...)
+  {
+    std::cerr << "Could not load the object from: " << filename << std::endl;
+  }
+}
 
-
-
+void STP_BV::saveToBinary(const std::string & filename)
+{
+ std::ofstream ofs(filename.c_str(), std::ios::binary);
+  if(!ofs.is_open())
+  {
+    std::cerr << "Could not open file: " << filename << std::endl;
+    return;
+  }
+  boost::archive::binary_oarchive oa(ofs);
+  oa << *this;
+}
 
 
 #ifdef WITH_OPENGL

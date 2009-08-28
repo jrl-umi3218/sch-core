@@ -35,7 +35,7 @@ public:
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)
   {
-    boost::serialization::base_object<S_Object>(*this);
+    ar & boost::serialization::base_object<S_Object>(*this);
   }
 };
 

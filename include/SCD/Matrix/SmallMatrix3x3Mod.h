@@ -8,6 +8,8 @@
 
 #include <SCD/Matrix/QuaternionM.h>
 
+#include <boost/serialization/base_object.hpp>
+
 namespace MAL_Default
 {
 	template<typename T>
@@ -15,6 +17,12 @@ namespace MAL_Default
 		public Matrix3x3<T>
 	{
 	public:
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object< Matrix3x3<T> >(*this);
+    }
 
 		/*! Defaut constructor. */
 		explicit Matrix3x3Mod<T>() 

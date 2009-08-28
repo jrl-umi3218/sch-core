@@ -8,6 +8,7 @@
 #include <SCD/Matrix/SmallVector3Default.h>
 #include <SCD/Matrix/SmallMatrix3x3Default.h>
 
+#include <boost/serialization/base_object.hpp>
 
 namespace MAL_Default
 {
@@ -28,6 +29,12 @@ namespace MAL_Default
 	
 		explicit Vector3Mod<T>(const T* const p):Vector3D<T>(p[0],p[1],p[2])
 		{}
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object< Vector3D<T> >(*this);
+    }
 
 		void Set(const T& x, const T& y, const T& z)
 		{

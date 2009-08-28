@@ -5,6 +5,8 @@
 #include <SCD/scd_api.h>
 #include <SCD/STP-BV/STP_Feature.h>
 
+#include <boost/serialization/base_object.hpp>
+
 namespace SCD
 {
 	/*! \struct s_STP_Circle
@@ -19,6 +21,20 @@ namespace SCD
 		Vector3 m_normal;
 		Point3 m_center;
 		Scalar m_radius;
+
+    bool operator==(const s_STP_Circle & c) const
+    {
+      return 
+        m_normal == c.m_normal &&
+        m_center == c.m_center &&
+        m_radius == c.m_radius;
+    }
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_normal & m_center & m_radius;
+    }
 
 		s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius);
 		s_STP_Circle(){}
@@ -36,6 +52,7 @@ namespace SCD
 		public STP_Feature
 	{
 	public:
+    SCD_API STP_Torus();
 		SCD_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
 		SCD_API STP_Torus(const STP_Torus& t);
 		SCD_API ~STP_Torus();
@@ -64,6 +81,17 @@ namespace SCD
 
 		SCD_API virtual STP_Feature* clone() const;
 
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<STP_Feature>(*this);
+      ar & m_circle & m_sphereRadius & m_VVR0 & m_VVR1 & m_VVR2 & m_VVR3 & m_nextBV;
+      m_nextBV[0] = m_VVR0.m_outerSTP; 
+      m_nextBV[1] = m_VVR1.m_outerSTP; 
+      m_nextBV[2] = m_VVR2.m_outerSTP; 
+      m_nextBV[3] = m_VVR3.m_outerSTP; 
+    }
+
 
 	protected:
 		STP_Circle m_circle;
@@ -73,4 +101,5 @@ namespace SCD
 	};
 
 }
+
 #endif

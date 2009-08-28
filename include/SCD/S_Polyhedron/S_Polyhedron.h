@@ -7,10 +7,10 @@
 #include <SCD/S_Polyhedron/S_PolyhedronVertex.h>
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
 
-#include <boost/serialization/base_object.hpp>
-
 #include <string>
 #include <vector>
+
+#include <boost/serialization/split_member.hpp>
 
 namespace SCD
 {
@@ -41,6 +41,21 @@ namespace SCD
 
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
+
+    /*!
+    *  \brief Load the object from a binary archive
+    *  \param filename path to the binary archive
+    */
+    SCD_API virtual void loadFromBinary(const std::string & filename);
+
+
+    /*!
+    *  \brief Save the object to a binary archive
+    *  \param filename path to the binary archive
+    */
+    SCD_API virtual void saveToBinary(const std::string & filename);
+
+
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification
 		*/
@@ -70,11 +85,23 @@ namespace SCD
 		SCD_API void deleteVertexesWithoutNeighbors();
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void save(Archive & ar, const unsigned int version) const
     {
       boost::serialization::base_object<S_ObjectNonNormalized>(*this);
       ar & poly;
     }
+
+    template<class Archive>
+    void load(Archive & ar, const unsigned int version)
+    {
+      boost::serialization::base_object<S_ObjectNonNormalized>(*this);
+      ar & poly;
+      updateFastArrays();
+      updateVertexNeighbors();
+    }
+
+    BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 	protected:
 		SCD_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 		SCD_API virtual	S_ObjectType getType() const;

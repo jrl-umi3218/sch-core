@@ -6,10 +6,11 @@
 #include <SCD/S_Object/S_ObjectNormalized.h>
 #include <SCD/STP-BV/STP_Feature.h>
 
-
 #include <vector>
 #include <list>
 #include <map>
+
+#include <boost/serialization/split_member.hpp>
 
 namespace SCD
 {
@@ -28,6 +29,11 @@ namespace SCD
 	typedef struct s_toruslinkedBV
 	{
 		int buffer[4];
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & buffer;
+    }
 	} toruslinkedBV;
 
 	/*!  \struct s_Triangle
@@ -48,6 +54,12 @@ namespace SCD
 		*  \param vertex3 third vertex of the triangle
 		*/
 		s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3);
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_vertex1 & m_vertex2 & m_vertex3;
+    }
 
 		Point3 m_vertex1;
 		Point3 m_vertex2;
@@ -78,6 +90,12 @@ namespace SCD
 		*  \param currentStep
 		*/
 		void operator ()(const Triangle& vertices, const int& currentStep) const;
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
+    }
 
 		std::vector<Point3>& m_vertices;
 		int m_step;
@@ -112,6 +130,12 @@ namespace SCD
 		*  \param id2
 		*/
 		bool operator ()(unsigned int id1, unsigned int id2) const;
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & m_axis & m_points;
+    }
 
 		Point3 m_axis;
 		std::vector<Point3> m_points;
@@ -150,6 +174,19 @@ namespace SCD
 		*/
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
+
+    /*!
+    *  \brief Load the object from a binary archive
+    *  \param filename path to the binary archive
+    */
+    SCD_API virtual void loadFromBinary(const std::string & filename);
+
+
+    /*!
+    *  \brief Save the object to a binary archive
+    *  \param filename path to the binary archive
+    */
+    SCD_API virtual void saveToBinary(const std::string & filename);
 
     #ifdef WITH_OPENGL
 		/*!
@@ -309,7 +346,26 @@ namespace SCD
 
 
 
+    template<class Archive>
+    void save(Archive & ar, const unsigned int version) const
+    {
+      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+      ar & m_patches ;
+      ar & m_patchesSize ;
+      ar & drawnGL_;
+    }
 
+    template<class Archive>
+    void load(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+      ar & m_patches ;
+      ar & m_patchesSize ;
+      ar & drawnGL_;
+      updateFastPatches();
+    }
+
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
 
 	protected:
 		std::vector<STP_Feature*> m_patches;
@@ -321,4 +377,5 @@ namespace SCD
 
 	};
 }
+
 #endif

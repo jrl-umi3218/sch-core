@@ -5,6 +5,7 @@
 #ifndef _S_OBJECTNORMALIZED_H
 #define _S_OBJECTNORMALIZED_H
 
+#include <boost/serialization/base_object.hpp>
 
 namespace SCD
 {
@@ -29,6 +30,12 @@ namespace SCD
 		*  \return returns the support point.
 		*/ 
 		SCD_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<S_Object>(*this);
+    }
 	};
 
 #include <SCD/S_Object/S_ObjectNormalized.hxx>

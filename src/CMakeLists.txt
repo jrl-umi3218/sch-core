@@ -20,14 +20,16 @@ set(SOURCES
   STP-BV/STP_SmallSphere.cpp
   STP-BV/STP_Feature.cpp
   STP-BV/STP_BV.cpp
-  STP-BV/STP_BigSphere.cpp
   STP-BV/STP_BV_P.cpp
+  STP-BV/STP_BigSphere.cpp
   STP-BV/STP_Torus.cpp
 
 )
 ADD_LIBRARY( scd SHARED ${SOURCES} ${HEADERS})
 IF(WITH_OPENGL)
-  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${Boost_SERIALIZATION_LIBRARY_${CMAKE_BUILD_TYPE}})
+ELSE(WITH_OPENGL)
+  target_link_libraries(scd ${Boost_SERIALIZATION_LIBRARY_${CMAKE_BUILD_TYPE}})
 ENDIF(WITH_OPENGL)
 
 SET_TARGET_PROPERTIES( scd
