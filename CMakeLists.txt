@@ -35,7 +35,6 @@ IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
   ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 
-add_subdirectory(include/SCD/)
 add_subdirectory(src)
 
 # Build a pkgconfig file

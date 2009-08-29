@@ -4,7 +4,9 @@ macro(InstallFiles  files  sub_folder)
     list(APPEND  allfiles  "${PROJECT_SOURCE_DIR}/include/SCD/${fileA}")
   endforeach(fileA)
 
-  INSTALL(FILES ${allfiles}
+  source_group("${sub_folder}" FILES ${allfiles})
+
+  install(FILES ${allfiles}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}/${sub_folder}
 	PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
   )
