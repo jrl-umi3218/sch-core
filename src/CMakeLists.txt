@@ -25,6 +25,7 @@ set(SOURCES
   STP-BV/STP_Torus.cpp
 
 )
+link_directories(${Boost_LIBRARY_DIRS})
 ADD_LIBRARY( scd SHARED ${SOURCES} ${HEADERS})
 IF(WITH_OPENGL)
   target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${Boost_SERIALIZATION_LIBRARY_${CMAKE_BUILD_TYPE}})
