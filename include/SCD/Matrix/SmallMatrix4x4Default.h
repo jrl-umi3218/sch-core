@@ -344,35 +344,5 @@ namespace MAL_Default
     };
 
 };
-
-#define MAL_S4x4_MATRIX(name,type) \
-  MAL_Default::Matrix4x4D<type> name
-
-#define MAL_S4x4_MATRIX_CLEAR(name) \
-  name.setZero()
-
-#define MAL_S4x4_MATRIX_SET_IDENTITY(name) \
-  name.setIdentity()
-
-#define MAL_S4x4_INVERSE(name,inv_matrix,type)	\
-  inv_matrix = name.Inversion();
-
-#define MAL_S4x4_RET_TRANSPOSE(matrix) \
-  matrix.Transpose();
-
-#define MAL_S4x4_TRANSPOSE_A_in_At(A,At)	\
-  A.Transpose(At);
-
-#define MAL_S4x4_RET_A_by_B(A,B) \
-  A*B
-
-#define MAL_S4x4_C_eq_A_by_B(C,A,B) \
-  A.CeqthismulB(B,C)
-
-#define MAL_S4x4_MATRIX_ACCESS_I(name, i) \
-  name[i]
-
-#define MAL_S4x4_MATRIX_ACCESS_I_J(name, i, j) \
-  name(i,j)  
   
 #endif

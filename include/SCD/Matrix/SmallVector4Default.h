@@ -189,27 +189,4 @@ namespace MAL_Default
 	};
 };
 
-
-#define MAL_S4_VECTOR(name,type)		\
-	MAL_Default::Vector4D<type> name
-
-#define MAL_S4_VECTOR_SIZE(name)		\
-	3 
-
-#define MAL_S4_VECTOR_FILL(name,value)		\
-{					\
-    name.m_x = value;				\
-	name.m_y = value;				\
-	name.m_z = value;                           \
-	name.m_w = value; }
-
-#define MAL_S4_VECTOR_NORM(name)		\
-	name.norm()
-
-#define MAL_S4_RET_VECTOR_DATABLOCK(name)	\
-	&name
-
-#define MAL_S4_VECTOR_ACCESS(name, i)  		\
-	name[i]
-
 #endif /* _VECTOR4D_PATTERNGENERATOR_JRL_ */

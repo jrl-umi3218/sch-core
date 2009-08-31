@@ -168,7 +168,7 @@ namespace MAL_Default
 
 
 		/*! Multiplication operator with a vector */
-		MAL_S3_VECTOR(,T) operator *(const MAL_S3_VECTOR(,T)& v) 
+		Vector3D<T> operator *(const Vector3D<T>& v) 
 		{
 			MAL_S3_VECTOR(vr,T);
 			vr[0] = m[0]*v[0]+m[1]*v[1]+m[2]*v[2];
@@ -178,9 +178,9 @@ namespace MAL_Default
 		}
 
 		/*! Multiplication operator with a vector */
-		MAL_S3_VECTOR(,T) operator *(const MAL_S3_VECTOR(,T)& v) const
+		Vector3D<T> operator *(const Vector3D<T>& v) const
 		{
-			MAL_S3_VECTOR(vr,T);
+			Vector3D<T> vr;
 			vr[0] = m[0]*v[0]+m[1]*v[1]+m[2]*v[2];
 			vr[1] = m[3]*v[0]+m[4]*v[1]+m[5]*v[2];
 			vr[2] = m[6]*v[0]+m[7]*v[1]+m[8]*v[2];
@@ -188,7 +188,7 @@ namespace MAL_Default
 		}
 
 		/*! Multiplication operator with a vector */
-		void CeqthismulB( MAL_S3_VECTOR(,T) &B,MAL_S3_VECTOR(,T) &C) const
+		void CeqthismulB( Vector3D<T> &B,Vector3D<T> &C) const
 		{
 
 			C[0] = m[0]*B[0]+m[1]*B[1]+m[2]*B[2];
@@ -336,43 +336,6 @@ namespace MAL_Default
 	};
 
 };
-
-#define MAL_S3x3_MATRIX(name,type) \
-	MAL_Default::Matrix3x3<type> name
-
-#define MAL_S3x3_MATRIX_CLEAR(name) \
-	name.setZero()
-
-#define MAL_S3x3_MATRIX_FILL(name, value) \
-	name.Fill(value)
-
-#define MAL_S3x3_MATRIX_SET_IDENTITY(name) \
-	name.setIdentity()
-
-#define MAL_S3x3_INVERSE(name,inv_matrix,type)	\
-	name.Inversion(inv_matrix)
-
-#define MAL_S3x3_RET_TRANSPOSE(matrix) \
-	matrix.Transpose()
-
-#define MAL_S3x3_TRANSPOSE_A_in_At(A,At)		\
-	A.Transpose(At);
-
-#define MAL_S3x3_RET_A_by_B(A,B) \
-	A*B
-
-#define MAL_S3x3_C_eq_A_by_B(C,A,B) \
-	A.CeqthismulB(B,C)
-
-#define MAL_S3x3_MATRIX_ACCESS_I(name, i) \
-	name[i]
-
-#define MAL_S3x3_MATRIX_ACCESS_I_J(name, i, j) \
-	name(i,j)
-
-#define MAL_S3x3_RET_MATRIX_DATABLOCK(name) \
-	name.m
-
 
 #endif
 
