@@ -26,9 +26,9 @@ find_package(Boost COMPONENTS serialization)
 find_package(GLUT)
 find_package(OpenGL)
 
-IF(${Boost_MINOR_VERSION} EQUAL 36)
+IF(${Boost_MINOR_VERSION} LESS 36)
   SET(${PROJECT_NAME}_CXXFLAGS "-D WITH_BOOST_1_36 ${${PROJECT_NAME}_CXXFLAGS}")
-ENDIF(${Boost_MINOR_VERSION} EQUAL 36)
+ENDIF(${Boost_MINOR_VERSION} LESS 36)
 
 include_directories(${PROJECT_SOURCE_DIR}/include  ${Boost_INCLUDE_DIR})
 # Optimisation flags when building with RELEASE
