@@ -170,7 +170,7 @@ namespace MAL_Default
 		/*! Multiplication operator with a vector */
 		Vector3D<T> operator *(const Vector3D<T>& v) 
 		{
-			MAL_S3_VECTOR(vr,T);
+			Vector3D<T> vr;
 			vr[0] = m[0]*v[0]+m[1]*v[1]+m[2]*v[2];
 			vr[1] = m[3]*v[0]+m[4]*v[1]+m[5]*v[2];
 			vr[2] = m[6]*v[0]+m[7]*v[1]+m[8]*v[2];
