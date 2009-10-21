@@ -10,6 +10,9 @@
 #include <string>
 #include <vector>
 
+#ifdef WITH_BOOST_1_36
+#include <SCD/boost/archive/detail/oserializer.hpp>
+#endif
 #include <boost/serialization/split_member.hpp>
 
 namespace SCD

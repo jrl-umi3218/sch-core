@@ -6,6 +6,9 @@
 #include <SCD/STP-BV/STP_Feature.h>
 #include <vector>
 
+#ifdef WITH_BOOST_1_36
+#include <SCD/boost/archive/detail/oserializer.hpp>
+#endif
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/split_member.hpp>
 

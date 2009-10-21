@@ -8,6 +8,9 @@
 
 #include <SCD/Matrix/QuaternionM.h>
 
+#ifdef WITH_BOOST_1_36
+#include <SCD/boost/archive/detail/oserializer.hpp>
+#endif
 #include <boost/serialization/base_object.hpp>
 
 namespace MAL_Default
