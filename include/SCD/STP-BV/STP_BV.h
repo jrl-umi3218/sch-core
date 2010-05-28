@@ -281,8 +281,7 @@ namespace SCD
 		*/
 		SCD_API virtual bool ray_cast(const Point3& source, const Point3& target,
 			Scalar& param, Vector3& normal) const;
-	public: //DEBUG
-		//protected:
+    protected:
 
 		/*!
 		*  \brief Load the tree structure of the object from a file

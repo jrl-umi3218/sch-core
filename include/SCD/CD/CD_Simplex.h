@@ -3,8 +3,7 @@
 #define _CD_SIMPLEX
 
 #pragma once
-
-
+#pragma GCC diagnostic ignored "-Wchar-subscripts"
 
 #include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
