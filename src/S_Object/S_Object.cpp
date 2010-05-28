@@ -70,6 +70,14 @@ void S_Object::setOrientation(const Scalar* const p)
 
 }
 
+void S_Object::setOrientation(const Scalar& yaw, const Scalar& pitch, const Scalar& roll)
+{
+	++stamp_;
+	Matrix3x3 m(yaw,pitch,roll);
+	mRot_=m;
+}
+
+
 void S_Object::setOrientation(const Scalar& s, const Vector3& v)
 {
 	++stamp_;
