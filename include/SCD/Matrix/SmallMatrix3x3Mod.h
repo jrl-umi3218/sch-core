@@ -158,30 +158,40 @@ namespace MAL_Default
 		}
 
 		
-		/*!Euler*/
-		explicit Matrix3x3Mod<T> (const T &yaw,const T &pitch,const T &roll)
-		{
-			T cy(cos(double(yaw))); 
-			T sy(sin(double(yaw))); 
-			T cp(cos(double(pitch))); 
-			T sp(sin(double(pitch))); 
-			T cr(cos(double(roll)));
-			T sr(sin(double(roll)));
-			T cc = cy * cr; 
-			T cs = cy * sr; 
-			T sc = sy * cr; 
-			T ss = sy * sr;
-			
-			this->m[0]= cc + sp * ss;
-			this->m[1]= cs - sp * sc;
-			this->m[2]= -sy * cp;
-			this->m[3]= -cp * sr;
-			this->m[4]= cp * cr;
-			this->m[5]=  -sp;
-			this->m[6]= sc - sp * cs;
-			this->m[7]= ss + sp * cc;
-			this->m[8]= cy * cp;
-		}
+		/*!Euler
+         * ROLL PITCH YAW (R = Ry * Rp * Rr) */
+		explicit Matrix3x3Mod<T> (const T &roll, const T &pitch, const T &yaw)
+        {
+
+            T cy(cos(double(yaw))); 
+            T sy(sin(double(yaw))); 
+            T cp(cos(double(pitch))); 
+            T sp(sin(double(pitch))); 
+            T cr(cos(double(roll)));
+            T sr(sin(double(roll)));
+
+            T cc = cy * cr; 
+            T cs = cy * sr; 
+            T sc = sy * cr; 
+            T ss = sy * sr;
+
+            T sysp = sy * sp;
+            T cysp = cy * sp;
+            T sysr = sy * sr;
+            T sycr = sy * cr;
+
+            this->m[0] = cy*cp;
+            this->m[1] = cysp*sr-sycr;
+            this->m[2] = cysp*cr+sysr;
+
+            this->m[3] = sy*cp;
+            this->m[4] = sysp*sr+cy*cr;
+            this->m[5] = sysp*cr-cy*sr;
+
+            this->m[6] = -sp;
+            this->m[7] = cp*sr;
+            this->m[8] = cp*cr;
+        }
 
 						/*! set from 9 scalar */
 		void Set (

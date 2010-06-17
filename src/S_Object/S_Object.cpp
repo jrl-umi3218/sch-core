@@ -70,10 +70,10 @@ void S_Object::setOrientation(const Scalar* const p)
 
 }
 
-void S_Object::setOrientation(const Scalar& yaw, const Scalar& pitch, const Scalar& roll)
+void S_Object::setOrientation(const Scalar& roll, const Scalar& pitch, const Scalar& yaw)
 {
 	++stamp_;
-	Matrix3x3 m(yaw,pitch,roll);
+	Matrix3x3 m(roll, pitch, yaw);
 	mRot_=m;
 }
 
@@ -184,10 +184,10 @@ void S_Object::addRotation(const Scalar* const p)
 	
 }
 
-void S_Object::addRotation(const Scalar &yaw, const Scalar &pitch, const Scalar &roll)
+void S_Object::addRotation(const Scalar& roll, const Scalar& pitch, const Scalar& yaw)
 {
 	++stamp_;
-	Matrix3x3 m(yaw,pitch,roll);
+	Matrix3x3 m(roll, pitch, yaw);
 	mRot_=m*mRot_;
 	trans_=m*trans_;
 	

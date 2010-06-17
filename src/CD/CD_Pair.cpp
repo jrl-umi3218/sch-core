@@ -1,14 +1,14 @@
 #include <SCD/CD/CD_Pair.h>
 #include <SCD/CD/CD_Simplex.h>
 #include <SCD/CD/CD_SimplexEnhanced.h>
-
 #ifdef WITH_OPENGL
 #include <GL/glut.h>
 #endif 
-
 #include <iostream>
 
+//#ifndef NOGLUT
 //#define SHOW_LAST_SIMLPEX
+//#endif
 //#define COUNTER
 //#define SAFE_VERSION
 #define PENETRATION_DEPTH
