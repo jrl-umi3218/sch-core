@@ -44,7 +44,7 @@ bool s_STP_VVR::isInside(const Vector3& v) const
 
 
 
-float s_STP_VVR::getDistance(const Vector3& v) const
+Scalar s_STP_VVR::getDistance(const Vector3& v) const
 {
 	return (m_axis*v) / (v.norm() * m_axis.norm()) - m_cosangle;
 }
@@ -57,9 +57,9 @@ bool s_STP_VVR::isSameLimit(const s_STP_VVR& vvr) const
 
 	if(m_cosangle == 0.0 && vvr.m_cosangle == 0.0)
 	{
-		if( (abs(m_axis[0] + vvr.m_axis[0]) < epsilon) && (abs(m_axis[1] + vvr.m_axis[1]) < epsilon) && (abs(m_axis[2] + vvr.m_axis[2]) < epsilon) )
+		if( (fabs(m_axis[0] + vvr.m_axis[0]) < epsilon) && (fabs(m_axis[1] + vvr.m_axis[1]) < epsilon) && (fabs(m_axis[2] + vvr.m_axis[2]) < epsilon) )
 			return true;
-		else if( (abs(m_axis[0] - vvr.m_axis[0]) < epsilon) && (abs(m_axis[1] - vvr.m_axis[1]) < epsilon) && (abs(m_axis[2] - vvr.m_axis[2]) < epsilon) )
+		else if( (fabs(m_axis[0] - vvr.m_axis[0]) < epsilon) && (fabs(m_axis[1] - vvr.m_axis[1]) < epsilon) && (fabs(m_axis[2] - vvr.m_axis[2]) < epsilon) )
 			return true;
 		else
 			return false;
@@ -82,10 +82,10 @@ bool s_STP_VVR::operator==(const s_STP_VVR& vvr) const
 {
 	double epsilon = 1e-7;
 
-	if( (abs(m_axis[0] - vvr.m_axis[0]) < epsilon) 
-		&& (abs(m_axis[1] - vvr.m_axis[1]) < epsilon)
-		&& (abs(m_axis[2] - vvr.m_axis[2]) < epsilon)
-		&& (abs(m_cosangle - vvr.m_cosangle) < epsilon) )
+	if( (fabs(m_axis[0] - vvr.m_axis[0]) < epsilon) 
+		&& (fabs(m_axis[1] - vvr.m_axis[1]) < epsilon)
+		&& (fabs(m_axis[2] - vvr.m_axis[2]) < epsilon)
+		&& (fabs(m_cosangle - vvr.m_cosangle) < epsilon) )
 		return true;
 	else
 		return false;

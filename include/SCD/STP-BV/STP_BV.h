@@ -85,7 +85,7 @@ namespace SCD
 		*  \param sphereCenter
 		*  \param sphereRadius
 		*/
-		s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, double sphereRadius);
+		s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, Scalar sphereRadius);
 
 		/*! 
 		*  \brief operator parenthesis
@@ -103,7 +103,7 @@ namespace SCD
 		std::vector<Point3>& m_vertices;
 		int m_step;
 		Point3 m_sphereCenter;
-		float m_sphereRadius;
+		Scalar m_sphereRadius;
 	} SphereApproxim;
 
 	/*!  \class s_PointsComparator
@@ -312,7 +312,6 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		SCD_API void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
-    #endif
 		/*!
 		*  \brief Computes the intersection of two segments
 		*  \param l1p1 first point of the first line

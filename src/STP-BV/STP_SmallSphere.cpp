@@ -115,7 +115,7 @@ bool STP_SmallSphere::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
 	std::vector<STP_VVR>::const_iterator currentVVR = m_VVR.begin();
-	std::map<float, int> values;
+	std::map<Scalar, int> values;
 
 	//std::cout << "test is here small sphere" << std::endl;
 
@@ -124,14 +124,14 @@ bool STP_SmallSphere::isHereFarthestNeighbour(const Vector3& v)
 		if(!(currentVVR->isInside(v)))
 		{
 			res = false;
-			values.insert(std::pair<float, int>(currentVVR->getDistance(v), currentVVR->m_outerSTP));
+			values.insert(std::pair<Scalar, int>(currentVVR->getDistance(v), currentVVR->m_outerSTP));
 		//	std::cout << "outer STP : " << currentVVR->m_outerSTP << std::endl;
 		//	std::cout << "distance : " << currentVVR->getDistance(v) << std::endl;
 		}
 		++currentVVR;
 	}
 
-	std::map<float, int>::iterator it;
+	std::map<Scalar, int>::iterator it;
 	int i = 0;
 	for(it = values.begin() ; it != values.end() ; ++it)
 	{
@@ -147,8 +147,8 @@ bool STP_SmallSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 {
 	std::vector<STP_VVR>::const_iterator currentVVR = m_VVR.begin();
 
-	double d=0;
-	double dp;
+	Scalar d=0;
+	Scalar dp;
 
 
 	//std::cout << "test is here small sphere" << std::endl;
@@ -253,8 +253,8 @@ bool STP_SmallSphere::isHereHybrid(const Vector3& v,int idp)
 {
 	STP_VVR * currentVVR = m_neighbors;
 
-	double d=0;
-	double dp;
+	Scalar d=0;
+	Scalar dp;
 
 
 	//std::cout << "test is here small sphere" << std::endl;

@@ -10,6 +10,8 @@
 #include <SCD/Matrix/QuaternionM.h>
 #include <cfloat>
 
+#include "fadiff.h"
+
 namespace SCD
 {
 	typedef  double  Scalar;

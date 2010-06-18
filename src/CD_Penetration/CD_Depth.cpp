@@ -73,13 +73,13 @@ inline void addCandidate(Depth_Triangle *triangle, Scalar upper2)
     {
         triangleHeap[num_triangles++] = triangle;
         std::push_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
-#ifdef DEBUG
+#ifdef SCD_DEBUG
         std::cout << " accepted" << std::endl;
 #endif
     }
     else 
     {
-#ifdef DEBUG
+#ifdef SCD_DEBUG
         std::cout << " rejected, ";
         if (!triangle->isClosestInternal()) 
             {
@@ -356,7 +356,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         {
             if (num_verts == MaxSupportPoints)
             {
-#ifdef DEBUG
+#ifdef SCD_DEBUG
                 std::cout << "Ouch, no convergence!!!" << std::endl;
 #endif 
                 assert(false);	
@@ -417,7 +417,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     }
     while (num_triangles > 0 && triangleHeap[0]->getDist2() <= upper_bound2);
 	
-#ifdef DEBUG    
+#ifdef SCD_DEBUG    
     std::cout << "#triangles left = " << num_triangles << std::endl;
 #endif
     

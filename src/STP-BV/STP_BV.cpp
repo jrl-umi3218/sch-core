@@ -95,7 +95,7 @@ m_vertex1(vertex1), m_vertex2(vertex2), m_vertex3(vertex3)
 {
 }
 
-s_SphereApproxim::s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, double sphereRadius):
+s_SphereApproxim::s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, Scalar sphereRadius):
 m_vertices(vertices), m_step(step), m_sphereCenter(sphereCenter), m_sphereRadius(sphereRadius)
 {
 }
@@ -200,14 +200,14 @@ STP_BV & STP_BV::operator =(const STP_BV & bv)
 }
 
 void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2, 
-									 const Point3& center, double radius, int step, 
+									 const Point3& center, Scalar radius, int step, 
 									 std::vector<Point3>* res) const
 {
 
 
 	Vector3 v1=p1-center, v2p=p2-center;
 
-	double k=v1.norm();
+	Scalar k=v1.norm();
 	k=v2p.norm();
 
 	k=(v2p.norm()+k)/2;
@@ -217,7 +217,7 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 	v2p.normalize();
 
 
-	double angle=acos(v1*v2p)/(step);
+	Scalar angle=acos(v1*v2p)/(step);
 
 
 
@@ -238,10 +238,10 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 
 	res->push_back(p1);
 
-	double a=angle;
+	Scalar a=angle;
 	for (int i=1;i<step;i++)
 	{
-		Point3 tmp((const double)cos(a),(const double)(sin(a)),(const double)0);
+		Point3 tmp((const Scalar)cos(a),(const Scalar)(sin(a)),(const Scalar)0);
 		tmp=(m*tmp)*k+center;
 		res->push_back(tmp);
 		a+=angle;
@@ -255,7 +255,7 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 
 #ifdef WITH_OPENGL
 void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2, 
-									  double cosangle, Vector3 axis, int step, 
+									  Scalar cosangle, Vector3 axis, int step, 
 									  std::vector<Point3>* res)
 {
 	//axis.normalize(); //we're supposed to use already normalized axes in this programm
@@ -296,7 +296,7 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 	v1 = l1p1 - l1p2;
 	v2 = l2p1 - l2p2;
 
-	double t;
+	Scalar t;
 	if( fabs(v2[0] * v1[1] - v1[0] * v2[1]) > 1e-8 )
 	{
 		t = (v2[0] * (l2p1[1] - l1p1[1]) + v2[1] * (l1p1[0] - l2p1[0])) / (v2[0] * v1[1] - v1[0] * v2[1]);
@@ -355,7 +355,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 
 	//small spheres
 	STP_SmallSphere* ss;
-	double _r,_R;
+	Scalar _r,_R;
 	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
@@ -586,7 +586,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 
 	//small spheres
 	STP_SmallSphere* ss;
-	double _r,_R;
+	Scalar _r,_R;
 	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
@@ -677,7 +677,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	STP_Torus* t = NULL;
 	bool isRealTorus;
 	int torusCount = 0;
-	double r;
+	Scalar r;
 	//toruslinkedBV relatedBV;
 	Point3 arcCenter;
 	Point3 p1, p2, p3, p4;

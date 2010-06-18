@@ -22,12 +22,12 @@ namespace SCD
 
 		bool isInside(const Vector3& v) const;
 
-		double isInsidePrime(const Vector3& v) const;
+		Scalar isInsidePrime(const Vector3& v) const;
 
-		double isInsidePlane(const Vector3& v) const;
+		Scalar isInsidePlane(const Vector3& v) const;
 
 
-		float getDistance(const Vector3& v) const;
+		Scalar getDistance(const Vector3& v) const;
 
 		bool isSameLimit(const s_STP_VVR& vvr) const;
 

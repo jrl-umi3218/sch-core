@@ -99,7 +99,7 @@ namespace SCD
 
 		SCD_API void setObsolete(bool obsolete) 
 		{ 
-#ifdef DEBUG
+#ifdef SCD_DEBUG
 			std::cout << "Triangle " <<  m_indices[0] << ' ' << m_indices[1] << ' ' << m_indices[2] << " obsolete" << std::endl;
 #endif	
 			m_obsolete = obsolete; 

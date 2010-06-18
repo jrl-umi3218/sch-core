@@ -163,12 +163,12 @@ namespace MAL_Default
 		explicit Matrix3x3Mod<T> (const T &roll, const T &pitch, const T &yaw)
         {
 
-            T cy(cos(double(yaw))); 
-            T sy(sin(double(yaw))); 
-            T cp(cos(double(pitch))); 
-            T sp(sin(double(pitch))); 
-            T cr(cos(double(roll)));
-            T sr(sin(double(roll)));
+            T cy(cos(yaw)); 
+            T sy(sin(yaw)); 
+            T cp(cos(pitch)); 
+            T sp(sin(pitch)); 
+            T cr(cos(roll));
+            T sr(sin(roll));
 
             T cc = cy * cr; 
             T cs = cy * sr; 
