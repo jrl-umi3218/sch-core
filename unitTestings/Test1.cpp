@@ -1352,10 +1352,7 @@ void GeneralTest()
 
 		end=clock();
 
-		outfile <<stppObjects[k].getFeaturesNumber()<<' '<< ((double)(end- begin-lostTime) / CLOCKS_PER_SEC) <<" "<<((double)(end- begin-lostTime) / CLOCKS_PER_SEC)/RandomTestEnd<<' ';
-		std::cout<< k<<" " <<stppObjects[k].getFeaturesNumber()<<' '<< ((double)(end- begin-lostTime) / CLOCKS_PER_SEC) <<" "<<((double)(end- begin-lostTime) / CLOCKS_PER_SEC)/RandomTestEnd<<' ';
-
-
+		
 		begin=clock();
 
 		for (long i=AnimationBegin; i<AnimationEnd; i++)
