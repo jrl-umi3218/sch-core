@@ -10,8 +10,11 @@
 //#define SHOW_LAST_SIMLPEX
 //#endif
 //#define COUNTER
-//#define SAFE_VERSION
+//#define SAFE_VERSION //use when the scalar has a perfect precision
 #define PENETRATION_DEPTH
+//#define CD_PAIR_VERBOUS_MODE
+
+
 
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
@@ -168,6 +171,10 @@ Scalar CD_Pair::GJK()
 {
 	Vector3& v=lastDirection_;
 
+#ifdef CD_PAIR_VERBOUS_MODE
+	std::cout<<"#####GJK START######"<<std::endl;
+#endif
+
 	witPointsAreComputed_=false;
 
 	int& lf1=lastFeature1_;
@@ -175,6 +182,10 @@ Scalar CD_Pair::GJK()
 
 	Point3 sup1=sObj1_->support(v,lf1);
 	Point3 sup2=sObj2_->support(-v,lf2);
+
+#ifdef CD_PAIR_VERBOUS_MODE
+	std::cout<<"Last features"<<lf1<<" "<<lf2<<std::endl;
+#endif
 
 	Point3 sup(sup1);
 
@@ -267,6 +278,13 @@ Scalar CD_Pair::GJK()
 		{
 			sup1=sObj1_->support(v,lf1);
 			sup2=sObj2_->support(-v,lf2);
+
+#ifdef CD_PAIR_VERBOUS_MODE
+			std::cout<<"Last features"<<lf1<<" "<<lf2<<std::endl;
+			std::cout<<"supports"<<sup1<<" "<<sup2<<std::endl;
+#endif
+
+
 			sup=sup1;
 			sup-=sup2;
 
@@ -317,6 +335,10 @@ Scalar CD_Pair::GJK()
 
 	std::cout<<"F "<<cnt<<" ; ";
 #endif 
+
+#ifdef CD_PAIR_VERBOUS_MODE
+	std::cout<<"#####GJK END######"<<std::endl;
+#endif
 
 
 	return distance_;
