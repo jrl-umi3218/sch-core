@@ -96,7 +96,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
 	}
 
 
-	return (nextVertex_==NULL);
+	return (currentsupportH>=nextVertexH_);
 }
 
 
