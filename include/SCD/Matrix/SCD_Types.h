@@ -10,7 +10,9 @@
 #include <SCD/Matrix/QuaternionM.h>
 #include <cfloat>
 
+#ifdef SCD_FADIFF
 #include "fadiff.h"
+#endif
 
 namespace SCD
 {
