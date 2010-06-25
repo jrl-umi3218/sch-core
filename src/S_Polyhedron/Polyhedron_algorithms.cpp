@@ -5,8 +5,8 @@
 
 #include <SCD/File_Parsing/SimplestParsing.h>
 
-#define POLYHEDRON_ALGORITHMS_VERBOUS_MODE_0 //notifications about files opened
-//#define POLYHEDRON_ALGORITHMS_VERBOUS_MODE_1 //mode verbous mode (slows down the algorithm) default is commented
+#define POLYHEDRON_ALGORITHMS_VERBOSE_MODE_0 //notifications about files opened
+//#define POLYHEDRON_ALGORITHMS_VERBOSE_MODE_1 //mode VERBOSE mode (slows down the algorithm) default is commented
 using namespace SCD;
 
 Polyhedron_algorithms::Polyhedron_algorithms(void):fastVertexes_(NULL),lastVertexes_(NULL),displayList_(-1)
@@ -316,7 +316,7 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
 	S_PolyhedronVertex* current;
 	Scalar supportH;
 
-#ifdef POLYHEDRON_ALGORITHMS_VERBOUS_MODE_1
+#ifdef POLYHEDRON_ALGORITHMS_VERBOSE_MODE_1
 	std::cout<<"### Starting support function ###"<<std::endl;
 	std::cout<<"vector "<<v<<std::endl;
 	std::cout<<"last feature "<<lastFeature<<" "<<std::endl;
@@ -334,7 +334,7 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
 
 	while (!b)
 	{
-#ifdef POLYHEDRON_ALGORITHMS_VERBOUS_MODE_1
+#ifdef POLYHEDRON_ALGORITHMS_VERBOSE_MODE_1
 		std::cout<<"current feature "<<current->getNumber()<<" "<<current->getCordinates()<<std::endl;
 		std::cout<<"Is Here "<<b<<std::endl;
 #endif
@@ -342,7 +342,7 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
 		supportH= current->getNextVertexH();
 		current = current->getNextVertex();
 
-#ifdef POLYHEDRON_ALGORITHMS_VERBOUS_MODE_1
+#ifdef POLYHEDRON_ALGORITHMS_VERBOSE_MODE_1
 		std::cout<<"next feature height "<<supportH<<std::endl;
 #endif
 
@@ -350,7 +350,7 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
 	}
 
 	lastFeature=current->getNumber();
-#ifdef POLYHEDRON_ALGORITHMS_VERBOUS_MODE_1
+#ifdef POLYHEDRON_ALGORITHMS_VERBOSE_MODE_1
 	std::cout<<"last feature "<<lastFeature<<" "<<std::endl;
 	std::cout<<"### ended support function ###"<<std::endl<<std::endl;
 #endif
