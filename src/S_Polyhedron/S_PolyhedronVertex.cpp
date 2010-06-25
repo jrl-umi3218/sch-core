@@ -1,5 +1,6 @@
 #include <SCD/S_Polyhedron/S_PolyhedronVertex.h>
 
+//#define POLYHEDRON_VERTEX_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
 
 using namespace SCD;
 S_PolyhedronVertex::S_PolyhedronVertex(void):fastNeighbors_(NULL),endNeighbors_(NULL)
@@ -83,6 +84,11 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
 	{
 		if ((temp=(*iterator_)->supportH(direction))>nextVertexH_)
 		{
+#ifdef POLYHEDRON_VERTEX_VERBOSE_MODE
+			std::cout.precision(20);
+			std::cout<<"new H "<<temp<<" last H "<<nextVertexH_<<std::endl;
+#endif
+
 			nextVertexH_=temp;
 			nextVertex_=*iterator_;
 		}
@@ -105,6 +111,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
 	{
 		if ((temp=(*iterator_)->supportH(direction))>nextVertexH_)
 		{
+
 			nextVertexH_=temp;
 			nextVertex_=*iterator_;
 		}
