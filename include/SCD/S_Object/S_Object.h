@@ -135,6 +135,8 @@ namespace SCD
 
 		SCD_API void setOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
 
+		/*!Euler
+         * ROLL PITCH YAW - AROUND X, Y THEN Z */
 		SCD_API void setOrientation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
 
 		SCD_API void setOrientation(const Scalar* const p);
@@ -173,6 +175,8 @@ namespace SCD
 
 		SCD_API void addRotation(const Scalar& angle, const Vector3& axe);
 
+		/*!Euler
+         * ROLL PITCH YAW - AROUND X, Y THEN Z */
 		SCD_API void addRotation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
 
 		SCD_API void addRotation(const Scalar  * const p);
