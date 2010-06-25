@@ -82,7 +82,8 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
 
 	for (iterator_=fastNeighbors_;iterator_!=endNeighbors_;++iterator_)
 	{
-		if ((temp=(*iterator_)->supportH(direction))>nextVertexH_)
+		temp=(*iterator_)->supportH(direction);
+		if (temp>nextVertexH_)
 		{
 #ifdef POLYHEDRON_VERTEX_VERBOSE_MODE
 			std::cout.precision(20);
