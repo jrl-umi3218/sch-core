@@ -44,6 +44,7 @@ add_subdirectory(src)
 # Build a pkgconfig file
 SET(install_pkg_libdir "\${libdir}")
 SET(install_pkg_include_dir "\${includedir}")
+string(TOLOWER ${PROJECT_NAME} PROJECT_LIB_NAME)
 
 CONFIGURE_FILE(${${PROJECT_NAME}_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake
           ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc)

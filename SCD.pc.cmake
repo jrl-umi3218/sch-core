@@ -8,5 +8,5 @@ docdir=${CMAKE_INSTALL_PREFIX}/share/doc/${CMAKE_PROJECT_NAME}
 Name: ${PROJECT_NAME}
 Description: Library for collision detection computation
 Version: 1.0
-Libs: ${${PROJECT_NAME}_LDFLAGS} ${LIBINCL_KW}${PROJECT_NAME}${LIB_EXT}
+Libs: ${${PROJECT_NAME}_LDFLAGS} ${LIBINCL_KW}${PROJECT_LIB_NAME}${LIB_EXT}
 Cflags: -I${install_pkg_include_dir}  ${${PROJECT_NAME}_CFLAGS}
