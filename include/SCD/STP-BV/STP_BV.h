@@ -32,11 +32,11 @@ namespace SCD
 	typedef struct s_toruslinkedBV
 	{
 		int buffer[4];
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-      ar & buffer;
-    }
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & buffer;
+		}
 	} toruslinkedBV;
 
 	/*!  \struct s_Triangle
@@ -58,11 +58,11 @@ namespace SCD
 		*/
 		s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3);
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-      ar & m_vertex1 & m_vertex2 & m_vertex3;
-    }
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & m_vertex1 & m_vertex2 & m_vertex3;
+		}
 
 		Point3 m_vertex1;
 		Point3 m_vertex2;
@@ -85,7 +85,7 @@ namespace SCD
 		*  \param sphereCenter
 		*  \param sphereRadius
 		*/
-		s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, Scalar sphereRadius);
+		s_SphereApproxim(std::vector<Point3>& vertices, int step, const Point3& sphereCenter, double sphereRadius);
 
 		/*! 
 		*  \brief operator parenthesis
@@ -94,11 +94,11 @@ namespace SCD
 		*/
 		void operator ()(const Triangle& vertices, const int& currentStep) const;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-      ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
-    }
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
+		}
 
 		std::vector<Point3>& m_vertices;
 		int m_step;
@@ -134,11 +134,11 @@ namespace SCD
 		*/
 		bool operator ()(unsigned int id1, unsigned int id2) const;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-      ar & m_axis & m_points;
-    }
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & m_axis & m_points;
+		}
 
 		Point3 m_axis;
 		std::vector<Point3> m_points;
@@ -164,9 +164,9 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-    #ifdef WITH_OPENGL
+#ifdef WITH_OPENGL
 		SCD_API virtual void drawGLInLocalCordinates();
-    #endif
+#endif
 
 
 
@@ -178,20 +178,20 @@ namespace SCD
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
 
-    /*!
-    *  \brief Load the object from a binary archive
-    *  \param filename path to the binary archive
-    */
-    SCD_API virtual void loadFromBinary(const std::string & filename);
+		/*!
+		*  \brief Load the object from a binary archive
+		*  \param filename path to the binary archive
+		*/
+		SCD_API virtual void loadFromBinary(const std::string & filename);
 
 
-    /*!
-    *  \brief Save the object to a binary archive
-    *  \param filename path to the binary archive
-    */
-    SCD_API virtual void saveToBinary(const std::string & filename);
+		/*!
+		*  \brief Save the object to a binary archive
+		*  \param filename path to the binary archive
+		*/
+		SCD_API virtual void saveToBinary(const std::string & filename);
 
-    #ifdef WITH_OPENGL
+#ifdef WITH_OPENGL
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
 		*  \param filename path to the file describing the STP_BV decomposition of the object
@@ -199,7 +199,7 @@ namespace SCD
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
 		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
-    #endif
+#endif
 
 
 		/*!
@@ -217,12 +217,14 @@ namespace SCD
 		SCD_API void addPatch(STP_Feature* patch);
 
 
-    #ifdef WITH_OPENGL
+
+
+#ifdef WITH_OPENGL
 		/*! 
 		*  \brief Displays the limits of the object's voronoi regions
 		*/
 		SCD_API void GLdisplayVVR() const;
-    #endif
+#endif
 		/*!
 		*  \brief Print the support tree in a file
 		*  \param filename name of the file
@@ -281,8 +283,34 @@ namespace SCD
 		*/
 		SCD_API virtual bool ray_cast(const Point3& source, const Point3& target,
 			Scalar& param, Vector3& normal) const;
-    protected:
 
+		template<class Archive>
+		void load(Archive & ar, const unsigned int version)
+		{
+			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+			ar & m_patches ;
+			ar & m_patchesSize ;
+			ar & drawnGL_;
+			updateFastPatches();
+		}
+
+		
+		template<class Archive>
+		void save(Archive & ar, const unsigned int version) const
+		{
+			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+			ar & m_patches ;
+			ar & m_patchesSize ;
+			ar & drawnGL_;
+		}
+
+		
+
+
+		BOOST_SERIALIZATION_SPLIT_MEMBER()
+
+	protected:
+	
 		/*!
 		*  \brief Load the tree structure of the object from a file
 		*  \param treefilename path to the binary file containing the tree of the object
@@ -301,7 +329,7 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		SCD_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
-    #ifdef WITH_OPENGL
+#ifdef WITH_OPENGL
 		/*!
 		*  \brief Computes the points of
 		*  \param p1 first point
@@ -312,6 +340,7 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		SCD_API void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
+#endif
 		/*!
 		*  \brief Computes the intersection of two segments
 		*  \param l1p1 first point of the first line
@@ -347,28 +376,8 @@ namespace SCD
 
 
 
-    template<class Archive>
-    void save(Archive & ar, const unsigned int version) const
-    {
-      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-      ar & m_patches ;
-      ar & m_patchesSize ;
-      ar & drawnGL_;
-    }
+		
 
-    template<class Archive>
-    void load(Archive & ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-      ar & m_patches ;
-      ar & m_patchesSize ;
-      ar & drawnGL_;
-      updateFastPatches();
-    }
-
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
-
-	protected:
 		std::vector<STP_Feature*> m_patches;
 
 		STP_Feature * * m_fastPatches;

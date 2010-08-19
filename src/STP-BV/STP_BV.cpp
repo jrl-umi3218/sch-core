@@ -260,6 +260,7 @@ void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2,
 {
 	//axis.normalize(); //we're supposed to use already normalized axes in this programm
 
+	double matrix[16]; // this will be passed to OpenGL functions so it has to be a double
 	Point3 tmp1, tmp2;
 	Point3 startp = p1 - axis*(p1*axis);
 	Point3 endp = p2 -  axis* (p2*axis);
@@ -271,7 +272,6 @@ void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2,
 
 	res->push_back(p1);
 
-	double matrix[16]; // this will be passed to OpenGL functions so it has to be a double
 	glPushMatrix();
 	glLoadIdentity();
 	glRotatef(angle, axis[0], axis[1], axis[2]);
@@ -677,7 +677,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	STP_Torus* t = NULL;
 	bool isRealTorus;
 	int torusCount = 0;
-	Scalar r;
+	double r;
 	//toruslinkedBV relatedBV;
 	Point3 arcCenter;
 	Point3 p1, p2, p3, p4;

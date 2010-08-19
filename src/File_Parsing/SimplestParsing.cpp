@@ -26,14 +26,15 @@ void SimplestParsing::load(const char* filename)
   std::string strbuf;
   const unsigned BUF_SIZE = 500000;
   char buf[BUF_SIZE];
+  
 
-  unsigned n = 0;
+
   do
   {
-    n = tmp_is.readsome(buf, BUF_SIZE);
-    strbuf += std::string(buf, n);
+    tmp_is.read(buf, BUF_SIZE);
+    strbuf += std::string(buf, BUF_SIZE);
   }
-  while(n == BUF_SIZE);
+  while(!tmp_is.eof());
 
   stream_.str(strbuf);
 }

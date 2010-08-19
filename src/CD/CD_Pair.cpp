@@ -1,18 +1,22 @@
 #include <SCD/CD/CD_Pair.h>
 #include <SCD/CD/CD_Simplex.h>
 #include <SCD/CD/CD_SimplexEnhanced.h>
-#ifdef WITH_OPENGL
+#ifndef NOGLUT
 #include <GL/glut.h>
-#endif 
+#endif
 #include <iostream>
 
 //#ifndef NOGLUT
 //#define SHOW_LAST_SIMLPEX
 //#endif
-//#define COUNTER
-//#define SAFE_VERSION //use when the scalar has a perfect precision
+
+//#define CD_SAFE_VERSION //use when the scalar has a perfect precision
 #define PENETRATION_DEPTH
 //#define CD_PAIR_VERBOUS_MODE
+//#define CD_ITERATION_LIMIT 20 //use when the real-time constraints are too high fo current performances while keeping the same global precision.
+								//no theoretical guarantee on the precision nor the collision-safeness when used - Default value is 20
+
+
 
 
 
@@ -32,9 +36,8 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
-lastFeature1_(-1),lastFeature2_(-1),distance_(0),
-stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()),precision_(_PRECISION_),
-epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
+lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
+precision_(_PRECISION_),epsilon_(_EPSILON_),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),witPointsAreComputed_(false),depthPair(obj1,obj2)
 {	
 	--stamp1_;
 	--stamp2_;
@@ -211,18 +214,21 @@ Scalar CD_Pair::GJK()
 	Scalar a1,a2,a3,a4,a5,a6;
 
 
-#ifdef COUNTER
+#ifdef CD_ITERATION_LIMIT
 
 	int	cnt=0;
 #endif 
 
+
 	while (cont)
 	{
 
-#ifdef COUNTER
+#ifdef CD_ITERATION_LIMIT
 
-		cnt++;
+		if (++cnt>CD_ITERATION_LIMIT)
+			break;		//the iterations number limit has been reached
 #endif 
+
 		switch (s_.getType())
 		{
 
@@ -280,8 +286,12 @@ Scalar CD_Pair::GJK()
 			sup2=sObj2_->support(-v,lf2);
 
 #ifdef CD_PAIR_VERBOUS_MODE
+
 			std::cout<<"Last features"<<lf1<<" "<<lf2<<std::endl;
 			std::cout<<"supports"<<sup1<<" "<<sup2<<std::endl;
+#	ifdef CD_ITERATION_LIMIT
+			std::cout<<"Iterations"<<cnt<<std::endl;
+#	endif
 #endif
 
 
@@ -331,10 +341,6 @@ Scalar CD_Pair::GJK()
 		}
 	}
 
-#ifdef COUNTER
-
-	std::cout<<"F "<<cnt<<" ; ";
-#endif 
 
 #ifdef CD_PAIR_VERBOUS_MODE
 	std::cout<<"#####GJK END######"<<std::endl;
@@ -412,7 +418,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 
-#ifdef WITH_OPENGL
+
 #ifdef SHOW_LAST_SIMLPEX
 			glDisable(GL_DEPTH_TEST);
 			glColor4d(0,0.5,1,0.5);
@@ -430,7 +436,6 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 			glEnable(GL_DEPTH_TEST);
 #endif
-#endif // WITH_OPENGL
 
 			return;
 
@@ -465,7 +470,6 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 
-#ifdef WITH_OPENGL
 #ifdef SHOW_LAST_SIMLPEX
 
 			glDisable(GL_DEPTH_TEST);
@@ -484,7 +488,6 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 
 #endif
-#endif // WITH_OPENGL
 			return ;
 		}
 	default:
@@ -518,5 +521,3 @@ bool CD_Pair::isInCollision()
 	}
 }
 
-#undef SHOW_LAST_SIMLPEX
-#undef COUNTER
