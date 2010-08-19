@@ -41,6 +41,18 @@ ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 
 add_subdirectory(src)
 
+# ----------------------------------------------------------------
+# --- Documentation ----------------------------------------------
+# ----------------------------------------------------------------
+
+option(GENERATE_DOC "Generate the documentation " OFF)
+if (GENERATE_DOC)
+  include(FindDoxygen)
+  if(DOXYGEN_FOUND)
+    add_subdirectory(doc)
+  endif(DOXYGEN_FOUND)
+endif (GENERATE_DOC)
+
 # Build a pkgconfig file
 SET(install_pkg_libdir "\${libdir}")
 SET(install_pkg_include_dir "\${includedir}")
