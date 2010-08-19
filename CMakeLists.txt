@@ -64,6 +64,7 @@ IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 
 add_subdirectory(src)
+add_subdirectory(unitTestings)
 
 # ----------------------------------------------------------------
 # --- Documentation ----------------------------------------------
