@@ -22,7 +22,7 @@ IF(UNIX)
 ENDIF(UNIX)
 
 set(Boost_ADDITIONAL_VERSIONS "1.39" "1.39.0" CACHE PATH "Additional versions of boost")
-find_package(Boost COMPONENTS serialization)
+find_package(Boost COMPONENTS serialization REQUIRED)
 find_package(GLUT)
 find_package(OpenGL)
 
@@ -44,7 +44,6 @@ add_subdirectory(src)
 # Build a pkgconfig file
 SET(install_pkg_libdir "\${libdir}")
 SET(install_pkg_include_dir "\${includedir}")
-string(TOLOWER ${PROJECT_NAME} PROJECT_LIB_NAME)
 
 CONFIGURE_FILE(${${PROJECT_NAME}_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake
           ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc)
