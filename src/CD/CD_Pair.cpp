@@ -1,7 +1,7 @@
 #include <SCD/CD/CD_Pair.h>
 #include <SCD/CD/CD_Simplex.h>
 #include <SCD/CD/CD_SimplexEnhanced.h>
-#ifndef NOGLUT
+#ifdef WITH_OPENGL
 #include <GL/glut.h>
 #endif
 #include <iostream>
