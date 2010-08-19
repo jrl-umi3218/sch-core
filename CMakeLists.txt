@@ -26,6 +26,30 @@ find_package(Boost COMPONENTS serialization REQUIRED)
 find_package(GLUT)
 find_package(OpenGL)
 
+
+# GLUT is a bit tricky, so check the search result.
+if(GLUT_FOUND)
+	message("-- GLUT found! Libraries: ${GLUT_LIBRARIES}")
+else(GLUT_FOUND)
+	message("-- GLUT not found! Trying with the alternative FindGLUT")
+	include(CMakeModules/FindGLUT_fix1.cmake)
+	if(GLUT_FOUND)
+		message("-- GLUT found! Libraries: ${GLUT_LIBRARIES}")
+	else(GLUT_FOUND)
+		message("-- GLUT not found!")
+	endif(GLUT_FOUND)
+endif(GLUT_FOUND)
+
+# I don't see where the macro WITH_OPENGL is defined in cmake nor in c++
+if(GLUT_FOUND)
+	set (WITH_OPENGL 1)
+	add_definitions("-DWITH_OPENGL")
+endif(GLUT_FOUND)
+
+
+
+
+
 IF(${Boost_MINOR_VERSION} LESS 36)
   SET(${PROJECT_NAME}_CXXFLAGS "-D WITH_BOOST_1_36 ${${PROJECT_NAME}_CXXFLAGS}")
 ENDIF(${Boost_MINOR_VERSION} LESS 36)
