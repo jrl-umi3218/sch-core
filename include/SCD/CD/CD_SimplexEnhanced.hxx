@@ -44,7 +44,7 @@ inline Scalar CD_SimplexEnhanced::square_(const Scalar& a)
 
 inline Scalar CD_SimplexEnhanced::cube_(const Scalar& a)
 {
-	return a*a;
+	return a*a*a;
 }
 
 inline void CD_SimplexEnhanced::filter(const CD_SimplexKeptPoints &f)
