@@ -40,7 +40,8 @@ else(GLUT_FOUND)
 	endif(GLUT_FOUND)
 endif(GLUT_FOUND)
 
-# I don't see where the macro WITH_OPENGL is defined in cmake nor in c++
+
+#you need GLUT to display the objects or to run the test
 if(GLUT_FOUND)
 	set (WITH_OPENGL 1)
 	add_definitions("-DWITH_OPENGL")
