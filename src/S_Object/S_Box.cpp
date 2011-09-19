@@ -1,9 +1,12 @@
 #include <SCD/S_Object/S_Box.h>
 
 #ifdef WITH_OPENGL
-#include <GL/glut.h>
-#endif
-
+# if defined __APPLE__
+#  include <GLUT/glut.h>
+# else
+#  include <GL/glut.h>
+# endif // __APPLE__
+#endif // WITH_OPENGL
 
 using namespace SCD;
 

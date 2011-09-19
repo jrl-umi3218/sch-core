@@ -1,4 +1,3 @@
-
 /*! \file STP_Feature.cpp
 \brief definition of the STP_BV class, 
 the Triangle and SphereApproxim structures and the PointsComparator functor
@@ -18,8 +17,12 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <boost/serialization/vector.hpp>
 
 #ifdef WITH_OPENGL
-#include <GL/glut.h>
-#endif
+# if defined __APPLE__
+#  include <GLUT/glut.h>
+# else
+#  include <GL/glut.h>
+# endif // __APPLE__
+#endif // WITH_OPENGL
 
 #include <exception>
 #include <sstream>

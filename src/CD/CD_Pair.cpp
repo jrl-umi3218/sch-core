@@ -1,9 +1,15 @@
 #include <SCD/CD/CD_Pair.h>
 #include <SCD/CD/CD_Simplex.h>
 #include <SCD/CD/CD_SimplexEnhanced.h>
+
 #ifdef WITH_OPENGL
-#include <GL/glut.h>
-#endif
+# if defined __APPLE__
+#  include <GLUT/glut.h>
+# else
+#  include <GL/glut.h>
+# endif // __APPLE__
+#endif // WITH_OPENGL
+
 #include <iostream>
 
 //#ifndef NOGLUT
