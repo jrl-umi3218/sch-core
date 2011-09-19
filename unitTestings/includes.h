@@ -1,5 +1,3 @@
-
-
 #include <SCD/S_Object/S_Sphere.h>
 #include <SCD/S_Object/S_Box.h>
 #include <SCD/S_Object/S_Superellipsoid.h>
