@@ -32,7 +32,7 @@ void SimplestParsing::load(const char* filename)
   do
   {
     tmp_is.read(buf, BUF_SIZE);
-    strbuf += std::string(buf, BUF_SIZE);
+    strbuf += std::string(buf, tmp_is.gcount());
   }
   while(!tmp_is.eof());
 
