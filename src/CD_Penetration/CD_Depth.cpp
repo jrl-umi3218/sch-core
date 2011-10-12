@@ -11,12 +11,69 @@ using namespace SCD;
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
 
-Point3  pBuf[MaxSupportPoints];
-Point3  qBuf[MaxSupportPoints];
-Vector3 yBuf[MaxSupportPoints];
+class TriangleComp
+{
+public:
 
-Depth_Triangle *triangleHeap[MaxFacets];
-int  num_triangles;
+    bool operator()(const  Depth_Triangle *face1, const  Depth_Triangle *face2)
+    {
+        return face1->getDist2() > face2->getDist2();
+    }
+} triangleComp;
+
+struct TriangleHeap
+{
+  TriangleHeap()
+    : num_triangles(0)
+  {}
+
+  Depth_Triangle* first() const
+  {
+    return triangleHeap[0];
+  }
+
+  Depth_Triangle* last() const
+  {
+    return triangleHeap[num_triangles];
+  }
+
+  void pop()
+  {
+    std::pop_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
+    --num_triangles;
+  }
+
+  void addCandidate(Depth_Triangle *triangle, Scalar upper2)
+  {
+    if (triangle->isClosestInternal() && triangle->getDist2() <= upper2)
+    {
+      triangleHeap[num_triangles++] = triangle;
+      std::push_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
+#ifdef SCD_DEBUG
+      std::cout << " accepted" << std::endl;
+#endif
+    }
+    else
+    {
+#ifdef SCD_DEBUG
+      std::cout << " rejected, ";
+      if (!triangle->isClosestInternal())
+      {
+        std::cout << "closest point not internal";
+      }
+      else
+      {
+        std::cout << "triangle is further than upper bound";
+      }
+      std::cout << std::endl;
+#endif
+    }
+  }
+
+  Depth_Triangle *triangleHeap[MaxFacets];
+  int  num_triangles;
+};
+
 
 int furthestAxis(Vector3 v)
 {
@@ -56,43 +113,6 @@ inline int originInTetrahedron(const Vector3& p1, const Vector3& p2,
     return 0;
 }
 
-class TriangleComp
-{
-public:
-    
-    bool operator()(const  Depth_Triangle *face1, const  Depth_Triangle *face2) 
-    { 
-        return face1->getDist2() > face2->getDist2();
-    }
-} triangleComp;
-
-
-inline void addCandidate(Depth_Triangle *triangle, Scalar upper2) 
-{
-    if (triangle->isClosestInternal() && triangle->getDist2() <= upper2)
-    {
-        triangleHeap[num_triangles++] = triangle;
-        std::push_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
-#ifdef SCD_DEBUG
-        std::cout << " accepted" << std::endl;
-#endif
-    }
-    else 
-    {
-#ifdef SCD_DEBUG
-        std::cout << " rejected, ";
-        if (!triangle->isClosestInternal()) 
-            {
-                std::cout << "closest point not internal";
-            }
-        else 
-        {
-            std::cout << "triangle is further than upper bound";
-        }
-        std::cout << std::endl;
-#endif
-    }
-}		
 
 template <class T>
 inline void GEN_set_min(T& a, const T& b) 
@@ -119,7 +139,12 @@ CD_Depth::~CD_Depth(void)
 Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
 									 const CD_Simplex& s1_, const CD_Simplex& s2_)
 {
-	int num_verts;
+  Point3  pBuf[MaxSupportPoints];
+  Point3  qBuf[MaxSupportPoints];
+  Vector3 yBuf[MaxSupportPoints];
+  TriangleHeap tHeap;
+
+  int num_verts;
 
 	switch (s.getType())
 	{
@@ -167,10 +192,8 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 
 	}
     
-    num_triangles = 0;
-    
-    g_triangleStore.clear();
-	
+    Depth_TriangleStore triangleStore;
+
     switch (num_verts) 
     {
     case 1:
@@ -236,10 +259,10 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         
         if (bad_vertex == 0)
         {
-            Depth_Triangle *f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 2);
-            Depth_Triangle *f1 = g_triangleStore.newTriangle(yBuf, 0, 3, 1);
-            Depth_Triangle *f2 = g_triangleStore.newTriangle(yBuf, 0, 2, 3);
-            Depth_Triangle *f3 = g_triangleStore.newTriangle(yBuf, 1, 3, 2);
+            Depth_Triangle *f0 = triangleStore.newTriangle(yBuf, 0, 1, 2);
+            Depth_Triangle *f1 = triangleStore.newTriangle(yBuf, 0, 3, 1);
+            Depth_Triangle *f2 = triangleStore.newTriangle(yBuf, 0, 2, 3);
+            Depth_Triangle *f3 = triangleStore.newTriangle(yBuf, 1, 3, 2);
             
             if (!(f0 && f0->getDist2() > Scalar(0.0) &&
                   f1 && f1->getDist2() > Scalar(0.0) &&
@@ -256,10 +279,10 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
             link(Depth_Edge(f1, 1), Depth_Edge(f3, 0));
             link(Depth_Edge(f2, 1), Depth_Edge(f3, 1));
             
-            addCandidate(f0, infinity);
-            addCandidate(f1, infinity);
-            addCandidate(f2, infinity);
-            addCandidate(f3, infinity);
+            tHeap.addCandidate(f0, infinity);
+            tHeap.addCandidate(f1, infinity);
+            tHeap.addCandidate(f2, infinity);
+            tHeap.addCandidate(f3, infinity);
             break;
         }
         
@@ -291,12 +314,12 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         qBuf[4] = sObj2_->support(vv);
         yBuf[4] = pBuf[4] - qBuf[4];
 	    
-        Depth_Triangle* f0 = g_triangleStore.newTriangle(yBuf, 0, 1, 3);
-        Depth_Triangle* f1 = g_triangleStore.newTriangle(yBuf, 1, 2, 3);
-        Depth_Triangle* f2 = g_triangleStore.newTriangle(yBuf, 2, 0, 3); 
-        Depth_Triangle* f3 = g_triangleStore.newTriangle(yBuf, 0, 2, 4);
-        Depth_Triangle* f4 = g_triangleStore.newTriangle(yBuf, 2, 1, 4);
-        Depth_Triangle* f5 = g_triangleStore.newTriangle(yBuf, 1, 0, 4);
+        Depth_Triangle* f0 = triangleStore.newTriangle(yBuf, 0, 1, 3);
+        Depth_Triangle* f1 = triangleStore.newTriangle(yBuf, 1, 2, 3);
+        Depth_Triangle* f2 = triangleStore.newTriangle(yBuf, 2, 0, 3);
+        Depth_Triangle* f3 = triangleStore.newTriangle(yBuf, 0, 2, 4);
+        Depth_Triangle* f4 = triangleStore.newTriangle(yBuf, 2, 1, 4);
+        Depth_Triangle* f5 = triangleStore.newTriangle(yBuf, 1, 0, 4);
         
         if (!(f0 && f0->getDist2() > Scalar(0.0) &&
               f1 && f1->getDist2() > Scalar(0.0) &&
@@ -320,12 +343,12 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         link(Depth_Edge(f4, 1), Depth_Edge(f5, 2));
         link(Depth_Edge(f5, 1), Depth_Edge(f3, 2));
 	    
-        addCandidate(f0, infinity);
-        addCandidate(f1, infinity);
-        addCandidate(f2, infinity);
-        addCandidate(f3, infinity);  
-        addCandidate(f4, infinity);
-        addCandidate(f5, infinity);
+        tHeap.addCandidate(f0, infinity);
+        tHeap.addCandidate(f1, infinity);
+        tHeap.addCandidate(f2, infinity);
+        tHeap.addCandidate(f3, infinity);
+        tHeap.addCandidate(f4, infinity);
+        tHeap.addCandidate(f5, infinity);
 	    
         num_verts = 5;
     }
@@ -335,7 +358,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     // We have a polytope inside the Minkowski sum containing
     // the origin.
     
-    if (num_triangles == 0)
+    if (tHeap.num_triangles == 0)
     {
         return 0;
     }
@@ -348,10 +371,9 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     
     do 
     {
-        triangle = triangleHeap[0];
-        std::pop_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
-        --num_triangles;
-		
+        triangle = tHeap.first();
+        tHeap.pop();
+
         if (!triangle->isObsolete()) 
         {
             if (num_verts == MaxSupportPoints)
@@ -397,25 +419,25 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
             // not be in the convex hull. Start local search
             // from this triangle.
 			
-            int i = g_triangleStore.getFree();
+            int i = triangleStore.getFree();
             
-            if (!triangle->silhouette(yBuf, index, g_triangleStore))
+            if (!triangle->silhouette(yBuf, index, triangleStore))
             {
                 break;
             }
 			
-            while (i != g_triangleStore.getFree())
+            while (i != triangleStore.getFree())
             {
-                Depth_Triangle *newTriangle = &g_triangleStore[i];
+                Depth_Triangle *newTriangle = &triangleStore[i];
                 //assert(triangle->getDist2() <= newTriangle->getDist2());
                 
-                addCandidate(newTriangle, upper_bound2);
+                tHeap.addCandidate(newTriangle, upper_bound2);
                 
                 ++i;
             }
         }
     }
-    while (num_triangles > 0 && triangleHeap[0]->getDist2() <= upper_bound2);
+    while (tHeap.num_triangles > 0 && tHeap.first()->getDist2() <= upper_bound2);
 	
 #ifdef SCD_DEBUG    
     std::cout << "#triangles left = " << num_triangles << std::endl;

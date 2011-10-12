@@ -184,9 +184,6 @@ namespace SCD
 		}
 	};
 
-	extern Depth_TriangleStore g_triangleStore;
-
-
 	inline int circ_next(int i) { return (i + 1) % 3; } 
 	inline int circ_prev(int i) { return (i + 2) % 3; } 
 

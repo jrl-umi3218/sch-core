@@ -25,11 +25,6 @@
 
 using namespace SCD;
 
-namespace SCD
-{
-	Depth_TriangleStore g_triangleStore;
-}
-
 bool SCD::link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
 {
 	bool ok = edge0.getSource() == edge1.getTarget() && edge0.getTarget() == edge1.getSource();
