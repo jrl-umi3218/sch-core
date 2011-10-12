@@ -57,9 +57,9 @@ ADD_LIBRARY( scd SHARED ${SOURCES} ${HEADERS})
 
 IF(WITH_OPENGL)
   include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
-  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${Boost_SERIALIZATION_LIBRARY_${CMAKE_BUILD_TYPE}})
+  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${Boost_LIBRARIES})
 ELSE(WITH_OPENGL)
-  target_link_libraries(scd ${Boost_SERIALIZATION_LIBRARY_${CMAKE_BUILD_TYPE}})
+  target_link_libraries(scd ${Boost_LIBRARIES})
 ENDIF(WITH_OPENGL)
 
 SET_TARGET_PROPERTIES( scd
