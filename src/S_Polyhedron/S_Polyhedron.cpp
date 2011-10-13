@@ -129,3 +129,8 @@ void S_Polyhedron::drawGLInLocalCordinates()
 
 }
 #endif
+
+int S_Polyhedron::getTrianglesNumber() const
+{
+  return poly.triangles_.size();
+}

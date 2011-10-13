@@ -284,7 +284,13 @@ namespace SCD
 		SCD_API virtual bool ray_cast(const Point3& source, const Point3& target,
 			Scalar& param, Vector3& normal) const;
 
-		template<class Archive>
+    /*!
+    *  \brief returns the vertex number in the STP-BV
+    *
+    */
+    SCD_API int getFeaturesNumber() const;
+
+    template<class Archive>
 		void load(Archive & ar, const unsigned int version)
 		{
 			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
@@ -367,12 +373,6 @@ namespace SCD
 		*/
 		SCD_API void updateFastPatches();
 
-
-		/*!
-		*  \brief returns the vertex number in the STP-BV
-		* 
-		*/
-		SCD_API int getFeaturesNumber();
 
 
 

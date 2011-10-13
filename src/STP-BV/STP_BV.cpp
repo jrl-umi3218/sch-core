@@ -1503,7 +1503,7 @@ S_Object::S_ObjectType STP_BV::getType() const
 	return S_Object::TSTP_BV;
 }
 
-int STP_BV::getFeaturesNumber()
+int STP_BV::getFeaturesNumber() const
 {
 	return m_patches.size();
 }

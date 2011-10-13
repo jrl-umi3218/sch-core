@@ -85,7 +85,9 @@ namespace SCD
 		/*
 		* \brief deletes aal the vertexes that dont have neighbors;
 		*/
-		SCD_API void deleteVertexesWithoutNeighbors();
+    SCD_API void deleteVertexesWithoutNeighbors();
+
+    SCD_API int getTrianglesNumber() const;
 
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const
