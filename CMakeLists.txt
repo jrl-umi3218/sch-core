@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 enable_language(CXX)
 
 SET(PROJECT_NAME SCD)
+SET(LIB_NAME scd)
 
 SET(CMAKE_VERBOSE_MAKEFILE ON)
 
