@@ -9,4 +9,5 @@ Name: ${PROJECT_NAME}
 Description: Library for collision detection computation
 Version: 1.0
 Libs: ${${PROJECT_NAME}_LDFLAGS} ${LIBINCL_KW}${LIB_NAME}${LIB_EXT}
-Cflags: -I${install_pkg_include_dir}  ${${PROJECT_NAME}_CFLAGS}
+Cflags: -I${install_pkg_include_dir}  ${${PROJECT_NAME}_CFLAGS} ${WITH_OPENGL_CFLAGS}
+

@@ -44,8 +44,10 @@ endif(GLUT_FOUND)
 
 #you need GLUT to display the objects or to run the test
 if(GLUT_FOUND)
-	set (WITH_OPENGL 1)
-	add_definitions("-DWITH_OPENGL")
+  set(WITH_OPENGL 1)
+  # used variable in SCD.pc.cmake
+  set(WITH_OPENGL_CFLAGS "-DWITH_OPENGL")
+  add_definitions("-DWITH_OPENGL")
 endif(GLUT_FOUND)
 
 
