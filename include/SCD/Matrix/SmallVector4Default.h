@@ -187,6 +187,6 @@ namespace MAL_Default
 			return os;
 		}
 	};
-};
+}
 
 #endif /* _VECTOR4D_PATTERNGENERATOR_JRL_ */

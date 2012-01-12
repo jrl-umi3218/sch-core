@@ -343,6 +343,6 @@ namespace MAL_Default
 
     };
 
-};
+}
   
 #endif

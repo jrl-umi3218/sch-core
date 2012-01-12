@@ -200,7 +200,7 @@ void RandomTestSupportFunctionAllObjects()
 		Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
 
 #ifdef DO_TEST
-		for(int i=0;i<sObj.size();i++)
+		for(size_t i=0;i<sObj.size();i++)
 		{
 			Point3 p=sObj[i]->support(v);
 
@@ -457,9 +457,6 @@ init (void)
 
 #endif
 
-	ArchiveType type;
-	type = BINARY_ARCHIVE;
-
 
 #ifdef MULTI_OBJECTS_TEST
 	{
@@ -569,7 +566,7 @@ init (void)
 
 	}
 #endif
-	for (int i=0;i<sObj.size();i++)
+	for (size_t i=0;i<sObj.size();i++)
 	{
 
 
@@ -688,7 +685,7 @@ display (void)
 
 
 
-	for (int i=0;i<sObj.size();++i)
+	for (size_t i=0;i<sObj.size();++i)
 	{
 		sObj[i]->drawGL();
 	}
@@ -729,16 +726,19 @@ display (void)
 
 
 	glBegin(GL_LINES);
-	for (int i=0;i<sObj.size();++i)
+	for (size_t i=0;i<sObj.size();++i)
 	{
-		for (int j=0;j<i;++j)
+		for (size_t j=0;j<i;++j)
 		{
 			Point3 p1,p2;
 
+#if defined(OUTPUT_FILE) || defined(DISPLAY_DISTANCE)
 			Scalar d;
-
-
 			d=sObj.getWitnessPoints(i,j,p1,p2);
+#else
+			sObj.getWitnessPoints(i,j,p1,p2);
+#endif
+
 
 
 
@@ -868,7 +868,7 @@ void TestPrecision()
 
 		*/
 
-		for (int j=0;j<sObj.size();j++)
+		for (size_t j=0;j<sObj.size();j++)
 		{
 
 			sObj[j]->addRotation(angle,axe);
@@ -1013,7 +1013,7 @@ void TestAnimation()
 
 
 
-	for (int i=0;i<sObj.size();i++)
+	for (size_t i=0;i<sObj.size();i++)
 	{
 		position[0] =(1+7*i%5-3)*DispersionScale;
 		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
@@ -1079,7 +1079,7 @@ void TestAnimation()
 	for (long i=AnimationBegin; i<AnimationEnd; i++)
 	{
 
-		for (int j=0;j<sObj.size();j++)
+		for (size_t j=0;j<sObj.size();j++)
 		{
 			position=oldPos[j];
 
@@ -1247,7 +1247,7 @@ void GeneralTest()
 
 
 
-	for (int k=0;k<stppObjects.size();k++)
+	for (size_t k=0;k<stppObjects.size();k++)
 	{
 		CD_Scene testscene;
 		testscene.addObject(sObj[0]);
@@ -1463,10 +1463,10 @@ keyPress (unsigned char key, int x, int y)
 
 
 	case 32:
-		CurrentObj=(++CurrentObj)%sObj.size();
+		CurrentObj=(CurrentObj+1)%sObj.size();
 		break;
 	case 8:
-		CurrentObj=(--CurrentObj)%sObj.size();
+		CurrentObj=(CurrentObj-1)%sObj.size();
 		break;
 
 	case '0':

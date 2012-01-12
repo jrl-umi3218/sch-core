@@ -173,7 +173,7 @@ namespace MAL_Default
 
 	
 	};
-};
+}
 
 #include <SCD/Matrix/SmallMatrix3x3Mod.h>
 #endif

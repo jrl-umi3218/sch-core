@@ -212,7 +212,7 @@ namespace MAL_Default
 			return os;
 		}
 	};
-};
+}
 
 #include <SCD/Matrix/SmallMatrix3x3Default.h>
 

@@ -92,4 +92,4 @@ namespace MAL_Default
 		{
 		}
 	};
-};
+}

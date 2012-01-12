@@ -87,25 +87,25 @@ inline int originInTetrahedron(const Vector3& p1, const Vector3& p2,
                                const Vector3& p3, const Vector3& p4)
 {
     Vector3 normal1 = (p2 - p1)^( p3 - p1);
-	if ((normal1* p1) >= Scalar(0.0) == (normal1* p4) > Scalar(0.0))
+	if (((normal1* p1) >= Scalar(0.0)) == ((normal1* p4) > Scalar(0.0)))
     {
         return 4;
     }
     
     Vector3 normal2 = (p4 - p2)^( p3 - p2);
-    if ((normal2* p2) >= Scalar(0.0) == (normal2* p1) > Scalar(0.0))
+		if (((normal2* p2) >= Scalar(0.0)) == ((normal2* p1) > Scalar(0.0)))
     {
         return 1;
     }
     
     Vector3 normal3 = (p4 - p3)^( p1 - p3);
-    if ((normal3* p3) >= Scalar(0.0) == (normal3* p2) > Scalar(0.0))
+		if (((normal3* p3) >= Scalar(0.0)) == ((normal3* p2) > Scalar(0.0)))
     {
         return 2;
     }
     
     Vector3 normal4 = (p2 - p4)^( p1 - p4);
-    if ((normal4* p4) >= Scalar(0.0) == (normal4* p3) > Scalar(0.0))
+		if (((normal4* p4) >= Scalar(0.0)) == ((normal4* p3) > Scalar(0.0)))
     {
         return 3; 
     }

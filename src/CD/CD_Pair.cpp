@@ -43,7 +43,7 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
 lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
-precision_(_PRECISION_),epsilon_(_EPSILON_),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),witPointsAreComputed_(false),depthPair(obj1,obj2)
+precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
 {	
 	--stamp1_;
 	--stamp2_;

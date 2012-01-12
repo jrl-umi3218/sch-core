@@ -170,11 +170,6 @@ namespace MAL_Default
             T cr(cos(roll));
             T sr(sin(roll));
 
-            T cc = cy * cr; 
-            T cs = cy * sr; 
-            T sc = sy * cr; 
-            T ss = sy * sr;
-
             T sysp = sy * sp;
             T cysp = cy * sp;
             T sysr = sy * sr;
@@ -384,6 +379,6 @@ namespace MAL_Default
 
 
 	};
-};
+}
 
 #endif

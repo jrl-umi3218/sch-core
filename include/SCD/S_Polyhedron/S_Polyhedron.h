@@ -105,7 +105,7 @@ namespace SCD
       updateVertexNeighbors();
     }
 
-    BOOST_SERIALIZATION_SPLIT_MEMBER();
+		BOOST_SERIALIZATION_SPLIT_MEMBER()
 
 	protected:
 		SCD_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
