@@ -339,7 +339,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 	tmp_is.open(filename.c_str());
 	if(!tmp_is.is_open())
 	{
-		std::cout << "EXCEPTION : pas reussi a ouvrir le fichier" << std::endl;
+		std::cerr << "STP_BV Exception: unable to open file '"<< filename << "'" << std::endl;
 		throw std::exception();
 	}
 
@@ -583,7 +583,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	is.open(filename.c_str());
 	if(!is.is_open())
 	{
-		std::cout << "EXCEPTION : pas reussi a ouvrir le fichier" << std::endl;
+		std::cerr << "STP_BV Exception: unable to open file '"<< filename << "'" << std::endl;
 		throw std::exception();
 	}
 
