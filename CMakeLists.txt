@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 2.6)
 
 enable_language(CXX)
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "DEBUG")
+  set (CONFIG_EXT "d") #Extension corresponding to the configuration debug
+endif ("${CMAKE_BUILD_TYPE}" STREQUAL "DEBUG")
+
 
 SET(PROJECT_NAME SCD)
-SET(LIB_NAME scd)
+SET(LIB_NAME scd${CONFIG_EXT})
 
 SET(CMAKE_VERBOSE_MAKEFILE ON)
 
