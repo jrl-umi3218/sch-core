@@ -362,7 +362,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any small spheres." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any small spheres." << std::endl;
 		throw std::exception();
 	}
 	for(i = 0 ; i < ssnum ; ++i)
@@ -394,7 +394,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 	is >> bsnum;
 	if(bsnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any big spheres." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any big spheres." << std::endl;
 		throw std::exception();
 	}
 	for(i = 0 ; i < bsnum ; ++i)
@@ -439,7 +439,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 	is >> tnum;
 	if(tnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any toruses." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any toruses." << std::endl;
 		throw std::exception();
 	}
 
@@ -593,7 +593,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	is >>_r>>_R>> ssnum;
 	if(ssnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any small spheres." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any small spheres." << std::endl;
 		throw std::exception();
 	}
 	for(int i = 0 ; i < ssnum ; ++i)
@@ -625,7 +625,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	is >> bsnum;
 	if(bsnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any big spheres." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any big spheres." << std::endl;
 		throw std::exception();
 	}
 	for(int i = 0 ; i < bsnum ; ++i)
@@ -691,7 +691,7 @@ void STP_BV::constructFromFileWithGL(const std::string& filename)
 	is >> tnum;
 	if(tnum <= 0)
 	{
-		std::cout << "EXCEPTION : the given source file doesn't contain any toruses." << std::endl;
+		std::cout << "EXCEPTION : the source file '"<< filename << "' doesn't contain any toruses." << std::endl;
 		throw std::exception();
 	}
 
