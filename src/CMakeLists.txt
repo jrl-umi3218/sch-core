@@ -57,10 +57,10 @@ ADD_LIBRARY(${LIB_NAME} SHARED ${SOURCES} ${HEADERS})
 
 IF(WITH_OPENGL)
   include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
-  target_link_libraries(${LIB_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${Boost_LIBRARIES})
-ELSE(WITH_OPENGL)
-  target_link_libraries(${LIB_NAME} ${Boost_LIBRARIES})
+  target_link_libraries(${LIB_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 ENDIF(WITH_OPENGL)
+
+target_link_libraries(${LIB_NAME} ${Boost_LIBRARIES})
 
 SET_TARGET_PROPERTIES(${LIB_NAME}
     PROPERTIES

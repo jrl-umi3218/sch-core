@@ -26,7 +26,6 @@ IF(UNIX)
   SET(${PROJECT_NAME}_CXXFLAGS "-DUNIX" )
 ENDIF(UNIX)
 
-set(Boost_ADDITIONAL_VERSIONS "1.39" "1.39.0" CACHE PATH "Additional versions of boost")
 find_package(Boost COMPONENTS serialization REQUIRED)
 find_package(GLUT)
 find_package(OpenGL)
