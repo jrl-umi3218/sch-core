@@ -29,15 +29,15 @@ namespace SCD
 	struct Polyhedron_algorithms
 	{
 	public:
-		Polyhedron_algorithms(void);
-		Polyhedron_algorithms(const Polyhedron_algorithms&);
+		SCD_API Polyhedron_algorithms(void);
+		SCD_API Polyhedron_algorithms(const Polyhedron_algorithms&);
 
 
 
-		~Polyhedron_algorithms(void);
+		SCD_API ~Polyhedron_algorithms(void);
 
 
-		const Polyhedron_algorithms & operator=(const Polyhedron_algorithms&);
+		SCD_API const Polyhedron_algorithms & operator=(const Polyhedron_algorithms&);
 
 
 
@@ -46,43 +46,43 @@ namespace SCD
 		*\brief Draws the Polyhedron in OpenGL
 		*/
 
-		virtual void drawGL();
+		SCD_API virtual void drawGL();
     #endif
 
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification
 		*/
-		void updateFastArrays();
+		SCD_API void updateFastArrays();
 
-		Point3 naiveSupport(const Vector3& v)const;
+		SCD_API Point3 naiveSupport(const Vector3& v)const;
 
 		/*! 
 		*  \brief updates the Neighborhood of the vertexes, must be called on polyhedron 
 		*  \which vertexes have no neighbors, or after calling clearNeighbors.
 		*/
-		void updateVertexNeighbors();
+		SCD_API void updateVertexNeighbors();
 
 		/*! 
 		*  \brief clears the neighbors tables;
 		*/
-		void clearNeighbors();
+		SCD_API void clearNeighbors();
 
 		/*! 
 		*  \brief clears all the polyhedron;
 		*/
-		void clear();
+		SCD_API void clear();
 
 		/*
 		* \brief deletes aal the vertexes that dont have neighbors;
 		*/
-		void deleteVertexesWithoutNeighbors();
+		SCD_API void deleteVertexesWithoutNeighbors();
 
 
 		/*
 		*\brief Computes the support point of the polyhedron
 		*/
 
-		Point3 support(const Vector3& v, int& lastFeature)const;
+		SCD_API Point3 support(const Vector3& v, int& lastFeature)const;
 
 
 
@@ -92,17 +92,17 @@ namespace SCD
 		* \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" 
 		*/
 
-		void openFromFile(const std::string& filename);
+		SCD_API void openFromFile(const std::string& filename);
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-      ar & vertexes_;
-      ar & triangles_;
-      //ar & fastVertexes_;
-      //ar & lastVertexes_;
-      ar & displayList_;
-    }
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & vertexes_;
+			ar & triangles_;
+			//ar & fastVertexes_;
+			//ar & lastVertexes_;
+			ar & displayList_;
+		}
 
 		std::vector<S_PolyhedronVertex*> vertexes_;
 
