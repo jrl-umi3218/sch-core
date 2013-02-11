@@ -3,13 +3,16 @@
 
 #pragma once
 #include <vector>
+
+#include <boost/noncopyable.hpp>
+
 #include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
 
 namespace SCD
 {
 
-	class S_PolyhedronVertex
+	class S_PolyhedronVertex : boost::noncopyable
 	{
 	public:
 		SCD_API S_PolyhedronVertex(void);
@@ -88,7 +91,7 @@ namespace SCD
 		SCD_API unsigned getNumNeighbors()const;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & cordinates_;
       ar & neighbors_;
@@ -100,9 +103,6 @@ namespace SCD
     }
 
 	private:
-
-		S_PolyhedronVertex(const S_PolyhedronVertex&);
-		const S_PolyhedronVertex& operator=(const S_PolyhedronVertex&);
 
 		Vector3 cordinates_;
 

@@ -7,17 +7,6 @@ S_PolyhedronVertex::S_PolyhedronVertex(void):fastNeighbors_(NULL),endNeighbors_(
 {
 }
 
-S_PolyhedronVertex::S_PolyhedronVertex(const S_PolyhedronVertex& v)
-{
-}
-
-
-const S_PolyhedronVertex & S_PolyhedronVertex::operator =(const S_PolyhedronVertex& v)
-{
-	return *this;
-}
-
-
 S_PolyhedronVertex::~S_PolyhedronVertex(void)
 {
 	if (fastNeighbors_!=NULL)
