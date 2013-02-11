@@ -1,0 +1,3 @@
+[submodule "cmake"]
+	path = cmake
+	url = git@idh.lirmm.fr:amelif-8/jrl-cmakemodules

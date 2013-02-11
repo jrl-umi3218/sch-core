@@ -1,4 +1,21 @@
-include(${PROJECT_SOURCE_DIR}/include/SCD/SourcesLib.cmake)
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# CMake file for the scd project: src subdirectory
+#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# --- sources ---
+
+include(${PROJECT_INCLUDE_DIR}/SCD/SourcesLib.cmake)
+
+# --- def, cflags and link flags ---
+
+ADD_AMELIF_DEFS()
+
+include_directories(BEFORE ${PROJECT_INCLUDE_DIR})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
+
+
 
 set(SOURCES "")
 macro(AddSourceGroup  files  sub_folder)
@@ -53,22 +70,16 @@ SET(SOURCES_STP_BV
 AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
 link_directories(${Boost_LIBRARY_DIRS})
-ADD_LIBRARY(${LIB_NAME} SHARED ${SOURCES} ${HEADERS})
+ADD_LIBRARY(scd SHARED ${SOURCES} ${HEADERS})
 
 IF(WITH_OPENGL)
   include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
-  target_link_libraries(${LIB_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 ENDIF(WITH_OPENGL)
 
-target_link_libraries(${LIB_NAME} ${Boost_LIBRARIES})
+target_link_libraries(scd ${Boost_LIBRARIES})
 
-SET_TARGET_PROPERTIES(${LIB_NAME}
-    PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ../lib
-)
 
-INSTALL(TARGETS ${LIB_NAME}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-)
+install(TARGETS scd
+        RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+

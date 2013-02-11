@@ -1,35 +1,36 @@
 cmake_minimum_required(VERSION 2.6)
 
-enable_language(CXX)
-if ("${CMAKE_BUILD_TYPE}" STREQUAL "DEBUG")
-  set (CONFIG_EXT "d") #Extension corresponding to the configuration debug
-endif ("${CMAKE_BUILD_TYPE}" STREQUAL "DEBUG")
+INCLUDE(cmake/base.cmake)
+INCLUDE(cmake/eigen.cmake)
+INCLUDE(cmake/boost.cmake)
+INCLUDE(cmake/cpack.cmake)
+INCLUDE(cmake/amelif.cmake)
 
+DEFINE_PREFIX_SUFFIX()
 
-SET(PROJECT_NAME SCD)
-SET(LIB_NAME scd${CONFIG_EXT})
+# set(CXX_DISABLE_WALL True)
+set(CXX_DISABLE_WERROR True)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
-SET(CMAKE_VERBOSE_MAKEFILE ON)
+# ----------------------------------------------------------------
+# --- Project declaration ----------------------------------------
+# ----------------------------------------------------------------
 
-project(${PROJECT_NAME})
+SET(PROJECT_NAME scd)
+SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Volumes")
+set(PROJECT_CONTACT francois.keith@lirmm.fr)
+SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
+set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-IF(WIN32)
-  SET(LIBDIR_KW "/LIBPATH:")
-  SET(LIBINCL_KW "")
-  SET(LIB_EXT ".lib")
-ENDIF(WIN32)
+SETUP_PROJECT()
 
-IF(UNIX)
-  SET(LIBDIR_KW "-L")
-  SET(LIBINCL_KW "-l")
-  SET(LIB_EXT "")
-  SET(${PROJECT_NAME}_CXXFLAGS "-DUNIX" )
-ENDIF(UNIX)
+# Search for dependencies.
+# Boost
+SET(BOOST_COMPONENTS serialization)
+SEARCH_FOR_BOOST()
 
-find_package(Boost COMPONENTS serialization REQUIRED)
 find_package(GLUT)
 find_package(OpenGL)
-
 
 # GLUT is a bit tricky, so check the search result.
 if(GLUT_FOUND)
@@ -49,49 +50,24 @@ endif(GLUT_FOUND)
 if(GLUT_FOUND)
   set(WITH_OPENGL 1)
   # used variable in SCD.pc.cmake
-  set(WITH_OPENGL_CFLAGS "-DWITH_OPENGL")
+  PKG_CONFIG_APPEND_CFLAGS("-DWITH_OPENGL")
   add_definitions("-DWITH_OPENGL")
 endif(GLUT_FOUND)
 
 
-
-
-
-IF(${Boost_MINOR_VERSION} LESS 36)
-  SET(${PROJECT_NAME}_CXXFLAGS "-D WITH_BOOST_1_36 ${${PROJECT_NAME}_CXXFLAGS}")
-ENDIF(${Boost_MINOR_VERSION} LESS 36)
-
-include_directories(${PROJECT_SOURCE_DIR}/include  ${Boost_INCLUDE_DIR})
 # Optimisation flags when building with RELEASE
 #----------------------------------------------
 IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
   IF(CMAKE_COMPILER_IS_GNUCXX)
-    SET (${PROJECT_NAME}_CXXFLAGS "-O3 -funroll-loops -frerun-loop-opt -fschedule-insns2 -frerun-cse-after-loop -falign-functions -falign-labels -falign-loops -falign-jumps -fexpensive-optimizations ${${PROJECT_NAME}_CXXFLAGS}")
+#    SET (${PROJECT_NAME}_CXXFLAGS "-O3 -funroll-loops -frerun-loop-opt -fschedule-insns2 -frerun-cse-after-loop -falign-functions -falign-labels -falign-loops -falign-jumps -fexpensive-optimizations ${${PROJECT_NAME}_CXXFLAGS}")
   ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 
-add_subdirectory(src)
-add_subdirectory(unitTestings)
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(unitTestings)
 
-# ----------------------------------------------------------------
-# --- Documentation ----------------------------------------------
-# ----------------------------------------------------------------
+# Add dependency toward dynamic graph library in pkg-config file.
+PKG_CONFIG_APPEND_LIBS("dynamic-graph")
 
-option(GENERATE_DOC "Generate the documentation " OFF)
-if (GENERATE_DOC)
-  include(FindDoxygen)
-  if(DOXYGEN_FOUND)
-    add_subdirectory(doc)
-  endif(DOXYGEN_FOUND)
-endif (GENERATE_DOC)
-
-# Build a pkgconfig file
-SET(install_pkg_libdir "\${libdir}")
-SET(install_pkg_include_dir "\${includedir}")
-
-CONFIGURE_FILE(${${PROJECT_NAME}_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake
-          ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc)
-INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/${PROJECT_NAME}.pc
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig
-    PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
-)
+SETUP_PROJECT_FINALIZE()
+SETUP_PROJECT_CPACK()
