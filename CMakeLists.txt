@@ -32,6 +32,8 @@ SEARCH_FOR_BOOST()
 find_package(GLUT)
 find_package(OpenGL)
 
+option(PYTHON_BINDINGS "Generate Python bindings." ON)
+
 # GLUT is a bit tricky, so check the search result.
 if(GLUT_FOUND)
 	message("-- GLUT found! Libraries: ${GLUT_LIBRARIES}")
@@ -67,6 +69,10 @@ PKG_CONFIG_APPEND_LIBS("scd")
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(unitTestings)
+
+IF(PYTHON_BINDINGS)
+ ADD_SUBDIRECTORY(bindings/python)
+ENDIF(PYTHON_BINDINGS)
 
 SETUP_PROJECT_FINALIZE()
 SETUP_PROJECT_CPACK()
