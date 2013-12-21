@@ -21,6 +21,8 @@ SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Vol
 set(PROJECT_CONTACT francois.keith@lirmm.fr)
 SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+# Temporary fix for doc install
+SET(PROJECT_ROOT "SCD")
 
 SETUP_PROJECT()
 
