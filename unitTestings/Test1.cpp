@@ -92,7 +92,7 @@ void RandomTestSupportFunction()
 
 	std::fstream outfile;
 
-	outfile.open("c:/mehdi/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
 
@@ -176,7 +176,7 @@ void RandomTestSupportFunctionAllObjects()
 
 	std::fstream outfile;
 
-	outfile.open("c:/mehdi/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
 
@@ -580,10 +580,7 @@ init (void)
 	DoTest();
 
 #ifdef OUTPUT_FILE
-
-
-
-	outfile.open("c:/mehdi/testresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/testresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
 
@@ -828,11 +825,7 @@ void TestPrecision()
 #ifdef OUTPUT_FILE
 
 	std::fstream outfile;
-
-
-
-	outfile.open("c:/mehdi/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
-
+	outfile.open("/tmp/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 
 #endif	
@@ -1050,11 +1043,7 @@ void TestAnimation()
 #ifdef OUTPUT_FILE
 
 	std::fstream outfile;
-
-
-
-	outfile.open("c:/mehdi/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
-
+	outfile.open("/tmp/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 
 #endif	
@@ -1242,9 +1231,8 @@ void TestAnimation()
 void GeneralTest()
 {
 	std::fstream outfile;
-	outfile.open("c:/mehdi/Generaltestresult.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/Generaltestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
-
 
 
 	for (size_t k=0;k<stppObjects.size();k++)
