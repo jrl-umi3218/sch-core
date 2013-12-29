@@ -129,7 +129,7 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& lastFeature)const
 
 S_Object::S_ObjectType S_Superellipsoid::getType() const
 {
-	return S_Object::TSphere;
+	return S_Object::TSuperellipsoid;
 }
 
 
