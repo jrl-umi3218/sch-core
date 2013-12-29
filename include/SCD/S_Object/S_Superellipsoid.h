@@ -21,19 +21,14 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-    #ifdef WITH_OPENGL
+		#ifdef WITH_OPENGL
 		SCD_API virtual void drawGLInLocalCordinates();
-    #endif
+		#endif
 
 	protected:
 		Scalar a_,b_,c_,epsilon1_,epsilon2_;
 		int displist_;
-		int slices_, stacks_;
-
 		Scalar _2_e1on2,_2_e2on2,_2on2_e1,_2on2_e2;
-
-
-
 	};
 }
 
