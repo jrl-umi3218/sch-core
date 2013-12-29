@@ -452,13 +452,13 @@ init (void)
 #endif
 	for (size_t i=0;i<sObj.size();i++)
 	{
-
-
-		sObj[i]->setPosition((1+7*i%5-3)*DispersionScale,
-			(5*i%6-3)*(5.0/6)*DispersionScale,
-			(5*i%7-3)*(5.0/7)*DispersionScale);
-
-
+		Vector3 position(
+			(1.+7*i%5-3.),
+			(5*i%6-3.)*(5.0/6.),
+			(5*i%7-3.)*(5.0/7.)
+		);
+		position *= DispersionScale;
+		sObj[i]->setPosition(position);
 	}
 
 	DoTest();
@@ -610,21 +610,9 @@ display (void)
 
 void TestPrecision()
 {
-	Vector3 position;
-
-	Vector3 axe;
-	double angle;
-
-	position[0] =position[1] =	position[2] =3;
-
-
-
-	axe[0] =  0;
-	axe[1] = 0;
-	axe[2] =  1;
-
-
-	angle=0;
+	Vector3 position(3,3,3);
+	Vector3 axe(0, 0, 1);
+	double angle=0;
 
 	std::vector<Vector3> oldPos;
 
@@ -767,29 +755,18 @@ void TestPrecision()
 
 void TestAnimation()
 {
-	Vector3 position;
-
-	Vector3 axe;
-	double angle;
-
-	position[0] =position[1] =	position[2] =3;
-
-
-
-	axe[0] =  0;
-	axe[1] = 0;
-	axe[2] =  1;
-
-
-	angle=0;
+	std::cout << "TestAnimation" << std::endl;
+	Vector3 position(3, 3, 3);
+	Vector3 axe(0, 0, 1);
+	double angle(0);
 
 	std::vector<Vector3> oldPos;
 
 	for (size_t i=0;i<sObj.size();i++)
 	{
-		position[0] =(1+7*i%5-3)*DispersionScale;
-		position[1] =((5*i%6-3)*(5.0/6))*DispersionScale;
-		position[2] =((5*i%7-3)*(5.0/7))*DispersionScale;
+		position[0] =(1.+7*i%5-3.)*DispersionScale;
+		position[1] =((5*i%6-3.)*(5.0/6.))*DispersionScale;
+		position[2] =((5*i%7-3.)*(5.0/7.))*DispersionScale;
 
 		oldPos.push_back(position);
 
@@ -976,24 +953,15 @@ void GeneralTest()
 
 		testscene.addObject(&(stppObjects[k]));
 		
-		Vector3 position;
+		Vector3 position(
+			(1.+7%5-3.),
+			((5%6-3)*(5.0/6)),
+			((5%7-3)*(5.0/7))
+		);
+		position *= DispersionScale;
 
-		position[0] =(1+7%5-3)*DispersionScale;
-		position[1] =((5%6-3)*(5.0/6))*DispersionScale;
-		position[2] =((5%7-3)*(5.0/7))*DispersionScale;
-
-
-		Vector3 axe;
-		double angle;
-		axe[0] =  0;
-		axe[1] = 0;
-		axe[2] =  1;
-
-
-		angle=0;
-
-
-		
+		Vector3 axe(0, 0, 1);
+		double angle(0);
 
 		testscene[1]->setOrientation(angle,axe);
 		testscene[1]->setPosition(position);
