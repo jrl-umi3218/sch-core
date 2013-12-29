@@ -249,11 +249,8 @@ namespace SCD
 		enum S_ObjectType	
 		{
 			TS_Object,
-			TPoint,
-			TSegment,
 			TPolyhedron,
 			TSTP_BV,
-			TCylinder,
 			TSphere,
 			TBox,
 			TSuperellipsoid,
