@@ -81,23 +81,16 @@ void DoTest()
 
 void RandomTestSupportFunction()
 {
-
-
-
 	clock_t begin, end;
 
 	begin=clock();
 
 #ifdef OUTPUT_FILE
-
 	std::fstream outfile;
 
 	outfile.open("/tmp/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
-
-
-
 
 	srand(time(NULL)); 
 	for (long j=0;j<RandomTestEnd;j++)
@@ -108,33 +101,14 @@ void RandomTestSupportFunction()
 		double c = (rand()/double(RAND_MAX)) ;
 		double d = (rand()/double(RAND_MAX)) ;
 
-
-
-
-
-
 		Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
 
 #ifdef DO_TEST
-
 		Point3 p=sObj[CurrentObj]->support(v);
-
-
-
-
-
-#ifdef OUTPUT_FILE
+# ifdef OUTPUT_FILE
 		outfile<<p<<std::endl;
-
-
+# endif
 #endif
-
-#endif
-
-
-
-
-
 	}
 
 #ifdef OUTPUT_FILE
@@ -144,44 +118,23 @@ void RandomTestSupportFunction()
 	end=clock();
 
 	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) <<  std::endl;
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 
 
 
 void RandomTestSupportFunctionAllObjects()
 {
-
-
-
-
 	clock_t begin, end;
 
 	begin=clock();
 
 #ifdef OUTPUT_FILE
-
 	std::fstream outfile;
 
 	outfile.open("/tmp/angletestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
-
-
-
 
 	srand(time(NULL)); 
 	for (long j=0;j<RandomTestEnd;j++)
@@ -191,11 +144,6 @@ void RandomTestSupportFunctionAllObjects()
 		double b = (rand()/double(RAND_MAX)) ;
 		double c = (rand()/double(RAND_MAX)) ;
 		double d = (rand()/double(RAND_MAX)) ;
-
-
-
-
-
 
 		Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
 
@@ -203,24 +151,9 @@ void RandomTestSupportFunctionAllObjects()
 		for(size_t i=0;i<sObj.size();i++)
 		{
 			Point3 p=sObj[i]->support(v);
-
-
-
-
-
-#ifdef OUTPUT_FILE
 			outfile<<p<<std::endl;
-
-
-#endif
 		}
-
 #endif
-
-
-
-
-
 	}
 
 #ifdef OUTPUT_FILE
@@ -230,14 +163,6 @@ void RandomTestSupportFunctionAllObjects()
 	end=clock();
 
 	std::cout << ((double)(end- begin) / CLOCKS_PER_SEC) <<  std::endl;
-
-
-
-
-
-
-
-
 }
 
 
@@ -267,8 +192,6 @@ void trans_mat(const double *f,double *g)
 		for (int j=0;j<4;j++)
 		{ 
 			g[i+j*4]=f[i*4+j];
-
-
 		}
 }
 
@@ -372,7 +295,6 @@ init (void)
 
 	glEnable (GL_LIGHTING);
 
-
 	glClearColor (background[0], background[1], background[2], 1.0f);
 	glShadeModel (GL_SMOOTH);
 
@@ -382,18 +304,7 @@ init (void)
 	glEnable(GL_COLOR_MATERIAL);
 
 	glColorMaterial(GL_FRONT,GL_AMBIENT_AND_DIFFUSE);
-
-
-
-
-
 	glShadeModel (GL_SMOOTH);
-
-
-
-
-
-
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_DST_ALPHA);
 
@@ -415,7 +326,6 @@ init (void)
 		glFogf (GL_FOG_END, 15000.0);
 	}
 
-
 	glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
 	glHint(GL_POLYGON_SMOOTH_HINT,GL_NICEST);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
@@ -433,16 +343,8 @@ init (void)
 
 	glMatrixMode( GL_MODELVIEW );
 
-
-
-
-
 	glLoadIdentity();
 	glGetDoublev(GL_MODELVIEW_MATRIX,matCam);
-
-
-
-
 
 	/*inialize objects*/
 
@@ -471,14 +373,8 @@ init (void)
 							   
 
 			getline(istr,s);
-
 			std::fstream testfile;
-
-
 			testfile.open(s.c_str());
-
-
-
 
 			if (testfile.is_open())
 			{
@@ -491,12 +387,6 @@ init (void)
 
 				stppObjects.push_back(stp);
 				//  stpObjects.push_back(stp);
-
-
-
-
-
-
 			}
 			else
 				b=false;
@@ -511,13 +401,7 @@ init (void)
 		for (int j=0;j<stppObjects.size();j++)
 		{
 			sObj.addObject(&(stppObjects[j]));
-
-
-
 		}
-
-
-
 	}
 #else
 	{
@@ -583,10 +467,6 @@ init (void)
 	outfile.open("/tmp/testresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif	
-
-
-
-
 }
 
 
@@ -653,11 +533,7 @@ static void
 display (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glLoadIdentity ();
-
-
-
 
 	/* camera rotation */
 	glTranslated (-eye.x, -eye.y, -eye.z);
@@ -666,26 +542,10 @@ display (void)
 	/* draw utah-teapot */
 
 	//gluLookAt(0,0,0,0,0,-1,0,1,0);
-
-
-
-
-
-
-
-
-
-
 	glColor3d(0.6,0.7,0.6);
 
-
-
-
-
 	for (size_t i=0;i<sObj.size();++i)
-	{
 		sObj[i]->drawGL();
-	}
 
 	Vector3 p=sObj[CurrentObj]->getPosition();
 	glDisable (GL_LIGHTING);
@@ -714,13 +574,7 @@ display (void)
 
 	glPopMatrix();
 
-
-
-
 	glColor3d(1,1,0.2);
-
-
-
 
 	glBegin(GL_LINES);
 	for (size_t i=0;i<sObj.size();++i)
@@ -736,46 +590,23 @@ display (void)
 			sObj.getWitnessPoints(i,j,p1,p2);
 #endif
 
-
-
-
-
 			glVertex3d(p1[0],p1[1],p1[2]);
 			glVertex3d(p2[0],p2[1],p2[2]);
 
-
-
-
 #ifdef OUTPUT_FILE
 			outfile<<d<<' '<<p1<<p2<<std::endl;
-
-
 #endif
 
 #ifdef DISPLAY_DISTANCE
 			std::cout<<d<<' '<<(p1-p2).normsquared()<<' '<<fabs(d)-fabs((p1-p2).normsquared())<<std::endl;
-
-
 #endif
-
-
-
 		}
-
 	}
-
-
 	glEnd();
-
 	glEnable (GL_LIGHTING);
-
-
-
 	glutSwapBuffers();
-
-
-
 }
+
 
 void TestPrecision()
 {
@@ -797,21 +628,10 @@ void TestPrecision()
 
 	std::vector<Vector3> oldPos;
 
-
-
-
 	std::cout.precision(18);
 
-
-
-
-
-
 #ifdef DO_TEST
-
-
 	sObj.sceneProximityQuery();
-
 #endif
 
 #ifdef DISPLAY_TEST
@@ -823,18 +643,15 @@ void TestPrecision()
 	begin=clock();
 
 #ifdef OUTPUT_FILE
-
 	std::fstream outfile;
 	outfile.open("/tmp/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
-
 #endif	
 
 
 #ifdef IRREGULARITIES_COUNTERS
 	Scalar previousDistance=2e90;
 	int irrCpt=0;
-
 #endif
 
 
@@ -842,9 +659,6 @@ void TestPrecision()
 	int collCpt=0;
 	int totalCpt=0;
 #endif
-
-
-
 
 
 	for (long i=AnimationBegin; i<AnimationEnd; i++)
@@ -862,40 +676,23 @@ void TestPrecision()
 		*/
 
 		for (size_t j=0;j<sObj.size();j++)
-		{
-
 			sObj[j]->addRotation(angle,axe);
-
-
-		}
-
-
-
-
-
-
-
 
 
 #ifdef DO_TEST
 		sObj.sceneProximityQuery();
 
-#ifdef OUTPUT_FILE
-		for (int k=0;k<sObj.Size();k++)
+# ifdef OUTPUT_FILE
+		for (int k=0;k<sObj.size();k++)
 		{
 			for (int j=0;j<k;j++)
 			{ 
 				Point3 p1,p2;
 				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
 				outfile<<p1<<p2<<distance<<std::endl;
-
-
 			}
-
-
 		}
-
-#endif
+# endif
 
 #ifdef IRREGULARITIES_COUNTERS
 		Point3 p1,p2;
@@ -913,12 +710,8 @@ void TestPrecision()
 				irrCpt++;
 				std::cout<<"Coherence Irregularity : "<<i;
 			}
-
 		}
 		previousDistance=distance;
-
-
-
 #endif
 
 #ifdef COLLISION_COUNTERS
@@ -931,12 +724,8 @@ void TestPrecision()
 				if (distance<0)
 					collCpt++;
 				totalCpt++;
-
 			}
-
-
 		}
-
 #endif
 
 #endif
@@ -952,11 +741,6 @@ void TestPrecision()
 #ifdef DISPLAY_TEST
 		display();
 #endif
-
-
-
-
-
 	}
 
 #ifdef OUTPUT_FILE
@@ -974,10 +758,7 @@ void TestPrecision()
 
 #ifdef COLLISION_COUNTERS
 	std::cout << "Collisions : "<<collCpt<< " Total pairs checked : "<<totalCpt<<std::endl;
-
 #endif
-
-
 }
 
 
@@ -1004,8 +785,6 @@ void TestAnimation()
 
 	std::vector<Vector3> oldPos;
 
-
-
 	for (size_t i=0;i<sObj.size();i++)
 	{
 		position[0] =(1+7*i%5-3)*DispersionScale;
@@ -1016,20 +795,10 @@ void TestAnimation()
 
 		sObj[i]->setOrientation(angle,axe);
 		sObj[i]->setPosition(position);
-
-
 	}
 
-
-
-
-
-
 #ifdef DO_TEST
-
-
 	sObj.sceneProximityQuery();
-
 #endif
 
 #ifdef DISPLAY_TEST
@@ -1040,13 +809,11 @@ void TestAnimation()
 
 	begin=clock();
 
-#ifdef OUTPUT_FILE
-
+# ifdef OUTPUT_FILE
 	std::fstream outfile;
 	outfile.open("/tmp/animationtestresult.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
-
-#endif	
+# endif
 
 
 #ifdef IRREGULARITIES_COUNTERS
@@ -1067,7 +834,6 @@ void TestAnimation()
 
 	for (long i=AnimationBegin; i<AnimationEnd; i++)
 	{
-
 		for (size_t j=0;j<sObj.size();j++)
 		{
 			position=oldPos[j];
@@ -1084,39 +850,24 @@ void TestAnimation()
 			sObj[j]->setPosition( position + Vector3(sin((20*(j%3+1)+2*j)*sin(0.2*AnimationSpeed*i)),
 				sin((71-140*(j%2-1)+2*j)*sin(0.15*AnimationSpeed*i)),
 				sin((20+((j*5)%7)*5+3*j)*sin(0.2*AnimationSpeed*i)))*AnimationScale);
-
-
-
-
 		}
-
-
-
-
-
-
 
 
 
 #ifdef DO_TEST
 		sObj.sceneProximityQuery();
 
-#ifdef OUTPUT_FILE
-		for (int k=0;k<sObj.Size();k++)
+# ifdef OUTPUT_FILE
+		for (int k=0;k<sObj.size();k++)
 		{
 			for (int j=0;j<k;j++)
 			{ 
 				Point3 p1,p2;
 				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
 				outfile<<p1<<p2<<distance<<std::endl;
-
-
 			}
-
-
 		}
-
-#endif
+# endif
 
 #ifdef IRREGULARITIES_COUNTERS
 		Point3 p1,p2;
@@ -1134,12 +885,8 @@ void TestAnimation()
 				irrCpt++;
 				std::cout<<"Coherence Irregularity : "<<i;
 			}
-
 		}
 		previousDistance=distance;
-
-
-
 #endif
 
 
@@ -1155,12 +902,8 @@ void TestAnimation()
 				if (distance<0)
 					collCpt++;
 				totalCpt++;
-
 			}
-
-
 		}
-
 #endif
 
 #endif
@@ -1170,7 +913,6 @@ void TestAnimation()
 #ifdef TEST_HOLD
 		std::cout<<i<<std::endl;
 		system("pause");
-
 #endif	
 
 #ifdef DISPLAY_DISTANCE
@@ -1183,8 +925,6 @@ void TestAnimation()
 				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
 				std::cout<<distance<<std::endl;
 			}
-
-
 		}
 
 #endif
@@ -1192,11 +932,6 @@ void TestAnimation()
 #ifdef DISPLAY_TEST
 		display();
 #endif
-
-
-
-
-
 	}
 
 #ifdef OUTPUT_FILE
@@ -1214,10 +949,7 @@ void TestAnimation()
 
 #ifdef COLLISION_COUNTERS
 	std::cout << "Collisions : "<<collCpt<< " Total pairs checked : "<<totalCpt<<std::endl;
-
 #endif
-
-
 }
 
 
@@ -1275,69 +1007,35 @@ void GeneralTest()
 		clock_t begin, end;
 
 		begin=clock();
-
-
 		for (long j=0;j<RandomTestEnd;j++)
 		{
-
 			double a = (rand()/double(RAND_MAX)) ;
 			double b = (rand()/double(RAND_MAX)) ;
 			double c = (rand()/double(RAND_MAX)) ;
 			double d = (rand()/double(RAND_MAX)) ;
-
-
-
-
-
-
 			Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
-
-
 		}
-
-
 		end=clock();
 
 		double lostTime=end-begin;
 		
 		begin=clock();
-
-
 		for (long j=0;j<RandomTestEnd;j++)
 		{
-
 			double a = (rand()/double(RAND_MAX)) ;
 			double b = (rand()/double(RAND_MAX)) ;
 			double c = (rand()/double(RAND_MAX)) ;
 			double d = (rand()/double(RAND_MAX)) ;
 
-
-
-
-
-
 			Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
 
 #ifdef DO_TEST
-
 			Point3 p=testscene[1]->support(v);
-
-
-
-
-
-#ifdef OUTPUT_FILE
+# ifdef OUTPUT_FILE
 			outfile<<p<<std::endl;
+# endif // OUTPUT_FILE
 
-
-#endif
-
-#endif
-
-
-
-
-
+#endif // DO_TEST
 		}
 
 #ifdef OUTPUT_FILE
@@ -1357,13 +1055,11 @@ void GeneralTest()
 
 			angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed*i)));
 
-
 			testscene[1]->setOrientation(angle,axe);
 
 			testscene[1]->setPosition( position + Vector3(sin((20*(1))*sin(0.2*AnimationSpeed*i)),
 				sin((71-140*(1))*sin(0.15*AnimationSpeed*i)),
 				sin((20)*sin(0.2*AnimationSpeed*i)))*AnimationScale);
-
 		}
 
 		end=clock();
@@ -1374,14 +1070,11 @@ void GeneralTest()
 
 		for (long i=AnimationBegin; i<AnimationEnd; i++)
 		{
-			
-
 			axe[0] =  sin((42)*sin(0.2*AnimationSpeed*i));
 			axe[1] =  sin((-43)*sin(0.2*AnimationSpeed*i));
 			axe[2] =  cos((83)*sin(0.1*AnimationSpeed*i));
 
 			angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed*i)));
-
 
 			testscene[1]->setOrientation(angle,axe);
 
@@ -1401,22 +1094,13 @@ void GeneralTest()
 
 #ifdef DISPLAY_TEST
 			display();
-		
 #endif
 		}
 		end=clock();
 		outfile <<((double)(end- begin-lostTime) / CLOCKS_PER_SEC) << " " << ((double)(end - begin-lostTime) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) <<  std::endl;
 		std::cout <<((double)(end- begin-lostTime) / CLOCKS_PER_SEC) << " " << ((double)(end - begin-lostTime) / CLOCKS_PER_SEC)/(AnimationEnd-AnimationBegin) <<  std::endl;
-
 	}
-
-
-
-	
-
-
 outfile.close();
-
 }
 
 
@@ -1461,7 +1145,6 @@ keyPress (unsigned char key, int x, int y)
 		RandomTestSupportFunction();
 		break;
 
-
 	case '1':
 		TestAnimation();
 		break;
@@ -1477,16 +1160,12 @@ keyPress (unsigned char key, int x, int y)
 	case '5':
 		GeneralTest();
 		break;
-
 	}
-
-
 
 	if (lightOn)
 		glEnable (GL_LIGHTING);
 	else
 		glDisable (GL_LIGHTING);
-
 
 	glutPostRedisplay ();
 }
@@ -1591,14 +1270,8 @@ mouseMotion (int x, int y)
 				rot.z = (y - mouse.y)+(x - mouse.x);
 
 				Vector3 t=sObj[CurrentObj]->getPosition();
-
 				sObj[CurrentObj]->addRotation(rot.z*0.02,Vector3(0,0,1));
-
 				sObj[CurrentObj]->setPosition(t);
-
-
-
-
 			}
 			else
 			{
@@ -1610,20 +1283,14 @@ mouseMotion (int x, int y)
 
 				sObj[CurrentObj]->addRotation(rot.x*0.02,Vector3(1,0,0));
 				sObj[CurrentObj]->addRotation(rot.y*0.02,Vector3(0,1,0));
-
 				sObj[CurrentObj]->setPosition(t);
 			}
-
-
-
 		}
-
 	}
 	else if (mouse.buttons[GLUT_LEFT_BUTTON] == GLUT_DOWN)
 	{
 		if (keyboard.modifiers & GLUT_ACTIVE_CTRL)
 		{
-
 			/* translation */
 			eye.x -= (x - mouse.x) * 0.0097*(eye.z/7);
 			eye.y += (y - mouse.y) * 0.0097 *(eye.z/7);
@@ -1643,25 +1310,17 @@ mouseMotion (int x, int y)
 
 			if (eye.z <0.01)
 				eye.z=0.01;
-
 		}
 		else
 		{
 			sObj[CurrentObj]->addTranslation(0,0,-((x - mouse.x)+(mouse.y-y))*0.011);
-
 		}
 
 	}
 
 
-
-
-
 	mouse.x = x;
 	mouse.y = y;
-
-
-
 
 
 	DoTest();
