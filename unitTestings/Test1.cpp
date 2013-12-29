@@ -406,7 +406,7 @@ init (void)
 #else
 	{
 		STP_BV s;
-		s.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/larm4_1.txt");
+		s.constructFromFileWithGL("/home/fkeith/software/wip/devel-src/qp/stack/robots/hrp2/hrp2_10_description/stpbv/HEAD_LINK1.txt");
 		stpObjects.push_back(s);
 
 		/*STP_BV s2_;
@@ -432,9 +432,9 @@ init (void)
 
 
 
-		S_Polyhedron P;
-		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(4).txt.otp");
-		polyObjects.push_back(P);
+//		S_Polyhedron P;
+//		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(4).txt.otp");
+//		polyObjects.push_back(P);
 
 		//S_Polyhedron P2;
 		//P2.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt.otp");
@@ -442,7 +442,7 @@ init (void)
 
 
 
-		sObj.addObject(&(polyObjects[0]));
+//		sObj.addObject(&(polyObjects[0]));
 		//sObj.addObject(&(polyObjects[1]));
 
 
