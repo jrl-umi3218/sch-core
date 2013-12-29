@@ -9,8 +9,6 @@ include(${PROJECT_INCLUDE_DIR}/SCD/SourcesLib.cmake)
 
 # --- def, cflags and link flags ---
 
-ADD_AMELIF_DEFS()
-
 include_directories(BEFORE ${PROJECT_INCLUDE_DIR})
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
