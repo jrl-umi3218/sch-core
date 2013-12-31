@@ -1,14 +1,6 @@
 #include <SCD/STP-BV/STP_BigSphere.h>
 #include <SCD/STP-BV/STP_BigSphere.h>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 using namespace SCD;
 
 STP_BigSphere::STP_BigSphere()  

@@ -24,17 +24,6 @@ namespace SCD
 		*/
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
-
-    #ifdef WITH_OPENGL
-		/*!
-		*  \brief Constructs the object from a file describing its STP_BV decomposition
-		*  \param filename path to the file describing the STP_BV decomposition of the object
-		*
-		* This method computes all the needed data for display and every distance calculation method.
-		*/
-		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
-    #endif
-
 		SCD_API virtual ~STP_BV_P(void);
 
 		SCD_API virtual S_ObjectType getType() const;

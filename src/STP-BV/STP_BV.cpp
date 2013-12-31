@@ -862,32 +862,8 @@ void STP_BV::updateFastPatches()
 }
 
 
-
-
-
-#ifdef WITH_OPENGL
-void STP_BV::drawGLInLocalCordinates()
-{
-	if (drawnGL_)
-	{
-
-		for(std::vector<STP_Feature*>::const_iterator it = m_patches.begin() ; it != m_patches.end() ; ++it)
-			(*it)->GLdisplay();
-
-	}
-}
-
-void STP_BV::GLdisplayVVR() const
-{
-	for(std::vector<STP_Feature*>::const_iterator it = m_patches.begin() ; it != m_patches.end() ; ++it)
-		(*it)->GLdisplayVVR();
-}
-#endif
-
-
 Scalar STP_BV::supportH(const Vector3& v) const 
 {
-
 	int k;
 
 	//A.E. : we use the default supportH function, cf DT_Convex.h

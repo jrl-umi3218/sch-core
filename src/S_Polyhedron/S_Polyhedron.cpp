@@ -11,14 +11,6 @@
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/vector.hpp>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 using namespace SCD;
 
 
@@ -34,7 +26,6 @@ S_Polyhedron::S_Polyhedron(const S_Polyhedron& p):poly(p.poly)
 
 S_Polyhedron::~S_Polyhedron(void)
 {
-
 }
 
 

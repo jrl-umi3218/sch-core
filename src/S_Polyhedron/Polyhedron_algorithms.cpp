@@ -1,13 +1,5 @@
 #include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 #include <SCD/File_Parsing/SimplestParsing.h>
 
 
@@ -158,8 +150,6 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 	}
 
 	deleteVertexesWithoutNeighbors();
-
-
 }
 
 void Polyhedron_algorithms::updateVertexNeighbors()
@@ -181,8 +171,6 @@ void Polyhedron_algorithms::updateVertexNeighbors()
 	{
 		vertexes_[i]->updateFastArrays();
 	}
-
-
 }
 
 void Polyhedron_algorithms::clear()
