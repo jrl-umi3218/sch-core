@@ -16,14 +16,6 @@ void STP_BV_P::constructFromFile(const std::string &filename)
 	poly.openFromFile(filename+std::string(".otp"));
 }
 
-#ifdef WITH_OPENGL
-void STP_BV_P::constructFromFileWithGL(const std::string &filename)
-{
-	STP_BV::constructFromFileWithGL(filename);
-	poly.openFromFile(filename+std::string(".otp"));
-}
-#endif
-
 Point3 STP_BV_P::l_Support(const Vector3 &v,int &lastFeature) const
 {
 	poly.support(v,lastFeature);

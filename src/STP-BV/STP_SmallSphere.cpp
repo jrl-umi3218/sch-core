@@ -3,14 +3,6 @@
 #include <math.h>
 #include <iostream>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 #include <map>
 
 
@@ -57,10 +49,16 @@ STP_SmallSphere& STP_SmallSphere::operator =(const STP_SmallSphere &s)
 
 }
 
-const Point3& STP_SmallSphere::getCenter()
+const Point3& STP_SmallSphere::getCenter() const
 {
 	return m_center;
 }
+
+const Scalar& STP_SmallSphere::getRadius() const
+{
+  return m_radius;
+}
+
 
 void STP_SmallSphere::setVVR(const std::vector<STP_VVR>& vvr)
 {
@@ -80,27 +78,6 @@ void STP_SmallSphere::print() const
 	std::cout << "center : " << m_center[0] << ", " << m_center[1] << ", " << m_center[2] << std::endl;
 	std::cout << "radius : " << m_radius << std::endl << std::endl;
 }
-
-#ifdef WITH_OPENGL
-void STP_SmallSphere::GLdisplay() const
-{
-	glPushMatrix();
-	glColor3f(.80, 0.0, 0.0);
-	glTranslatef(m_center[0], m_center[1], m_center[2]);
-	glutSolidSphere(m_radius, 20, 20);
-	glPopMatrix();
-}
-
-void STP_SmallSphere::GLdisplayVVR() const
-{
-	/*for(std::vector<STP_VVR>::const_iterator it = m_VVR.begin() ; it != m_VVR.end() ; ++it)
-	{
-		glPushMatrix();
-		glCallList(it->m_displayList);
-		glPopMatrix();
-	}*/
-}
-#endif
 
 bool STP_SmallSphere::isHere(const Vector3& v) const
 {
@@ -221,8 +198,6 @@ bool STP_SmallSphere::isHereFirstNeighbour(const Vector3& v)
 	}*/
 
 	m_nextBVPrime = currentVVR->m_outerSTP ;
-	
-	
 
 	return false;
 }
@@ -305,8 +280,6 @@ Scalar STP_SmallSphere::supportH(const Vector3& v) const
 Point3 STP_SmallSphere::support(const Vector3& v) const 
 {
 	return m_center+v*m_radius;
-
-	
 }
 
 bool STP_SmallSphere::ray_cast(const Point3& source, const Point3& target,

@@ -32,7 +32,7 @@ STP_BigSphere::~STP_BigSphere()
 {
 }
 
-const Point3& STP_BigSphere::getCenter()
+const Point3& STP_BigSphere::getCenter() const
 {
 	return m_center;
 }
@@ -53,21 +53,6 @@ void STP_BigSphere::print() const
 	std::cout << "center : " << m_center[0] << ", " << m_center[1] << ", " << m_center[2] << std::endl;
 	std::cout << "radius : " << m_radius << std::endl << std::endl;
 }
-
-#ifdef WITH_OPENGL
-void STP_BigSphere::GLdisplayVVR() const
-{
-	glPushMatrix();
-	glCallList(m_VVR0.m_displayList);
-	glPopMatrix();
-	glPushMatrix();
-	glCallList(m_VVR1.m_displayList);
-	glPopMatrix();
-	glPushMatrix();
-	glCallList(m_VVR2.m_displayList);
-	glPopMatrix();
-}
-#endif
 
 bool STP_BigSphere::isHere(const Vector3& v) const
 {

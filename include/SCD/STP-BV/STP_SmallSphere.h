@@ -31,21 +31,15 @@ namespace SCD
 		SCD_API STP_SmallSphere(Scalar radius, Point3 center);
 		SCD_API STP_SmallSphere(const STP_SmallSphere& s);
 
-
-
 		SCD_API ~STP_SmallSphere();
 
 		SCD_API STP_SmallSphere & operator =(const STP_SmallSphere &s);
 
-		SCD_API const Point3& getCenter();
-		SCD_API void setVVR(const std::vector<STP_VVR>& vvr);
+    SCD_API const Point3& getCenter() const;
+    SCD_API const Scalar& getRadius() const;
+    SCD_API void setVVR(const std::vector<STP_VVR>& vvr);
 
 		SCD_API virtual void print() const;
-    #ifdef WITH_OPENGL
-		SCD_API virtual void GLdisplay() const;
-		SCD_API void GLdisplayBVVVRaxes() const;
-		SCD_API virtual void GLdisplayVVR() const;
-    #endif
 
 		SCD_API virtual bool isHere(const Vector3& v) const;
 		SCD_API virtual bool isHereFarthestNeighbour(const Vector3& v);
@@ -96,10 +90,6 @@ namespace SCD
 		STP_VVR * m_neighbors;
 		STP_VVR * m_endneighbors;
 		void updateVector();
-
-
-
-
 	};
 }
 

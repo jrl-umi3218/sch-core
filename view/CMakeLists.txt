@@ -25,7 +25,7 @@ endif(GLUT_FOUND)
 include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
 add_library(scd_viewer SHARED 
   S_Object_gl.cpp
-#	STPBV_gl.cpp
+	STPBV_gl.cpp
   S_Box_gl.cpp
   S_Sphere_gl.cpp
   S_Supperellipsoid_gl.cpp

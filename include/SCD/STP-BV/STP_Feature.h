@@ -1,12 +1,7 @@
-
-
-
-
 #ifndef _STP_FEATURE
 #define _STP_FEATURE
 
 #pragma once
-
 
 #include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
@@ -37,13 +32,12 @@ namespace SCD
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-      ar & m_axis & m_cosangle & m_outerSTP & m_displayList;
+      ar & m_axis & m_cosangle & m_outerSTP;
     }
 
 		Vector3 m_axis;
 		Scalar m_cosangle;
 		int m_outerSTP;
-		int m_displayList;
 	} STP_VVR;
 
 
@@ -71,13 +65,12 @@ namespace SCD
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-      ar & m_axis & m_cosangle & m_outerSTP & m_displayList;
+      ar & m_axis & m_cosangle & m_outerSTP;
     }
 
 		Vector3 m_axis;
 		Scalar m_cosangle;
 		int m_outerSTP;
-		int m_displayList;
 	} STN_VVR;
 
 
@@ -118,13 +111,7 @@ namespace SCD
 
 		SCD_API virtual ~STP_Feature(void);
 
-		SCD_API void setDisplayList(int l) {m_displayList = l;}
-
 		SCD_API virtual void print() const = 0;
-    #ifdef WITH_OPENGL
-		SCD_API virtual void GLdisplay() const;
-		SCD_API virtual void GLdisplayVVR() const = 0;
-    #endif
 
 		SCD_API virtual STP_Feature* clone() const =0;
 
@@ -142,17 +129,14 @@ namespace SCD
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-      ar & m_displayList & m_nextBVPrime;
+      ar & m_nextBVPrime;
     }
 
 	protected:
 		STP_Feature(void);
 
 	protected:
-		int m_displayList;
 		int m_nextBVPrime;
-
-
 	};
 
 #include <SCD/STP-BV/STP_Feature.hxx>

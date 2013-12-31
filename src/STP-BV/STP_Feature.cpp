@@ -1,13 +1,5 @@
 #include <SCD/STP-BV/STP_Feature.h>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 using namespace SCD;
 s_STP_VVR::s_STP_VVR():
 m_axis(0.0, 0.0, 0.0), m_cosangle(0.0)
@@ -15,7 +7,7 @@ m_axis(0.0, 0.0, 0.0), m_cosangle(0.0)
 }
 
 s_STP_VVR::s_STP_VVR(const s_STP_VVR& vvr):
-m_axis(vvr.m_axis), m_cosangle(vvr.m_cosangle), m_outerSTP(vvr.m_outerSTP), m_displayList(vvr.m_displayList)
+m_axis(vvr.m_axis), m_cosangle(vvr.m_cosangle), m_outerSTP(vvr.m_outerSTP)
 {
 	Scalar n;
 	if ((n=m_axis.norm())!=0)
@@ -75,7 +67,6 @@ s_STP_VVR& s_STP_VVR::operator=(const s_STP_VVR& vvr)
 	m_axis = vvr.m_axis;
 	m_cosangle = vvr.m_cosangle;
 	m_outerSTP = vvr.m_outerSTP;
-	m_displayList = vvr.m_displayList;
 
 	return *this;
 }
@@ -99,7 +90,7 @@ m_axis(Scalar(0), Scalar(0), Scalar(0)), m_cosangle(Scalar(0))
 }
 
 s_STN_VVR::s_STN_VVR(const s_STN_VVR& vvr):
-m_axis(vvr.m_axis), m_cosangle(vvr.m_cosangle), m_outerSTP(vvr.m_outerSTP), m_displayList(vvr.m_displayList)
+m_axis(vvr.m_axis), m_cosangle(vvr.m_cosangle), m_outerSTP(vvr.m_outerSTP)
 {
 }
 
@@ -146,7 +137,6 @@ s_STN_VVR& s_STN_VVR::operator=(const s_STN_VVR& vvr)
 	m_axis = vvr.m_axis;
 	m_cosangle = vvr.m_cosangle;
 	m_outerSTP = vvr.m_outerSTP;
-	m_displayList = vvr.m_displayList;
 
 	return *this;
 }
@@ -164,8 +154,7 @@ bool s_STN_VVR::operator==(const s_STN_VVR& vvr) const
 		return false;
 }
 
-STP_Feature::STP_Feature():
-m_displayList(-1)
+STP_Feature::STP_Feature()
 {
 }
 
@@ -173,14 +162,3 @@ STP_Feature::~STP_Feature()
 {
 }
 
-#ifdef WITH_OPENGL
-void STP_Feature::GLdisplay() const
-{
-	if(glIsList(m_displayList))
-	{
-		glPushMatrix();
-		glCallList(m_displayList);
-		glPopMatrix();
-	}
-}
-#endif

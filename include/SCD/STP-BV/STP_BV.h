@@ -24,6 +24,29 @@ namespace SCD
 		TEXT_ARCHIVE
 	};
 
+	struct Geometry
+	{
+		enum GeometryType
+		{
+			LINE,
+			TRIANGLE,
+			SPHERE
+		};
+
+		GeometryType type;
+		Point3 color;
+		Scalar radius; // for spheres only
+		Point3 center;
+		Matrix3x3 rotation;
+		std::vector<Vector3> vertex;
+		std::vector<Vector3> normal;
+
+		Geometry(GeometryType t): type(t), color(0,0,0)
+		, radius(0), center(0,0,0)
+		, rotation(1,0,0,  0,1,0,  0,0,1)
+		{}
+	};
+
 	/*!  \struct s_toruslinkedBV
 	*  \brief Stores the IDs of the BV to which a torus is linked.
 	*  \author Cochet-Grasset Amelie
@@ -152,10 +175,7 @@ namespace SCD
 		SCD_API STP_BV(void);
 		SCD_API STP_BV(const STP_BV&);
 
-
 		SCD_API virtual ~STP_BV(void);
-
-
 
 		SCD_API virtual STP_BV & operator=(const STP_BV&);
 
@@ -164,18 +184,14 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-#ifdef WITH_OPENGL
-		SCD_API virtual void drawGLInLocalCordinates();
-#endif
-
-
-
 		/*!
 		*  \brief Constructs the object from a file describing its STP_BV decomposition
 		*  \param filename path to the file describing the STP_BV decomposition of the object
 		*
 		*/
 		SCD_API virtual void constructFromFile(const std::string& filename);
+		SCD_API virtual void constructFromFileWithGL(const std::string& filename)
+		{ constructFromFile(filename); }
 
 
 		/*!
@@ -190,17 +206,6 @@ namespace SCD
 		*  \param filename path to the binary archive
 		*/
 		SCD_API virtual void saveToBinary(const std::string & filename);
-
-#ifdef WITH_OPENGL
-		/*!
-		*  \brief Constructs the object from a file describing its STP_BV decomposition
-		*  \param filename path to the file describing the STP_BV decomposition of the object
-		*
-		* This method computes all the needed data for display and every distance calculation method.
-		*/
-		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
-#endif
-
 
 		/*!
 		*  \brief 
@@ -219,12 +224,7 @@ namespace SCD
 
 
 
-#ifdef WITH_OPENGL
-		/*! 
-		*  \brief Displays the limits of the object's voronoi regions
-		*/
-		SCD_API void GLdisplayVVR() const;
-#endif
+
 		/*!
 		*  \brief Print the support tree in a file
 		*  \param filename name of the file
@@ -290,13 +290,14 @@ namespace SCD
     */
     SCD_API int getFeaturesNumber() const;
 
+		const std::vector<SCD::Geometry> & getGeometries() const;
+
     template<class Archive>
 		void load(Archive & ar, const unsigned int version)
 		{
 			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
 			ar & m_patches ;
 			ar & m_patchesSize ;
-			ar & drawnGL_;
 			updateFastPatches();
 		}
 
@@ -307,10 +308,8 @@ namespace SCD
 			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
 			ar & m_patches ;
 			ar & m_patchesSize ;
-			ar & drawnGL_;
 		}
 
-		
 
 
 		BOOST_SERIALIZATION_SPLIT_MEMBER()
@@ -335,7 +334,7 @@ namespace SCD
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
 		SCD_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
-#ifdef WITH_OPENGL
+
 		/*!
 		*  \brief Computes the points of
 		*  \param p1 first point
@@ -345,9 +344,11 @@ namespace SCD
 		*  \param step number of subdivision
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
-		SCD_API void computeConePointsBetween(const Point3& p1, const Point3& p2, double cosangle, Vector3 axis, int step, std::vector<Point3>* res);
-#endif
-		/*!
+		SCD_API void computeConePointsBetween(const Point3& p1, const Point3& p2,
+																					Vector3 axis, int step, std::vector<Point3>& res,
+																					Matrix3x3 & homo);
+
+    /*!
 		*  \brief Computes the intersection of two segments
 		*  \param l1p1 first point of the first line
 		*  \param l1p2 last point of the first line
@@ -373,18 +374,13 @@ namespace SCD
 		*/
 		SCD_API void updateFastPatches();
 
-
-
-
-		
-
 		std::vector<STP_Feature*> m_patches;
 
 		STP_Feature * * m_fastPatches;
 		STP_Feature * * m_lastPatches;
 		int m_patchesSize;
-		bool drawnGL_;
 
+		std::vector<Geometry> geometries_;
 	};
 }
 

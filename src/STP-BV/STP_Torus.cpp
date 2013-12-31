@@ -1,13 +1,5 @@
 #include <SCD/STP-BV/STP_Torus.h>
 
-#ifdef WITH_OPENGL
-# if defined __APPLE__
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif // __APPLE__
-#endif // WITH_OPENGL
-
 using namespace SCD;
 
 s_STP_Circle::s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius):
@@ -59,25 +51,6 @@ void STP_Torus::print() const
 	std::cout << "circle normal : " << m_circle.m_normal[0] << ", " << m_circle.m_normal[1] << ", " << m_circle.m_normal[2] << std::endl;
 	std::cout << "sphere radius : " << this->m_sphereRadius << std::endl << std::endl;
 }
-
-#ifdef WITH_OPENGL
-void STP_Torus::GLdisplayVVR() const
-{
-	glPushMatrix();
-	glCallList(m_VVR0.m_displayList);
-	glPopMatrix();
-	glPushMatrix();
-	glCallList(m_VVR1.m_displayList);
-	glPopMatrix();
-	glPushMatrix();
-	glCallList(m_VVR2.m_displayList);
-	glPopMatrix();
-	glPushMatrix();
-	glCallList(m_VVR3.m_displayList);
-	glPopMatrix();
-	
-}
-#endif
 
 bool STP_Torus::isHere(const Vector3& v) const
 {

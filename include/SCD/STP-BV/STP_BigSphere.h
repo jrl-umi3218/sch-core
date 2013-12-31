@@ -11,7 +11,6 @@
 #include <boost/serialization/base_object.hpp>
 
 
-
 namespace SCD
 {
 	class STP_BigSphere :
@@ -24,15 +23,11 @@ namespace SCD
 		SCD_API STP_BigSphere(const STP_BigSphere& s);
 		SCD_API ~STP_BigSphere();
 
-		SCD_API const Point3& getCenter();
+    SCD_API const Point3& getCenter() const;
 		//void setVVR(const Vector3* vvr);
 		SCD_API void setVVR(const STP_VVR* vvr);
 
 		SCD_API virtual void print() const;
-    #ifdef WITH_OPENGL
-		SCD_API void GLdisplayBVVVRaxes() const;
-		SCD_API virtual void GLdisplayVVR() const;
-    #endif
 
 		SCD_API virtual bool isHere(const Vector3& v) const;
 		SCD_API virtual bool isHereFarthestNeighbour(const Vector3& v);

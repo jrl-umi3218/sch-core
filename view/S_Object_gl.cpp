@@ -3,7 +3,7 @@
 #include "S_Sphere_gl.h"
 #include "S_Supperellipsoid_gl.h"
 #include "Polyhedron_algorithms_gl.h"
-//#include "STPBV_gl.h"
+#include "STPBV_gl.h"
 
 #include <boost/math/constants/constants.hpp>
 #include <vector>
@@ -152,7 +152,6 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
     return 0x0;
 
   S_Object::S_ObjectType type = obj->getType();
-  std::cout<<"wut  type " << type << std::endl;
 
   switch(type)
   {
@@ -165,13 +164,11 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
     Polyhedron_algorithms * polyhedron = dynamic_cast<Polyhedron_algorithms *>(obj);
     return (new Polyhedron_algorithms_GL(polyhedron));
   }
-    /*
   case(S_Object::TSTP_BV):
   {
     STP_BV * stp = dynamic_cast<STP_BV *>(obj);
     return (new STP_BV_GL(stp));
   }
-*/
   case(S_Object::TSphere):
   {
     S_Sphere * sphere = dynamic_cast<S_Sphere *>(obj);
@@ -187,13 +184,11 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
     S_Superellipsoid * ellipse = dynamic_cast<S_Superellipsoid *>(obj);
     return (new S_Superellipsoid_GL(ellipse));
   }
-    /*
   case(S_Object::TSTP_BV_WithPolyhedron):
   {
   STP_BV * stp = dynamic_cast<STP_BV *>(obj);
   return (new STP_BV_GL(stp));
   }
-*/
   }
   return 0x0;
 }
