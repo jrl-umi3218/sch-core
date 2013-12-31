@@ -26,7 +26,7 @@ namespace MAL_Default
 		T m_x,m_y,m_z;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & m_x;
       ar & m_y;

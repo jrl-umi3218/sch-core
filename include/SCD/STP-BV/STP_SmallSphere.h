@@ -64,14 +64,14 @@ namespace SCD
 
 
     template<class Archive>
-    void save(Archive & ar, unsigned int version) const
+    void save(Archive & ar, unsigned int /*version*/) const
     {
       ar & boost::serialization::base_object<STP_Feature>(*this);
       ar & m_radius & m_center & m_VVR & m_nextBV & m_nextBVPrime;
     }
 
     template<class Archive>
-    void load(Archive & ar, unsigned int version)
+    void load(Archive & ar, unsigned int /*version*/)
     {
       ar & boost::serialization::base_object<STP_Feature>(*this);
       ar & m_radius & m_center & m_VVR & m_nextBV & m_nextBVPrime;

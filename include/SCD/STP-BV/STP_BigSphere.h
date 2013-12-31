@@ -52,7 +52,7 @@ namespace SCD
 		}
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & boost::serialization::base_object<STP_Feature>(*this);
       ar & m_radius & m_center & m_VVR0 & m_VVR1 & m_VVR2; 

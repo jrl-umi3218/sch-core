@@ -18,7 +18,7 @@ namespace SCD
 		unsigned long int value1,value2,value3,value4;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & value1 & value2 & value3 & value4;
     }
@@ -255,7 +255,7 @@ namespace SCD
 
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & stamp_;
       ar & stacks_;

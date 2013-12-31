@@ -30,7 +30,7 @@ namespace SCD
 		bool operator==(const s_STP_VVR& vvr) const;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & m_axis & m_cosangle & m_outerSTP;
     }
@@ -127,7 +127,7 @@ namespace SCD
 		SCD_API virtual int getNextBVPrime() const=0 ;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & m_nextBVPrime;
     }

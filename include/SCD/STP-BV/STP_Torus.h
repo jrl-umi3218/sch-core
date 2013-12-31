@@ -34,7 +34,7 @@ namespace SCD
     }
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & m_normal & m_center & m_radius;
     }
@@ -81,7 +81,7 @@ namespace SCD
 		SCD_API virtual STP_Feature* clone() const;
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & boost::serialization::base_object<STP_Feature>(*this);
       ar & m_circle & m_sphereRadius & m_VVR0 & m_VVR1 & m_VVR2 & m_VVR3 & m_nextBV;

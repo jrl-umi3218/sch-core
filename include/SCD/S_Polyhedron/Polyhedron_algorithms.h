@@ -17,7 +17,7 @@ namespace SCD
 	  	Vector3 normal;
     public:
       template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
+      void serialize(Archive & ar, const unsigned int /*version*/)
       {
         ar & a;
         ar & b;
@@ -81,7 +81,7 @@ namespace SCD
 		SCD_API void openFromFile(const std::string& filename);
 
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		void serialize(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & vertexes_;
 			ar & triangles_;

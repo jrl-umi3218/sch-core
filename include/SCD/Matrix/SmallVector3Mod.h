@@ -31,7 +31,7 @@ namespace MAL_Default
 		{}
 
     template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & boost::serialization::base_object< Vector3D<T> >(*this);
     }

@@ -293,7 +293,7 @@ namespace SCD
 		const std::vector<SCD::Geometry> & getGeometries() const;
 
     template<class Archive>
-		void load(Archive & ar, const unsigned int version)
+    void load(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
 			ar & m_patches ;
@@ -303,7 +303,7 @@ namespace SCD
 
 		
 		template<class Archive>
-		void save(Archive & ar, const unsigned int version) const
+		void save(Archive & ar, const unsigned int /*version*/) const
 		{
 			ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
 			ar & m_patches ;
