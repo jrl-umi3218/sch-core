@@ -25,21 +25,6 @@ namespace SCD
   protected:
     S_Object * obj_;
   };
-
-
-
-  class S_Object_Raw_GL: public S_Object_GL
-  {
-  public:
-    S_Object_Raw_GL(S_Object *);
-    ~S_Object_Raw_GL();
-
-    virtual void drawGLInLocalCordinates() const;
-
-  private:
-    void computeDisplayList();
-    int displist_;
-  };
 }
 
 SCD::S_Object_GL* createGL(SCD::S_Object*);
