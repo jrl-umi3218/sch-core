@@ -28,7 +28,7 @@ add_library(scd_viewer SHARED
 #	STPBV_gl.cpp
   S_Box_gl.cpp
   S_Sphere_gl.cpp
-#  S_Supperellipsoid_gl.cpp
+  S_Supperellipsoid_gl.cpp
 #  Polyhedron_algorithms_gl.cpp
 )
 target_link_libraries(scd_viewer scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})

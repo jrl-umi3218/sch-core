@@ -21,13 +21,12 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-		#ifdef WITH_OPENGL
-		SCD_API virtual void drawGLInLocalCordinates();
-		#endif
+		SCD_API virtual void getEllipsoidParameter(Scalar & a, Scalar & b, Scalar & c,
+				Scalar & epsilon1, Scalar & epsilon2) const;
 
 	protected:
 		Scalar a_,b_,c_,epsilon1_,epsilon2_;
-		int displist_;
+
 		Scalar _2_e1on2,_2_e2on2,_2on2_e1,_2on2_e2;
 	};
 }
