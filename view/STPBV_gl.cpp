@@ -29,27 +29,12 @@ void STP_BV_GL::drawGLInLocalCordinates()
 void STP_BV_GL::computeDisplayList()
 {
 	const std::vector<Geometry> & geometries = stpbv_->getGeometries();
-	std::cout << " STP_BV_GL::computeDisplayList " << geometries.size() << std::endl;
 	for(unsigned i = 0; i<geometries.size(); ++i)
 	{
 		const Geometry & geom = geometries[i];
 
 		GLuint listID = glGenLists(1);
 		glNewList(listID, GL_COMPILE);
-
-//		{
-//			glPushMatrix();
-//			glLoadIdentity();
-//			double matrix[16]; // this will be passed to OpenGL functions so it has to be a double
-//			for(unsigned i=0; i<4; ++i)
-//				for(unsigned j=0; j<4; ++j)
-//					if(i!=3 && j!=3)
-//						matrix[4*j+i] = geom.rotation(i,j);
-//			matrix[15] = 1;
-
-//			glGetDoublev(GL_MODELVIEW_MATRIX, matrix);
-//			glPopMatrix();
-//		}
 
 		glPushMatrix();
 		glColor3f(geom.color[0], geom.color[1], geom.color[2]);
