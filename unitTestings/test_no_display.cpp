@@ -9,7 +9,7 @@ void display(){}
 /*
 * main - this is the main programme.
 */
-int main (int argc, char *argv[])
+int main ()
 {
 	universe.initializeUniverse();
 
@@ -18,8 +18,8 @@ int main (int argc, char *argv[])
 	universe.TestAnimation();
 	universe.TestPrecision();
 	universe.GeneralTest();
-//	universe.RandomTestSupportFunction();
-//	universe.RandomTestSupportFunctionAllObjects();
+	universe.RandomTestSupportFunction();
+	universe.RandomTestSupportFunctionAllObjects();
 
 	return 0;
 }
