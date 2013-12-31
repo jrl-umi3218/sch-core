@@ -1,10 +1,7 @@
-
 #ifndef _S_BOX_H
 #define _S_BOX_H 
 
 #pragma once
-
-
 
 #include <SCD/scd_api.h>
 #include <SCD/S_Object/S_ObjectNonNormalized.h>
@@ -32,15 +29,10 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-    #ifdef WITH_OPENGL
-		SCD_API virtual void drawGLInLocalCordinates();
-    #endif
-
+		SCD_API virtual void getBoxParameters(Scalar & a, Scalar & b, Scalar & c) const;
 	protected :
 		Scalar a_,b_,c_;
-
-
 	};
-
 }
+
 #endif
