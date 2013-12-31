@@ -1,6 +1,6 @@
 #include "S_Object_gl.h"
-//#include "S_Box_gl.h"
-//#include "S_Sphere_gl.h"
+#include "S_Box_gl.h"
+#include "S_Sphere_gl.h"
 //#include "S_Supperellipsoid_gl.h"
 //#include "Polyhedron_algorithms_gl.h"
 //#include "STPBV_gl.h"
@@ -171,7 +171,8 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
     STP_BV * stp = dynamic_cast<STP_BV *>(obj);
     return (new STP_BV_GL(stp));
   }
-  case(S_Object::TSphere):
+*/
+	case(S_Object::TSphere):
   {
     S_Sphere * sphere = dynamic_cast<S_Sphere *>(obj);
     return (new S_Sphere_GL(sphere));
@@ -181,6 +182,7 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
     S_Box * box = dynamic_cast<S_Box *>(obj);
     return (new S_Box_GL(box));
   }
+/*
   case(S_Object::TSuperellipsoid):
   {
     S_Superellipsoid * ellipse = dynamic_cast<S_Superellipsoid *>(obj);

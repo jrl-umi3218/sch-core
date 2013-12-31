@@ -14,7 +14,7 @@ namespace SCD
 	public:
 		/*!
 		* \brief constructor
-		* \param radius, the shpere radius
+		* \param radius, the sphere radius
 		*/
 		SCD_API S_Sphere(const Scalar& radius);
 		SCD_API virtual ~S_Sphere();
@@ -23,16 +23,10 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-    #ifdef WITH_OPENGL
-		SCD_API virtual void drawGLInLocalCordinates();
-    #endif
+		SCD_API virtual Scalar getRadius() const;
 
 	protected:
 		Scalar radius_;
-		int slices_, stacks_;
-
-
-
 	};
 }
 
