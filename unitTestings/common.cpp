@@ -159,18 +159,15 @@ void TestMaterial::initializeUniverse()
 	}
 	#else
 	{
-		STP_BV s;
-		s.constructFromFileWithGL("/home/fkeith/software/wip/devel-src/qp/stack/robots/hrp2/hrp2_10_description/stpbv/HEAD_LINK1.txt");
-		stpObjects.push_back(s);
+		STP_BV* s1 = new STP_BV();
+		s1->constructFromFileWithGL("sample_stpbv1.txt");
+		stpObjects.push_back(s1);
+		sObj.addObject(s1);
 
-		/*STP_BV s2_;
-		s2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
-		stpObjects.push_back(s2_);*/
-
-
-		sObj.addObject(&(stpObjects[0]));
-		//sObj.addObject(&(stpObjects[1]));
-
+		STP_BV* s2 = new STP_BV();
+		s2->constructFromFileWithGL("sample_stpbv2.txt");
+		stpObjects.push_back(s2);
+		sObj.addObject(s2);
 
 		//STP_BV_P sp;
 		//sp.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt");
@@ -183,8 +180,6 @@ void TestMaterial::initializeUniverse()
 
 		//sObj.addObject(&(stppObjects[0]));
 		//sObj.addObject(&(stppObjects[1]));
-
-
 
 	//		S_Polyhedron P;
 	//		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(4).txt.otp");

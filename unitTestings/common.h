@@ -38,7 +38,7 @@ struct TestMaterial
 	unsigned int CurrentObj;
 
 private:
-	std::vector<SCD::STP_BV> stpObjects;
+	std::vector<SCD::STP_BV*> stpObjects;
 	std::vector<SCD::STP_BV_P> stppObjects;
 	std::vector<SCD::S_Polyhedron> polyObjects;
 };
