@@ -209,11 +209,9 @@ STP_BV & STP_BV::operator =(const STP_BV & bv)
 }
 
 void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2, 
-									 const Point3& center, Scalar radius, int step, 
-									 std::vector<Point3>* res) const
+									 const Point3& center, int step,
+									 std::vector<Point3>& res) const
 {
-
-
 	Vector3 v1=p1-center, v2p=p2-center;
 
 	Scalar k=v1.norm();
@@ -238,18 +236,18 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 
 
 
-	res->push_back(p1);
+	res.push_back(p1);
 
 	Scalar a=angle;
 	for (int i=1;i<step;i++)
 	{
 		Point3 tmp((const Scalar)cos(a),(const Scalar)(sin(a)),(const Scalar)0);
 		tmp=(m*tmp)*k+center;
-		res->push_back(tmp);
+		res.push_back(tmp);
 		a+=angle;
 
 	}
-	res->push_back(p2);
+	res.push_back(p2);
 }
 
 void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2, 
@@ -574,7 +572,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 		p2.normalize();
 		if(isRealTorus)
 		{
-			computeArcPointsBetween(p2, p1, Point3(0.0, 0.0, 0.0), 1.00, step, &computedPoints);
+			computeArcPointsBetween(p2, p1, Point3(0.0, 0.0, 0.0), step, computedPoints);
 			//create and register the displayList
 			Geometry geometryTorus5(Geometry::TRIANGLE);
 			geometryTorus5.color = Point3(1.0, 0.59, 0.0);
@@ -600,7 +598,7 @@ void STP_BV::constructFromFile(const std::string& filename)
 		p2.normalize();
 		if(isRealTorus)
 		{
-			computeArcPointsBetween(p1,p2, Point3(0.0, 0.0, 0.0), 1.00, step, &computedPoints);
+			computeArcPointsBetween(p1,p2, Point3(0.0, 0.0, 0.0), step, computedPoints);
 			//create and register the displayList
 			Geometry geometryTorus6(Geometry::TRIANGLE);
 			geometryTorus6.color = Point3(1.0, 1.0, 0.3);
@@ -639,10 +637,10 @@ void STP_BV::constructFromFile(const std::string& filename)
 			firstArc.clear();
 			lastArc.clear();
 			computedPoints.clear();
-			computeArcPointsBetween(p1, p2, patchesCenter[dvvr[2].m_outerSTP], sRadius, step, &firstArc);
-			computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], sRadius, step, &lastArc);
+			computeArcPointsBetween(p1, p2, patchesCenter[dvvr[2].m_outerSTP], step, firstArc);
+			computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], step, lastArc);
 			r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
-			computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], r, step, &computedPoints);
+			computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], step, computedPoints);
 			for(int j = 1 ; j < step ; ++j)
 			{
 				arcCenter = computeLinesCommonPoint(patchesCenter[dvvr[0].m_outerSTP], 
@@ -650,10 +648,10 @@ void STP_BV::constructFromFile(const std::string& filename)
 					patchesCenter[dvvr[2].m_outerSTP],
 					firstArc[j]);
 				r = sRadius - (arcCenter - patchesCenter[dvvr[2].m_outerSTP]).norm();
-				computeArcPointsBetween(firstArc[j], lastArc[j], arcCenter, r, step, &computedPoints);
+				computeArcPointsBetween(firstArc[j], lastArc[j], arcCenter, step, computedPoints);
 			}
 			r = sRadius - (patchesCenter[dvvr[1].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
-			computeArcPointsBetween(p2, p3, patchesCenter[dvvr[1].m_outerSTP], r, step, &computedPoints);
+			computeArcPointsBetween(p2, p3, patchesCenter[dvvr[1].m_outerSTP], step, computedPoints);
 
 			//create the torus displayList
 			Geometry geometryTorus7(Geometry::TRIANGLE);

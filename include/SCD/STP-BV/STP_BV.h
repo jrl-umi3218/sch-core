@@ -329,11 +329,10 @@ namespace SCD
 		*  \param p1 first point of the arc
 		*  \param p2 last point of the arc
 		*  \param center center around which the arc revolves
-		*  \param radius radius of the arc
 		*  \param step number of subdivisions
 		*  \param res vector to store the resulting points (including first and last points)
 		*/
-		SCD_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, double radius, int step, std::vector<Point3>* res) const;
+		SCD_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, int step, std::vector<Point3>& res) const;
 
 		/*!
 		*  \brief Computes the points of

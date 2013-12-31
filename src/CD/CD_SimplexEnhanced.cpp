@@ -9,7 +9,11 @@ inline char sign(Scalar i)
 }
 
 
-inline void GetClosestSubSimplexCCKWTriangle(const Vector3& AB,const Vector3& AC,const Vector3& ABC,const Vector3& AO,const Point3& A,const Point3& B,const Point3& C, Scalar normA,Scalar normB,Scalar normC, CD_SimplexKeptPoints &k,unsigned char bA,unsigned char bB,unsigned char bC)
+inline void GetClosestSubSimplexCCKWTriangle(
+		const Vector3& AB,const Vector3& AC,
+		const Vector3& ABC,const Vector3& AO,
+		CD_SimplexKeptPoints &k,
+		unsigned char bA,unsigned char bB,unsigned char bC)
 {
 	if ((ABC^AC)*AO>=0)
 	{
@@ -188,7 +192,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 				{
 					if (d_abc>=0)
 					{
-						GetClosestSubSimplexCCKWTriangle(ab_,ac_,ABC,AO,s4_,s1_,s2_,norm4_,norm1_,norm2_,k,3,0,1);
+						GetClosestSubSimplexCCKWTriangle(ab_,ac_,ABC,AO,k,3,0,1);
 						return;
 
 					}
@@ -202,7 +206,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 				{
 					if (d_adb>=0)
 					{
-						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,s4_,s3_,s1_,norm4_,norm3_,norm1_,k,3,2,0);
+						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,k,3,2,0);
 						return;
 					}
 					else
@@ -218,7 +222,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 				{
 					if (d_acd>=0)
 					{
-						GetClosestSubSimplexCCKWTriangle(ac_,ad_,ACD,AO,s4_,s2_,s3_,norm4_,norm2_,norm3_,k,3,1,2);
+						GetClosestSubSimplexCCKWTriangle(ac_,ad_,ACD,AO,k,3,1,2);
 						return;
 					}
 					else
@@ -232,7 +236,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 				{
 					if (d_adb>=0)
 					{
-						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,s4_,s3_,s1_,norm4_,norm3_,norm1_,k,3,2,0);
+						GetClosestSubSimplexCCKWTriangle(ad_,ab_,ADB,AO,k,3,2,0);
 						return;
 					}
 					else
