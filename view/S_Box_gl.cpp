@@ -16,7 +16,7 @@ S_Box_GL::S_Box_GL(S_Box * obj)
   createDispList();
 }
 
-void S_Box_GL::drawGLInLocalCordinates()
+void S_Box_GL::drawGLInLocalCordinates() const
 {
   glCallList(displist_);
 }

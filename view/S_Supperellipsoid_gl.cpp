@@ -25,7 +25,7 @@ S_Superellipsoid_GL::S_Superellipsoid_GL(S_Superellipsoid * obj)
   createDispList();
 }
 
-void S_Superellipsoid_GL::drawGLInLocalCordinates()
+void S_Superellipsoid_GL::drawGLInLocalCordinates() const
 {
   glCallList(displist_);
 }

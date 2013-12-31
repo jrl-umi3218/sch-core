@@ -16,7 +16,7 @@ STP_BV_GL::STP_BV_GL(STP_BV * obj)
 	computeDisplayList();
 }
 
-void STP_BV_GL::drawGLInLocalCordinates()
+void STP_BV_GL::drawGLInLocalCordinates() const
 {
 	for(unsigned i =0; i< displayList_.size(); ++i)
 	{

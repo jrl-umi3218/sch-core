@@ -14,12 +14,13 @@ namespace SCD
     /*!
     * \brief Displays the objects in openGl. default is to load unviverse cordinates and call drawGLInLocalCordinates()
     */
-    SCD_API virtual void drawGL();
+    SCD_API virtual void drawGL() const;
 
+  protected:
     /*!
     * \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
     */
-    SCD_API virtual void drawGLInLocalCordinates() = 0;
+    SCD_API virtual void drawGLInLocalCordinates() const = 0;
 
   protected:
     S_Object * obj_;
@@ -33,12 +34,10 @@ namespace SCD
     S_Object_Raw_GL(S_Object *);
     ~S_Object_Raw_GL();
 
-    /*!
-    * \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
-    */
-    SCD_API virtual void drawGLInLocalCordinates();
+    virtual void drawGLInLocalCordinates() const;
 
   private:
+    void computeDisplayList();
     int displist_;
   };
 }

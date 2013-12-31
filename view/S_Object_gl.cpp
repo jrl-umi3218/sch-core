@@ -21,7 +21,7 @@ S_Object_GL::S_Object_GL(S_Object * obj)
 : obj_(obj)
 {}
 
-void S_Object_GL::drawGL()
+void S_Object_GL::drawGL() const
 {
   glPushMatrix();
   double d[16];
@@ -38,9 +38,16 @@ void S_Object_GL::drawGL()
 S_Object_Raw_GL::S_Object_Raw_GL(S_Object * obj)
 : S_Object_GL(obj)
 , displist_(-1)
-{}
+{
+  computeDisplayList();
+}
 
-void S_Object_Raw_GL::drawGLInLocalCordinates()
+void S_Object_Raw_GL::drawGLInLocalCordinates() const
+{
+  glCallList(displist_);
+}
+
+void S_Object_Raw_GL::computeDisplayList()
 {
   if (displist_==-1)
   {
@@ -142,8 +149,6 @@ void S_Object_Raw_GL::drawGLInLocalCordinates()
     glEnd();
     glEndList();
   }
-
-  glCallList(displist_);
 }
 
 SCD::S_Object_GL* createGL(SCD::S_Object* obj)

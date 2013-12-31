@@ -10,10 +10,8 @@ namespace SCD
 	{
 	public:
 		STP_BV_GL(STP_BV *);
-		/*
-		*\brief Draws the Polyhedron in OpenGL
-		*/
-		virtual void drawGLInLocalCordinates();
+
+		virtual void drawGLInLocalCordinates() const;
 
 	private:
 		STP_BV * stpbv_;

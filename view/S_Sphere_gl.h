@@ -11,10 +11,7 @@ namespace SCD
   public:
     S_Sphere_GL(S_Sphere * obj);
 
-     /*!
-    * \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
-    */
-    SCD_API virtual void drawGLInLocalCordinates();
+    virtual void drawGLInLocalCordinates() const;
 
   private:
     void createDispList();

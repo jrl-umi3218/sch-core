@@ -12,10 +12,7 @@ namespace SCD
     S_Box_GL(S_Box * obj);
     ~S_Box_GL();
 
-     /*!
-    * \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
-    */
-    virtual void drawGLInLocalCordinates();
+    virtual void drawGLInLocalCordinates() const;
 
   private:
     void createDispList();

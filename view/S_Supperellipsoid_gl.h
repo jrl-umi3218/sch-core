@@ -12,10 +12,7 @@ namespace SCD
     S_Superellipsoid_GL(S_Superellipsoid * obj);
     ~S_Superellipsoid_GL();
 
-    /*!
-    * \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
-    */
-    virtual void drawGLInLocalCordinates();
+    virtual void drawGLInLocalCordinates() const;
 
   private:
     void createDispList();

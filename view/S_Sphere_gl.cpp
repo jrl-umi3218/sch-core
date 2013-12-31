@@ -13,12 +13,10 @@ S_Sphere_GL::S_Sphere_GL(S_Sphere * obj)
 , sphere_(obj)
 , displist_(-1)
 {
-  if (obj == 0x0)
-    std::cerr << "What the fuck " << std::endl;
   createDispList();
 }
 
-void S_Sphere_GL::drawGLInLocalCordinates()
+void S_Sphere_GL::drawGLInLocalCordinates() const
 {
   glCallList(displist_);
 }

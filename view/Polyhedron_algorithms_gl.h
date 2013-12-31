@@ -7,10 +7,8 @@ namespace SCD
   {
   public:
     Polyhedron_algorithms_GL(Polyhedron_algorithms *);
-  /*
-  *\brief Draws the Polyhedron in OpenGL
-  */
-  virtual void drawGLInLocalCordinates();
+
+    virtual void drawGLInLocalCordinates() const;
 
   private:
     Polyhedron_algorithms * pa_;

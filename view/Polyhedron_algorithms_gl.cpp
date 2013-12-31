@@ -15,7 +15,7 @@ Polyhedron_algorithms_GL::Polyhedron_algorithms_GL(Polyhedron_algorithms *pa)
   createDispList();
 }
 
-void Polyhedron_algorithms_GL::drawGLInLocalCordinates()
+void Polyhedron_algorithms_GL::drawGLInLocalCordinates() const
 {
   glCallList(displayList_);
 }
