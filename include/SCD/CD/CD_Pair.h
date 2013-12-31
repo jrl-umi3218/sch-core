@@ -52,7 +52,7 @@ namespace SCD
 		*/
 		SCD_API Scalar getDistanceWithoutPenetrationDepth();
 
-		/*
+		/*!
 		* brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
 		*/
 
@@ -68,12 +68,12 @@ namespace SCD
 		*/
 		SCD_API void setRelativePrecision(Scalar precision);
 
-		/*
+		/*!
 		*\brief Sets the machine epsilon. Default is 1e-24
 		*/
 		SCD_API void setEpsilon(Scalar);
 
-		/*
+		/*!
 		*\brief returns a pointer to the ith object in the pair
 		*/
 
@@ -81,12 +81,6 @@ namespace SCD
 		{
 			return (i==0)?sObj1_:sObj2_;
 		}
-
-
-
-
-
-
 
 	private :
 		S_Object* sObj1_, * sObj2_;
@@ -121,13 +115,7 @@ namespace SCD
 
 		void witPoints(Point3& p1,Point3& p2);
 
-
 		CD_Depth depthPair;
-
-
-
-
-
 	};
 }
 #endif

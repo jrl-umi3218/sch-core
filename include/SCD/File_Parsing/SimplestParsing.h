@@ -43,7 +43,5 @@ namespace FileParsing
 
 	private:
 		std::stringstream stream_;
-
-
 	};
 }

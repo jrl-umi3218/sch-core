@@ -11,16 +11,11 @@
 
 namespace SCD
 {
-
 	class S_PolyhedronVertex : boost::noncopyable
 	{
 	public:
 		SCD_API S_PolyhedronVertex(void);
-
-
 		SCD_API virtual ~S_PolyhedronVertex(void);
-
-
 
 		SCD_API void addNeighbor(S_PolyhedronVertex*);
 
@@ -37,13 +32,13 @@ namespace SCD
 		*/
 		SCD_API virtual S_PolyhedronVertex* clone();
 
-		/*
+		/*!
 		* \brief clears the Neighbors
 		*/
 		SCD_API void clearNeighbors();
 
 
-		/*
+		/*!
 		* \brief checks if this is the support point of the polyhedron in some given direction
 		* \param direction the direction vector
 		* \param cuurentsupportH, is the support height of this points, usually given by a neighbor
@@ -52,42 +47,41 @@ namespace SCD
 		SCD_API virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
 
 
-		/*
+		/*!
 		* \brief checks if this is the support point of the polyhedron in some given direction
 		* \param direction the direction vector
 		* \return returns a boolean answer and stores the next vertex and its support height in case it is not the support 
 		*/
 		SCD_API virtual bool isHere(const Vector3& direction);
 
-		/*
+		/*!
 		* \brief updates fast access neighbors array, must be called at each neighbors modification
 		*/
 		SCD_API void updateFastArrays();
 
-		/*
+		/*!
 		* \brief sets the number of the vertex in the polyhedron
 		*/
 		SCD_API void setNumber(unsigned int);
 
-		/*
+		/*!
 		* \brief gets the number of the vertex in the polyhedron
 		*/
 		SCD_API unsigned int getNumber()const;
 
-		/*
+		/*!
 		* \brief gets the next vertex in a support point search
 		*/
 		SCD_API S_PolyhedronVertex* getNextVertex()const;
 
-		/*
+		/*!
 		* \brief gets the next vertex support height
 		*/
 		SCD_API Scalar getNextVertexH()const;
 
-		/*
+		/*!
 		* \brief gets the number of neighbors
 		*/
-
 		SCD_API unsigned getNumNeighbors()const;
 
     template<class Archive>

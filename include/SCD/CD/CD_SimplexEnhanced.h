@@ -33,12 +33,12 @@ namespace SCD
 		*/
 		SCD_API virtual void filter(const CD_SimplexKeptPoints &k);
 
-		/*
+		/*!
 		* \brief returns the distances of the simplex points to the origin
 		*/
 		SCD_API Scalar norms(const char i)const;
 
-		/*
+		/*!
 		* \brief returns the distances of the simplex points to the origin
 		*/
 		SCD_API Scalar& norms(const char i);
@@ -89,11 +89,6 @@ namespace SCD
 	private:
 		static Scalar square_(const Scalar& a);
 		static Scalar cube_(const Scalar& a);
-
-
-
-
-
 	};
 
 

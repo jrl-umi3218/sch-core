@@ -28,7 +28,7 @@ namespace SCD
 		*/
 		SCD_API void setRelativePrecision(Scalar);
 
-		/*
+		/*!
 		*\brief Sets the machine epsilon. Default is 1e-24
 		*/
 		SCD_API void setEpsilon(Scalar);

@@ -72,7 +72,7 @@ namespace SCD
 		/*! 
 		*  \brief Default constructor
 		*/
-		s_Triangle() {};
+		s_Triangle() {}
 		/*! 
 		*  \brief Constructor
 		*  \param vertex1 first vertex of the triangle

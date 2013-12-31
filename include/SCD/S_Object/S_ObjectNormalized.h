@@ -19,7 +19,7 @@ namespace SCD
 		SCD_API S_ObjectNormalized(void);
 		SCD_API virtual ~S_ObjectNormalized(void);
 
-				/*! 
+		/*!
 		*  \brief put the vector NORMALIZED it in objects coordinates, then calls l_support. DO NOT OVERLOAD IT UNLESS YOU KNOW WHAT YOU ARE DOING (if you want to define the support function, overload l_support)
 		*  \param v direction vector
 		*  \return returns the support point.

@@ -8,10 +8,9 @@ namespace SCD
 	class STP_BV_P :
 		public STP_BV
 	{
-	public:		
-
+	public:
 		SCD_API STP_BV_P(void);
-		
+
 		SCD_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
 		/*!
@@ -40,12 +39,7 @@ namespace SCD
 
 		SCD_API virtual S_ObjectType getType() const;
 
-
-
-
 	private:
 		Polyhedron_algorithms poly;
-
-
 	};
 }

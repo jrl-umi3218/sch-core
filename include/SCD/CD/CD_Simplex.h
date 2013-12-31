@@ -10,7 +10,6 @@
 
 namespace SCD
 {
-
 	enum CD_SimplexType 
 	{
 		CD_Point,
@@ -62,35 +61,18 @@ namespace SCD
 		SCD_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
 		SCD_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4);
 
-
 		SCD_API virtual ~CD_Simplex();
-
-
-
-
 
 		SCD_API CD_SimplexType getType()const;
 
-
-
-
-
-
-
 		SCD_API const Point3& operator[]( unsigned char) const;
-
 		SCD_API Point3& operator[]( unsigned char);
 
 
-
 		SCD_API CD_Simplex& operator=(const CD_Simplex& s);
-
 		SCD_API CD_Simplex& operator=(const Point3& p);
 
-
-
 		SCD_API bool operator==(const CD_Simplex& s);
-
 		SCD_API bool operator!=(const CD_Simplex& s);
 
 
@@ -120,13 +102,6 @@ namespace SCD
 		*/
 		SCD_API Scalar squareDistanceAtOrigin(const Vector3 &v)const;
 
-
-
-
-
-
-
-
 		/*!
 		* \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes 
 		*/
@@ -150,15 +125,10 @@ namespace SCD
 
 	protected :
 
-
 		CD_SimplexType type_;
 
 		Point3 s1_,s2_,s3_,s4_;
 		Vector3 ab_,ac_,ad_;
-
-
-
-
 
 		static const Scalar zero_;
 		static const Scalar zero2_;

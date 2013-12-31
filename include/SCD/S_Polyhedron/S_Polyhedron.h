@@ -25,19 +25,15 @@ namespace SCD
 	{
 	public:
 		SCD_API S_Polyhedron(void);
-
 		SCD_API S_Polyhedron(const S_Polyhedron&);
-
-
 		SCD_API virtual ~S_Polyhedron(void);
 
 		SCD_API const S_Polyhedron& operator =(const S_Polyhedron&);
 
-		/*
+		/*!
 		* \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options : 
 		* \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" 
 		*/
-
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
 
@@ -78,7 +74,7 @@ namespace SCD
 		*/
 		SCD_API void clear();
 
-		/*
+		/*!
 		* \brief deletes aal the vertexes that dont have neighbors;
 		*/
     SCD_API void deleteVertexesWithoutNeighbors();
