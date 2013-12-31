@@ -77,7 +77,7 @@ namespace SCD
 	class S_Object
 	{
 
-	protected:
+	public:
 		/*! 
 		*  \brief gives the support point for a given vector in local cordinates and a given last feature. MUST BE OVERLOADED.
 		*  \param v direction vector (normalized)
@@ -114,13 +114,6 @@ namespace SCD
 		*  \brief Constructs the Object from a file
 		*/
 		SCD_API virtual void constructFromFile(const std::string& filename);
-
-    #ifdef WITH_OPENGL
-	   /*
-		*  \brief Constructs the Object from a file and prepares the openGL display, default is to call construct from file
-		*/
-		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
-    #endif
 
 		/*
 		*  \brief Sets the Orientation
@@ -228,20 +221,9 @@ namespace SCD
 		*/
 		SCD_API void getTransformationMatrix(Scalar *S) const;
 
-    #ifdef WITH_OPENGL
-		/*!
-		* \brief Displays the objects in openGl. default is to load unviverse cordinates and call drawGLInLocalCordinates()
-		*/
-		SCD_API virtual void drawGL();
 
-	   /*!
-		* \brief displays the object in its cordinates using OpenGl. Default is support-mapping based display method.
-		*/
-		SCD_API virtual void drawGLInLocalCordinates();
-    #endif
-
-
-
+		int getSlices() const;
+		int getStacks() const;
 
 		/*!
 		* \brief type of a solid object. Don't use it to cast !
@@ -255,7 +237,6 @@ namespace SCD
 			TBox,
 			TSuperellipsoid,
 			TSTP_BV_WithPolyhedron
-
 		};
 
 		/*!
@@ -277,7 +258,6 @@ namespace SCD
     void serialize(Archive & ar, const unsigned int version)
     {
       ar & stamp_;
-      ar & displist_;
       ar & stacks_;
       ar & slices_;
       ar & mRot_;
@@ -293,17 +273,11 @@ namespace SCD
 
 		S_ObjectTimeStamp stamp_;
 
-		int displist_;
-
 		int stacks_,slices_;
 
 		Matrix3x3 mRot_;
 
 		Vector3 trans_;
-
-
-
-
 	};
 
 

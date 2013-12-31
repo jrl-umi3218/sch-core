@@ -23,3 +23,14 @@ inline const Vector3& S_Object::getPosition() const
 {
 	return trans_;
 }
+
+inline int S_Object::getSlices() const
+{
+	return slices_;
+}
+
+inline int S_Object::getStacks() const
+{
+	return stacks_;
+}
+

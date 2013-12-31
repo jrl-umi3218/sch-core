@@ -293,8 +293,8 @@ void display (void)
 	//gluLookAt(0,0,0,0,0,-1,0,1,0);
 	glColor3d(0.6,0.7,0.6);
 
-	for (size_t i=0;i<universe.sObj.size();++i)
-		universe.sObj[i]->drawGL();
+//	for (size_t i=0;i<universe.sObj.size();++i)
+//		universe.sObj[i]->drawGL();
 
 	Vector3 p=universe.sObj[universe.CurrentObj]->getPosition();
 	glDisable (GL_LIGHTING);
