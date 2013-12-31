@@ -268,9 +268,9 @@ void TestMaterial::TestPrecision()
 		sObj.sceneProximityQuery();
 
 # ifdef OUTPUT_FILE
-		for (int k=0;k<sObj.size();k++)
+		for (unsigned k=0;k<sObj.size();k++)
 		{
-			for (int j=0;j<k;j++)
+			for (unsigned j=0;j<k;j++)
 			{
 				Point3 p1,p2;
 				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
@@ -420,9 +420,9 @@ void TestMaterial::TestAnimation()
 		sObj.sceneProximityQuery();
 
 # ifdef OUTPUT_FILE
-		for (int k=0;k<sObj.size();k++)
+		for (unsigned k=0;k<sObj.size();k++)
 		{
-			for (int j=0;j<k;j++)
+			for (unsigned j=0;j<k;j++)
 			{
 				Point3 p1,p2;
 				Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);

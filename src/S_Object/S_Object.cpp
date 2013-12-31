@@ -259,7 +259,7 @@ void S_Object::resetTransformation()
 
 
 
-void S_Object::constructFromFile(const std::string &filename)
+void S_Object::constructFromFile(const std::string &)
 {
 }
 

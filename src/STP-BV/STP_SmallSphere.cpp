@@ -205,21 +205,17 @@ bool STP_SmallSphere::isHereFirstNeighbour(const Vector3& v)
 
 
 
-bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
+bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int /*idp*/)
 {
-	
-	
 	STP_VVR * currentVVR = m_neighbors;
 
 	while((currentVVR->isInsidePrime(v)>=0))
 	{
-
 		++currentVVR;
 		if (currentVVR == m_endneighbors)
 		{
 			return true;
 		}
-
 	}
 
 	m_nextBVPrime = currentVVR->m_outerSTP ;
@@ -228,7 +224,7 @@ bool STP_SmallSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 }
 
 
-bool STP_SmallSphere::isHereHybrid(const Vector3& v,int idp)
+bool STP_SmallSphere::isHereHybrid(const Vector3& v,int /*idp*/)
 {
 	STP_VVR * currentVVR = m_neighbors;
 
@@ -240,13 +236,11 @@ bool STP_SmallSphere::isHereHybrid(const Vector3& v,int idp)
 
 	while( currentVVR !=  m_endneighbors )
 	{
-
 		dp=currentVVR->isInsidePrime(v);
 		if (d>dp)
 		{
 			m_nextBVPrime=currentVVR->m_outerSTP;
 			d=dp;
-
 		}
 		++currentVVR;
 	}

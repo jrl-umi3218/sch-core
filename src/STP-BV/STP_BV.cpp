@@ -221,17 +221,10 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 
 	k=(v2p.norm()+k)/2;
 
-
 	v1.normalize();
 	v2p.normalize();
 
-
 	Scalar angle=acos(v1*v2p)/(step);
-
-
-
-
-
 
 	Vector3 v3=v1^v2p;
 
@@ -838,7 +831,7 @@ Point3 STP_BV::computeCenter(const std::vector<Point3>& points)
 	{
 		res += *it;
 	}
-	res /= points.size();
+	res /= static_cast<double>(points.size());
 
 	return res;
 }
@@ -1245,8 +1238,8 @@ Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
 
 
 
-bool STP_BV::ray_cast(const Point3& source, const Point3& target,
-					  Scalar& param, Vector3& normal) const 
+bool STP_BV::ray_cast(const Point3& , const Point3& ,
+						Scalar& , Vector3& ) const
 {
 	return false;
 }

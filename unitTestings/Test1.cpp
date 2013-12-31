@@ -269,7 +269,7 @@ updateTimer (struct glut_timer_t *t)
 * handleKeyboard - keyboard input handling
 */
 static void
-handleKeyboard (struct keyboard_input_t *k)
+handleKeyboard (struct keyboard_input_t * /*k*/)
 {
 	/*
 	* handle here continuous actions when
@@ -365,7 +365,7 @@ void display (void)
 
 
 static void
-keyPress (unsigned char key, int x, int y)
+keyPress (unsigned char key, int /*x*/, int /*y*/)
 {
 	static int lightOn = 1;
 
@@ -434,7 +434,7 @@ keyPress (unsigned char key, int x, int y)
 * Called when user release a key.
 */
 static void
-keyUp (unsigned char key, int x, int y)
+keyUp (unsigned char key, int /*x*/, int /*y*/)
 {
 	keyboard.keymap[key] = 0;
 }
@@ -445,7 +445,7 @@ keyUp (unsigned char key, int x, int y)
 * Called when user press a special key.
 */
 static void
-specialKeyPress (int key, int x, int y)
+specialKeyPress (int key, int /*x*/, int /*y*/)
 {
 	keyboard.special[key] = 1;
 }
@@ -456,7 +456,7 @@ specialKeyPress (int key, int x, int y)
 * Called when user release a special key.
 */
 static void
-specialKeyUp (int key, int x, int y)
+specialKeyUp (int key, int /*x*/, int /*y*/)
 {
 	keyboard.special[key] = 0;
 }

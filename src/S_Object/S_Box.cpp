@@ -15,7 +15,7 @@ S_Box::~S_Box(void)
 {
 }
 
-Point3  S_Box::l_Support(const Vector3& v, int& lastFeature)const
+Point3  S_Box::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {
 	return Point3(sign(v[0])*a_,sign(v[1])*b_,sign(v[2])*c_);
 	
