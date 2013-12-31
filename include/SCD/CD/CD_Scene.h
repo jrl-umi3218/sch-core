@@ -16,8 +16,6 @@ namespace SCD
 {
 	class CD_Scene
 	{
-
-
 	public:
 		SCD_API CD_Scene(void);
 		SCD_API virtual ~CD_Scene(void);
@@ -48,11 +46,6 @@ namespace SCD
 
 
 		SCD_API int  sceneProximityQuery();
-
-
-
-
-
 
 		SCD_API S_Object * operator[](unsigned char i)const
 		{
@@ -92,8 +85,6 @@ namespace SCD
 		}
 
 
-
-
 	protected:
 		std::vector <S_Object*> objects_;
 
@@ -102,11 +93,6 @@ namespace SCD
 		std::vector <std::vector <Point3 > > witness_;
 
 		std::vector <std::vector <Scalar > > distances_;
-
-
-
-
-
 	};
 }
 #endif
