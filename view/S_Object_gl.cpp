@@ -80,3 +80,12 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
   }
   return 0x0;
 }
+
+
+std::vector<SCD::S_Object_GL*> createGL(SCD::CD_Scene& scene)
+{
+  std::vector<SCD::S_Object_GL*> vec;
+  for (unsigned i=0; i<scene.size(); ++i)
+    vec.push_back(createGL(scene[i]));
+  return vec;
+}

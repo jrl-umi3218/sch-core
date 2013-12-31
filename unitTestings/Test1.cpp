@@ -223,12 +223,7 @@ init (void)
 	universe.initializeUniverse();
 
 	//create the gl volumes.
-	for(unsigned i=0; i<universe.sObj.size(); ++i)
-	{
-		S_Object_GL * objGL = createGL(universe.sObj[i]);
-		if(objGL != 0x0)
-			sObjGL.push_back(objGL);
-	}
+	createGL(universe.sObj);
 }
 
 

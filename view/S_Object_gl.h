@@ -2,6 +2,7 @@
 #define _S_OBJECT_GL_H
 
 #include <SCD/S_Object/S_Object.h>
+#include <SCD/CD/CD_Scene.h>
 #include <boost/noncopyable.hpp>
 
 namespace SCD
@@ -28,5 +29,6 @@ namespace SCD
 }
 
 SCD::S_Object_GL* createGL(SCD::S_Object*);
+std::vector<SCD::S_Object_GL*> createGL(SCD::CD_Scene&);
 
 #endif //_S_OBJECT_GL_H

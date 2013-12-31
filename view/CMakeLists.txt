@@ -35,3 +35,7 @@ add_library(scd_viewer SHARED
 target_link_libraries(scd_viewer scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 
 
+install(FILES S_Object_gl.h
+     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/SCD/view/
+     PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
+)

@@ -20,6 +20,4 @@ namespace SCD
   };
 }
 
-SCD::S_Object_GL* createGL(SCD::S_Object*);
-
 #endif //_S_OBJECT_GL_H
