@@ -72,11 +72,6 @@ AddSourceGroup(SOURCES_STP_BV "STP-BV")
 link_directories(${Boost_LIBRARY_DIRS})
 ADD_LIBRARY(scd SHARED ${SOURCES} ${HEADERS})
 
-IF(WITH_OPENGL)
-  include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
-  target_link_libraries(scd ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
-ENDIF(WITH_OPENGL)
-
 target_link_libraries(scd ${Boost_LIBRARIES})
 
 

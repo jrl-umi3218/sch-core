@@ -2,13 +2,11 @@
 
 #include <stdlib.h>
 
-#ifdef WITH_OPENGL
 # if defined __APPLE__
 #  include <GLUT/glut.h>
 # else
 #  include <GL/glut.h>
 # endif // __APPLE__
-#endif // WITH_OPENGL
 
 #include <ctime>
 #include <math.h>
@@ -24,6 +22,12 @@
 #include <ios>
 #include <fstream>
 #include <vector>
+
+#include "../view/S_Object_gl.h"
+
+using namespace SCD;
+
+std::vector<S_Object_GL*> sObjGL;
 
 extern std::fstream outfile;
 
@@ -217,6 +221,14 @@ init (void)
 	/*inialize objects*/
 
 	universe.initializeUniverse();
+
+	//create the gl volumes.
+	for(unsigned i=0; i<universe.sObj.size(); ++i)
+	{
+		S_Object_GL * objGL = createGL(universe.sObj[i]);
+		if(objGL != 0x0)
+			sObjGL.push_back(objGL);
+	}
 }
 
 
@@ -293,8 +305,8 @@ void display (void)
 	//gluLookAt(0,0,0,0,0,-1,0,1,0);
 	glColor3d(0.6,0.7,0.6);
 
-//	for (size_t i=0;i<universe.sObj.size();++i)
-//		universe.sObj[i]->drawGL();
+	for (size_t i=0;i<universe.sObj.size();++i)
+		sObjGL[i]->drawGL();
 
 	Vector3 p=universe.sObj[universe.CurrentObj]->getPosition();
 	glDisable (GL_LIGHTING);

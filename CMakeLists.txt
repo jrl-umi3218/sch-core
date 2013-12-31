@@ -46,15 +46,6 @@ else(GLUT_FOUND)
 endif(GLUT_FOUND)
 
 
-#you need GLUT to display the objects or to run the test
-if(GLUT_FOUND)
-  set(WITH_OPENGL 1)
-  # used variable in SCD.pc.cmake
-  PKG_CONFIG_APPEND_CFLAGS("-DWITH_OPENGL")
-  add_definitions("-DWITH_OPENGL")
-endif(GLUT_FOUND)
-
-
 # Optimisation flags when building with RELEASE
 #----------------------------------------------
 IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
@@ -66,7 +57,9 @@ ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
 PKG_CONFIG_APPEND_LIBS("scd")
 
 ADD_SUBDIRECTORY(src)
-ADD_SUBDIRECTORY(view)
+if(GLUT_FOUND)
+ ADD_SUBDIRECTORY(view)
+endif(GLUT_FOUND)
 ADD_SUBDIRECTORY(unitTestings)
 
 SETUP_PROJECT_FINALIZE()
