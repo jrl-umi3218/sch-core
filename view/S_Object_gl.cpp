@@ -2,7 +2,7 @@
 #include "S_Box_gl.h"
 #include "S_Sphere_gl.h"
 #include "S_Supperellipsoid_gl.h"
-//#include "Polyhedron_algorithms_gl.h"
+#include "Polyhedron_algorithms_gl.h"
 //#include "STPBV_gl.h"
 
 #include <boost/math/constants/constants.hpp>
@@ -160,12 +160,12 @@ SCD::S_Object_GL* createGL(SCD::S_Object* obj)
   {
     return (new S_Object_Raw_GL(obj));
   }
-/*
   case(S_Object::TPolyhedron):
   {
     Polyhedron_algorithms * polyhedron = dynamic_cast<Polyhedron_algorithms *>(obj);
     return (new Polyhedron_algorithms_GL(polyhedron));
   }
+    /*
   case(S_Object::TSTP_BV):
   {
     STP_BV * stp = dynamic_cast<STP_BV *>(obj);

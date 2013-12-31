@@ -34,8 +34,6 @@ namespace SCD
 		* This method computes all the needed data for display and every distance calculation method.
 		*/
 		SCD_API virtual void constructFromFileWithGL(const std::string& filename);
-
-		SCD_API virtual void drawGLInLocalCordinates();
     #endif
 
 		SCD_API virtual ~STP_BV_P(void);

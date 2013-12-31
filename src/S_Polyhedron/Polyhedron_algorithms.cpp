@@ -13,12 +13,17 @@
 
 using namespace SCD;
 
-Polyhedron_algorithms::Polyhedron_algorithms(void):fastVertexes_(NULL),lastVertexes_(NULL),displayList_(-1)
+Polyhedron_algorithms::Polyhedron_algorithms(void)
+  :fastVertexes_(0x0)
+  ,lastVertexes_(0x0)
 {
 
 }
 
-Polyhedron_algorithms::Polyhedron_algorithms(const Polyhedron_algorithms &p):triangles_(p.triangles_),fastVertexes_(NULL),lastVertexes_(NULL),displayList_(p.displayList_)
+Polyhedron_algorithms::Polyhedron_algorithms(const Polyhedron_algorithms &p)
+  :triangles_(p.triangles_)
+  ,fastVertexes_(0x0)
+  ,lastVertexes_(0x0)
 {
 	for (unsigned i=0;i<p.vertexes_.size();++i)
 	{
@@ -51,7 +56,6 @@ const Polyhedron_algorithms& Polyhedron_algorithms::operator =(const Polyhedron_
 	else
 	{
 		clear();
-		displayList_=p.displayList_;
 		triangles_=p.triangles_;
 
 		for (unsigned i=0;i<p.vertexes_.size();++i)
@@ -69,71 +73,6 @@ const Polyhedron_algorithms& Polyhedron_algorithms::operator =(const Polyhedron_
 }
 
 
-
-
-#ifdef WITH_OPENGL
-void Polyhedron_algorithms::drawGL()
-{
-	if (vertexes_.size()>0)
-	{
-
-		if (displayList_==-1)
-		{
-			/*OpenGL displaylist*/
-
-			displayList_=glGenLists(1);
-
-			glNewList(displayList_,GL_COMPILE);
-
-			glBegin(GL_TRIANGLES);
-
-
-			glColor3d(0.6,0.8,0.7);
-
-			for (unsigned i=0;i<triangles_.size();i++)
-			{
-				glNormal3d(triangles_[i].normal[0],triangles_[i].normal[1],triangles_[i].normal[2]);
-
-
-				glVertex3d(vertexes_[triangles_[i].a]->getCordinates()[0],
-					vertexes_[triangles_[i].a]->getCordinates()[1],
-					vertexes_[triangles_[i].a]->getCordinates()[2]);
-
-				glVertex3d(vertexes_[triangles_[i].b]->getCordinates()[0],
-					vertexes_[triangles_[i].b]->getCordinates()[1],
-					vertexes_[triangles_[i].b]->getCordinates()[2]);
-
-				glVertex3d(vertexes_[triangles_[i].c]->getCordinates()[0],
-					vertexes_[triangles_[i].c]->getCordinates()[1],
-					vertexes_[triangles_[i].c]->getCordinates()[2]);
-			}
-
-
-
-
-			glEnd();
-
-
-
-			glEndList();
-
-
-
-
-
-		}
-
-	
-
-
-		glCallList(displayList_);
-
-
-	}
-
-
-}
-#endif
 
 void Polyhedron_algorithms::openFromFile(const std::string &filename)
 {

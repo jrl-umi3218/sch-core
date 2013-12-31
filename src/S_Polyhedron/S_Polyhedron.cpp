@@ -120,16 +120,6 @@ S_Object::S_ObjectType S_Polyhedron::getType() const
 	return S_Object::TPolyhedron;
 }
 
-
-
-#ifdef WITH_OPENGL
-void S_Polyhedron::drawGLInLocalCordinates()
-{
-	poly.drawGL();
-
-}
-#endif
-
 int S_Polyhedron::getTrianglesNumber() const
 {
   return poly.triangles_.size();

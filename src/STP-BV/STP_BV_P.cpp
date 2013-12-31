@@ -31,14 +31,6 @@ Point3 STP_BV_P::l_Support(const Vector3 &v,int &lastFeature) const
 	return STP_BV::l_Support(v,k);
 }
 
-#ifdef WITH_OPENGL
-void STP_BV_P::drawGLInLocalCordinates()
-{
-	STP_BV::drawGLInLocalCordinates();
-	poly.drawGL();
-}
-#endif
-
 S_Object::S_ObjectType STP_BV_P::getType() const
 {
 	return S_Object::TSTP_BV_WithPolyhedron;
