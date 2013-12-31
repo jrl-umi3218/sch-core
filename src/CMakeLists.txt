@@ -72,6 +72,7 @@ AddSourceGroup(SOURCES_STP_BV "STP-BV")
 link_directories(${Boost_LIBRARY_DIRS})
 ADD_LIBRARY(scd SHARED ${SOURCES} ${HEADERS})
 
+set_target_properties(scd PROPERTIES SOVERSION ${PROJECT_VERSION})
 target_link_libraries(scd ${Boost_LIBRARIES})
 
 
