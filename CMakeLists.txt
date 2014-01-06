@@ -4,11 +4,7 @@ INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/eigen.cmake)
 INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/cpack.cmake)
-INCLUDE(cmake/amelif.cmake)
 
-DEFINE_PREFIX_SUFFIX()
-
-# set(CXX_DISABLE_WALL True)
 set(CXX_DISABLE_WERROR True)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
@@ -31,6 +27,8 @@ SEARCH_FOR_BOOST()
 
 find_package(GLUT)
 find_package(OpenGL)
+
+option(PYTHON_BINDINGS "Generate Python bindings." ON)
 
 # GLUT is a bit tricky, so check the search result.
 if(GLUT_FOUND)
@@ -61,6 +59,10 @@ if(GLUT_FOUND)
  ADD_SUBDIRECTORY(view)
 endif(GLUT_FOUND)
 ADD_SUBDIRECTORY(unitTestings)
+
+IF(PYTHON_BINDINGS)
+ ADD_SUBDIRECTORY(bindings/python)
+ENDIF(PYTHON_BINDINGS)
 
 SETUP_PROJECT_FINALIZE()
 SETUP_PROJECT_CPACK()
