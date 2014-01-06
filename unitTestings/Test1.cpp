@@ -223,7 +223,7 @@ init (void)
 	universe.initializeUniverse();
 
 	//create the gl volumes.
-	createGL(universe.sObj);
+	sObjGL = createGL(universe.sObj);
 }
 
 
@@ -300,7 +300,7 @@ void display (void)
 	//gluLookAt(0,0,0,0,0,-1,0,1,0);
 	glColor3d(0.6,0.7,0.6);
 
-	for (size_t i=0;i<universe.sObj.size();++i)
+	for (size_t i=0;i<sObjGL.size();++i)
 		sObjGL[i]->drawGL();
 
 	Vector3 p=universe.sObj[universe.CurrentObj]->getPosition();
