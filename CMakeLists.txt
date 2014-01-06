@@ -28,7 +28,7 @@ SEARCH_FOR_BOOST()
 find_package(GLUT)
 find_package(OpenGL)
 
-option(PYTHON_BINDINGS "Generate Python bindings." ON)
+option(PYTHON_BINDINGS "Generate Python bindings." OFF)
 
 # GLUT is a bit tricky, so check the search result.
 if(GLUT_FOUND)
