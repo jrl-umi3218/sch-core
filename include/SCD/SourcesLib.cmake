@@ -54,7 +54,6 @@ SET(HEADERS_Matrix
   Matrix/SmallVector3Default.h
   Matrix/SmallVector3Mod.h
   Matrix/SmallVector4Default.h
-  Matrix/SmallVector4Mod.h
 )
 InstallFiles(HEADERS_Matrix  	"Matrix")
 
