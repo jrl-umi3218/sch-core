@@ -56,7 +56,7 @@ namespace SCD
 	{
 		int buffer[4];
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		void serialize(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & buffer;
 		}
@@ -82,7 +82,7 @@ namespace SCD
 		s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3);
 
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		void serialize(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & m_vertex1 & m_vertex2 & m_vertex3;
 		}
@@ -118,7 +118,7 @@ namespace SCD
 		void operator ()(const Triangle& vertices, const int& currentStep) const;
 
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		void serialize(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
 		}
@@ -158,7 +158,7 @@ namespace SCD
 		bool operator ()(unsigned int id1, unsigned int id2) const;
 
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		void serialize(Archive & ar, const unsigned int /*version*/)
 		{
 			ar & m_axis & m_points;
 		}
