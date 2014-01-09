@@ -180,7 +180,6 @@ namespace MAL_Default
 			return (m_x*m_x+m_y*m_y+m_z*m_z+m_w*m_w);
 		}
 
-
 		inline friend std::ostream& operator<<(std::ostream &os,Vector4D<T> const &v) 
 		{
 			os << v.m_x << " " << v.m_y << " " << v.m_z << " " << v.m_w;

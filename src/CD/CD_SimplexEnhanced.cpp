@@ -1,13 +1,11 @@
 #include <SCD/CD/CD_SimplexEnhanced.h>
 
-
 using namespace SCD;
 
 inline char sign(Scalar i)
 {
 	return (i>0)? 1:-1;
 }
-
 
 inline void GetClosestSubSimplexCCKWTriangle(
 		const Vector3& AB,const Vector3& AC,
@@ -70,13 +68,7 @@ inline void GetClosestSubSimplexCCKWTriangle(
 			return;
 		}
 	}
-
 }
-
-
-
-
-
 
 CD_SimplexEnhanced::~CD_SimplexEnhanced(void)
 {
@@ -247,7 +239,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 				}
 			}
 		}
-	
+
 	default:
 		{
 			k.type=CD_None;
@@ -256,10 +248,5 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
 	}
 
 	return ;
-
-	
-
-
 }
-
 

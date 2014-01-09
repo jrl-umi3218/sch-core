@@ -167,8 +167,8 @@ STP_BV::STP_BV()
 	,m_lastPatches(NULL)
 	,geometries_()
 {
-
 }
+
 
 STP_BV::STP_BV(const STP_BV & bv)
 	:m_fastPatches(NULL)
@@ -233,8 +233,6 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
 	Matrix3x3 m(v1[0],v2[0],v3[0],
 		v1[1],v2[1],v3[1],
 		v1[2],v2[2],v3[2]);
-
-
 
 	res.push_back(p1);
 
@@ -780,11 +778,9 @@ void STP_BV::saveTreeInFile(const std::string& treefilename, ArchiveType type)
 	std::cout << "START SAVING THE OBJECT TREE STRUCTURE" << std::endl;
 	if(type == BINARY_ARCHIVE)
 	{
-
 	}
 	else //(type == TEXT_ARCHIVE)
 	{
-
 	}
 
 	os.close();
@@ -856,9 +852,7 @@ void STP_BV::updateFastPatches()
 	{
 		m_patchesSize=0;
 		m_lastPatches=m_fastPatches=NULL;
-
 	}
-
 }
 
 
@@ -872,8 +866,6 @@ Scalar STP_BV::supportH(const Vector3& v) const
 
 Point3 STP_BV::l_Support(const Vector3& v,int& lastFeature) const 
 {
-
-
 #ifdef NAIVESUPPORT
 	return supportNaive(v);
 #endif
@@ -895,8 +887,8 @@ Point3 STP_BV::l_Support(const Vector3& v,int& lastFeature) const
 #ifdef TREESUPPORT
 	return supportTree(vp);
 #endif
-
 }
+
 
 Point3 STP_BV::supportNaive(const Vector3& v) const
 {
@@ -943,22 +935,13 @@ Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
     size_t i = 0;
     bool found = false;
 
-
-
 	while( (i < m_patches.size()) && !(found = currentBV->isHereFarthestNeighbour(v)) )
 	{
 		lastFeature = currentBV->getNextBV(0);//go to the neighbour feature which common limit with the current is farthest from the vector
 
 		currentBV = m_patches[lastFeature];
 		++i;
-
-
 	}
-
-
-
-
-
 
 	if(!found)
 	{
@@ -969,12 +952,8 @@ Point3 STP_BV::supportFarthestNeighbour(const Vector3& v,int& lastFeature) const
 			return Point3(0.0, 0.0, 0.0);
 	}
 
-
-
 	return currentBV->support(v);
 }
-
-
 
 Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const
 {
@@ -991,7 +970,6 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
-
 	//A.E. : the following hash table is not used in the function in its current version and is therefore commented 
 
 	bool found = false;
@@ -1007,11 +985,6 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 		++i;
 	}
 
-
-
-
-
-
 	if(!found)
 	{
 #ifdef SUPPORT_DEBUG
@@ -1023,7 +996,6 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
 		else
 			return Point3(0.0, 0.0, 0.0);
 	}
-
 
 	//A.E. : test avec function naive 
 
@@ -1050,12 +1022,8 @@ Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 	/////A.E. : the following hash table is not used in the function in its current version and is therefore commented
 	bool found = false;
 
-
-
 	/////A.E. : it seems me wrong to begin with 1
 	size_t i = 0;
-
-
 
 	while( (i < m_patches.size()) && !(found = currentBV->isHereFirstNeighbour(v)) )
 	{
@@ -1066,17 +1034,8 @@ Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 		++i;
 	}
 
-
-
-
-
-
-
-
-
 	if(!found)
 	{
-
 		std::cout << "Probleme zuo first !!!" << std::endl;
 		if(m_patches.begin() != m_patches.end())
 			return (*m_patches.begin())->support(v);
@@ -1084,13 +1043,8 @@ Point3 STP_BV::supportFirstNeighbour(const Vector3& v,int& lastFeature) const
 			return Point3(0.0, 0.0, 0.0);
 	}
 
-
-
-
 	return currentBV->support(v);
 }
-
-
 
 
 Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) const
@@ -1110,14 +1064,10 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
-
-
 	bool found = false;
-
 
 	int i = 0;
 	int idp=-1; //previous id (used to remember from witch vvr we arrived in the current
-
 
 	while( (i < m_patchesSize) && !(found = currentBV->isHereFirstNeighbourPrime(v,idp)) )
 	{
@@ -1132,9 +1082,6 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 	std::cout<<i<<' ';
 #endif
 
-
-
-
 	if(!found)
 	{
 #ifdef SUPPORT_DEBUG
@@ -1143,13 +1090,8 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 		return supportFarthestNeighbourPrime(v,lastFeature);
 	}
 
-
-
 	return currentBV->support(v);
 }
-
-
-
 
 
 Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
@@ -1164,19 +1106,14 @@ Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
 		currentBV = *m_fastPatches;//first voronoi region search
 		lastFeature=0;
 	}
-
 #else
 	currentBV = *(m_patches.begin());//first voronoi region search
 #endif
 
-
-
 	bool found = false;
-
 
 	int i = 0;
 	int idp=-1; //previous id (used to remember from witch vvr we arrived in the current
-
 
 	while( (i < m_patchesSize) && !(found = currentBV->isHereHybrid(v,idp)) )
 	{
@@ -1191,9 +1128,6 @@ Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
 	std::cout<<i<<' ';
 #endif
 
-
-
-
 	if(!found)
 	{
 #ifdef SUPPORT_DEBUG
@@ -1202,14 +1136,8 @@ Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
 		return supportFarthestNeighbourPrime(v,lastFeature);
 	}
 
-
-
 	return currentBV->support(v);
 }
-
-
-
-
 
 
 bool STP_BV::ray_cast(const Point3& , const Point3& ,

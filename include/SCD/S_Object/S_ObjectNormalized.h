@@ -42,9 +42,6 @@ namespace SCD
 	};
 
 #include <SCD/S_Object/S_ObjectNormalized.hxx>
-
 }
-
-
 
 #endif

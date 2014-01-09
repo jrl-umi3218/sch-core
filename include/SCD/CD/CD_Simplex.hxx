@@ -37,8 +37,6 @@ inline void CD_SimplexExchange(T &a,T &b,T &c)
 }
 
 
-
-
 inline const Vector3& CD_Simplex::AB() const
 {
 	return ab_;
@@ -267,7 +265,6 @@ inline void CD_Simplex::filter(const CD_SimplexKeptPoints &f)
 
 			s4_=(*this)[a[(int)f.b4]];
 			return ;
-
 		}
 	}
 }
@@ -280,8 +277,6 @@ inline Scalar CD_Simplex::squareDistanceAtOrigin(const Vector3 &v)const
 		return s1_.normsquared();
 
 	default:
-		
-
 		Scalar d(v*s2_);
 		return d*d/v.normsquared();
 	

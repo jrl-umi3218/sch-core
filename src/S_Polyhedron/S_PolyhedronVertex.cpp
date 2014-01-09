@@ -26,7 +26,6 @@ S_PolyhedronVertex* S_PolyhedronVertex::clone()
 	p->setCordinates(cordinates_);
 	p->setNumber(number_);
 	return p;
-	
 }
 
 void S_PolyhedronVertex::updateFastArrays()
@@ -78,12 +77,10 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
 			std::cout.precision(20);
 			std::cout<<"new H "<<temp<<" last H "<<nextVertexH_<<std::endl;
 #endif
-
 			nextVertexH_=temp;
 			nextVertex_=*iterator_;
 		}
 	}
-
 
 	return (currentsupportH>=nextVertexH_);
 }
@@ -101,12 +98,10 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
 	{
 		if ((temp=(*iterator_)->supportH(direction))>nextVertexH_)
 		{
-
 			nextVertexH_=temp;
 			nextVertex_=*iterator_;
 		}
 	}
-
 
 	return (nextVertex_==NULL);
 }
@@ -135,8 +130,6 @@ void S_PolyhedronVertex::setNumber(unsigned int n)
 {
 	number_=n;
 }
-
-
 
 S_PolyhedronVertex* S_PolyhedronVertex::getNextVertex() const
 {

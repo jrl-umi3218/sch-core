@@ -15,9 +15,6 @@
 								//no theoretical guarantee on the precision nor the collision-safeness when used - Default value is 20
 
 
-
-
-
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
 
@@ -31,8 +28,6 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 }
 
 
-
-
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
 lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
 precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
@@ -42,14 +37,13 @@ precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Poi
 
 	depthPair.setRelativePrecision(_PRECISION_);
 	depthPair.setEpsilon(_EPSILON_);
-
-
-
 }
+
 
 CD_Pair::~CD_Pair(void)
 {
 }
+
 
 Scalar CD_Pair::getDistance()
 {
@@ -65,8 +59,8 @@ Scalar CD_Pair::getDistance()
 		penetrationDepth();
 		return distance_;
 	}
-
 }
+
 
 Scalar CD_Pair::getDistanceWithoutPenetrationDepth()
 {
@@ -83,7 +77,6 @@ Scalar CD_Pair::getDistanceWithoutPenetrationDepth()
 			return 0;
 		return distance_;
 	}
-
 }
 
 
@@ -96,7 +89,6 @@ Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 	penetrationDepth();
 	witPoints(p1,p2);
 	return distance_;
-
 }
 
 
@@ -105,7 +97,6 @@ void CD_Pair::setRelativePrecision(Scalar s)
 	precision_=s*s;
 	depthPair.setRelativePrecision(s);
 }
-
 
 void CD_Pair::setEpsilon(Scalar s)
 {
@@ -128,9 +119,6 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 	}
 	else
 	{
-
-
-
 		stamp1_=sObj1_->checkStamp();
 		stamp2_=sObj2_->checkStamp();
 		GJK();
@@ -138,10 +126,9 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 		witPoints(p1,p2);
 		witPointsAreComputed_=true;
 		return distance_;
-
 	}
-
 }
+
 
 Scalar CD_Pair::penetrationDepth()
 {
@@ -164,9 +151,6 @@ Scalar CD_Pair::penetrationDepth()
 	return distance_;
 #endif
 }
-
-
-
 
 Scalar CD_Pair::GJK()
 {
@@ -292,7 +276,6 @@ Scalar CD_Pair::GJK()
 #	endif
 #endif
 
-
 			sup=sup1;
 			sup-=sup2;
 
@@ -344,20 +327,13 @@ Scalar CD_Pair::GJK()
 	std::cout<<"#####GJK END######"<<std::endl;
 #endif
 
-
 	return distance_;
-
-
-
-
 }
 
 void CD_Pair::setVector(const Vector3 &v)
 {
 	lastDirection_=v;
 }
-
-
 
 void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 {
@@ -385,7 +361,6 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 					Scalar a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
 
-
 					lambda0_=a2*a6-a3*a5;
 					lambda1_=a3*a4-a1*a6;
 					lambda2_=a1*a5-a2*a4;
@@ -394,28 +369,13 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 					lambda0_*=det_;
 					lambda1_*=det_;
 					lambda2_*=det_;
-
 					proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
-
 					v=-proj;
-
 				}
-
-
 
 				p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_+s1_[2]*lambda2_;
 				p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_+s2_[2]*lambda2_;
-
-
-
 			}
-
-
-
-
-
-
-
 
 #ifdef SHOW_LAST_SIMLPEX
 			glDisable(GL_DEPTH_TEST);
@@ -436,15 +396,12 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 #endif
 
 			return;
-
 		}
 
 	case CD_Segment:
 		{
 			if (!projectionComputed_)
 			{
-
-
 				Vector3 S01(s_[1]-s_[0]);
 
 				lambda1_=-(S01*s_[0]);
@@ -456,17 +413,11 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 				lambda1_*=det_;
 
 				proj=s_[0]*lambda0_+s_[1]*lambda1_;
-
-
 				v=-proj;
-
-
 			}
 
 			p1_=p1=s1_[0]*lambda0_+s1_[1]*lambda1_;
 			p2_=p2=s2_[0]*lambda0_+s2_[1]*lambda1_;
-
-
 
 #ifdef SHOW_LAST_SIMLPEX
 
@@ -495,10 +446,6 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 
 			return ;
 		}
-
-
-
-
 	}
 }
 

@@ -201,9 +201,7 @@ bool STP_BigSphere::isHereFarthestNeighbour(const Vector3& v)
 
 bool STP_BigSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 {
-	
 	Scalar tmp1, tmp2, tmp3;
-
 
 //	std::cout << "test is here big sphere" << std::endl;
 
@@ -212,11 +210,6 @@ bool STP_BigSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 	tmp1 = m_VVR0.isInsidePrime(v);
 	tmp2 = m_VVR1.isInsidePrime(v);
 	tmp3 = m_VVR2.isInsidePrime(v);
-
-	
-
-
-	
 
 	if ((tmp1>=0)&&(tmp2>=0)&&(tmp3>=0))
 		return true;
@@ -230,26 +223,19 @@ bool STP_BigSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 		else //(tmp1>=tmp3)
 		{
 			m_nextBVPrime = m_VVR2.m_outerSTP;
-
 		}
-
 	}
 	else //(tmp1>=tmp2)
 	{
 		if (tmp2<tmp3)
 		{
-
 			m_nextBVPrime = m_VVR1.m_outerSTP;
-
 		}
 		else //(tmp2>=tmp3)
 		{
-
 			m_nextBVPrime = m_VVR2.m_outerSTP;
-
 		}
 	}
-
 	return false;
 }
 
@@ -285,15 +271,9 @@ bool STP_BigSphere::isHereFirstNeighbour(const Vector3& v)
 }
 
 
-
-
-
 bool STP_BigSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 {
-		
 //	std::cout << "test is here big sphere" << std::endl;
-
-	
 	if((m_VVR0.m_outerSTP!=idp)&&(m_VVR0.isInsidePlane(v)<0))
 	{
 		m_nextBVPrime = m_VVR0.m_outerSTP;
@@ -310,47 +290,32 @@ bool STP_BigSphere::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 	{
 		m_nextBVPrime = m_VVR2.m_outerSTP;
 		return false;
-
 	}
 	return true;
-	
 }
-
-
-
-
 
 
 bool STP_BigSphere::isHereHybrid(const Vector3& v,int idp)
 {
-		
 //	std::cout << "test is here big sphere" << std::endl;
 
-	
 	if((m_VVR0.m_outerSTP!=idp)&&(m_VVR0.isInsidePlane(v)<0))
 	{
 		m_nextBVPrime = m_VVR0.m_outerSTP;
 		return false;
-
 	}
 	if((m_VVR1.m_outerSTP!=idp)&&(m_VVR1.isInsidePlane(v)<0))
 	{
 		m_nextBVPrime = m_VVR1.m_outerSTP;
 		return false;
-
 	}
 	if((m_VVR2.m_outerSTP!=idp)&&(m_VVR2.isInsidePlane(v)<0))
 	{
 		m_nextBVPrime = m_VVR2.m_outerSTP;
 		return false;
-
 	}
 	return true;
-	
 }
-
-
-
 
 
 int STP_BigSphere::getNextBV(unsigned int id) const
@@ -362,7 +327,6 @@ int STP_BigSphere::getNextBV(unsigned int id) const
 }
 
 
-
 Scalar STP_BigSphere::supportH(const Vector3& v) const 
 {
 	//tenir compte du centre ??
@@ -371,9 +335,7 @@ Scalar STP_BigSphere::supportH(const Vector3& v) const
 
 Point3 STP_BigSphere::support(const Vector3& v) const 
 {
-  
 	return m_center + v*m_radius;
-	
 }
 
 bool STP_BigSphere::ray_cast(const Point3& source, const Point3& target,
@@ -410,15 +372,12 @@ bool STP_BigSphere::ray_cast(const Point3& source, const Point3& target,
 					param = Scalar(0.0);
 					normal.Set(Scalar(0.0), Scalar(0.0), Scalar(0.0));
 				}
-						
 				return true;
 			}
 		}
 	}
-
 	return false;
 }
-
 
 
 STP_Feature* STP_BigSphere::clone() const

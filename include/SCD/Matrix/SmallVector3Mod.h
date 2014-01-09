@@ -26,7 +26,6 @@ namespace MAL_Default
 		explicit Vector3Mod<T>(const T& x, const T& y, const T& z):Vector3D<T>(x,y,z)
 		{}
 
-	
 		explicit Vector3Mod<T>(const T* const p):Vector3D<T>(p[0],p[1],p[2])
 		{}
 
@@ -43,14 +42,12 @@ namespace MAL_Default
 			this->m_z=z;
 		}
 
-	
 		void Set(const T* const p)
 		{
 			this->m_x=p[0];
 			this->m_y=p[1];
 			this->m_z=p[2];
 		}
-
 
 		inline const Vector3Mod<T> operator= (const struct Vector3D<T> &v)
 		{
@@ -112,7 +109,6 @@ namespace MAL_Default
 			this->m_z = this->m_z*t;
 		}
 
-
 		/*! multiplication as a row vector by a left-hand matrix  */
 		inline Vector3Mod<T> operator*(const Matrix3x3<T>& m)const 
 		{
@@ -121,7 +117,6 @@ namespace MAL_Default
 						     this->m_x*m[1]+this->m_y*m[4]+this->m_z*m[7],
 						     this->m_x*m[2]+this->m_y*m[5]+this->m_z*m[8]);
 			return vr;
-			
 		}
 
 		inline void operator*=(const Matrix3x3<T> m) 
@@ -133,13 +128,7 @@ namespace MAL_Default
 
 			this->m_x = x;
 			this->m_y = y;
-			
 		}
-
-
-
-
-		
 
 
 		inline Vector3Mod<T> operator/ (const T &t) const
@@ -160,7 +149,6 @@ namespace MAL_Default
 			return vr;
 		}
 
-		
 		~Vector3Mod(void)
 		{
 		}
@@ -170,8 +158,6 @@ namespace MAL_Default
 			os << v.m_x << " " << v.m_y << " " << v.m_z << " ";
 			return os;
 		}
-
-	
 	};
 }
 

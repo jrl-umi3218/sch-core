@@ -27,8 +27,4 @@ namespace SCD
     static const Scalar infinity = DBL_MAX;
 }
 
-
-
-
-
 #endif

@@ -26,8 +26,6 @@ S_Superellipsoid::~S_Superellipsoid(void)
 {
 }
 
-
-
 Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {
 	Scalar anx,bny,cnz;
@@ -74,7 +72,6 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
 		}
 		else
 		{
-			
 			sp2=1-cp2;
 			sp2e=pow(sp2,_2_e2on2);
 			cp2e=sp2e/tp1;
@@ -83,7 +80,6 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
 			tt1=cnz*sp2e/bny;
 		}
 	}
-	
 	
 	tt2=pow(tt1,_2on2_e1);
 	ct2=1/(tt2+1);
@@ -94,7 +90,6 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
 	}
 	else
 	{
-		
 		st2=1-ct2;
 		st2e=pow(st2,_2_e1on2);
 		ct2e=st2e/tt1;

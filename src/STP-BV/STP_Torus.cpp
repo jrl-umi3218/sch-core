@@ -40,7 +40,6 @@ void STP_Torus::setVVR(const STP_VVR* vvr)
 	m_VVR1 = vvr[1];
 	m_VVR2 = vvr[2];
 	m_VVR3 = vvr[3];
-
 }
 
 void STP_Torus::print() const
@@ -617,17 +616,13 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
 bool STP_Torus::isHereFarthestNeighbourPrime(const Vector3& v)
 {
 	Scalar tmp1, tmp2, tmp3, tmp4;
-	
 
 	//std::cout << "test is here torus" << std::endl;
-
 
 	tmp1 = m_VVR0.isInsidePrime(v);
 	tmp2 = m_VVR1.isInsidePrime(v);
 	tmp3 = m_VVR2.isInsidePrime(v);
 	tmp4 = m_VVR3.isInsidePrime(v);
-	
-
 
 	if ((tmp1<0)&&(tmp2<0)&&(tmp3<0)&&(tmp4<0))
 		return true;
@@ -656,7 +651,6 @@ bool STP_Torus::isHereFarthestNeighbourPrime(const Vector3& v)
 				m_nextBVPrime = m_VVR3.m_outerSTP;
 			}
 		}
-
 	}
 	else //(tmp1<=tmp2)
 	{
@@ -684,17 +678,12 @@ bool STP_Torus::isHereFarthestNeighbourPrime(const Vector3& v)
 			}
 		}
 	}
-
 	return false;
-
 }
+
 
 bool STP_Torus::isHereFirstNeighbour(const Vector3& v)
 {
-
-
-
-
 	if(m_VVR2.isInsidePrime(v)>0)//begin with big spheres
 	{
 		m_nextBVPrime = m_VVR2.m_outerSTP;
@@ -716,18 +705,12 @@ bool STP_Torus::isHereFirstNeighbour(const Vector3& v)
 		m_nextBVPrime = m_VVR1.m_outerSTP;
 		return false;
 	}
-	
-
 	return true;
-
-	
-	
 }
 
 
 bool STP_Torus::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 {
-
 	if((m_VVR2.m_outerSTP!=idp)&&(m_VVR2.isInsidePlane(v)>0))//begin with big spheres limits
 	{
 		m_nextBVPrime = m_VVR2.m_outerSTP;
@@ -749,10 +732,8 @@ bool STP_Torus::isHereFirstNeighbourPrime(const Vector3& v,int idp)
 		m_nextBVPrime = m_VVR1.m_outerSTP;
 		return false;
 	}
-	
 
 	return true;
-	
 }
 
 
@@ -784,8 +765,6 @@ bool STP_Torus::isHereHybrid(const Vector3& v,int idp)
 }
 
 
-
-
 int STP_Torus::getNextBV(unsigned int id) const
 {
 	if(id < 4)
@@ -793,9 +772,6 @@ int STP_Torus::getNextBV(unsigned int id) const
 	else
 		return -1;
 }
-
-
-
 
 
 Scalar STP_Torus::supportH(const Vector3& v) const 
@@ -810,7 +786,6 @@ Scalar STP_Torus::supportH(const Vector3& v) const
 Point3 STP_Torus::support(const Vector3& v) const 
 {
 	Vector3 w;
-	
 
 //should never happen
 /*	if(v*m_circle.m_normal >= (sqrt((1 - (m_circle.m_radius * m_circle.m_radius)/(m_sphereRadius * m_sphereRadius)))))
@@ -841,8 +816,6 @@ Point3 STP_Torus::support(const Vector3& v) const
 	tmp+= w * s;
 	tmp+= v * m_sphereRadius;
 	return tmp;
-	
-	
 }
 
 
@@ -851,4 +824,3 @@ STP_Feature* STP_Torus::clone() const
 {
 	return new STP_Torus(*this);
 }
-

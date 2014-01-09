@@ -1,10 +1,7 @@
-
 inline const S_ObjectTimeStamp & S_Object::checkStamp()const
 {
 	return stamp_;
 }
-
-
 
 inline void S_Object::getTransformationMatrix(Scalar *d) const
 {

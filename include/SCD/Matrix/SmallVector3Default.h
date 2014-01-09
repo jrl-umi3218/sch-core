@@ -10,13 +10,8 @@
 #include <iostream>
 #include <cmath>
 
-
-
 namespace MAL_Default
 {
-
-
-
 	/*! Template to handle 3 dimensional vector */
 	template <typename T>
 	struct Vector3D

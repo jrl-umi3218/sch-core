@@ -1,4 +1,3 @@
-
 #ifndef _CD_SCENE
 #define _CD_SCENE
 

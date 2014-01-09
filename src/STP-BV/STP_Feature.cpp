@@ -26,7 +26,6 @@ m_axis(axis), m_cosangle(cosangle)
 bool s_STP_VVR::isInside(const Vector3& v) const
 {
 	//std::cout << "is inside ?" << std::endl;
-
 	if (v.normsquared() == 0)
 		return true;
 
@@ -35,15 +34,10 @@ bool s_STP_VVR::isInside(const Vector3& v) const
 }
 
 
-
-
-
 Scalar s_STP_VVR::getDistance(const Vector3& v) const
 {
 	return (m_axis*v) / (v.norm() * m_axis.norm()) - m_cosangle;
 }
-
-
 
 bool s_STP_VVR::isSameLimit(const s_STP_VVR& vvr) const
 {
@@ -161,4 +155,3 @@ STP_Feature::STP_Feature()
 STP_Feature::~STP_Feature()
 {
 }
-

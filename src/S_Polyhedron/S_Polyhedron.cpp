@@ -13,22 +13,17 @@
 
 using namespace SCD;
 
-
 S_Polyhedron::S_Polyhedron(void):poly()
 {
 }
-
 
 S_Polyhedron::S_Polyhedron(const S_Polyhedron& p):poly(p.poly)
 {
 }
 
-
 S_Polyhedron::~S_Polyhedron(void)
 {
 }
-
-
 
 const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
 {
@@ -39,7 +34,6 @@ const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
 void S_Polyhedron::updateVertexNeighbors()
 {
 	poly.updateVertexNeighbors();
-
 }
 
 void S_Polyhedron::clear()
@@ -70,14 +64,11 @@ Point3 S_Polyhedron::l_Support(const Vector3& v,int &lastFeature)const
 void S_Polyhedron::deleteVertexesWithoutNeighbors()
 {
 	poly.deleteVertexesWithoutNeighbors();
-
 }
 
 void S_Polyhedron::constructFromFile(const std::string& filename)
 {
-
 	poly.openFromFile(filename);
-
 }
 
 void S_Polyhedron::loadFromBinary(const std::string & filename)

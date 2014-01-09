@@ -330,11 +330,7 @@ namespace MAL_Default
 			}
 			return os;
 		}
-
-
-
 	};
-
 }
 
 #endif

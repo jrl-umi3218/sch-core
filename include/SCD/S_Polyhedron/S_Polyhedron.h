@@ -17,9 +17,6 @@
 
 namespace SCD
 {
-
-	
-
 	class S_Polyhedron :
 		public S_ObjectNonNormalized
 	{
@@ -36,7 +33,6 @@ namespace SCD
 		*/
 		SCD_API virtual void constructFromFile(const std::string& filename);
 
-
     /*!
     *  \brief Load the object from a binary archive
     *  \param filename path to the binary archive
@@ -49,7 +45,6 @@ namespace SCD
     *  \param filename path to the binary archive
     */
     SCD_API virtual void saveToBinary(const std::string & filename);
-
 
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification
@@ -103,16 +98,9 @@ namespace SCD
 		SCD_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 		SCD_API virtual	S_ObjectType getType() const;
 
-
-
-
 	protected:
 
 		Polyhedron_algorithms poly;
-
-
-
-
 	};
 }
 #endif

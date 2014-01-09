@@ -1,6 +1,5 @@
 #include <SCD/CD/CD_Scene.h>
 
-
 using namespace SCD;
 
 CD_Scene::CD_Scene(void)
@@ -10,7 +9,6 @@ CD_Scene::CD_Scene(void)
 CD_Scene::~CD_Scene(void)
 {
 }
-
 
 int CD_Scene::addObject(S_Object *O)
 {

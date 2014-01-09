@@ -8,7 +8,6 @@
 
 namespace SCD
 {
-
 	class S_Box :
 		public S_ObjectNonNormalized
 	{
@@ -20,8 +19,6 @@ namespace SCD
 		* \param depth, the depth of the box (z axis)
 		*/
 		SCD_API S_Box(Scalar width,Scalar height,Scalar depth);
-
-
 		SCD_API virtual ~S_Box(void);
 
 

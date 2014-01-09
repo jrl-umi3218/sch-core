@@ -190,9 +190,6 @@ namespace MAL_Default
 	return result;
       }
 
-
-      
-      
       /*! Transposition */
       Matrix4x4D<T> Transpose()
       {
@@ -248,7 +245,7 @@ namespace MAL_Default
 	m[15] = m[1]*m[6]*m[8] - m[2]*m[5]*m[8] + m[2]*m[4]*m[9] - m[0]*m[6]*m[9] - m[1]*m[4]*m[10] + m[0]*m[5]*m[10];
 	return A;
       }
-      
+
       /*! Determinant */
       T determinant() const	
       { 
@@ -281,9 +278,7 @@ namespace MAL_Default
 	m[13] += B.m[13];
 	m[14] += B.m[14];
 	m[15] += B.m[15];
-
       }
-
 
       /*! Local matrix substraction */
       void operator -= (const Matrix4x4D<T>& B)	
@@ -304,9 +299,8 @@ namespace MAL_Default
 	m[13] -= B.m[13];
 	m[14] -= B.m[14];
 	m[15] -= B.m[15];
-
       }
-      
+
       ///Local matrix multiplication
       void operator *= (const Matrix4x4D<T>& B)	
       {	Matrix4x4D<T> temp(*this);
@@ -327,7 +321,7 @@ namespace MAL_Default
 	m[14] = temp.m[12] * B.m[2] + temp.m[13] * B.m[6] + temp.m[14] * B.m[10] + temp.m[15] * B.m[14];
 	m[15] = temp.m[12] * B.m[3] + temp.m[13] * B.m[7] + temp.m[14] * B.m[11] + temp.m[15] * B.m[15];
       }
-      
+
       inline friend std::ostream& operator <<(std::ostream &os,Matrix4x4D<T> const &A)
       {
 	for(int i=0;i<4;i++)
@@ -338,11 +332,7 @@ namespace MAL_Default
 	  }
 	return os;
       }
-      
-
-
     };
-
 }
-  
+
 #endif

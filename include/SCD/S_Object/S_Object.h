@@ -3,7 +3,6 @@
 #ifndef _S_OBJECT
 #define _S_OBJECT
 
-
 #include <SCD/scd_api.h>
 #include <SCD/Matrix/SCD_Types.h>
 
@@ -43,7 +42,6 @@ namespace SCD
 					if (!value3)
 					{	
 						value4++;
-
 					}
 				}
 			}
@@ -61,16 +59,10 @@ namespace SCD
 					if (value3==(unsigned long int)(-1))
 					{	
 						value4--;
-
 					}
 				}
 			}
-
 		}
-
-
-
-
 	} S_ObjectTimeStamp;
 
 	/*IMPORTANT !!!! DO NOT INHERIT FROM THIS CLASS, YOU MUST CHOOSE IF YOU NEED VECTOR NORMALIZATION OR NOT IN YOUR SUPPORT FUNCTION AND INHERIT FROM S_ObjectNormalized or S_ObjectNonNormalized*/
@@ -87,11 +79,9 @@ namespace SCD
 
 		SCD_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const=0;
 
-
 	public:
 
 		SCD_API S_Object(void);
-
 		SCD_API virtual ~S_Object(void);
 
 		/*! 
@@ -244,14 +234,10 @@ namespace SCD
 		*/
 		SCD_API virtual	S_ObjectType getType() const;
 
-
-
 		/*!
 		* \brief returns the current time stamp
 		*/
 		const S_ObjectTimeStamp& checkStamp()const;
-
-
 
 
     template<class Archive>
@@ -264,19 +250,10 @@ namespace SCD
       ar & trans_;
     }
 
-
 	protected:
-
-
-
-
-
 		S_ObjectTimeStamp stamp_;
-
 		int stacks_,slices_;
-
 		Matrix3x3 mRot_;
-
 		Vector3 trans_;
 	};
 

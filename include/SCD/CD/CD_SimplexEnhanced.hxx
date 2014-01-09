@@ -14,7 +14,6 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 	norm1_=p1.normsquared();
 	norm2_=p2.normsquared();
 	norm3_=p3.normsquared();
-
 }
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4):CD_Simplex(p1,p2,p3,p4)
@@ -28,13 +27,11 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 inline Scalar& CD_SimplexEnhanced::norms(const char i)
 {
 	return ((i==0) ? norm1_: (i==1)? norm2_: (i==2) ? norm3_ : norm4_);
-
 }
 
 inline Scalar CD_SimplexEnhanced::norms(const char i) const
 {
 	return ((i==0) ? norm1_: (i==1)? norm2_: (i==2) ? norm3_ : norm4_);
-
 }
 
 inline Scalar CD_SimplexEnhanced::square_(const Scalar& a)

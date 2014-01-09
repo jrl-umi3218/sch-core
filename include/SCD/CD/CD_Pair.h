@@ -1,4 +1,3 @@
-
 #ifndef _CD_PAIR
 #define _CD_PAIR
 

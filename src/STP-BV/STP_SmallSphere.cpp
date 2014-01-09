@@ -46,7 +46,6 @@ STP_SmallSphere& STP_SmallSphere::operator =(const STP_SmallSphere &s)
 	m_nextBV.resize(m_VVR.size());
 	updateVector();
 	return *this;
-
 }
 
 const Point3& STP_SmallSphere::getCenter() const
@@ -92,6 +91,7 @@ bool STP_SmallSphere::isHere(const Vector3& v) const
 	return in;
 }
 
+
 bool STP_SmallSphere::isHereFarthestNeighbour(const Vector3& v)
 {
 	bool res = true;
@@ -131,7 +131,6 @@ bool STP_SmallSphere::isHereFarthestNeighbourPrime(const Vector3& v)
 	Scalar d=0;
 	Scalar dp;
 
-
 	//std::cout << "test is here small sphere" << std::endl;
 
 	while( currentVVR != m_VVR.end() )
@@ -166,14 +165,11 @@ void STP_SmallSphere::updateVector()
 	{
 		m_neighbors[i]=m_VVR[i];
 	}
-
-
 }
+
 
 bool STP_SmallSphere::isHereFirstNeighbour(const Vector3& v)
 {
-	
-	
 	std::vector<STP_VVR>::const_iterator currentVVR = m_VVR.begin();
 
 	while(currentVVR->isInsidePrime(v)>0)
@@ -186,7 +182,6 @@ bool STP_SmallSphere::isHereFirstNeighbour(const Vector3& v)
 		}
 
 	}
-
 
 	/*while ( (currentVVR != m_VVR.end()) && (currentVVR->isInside(v)) )
 	{
@@ -262,9 +257,6 @@ int STP_SmallSphere::getNextBV(unsigned int id) const
 }
 
 
-
-
-
 Scalar STP_SmallSphere::supportH(const Vector3& v) const 
 {
 	//tenir compte du centre ??
@@ -318,8 +310,6 @@ bool STP_SmallSphere::ray_cast(const Point3& source, const Point3& target,
 
 	return false;
 }
-
-
 
 
 STP_Feature* STP_SmallSphere::clone() const

@@ -3,7 +3,6 @@
 
 #pragma once
 
-
 #include <SCD/scd_api.h>
 #include <SCD/S_Object/S_ObjectNonNormalized.h>
 

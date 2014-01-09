@@ -35,7 +35,7 @@ bool SCD::link(const Depth_Edge& edge0, const Depth_Edge& edge1)
     {
 	edge0.triangle()->m_adjEdges[edge0.index()] = edge1;
     edge1.triangle()->m_adjEdges[edge1.index()] = edge0;
-}
+    }
 
     return ok;
 }

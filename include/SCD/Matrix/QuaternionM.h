@@ -28,14 +28,11 @@ namespace MAL_Default
 		}
 
 
-		
 		using Vector4D<T>::operator[] ;
 		using Vector4D<T>::operator+ ;
 		using Vector4D<T>::operator+= ;
 		using Vector4D<T>::operator- ;
 		using Vector4D<T>::operator-= ;
-
-
 
 		const QuaternionM<T>& operator=(const QuaternionM<T>& A)
 		{
@@ -45,8 +42,6 @@ namespace MAL_Default
 			this->m_z=A.m_z;
 		}
 
-
-		
 		QuaternionM<T> Conjugate() const
 		{
 			return QuaternionD(-(this->m_x),-(this->m_y),-(this->m_y),this->m_t);
@@ -57,7 +52,6 @@ namespace MAL_Default
 			this->m_x=-this->m_x;
 			this->m_y=-this->m_y;
 			this->m_z=-this->m_z;
-			
 		}
 
 		QuaternionM<T> operator*(const QuaternionM<T>& q )
@@ -80,13 +74,8 @@ namespace MAL_Default
 				this->m_z=z;
 				this->m_w=w;
 			
-
 			return *this;
 		}
-
-
-
-
 
 		virtual ~QuaternionM(void)
 		{

@@ -357,7 +357,6 @@ namespace MAL_Default
 			 this->m[6] * B.m[0] + this->m[7] * B.m[3] + this->m[8] * B.m[6],
 			 this->m[6] * B.m[1] + this->m[7] * B.m[4] + this->m[8] * B.m[7],
 			 this->m[6] * B.m[2] + this->m[7] * B.m[5] + this->m[8] * B.m[8]);
-			 
 		}
 
 		void operator *=(const Matrix3x3<T>& B) 
@@ -372,12 +371,7 @@ namespace MAL_Default
 			this->m[6] = temp.m[6] * B.m[0] + temp.m[7] * B.m[3] + temp.m[8] * B.m[6];
 			this->m[7] = temp.m[6] * B.m[1] + temp.m[7] * B.m[4] + temp.m[8] * B.m[7];
 			this->m[8] = temp.m[6] * B.m[2] + temp.m[7] * B.m[5] + temp.m[8] * B.m[8]; 
-
 		}
-
-
-
-
 	};
 }
 

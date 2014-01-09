@@ -36,7 +36,6 @@ namespace SCD
 
 		SCD_API const Polyhedron_algorithms & operator=(const Polyhedron_algorithms&);
 
-
 		/*! 
 		*  \brief updates the fast access arrays, must be called after each polyhedron modification
 		*/
@@ -65,13 +64,11 @@ namespace SCD
 		*/
 		SCD_API void deleteVertexesWithoutNeighbors();
 
-
 		/*!
 		*\brief Computes the support point of the polyhedron
 		*/
 
 		SCD_API Point3 support(const Vector3& v, int& lastFeature)const;
-
 
 		/*!
 		* \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options : 
