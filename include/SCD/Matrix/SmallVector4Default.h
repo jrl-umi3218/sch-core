@@ -11,12 +11,9 @@
 
 #include <iostream>
 
-//using namespace std;
-
 namespace MAL_Default
 {
-
-	/*! Template to handle 3 dimensional vector */
+	/*! \brief Template to handle 3 dimensional vector */
 	template <typename T>
 	class Vector4D
 	{
@@ -24,7 +21,7 @@ namespace MAL_Default
 
 		T m_x,m_y,m_z, m_w;
 
-		/*! Basic constructor: all the field 
+		/*! \brief Basic constructor: all the field
 		are set to zero. */
 		inline Vector4D()
 		{ m_x= 0.0; m_y=0.0; m_z=0.0; m_w=0.0;}
@@ -32,7 +29,7 @@ namespace MAL_Default
 		explicit Vector4D<T>(const T& x, const T& y, const T& z, const T& w):m_x(x),m_y(y),m_z(z),m_w(w)
 		{}
 
-		/*! Assignement operator */
+		/*! \brief Assignement operator */
 		inline Vector4D<T> operator= (const Vector4D<T> &v)
 		{
 			m_x = v.m_x;
@@ -43,31 +40,31 @@ namespace MAL_Default
 		}
 
 
-		/*! Unary operator - */
+		/*! \brief Unary operator - */
 		inline Vector4D<T> operator-() const
 		{
 			return Vector4D<T>(-m_x, -m_y, -m_z, -m_w);
 		}
 
-		/*! Array operator */
+		/*! \brief Array operator */
 		inline T& operator[](unsigned i) 
 		{
 			return ((i==0) ? m_x: (i==1)? m_y: (i==2) ? m_z : m_w);
 		}
 
-		/*! Array operator */
+		/*! \brief Array operator */
 		inline const T& operator[](unsigned i) const
 		{
 			return ((i==0) ? m_x: (i==1)? m_y: (i==2) ? m_z : m_w);
 		}
 
-		/*! Array operator */
+		/*! \brief Array operator */
 		inline T& operator()( unsigned i) 
 		{
 			return ((i==0) ? m_x: (i==1)? m_y: (i==2) ? m_z : m_w);
 		}
 
-		/*! Binary operator == */
+		/*! \brief Binary operator == */
 		inline bool operator==(const Vector4D<T> &v) const
 		{
 			return ((v.m_x==m_x) &&
@@ -76,7 +73,7 @@ namespace MAL_Default
 				(v.m_w==m_w));
 		}
 
-		/*! Binary operator + */
+		/*! \brief Binary operator + */
 		inline Vector4D<T> operator+ (const Vector4D<T> &v) const
 		{
 			Vector4D<T> vr;
@@ -87,7 +84,7 @@ namespace MAL_Default
 			return vr;
 		}
 
-		/*! Binary operator - */
+		/*! \brief Binary operator - */
 		inline Vector4D<T> operator- (const Vector4D<T> &v) const
 		{
 			Vector4D<T> vr;
@@ -98,7 +95,7 @@ namespace MAL_Default
 			return vr;
 		}
 
-		/*! Binary operator += */
+		/*! \brief Binary operator += */
 		inline void operator+= (const Vector4D<T> &v)
 		{
 			m_x += v.m_x;
@@ -107,7 +104,7 @@ namespace MAL_Default
 			m_w += v.m_w;
 		}
 
-		/*! Binary operator -= */
+		/*! \brief Binary operator -= */
 		inline void operator-= (const Vector4D<T> &v)
 		{
 			m_x -= v.m_x;
@@ -116,7 +113,7 @@ namespace MAL_Default
 			m_w -= v.m_w;
 		}
 
-		/*! Binary operator * */
+		/*! \brief Binary operator * */
 		inline  Vector4D<T> operator* (const T& t) const
 		{
 			Vector4D<T> vr;
@@ -128,7 +125,7 @@ namespace MAL_Default
 		}
 
 
-		/*! Binary operator / */
+		/*! \brief Binary operator / */
 		inline Vector4D<T> operator/ (const T &t) const
 		{
 			Vector4D<T> vr;
@@ -139,7 +136,7 @@ namespace MAL_Default
 			return vr;
 		}
 
-		/*! Binary operator *= */
+		/*! \brief Binary operator *= */
 		inline void operator*= (const T &t) 
 		{
 			m_x = m_x/t;
@@ -148,7 +145,7 @@ namespace MAL_Default
 			m_w = m_w/t;
 		}
 
-		/*! Binary operator /= */
+		/*! \brief Binary operator /= */
 		inline void operator/= (const T &t) 
 		{
 			m_x = m_x/t;
@@ -158,7 +155,7 @@ namespace MAL_Default
 		}
 
 
-		/*! Normalize . */
+		/*! \brief Normalize . */
 		inline void normalize()
 		{
 			T in = static_cast<T> (1/sqrt(m_x*m_x+m_y*m_y+m_z*m_z+ m_w*m_w));
@@ -168,13 +165,13 @@ namespace MAL_Default
 			m_w *= in;
 		}
 
-		/*! Get the norm. */
+		/*! \brief Get the norm. */
 		inline T norm() const
 		{
 			return static_cast<T>(sqrt(m_x*m_x+m_y*m_y+m_z*m_z+ m_w*m_w));
 		}
 
-		/*! Get the norm squared */
+		/*! \brief Get the norm squared */
 		inline T normsquared() const
 		{
 			return (m_x*m_x+m_y*m_y+m_z*m_z+m_w*m_w);

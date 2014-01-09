@@ -188,7 +188,7 @@ namespace MAL_Default
             this->m[8] = cp*cr;
         }
 
-						/*! set from 9 scalar */
+		/*! \brief set from 9 scalar */
 		void Set (
 			const T x0, const T x1, const T x2, 
 			const T x3, const T x4, const T x5, 
