@@ -11,7 +11,7 @@
 //#define CD_SAFE_VERSION //use when the scalar has a perfect precision
 #define PENETRATION_DEPTH
 //#define CD_PAIR_VERBOUS_MODE
-#define CD_ITERATION_LIMIT 50 //use when the real-time constraints are too high fo current performances while keeping the same global precision.
+//#define CD_ITERATION_LIMIT 50 //use when the real-time constraints are too high fo current performances while keeping the same global precision.
 								//no theoretical guarantee on the precision nor the collision-safeness when used - Default value is 20
 
 
@@ -29,9 +29,9 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
-lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()), 
+lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()),
 precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
-{	
+{
 	--stamp1_;
 	--stamp2_;
 
@@ -132,9 +132,9 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
 
 Scalar CD_Pair::penetrationDepth()
 {
-#ifdef PENETRATION_DEPTH	
+#ifdef PENETRATION_DEPTH
 	if (collision_)//Objects are in collision
-	{		
+	{
 		distance_=-depthPair.getPenetrationDepth(lastDirection_,p1_,p2_,sp_,s1_,s2_);
 		if (distance_<0)
 		{
@@ -199,7 +199,7 @@ Scalar CD_Pair::GJK()
 #ifdef CD_ITERATION_LIMIT
 
 	int	cnt=0;
-#endif 
+#endif
 
 
 	while (cont)
@@ -209,7 +209,7 @@ Scalar CD_Pair::GJK()
 
 		if (++cnt>CD_ITERATION_LIMIT)
 			break;		//the iterations number limit has been reached
-#endif 
+#endif
 
 		switch (s_.getType())
 		{
@@ -257,7 +257,13 @@ Scalar CD_Pair::GJK()
 			}
 
 		}
-		if ((distance_=v.normsquared())<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
+		Scalar dist=v.normsquared();
+
+		if (distance_ <= dist) //the distance is not monotonous
+		{
+		    cont=false;
+		}
+        else if ( (distance_= dist)<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
 		{
 			collision_=true;
 			cont=false;
@@ -310,7 +316,7 @@ Scalar CD_Pair::GJK()
 						s1_+=sup1;
 						s2_+=sup2;
 						collision_=true;
-					}	
+					}
 					else
 					{
 						s_=sp_;
@@ -341,12 +347,12 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 	Vector3& v=lastDirection_;
 
 	if (collision_)
-	{		
+	{
 		p1=p1_;
 		p2=p2_;
 		return;
 
-	}		
+	}
 
 	switch (s_.getType())
 	{
@@ -442,7 +448,7 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 	default:
 		{
 			p1_=p1=s1_[0];
-			p2_=p2=s2_[0]; 
+			p2_=p2=s2_[0];
 
 			return ;
 		}
