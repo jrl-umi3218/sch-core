@@ -1,23 +1,22 @@
 #pragma once
-#include <SCD/Matrix/SmallVector4Default.h>
 
-namespace MAL_Default
+namespace CD_Matrix
 {
 	/*! Quaternion m_x*i + m_y*j + m_z*k+w    */
 	template <typename T>
-	class QuaternionM :
-		private Vector4D<T>
+	class QuaternionT :
+		private Vector4T<T>
 	{
 	public:
 
-		QuaternionM<T>()
+		QuaternionT<T>()
 		{}
 
-		explicit QuaternionM<T>(const T& x, const T& y, const T& z, const T& w):Vector4D<T>(x,y,z,w)
+		explicit QuaternionT<T>(const T& x, const T& y, const T& z, const T& w):Vector4T<T>(x,y,z,w)
 		{}
 
-
-		explicit QuaternionM<T>(const Vector3Mod<T>& axis, const T& angle)
+        template <bool b>
+		explicit QuaternionT<T>(const Vector3T<T,b>& axis, const T& angle)
 		{
 			T d = axis.norm();
 			T s = sin(angle * 0.5) / d;
@@ -28,13 +27,14 @@ namespace MAL_Default
 		}
 
 
-		using Vector4D<T>::operator[] ;
-		using Vector4D<T>::operator+ ;
-		using Vector4D<T>::operator+= ;
-		using Vector4D<T>::operator- ;
-		using Vector4D<T>::operator-= ;
+		using Vector4T<T>::operator[] ;
+		using Vector4T<T>::operator+ ;
+		using Vector4T<T>::operator+= ;
+		using Vector4T<T>::operator- ;
+		using Vector4T<T>::operator-= ;
 
-		const QuaternionM<T>& operator=(const QuaternionM<T>& A)
+
+		const QuaternionT<T>& operator=(const QuaternionT<T>& A)
 		{
 			this->m_w=A.m_w;
 			this->m_x=A.m_x;
@@ -42,11 +42,11 @@ namespace MAL_Default
 			this->m_z=A.m_z;
 		}
 
-		QuaternionM<T> Conjugate() const
+		QuaternionT<T> Conjugate() const
 		{
 			return QuaternionD(-(this->m_x),-(this->m_y),-(this->m_y),this->m_t);
 		}
-		
+
 		void ConjugateIt()
 		{
 			this->m_x=-this->m_x;
@@ -54,7 +54,7 @@ namespace MAL_Default
 			this->m_z=-this->m_z;
 		}
 
-		QuaternionM<T> operator*(const QuaternionM<T>& q )
+		QuaternionT<T> operator*(const QuaternionT<T>& q )
 		{
 			return QuaternionD(this->m_w * q[0] + this->m_x * q[3] + this->m_y * q[2] - this->m_z * q[1],
 									this->m_w * q[1] + this->m_y * q[3] + this->m_z * q[0] - this->m_x * q[2],
@@ -62,7 +62,7 @@ namespace MAL_Default
 									this->m_w * q[3] - this->m_x * q[0] - this->m_y * q[1] - this->m_z * q[2]);
 		}
 
-		QuaternionM<T>& operator*=(const QuaternionM<T>& q )
+		QuaternionT<T>& operator*=(const QuaternionT<T>& q )
 		{
 			T x=this->m_w * q[0] + this->m_x * q[3] + this->m_y * q[2] - this->m_z * q[1],
 			  y=this->m_w * q[0] + this->m_x * q[3] + this->m_y * q[2] - this->m_z * q[1],
@@ -73,11 +73,11 @@ namespace MAL_Default
 				this->m_y=y;
 				this->m_z=z;
 				this->m_w=w;
-			
+
 			return *this;
 		}
 
-		virtual ~QuaternionM(void)
+		virtual ~QuaternionT(void)
 		{
 		}
 	};
