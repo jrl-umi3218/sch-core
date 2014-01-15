@@ -195,6 +195,8 @@ Scalar CD_Pair::GJK()
 
 	Scalar a1,a2,a3,a4,a5,a6;
 
+	distance_=infinity;
+
 
 #ifdef CD_ITERATION_LIMIT
 
@@ -257,13 +259,13 @@ Scalar CD_Pair::GJK()
 			}
 
 		}
-		Scalar dist=v.normsquared();
+		Scalar newdist=v.normsquared();
 
-		if (distance_ <= dist) //the distance is not monotonous
+		if (distance_ <= newdist) //the distance is not monotonous
 		{
 		    cont=false;
 		}
-        else if ( (distance_= dist)<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
+        else if ( (distance_= newdist)<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
 		{
 			collision_=true;
 			cont=false;
