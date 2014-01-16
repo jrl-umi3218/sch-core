@@ -233,7 +233,6 @@ Scalar CD_Pair::GJK()
             lambda2_*=det_;
 
             proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
-            v=-proj;
             break;
         }
 
@@ -249,17 +248,15 @@ Scalar CD_Pair::GJK()
             lambda1_*=det_;
 
             proj=s_[0]*lambda0_+s_[1]*lambda1_;
-            v=-proj;
             break;
         }
         default:
         {
             proj=s_[0];
-            v=-proj;
         }
 
         }
-        Scalar newdist=v.normsquared();
+        Scalar newdist=proj.normsquared();
 
         if (distance_ <= newdist) //the distance is not monotonous
         {
@@ -267,7 +264,10 @@ Scalar CD_Pair::GJK()
         }
         else
         {
-            if ( (distance_= newdist)<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
+            v=-proj;
+            distance_= newdist;
+
+            if ( distance_<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
             {
                 collision_=true;
                 cont=false;
