@@ -168,6 +168,8 @@ Scalar CD_Pair::GJK()
     Point3 sup1=sObj1_->support(v,lf1);
     Point3 sup2=sObj2_->support(-v,lf2);
 
+
+
 #ifdef CD_PAIR_VERBOUS_MODE
     std::cout<<"Last features"<<lf1<<" "<<lf2<<std::endl;
 #endif
@@ -176,9 +178,7 @@ Scalar CD_Pair::GJK()
 
     sup-=sup2;
 
-    s1_=sup1;
-    s2_=sup2;
-    s_=sup;
+	CD_Simplex s1(sup1),s2(sup2),s(sup);
 
     sp_=sup;
 
@@ -187,6 +187,7 @@ Scalar CD_Pair::GJK()
     projectionComputed_=false;
 
     bool cont=true;
+    bool useLastSimplex=true;
 
     Point3 proj;
 
@@ -197,12 +198,9 @@ Scalar CD_Pair::GJK()
 
     distance_=infinity;
 
-
 #ifdef CD_ITERATION_LIMIT
-
     int	cnt=0;
 #endif
-
 
     while (cont)
     {
@@ -213,16 +211,16 @@ Scalar CD_Pair::GJK()
             break;		//the iterations number limit has been reached
 #endif
 
-        switch (s_.getType())
+        switch (s.getType())
         {
 
         case CD_Triangle:
         {
-            S01=s_[1];
-            S01-=s_[2];
-            S02=s_[0];
-            S02-=s_[2];
-            a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
+            S01=s[1];
+            S01-=s[2];
+            S02=s[0];
+            S02-=s[2];
+            a1=S01*s[0],a2=S01*s[1],a3=S01*s[2],a4=S02*s[0],a5=S02*s[1],a6=S02*s[2];
 
             lambda0_=a2*a6-a3*a5;
             lambda1_=a3*a4-a1*a6;
@@ -232,27 +230,27 @@ Scalar CD_Pair::GJK()
             lambda1_*=det_;
             lambda2_*=det_;
 
-            proj=s_[0]*lambda0_+s_[1]*lambda1_+s_[2]*lambda2_;
+            proj=s[0]*lambda0_+s[1]*lambda1_+s[2]*lambda2_;
             break;
         }
 
         case CD_Segment:
         {
-            S01=s_[1];
-            S01-=s_[0];
+            S01=s[1];
+            S01-=s[0];
 
-            lambda0_=S01*s_[1];
-            lambda1_=-(S01*s_[0]);
+            lambda0_=S01*s[1];
+            lambda1_=-(S01*s[0]);
             det_=1/(lambda0_+lambda1_);
             lambda0_*=det_;
             lambda1_*=det_;
 
-            proj=s_[0]*lambda0_+s_[1]*lambda1_;
+            proj=s[0]*lambda0_+s[1]*lambda1_;
             break;
         }
         default:
         {
-            proj=s_[0];
+            proj=s[0];
         }
 
         }
@@ -261,11 +259,16 @@ Scalar CD_Pair::GJK()
         if (distance_ <= newdist) //the distance is not monotonous
         {
             cont=false;
+            useLastSimplex=false;
         }
         else
         {
             v=-proj;
             distance_= newdist;
+
+            s_=s;
+            s1_=s1;
+            s2_=s2;
 
             if ( distance_<=sp_.farthestPointDistance()*epsilon_)//v is considered zero
             {
@@ -311,21 +314,21 @@ Scalar CD_Pair::GJK()
                     {
                         sp_.getClosestSubSimplexGJK(k);
                         sp_.filter(k);
-                        s1_+=sup1;
-                        s2_+=sup2;
+                        s1+=sup1;
+                        s2+=sup2;
 
                         if (sp_.getType()==CD_Tetrahedron)
                         {
                             cont=false;
-                            s1_+=sup1;
-                            s2_+=sup2;
+                            s1+=sup1;
+                            s2+=sup2;
                             collision_=true;
                         }
                         else
                         {
-                            s_=sp_;
-                            s1_.filter(k);
-                            s2_.filter(k);
+                            s=sp_;
+                            s1.filter(k);
+                            s2.filter(k);
                         }
                     }
                 }
@@ -338,7 +341,16 @@ Scalar CD_Pair::GJK()
     std::cout<<"#####GJK END######"<<std::endl;
 #endif
 
+    if (useLastSimplex)
+    {
+        s_=s;
+        s1_=s1;
+        s2_=s2;
+    }
+
     return distance_;
+
+
 }
 
 void CD_Pair::setVector(const Vector3 &v)
