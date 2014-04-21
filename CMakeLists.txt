@@ -25,37 +25,9 @@ SETUP_PROJECT()
 SET(BOOST_COMPONENTS serialization)
 SEARCH_FOR_BOOST()
 
-find_package(GLUT)
-find_package(OpenGL)
-
-# GLUT is a bit tricky, so check the search result.
-if(GLUT_FOUND)
-	message("-- GLUT found! Libraries: ${GLUT_LIBRARIES}")
-else(GLUT_FOUND)
-	message("-- GLUT not found! Trying with the alternative FindGLUT")
-	include(CMakeModules/FindGLUT_fix1.cmake)
-	if(GLUT_FOUND)
-		message("-- GLUT found! Libraries: ${GLUT_LIBRARIES}")
-	else(GLUT_FOUND)
-		message("-- GLUT not found!")
-	endif(GLUT_FOUND)
-endif(GLUT_FOUND)
-
-
-# Optimisation flags when building with RELEASE
-#----------------------------------------------
-IF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
-  IF(CMAKE_COMPILER_IS_GNUCXX)
-#    SET (${PROJECT_NAME}_CXXFLAGS "-O3 -funroll-loops -frerun-loop-opt -fschedule-insns2 -frerun-cse-after-loop -falign-functions -falign-labels -falign-loops -falign-jumps -fexpensive-optimizations ${${PROJECT_NAME}_CXXFLAGS}")
-  ENDIF(CMAKE_COMPILER_IS_GNUCXX)
-ENDIF(CMAKE_BUILD_TYPE MATCHES "RELEASE")
-
 PKG_CONFIG_APPEND_LIBS("scd")
 
 ADD_SUBDIRECTORY(src)
-if(GLUT_FOUND)
- ADD_SUBDIRECTORY(view)
-endif(GLUT_FOUND)
 ADD_SUBDIRECTORY(unitTestings)
 
 SETUP_PROJECT_FINALIZE()
