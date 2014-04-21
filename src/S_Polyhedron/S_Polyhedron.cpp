@@ -27,53 +27,53 @@ S_Polyhedron::~S_Polyhedron(void)
 
 const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
 {
-	poly=p.poly;
-	return *this;
+  poly=p.poly;
+  return *this;
 }
 
 void S_Polyhedron::updateVertexNeighbors()
 {
-	poly.updateVertexNeighbors();
+  poly.updateVertexNeighbors();
 }
 
 void S_Polyhedron::clear()
 {
-	poly.clear();
+  poly.clear();
 }
 
 void S_Polyhedron::clearNeighbors()
 {
-	poly.clearNeighbors();
+  poly.clearNeighbors();
 }
 
 void S_Polyhedron::updateFastArrays()
 {
-	poly.updateFastArrays();
+  poly.updateFastArrays();
 }
 
 Point3 S_Polyhedron::naiveSupport(const Vector3& v)const
 {
-	return poly.naiveSupport(v);
+  return poly.naiveSupport(v);
 }
 
 Point3 S_Polyhedron::l_Support(const Vector3& v,int &lastFeature)const
 {
-	return poly.support(v,lastFeature);
+  return poly.support(v,lastFeature);
 }
 
 void S_Polyhedron::deleteVertexesWithoutNeighbors()
 {
-	poly.deleteVertexesWithoutNeighbors();
+  poly.deleteVertexesWithoutNeighbors();
 }
 
 void S_Polyhedron::constructFromFile(const std::string& filename)
 {
-	poly.openFromFile(filename);
+  poly.openFromFile(filename);
 }
 
 void S_Polyhedron::loadFromBinary(const std::string & filename)
 {
-  try 
+  try
   {
     std::ifstream ifs(filename.c_str(), std::ios::binary);
     boost::archive::binary_iarchive ia(ifs);
@@ -99,7 +99,7 @@ void S_Polyhedron::saveToBinary(const std::string & filename)
 
 S_Object::S_ObjectType S_Polyhedron::getType() const
 {
-	return S_Object::TPolyhedron;
+  return S_Object::TPolyhedron;
 }
 
 int S_Polyhedron::getTrianglesNumber() const

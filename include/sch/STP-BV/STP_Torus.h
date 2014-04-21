@@ -12,22 +12,22 @@
 
 namespace sch
 {
-	/*! \struct s_STP_Circle
-	*  \brief
-	*  \author Cochet-Grasset Amelie
-	*  \date    july 2007
-	*
-	*  
-	*/
-	typedef struct s_STP_Circle
-	{
-		Vector3 m_normal;
-		Point3 m_center;
-		Scalar m_radius;
+  /*! \struct s_STP_Circle
+  *  \brief
+  *  \author Cochet-Grasset Amelie
+  *  \date    july 2007
+  *
+  *
+  */
+  typedef struct s_STP_Circle
+  {
+    Vector3 m_normal;
+    Point3 m_center;
+    Scalar m_radius;
 
     bool operator==(const s_STP_Circle & c) const
     {
-      return 
+      return
         m_normal == c.m_normal &&
         m_center == c.m_center &&
         m_radius == c.m_radius;
@@ -39,65 +39,65 @@ namespace sch
       ar & m_normal & m_center & m_radius;
     }
 
-		s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius);
-		s_STP_Circle(){}
-	} STP_Circle;
+    s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius);
+    s_STP_Circle() {}
+  } STP_Circle;
 
-	/*!  \class STP_Torus
-	*  \brief 
-	*  \author Cochet-Grasset Amelie
-	*  \date    july 2007
-	*
-	*  
-	*/
+  /*!  \class STP_Torus
+  *  \brief
+  *  \author Cochet-Grasset Amelie
+  *  \date    july 2007
+  *
+  *
+  */
 
-	class STP_Torus :
-		public STP_Feature
-	{
-	public:
+  class STP_Torus :
+    public STP_Feature
+  {
+  public:
     sch_API STP_Torus();
-		sch_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
-		sch_API STP_Torus(const STP_Torus& t);
-		sch_API ~STP_Torus();
+    sch_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
+    sch_API STP_Torus(const STP_Torus& t);
+    sch_API ~STP_Torus();
 
-		sch_API void setVVR(const STP_VVR* vvr);
+    sch_API void setVVR(const STP_VVR* vvr);
 
-		sch_API virtual void print() const;
+    sch_API virtual void print() const;
 
-		sch_API virtual bool isHere(const Vector3& v) const;
-		sch_API virtual bool isHereFarthestNeighbour(const Vector3& v);
-		sch_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
-		sch_API virtual bool isHereFirstNeighbour(const Vector3& v);
-		sch_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
-		sch_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
-		sch_API virtual int getNextBV(unsigned int id) const;
-		sch_API virtual int getNextBVPrime() const
-		{
-			return m_nextBVPrime;	
-		}
-		sch_API virtual Scalar supportH(const Vector3& v) const;
-		sch_API virtual Point3 support(const Vector3& v) const;
+    sch_API virtual bool isHere(const Vector3& v) const;
+    sch_API virtual bool isHereFarthestNeighbour(const Vector3& v);
+    sch_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
+    sch_API virtual bool isHereFirstNeighbour(const Vector3& v);
+    sch_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
+    sch_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
+    sch_API virtual int getNextBV(unsigned int id) const;
+    sch_API virtual int getNextBVPrime() const
+    {
+      return m_nextBVPrime;
+    }
+    sch_API virtual Scalar supportH(const Vector3& v) const;
+    sch_API virtual Point3 support(const Vector3& v) const;
 
-		sch_API virtual STP_Feature* clone() const;
+    sch_API virtual STP_Feature* clone() const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & boost::serialization::base_object<STP_Feature>(*this);
       ar & m_circle & m_sphereRadius & m_VVR0 & m_VVR1 & m_VVR2 & m_VVR3 & m_nextBV;
-      m_nextBV[0] = m_VVR0.m_outerSTP; 
-      m_nextBV[1] = m_VVR1.m_outerSTP; 
-      m_nextBV[2] = m_VVR2.m_outerSTP; 
-      m_nextBV[3] = m_VVR3.m_outerSTP; 
+      m_nextBV[0] = m_VVR0.m_outerSTP;
+      m_nextBV[1] = m_VVR1.m_outerSTP;
+      m_nextBV[2] = m_VVR2.m_outerSTP;
+      m_nextBV[3] = m_VVR3.m_outerSTP;
     }
 
 
-	protected:
-		STP_Circle m_circle;
-		Scalar m_sphereRadius;
-		STP_VVR m_VVR0,m_VVR1,m_VVR2,m_VVR3;
-		int m_nextBV[4];
-	};
+  protected:
+    STP_Circle m_circle;
+    Scalar m_sphereRadius;
+    STP_VVR m_VVR0,m_VVR1,m_VVR2,m_VVR3;
+    int m_nextBV[4];
+  };
 
 }
 

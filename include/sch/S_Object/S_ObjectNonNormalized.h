@@ -13,34 +13,34 @@
 namespace sch
 {
 
-class S_ObjectNonNormalized :
-	public S_Object
-{
-public:
-	sch_API S_ObjectNonNormalized(void);
-	sch_API ~S_ObjectNonNormalized(void);
-
-	/*! 
-	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
-	 *  \param v direction vector
-	 *  \return returns the support point.
-	 */ 	
-	sch_API virtual Point3 support(const Vector3& v) const;
-
-	/*! 
-	 *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
-	 *  \param v direction vector
-     *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
-	 *  \return returns the support point.
-	 */
-	sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
-
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int /*version*/)
+  class S_ObjectNonNormalized :
+    public S_Object
   {
-    ar & boost::serialization::base_object<S_Object>(*this);
-  }
-};
+  public:
+    sch_API S_ObjectNonNormalized(void);
+    sch_API ~S_ObjectNonNormalized(void);
+
+    /*!
+     *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
+     *  \param v direction vector
+     *  \return returns the support point.
+     */
+    sch_API virtual Point3 support(const Vector3& v) const;
+
+    /*!
+     *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
+     *  \param v direction vector
+       *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
+     *  \return returns the support point.
+     */
+    sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int /*version*/)
+    {
+      ar & boost::serialization::base_object<S_Object>(*this);
+    }
+  };
 
 #include <sch/S_Object/S_ObjectNonNormalized.hxx>
 

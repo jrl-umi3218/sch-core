@@ -17,21 +17,21 @@
 
 namespace sch
 {
-	class S_Polyhedron :
-		public S_ObjectNonNormalized
-	{
-	public:
-		sch_API S_Polyhedron(void);
-		sch_API S_Polyhedron(const S_Polyhedron&);
-		sch_API virtual ~S_Polyhedron(void);
+  class S_Polyhedron :
+    public S_ObjectNonNormalized
+  {
+  public:
+    sch_API S_Polyhedron(void);
+    sch_API S_Polyhedron(const S_Polyhedron&);
+    sch_API virtual ~S_Polyhedron(void);
 
-		sch_API const S_Polyhedron& operator =(const S_Polyhedron&);
+    sch_API const S_Polyhedron& operator =(const S_Polyhedron&);
 
-		/*!
-		* \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options : 
-		* \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f" 
-		*/
-		sch_API virtual void constructFromFile(const std::string& filename);
+    /*!
+    * \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options :
+    * \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f"
+    */
+    sch_API virtual void constructFromFile(const std::string& filename);
 
     /*!
     *  \brief Load the object from a binary archive
@@ -46,32 +46,32 @@ namespace sch
     */
     sch_API virtual void saveToBinary(const std::string & filename);
 
-		/*! 
-		*  \brief updates the fast access arrays, must be called after each polyhedron modification
-		*/
-		sch_API void updateFastArrays();
+    /*!
+    *  \brief updates the fast access arrays, must be called after each polyhedron modification
+    */
+    sch_API void updateFastArrays();
 
-		sch_API Point3 naiveSupport(const Vector3& v)const;
+    sch_API Point3 naiveSupport(const Vector3& v)const;
 
-		/*! 
-		*  \brief updates the Neighborhood of the vertexes, must be called on polyhedron 
-		*  \which vertexes have no neighbors, or after calling clearNeighbors.
-		*/
-		sch_API void updateVertexNeighbors();
+    /*!
+    *  \brief updates the Neighborhood of the vertexes, must be called on polyhedron
+    *  \which vertexes have no neighbors, or after calling clearNeighbors.
+    */
+    sch_API void updateVertexNeighbors();
 
-		/*! 
-		*  \brief clears the neighbors tables;
-		*/
-		sch_API void clearNeighbors();
+    /*!
+    *  \brief clears the neighbors tables;
+    */
+    sch_API void clearNeighbors();
 
-		/*! 
-		*  \brief clears all the polyhedron;
-		*/
-		sch_API void clear();
+    /*!
+    *  \brief clears all the polyhedron;
+    */
+    sch_API void clear();
 
-		/*!
-		* \brief deletes aal the vertexes that dont have neighbors;
-		*/
+    /*!
+    * \brief deletes aal the vertexes that dont have neighbors;
+    */
     sch_API void deleteVertexesWithoutNeighbors();
 
     sch_API int getTrianglesNumber() const;
@@ -92,15 +92,15 @@ namespace sch
       updateVertexNeighbors();
     }
 
-		BOOST_SERIALIZATION_SPLIT_MEMBER()
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
 
-	protected:
-		sch_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-		sch_API virtual	S_ObjectType getType() const;
+  protected:
+    sch_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
+    sch_API virtual	S_ObjectType getType() const;
 
-	protected:
+  protected:
 
-		Polyhedron_algorithms poly;
-	};
+    Polyhedron_algorithms poly;
+  };
 }
 #endif

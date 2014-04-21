@@ -10,132 +10,132 @@
 
 namespace sch
 {
-	enum CD_SimplexType 
-	{
-		CD_Point,
-		CD_Segment,
-		CD_Triangle,
-		CD_Tetrahedron,
-		CD_None
-	};
+  enum CD_SimplexType
+  {
+    CD_Point,
+    CD_Segment,
+    CD_Triangle,
+    CD_Tetrahedron,
+    CD_None
+  };
 
 
-	/*!
-	* tells which points ware kept from the previous simplex
-	*/
-	struct CD_SimplexKeptPoints
-	{
-		char b1,b2,b3,b4;
+  /*!
+  * tells which points ware kept from the previous simplex
+  */
+  struct CD_SimplexKeptPoints
+  {
+    char b1,b2,b3,b4;
 
-		CD_SimplexType type;
+    CD_SimplexType type;
 
-		inline CD_SimplexKeptPoints()
-		{
-			b1=b2=b3=b4=-1;
-		}
+    inline CD_SimplexKeptPoints()
+    {
+      b1=b2=b3=b4=-1;
+    }
 
-		inline char & operator[]( unsigned char i)
-		{
-			return ((i==0) ? b1: (i==1)? b2: (i==2) ? b3 : b4);
-		}
+    inline char & operator[]( unsigned char i)
+    {
+      return ((i==0) ? b1: (i==1)? b2: (i==2) ? b3 : b4);
+    }
 
-		inline const char & operator[]( unsigned char i) const
-		{
-			return ((i==0) ? b1: (i==1)? b2: (i==2) ? b3 : b4);
-		}
+    inline const char & operator[]( unsigned char i) const
+    {
+      return ((i==0) ? b1: (i==1)? b2: (i==2) ? b3 : b4);
+    }
 
-		void reset()
-		{
-			b1=b2=b3=b4=-1;
-		}
-
-
-
-	};
-
-	class CD_Simplex
-	{
-	public:
-		sch_API CD_Simplex(const Point3& p);
-		sch_API CD_Simplex(const Point3& p1,const Point3& p2);
-		sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
-		sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4);
-
-		sch_API virtual ~CD_Simplex();
-
-		sch_API CD_SimplexType getType()const;
-
-		sch_API const Point3& operator[]( unsigned char) const;
-		sch_API Point3& operator[]( unsigned char);
-
-
-		sch_API CD_Simplex& operator=(const CD_Simplex& s);
-		sch_API CD_Simplex& operator=(const Point3& p);
-
-		sch_API bool operator==(const CD_Simplex& s);
-		sch_API bool operator!=(const CD_Simplex& s);
+    void reset()
+    {
+      b1=b2=b3=b4=-1;
+    }
 
 
 
-		/*! 
-		* \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron) 
-		* \updateVetors must be called after this operator to keep the vectors up to date.
-		*/
-		sch_API CD_Simplex& operator+=(const Point3&);
+  };
+
+  class CD_Simplex
+  {
+  public:
+    sch_API CD_Simplex(const Point3& p);
+    sch_API CD_Simplex(const Point3& p1,const Point3& p2);
+    sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
+    sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4);
+
+    sch_API virtual ~CD_Simplex();
+
+    sch_API CD_SimplexType getType()const;
+
+    sch_API const Point3& operator[]( unsigned char) const;
+    sch_API Point3& operator[]( unsigned char);
 
 
-		/*! 
-		* \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron) 
-		* \updateVetors must be called after this operator to keep the vectors up to date.
-		*/
-		sch_API CD_Simplex operator+(const Point3&)const;
+    sch_API CD_Simplex& operator=(const CD_Simplex& s);
+    sch_API CD_Simplex& operator=(const Point3& p);
 
-		/*! 
-		* \brief Updates the simplex by supressing some vertexes and/or change their order according to a filter
-		* \param k is the filter used to know wich vertexes will be kept and in wich order
-		* \updateVetors must be called after this function to keep the vectors up to date.
-		*/
-		sch_API virtual void filter(const CD_SimplexKeptPoints &k);
-
-		/*!
-		*\brief Gives the distance squared at the origin for a simplex, and according the direction v.
-		*/
-		sch_API Scalar squareDistanceAtOrigin(const Vector3 &v)const;
-
-		/*!
-		* \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes 
-		*/
-		sch_API void updateVectors();
+    sch_API bool operator==(const CD_Simplex& s);
+    sch_API bool operator!=(const CD_Simplex& s);
 
 
-		/*!
-		* \brief Returns AB vector 
-		*/
-		sch_API const Vector3& AB () const;
 
-		/*!
-		* \brief Returns AC vector
-		*/
-		sch_API const Vector3& AC () const;
+    /*!
+    * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron)
+    * \updateVetors must be called after this operator to keep the vectors up to date.
+    */
+    sch_API CD_Simplex& operator+=(const Point3&);
 
-		/*!
-		* \brief Returns AD vector 
-		*/
-		sch_API const Vector3& AD () const;
 
-	protected :
+    /*!
+    * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron)
+    * \updateVetors must be called after this operator to keep the vectors up to date.
+    */
+    sch_API CD_Simplex operator+(const Point3&)const;
 
-		CD_SimplexType type_;
+    /*!
+    * \brief Updates the simplex by supressing some vertexes and/or change their order according to a filter
+    * \param k is the filter used to know wich vertexes will be kept and in wich order
+    * \updateVetors must be called after this function to keep the vectors up to date.
+    */
+    sch_API virtual void filter(const CD_SimplexKeptPoints &k);
 
-		Point3 s1_,s2_,s3_,s4_;
-		Vector3 ab_,ac_,ad_;
+    /*!
+    *\brief Gives the distance squared at the origin for a simplex, and according the direction v.
+    */
+    sch_API Scalar squareDistanceAtOrigin(const Vector3 &v)const;
 
-		static const Scalar zero_;
-		static const Scalar zero2_;
-		static const Scalar zero3_;
-		static const Scalar zero4_;
+    /*!
+    * \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes
+    */
+    sch_API void updateVectors();
 
-	};
+
+    /*!
+    * \brief Returns AB vector
+    */
+    sch_API const Vector3& AB () const;
+
+    /*!
+    * \brief Returns AC vector
+    */
+    sch_API const Vector3& AC () const;
+
+    /*!
+    * \brief Returns AD vector
+    */
+    sch_API const Vector3& AD () const;
+
+  protected :
+
+    CD_SimplexType type_;
+
+    Point3 s1_,s2_,s3_,s4_;
+    Vector3 ab_,ac_,ad_;
+
+    static const Scalar zero_;
+    static const Scalar zero2_;
+    static const Scalar zero3_;
+    static const Scalar zero4_;
+
+  };
 
 #include "CD_Simplex.hxx"
 }

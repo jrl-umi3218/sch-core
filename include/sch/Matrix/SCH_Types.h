@@ -25,16 +25,16 @@
 
 namespace sch
 {
-	typedef  double  Scalar;
-	typedef  CD_Matrix::Vector3T<Scalar,false> Vector3;
-	typedef  CD_Matrix::Vector4T<Scalar> Vector4;
-	typedef  Vector3 Point3;
-	typedef  CD_Matrix::Matrix3x3T<Scalar> Matrix3x3;
-	typedef  CD_Matrix::QuaternionT<Scalar> Quaternion;
-	typedef  CD_Matrix::Matrix4x4T<Scalar> Matrix4x4;
-	typedef  CD_Matrix::Vector3T<Scalar,true> Vector3NormOptimized;
+  typedef  double  Scalar;
+  typedef  CD_Matrix::Vector3T<Scalar,false> Vector3;
+  typedef  CD_Matrix::Vector4T<Scalar> Vector4;
+  typedef  Vector3 Point3;
+  typedef  CD_Matrix::Matrix3x3T<Scalar> Matrix3x3;
+  typedef  CD_Matrix::QuaternionT<Scalar> Quaternion;
+  typedef  CD_Matrix::Matrix4x4T<Scalar> Matrix4x4;
+  typedef  CD_Matrix::Vector3T<Scalar,true> Vector3NormOptimized;
 
-    static const Scalar infinity = DBL_MAX;
+  static const Scalar infinity = DBL_MAX;
 }
 
 #endif

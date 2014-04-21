@@ -12,34 +12,34 @@
 
 namespace sch
 {
-	class S_ObjectNormalized :
-		public S_Object
-	{
-	public:
-		sch_API S_ObjectNormalized(void);
-		sch_API virtual ~S_ObjectNormalized(void);
+  class S_ObjectNormalized :
+    public S_Object
+  {
+  public:
+    sch_API S_ObjectNormalized(void);
+    sch_API virtual ~S_ObjectNormalized(void);
 
-		/*!
-		*  \brief put the vector NORMALIZED it in objects coordinates, then calls l_support. DO NOT OVERLOAD IT UNLESS YOU KNOW WHAT YOU ARE DOING (if you want to define the support function, overload l_support)
-		*  \param v direction vector
-		*  \return returns the support point.
-		*/ 
-		sch_API virtual Point3 support(const Vector3& v) const;
+    /*!
+    *  \brief put the vector NORMALIZED it in objects coordinates, then calls l_support. DO NOT OVERLOAD IT UNLESS YOU KNOW WHAT YOU ARE DOING (if you want to define the support function, overload l_support)
+    *  \param v direction vector
+    *  \return returns the support point.
+    */
+    sch_API virtual Point3 support(const Vector3& v) const;
 
-		/*! 
-		*  \brief version of support with last feature optimization
-		*  \param v direction vector
-		*  \param lastFeature tells in which feature we were in last query, and returns the new one. very important in spatio-temporal coherence
-		*  \return returns the support point.
-		*/ 
-		sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
+    /*!
+    *  \brief version of support with last feature optimization
+    *  \param v direction vector
+    *  \param lastFeature tells in which feature we were in last query, and returns the new one. very important in spatio-temporal coherence
+    *  \return returns the support point.
+    */
+    sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
       ar & boost::serialization::base_object<S_Object>(*this);
     }
-	};
+  };
 
 #include <sch/S_Object/S_ObjectNormalized.hxx>
 }
