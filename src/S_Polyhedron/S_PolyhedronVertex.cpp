@@ -1,8 +1,8 @@
-#include <SCD/S_Polyhedron/S_PolyhedronVertex.h>
+#include <sch/S_Polyhedron/S_PolyhedronVertex.h>
 
 //#define POLYHEDRON_VERTEX_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
 
-using namespace SCD;
+using namespace sch;
 S_PolyhedronVertex::S_PolyhedronVertex(void):fastNeighbors_(NULL),endNeighbors_(NULL)
 {
 }

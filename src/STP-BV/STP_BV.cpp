@@ -6,7 +6,7 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 */
 
 
-#include <SCD/STP-BV/STP_BV.h>
+#include <sch/STP-BV/STP_BV.h>
 #include <iostream>
 #include <fstream>
 
@@ -22,12 +22,12 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 
 /* Necessary includes and macro call for polymorph pointer serialization */
 #include <boost/serialization/export.hpp>
-#include <SCD/STP-BV/STP_SmallSphere.h>
-#include <SCD/STP-BV/STP_BigSphere.h>
-#include <SCD/STP-BV/STP_Torus.h>
-BOOST_CLASS_EXPORT(SCD::STP_Torus)
-BOOST_CLASS_EXPORT(SCD::STP_SmallSphere)
-BOOST_CLASS_EXPORT(SCD::STP_BigSphere)
+#include <sch/STP-BV/STP_SmallSphere.h>
+#include <sch/STP-BV/STP_BigSphere.h>
+#include <sch/STP-BV/STP_Torus.h>
+BOOST_CLASS_EXPORT(sch::STP_Torus)
+BOOST_CLASS_EXPORT(sch::STP_SmallSphere)
+BOOST_CLASS_EXPORT(sch::STP_BigSphere)
 
 
 #define REMEMBER_LAST_FEATURE
@@ -78,7 +78,7 @@ std::ofstream os6("debugSortList.txt");
 
 // compute the rotation matrix as with glRotatef
 // source : http://www.opengl.org/sdk/docs/man2/xhtml/glRotate.xml
-void computeRotation(SCD::Matrix3x3& R, const SCD::Vector3& v, const SCD::Scalar& theta)
+void computeRotation(sch::Matrix3x3& R, const sch::Vector3& v, const sch::Scalar& theta)
 {
 	double c = cos(theta);
 	double s = sin(theta);
@@ -91,7 +91,7 @@ void computeRotation(SCD::Matrix3x3& R, const SCD::Vector3& v, const SCD::Scalar
 	R(2,0) = z*x*(1-c) - y*s;  R(2,1) = z*y*(1-c) + x*s; R(2,2) = z*z*(1-c) +c;
 }
 
-using namespace SCD;
+using namespace sch;
 
 s_Triangle::s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3):
 m_vertex1(vertex1), m_vertex2(vertex2), m_vertex3(vertex3)
@@ -1156,7 +1156,7 @@ int STP_BV::getFeaturesNumber() const
 	return m_patches.size();
 }
 
-const std::vector<SCD::Geometry> & STP_BV::getGeometries() const
+const std::vector<sch::Geometry> & STP_BV::getGeometries() const
 {
 	return geometries_;
 }

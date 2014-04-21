@@ -25,13 +25,13 @@
 
 #include "../view/S_Object_gl.h"
 
-using namespace SCD;
+using namespace sch;
 
 std::vector<S_Object_GL*> sObjGL;
 
 extern std::fstream outfile;
 
-using namespace SCD;
+using namespace sch;
 
 GLfloat light0_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};
 GLfloat light0_diffuse[] =  {.8f, .8f, 1.0f, 1.0f};

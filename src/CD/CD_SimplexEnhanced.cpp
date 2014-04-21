@@ -1,6 +1,6 @@
-#include <SCD/CD/CD_SimplexEnhanced.h>
+#include <sch/CD/CD_SimplexEnhanced.h>
 
-using namespace SCD;
+using namespace sch;
 
 inline char sign(Scalar i)
 {

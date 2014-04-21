@@ -1,7 +1,7 @@
-#include <SCD/S_Object/S_Superellipsoid.h>
+#include <sch/S_Object/S_Superellipsoid.h>
 #include <vector>
 
-using namespace SCD;
+using namespace sch;
 
 inline short sign(Scalar i)
 {

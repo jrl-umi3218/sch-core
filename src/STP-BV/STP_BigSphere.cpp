@@ -1,7 +1,7 @@
-#include <SCD/STP-BV/STP_BigSphere.h>
-#include <SCD/STP-BV/STP_BigSphere.h>
+#include <sch/STP-BV/STP_BigSphere.h>
+#include <sch/STP-BV/STP_BigSphere.h>
 
-using namespace SCD;
+using namespace sch;
 
 STP_BigSphere::STP_BigSphere()  
 {

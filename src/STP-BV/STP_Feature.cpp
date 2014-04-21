@@ -1,6 +1,6 @@
-#include <SCD/STP-BV/STP_Feature.h>
+#include <sch/STP-BV/STP_Feature.h>
 
-using namespace SCD;
+using namespace sch;
 s_STP_VVR::s_STP_VVR():
 m_axis(0.0, 0.0, 0.0), m_cosangle(0.0)
 {

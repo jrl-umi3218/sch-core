@@ -1,8 +1,8 @@
 #include <limits>
 
-#include <SCD/CD/CD_Simplex.h>
+#include <sch/CD/CD_Simplex.h>
 
-using namespace SCD;
+using namespace sch;
 
 typedef std::numeric_limits< Scalar > dl;
 

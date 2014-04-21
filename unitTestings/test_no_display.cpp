@@ -1,6 +1,6 @@
 #include "common.h"
 
-using namespace SCD;
+using namespace sch;
 
 TestMaterial universe;
 

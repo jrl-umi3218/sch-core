@@ -1,6 +1,6 @@
-#include <SCD/CD/CD_Scene.h>
+#include <sch/CD/CD_Scene.h>
 
-using namespace SCD;
+using namespace sch;
 
 CD_Scene::CD_Scene(void)
 {

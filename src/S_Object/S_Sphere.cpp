@@ -1,6 +1,6 @@
-#include <SCD/S_Object/S_Sphere.h>
+#include <sch/S_Object/S_Sphere.h>
 
-using namespace SCD;
+using namespace sch;
 S_Sphere::S_Sphere(const Scalar& Rad): radius_(Rad)
 {
 	slices_ = 100;

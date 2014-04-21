@@ -1,4 +1,4 @@
-#include <SCD/STP-BV/STP_SmallSphere.h>
+#include <sch/STP-BV/STP_SmallSphere.h>
 
 #include <math.h>
 #include <iostream>
@@ -6,7 +6,7 @@
 #include <map>
 
 
-using namespace SCD;
+using namespace sch;
 
 STP_SmallSphere::STP_SmallSphere() : m_neighbors(NULL), m_endneighbors(NULL)
 {

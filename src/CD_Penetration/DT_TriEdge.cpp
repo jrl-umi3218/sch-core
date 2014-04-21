@@ -21,11 +21,11 @@
  * use of this library.
  */
 
-#include <SCD/CD_Penetration/DT_TriEdge.h>
+#include <sch/CD_Penetration/DT_TriEdge.h>
 
-using namespace SCD;
+using namespace sch;
 
-bool SCD::link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
+bool sch::link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
 {
 	bool ok = edge0.getSource() == edge1.getTarget() && edge0.getTarget() == edge1.getSource();
     
@@ -40,7 +40,7 @@ bool SCD::link(const Depth_Edge& edge0, const Depth_Edge& edge1)
     return ok;
 }
 
-void SCD::half_link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
+void sch::half_link(const Depth_Edge& edge0, const Depth_Edge& edge1) 
 {
 	assert(edge0.getSource() == edge1.getTarget() && edge0.getTarget() == edge1.getSource());
     

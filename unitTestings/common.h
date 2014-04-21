@@ -33,14 +33,14 @@ struct TestMaterial
 
 	void GeneralTest();
 
-	SCD::CD_Scene sObj;
+	sch::CD_Scene sObj;
 
 	unsigned int CurrentObj;
 
 private:
-	std::vector<SCD::STP_BV*> stpObjects;
-	std::vector<SCD::STP_BV_P> stppObjects;
-	std::vector<SCD::S_Polyhedron> polyObjects;
+	std::vector<sch::STP_BV*> stpObjects;
+	std::vector<sch::STP_BV_P> stppObjects;
+	std::vector<sch::S_Polyhedron> polyObjects;
 };
 
 #endif //COMMON_TEST_H

@@ -1,5 +1,5 @@
-#include <SCD/S_Polyhedron/S_Polyhedron.h>
-#include <SCD/STP-BV/STP_BV.h>
+#include <sch/S_Polyhedron/S_Polyhedron.h>
+#include <sch/STP-BV/STP_BV.h>
 
 #define NBCORPS 29
 
@@ -11,7 +11,7 @@ std::string parts[NBCORPS] = {"body",
            "rarm0", "rarm1", "rarm2", "rarm3", "rarm4", "rarm5",
            "larm0", "larm1", "larm2", "larm3", "larm4", "larm5"};
 
-using namespace SCD;
+using namespace sch;
 
 int main()
 {

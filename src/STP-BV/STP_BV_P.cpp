@@ -1,6 +1,6 @@
-#include <SCD/STP-BV/STP_BV_P.h>
+#include <sch/STP-BV/STP_BV_P.h>
 
-using namespace SCD;
+using namespace sch;
 
 STP_BV_P::STP_BV_P(void)
 {

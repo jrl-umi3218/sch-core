@@ -1,11 +1,11 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# CMake file for the scd project: src subdirectory
+# CMake file for the sch project: src subdirectory
 #
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # --- sources ---
 
-include(${PROJECT_INCLUDE_DIR}/SCD/SourcesLib.cmake)
+include(${PROJECT_INCLUDE_DIR}/sch/SourcesLib.cmake)
 
 # --- def, cflags and link flags ---
 
@@ -68,12 +68,12 @@ SET(SOURCES_STP_BV
 AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
 link_directories(${Boost_LIBRARY_DIRS})
-ADD_LIBRARY(scd SHARED ${SOURCES} ${HEADERS})
+ADD_LIBRARY(sch SHARED ${SOURCES} ${HEADERS})
 
-set_target_properties(scd PROPERTIES SOVERSION ${PROJECT_VERSION})
-target_link_libraries(scd ${Boost_LIBRARIES})
+set_target_properties(sch PROPERTIES SOVERSION ${PROJECT_VERSION})
+target_link_libraries(sch ${Boost_LIBRARIES})
 
 
-install(TARGETS scd
+install(TARGETS sch
         RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
 

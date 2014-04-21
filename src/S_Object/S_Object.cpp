@@ -1,8 +1,8 @@
-#include <SCD/S_Object/S_Object.h>
+#include <sch/S_Object/S_Object.h>
 
 #include <vector>
 
-using namespace SCD;
+using namespace sch;
 
 S_Object::S_Object():stacks_(50),slices_(100),mRot_(1,0,0,0,1,0,0,0,1),trans_(0,0,0)
 {

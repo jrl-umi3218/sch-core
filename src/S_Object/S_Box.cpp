@@ -1,6 +1,6 @@
-#include <SCD/S_Object/S_Box.h>
+#include <sch/S_Object/S_Box.h>
 
-using namespace SCD;
+using namespace sch;
 
 inline short sign(Scalar i)
 {

@@ -1,6 +1,6 @@
-#include <SCD/STP-BV/STP_Torus.h>
+#include <sch/STP-BV/STP_Torus.h>
 
-using namespace SCD;
+using namespace sch;
 
 s_STP_Circle::s_STP_Circle(const Vector3& normal, const Point3& center, Scalar radius):
 m_normal(normal), m_center(center), m_radius(radius)

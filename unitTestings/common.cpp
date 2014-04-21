@@ -10,7 +10,7 @@ const long AnimationEnd=1000;
 const long RandomTestEnd=1000000;
 const double PI=boost::math::constants::pi<double>();
 
-using namespace SCD;
+using namespace sch;
 
 void TestMaterial::DoTest()
 {
@@ -50,7 +50,7 @@ void TestMaterial::RandomTestSupportFunction()
 	// print the data in a file
 #ifdef OUTPUT_FILE
 	std::fstream outfile;
-	outfile.open("/tmp/scd_randomtestsupport_result.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/sch_randomtestsupport_result.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 	for (long j=0;j<RandomTestEnd;j++)
 		outfile<< supportVector[j] <<std::endl;
@@ -91,7 +91,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 #ifdef DO_TEST
 # ifdef OUTPUT_FILE
 	std::fstream outfile;
-	outfile.open("/tmp/scd_randomtestsupportall_result.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/sch_randomtestsupportall_result.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 	for(size_t i=0; i<supportVector.size(); ++i)
 		outfile << supportVector[i] << std::endl;
@@ -231,7 +231,7 @@ void TestMaterial::TestPrecision()
 
 #ifdef OUTPUT_FILE
 	std::fstream outfile;
-	outfile.open("/tmp/scd_precisiontest_result.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/sch_precisiontest_result.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 #endif
 
@@ -378,7 +378,7 @@ void TestMaterial::TestAnimation()
 
 # ifdef OUTPUT_FILE
 	std::fstream outfile;
-	outfile.open("/tmp/scd_animationtest_result.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/sch_animationtest_result.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 # endif
 
@@ -518,7 +518,7 @@ void TestMaterial::TestAnimation()
 void TestMaterial::GeneralTest()
 {
 	std::fstream outfile;
-	outfile.open("/tmp/scd_generaltest_result.txt",std::ios_base::out|std::ios_base::trunc);
+	outfile.open("/tmp/sch_generaltest_result.txt",std::ios_base::out|std::ios_base::trunc);
 	outfile.precision(18);
 
 

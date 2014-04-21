@@ -1,12 +1,12 @@
-#include <SCD/CD_Penetration/CD_Depth.h>
-#include <SCD/CD_Penetration/DT_TriEdge.h>
+#include <sch/CD_Penetration/CD_Depth.h>
+#include <sch/CD_Penetration/DT_TriEdge.h>
 #include <algorithm>
 
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
 
 
-using namespace SCD;
+using namespace sch;
 
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
@@ -49,13 +49,13 @@ struct TriangleHeap
     {
       triangleHeap[num_triangles++] = triangle;
       std::push_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
-#ifdef SCD_DEBUG
+#ifdef sch_DEBUG
       std::cout << " accepted" << std::endl;
 #endif
     }
     else
     {
-#ifdef SCD_DEBUG
+#ifdef sch_DEBUG
       std::cout << " rejected, ";
       if (!triangle->isClosestInternal())
       {
@@ -378,7 +378,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
         {
             if (num_verts == MaxSupportPoints)
             {
-#ifdef SCD_DEBUG
+#ifdef sch_DEBUG
                 std::cout << "Ouch, no convergence!!!" << std::endl;
 #endif 
                 assert(false);	
@@ -439,7 +439,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     }
     while (tHeap.num_triangles > 0 && tHeap.first()->getDist2() <= upper_bound2);
 	
-#ifdef SCD_DEBUG    
+#ifdef sch_DEBUG    
     std::cout << "#triangles left = " << num_triangles << std::endl;
 #endif
     

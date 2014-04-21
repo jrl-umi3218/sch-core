@@ -1,9 +1,9 @@
-#include <SCD/S_Polyhedron/S_Polyhedron.h>
+#include <sch/S_Polyhedron/S_Polyhedron.h>
 #include <exception>
 #include <iostream>
 #include <fstream>
 
-#include <SCD/File_Parsing/SimplestParsing.h>
+#include <sch/File_Parsing/SimplestParsing.h>
 
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
@@ -11,7 +11,7 @@
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/vector.hpp>
 
-using namespace SCD;
+using namespace sch;
 
 S_Polyhedron::S_Polyhedron(void):poly()
 {

@@ -1,6 +1,6 @@
-#include <SCD/S_Object/S_ObjectNonNormalized.h>
+#include <sch/S_Object/S_ObjectNonNormalized.h>
 
-using namespace SCD;
+using namespace sch;
 
 S_ObjectNonNormalized::S_ObjectNonNormalized(void)
 {

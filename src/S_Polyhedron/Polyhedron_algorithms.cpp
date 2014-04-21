@@ -1,9 +1,9 @@
-#include <SCD/S_Polyhedron/Polyhedron_algorithms.h>
+#include <sch/S_Polyhedron/Polyhedron_algorithms.h>
 
-#include <SCD/File_Parsing/SimplestParsing.h>
+#include <sch/File_Parsing/SimplestParsing.h>
 
 
-using namespace SCD;
+using namespace sch;
 
 Polyhedron_algorithms::Polyhedron_algorithms(void)
   :fastVertexes_(0x0)

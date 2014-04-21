@@ -1,6 +1,6 @@
-#include <SCD/CD/CD_Pair.h>
-#include <SCD/CD/CD_Simplex.h>
-#include <SCD/CD/CD_SimplexEnhanced.h>
+#include <sch/CD/CD_Pair.h>
+#include <sch/CD/CD_Simplex.h>
+#include <sch/CD/CD_SimplexEnhanced.h>
 
 #include <iostream>
 
@@ -18,7 +18,7 @@
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
 
-using namespace SCD;
+using namespace sch;
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
@@ -29,8 +29,8 @@ inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 
 
 CD_Pair::CD_Pair(S_Object *obj1, S_Object *obj2):sObj1_(obj1),sObj2_(obj2),lastDirection_(1.0,0.0,0.0),
-        lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()),
-        precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
+    lastFeature1_(-1),lastFeature2_(-1),distance_(0),stamp1_(sObj1_->checkStamp()),stamp2_(sObj2_->checkStamp()),
+    precision_(_PRECISION_),epsilon_(_EPSILON_),witPointsAreComputed_(false),s1_(Point3()),s2_(Point3()),s_(Point3()),sp_(Point3()),depthPair(obj1,obj2)
 {
     --stamp1_;
     --stamp2_;
@@ -178,7 +178,7 @@ Scalar CD_Pair::GJK()
 
     sup-=sup2;
 
-	CD_Simplex s1(sup1),s2(sup2),s(sup);
+    CD_Simplex s1(sup1),s2(sup2),s(sup);
 
     sp_=sup;
 
