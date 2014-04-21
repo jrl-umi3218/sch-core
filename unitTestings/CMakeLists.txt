@@ -20,13 +20,3 @@ add_custom_command(TARGET test_no_display POST_BUILD
   ${CMAKE_BINARY_DIR}/unitTestings/
 )
 
-if(GLUT_FOUND)
-  include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR} ${PROJECT_INCLUDE_DIR})
-  add_executable(test_glut Test1.cpp common.cpp common.h includes.h)
-  target_link_libraries(test_glut ${Boost_LIBRARIES})
-  target_link_libraries(test_glut sch sch_viewer)
-  target_link_libraries(test_glut ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
-  add_dependencies(test_glut sch)
-  add_dependencies(test_glut sch_viewer)
-endif(GLUT_FOUND)
-
