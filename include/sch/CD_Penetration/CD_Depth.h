@@ -20,20 +20,20 @@ namespace sch
 
   public:
 
-    sch_API CD_Depth(S_Object *Obj1, S_Object *Obj2);
-    sch_API virtual ~CD_Depth(void);
+    SCH_API CD_Depth(S_Object *Obj1, S_Object *Obj2);
+    SCH_API virtual ~CD_Depth(void);
 
     /*!
     *\brief sets the relative precision of the proximity queries to a given value. Default is 1e-3
     */
-    sch_API void setRelativePrecision(Scalar);
+    SCH_API void setRelativePrecision(Scalar);
 
     /*!
     *\brief Sets the machine epsilon. Default is 1e-24
     */
-    sch_API void setEpsilon(Scalar);
+    SCH_API void setEpsilon(Scalar);
 
-    sch_API Scalar getPenetrationDepth(Vector3& v, Point3& p1, Point3& p2, const CD_SimplexEnhanced& s,const CD_Simplex& s1_,const CD_Simplex& s2_);
+    SCH_API Scalar getPenetrationDepth(Vector3& v, Point3& p1, Point3& p2, const CD_SimplexEnhanced& s,const CD_Simplex& s1_,const CD_Simplex& s2_);
   };
 
 }

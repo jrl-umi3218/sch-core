@@ -77,19 +77,19 @@ namespace sch
     *  \return returns the support point.
     */
 
-    sch_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const=0;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const=0;
 
   public:
 
-    sch_API S_Object(void);
-    sch_API virtual ~S_Object(void);
+    SCH_API S_Object(void);
+    SCH_API virtual ~S_Object(void);
 
     /*!
     *  \brief put it in objects coordinates, then calls l_support. DO NOT OVERLOAD IT UNLESS YOU KNOW WHAT YOU ARE DOING (if you want to define the support function, overload l_support)
     *  \param v direction vector
     *  \return returns the support point.
     */
-    sch_API virtual Point3 support(const Vector3& v) const=0;
+    SCH_API virtual Point3 support(const Vector3& v) const=0;
 
     /*!
     *  \brief version of support with last feature optimization
@@ -97,72 +97,72 @@ namespace sch
     *  \param lastFeature tells in which feature we were in last query, and returns the new one. very important in spatio-temporal coherence
     *  \return returns the support point.
     */
-    sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const=0;
+    SCH_API virtual Point3 support(const Vector3& v, int & LastFeature) const=0;
 
 
     /*
     *  \brief Constructs the Object from a file
     */
-    sch_API virtual void constructFromFile(const std::string& filename);
+    SCH_API virtual void constructFromFile(const std::string& filename);
 
     /*
     *  \brief Sets the Orientation
     */
-    sch_API void setOrientation(const Matrix3x3& Rotation);
+    SCH_API void setOrientation(const Matrix3x3& Rotation);
 
-    sch_API void setOrientation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
+    SCH_API void setOrientation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
                                 const Scalar& r10,const Scalar& r11,const Scalar& r12,
                                 const Scalar& r20,const Scalar& r21,const Scalar& r22);
 
-    sch_API void setOrientation(const Quaternion quaternion);
+    SCH_API void setOrientation(const Quaternion quaternion);
 
-    sch_API void setOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
+    SCH_API void setOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
 
     /*!Euler
          * ROLL PITCH YAW - AROUND X, Y THEN Z */
-    sch_API void setOrientation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
+    SCH_API void setOrientation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
 
-    sch_API void setOrientation(const Scalar* const p);
+    SCH_API void setOrientation(const Scalar* const p);
 
-    sch_API void setOrientation(const Scalar& angle, const Vector3& axe);
+    SCH_API void setOrientation(const Scalar& angle, const Vector3& axe);
 
 
     /*!
     * \brief Sets the position
     */
-    sch_API void setPosition(const Vector3& v);
+    SCH_API void setPosition(const Vector3& v);
 
-    sch_API void setPosition(const Scalar& x,const Scalar& y, const Scalar& z);
+    SCH_API void setPosition(const Scalar& x,const Scalar& y, const Scalar& z);
 
-    sch_API void setPosition(const Scalar* const v);
+    SCH_API void setPosition(const Scalar* const v);
 
     /*!
     * \brief Sets the transformation matrix
     */
 
-    sch_API void setTransformation(const Matrix4x4& transformation);
+    SCH_API void setTransformation(const Matrix4x4& transformation);
 
     /*!
     * \brief composes the current orientation with a Rotation
     */
 
-    sch_API void addRotation(const Matrix3x3& Rotation);
+    SCH_API void addRotation(const Matrix3x3& Rotation);
 
-    sch_API void addRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
+    SCH_API void addRotation(const Scalar& r00,const Scalar& r01,const Scalar& r02,
                              const Scalar& r10,const Scalar& r11,const Scalar& r12,
                              const Scalar& r20,const Scalar& r21,const Scalar& r22);
 
-    sch_API void addRotation(const Quaternion quaternion);
+    SCH_API void addRotation(const Quaternion quaternion);
 
-    sch_API void addRotation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
+    SCH_API void addRotation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
 
-    sch_API void addRotation(const Scalar& angle, const Vector3& axe);
+    SCH_API void addRotation(const Scalar& angle, const Vector3& axe);
 
     /*!Euler
          * ROLL PITCH YAW - AROUND X, Y THEN Z */
-    sch_API void addRotation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
+    SCH_API void addRotation(const Scalar& yaw,const Scalar& pitch,const Scalar& roll);
 
-    sch_API void addRotation(const Scalar  * const p);
+    SCH_API void addRotation(const Scalar  * const p);
 
 
     /*!
@@ -170,11 +170,11 @@ namespace sch
     * @{
     */
 
-    sch_API void addTranslation(const Vector3& v);
+    SCH_API void addTranslation(const Vector3& v);
 
-    sch_API void addTranslation(const Scalar* const v);
+    SCH_API void addTranslation(const Scalar* const v);
 
-    sch_API void addTranslation(const Scalar& x,const Scalar& y, const Scalar& z);
+    SCH_API void addTranslation(const Scalar& x,const Scalar& y, const Scalar& z);
 
     /*! @} */
 
@@ -182,34 +182,34 @@ namespace sch
     * \brief composes the current transfornation with a scale
     */
 
-    sch_API void addScale(const Scalar& x,const Scalar& y, const Scalar& z);
+    SCH_API void addScale(const Scalar& x,const Scalar& y, const Scalar& z);
 
     /*!
     * \brief composes the current transfornation with transformation matrix one
     */
 
-    sch_API void addTransformation(const Matrix4x4& transformation);
+    SCH_API void addTransformation(const Matrix4x4& transformation);
 
 
     /*!
     * \brief loads Identity
     */
-    sch_API void resetTransformation();
+    SCH_API void resetTransformation();
 
     /*!
     * \brief returns the position
     */
-    sch_API const Vector3& getPosition()const;
+    SCH_API const Vector3& getPosition()const;
 
     /*!
     * \brief returns the orientation as a rotation matrix
     */
-    sch_API const Matrix3x3& getOrientation()const;
+    SCH_API const Matrix3x3& getOrientation()const;
 
     /*!
     * \brief puts the transfomation matrix in a sclar array
     */
-    sch_API void getTransformationMatrix(Scalar *S) const;
+    SCH_API void getTransformationMatrix(Scalar *S) const;
 
 
     int getSlices() const;
@@ -232,7 +232,7 @@ namespace sch
     /*!
     * \brief must be overloaded to return the type
     */
-    sch_API virtual	S_ObjectType getType() const;
+    SCH_API virtual	S_ObjectType getType() const;
 
     /*!
     * \brief returns the current time stamp

@@ -17,15 +17,15 @@ namespace sch
     public S_Object
   {
   public:
-    sch_API S_ObjectNonNormalized(void);
-    sch_API ~S_ObjectNonNormalized(void);
+    SCH_API S_ObjectNonNormalized(void);
+    SCH_API ~S_ObjectNonNormalized(void);
 
     /*!
      *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
      *  \param v direction vector
      *  \return returns the support point.
      */
-    sch_API virtual Point3 support(const Vector3& v) const;
+    SCH_API virtual Point3 support(const Vector3& v) const;
 
     /*!
      *  \brief put the vector in objects coordinates, then calls l_support, without normalizing it
@@ -33,7 +33,7 @@ namespace sch
        *  \param lastFeature tells in which feature we were in last query, amd returns the new one. very important in spatio-temporal coherence
      *  \return returns the support point.
      */
-    sch_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
+    SCH_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)

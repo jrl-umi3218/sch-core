@@ -55,30 +55,30 @@ namespace sch
     public STP_Feature
   {
   public:
-    sch_API STP_Torus();
-    sch_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
-    sch_API STP_Torus(const STP_Torus& t);
-    sch_API ~STP_Torus();
+    SCH_API STP_Torus();
+    SCH_API STP_Torus(const Vector3& cNormal, const Point3& cCenter, Scalar cRadius, Scalar sRadius);
+    SCH_API STP_Torus(const STP_Torus& t);
+    SCH_API ~STP_Torus();
 
-    sch_API void setVVR(const STP_VVR* vvr);
+    SCH_API void setVVR(const STP_VVR* vvr);
 
-    sch_API virtual void print() const;
+    SCH_API virtual void print() const;
 
-    sch_API virtual bool isHere(const Vector3& v) const;
-    sch_API virtual bool isHereFarthestNeighbour(const Vector3& v);
-    sch_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
-    sch_API virtual bool isHereFirstNeighbour(const Vector3& v);
-    sch_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
-    sch_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
-    sch_API virtual int getNextBV(unsigned int id) const;
-    sch_API virtual int getNextBVPrime() const
+    SCH_API virtual bool isHere(const Vector3& v) const;
+    SCH_API virtual bool isHereFarthestNeighbour(const Vector3& v);
+    SCH_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
+    SCH_API virtual bool isHereFirstNeighbour(const Vector3& v);
+    SCH_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
+    SCH_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
+    SCH_API virtual int getNextBV(unsigned int id) const;
+    SCH_API virtual int getNextBVPrime() const
     {
       return m_nextBVPrime;
     }
-    sch_API virtual Scalar supportH(const Vector3& v) const;
-    sch_API virtual Point3 support(const Vector3& v) const;
+    SCH_API virtual Scalar supportH(const Vector3& v) const;
+    SCH_API virtual Point3 support(const Vector3& v) const;
 
-    sch_API virtual STP_Feature* clone() const;
+    SCH_API virtual STP_Feature* clone() const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)

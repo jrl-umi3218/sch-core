@@ -27,36 +27,36 @@ namespace sch
     public STP_Feature
   {
   public:
-    sch_API STP_SmallSphere();
-    sch_API STP_SmallSphere(Scalar radius, Point3 center);
-    sch_API STP_SmallSphere(const STP_SmallSphere& s);
+    SCH_API STP_SmallSphere();
+    SCH_API STP_SmallSphere(Scalar radius, Point3 center);
+    SCH_API STP_SmallSphere(const STP_SmallSphere& s);
 
-    sch_API ~STP_SmallSphere();
+    SCH_API ~STP_SmallSphere();
 
-    sch_API STP_SmallSphere & operator =(const STP_SmallSphere &s);
+    SCH_API STP_SmallSphere & operator =(const STP_SmallSphere &s);
 
-    sch_API const Point3& getCenter() const;
-    sch_API const Scalar& getRadius() const;
-    sch_API void setVVR(const std::vector<STP_VVR>& vvr);
+    SCH_API const Point3& getCenter() const;
+    SCH_API const Scalar& getRadius() const;
+    SCH_API void setVVR(const std::vector<STP_VVR>& vvr);
 
-    sch_API virtual void print() const;
+    SCH_API virtual void print() const;
 
-    sch_API virtual bool isHere(const Vector3& v) const;
-    sch_API virtual bool isHereFarthestNeighbour(const Vector3& v);
-    sch_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
-    sch_API virtual bool isHereFirstNeighbour(const Vector3& v);
-    sch_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
-    sch_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
-    sch_API virtual int getNextBV(unsigned int id) const;
-    sch_API virtual Scalar supportH(const Vector3& v) const;
-    sch_API virtual Point3 support(const Vector3& v) const;
+    SCH_API virtual bool isHere(const Vector3& v) const;
+    SCH_API virtual bool isHereFarthestNeighbour(const Vector3& v);
+    SCH_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
+    SCH_API virtual bool isHereFirstNeighbour(const Vector3& v);
+    SCH_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
+    SCH_API virtual bool isHereHybrid(const Vector3& v,int idp) ;
+    SCH_API virtual int getNextBV(unsigned int id) const;
+    SCH_API virtual Scalar supportH(const Vector3& v) const;
+    SCH_API virtual Point3 support(const Vector3& v) const;
 
-    sch_API virtual bool ray_cast(const Point3& source, const Point3& target,
+    SCH_API virtual bool ray_cast(const Point3& source, const Point3& target,
                                   Scalar& param, Vector3& normal) const;
 
-    sch_API virtual STP_Feature* clone() const;
+    SCH_API virtual STP_Feature* clone() const;
 
-    sch_API virtual int getNextBVPrime() const
+    SCH_API virtual int getNextBVPrime() const
     {
       return m_nextBVPrime;
     }

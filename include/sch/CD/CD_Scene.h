@@ -16,24 +16,24 @@ namespace sch
   class CD_Scene
   {
   public:
-    sch_API CD_Scene(void);
-    sch_API virtual ~CD_Scene(void);
+    SCH_API CD_Scene(void);
+    SCH_API virtual ~CD_Scene(void);
 
     /*!
     * \brief Add Object to scene, returns an index that must be kept for collision detection
     */
-    sch_API int addObject(S_Object* O);
+    SCH_API int addObject(S_Object* O);
 
     /*!
     * \brief Withdraw an object
     */
-    sch_API void withdrawObject( int a);
+    SCH_API void withdrawObject( int a);
 
-    sch_API void ignorePair( int a, int b);
+    SCH_API void ignorePair( int a, int b);
 
-    sch_API void considerPair( int a, int b);
+    SCH_API void considerPair( int a, int b);
 
-    sch_API CD_Pair* operator()( int a, int b) const
+    SCH_API CD_Pair* operator()( int a, int b) const
     {
       if (a!=b)
       {
@@ -44,14 +44,14 @@ namespace sch
     }
 
 
-    sch_API int  sceneProximityQuery();
+    SCH_API int  sceneProximityQuery();
 
-    sch_API S_Object * operator[](unsigned char i)const
+    SCH_API S_Object * operator[](unsigned char i)const
     {
       return objects_[i];
     }
 
-    sch_API size_t size()
+    SCH_API size_t size()
     {
       return objects_.size();
     }
@@ -60,7 +60,7 @@ namespace sch
     /*!
     *\brief Doesn't Compute the closest points, just gives the result of last computations.
     */
-    sch_API Scalar getWitnessPoints(int a, int b,Point3 &p1,Point3 &p2)
+    SCH_API Scalar getWitnessPoints(int a, int b,Point3 &p1,Point3 &p2)
     {
       if (a!=b)
       {

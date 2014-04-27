@@ -109,22 +109,22 @@ namespace sch
   {
   public:
 
-    sch_API virtual ~STP_Feature(void);
+    SCH_API virtual ~STP_Feature(void);
 
-    sch_API virtual void print() const = 0;
+    SCH_API virtual void print() const = 0;
 
-    sch_API virtual STP_Feature* clone() const =0;
+    SCH_API virtual STP_Feature* clone() const =0;
 
-    sch_API virtual Point3 support(const Vector3& v) const=0;
+    SCH_API virtual Point3 support(const Vector3& v) const=0;
 
-    sch_API virtual bool isHere(const Vector3& v) const = 0;
-    sch_API virtual bool isHereFarthestNeighbour(const Vector3& v) = 0;
-    sch_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v) = 0;
-    sch_API virtual bool isHereFirstNeighbour(const Vector3& v) = 0;
-    sch_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) = 0;
-    sch_API virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
-    sch_API virtual int getNextBV(unsigned int id) const= 0;
-    sch_API virtual int getNextBVPrime() const=0 ;
+    SCH_API virtual bool isHere(const Vector3& v) const = 0;
+    SCH_API virtual bool isHereFarthestNeighbour(const Vector3& v) = 0;
+    SCH_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v) = 0;
+    SCH_API virtual bool isHereFirstNeighbour(const Vector3& v) = 0;
+    SCH_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) = 0;
+    SCH_API virtual bool isHereHybrid(const Vector3& v,int idp) = 0;
+    SCH_API virtual int getNextBV(unsigned int id) const= 0;
+    SCH_API virtual int getNextBVPrime() const=0 ;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)

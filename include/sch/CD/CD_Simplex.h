@@ -56,72 +56,72 @@ namespace sch
   class CD_Simplex
   {
   public:
-    sch_API CD_Simplex(const Point3& p);
-    sch_API CD_Simplex(const Point3& p1,const Point3& p2);
-    sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
-    sch_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4);
+    SCH_API CD_Simplex(const Point3& p);
+    SCH_API CD_Simplex(const Point3& p1,const Point3& p2);
+    SCH_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
+    SCH_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4);
 
-    sch_API virtual ~CD_Simplex();
+    SCH_API virtual ~CD_Simplex();
 
-    sch_API CD_SimplexType getType()const;
+    SCH_API CD_SimplexType getType()const;
 
-    sch_API const Point3& operator[]( unsigned char) const;
-    sch_API Point3& operator[]( unsigned char);
-
-
-    sch_API CD_Simplex& operator=(const CD_Simplex& s);
-    sch_API CD_Simplex& operator=(const Point3& p);
-
-    sch_API bool operator==(const CD_Simplex& s);
-    sch_API bool operator!=(const CD_Simplex& s);
+    SCH_API const Point3& operator[]( unsigned char) const;
+    SCH_API Point3& operator[]( unsigned char);
 
 
+    SCH_API CD_Simplex& operator=(const CD_Simplex& s);
+    SCH_API CD_Simplex& operator=(const Point3& p);
 
-    /*!
-    * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron)
-    * \updateVetors must be called after this operator to keep the vectors up to date.
-    */
-    sch_API CD_Simplex& operator+=(const Point3&);
+    SCH_API bool operator==(const CD_Simplex& s);
+    SCH_API bool operator!=(const CD_Simplex& s);
+
 
 
     /*!
     * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron)
     * \updateVetors must be called after this operator to keep the vectors up to date.
     */
-    sch_API CD_Simplex operator+(const Point3&)const;
+    SCH_API CD_Simplex& operator+=(const Point3&);
+
+
+    /*!
+    * \brief Adds a point to a simplex to transform it in a higher dimemsion simplex (doesn't work with tetrahedron)
+    * \updateVetors must be called after this operator to keep the vectors up to date.
+    */
+    SCH_API CD_Simplex operator+(const Point3&)const;
 
     /*!
     * \brief Updates the simplex by supressing some vertexes and/or change their order according to a filter
     * \param k is the filter used to know wich vertexes will be kept and in wich order
     * \updateVetors must be called after this function to keep the vectors up to date.
     */
-    sch_API virtual void filter(const CD_SimplexKeptPoints &k);
+    SCH_API virtual void filter(const CD_SimplexKeptPoints &k);
 
     /*!
     *\brief Gives the distance squared at the origin for a simplex, and according the direction v.
     */
-    sch_API Scalar squareDistanceAtOrigin(const Vector3 &v)const;
+    SCH_API Scalar squareDistanceAtOrigin(const Vector3 &v)const;
 
     /*!
     * \brief Updates AB,AC,AD vectors. A is the last vertex inserted and B, C and D are previous vertexes
     */
-    sch_API void updateVectors();
+    SCH_API void updateVectors();
 
 
     /*!
     * \brief Returns AB vector
     */
-    sch_API const Vector3& AB () const;
+    SCH_API const Vector3& AB () const;
 
     /*!
     * \brief Returns AC vector
     */
-    sch_API const Vector3& AC () const;
+    SCH_API const Vector3& AC () const;
 
     /*!
     * \brief Returns AD vector
     */
-    sch_API const Vector3& AD () const;
+    SCH_API const Vector3& AD () const;
 
   protected :
 

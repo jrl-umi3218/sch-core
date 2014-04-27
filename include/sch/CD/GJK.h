@@ -9,12 +9,12 @@
 class GJK
 {
 public:
-  sch_API GJK(void);
-  sch_API virtual ~GJK(void);
-  sch_API virtual Point3 Support1(void) = 0;
-  sch_API virtual Point3 Support2(void) = 0;
+  SCH_API GJK(void);
+  SCH_API virtual ~GJK(void);
+  SCH_API virtual Point3 Support1(void) = 0;
+  SCH_API virtual Point3 Support2(void) = 0;
 
-  sch_API Scalar Compute(Point3& p1,Point3& p2);
+  SCH_API Scalar Compute(Point3& p1,Point3& p2);
 };
 
 #endif

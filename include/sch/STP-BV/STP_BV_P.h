@@ -9,9 +9,9 @@ namespace sch
     public STP_BV
   {
   public:
-    sch_API STP_BV_P(void);
+    SCH_API STP_BV_P(void);
 
-    sch_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
     /*!
     *  \brief Constructs the object from a file describing its STP_BV decomposition
@@ -22,11 +22,11 @@ namespace sch
     *  \ (example: in the folder : "home\" there are two files ; the STP_BV file : "home\STPBV.txt", and the Qhull output : "home\STPBV.txt.otp")
     *
     */
-    sch_API virtual void constructFromFile(const std::string& filename);
+    SCH_API virtual void constructFromFile(const std::string& filename);
 
-    sch_API virtual ~STP_BV_P(void);
+    SCH_API virtual ~STP_BV_P(void);
 
-    sch_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const;
 
   private:
     Polyhedron_algorithms poly;

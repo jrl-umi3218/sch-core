@@ -16,14 +16,14 @@ namespace sch
     * \brief constructor
     * \param radius, the sphere radius
     */
-    sch_API S_Sphere(const Scalar& radius);
-    sch_API virtual ~S_Sphere();
+    SCH_API S_Sphere(const Scalar& radius);
+    SCH_API virtual ~S_Sphere();
 
-    sch_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 
-    sch_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const;
 
-    sch_API virtual Scalar getRadius() const;
+    SCH_API virtual Scalar getRadius() const;
 
   protected:
     Scalar radius_;

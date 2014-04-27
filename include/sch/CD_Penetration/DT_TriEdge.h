@@ -92,8 +92,8 @@ namespace sch
     Scalar   m_dist2;
 
   public:
-    sch_API Depth_Triangle() {}
-    sch_API Depth_Triangle(Index_t i0, Index_t i1, Index_t i2)
+    SCH_API Depth_Triangle() {}
+    SCH_API Depth_Triangle(Index_t i0, Index_t i1, Index_t i2)
       :	m_obsolete(false)
     {
       m_indices[0] = i0;
@@ -101,17 +101,17 @@ namespace sch
       m_indices[2] = i2;
     }
 
-    sch_API Index_t operator[](int i) const
+    SCH_API Index_t operator[](int i) const
     {
       return m_indices[i];
     }
 
-    sch_API const Depth_Edge& getAdjEdge(int i) const
+    SCH_API const Depth_Edge& getAdjEdge(int i) const
     {
       return m_adjEdges[i];
     }
 
-    sch_API void setObsolete(bool obsolete)
+    SCH_API void setObsolete(bool obsolete)
     {
 #ifdef sch_DEBUG
       std::cout << "Triangle " <<  m_indices[0] << ' ' << m_indices[1] << ' ' << m_indices[2] << " obsolete" << std::endl;
@@ -119,38 +119,38 @@ namespace sch
       m_obsolete = obsolete;
     }
 
-    sch_API bool isObsolete() const
+    SCH_API bool isObsolete() const
     {
       return m_obsolete;
     }
 
 
-    sch_API bool computeClosest(const Vector3 *verts);
+    SCH_API bool computeClosest(const Vector3 *verts);
 
-    sch_API const Vector3& getClosest() const
+    SCH_API const Vector3& getClosest() const
     {
       return m_closest;
     }
 
-    sch_API bool isClosestInternal() const
+    SCH_API bool isClosestInternal() const
     {
       return m_lambda1 >= Scalar(0.0) &&
              m_lambda2 >= Scalar(0.0) &&
              m_lambda1 + m_lambda2 <= m_det;
     }
 
-    sch_API bool isVisibleFrom(const Vector3 *verts, Index_t index) const
+    SCH_API bool isVisibleFrom(const Vector3 *verts, Index_t index) const
     {
       Vector3 lever = verts[index] - m_closest;
       return (m_closest* lever) > Scalar(0.0);
     }
 
-    sch_API Scalar getDist2() const
+    SCH_API Scalar getDist2() const
     {
       return m_dist2;
     }
 
-    sch_API Vector3 getClosestPoint(const Vector3 *points) const
+    SCH_API Vector3 getClosestPoint(const Vector3 *points) const
     {
       const Vector3& p0 = points[m_indices[0]];
 
@@ -158,7 +158,7 @@ namespace sch
                     (points[m_indices[2]] - p0)*m_lambda2) / m_det;
     }
 
-    sch_API bool silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore);
+    SCH_API bool silhouette(const Vector3 *verts, Index_t index, Depth_TriangleStore& triangleStore);
 
     friend bool link(const Depth_Edge& edge0, const Depth_Edge& edge1);
     friend void half_link(const Depth_Edge& edge0, const Depth_Edge& edge1);
@@ -175,36 +175,36 @@ namespace sch
     Depth_Triangle m_triangles[MaxTriangles];
     int      m_free;
   public:
-    sch_API Depth_TriangleStore()
+    SCH_API Depth_TriangleStore()
       : m_free(0)
     {}
 
-    sch_API void clear()
+    SCH_API void clear()
     {
       m_free = 0;
     }
 
-    sch_API int getFree() const
+    SCH_API int getFree() const
     {
       return m_free;
     }
 
-    sch_API Depth_Triangle& operator[](int i)
+    SCH_API Depth_Triangle& operator[](int i)
     {
       return m_triangles[i];
     }
-    sch_API Depth_Triangle& last()
+    SCH_API Depth_Triangle& last()
     {
       return m_triangles[m_free - 1];
     }
 
-    sch_API void setFree(int backup)
+    SCH_API void setFree(int backup)
     {
       m_free = backup;
     }
 
 
-    sch_API Depth_Triangle *newTriangle(const Vector3 *verts, Index_t i0, Index_t i1, Index_t i2)
+    SCH_API Depth_Triangle *newTriangle(const Vector3 *verts, Index_t i0, Index_t i1, Index_t i2)
     {
       Depth_Triangle *newTriangle = 0;
       if (m_free != MaxTriangles)

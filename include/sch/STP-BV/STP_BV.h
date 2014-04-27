@@ -172,25 +172,25 @@ namespace sch
     public S_ObjectNormalized
   {
   public:
-    sch_API STP_BV(void);
-    sch_API STP_BV(const STP_BV&);
+    SCH_API STP_BV(void);
+    SCH_API STP_BV(const STP_BV&);
 
-    sch_API virtual ~STP_BV(void);
+    SCH_API virtual ~STP_BV(void);
 
-    sch_API virtual STP_BV & operator=(const STP_BV&);
+    SCH_API virtual STP_BV & operator=(const STP_BV&);
 
 
-    sch_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
-    sch_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const;
 
     /*!
     *  \brief Constructs the object from a file describing its STP_BV decomposition
     *  \param filename path to the file describing the STP_BV decomposition of the object
     *
     */
-    sch_API virtual void constructFromFile(const std::string& filename);
-    sch_API virtual void constructFromFileWithGL(const std::string& filename)
+    SCH_API virtual void constructFromFile(const std::string& filename);
+    SCH_API virtual void constructFromFileWithGL(const std::string& filename)
     {
       constructFromFile(filename);
     }
@@ -200,14 +200,14 @@ namespace sch
     *  \brief Load the object from a binary archive
     *  \param filename path to the binary archive
     */
-    sch_API virtual void loadFromBinary(const std::string & filename);
+    SCH_API virtual void loadFromBinary(const std::string & filename);
 
 
     /*!
     *  \brief Save the object to a binary archive
     *  \param filename path to the binary archive
     */
-    sch_API virtual void saveToBinary(const std::string & filename);
+    SCH_API virtual void saveToBinary(const std::string & filename);
 
     /*!
     *  \brief
@@ -215,13 +215,13 @@ namespace sch
     *  \param type kind of Boost archive to use. Currently either BINARY_ARCHIVE or TEXT_ARCHIVE (this is default value)
     *  \warning Binary archives are platform dependent.
     */
-    sch_API void saveTreeInFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
+    SCH_API void saveTreeInFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
 
     /*!
     *  \brief Adds a bouding volume to the object
     *  \param patch bounding volume to add to the object
     */
-    sch_API void addPatch(STP_Feature* patch);
+    SCH_API void addPatch(STP_Feature* patch);
 
 
 
@@ -231,49 +231,49 @@ namespace sch
     *  \brief Print the support tree in a file
     *  \param filename name of the file
     */
-    sch_API void printSupportTree(std::string filename) const;
+    SCH_API void printSupportTree(std::string filename) const;
 
     /*!
     *  \brief
     *  \param v direction
     */
-    sch_API virtual Scalar supportH(const Vector3& v) const;
+    SCH_API virtual Scalar supportH(const Vector3& v) const;
 
     /*!
     *  \brief
     *  \param v direction
     */
-    sch_API virtual Point3 supportNaive(const Vector3& v) const;
+    SCH_API virtual Point3 supportNaive(const Vector3& v) const;
     /*!
     *  \brief
     *  \param v direction
     */
-    sch_API virtual Point3 supportFarthestNeighbour(const Vector3& v,int& lastFeature) const;
-    /*!
-    *  \brief
-    *  \param v direction
-    */
-
-    sch_API virtual Point3 supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const;
+    SCH_API virtual Point3 supportFarthestNeighbour(const Vector3& v,int& lastFeature) const;
     /*!
     *  \brief
     *  \param v direction
     */
 
-    sch_API virtual Point3 supportHybrid(const Vector3& v,int& lastFeature) const;
+    SCH_API virtual Point3 supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) const;
+    /*!
+    *  \brief
+    *  \param v direction
+    */
+
+    SCH_API virtual Point3 supportHybrid(const Vector3& v,int& lastFeature) const;
     /*!
     *  \brief
     *  \param v direction
     */
 
 
-    sch_API virtual Point3 supportFirstNeighbour(const Vector3& v,int& lastFeature) const;
+    SCH_API virtual Point3 supportFirstNeighbour(const Vector3& v,int& lastFeature) const;
     /*!
     *  \brief gives the support for a vector using the First neighbour method.
     *  \param v direction
     */
 
-    sch_API virtual Point3 supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) const;
+    SCH_API virtual Point3 supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) const;
 
 
     /*!
@@ -283,14 +283,14 @@ namespace sch
     *  \param param
     *  \param normal
     */
-    sch_API virtual bool ray_cast(const Point3& source, const Point3& target,
+    SCH_API virtual bool ray_cast(const Point3& source, const Point3& target,
                                   Scalar& param, Vector3& normal) const;
 
     /*!
     *  \brief returns the vertex number in the STP-BV
     *
     */
-    sch_API int getFeaturesNumber() const;
+    SCH_API int getFeaturesNumber() const;
 
     const std::vector<sch::Geometry> & getGeometries() const;
 
@@ -324,7 +324,7 @@ namespace sch
     *
     * This uses Boost serialization library.
     */
-    sch_API void loadTreeFromFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
+    SCH_API void loadTreeFromFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
 
     /*!
     *  \brief Computes the points of an arc
@@ -334,7 +334,7 @@ namespace sch
     *  \param step number of subdivisions
     *  \param res vector to store the resulting points (including first and last points)
     */
-    sch_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, int step, std::vector<Point3>& res) const;
+    SCH_API void computeArcPointsBetween(const Point3& p1, const Point3& p2, const Point3& center, int step, std::vector<Point3>& res) const;
 
     /*!
     *  \brief Computes the points of
@@ -345,7 +345,7 @@ namespace sch
     *  \param step number of subdivision
     *  \param res vector to store the resulting points (including first and last points)
     */
-    sch_API void computeConePointsBetween(const Point3& p1, const Point3& p2,
+    SCH_API void computeConePointsBetween(const Point3& p1, const Point3& p2,
                                           Vector3 axis, int step, std::vector<Point3>& res,
                                           Matrix3x3 & homo);
 
@@ -357,7 +357,7 @@ namespace sch
     *  \param l2p2 last point of the second line
     *  \return the result
     */
-    sch_API Point3 computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
+    SCH_API Point3 computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
                                            const Point3& l2p1, const Point3& l2p2) const;
 
 
@@ -366,14 +366,14 @@ namespace sch
     *  \param points vector containing all the points
     *  \return the center
     */
-    sch_API Point3 computeCenter(const std::vector<Point3>& points);
+    SCH_API Point3 computeCenter(const std::vector<Point3>& points);
 
 
     /*!
     *  \brief Updates the dynamical array fastPatches. Must be called after each patches modification
     *
     */
-    sch_API void updateFastPatches();
+    SCH_API void updateFastPatches();
 
     std::vector<STP_Feature*> m_patches;
 

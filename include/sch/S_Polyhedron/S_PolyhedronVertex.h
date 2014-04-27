@@ -14,28 +14,28 @@ namespace sch
   class S_PolyhedronVertex : boost::noncopyable
   {
   public:
-    sch_API S_PolyhedronVertex(void);
-    sch_API virtual ~S_PolyhedronVertex(void);
+    SCH_API S_PolyhedronVertex(void);
+    SCH_API virtual ~S_PolyhedronVertex(void);
 
-    sch_API void addNeighbor(S_PolyhedronVertex*);
+    SCH_API void addNeighbor(S_PolyhedronVertex*);
 
-    sch_API Scalar supportH(const Vector3& direction)const;
+    SCH_API Scalar supportH(const Vector3& direction)const;
 
-    sch_API void setCordinates(const Vector3& v);
+    SCH_API void setCordinates(const Vector3& v);
 
-    sch_API void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
+    SCH_API void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
 
-    sch_API const Vector3& getCordinates()const;
+    SCH_API const Vector3& getCordinates()const;
 
     /*!
     *  \brief Gives a copy of the current vertex, without the neighbors array, keeping just the cordinates and the number
     */
-    sch_API virtual S_PolyhedronVertex* clone();
+    SCH_API virtual S_PolyhedronVertex* clone();
 
     /*!
     * \brief clears the Neighbors
     */
-    sch_API void clearNeighbors();
+    SCH_API void clearNeighbors();
 
 
     /*!
@@ -44,7 +44,7 @@ namespace sch
     * \param cuurentsupportH, is the support height of this points, usually given by a neighbor
     * \return returns a boolean answer and stores the next vertex and its support height in case it is not the support
     */
-    sch_API virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
+    SCH_API virtual bool isHere(const Vector3& direction, const Scalar& currentsupportH);
 
 
     /*!
@@ -52,37 +52,37 @@ namespace sch
     * \param direction the direction vector
     * \return returns a boolean answer and stores the next vertex and its support height in case it is not the support
     */
-    sch_API virtual bool isHere(const Vector3& direction);
+    SCH_API virtual bool isHere(const Vector3& direction);
 
     /*!
     * \brief updates fast access neighbors array, must be called at each neighbors modification
     */
-    sch_API void updateFastArrays();
+    SCH_API void updateFastArrays();
 
     /*!
     * \brief sets the number of the vertex in the polyhedron
     */
-    sch_API void setNumber(unsigned int);
+    SCH_API void setNumber(unsigned int);
 
     /*!
     * \brief gets the number of the vertex in the polyhedron
     */
-    sch_API unsigned int getNumber()const;
+    SCH_API unsigned int getNumber()const;
 
     /*!
     * \brief gets the next vertex in a support point search
     */
-    sch_API S_PolyhedronVertex* getNextVertex()const;
+    SCH_API S_PolyhedronVertex* getNextVertex()const;
 
     /*!
     * \brief gets the next vertex support height
     */
-    sch_API Scalar getNextVertexH()const;
+    SCH_API Scalar getNextVertexH()const;
 
     /*!
     * \brief gets the number of neighbors
     */
-    sch_API unsigned getNumNeighbors()const;
+    SCH_API unsigned getNumNeighbors()const;
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
