@@ -1,7 +1,5 @@
-
-
 === Documentation ===
-Implementation of the convex hulls detailed in:
+Implementation and computation algorithms for the convex hulls detailed in:
 
 @article{escande:itro:2014,
   author = {Adrien Escande and Sylvain Miossec and Mehdi Benallegue and Abderrahmane Kheddar},

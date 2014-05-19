@@ -12,7 +12,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 # --- Project declaration ----------------------------------------
 # ----------------------------------------------------------------
 
-SET(PROJECT_NAME sch)
+SET(PROJECT_NAME sch-core)
 SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Volumes")
 set(PROJECT_CONTACT francois.keith@lirmm.fr)
 SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
@@ -25,7 +25,7 @@ SETUP_PROJECT()
 SET(BOOST_COMPONENTS serialization)
 SEARCH_FOR_BOOST()
 
-PKG_CONFIG_APPEND_LIBS("sch")
+PKG_CONFIG_APPEND_LIBS("sch-core")
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(unitTestings)

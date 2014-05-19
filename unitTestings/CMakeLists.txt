@@ -9,8 +9,8 @@ link_directories(${Boost_LIBRARY_DIRS})
 include_directories(${PROJECT_INCLUDE_DIR})
 
 add_executable(test_no_display test_no_display.cpp common.cpp common.h includes.h)
-target_link_libraries(test_no_display sch  ${Boost_LIBRARIES})
-add_dependencies(test_no_display sch)
+target_link_libraries(test_no_display sch-core ${Boost_LIBRARIES})
+add_dependencies(test_no_display sch-core)
 add_test(test_no_display ${CMAKE_CURRENT_BINARY_DIR}/test_no_display)
 
 add_custom_command(TARGET test_no_display POST_BUILD

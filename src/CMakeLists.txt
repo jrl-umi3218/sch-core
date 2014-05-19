@@ -68,12 +68,12 @@ SET(SOURCES_STP_BV
 AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
 link_directories(${Boost_LIBRARY_DIRS})
-ADD_LIBRARY(sch SHARED ${SOURCES} ${HEADERS})
+ADD_LIBRARY(sch-core SHARED ${SOURCES} ${HEADERS})
 
-set_target_properties(sch PROPERTIES SOVERSION ${PROJECT_VERSION})
-target_link_libraries(sch ${Boost_LIBRARIES})
+set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION})
+target_link_libraries(sch-core ${Boost_LIBRARIES})
 
 
-install(TARGETS sch
+install(TARGETS sch-core
         RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
 
