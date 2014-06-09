@@ -1,4 +1,13 @@
-=== Documentation ===
+[![Build Status](https://travis-ci.org/jrl-umi3218/sch-core.svg?branch=master)](https://travis-ci.org/jrl-umi3218/sch-core)
+[![Coverage Status](https://coveralls.io/repos/jrl-umi3218/sch-core/badge.png)](https://coveralls.io/r/jrl-umi3218/sch-core)
+
+sch-core
+========
+
+
+Documentation
+-------------
+
 Implementation and computation algorithms for the convex hulls detailed in:
 
 @article{escande:itro:2014,
@@ -17,7 +26,9 @@ Implementation and computation algorithms for the convex hulls detailed in:
 }
 
 
-=== Installation ===
+Installation
+------------
+
 Building using cmake:
 - create a new build directory
 - run cmake .. in this directory 
@@ -25,6 +36,8 @@ Building using cmake:
 - make
 - make install
 
-=== Indentation ===
-astyle --style=allman --lineend=linux --indent=spaces=2
+
+Indentation
+------------
+astyle --style=allman --lineend=linux --indent=spaces=2 --indent-namespaces
 
