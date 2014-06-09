@@ -12,6 +12,18 @@ const double PI=boost::math::constants::pi<double>();
 
 using namespace sch;
 
+TestMaterial::~TestMaterial()
+{
+  for(unsigned i=0; i<objectVector.size(); ++i)
+    delete objectVector[i];
+  objectVector.clear();
+  for(unsigned i=0; i<stpObjects.size(); ++i)
+    delete stpObjects[i];
+  stpObjects.resize(0);
+  stppObjects.resize(0);
+  polyObjects.resize(0);
+}
+
 void TestMaterial::DoTest()
 {
   sObj.sceneProximityQuery();
@@ -104,13 +116,14 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 void TestMaterial::initializeUniverse()
 {
 #ifdef NON_STP_BV_OBJECTS
-  sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Sphere(0.1));
-  sObj.addObject(new S_Sphere(0.12));
-
-  sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
-  sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
+  objectVector.push_back(new S_Box(0.2,0.2,0.2));
+  objectVector.push_back(new S_Box(0.2,0.2,0.2));
+  objectVector.push_back(new S_Sphere(0.1));
+  objectVector.push_back(new S_Sphere(0.12));
+  objectVector.push_back(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
+  objectVector.push_back(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
+  for(unsigned i=0; i<objectVector.size(); ++i)
+    sObj.addObject(objectVector[i]);
 #endif
 
 
@@ -169,29 +182,6 @@ void TestMaterial::initializeUniverse()
     s2->constructFromFileWithGL("sample_stpbv2.txt");
     stpObjects.push_back(s2);
     sObj.addObject(s2);
-
-    //STP_BV_P sp;
-    //sp.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(3).txt");
-    //stppObjects.push_back(sp);
-
-    //STP_BV_P sp2_;
-    //sp2_.constructFromFileWithGL("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt");
-    //stppObjects.push_back(sp2_);
-
-
-    //sObj.addObject(&(stppObjects[0]));
-    //sObj.addObject(&(stppObjects[1]));
-
-    //		S_Polyhedron P;
-    //		P.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(4).txt.otp");
-    //		polyObjects.push_back(P);
-
-    //S_Polyhedron P2;
-    //P2.constructFromFile("C:/Mehdi/nuage_points/simplifies/nuage_points/aobj(1).txt.otp");
-    //polyObjects.push_back(P2);
-
-    //		sObj.addObject(&(polyObjects[0]));
-    //sObj.addObject(&(polyObjects[1]));
   }
 #endif
   for (size_t i=0; i<sObj.size(); i++)

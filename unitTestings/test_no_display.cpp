@@ -12,10 +12,8 @@ void display() {}
 int main ()
 {
   universe.initializeUniverse();
-
-//	universe.CurrentObj=(universe.CurrentObj+1)%universe.sObj.size();
-//	universe.CurrentObj=(universe.CurrentObj-1)%universe.sObj.size();
   universe.TestAnimation();
+
   universe.TestPrecision();
   universe.GeneralTest();
   universe.RandomTestSupportFunction();

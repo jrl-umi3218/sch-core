@@ -19,6 +19,8 @@ void display (void);
 
 struct TestMaterial
 {
+  ~TestMaterial();
+
   void DoTest();
 
   void RandomTestSupportFunction();
@@ -38,6 +40,7 @@ struct TestMaterial
   unsigned int CurrentObj;
 
 private:
+  std::vector<sch::S_Object*> objectVector;
   std::vector<sch::STP_BV*> stpObjects;
   std::vector<sch::STP_BV_P> stppObjects;
   std::vector<sch::S_Polyhedron> polyObjects;
