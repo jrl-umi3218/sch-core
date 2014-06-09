@@ -3,12 +3,6 @@ compiler: gcc
 env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"
-  matrix: # this section is for the Debian branch only
-  - DIST=unstable
-  - DIST=saucy
-  - DIST=raring
-  - DIST=quantal
-  - DIST=precise
 notifications:
   email:
   - francois.keith@gmail.com
