@@ -19,28 +19,28 @@ void display (void);
 
 struct TestMaterial
 {
-	void DoTest();
+  void DoTest();
 
-	void RandomTestSupportFunction();
+  void RandomTestSupportFunction();
 
-	void RandomTestSupportFunctionAllObjects();
+  void RandomTestSupportFunctionAllObjects();
 
-	void initializeUniverse();
+  void initializeUniverse();
 
-	void TestPrecision();
+  void TestPrecision();
 
-	void TestAnimation();
+  void TestAnimation();
 
-	void GeneralTest();
+  void GeneralTest();
 
-	sch::CD_Scene sObj;
+  sch::CD_Scene sObj;
 
-	unsigned int CurrentObj;
+  unsigned int CurrentObj;
 
 private:
-	std::vector<sch::STP_BV*> stpObjects;
-	std::vector<sch::STP_BV_P> stppObjects;
-	std::vector<sch::S_Polyhedron> polyObjects;
+  std::vector<sch::STP_BV*> stpObjects;
+  std::vector<sch::STP_BV_P> stppObjects;
+  std::vector<sch::S_Polyhedron> polyObjects;
 };
 
 #endif //COMMON_TEST_H
