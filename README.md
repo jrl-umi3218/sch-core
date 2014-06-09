@@ -4,9 +4,15 @@ Implementation and computation algorithms for the convex hulls detailed in:
 @article{escande:itro:2014,
   author = {Adrien Escande and Sylvain Miossec and Mehdi Benallegue and Abderrahmane Kheddar},
   title = {A Strictly Convex Hull for Computing Proximity Distances with Continuous Gradients},
-  journal = {IEEE Transactions on Robotics},
+  journal={Robotics, IEEE Transactions on}, 
   year = {2014},
-  note = {in press},
+  month={June}, 
+  volume={30}, 
+  number={3}, 
+  pages={666-678}, 
+  keywords={Collision avoidance;Convergence;Optimization;Planning;Robots;Shape;Vectors;Bounding volume;continuous gradients of proximity distances;smooth and nonsmooth optimization;sphere-torus patches;strictly convex hulls}, 
+  doi={10.1109/TRO.2013.2296332}, 
+  ISSN={1552-3098},
   url = {https://sites.google.com/site/adrienescandehomepage/publications/2014_ITRO_Escande.pdf}
 }
 
