@@ -3,6 +3,7 @@ compiler: gcc
 env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"
+  - secure: docMUTjBQtm4uaLVtyRvv/rbq7JfmsuWGVPd/8Ay2lwZdkquAeFnK8YSptvi5+8x9VvJrv3Xu+gQZXtZSkETfpNEzORaaOVgZ4na8QzxKNQdw45leucZ28EbEQ7fBvg7e3s2l4EWjjjrAPz82+KTyQXUlNplRYaJk0CTBsbI29o=
 notifications:
   email:
   - francois.keith@gmail.com
