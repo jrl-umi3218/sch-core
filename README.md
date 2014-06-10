@@ -7,8 +7,25 @@ sch-core
 
 Documentation
 -------------
+Efficient implementation of GJK algorithm for proximity queries (collision detection, distance computations, penetration depths and withness points) between convex shapes.
 
-Implementation and computation algorithms for the convex hulls detailed in:
+The library can be extended to any convex shape for which we can compute the support function, but it already supports polyhedrons, boxes, spheres and ellipsoids, and it is particularly optimized for strictly convex hulls (SCH/STP-BV).
+
+The implementation is detailed in:
+
+    @INPROCEEDINGS{benallegue:icra:2009,
+      author={Benallegue, M. and Escande, A. and Miossec, S. and Kheddar, A.},
+      booktitle={Robotics and Automation, 2009. ICRA '09. IEEE International Conference on},
+      title={Fast C1 proximity queries using support mapping of sphere-torus-patches bounding volumes},
+      year={2009},
+      month={May},
+      pages={483-488},
+      keywords={Application software;Assembly;Clouds;Computer graphics;Robotics and automation;Robots;Shape;Target tracking;Testing;Trajectory},
+      doi={10.1109/ROBOT.2009.5152722},
+      ISSN={1050-4729},
+    }
+
+And a description of strictly convext hulls is detailed in:
 
     @article{escande:itro:2014,
       author = {Adrien Escande and Sylvain Miossec and Mehdi Benallegue and Abderrahmane Kheddar},
@@ -26,6 +43,8 @@ Implementation and computation algorithms for the convex hulls detailed in:
     }
 
 
+
+
 Installation
 ------------
 
@@ -41,4 +60,3 @@ Indentation
 ------------
 
     astyle --style=allman --lineend=linux --indent=spaces=2 --indent-namespaces
-
