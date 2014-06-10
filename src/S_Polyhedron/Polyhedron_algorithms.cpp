@@ -78,17 +78,17 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
   is.jumpSeparators();
   is()>>ent;
   is.jumpSeparators();
-  is()>>ent;//récupération du nombre de points
+  is()>>ent; //get the number of points
   is.find("\n");
   is.jumpSeparators();
   for (int g=0; g<ent; g++)
   {
     Scalar y[3];
-    is()>>y[0];//récupération des coordonnées
+    is()>>y[0];//get the coords
     is.jumpSeparators();
-    is()>>y[1];//récupération des coordonnées
+    is()>>y[1];//get the coords
     is.jumpSeparators();
-    is()>>y[2];//récupération des coordonnées
+    is()>>y[2];//get the coords
     is.jumpSeparators();
 
     S_PolyhedronVertex *v;
@@ -99,7 +99,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
   }
 
-  while (is.find("normal:"))//récupération des normales
+  while (is.find("normal:"))//get the normals
   {
     is.jumpSeparators();
     Scalar y[3];
@@ -116,7 +116,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
     t.normal.Set(y[0],y[1],y[2]);
     t.normal.normalize();
 
-    is.find("vertices");//récupération des indices
+    is.find("vertices");//get the indexes
     is.find("p");
     is()>>t.a;
     is.find("p");
