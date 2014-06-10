@@ -4,6 +4,7 @@ env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"
   - secure: docMUTjBQtm4uaLVtyRvv/rbq7JfmsuWGVPd/8Ay2lwZdkquAeFnK8YSptvi5+8x9VvJrv3Xu+gQZXtZSkETfpNEzORaaOVgZ4na8QzxKNQdw45leucZ28EbEQ7fBvg7e3s2l4EWjjjrAPz82+KTyQXUlNplRYaJk0CTBsbI29o=
+  - secure: bMjZcr/JjHXZht+jJovEYW3NFpQam+btwZMuFLC2zlj+FsCcnWOUEtRqygE5sm/BukULxRrLTK5NxeaA7VGrbrlrAuJh5KK5NltCP03QTwvH/Zaah/JrihHZ1IkZt//Rxi8UcF2P45LEvCGulcLF8sY4YRJPklcm5VJViNimzn8=
 notifications:
   email:
   - francois.keith@gmail.com
