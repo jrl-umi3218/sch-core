@@ -43,7 +43,7 @@ namespace sch
 
     Geometry(GeometryType t): type(t), color(0,0,0)
       , radius(0), center(0,0,0)
-      , rotation(1,0,0,  0,1,0,  0,0,1)
+      , rotation(Matrix3x3::Identity())
     {}
   };
 
@@ -58,7 +58,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & buffer;
+//      ar & buffer;
     }
   } toruslinkedBV;
 
@@ -84,7 +84,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_vertex1 & m_vertex2 & m_vertex3;
+//      ar & m_vertex1 & m_vertex2 & m_vertex3;
     }
 
     Point3 m_vertex1;
@@ -120,7 +120,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
+//      ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
     }
 
     std::vector<Point3>& m_vertices;
@@ -160,7 +160,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_axis & m_points;
+//      ar & m_axis & m_points;
     }
 
     Point3 m_axis;
@@ -297,19 +297,19 @@ namespace sch
     template<class Archive>
     void load(Archive & ar, const unsigned int /*version*/)
     {
-      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-      ar & m_patches ;
-      ar & m_patchesSize ;
-      updateFastPatches();
+//      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+//      ar & m_patches ;
+//      ar & m_patchesSize ;
+//      updateFastPatches();
     }
 
 
     template<class Archive>
     void save(Archive & ar, const unsigned int /*version*/) const
     {
-      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-      ar & m_patches ;
-      ar & m_patchesSize ;
+//      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
+//      ar & m_patches ;
+//      ar & m_patchesSize ;
     }
 
 

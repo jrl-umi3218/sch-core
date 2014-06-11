@@ -342,9 +342,9 @@ bool STP_BigSphere::ray_cast(const Point3& source, const Point3& target,
                              Scalar& param, Vector3& normal) const
 {
   Vector3 r = target - source;
-  Scalar  delta = -source*r;
+  Scalar  delta = -source.dot(r);
   Scalar  r_length2 = r.norm();
-  Scalar  sigma = delta * delta - r_length2 * (source.normsquared() - m_radius * m_radius);
+  Scalar  sigma = delta * delta - r_length2 * (source.squaredNorm() - m_radius * m_radius);
 
   if (sigma >= Scalar(0.0))
     // The line trough source and target intersects the sphere.
@@ -370,7 +370,7 @@ bool STP_BigSphere::ray_cast(const Point3& source, const Point3& target,
         else
         {
           param = Scalar(0.0);
-          normal.Set(Scalar(0.0), Scalar(0.0), Scalar(0.0));
+          normal.setZero();
         }
         return true;
       }

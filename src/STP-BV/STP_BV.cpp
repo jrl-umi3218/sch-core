@@ -163,7 +163,7 @@ bool s_PointsComparator::operator ()(unsigned int id1, unsigned int id2) const
   if(id1 >= m_points.size() || id2 >= m_points.size())
     return false;
 
-  if((m_points[id1]^m_points[id2])*m_axis > Scalar(0))
+  if((m_points[id1].cross(m_points[id2])).dot(m_axis) > Scalar(0))
     return true;
   return false;
 }
@@ -228,17 +228,17 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
   v1.normalize();
   v2p.normalize();
 
-  Scalar angle=acos(v1*v2p)/(step);
+  Scalar angle=acos(v1.dot(v2p))/(step);
 
-  Vector3 v3=v1^v2p;
+  Vector3 v3=v1.cross(v2p);
 
   v3.normalize();
 
-  Vector3 v2=v3^v1;
+  Vector3 v2=v3.cross(v1);
 
-  Matrix3x3 m(v1[0],v2[0],v3[0],
+  Matrix3x3 m; m << v1[0],v2[0],v3[0],
               v1[1],v2[1],v3[1],
-              v1[2],v2[2],v3[2]);
+              v1[2],v2[2],v3[2];
 
   res.push_back(p1);
 
@@ -260,8 +260,8 @@ void STP_BV::computeConePointsBetween(const Point3& p1, const Point3& p2,
                                       Matrix3x3& matrix2)
 {
   Point3 tmp1, tmp2;
-  Point3 startp = p1 - axis*(p1*axis);
-  Point3 endp = p2 -  axis* (p2*axis);
+  Point3 startp = p1 - axis*(p1.dot(axis));
+  Point3 endp = p2 -  axis* (p2.dot(axis));
   startp.normalize();
   endp.normalize();
   double angle = startp[0] * endp[0] + startp[1] * endp[1] + startp[2] * endp[2];
@@ -309,28 +309,28 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 
 void STP_BV::loadFromBinary(const std::string & filename)
 {
-  try
-  {
-    std::ifstream ifs(filename.c_str(), std::ios::binary);
-    boost::archive::binary_iarchive ia(ifs);
-    ia >> *this;
-  }
-  catch(...)
-  {
-    std::cerr << "Could not load the object from: " << filename << std::endl;
-  }
+//  try
+//  {
+//    std::ifstream ifs(filename.c_str(), std::ios::binary);
+//    boost::archive::binary_iarchive ia(ifs);
+//    ia >> *this;
+//  }
+//  catch(...)
+//  {
+//    std::cerr << "Could not load the object from: " << filename << std::endl;
+//  }
 }
 
 void STP_BV::saveToBinary(const std::string & filename)
 {
-  std::ofstream ofs(filename.c_str(), std::ios::binary);
-  if(!ofs.is_open())
-  {
-    std::cerr << "Could not open file: " << filename << std::endl;
-    return;
-  }
-  boost::archive::binary_oarchive oa(ofs);
-  oa << *this;
+//  std::ofstream ofs(filename.c_str(), std::ios::binary);
+//  if(!ofs.is_open())
+//  {
+//    std::cerr << "Could not open file: " << filename << std::endl;
+//    return;
+//  }
+//  boost::archive::binary_oarchive oa(ofs);
+//  oa << *this;
 }
 
 
@@ -440,7 +440,7 @@ void STP_BV::constructFromFile(const std::string& filename)
     {
       is >> outerSTP >> axis[0] >> axis[1] >> axis[2];
       dvvr[j].m_cosangle = 0.0;
-      dvvr[j].m_axis.Set(axis[0], axis[1], axis[2]);
+      dvvr[j].m_axis << axis[0], axis[1], axis[2];
       dvvr[j].m_outerSTP = outerSTP;
     }
     bigs->setVVR(dvvr);
@@ -480,19 +480,19 @@ void STP_BV::constructFromFile(const std::string& filename)
 
     is >> outerSTP >> cosangle >> axis[0] >> axis[1] >> axis[2];
     dvvr[0].m_cosangle = cosangle;
-    dvvr[0].m_axis.Set(axis[0], axis[1], axis[2]);
+    dvvr[0].m_axis << axis[0], axis[1], axis[2];
     dvvr[0].m_outerSTP = outerSTP;
     is >> outerSTP >> cosangle >> axis[0] >> axis[1] >> axis[2];
     dvvr[1].m_cosangle = cosangle;
-    dvvr[1].m_axis.Set(axis[0], axis[1], axis[2]);
+    dvvr[1].m_axis << axis[0], axis[1], axis[2];
     dvvr[1].m_outerSTP = outerSTP;
     is >> outerSTP >> axis[0] >> axis[1] >> axis[2];
     dvvr[2].m_cosangle = 0.0;
-    dvvr[2].m_axis.Set(axis[0], axis[1], axis[2]);
+    dvvr[2].m_axis  << axis[0], axis[1], axis[2];
     dvvr[2].m_outerSTP = outerSTP;
     is >> outerSTP >> axis[0] >> axis[1] >> axis[2];
     dvvr[3].m_cosangle = 0.0;
-    dvvr[3].m_axis.Set(axis[0], axis[1], axis[2]);
+    dvvr[3].m_axis << axis[0], axis[1], axis[2];
     dvvr[3].m_outerSTP = outerSTP;
 
     //torus-small sphere VVR (real cones)
@@ -505,7 +505,7 @@ void STP_BV::constructFromFile(const std::string& filename)
     if(isRealTorus)
     {
       Matrix3x3 rotation;
-      if(  (p1^p2)*dvvr[0].m_axis < 0.0)
+      if(  (p1.cross(p2)).dot(dvvr[0].m_axis) < 0.0)
         computeConePointsBetween(p2, p1, dvvr[0].m_axis, anglestep, computedPoints, rotation);
       else
         computeConePointsBetween(p1, p2, dvvr[0].m_axis, anglestep, computedPoints, rotation);
@@ -539,7 +539,7 @@ void STP_BV::constructFromFile(const std::string& filename)
     if(isRealTorus)
     {
       Matrix3x3 rotation;
-      if( ( p1^p2)*dvvr[1].m_axis < 0.0)
+      if( ( p1.cross(p2)).dot(dvvr[1].m_axis) < 0.0)
         computeConePointsBetween(p2, p1, dvvr[1].m_axis, anglestep, computedPoints, rotation);
       else
         computeConePointsBetween(p1, p2, dvvr[1].m_axis, anglestep, computedPoints, rotation);
@@ -556,7 +556,7 @@ void STP_BV::constructFromFile(const std::string& filename)
       geometryTorus2.color = Point3(0.45 + i * 0.04, 0.84, 0.4);
       for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
       {
-        normal=computedPoints[j]^computedPoints[j+1];
+        normal=computedPoints[j].cross(computedPoints[j+1]);
         normal.normalize();
 
         geometryTorus2.normal.push_back(normal);
@@ -582,7 +582,7 @@ void STP_BV::constructFromFile(const std::string& filename)
       geometryTorus5.color = Point3(1.0, 0.59, 0.0);
       for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
       {
-        normal=computedPoints[j]^computedPoints[j+1];
+        normal=(computedPoints[j]).cross(computedPoints[j+1]);
         normal.normalize();
 
         geometryTorus5.normal.push_back(normal);
@@ -608,7 +608,7 @@ void STP_BV::constructFromFile(const std::string& filename)
       geometryTorus6.color = Point3(1.0, 1.0, 0.3);
       for(size_t j = 0 ; j < computedPoints.size() - 1 ; ++j)
       {
-        normal=computedPoints[j]^computedPoints[j+1];
+        normal=(computedPoints[j]).cross(computedPoints[j+1]);
         normal.normalize();
         geometryTorus6.normal.push_back(normal);
         geometryTorus6.vertex.push_back(computedPoints[j]);
@@ -867,7 +867,7 @@ Scalar STP_BV::supportH(const Vector3& v) const
   int k;
 
   //A.E. : we use the default supportH function, cf DT_Convex.h
-  return v*l_Support(v,k);
+  return v.dot(l_Support(v,k));
 }
 
 Point3 STP_BV::l_Support(const Vector3& v,int& lastFeature) const

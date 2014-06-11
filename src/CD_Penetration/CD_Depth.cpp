@@ -86,26 +86,26 @@ int furthestAxis(Vector3 v)
 inline int originInTetrahedron(const Vector3& p1, const Vector3& p2,
                                const Vector3& p3, const Vector3& p4)
 {
-  Vector3 normal1 = (p2 - p1)^( p3 - p1);
-  if (((normal1* p1) >= Scalar(0.0)) == ((normal1* p4) > Scalar(0.0)))
+  Vector3 normal1 = (p2 - p1).cross( p3 - p1);
+  if (((normal1.dot(p1)) >= Scalar(0.0)) == ((normal1.dot(p4)) > Scalar(0.0)))
   {
     return 4;
   }
 
-  Vector3 normal2 = (p4 - p2)^( p3 - p2);
-  if (((normal2* p2) >= Scalar(0.0)) == ((normal2* p1) > Scalar(0.0)))
+  Vector3 normal2 = (p4 - p2).cross( p3 - p2);
+  if (((normal2.dot(p2)) >= Scalar(0.0)) == ((normal2.dot(p1)) > Scalar(0.0)))
   {
     return 1;
   }
 
-  Vector3 normal3 = (p4 - p3)^( p1 - p3);
-  if (((normal3* p3) >= Scalar(0.0)) == ((normal3* p2) > Scalar(0.0)))
+  Vector3 normal3 = (p4 - p3).cross( p1 - p3);
+  if (((normal3.dot(p3)) >= Scalar(0.0)) == ((normal3.dot(p2)) > Scalar(0.0)))
   {
     return 2;
   }
 
-  Vector3 normal4 = (p2 - p4)^( p1 - p4);
-  if (((normal4* p4) >= Scalar(0.0)) == ((normal4* p3) > Scalar(0.0)))
+  Vector3 normal4 = (p2 - p4).cross( p1 - p4);
+  if (((normal4.dot(p4)) >= Scalar(0.0)) == ((normal4.dot(p3)) > Scalar(0.0)))
   {
     return 3;
   }
@@ -215,7 +215,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     Quaternion rot(dir[0] * sin_60, dir[1] * sin_60, dir[2] * sin_60, Scalar(0.5));
     Matrix3x3 rot_mat(rot);
 
-    Vector3 aux1 = dir ^ Vector3(axis == 0, axis == 1, axis == 2);
+    Vector3 aux1 = dir.cross(Vector3(axis == 0, axis == 1, axis == 2));
     Vector3 aux2 = rot_mat * aux1;
     Vector3 aux3 = rot_mat * aux2;
 
@@ -305,7 +305,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 
     Vector3 v1     = yBuf[1] - yBuf[0];
     Vector3 v2     = yBuf[2] - yBuf[0];
-    Vector3 vv     = (v1^ v2);
+    Vector3 vv     = (v.cross(v2));
 
     pBuf[3] = sObj1_->support(vv);
     qBuf[3] = sObj2_->support(-vv);
@@ -390,7 +390,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
       yBuf[num_verts] = pBuf[num_verts] - qBuf[num_verts];
 
       int index = num_verts++;
-      Scalar far_dist = (yBuf[index]* triangle->getClosest());
+      Scalar far_dist = (yBuf[index].dot(triangle->getClosest()));
 
       // Make sure the support mapping is OK.
       if (far_dist < Scalar(0.0))
@@ -446,8 +446,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
   v = triangle->getClosest();
   p1 = triangle->getClosestPoint(pBuf);
   p2 = triangle->getClosestPoint(qBuf);
-  return v.normsquared();
-
+  return v.squaredNorm();
 }
 
 CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(_PRECISION_),epsilon_(_EPSILON_)

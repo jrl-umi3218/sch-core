@@ -1,7 +1,6 @@
 inline Point3 S_ObjectNormalized::support(const Vector3& v) const
 {
-  Vector3 vp(v);
-  vp=v*mRot_; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
+  Vector3 vp = mRot_.transpose()*v;
   Scalar norm=vp.norm();
   if (norm>0)
   {
@@ -9,8 +8,7 @@ inline Point3 S_ObjectNormalized::support(const Vector3& v) const
   }
   else
   {
-    vp.Set(1,0,0);
-
+    vp << 1,0,0;
   }
   int k=-1;
   Point3 p(mRot_ * l_Support(vp,k));
@@ -20,8 +18,7 @@ inline Point3 S_ObjectNormalized::support(const Vector3& v) const
 
 inline Point3 S_ObjectNormalized::support(const Vector3& v,int &LastFeature) const
 {
-  Vector3 vp(v);
-  vp= v * mRot_; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
+  Vector3 vp = mRot_.transpose()*v; 
   Scalar norm=vp.norm();
   if (norm>0)
   {
@@ -29,8 +26,7 @@ inline Point3 S_ObjectNormalized::support(const Vector3& v,int &LastFeature) con
   }
   else
   {
-    vp.Set(1,0,0);
-
+    vp << 1,0,0;
   }
 
   Point3 p(mRot_ * l_Support(vp,LastFeature));

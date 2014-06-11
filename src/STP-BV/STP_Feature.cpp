@@ -26,17 +26,17 @@ s_STP_VVR::s_STP_VVR(Scalar cosangle, const Vector3& axis):
 bool s_STP_VVR::isInside(const Vector3& v) const
 {
   //std::cout << "is inside ?" << std::endl;
-  if (v.normsquared() == 0)
+  if (v.squaredNorm() == 0)
     return true;
 
-  Scalar res = m_axis * v / (v.norm() * m_axis.norm());
+  Scalar res = m_axis.dot(v) / (v.norm() * m_axis.norm());
   return (res >= m_cosangle);
 }
 
 
 Scalar s_STP_VVR::getDistance(const Vector3& v) const
 {
-  return (m_axis*v) / (v.norm() * m_axis.norm()) - m_cosangle;
+  return (m_axis.dot(v)) / (v.norm() * m_axis.norm()) - m_cosangle;
 }
 
 bool s_STP_VVR::isSameLimit(const s_STP_VVR& vvr) const
@@ -97,16 +97,16 @@ bool s_STN_VVR::isInside(const Vector3& v) const
 {
   //std::cout << "is inside ?" << std::endl;
 
-  if(v.normsquared()==0)
+  if(v.squaredNorm()==0)
     return true;
 
-  Scalar res = m_axis*v / (v.norm() * m_axis.norm());
+  Scalar res = m_axis.dot(v) / (v.norm() * m_axis.norm());
   return (res >= m_cosangle);
 }
 
 Scalar s_STN_VVR::getDistance(const Vector3& v) const
 {
-  return m_axis*v / (v.norm() * m_axis.norm()) - m_cosangle ;
+  return m_axis.dot(v) / (v.norm() * m_axis.norm()) - m_cosangle ;
 }
 
 bool s_STN_VVR::isSameLimit(const s_STN_VVR& vvr) const

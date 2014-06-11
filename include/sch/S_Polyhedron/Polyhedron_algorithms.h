@@ -19,10 +19,10 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & a;
-      ar & b;
-      ar & c;
-      ar & normal;
+//      ar & a;
+//      ar & b;
+//      ar & c;
+//      ar & normal;
     }
   };
 
@@ -80,8 +80,8 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & vertexes_;
-      ar & triangles_;
+//      ar & vertexes_;
+//      ar & triangles_;
       //ar & fastVertexes_;
       //ar & lastVertexes_;
     }

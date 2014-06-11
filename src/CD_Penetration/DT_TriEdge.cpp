@@ -54,11 +54,11 @@ bool Depth_Triangle::computeClosest(const Vector3 *verts)
 
   Vector3 v1 = verts[m_indices[1]] - p0;
   Vector3 v2 = verts[m_indices[2]] - p0;
-  Scalar v1dv1 = v1.normsquared();
-  Scalar v1dv2 = (v1*v2);
-  Scalar v2dv2 = v2.normsquared();
-  Scalar p0dv1 = (p0* v1);
-  Scalar p0dv2 = (p0* v2);
+  Scalar v1dv1 = v1.squaredNorm();
+  Scalar v1dv2 = (v1.dot(v2));
+  Scalar v2dv2 = v2.squaredNorm();
+  Scalar p0dv1 = (p0.dot(v1));
+  Scalar p0dv2 = (p0.dot(v2));
 
   m_det = v1dv1 * v2dv2 - v1dv2 * v1dv2; // non-negative
   m_lambda1 = p0dv2 * v1dv2 - p0dv1 * v2dv2;
@@ -67,7 +67,7 @@ bool Depth_Triangle::computeClosest(const Vector3 *verts)
   if (m_det > Scalar(0.0))
   {
     m_closest = p0 + ( v1*m_lambda1 + v2*m_lambda2) / m_det;
-    m_dist2 = m_closest.normsquared();
+    m_dist2 = m_closest.squaredNorm();
 
     return true;
   }

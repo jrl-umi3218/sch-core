@@ -13,9 +13,9 @@ inline void GetClosestSubSimplexCCKWTriangle(
   CD_SimplexKeptPoints &k,
   unsigned char bA,unsigned char bB,unsigned char bC)
 {
-  if ((ABC^AC)*AO>=0)
+  if ((ABC.cross(AC)).dot(AO)>=0)
   {
-    if (AC*AO>=0)
+    if (AC.dot(AO)>=0)
     {
       k.b1=bC;
       k.b2=bA;
@@ -24,7 +24,7 @@ inline void GetClosestSubSimplexCCKWTriangle(
     }
     else
     {
-      if (AB*AO>=0)
+      if (AB.dot(AO)>=0)
       {
         k.b1=bA;
         k.b2=bB;
@@ -42,9 +42,9 @@ inline void GetClosestSubSimplexCCKWTriangle(
   }
   else
   {
-    if ((AB^ABC)*AO>=0)
+    if ((AB.cross(ABC)).dot(AO)>=0)
     {
-      if (AB*AO>=0)
+      if (AB.dot(AO)>=0)
       {
         k.b1=bA;
         k.b2=bB;
@@ -84,7 +84,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
   {
     Vector3 AO(-s2_);
 
-    if (ab_*AO>=0)
+    if (ab_.dot(AO)>=0)
     {
       k.type=CD_None;
       return;
@@ -99,10 +99,10 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
   case (CD_Triangle):
   {
     Vector3 AO(-s3_);
-    Vector3 ABC(ab_^ac_);
-    if ((ABC^ac_)*AO>=0)
+    Vector3 ABC(ab_.cross(ac_));
+    if ((ABC.cross(ac_)).dot(AO)>=0)
     {
-      if (ac_*AO>=0)
+      if (ac_.dot(AO)>=0)
       {
         k.b1=1;
         k.b2=2;
@@ -111,7 +111,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
       }
       else
       {
-        if (ab_*AO>=0)
+        if (ab_.dot(AO)>=0)
         {
           k.b1=2;
           k.b2=0;
@@ -129,9 +129,9 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
     }
     else
     {
-      if ((ab_^ABC)*AO>=0)
+      if ((ab_.cross(ABC)).dot(AO)>=0)
       {
-        if (ab_*AO>=0)
+        if (ab_.dot(AO)>=0)
         {
           k.b1=2;
           k.b2=0;
@@ -148,7 +148,7 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
       }
       else
       {
-        if (ABC*AO>=0)
+        if (ABC.dot(AO)>=0)
         {
           k.type=CD_None;
           return;
@@ -171,11 +171,13 @@ void CD_SimplexEnhanced::getClosestSubSimplexGJK(CD_SimplexKeptPoints &k) const
   {
 
     Vector3 AO(-s4_);
-    Vector3 ABC(ab_^ac_),ACD(ac_^ad_),ADB(ad_^ab_);
-    Scalar d_abc(ABC*AO),d_acd(ACD*AO),d_adb(ADB*AO);
-    d_abc=(d_abc*d_abc)/ABC.normsquared()*sign(d_abc);
-    d_acd=(d_acd*d_acd)/ACD.normsquared()*sign(d_acd);
-    d_adb=(d_adb*d_adb)/ADB.normsquared()*sign(d_adb);
+    Vector3 ABC(ab_.cross(ac_)),ACD(ac_.cross(ad_)),ADB(ad_.cross(ab_));
+    Scalar d_abc(ABC.dot(AO)),
+           d_acd(ACD.dot(AO)),
+           d_adb(ADB.dot(AO));
+    d_abc=(d_abc*d_abc)/ABC.squaredNorm()*sign(d_abc);
+    d_acd=(d_acd*d_acd)/ACD.squaredNorm()*sign(d_acd);
+    d_adb=(d_adb*d_adb)/ADB.squaredNorm()*sign(d_adb);
 
 
     if (d_abc>d_acd)
