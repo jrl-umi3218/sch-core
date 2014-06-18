@@ -12,9 +12,8 @@ void display() {}
 int main ()
 {
   universe.initializeUniverse();
-  universe.TestAnimation();
-  universe.TestPrecision();
-  universe.GeneralTest();
+  universe.RandomTestSupportFunction();
+  universe.RandomTestSupportFunctionAllObjects();
 
   return 0;
 }

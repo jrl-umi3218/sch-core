@@ -4,7 +4,6 @@
 #define NON_STP_BV_OBJECTS
 //#define DISPLAY_DISTANCE
 #define DO_TEST
-#define OUTPUT_FILE
 //#define LINES_DISPLAY
 
 //#define MULTI_OBJECTS_TEST
