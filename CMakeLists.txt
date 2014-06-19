@@ -7,6 +7,7 @@ INCLUDE(cmake/cpack.cmake)
 
 set(CXX_DISABLE_WERROR True)
 set(CMAKE_VERBOSE_MAKEFILE ON)
+ADD_DEFINITIONS(-mfpmath=sse -msse2)
 
 # ----------------------------------------------------------------
 # --- Project declaration ----------------------------------------
