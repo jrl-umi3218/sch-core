@@ -94,12 +94,16 @@ Scalar CD_Pair::reComputeClosestPoints(Point3& p1,Point3& p2)
 
 void CD_Pair::setRelativePrecision(Scalar s)
 {
+  --stamp1_;
+  --stamp2_;
   precision_=s*s;
   depthPair.setRelativePrecision(s);
 }
 
 void CD_Pair::setEpsilon(Scalar s)
 {
+  --stamp1_;
+  --stamp2_;
   epsilon_=s;
   depthPair.setEpsilon(s);
 }
