@@ -1,4 +1,4 @@
-# Francois Keith, JRL, CNRS/AIST
+# Mehdi Benallegue, JRL, CNRS/AIST
 # Creation: 19/08/2010
 # History:
 #
@@ -8,25 +8,18 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 include_directories(${PROJECT_INCLUDE_DIR})
 
-#add_executable(test_no_display test_no_display.cpp common.cpp common.h includes.h)
-#target_link_libraries(test_no_display scd  ${Boost_LIBRARIES})
-#add_dependencies(test_no_display scd)
-#add_test(test_no_display ${CMAKE_CURRENT_BINARY_DIR}/test_no_display)
+macro(add_example name)
+  add_executable(${name} ${name}.cpp)
+  target_link_libraries(${name} sch-core ${Boost_LIBRARIES})
+  add_dependencies(${name} sch-core)
+endmacro(add_example)
 
-#add_custom_command(TARGET test_no_display POST_BUILD
-#  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv1.txt
-#  ${CMAKE_BINARY_DIR}/unitTestings/
-#  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv2.txt
-#  ${CMAKE_BINARY_DIR}/unitTestings/
-#)
+add_example(example0)
 
-if(GLUT_FOUND)
-  include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR} ${PROJECT_INCLUDE_DIR})
-  add_executable(example_view example_view.cpp)
-  target_link_libraries(example_view ${Boost_LIBRARIES})
-  target_link_libraries(example_view scd scd_viewer)
-  target_link_libraries(example_view ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
-  add_dependencies(example_view scd)
-  add_dependencies(example_view scd_viewer)
-endif(GLUT_FOUND)
+add_custom_command(TARGET example POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv1.txt
+  ${CMAKE_BINARY_DIR}/examples/
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv2.txt
+  ${CMAKE_BINARY_DIR}/examples/
+)
 
