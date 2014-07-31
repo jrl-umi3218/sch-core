@@ -52,7 +52,7 @@ namespace sch
     SCH_API Scalar getDistanceWithoutPenetrationDepth();
 
     /*!
-    * brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
+    * \brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
     */
 
     SCH_API bool isInCollision();
