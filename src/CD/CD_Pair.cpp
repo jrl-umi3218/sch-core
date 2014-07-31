@@ -44,11 +44,12 @@ CD_Pair::~CD_Pair(void)
 {
 }
 
-
 Scalar CD_Pair::getDistance()
 {
   if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
   {
+    if (distance_==0)
+        penetrationDepth();
     return distance_;
   }
   else
@@ -61,7 +62,6 @@ Scalar CD_Pair::getDistance()
   }
 }
 
-
 Scalar CD_Pair::getDistanceWithoutPenetrationDepth()
 {
   if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
@@ -72,9 +72,9 @@ Scalar CD_Pair::getDistanceWithoutPenetrationDepth()
   }
   else
   {
+    stamp1_=sObj1_->checkStamp();
+    stamp2_=sObj2_->checkStamp();
     GJK();
-    if (collision_)
-      return 0;
     return distance_;
   }
 }
@@ -327,6 +327,7 @@ Scalar CD_Pair::GJK()
               s1+=sup1;
               s2+=sup2;
               collision_=true;
+              distance_=0.;
             }
             else
             {
