@@ -64,18 +64,9 @@ namespace sch
     {
       if (a!=b)
       {
-        if (b<a)
-        {
-          p1=witness_[a][b];
-          p2=witness_[b][a];
-          return distances_[a][b];
-        }
-        else
-        {
-          p1=witness_[b][a];
-          p2=witness_[a][b];
-          return distances_[b][a];
-        }
+        p1=witness_[a][b];
+        p2=witness_[b][a];
+        return distances_[a][b];
       }
       else
       {
