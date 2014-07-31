@@ -1,6 +1,11 @@
-#include <sch/File_Parsing/SimplestParsing.h>
+
+#include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <sstream>
+
+#include <sch/File_Parsing/SimplestParsing.h>
+
 
 using namespace FileParsing;
 
@@ -18,8 +23,10 @@ void SimplestParsing::load(const char* filename)
 
   if(!tmp_is.is_open())
   {
-    std::cout << "EXCEPTION : Unable to open File " << filename << std::endl;
-    throw std::exception();
+    std::stringstream errmsg;
+    errmsg << "EXCEPTION : Unable to open File " << filename << std::endl;
+    throw std::invalid_argument(errmsg.str());
+
   }
 
   std::string strbuf;
