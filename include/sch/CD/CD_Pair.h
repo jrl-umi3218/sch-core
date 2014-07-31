@@ -81,7 +81,7 @@ namespace sch
       return (i==0)?sObj1_:sObj2_;
     }
 
-  private :
+  protected :
     S_Object* sObj1_, * sObj2_;
     Vector3 lastDirection_;
     int lastFeature1_,lastFeature2_;
