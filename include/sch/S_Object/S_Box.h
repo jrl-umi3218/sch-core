@@ -33,3 +33,9 @@ namespace sch
 }
 
 #endif
+
+/**
+ * \example      example0.cpp
+ * This example shows the normal use of the SCH library:
+ * The simplest proximity queries
+ */

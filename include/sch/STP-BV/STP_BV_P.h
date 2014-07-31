@@ -37,3 +37,11 @@ namespace sch
     Polyhedron_algorithms poly;
   };
 }
+
+#endif
+
+/**
+ * \example      example2.cpp
+ * This example shows the normal use of the SCH library:
+ * More Complex Objects
+ */

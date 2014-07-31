@@ -115,4 +115,18 @@ namespace sch
     CD_Depth depthPair;
   };
 }
+
+
+/**
+ * \example      example0.cpp
+ * This example shows the normal use of the SCH library:
+ * The simplest proximity queries
+ */
+
+ /**
+ * \example      example1.cpp
+ * This example shows the normal use of the SCH library:
+ * Scene managements
+ */
+
 #endif
