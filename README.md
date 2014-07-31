@@ -7,7 +7,7 @@ sch-core
 
 Documentation
 -------------
-Efficient implementation of GJK algorithm for proximity queries (collision detection, distance computations, penetration depths and withness points) between convex shapes.
+Efficient implementation of GJK algorithm for proximity queries (collision detection, distance computations, penetration depths and witness points) between convex shapes.
 
 The library can be extended to any convex shape for which we can compute the support function, but it already supports polyhedrons, boxes, spheres and ellipsoids, and it is particularly optimized for strictly convex hulls (SCH/STP-BV).
 
