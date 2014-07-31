@@ -113,7 +113,7 @@ bool s_STN_VVR::isSameLimit(const s_STN_VVR& vvr) const
 {
   Scalar epsilon = 1e-8;
 
-  if((m_cosangle==0 )&& (m_cosangle==0))
+  if((m_cosangle==0 )&& (vvr.m_cosangle==0))
   {
     if( (fabs(m_axis[0] + vvr.m_axis[0]) < epsilon) && (fabs(m_axis[1] + vvr.m_axis[1]) < epsilon) && (fabs(m_axis[2] + vvr.m_axis[2]) < epsilon) )
       return true;
