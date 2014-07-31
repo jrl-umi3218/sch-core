@@ -106,8 +106,6 @@ namespace sch
 
     bool witPointsAreComputed_;
 
-    bool computePenetration;
-
     CD_Simplex s1_,s2_,s_;
 
     CD_SimplexEnhanced sp_;
