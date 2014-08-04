@@ -46,160 +46,160 @@ using namespace sch;
 int
 main (int argc, char *argv[])
 {
-    //***********
-    //Object initializations
+  //***********
+  //Object initializations
 
-    // A box with height, width and depth
-    S_Box box(0.2,0.1,0.4);
+  // A box with height, width and depth
+  S_Box box(0.2,0.1,0.4);
 
-    //Set the position in the world reference frame
-    box.setPosition(0.1,0.7,0.9);
+  //Set the position in the world reference frame
+  box.setPosition(0.1,0.7,0.9);
 
-    //Set the orientation of the Object
-    //(many different orientations representations are supported, here Roll
-    // pitch yaw)
-    box.setOrientation(0.1,1,0.7);
+  //Set the orientation of the Object
+  //(many different orientations representations are supported, here Roll
+  // pitch yaw)
+  box.setOrientation(0.1,1,0.7);
 
-    //A second object, a sphere with a radius
-    S_Sphere sphere(0.3);
+  //A second object, a sphere with a radius
+  S_Sphere sphere(0.3);
 
-    //let's transform it into an ellipsoid
-    //we add an anisotropic scale to the sphere
-    // (the scale has to be the first operation as it affects also
-    // rotations and translations)
-    sphere.addScale(0.5,0.8,1.1);
+  //let's transform it into an ellipsoid
+  //we add an anisotropic scale to the sphere
+  // (the scale has to be the first operation as it affects also
+  // rotations and translations)
+  sphere.addScale(0.5,0.8,1.1);
 
-    //Set the position in the world reference frame
-    sphere.setPosition(0.1,-0.7,-0.9);
+  //Set the position in the world reference frame
+  sphere.setPosition(0.1,-0.7,-0.9);
 
-    //We turn it around the axis vrot defined by
-    Vector3 vrot(0.2,0.4,0.5);
-    vrot = vrot/vrot.norm();
+  //We turn it around the axis vrot defined by
+  Vector3 vrot(0.2,0.4,0.5);
+  vrot = vrot/vrot.norm();
 
-    //let's turn it by 0.8 rad (we use addRotation instead of setRotation
-    // to not loose the scale)
-    sphere.addRotation(0.8,vrot);
+  //let's turn it by 0.8 rad (we use addRotation instead of setRotation
+  // to not loose the scale)
+  sphere.addRotation(0.8,vrot);
 
-    //********
-    //Proximity queries
+  //********
+  //Proximity queries
 
-    //Create a proximity-query pair of objects. It takes the addresses of the
-    //objects. The user is responsible of guaranteeing the existance of the
-    //objects at these addresses during all the period of use of the pair and
-    //desrtoying the objects at the end.
-    //Note that STL containers (vectors, deque, etc.) do not guarantee that
-    //objects remain at same address. Use them with care.
-    CD_Pair pair1(&box, &sphere);
+  //Create a proximity-query pair of objects. It takes the addresses of the
+  //objects. The user is responsible of guaranteeing the existance of the
+  //objects at these addresses during all the period of use of the pair and
+  //desrtoying the objects at the end.
+  //Note that STL containers (vectors, deque, etc.) do not guarantee that
+  //objects remain at same address. Use them with care.
+  CD_Pair pair1(&box, &sphere);
 
-    //Are they in collision ?
-    //This is the fastest proximity query as it runs GJK with the lowest
-    // precision
-    Scalar collision = pair1.isInCollision();
+  //Are they in collision ?
+  //This is the fastest proximity query as it runs GJK with the lowest
+  // precision
+  Scalar collision = pair1.isInCollision();
 
-    //This runs GJK with 1e-6 precision.
-    // WARNING : THE PROVIDED DISTANCE IS SQUARED for computation time
-    // purpose, the real distance is then obtained by square root
-    // this algorithm takes profit from the warm start provided by the
-    // previous query, so there is virtually no additional cost at making
-    // these two requests instead of directly the last one.
-    // if there is a collision, this will compute the penetration depth
-    Scalar d0 = sqrt(fabs(pair1.getDistance()));
+  //This runs GJK with 1e-6 precision.
+  // WARNING : THE PROVIDED DISTANCE IS SQUARED for computation time
+  // purpose, the real distance is then obtained by square root
+  // this algorithm takes profit from the warm start provided by the
+  // previous query, so there is virtually no additional cost at making
+  // these two requests instead of directly the last one.
+  // if there is a collision, this will compute the penetration depth
+  Scalar d0 = sqrt(fabs(pair1.getDistance()));
 
-    //Our witness points
-    Point3 p1,p2;
-    //get the Witness points without running GJK or depth computation again
-    // (it detects that the object did not move since the last query, if
-    // one or both moved, this query would trigger GJK algorithm).
-    // this method returns the distance also.
-    pair1.getClosestPoints(p1,p2);
+  //Our witness points
+  Point3 p1,p2;
+  //get the Witness points without running GJK or depth computation again
+  // (it detects that the object did not move since the last query, if
+  // one or both moved, this query would trigger GJK algorithm).
+  // this method returns the distance also.
+  pair1.getClosestPoints(p1,p2);
 
-    //Let's display all this stuff
-    std::cout <<"First Query"<<std::endl;
-    std::cout <<"Collision: " << (collision ? "True" : "False") <<std::endl;
-    std::cout <<"Distance: "  << d0 <<std::endl;
-    std::cout <<"Witness points: "  << std::endl;
-    std::cout <<"P1: "<< p1 << std::endl;
-    std::cout <<"P2: "<< p2 << std::endl;
-    std::cout << std::endl;
+  //Let's display all this stuff
+  std::cout <<"First Query"<<std::endl;
+  std::cout <<"Collision: " << (collision ? "True" : "False") <<std::endl;
+  std::cout <<"Distance: "  << d0 <<std::endl;
+  std::cout <<"Witness points: "  << std::endl;
+  std::cout <<"P1: "<< p1 << std::endl;
+  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout << std::endl;
 
-    //Now we move the objects to enter in collision
-    box.setPosition(0,0,0);
-    sphere.setPosition(0,0,0);
+  //Now we move the objects to enter in collision
+  box.setPosition(0,0,0);
+  sphere.setPosition(0,0,0);
 
-    //Query again
-    collision = pair1.isInCollision();
+  //Query again
+  collision = pair1.isInCollision();
 
-    //Let's run again the Distance computation, but not the penetration
-    //depth, because the last algorithm is much slower, if there is a
-    //collision, the output would be zero
-    //
-    Scalar d1 = sqrt(fabs(pair1.getDistanceWithoutPenetrationDepth()));
+  //Let's run again the Distance computation, but not the penetration
+  //depth, because the last algorithm is much slower, if there is a
+  //collision, the output would be zero
+  //
+  Scalar d1 = sqrt(fabs(pair1.getDistanceWithoutPenetrationDepth()));
 
-    //We call now the regular distance query (collision will trigger
-    //depth query and the distance will be given in negative to distinguish
-    // it from separating distance)
-    Scalar d2 = sqrt(fabs(pair1.getDistance()));
+  //We call now the regular distance query (collision will trigger
+  //depth query and the distance will be given in negative to distinguish
+  // it from separating distance)
+  Scalar d2 = sqrt(fabs(pair1.getDistance()));
 
-    //Our witness points
-    pair1.getClosestPoints(p1,p2);
+  //Our witness points
+  pair1.getClosestPoints(p1,p2);
 
-    //Let's display all this stuff
-    std::cout <<"Second Query"<<std::endl;
-    std::cout <<"Collision: " << (collision ? "True" : "False") <<std::endl;
-    std::cout <<"Distance: "  << d1 <<std::endl;
-    std::cout <<"Depth: "  << d2 <<std::endl;
-    std::cout <<"Witness points: "  << std::endl;
-    std::cout <<"P1: "<< p1 << std::endl;
-    std::cout <<"P2: "<< p2 << std::endl;
-    std::cout << std::endl;
-
-
-    //******************
-    //More objects
-
-    //Create the third object
-    // A superellipsoid with height, width, depth, epsilon1, epsilon2
-    S_Superellipsoid super(0.1,0.9,0.3,0.5,0.8);
-
-    //Position/Orientation
-    super.setPosition(0.2,0.8,1);
-    super.setOrientation(0.2,1.7,0.8);
-
-    //Creation of new pairs related to the new objects. Each pair of 3D objects
-    //is then a C++ objects
-    CD_Pair pair2(&box, &super);
-    CD_Pair pair3(&sphere, &super);
-
-    //Our witness points
-    Point3 p3,p4,p5,p6;
-
-    //We can directly ask for the closest points
-    //When the returned value is negative, it is the opposite of the squared
-    //depth.
-    d0 = pair1.getClosestPoints(p1,p2);
-    d1 = pair2.getClosestPoints(p3,p4);
-    d2 = pair3.getClosestPoints(p5,p6);
+  //Let's display all this stuff
+  std::cout <<"Second Query"<<std::endl;
+  std::cout <<"Collision: " << (collision ? "True" : "False") <<std::endl;
+  std::cout <<"Distance: "  << d1 <<std::endl;
+  std::cout <<"Depth: "  << d2 <<std::endl;
+  std::cout <<"Witness points: "  << std::endl;
+  std::cout <<"P1: "<< p1 << std::endl;
+  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout << std::endl;
 
 
+  //******************
+  //More objects
 
-    //Let's display all this stuff
-    std::cout <<"Third Query"<<std::endl;
-    std::cout <<"Distance1 Squared: "  << d0 <<std::endl;
-    std::cout <<"Witness points 1: "  << std::endl;
-    std::cout <<"P1: "<< p1 << std::endl;
-    std::cout <<"P2: "<< p2 << std::endl;
-    std::cout <<"Distance2 Squared: "  << d1 <<std::endl;
-    std::cout <<"Witness points 2: "  << std::endl;
-    std::cout <<"P1: "<< p3 << std::endl;
-    std::cout <<"P2: "<< p4 << std::endl;
-    std::cout <<"Distance3 Squared: "  << d2 <<std::endl;
-    std::cout <<"Witness points 3: "  << std::endl;
-    std::cout <<"P1: "<< p5 << std::endl;
-    std::cout <<"P2: "<< p6 << std::endl;
-    std::cout << std::endl;
+  //Create the third object
+  // A superellipsoid with height, width, depth, epsilon1, epsilon2
+  S_Superellipsoid super(0.1,0.9,0.3,0.5,0.8);
+
+  //Position/Orientation
+  super.setPosition(0.2,0.8,1);
+  super.setOrientation(0.2,1.7,0.8);
+
+  //Creation of new pairs related to the new objects. Each pair of 3D objects
+  //is then a C++ objects
+  CD_Pair pair2(&box, &super);
+  CD_Pair pair3(&sphere, &super);
+
+  //Our witness points
+  Point3 p3,p4,p5,p6;
+
+  //We can directly ask for the closest points
+  //When the returned value is negative, it is the opposite of the squared
+  //depth.
+  d0 = pair1.getClosestPoints(p1,p2);
+  d1 = pair2.getClosestPoints(p3,p4);
+  d2 = pair3.getClosestPoints(p5,p6);
 
 
-    //That's all folks
+
+  //Let's display all this stuff
+  std::cout <<"Third Query"<<std::endl;
+  std::cout <<"Distance1 Squared: "  << d0 <<std::endl;
+  std::cout <<"Witness points 1: "  << std::endl;
+  std::cout <<"P1: "<< p1 << std::endl;
+  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout <<"Distance2 Squared: "  << d1 <<std::endl;
+  std::cout <<"Witness points 2: "  << std::endl;
+  std::cout <<"P1: "<< p3 << std::endl;
+  std::cout <<"P2: "<< p4 << std::endl;
+  std::cout <<"Distance3 Squared: "  << d2 <<std::endl;
+  std::cout <<"Witness points 3: "  << std::endl;
+  std::cout <<"P1: "<< p5 << std::endl;
+  std::cout <<"P2: "<< p6 << std::endl;
+  std::cout << std::endl;
+
+
+  //That's all folks
 }
 
 /* Standard output of this example:
