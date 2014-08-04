@@ -26,7 +26,7 @@ namespace sch
     explicit _TimeStamp():value1(0),value2(0),value3(0),value4(0)
     {}
 
-    bool operator==(const _TimeStamp t)const
+    bool operator==(const _TimeStamp & t)const
     {
       return ((value1==t.value1)&&(value2==t.value2));
     }

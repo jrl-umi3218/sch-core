@@ -999,10 +999,6 @@ Point3 STP_BV::supportFarthestNeighbourPrime(const Vector3& v,int& lastFeature) 
     std::cout << "Probleme zuo farthest !!!" << std::endl;
 #endif
     return supportNaive(v);
-    if(m_patches.begin() != m_patches.end())
-      return (*m_patches.begin())->support(v);
-    else
-      return Point3(0.0, 0.0, 0.0);
   }
 
   //A.E. : test avec function naive

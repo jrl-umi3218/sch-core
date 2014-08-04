@@ -52,7 +52,7 @@ namespace sch
     SCH_API Scalar getDistanceWithoutPenetrationDepth();
 
     /*!
-    * brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
+    * \brief returns if there is collision or not. If the distance is not already computed, it does not recompute, just returns the result.
     */
 
     SCH_API bool isInCollision();
@@ -81,7 +81,7 @@ namespace sch
       return (i==0)?sObj1_:sObj2_;
     }
 
-  private :
+  protected :
     S_Object* sObj1_, * sObj2_;
     Vector3 lastDirection_;
     int lastFeature1_,lastFeature2_;
@@ -106,8 +106,6 @@ namespace sch
 
     bool witPointsAreComputed_;
 
-    bool computePenetration;
-
     CD_Simplex s1_,s2_,s_;
 
     CD_SimplexEnhanced sp_;
@@ -117,4 +115,18 @@ namespace sch
     CD_Depth depthPair;
   };
 }
+
+
+/**
+ * \example      example0.cpp
+ * This example shows the normal use of the SCH library:
+ * The simplest proximity queries
+ */
+
+ /**
+ * \example      example1.cpp
+ * This example shows the normal use of the SCH library:
+ * Scene managements
+ */
+
 #endif

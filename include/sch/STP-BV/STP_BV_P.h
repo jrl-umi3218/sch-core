@@ -1,4 +1,9 @@
+#ifndef STP_VB_P_HEADER
+#define STP_VB_P_HEADER
+
 #pragma once
+
+
 #include <sch/sch_api.h>
 #include <sch/STP-BV/STP_BV.h>
 #include <sch/S_Polyhedron/Polyhedron_algorithms.h>
@@ -32,3 +37,11 @@ namespace sch
     Polyhedron_algorithms poly;
   };
 }
+
+#endif
+
+/**
+ * \example      example2.cpp
+ * This example shows the normal use of the SCH library:
+ * More Complex Objects
+ */
