@@ -40,6 +40,8 @@
 //Include file for proximity queries
 #include <sch/CD/CD_Pair.h>
 
+//Inlude file for the verification of the result
+#include "example.hxx"
 
 using namespace sch;
 
@@ -122,6 +124,12 @@ main (int argc, char *argv[])
   std::cout <<"P2: "<< p2 << std::endl;
   std::cout << std::endl;
 
+  // compare the results for first query
+  bool comparison = true;
+  comparison = compare(d0, 1.75797057738, "First query, d0. ") && comparison;
+  comparison = compare(p1, (Vector3(0.0292236259886, 0.601445137096, 0.705635281289)), "First query, p1. ") && comparison;
+  comparison = compare(p2, (Vector3(0.0239874216807, -0.336387177086, -0.781275504057)), "First query, p2. ") && comparison;
+
   //Now we move the objects to enter in collision
   box.setPosition(0,0,0);
   sphere.setPosition(0,0,0);
@@ -153,6 +161,11 @@ main (int argc, char *argv[])
   std::cout <<"P2: "<< p2 << std::endl;
   std::cout << std::endl;
 
+  // compare the results for second query
+  comparison = compare(d1, 0., "Second query, d1. ") && comparison;
+  comparison = compare(d2, 0.299512091292, "Second query, d2. ") && comparison;
+  comparison = compare(p1, (Vector3(-0.00434104104872, 0.05459580466,  0.0554891519385)), "Second query, p1. ") && comparison;
+  comparison = compare(p2, (Vector3( 0.168401731876,  -0.189548453895, 0.039333402279)), "Second query, p2. ") && comparison;
 
   //******************
   //More objects
@@ -180,6 +193,18 @@ main (int argc, char *argv[])
   d1 = pair2.getClosestPoints(p3,p4);
   d2 = pair3.getClosestPoints(p5,p6);
 
+  // compare the results for third query
+  comparison = compare(d0, -0.0897074928302, "Third Query, d0") && comparison;
+  comparison = compare(p1, (Vector3(-0.00434104104872, 0.05459580466, 0.0554891519385)), "Third Query, p1") && comparison;
+  comparison = compare(p2, (Vector3(0.168401731876, -0.189548453895, 0.039333402279)), "Third Query, p2") && comparison;
+
+  comparison = compare(d1,  0.659596933491, "Third Query, d1") && comparison;
+  comparison = compare(p3, (Vector3(0.0707763740114, 0.0985548629043, 0.194364718711)), "Third Query, p3") && comparison;
+  comparison = compare(p4, (Vector3(0.259412979986, 0.301096580075, 0.95790254828 )), "Third Query, p4") && comparison;
+
+  comparison = compare(d2, 0.519893514363, "Third Query, d2") && comparison;
+  comparison = compare(p5, (sch::Vector3(0.11715929646,  0.0390787247198, 0.296880292018)), "Third Query, p5") && comparison;
+  comparison = compare(p6, (sch::Vector3(0.296073498451, 0.242288276053,  0.965153515285)), "Third Query, p6") && comparison;
 
 
   //Let's display all this stuff
@@ -198,7 +223,7 @@ main (int argc, char *argv[])
   std::cout <<"P2: "<< p6 << std::endl;
   std::cout << std::endl;
 
-
+  return (comparison?0:1);
   //That's all folks
 }
 

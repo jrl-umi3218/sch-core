@@ -12,6 +12,8 @@ macro(add_example name)
   add_executable(${name} ${name}.cpp)
   target_link_libraries(${name} sch-core ${Boost_LIBRARIES})
   add_dependencies(${name} sch-core)
+  add_test(${name} ${name})
+
 endmacro(add_example)
 
 add_example(example0)

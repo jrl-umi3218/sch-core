@@ -45,7 +45,24 @@
 //Include file for scene management
 #include <sch/CD/CD_Scene.h>
 
+//Inlude file for the verification of the result
+#include "example.hxx"
+
 using namespace sch;
+
+/*!
+ * \brief verifyResult checks if the distance computation is the same as the
+ *  one expected
+ * \param i, first object
+ * \param j, second object
+ * \param distance, the computed distance
+ * \param p1, the first witness point
+ * \param p2, the second witness point
+ * \return the result of the comparison
+ */
+bool verifyResult(const std::string & objI, const std::string & objJ,
+                  double distance,
+                  const Point3 & p1, const Point3 & p2);
 
 int
 main (int , char **)
@@ -76,6 +93,8 @@ main (int , char **)
 
   //Add to scene
   sObj.addObject(&poly);
+  std::vector<std::string> objName;
+  objName.push_back("poly");
 
   //*********
   //Strictly Convex Hull (STP-BV)
@@ -101,6 +120,8 @@ main (int , char **)
   //Add to scene
   sObj.addObject(&stp1);
   sObj.addObject(&stp2);
+  objName.push_back("stp1");
+  objName.push_back("stp2");
 
 
   //Scene proximity query (see example1.cpp)
@@ -119,6 +140,7 @@ main (int , char **)
 
   std::cout<< std::endl<<"Number of collisions: "<< collisionNbr << std::endl;
 
+  bool comparison = true;
   for (unsigned i=0; i<sObj.size(); ++i)
   {
     for (unsigned j=0; j<i; ++j)
@@ -134,10 +156,51 @@ main (int , char **)
       std::cout <<"Witness points: "  << std::endl;
       std::cout <<"  P1: "<< p1 << std::endl;
       std::cout <<"  P2: "<< p2 << std::endl;
+      // check the results
+      if(!verifyResult(objName[i], objName[j], distance, p1, p2))
+        comparison = false;
       std::cout << std::endl;
     }
   }
+  return (comparison?0:1);
 }
+
+
+
+bool verifyResult(const std::string & objI, const std::string & objJ,
+                  double distance,
+                  const Point3 & p1, const Point3 & p2)
+{
+  double dd(0);
+  Point3 dp1(0, 0, 0);
+  Point3 dp2(0, 0, 0);
+
+  if(objJ== "poly" && objI == "stp1")
+  {
+    dd = -0.003622207057881;
+    dp1.Set( 0.157367547718, 0.68942718023, 0.891961713557);
+    dp2.Set(0.0986621048016, 0.691217002621, 0.905102283015);
+  }
+  else if(objJ == "poly" && objI == "stp2")
+  {
+    dd = 1.052877530262;
+    dp1.Set(0.113009188603, 0.657740931859, 0.866412634224);
+    dp2.Set(0.404379849329, 0.0191152898235, 0.117988985704);
+  }
+  else if(objJ == "stp1" && objI == "stp2")
+  {
+    dd = 0.7165631886362;
+    dp1.Set(0.167062414197, 0.581943658784, 0.704052592159);
+    dp2.Set(0.404383200422, 0.0191578029975, 0.117951821311);
+  }
+
+  bool res = true;
+  res = compare(distance, dd, "Error in distance: ") && res;
+  res = compare(p1, dp1, "Error in p1: ") && res;
+  res = compare(p2, dp2, "Error in p2: ") && res;
+  return res;
+}
+
 /* Standard output of this example:
 
 Complex objects
