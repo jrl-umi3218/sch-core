@@ -54,7 +54,10 @@ namespace sch
     int       m_index;
 
   public:
-    Depth_Edge() {}
+    Depth_Edge()
+      : m_triangle(0x0)
+      , m_index(0)
+    {}
     Depth_Edge(Depth_Triangle *triangle, int index)
       : m_triangle(triangle),
         m_index(index)

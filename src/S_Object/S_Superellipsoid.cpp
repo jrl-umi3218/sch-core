@@ -34,8 +34,8 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
   bny=b_*fabs(v[1]);
   cnz=c_*fabs(v[2]);
 
-  Scalar tp1,tp2,cp2,sp2,sp2e,cp2e,spe,cpe,
-         tt1,tt2,ct2,st2,st2e,ct2e,ste,cte;
+  Scalar cp2,sp2,sp2e,cp2e,spe,cpe,
+         tt1,tt2,ct2;
 
 
   if (anx==0)
@@ -57,8 +57,8 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
   }
   else
   {
-    tp1=bny/anx;
-    tp2=pow(tp1,_2on2_e2);
+    Scalar tp1=bny/anx;
+    Scalar tp2=pow(tp1,_2on2_e2);
     cp2=1/(tp2+1);
 
     if (cp2==1)
@@ -90,11 +90,11 @@ Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
   }
   else
   {
-    st2=1-ct2;
-    st2e=pow(st2,_2_e1on2);
-    ct2e=st2e/tt1;
-    ste=st2/st2e;
-    cte=ct2/ct2e;
+    Scalar st2=1-ct2;
+    Scalar st2e=pow(st2,_2_e1on2);
+    Scalar ct2e=st2e/tt1;
+    Scalar ste=st2/st2e;
+    Scalar cte=ct2/ct2e;
     return Point3(a_*cte*cpe*sign(v[0]),
                   b_*cte*spe*sign(v[1]),
                   c_*ste*sign(v[2]));

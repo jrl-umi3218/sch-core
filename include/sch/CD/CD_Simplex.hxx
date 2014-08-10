@@ -107,15 +107,17 @@ inline CD_Simplex& CD_Simplex::operator=(const CD_Simplex& s)
   type_=s.type_;
   switch (type_)
   {
-
   case CD_Triangle:
     s1_=s.s1_;
     s2_=s.s2_;
     s3_=s.s3_;
+    ab_ = s.ab_;
+    ac_ = s.ac_;
     return *this;
   case CD_Segment:
     s1_=s.s1_;
     s2_=s.s2_;
+    ab_ = s.ab_;
     return *this;
   case CD_Point:
     s1_=s.s1_;
@@ -125,6 +127,9 @@ inline CD_Simplex& CD_Simplex::operator=(const CD_Simplex& s)
     s2_=s.s2_;
     s3_=s.s3_;
     s4_=s.s4_;
+    ab_ = s.ab_;
+    ac_ = s.ac_;
+    ad_ = s.ad_;
     return *this;
   }
 }
