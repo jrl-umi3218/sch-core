@@ -48,7 +48,7 @@
 using namespace sch;
 
 int
-main (int argc, char *argv[])
+main (int , char **)
 {
   //Scene (see example1.exe)
   CD_Scene sObj;

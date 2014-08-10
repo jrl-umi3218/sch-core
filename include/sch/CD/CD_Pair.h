@@ -123,10 +123,10 @@ namespace sch
  * The simplest proximity queries
  */
 
- /**
- * \example      example1.cpp
- * This example shows the normal use of the SCH library:
- * Scene managements
- */
+/**
+* \example      example1.cpp
+* This example shows the normal use of the SCH library:
+* Scene managements
+*/
 
 #endif

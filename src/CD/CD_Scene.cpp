@@ -8,8 +8,8 @@ CD_Scene::CD_Scene(void)
 
 CD_Scene::~CD_Scene(void)
 {
-  for(unsigned i=0; i<pairs_.size();++i)
-    for(unsigned j=0; j<pairs_[i].size();++j)
+  for(unsigned i=0; i<pairs_.size(); ++i)
+    for(unsigned j=0; j<pairs_[i].size(); ++j)
       if(pairs_[i][j] != 0x0)
       {
         delete pairs_[i][j];
