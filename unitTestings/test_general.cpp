@@ -12,10 +12,7 @@ void display() {}
 int main ()
 {
   universe.initializeUniverse();
-  universe.TestAnimation();
-  universe.TestPrecision();
   universe.GeneralTest();
-
   return 0;
 }
 

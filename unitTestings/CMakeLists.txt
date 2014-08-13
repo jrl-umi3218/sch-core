@@ -15,10 +15,12 @@ macro(addUnitTest name)
   add_test(${name} ${CMAKE_CURRENT_BINARY_DIR}/${name})
 endmacro(addUnitTest)
 
-addUnitTest(test_no_display)
+addUnitTest(test_animation)
+addUnitTest(test_precision)
+addUnitTest(test_general)
 addUnitTest(test_random)
 
-add_custom_command(TARGET test_no_display POST_BUILD
+add_custom_command(TARGET test_general POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv1.txt
   ${CMAKE_BINARY_DIR}/unitTestings/
   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/unitTestings/sample_stpbv2.txt

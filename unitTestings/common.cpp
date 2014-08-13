@@ -6,7 +6,7 @@
 const double DispersionScale=0.2;
 const double AnimationSpeed=0.003;
 const double AnimationScale=0.6;
-const long AnimationEnd=100000;
+const long AnimationEnd =10000;
 const long RandomTestEnd=1000000;
 const double PI=boost::math::constants::pi<double>();
 
