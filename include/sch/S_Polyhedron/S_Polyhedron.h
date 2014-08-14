@@ -75,6 +75,10 @@ namespace sch
     SCH_API void deleteVertexesWithoutNeighbors();
 
     SCH_API int getTrianglesNumber() const;
+    SCH_API Polyhedron_algorithms * getPolyhedronAlgorithm ()
+    {
+      return &poly;
+    }
 
     template<class Archive>
     void save(Archive & ar, const unsigned int /*version*/) const
