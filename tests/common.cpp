@@ -6,23 +6,17 @@
 const double DispersionScale=0.2;
 const double AnimationSpeed=0.003;
 const double AnimationScale=0.6;
-const long AnimationEnd =100000;
+const long AnimationEnd =10000;
 const long RandomTestEnd=1000000;
 const double PI=boost::math::constants::pi<double>();
 
 using namespace sch;
 
-TestMaterial::~TestMaterial()
-{
-  for(unsigned i=0; i<objectVector.size(); ++i)
-    delete objectVector[i];
-  objectVector.clear();
-  for(unsigned i=0; i<stpObjects.size(); ++i)
-    delete stpObjects[i];
-  stpObjects.resize(0);
-  stppObjects.resize(0);
-  polyObjects.resize(0);
-}
+TestMaterial::TestMaterial()
+  : sObj()
+  , CurrentObj(0)
+  , stppObjects()
+{}
 
 void TestMaterial::DoTest()
 {
@@ -116,14 +110,13 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 void TestMaterial::initializeUniverse()
 {
 #ifdef NON_STP_BV_OBJECTS
-  objectVector.push_back(new S_Box(0.2,0.2,0.2));
-  objectVector.push_back(new S_Box(0.2,0.2,0.2));
-  objectVector.push_back(new S_Sphere(0.1));
-  objectVector.push_back(new S_Sphere(0.12));
-  objectVector.push_back(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
-  objectVector.push_back(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
-  for(unsigned i=0; i<objectVector.size(); ++i)
-    sObj.addObject(objectVector[i]);
+  sObj.addObject(new S_Box(0.2,0.2,0.2));
+  sObj.addObject(new S_Box(0.2,0.2,0.2));
+  sObj.addObject(new S_Sphere(0.1));
+  sObj.addObject(new S_Sphere(0.12));
+
+  sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
+  sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
 #endif
 
 
@@ -175,15 +168,51 @@ void TestMaterial::initializeUniverse()
   {
     STP_BV* s1 = new STP_BV();
     s1->constructFromFileWithGL("sample_stpbv1.txt");
-    stpObjects.push_back(s1);
     sObj.addObject(s1);
 
     STP_BV* s2 = new STP_BV();
     s2->constructFromFileWithGL("sample_stpbv2.txt");
-    stpObjects.push_back(s2);
     sObj.addObject(s2);
   }
 #endif
+  for (size_t i=0; i<sObj.size(); i++)
+  {
+    Vector3 position(
+      (1.+7*i%5-3.),
+      (5*i%6-3.)*(5.0/6.),
+      (5*i%7-3.)*(5.0/7.)
+    );
+    position *= DispersionScale;
+    sObj[i]->setPosition(position);
+  }
+
+  DoTest();
+}
+
+void TestMaterial::initializeUniverse(const std::vector<std::string> & filenameList)
+{
+  for(unsigned i=0; i<filenameList.size(); ++i)
+  {
+    std::string filename = filenameList[i];
+    std::string extension = "";
+    if(filename.find_last_of(".") != std::string::npos)
+    {
+      extension = filename.substr(filename.find_last_of(".")+1);
+    }
+    if(extension == "otp")
+    {
+      S_Polyhedron* s = new S_Polyhedron();
+      s->constructFromFile(filename);
+      sObj.addObject(s);
+    }
+    else //if(extension == "txt")
+    {
+      STP_BV* s = new STP_BV();
+      s->constructFromFileWithGL(filename);
+      sObj.addObject(s);
+    }
+  }
+
   for (size_t i=0; i<sObj.size(); i++)
   {
     Vector3 position(

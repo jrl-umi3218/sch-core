@@ -4,6 +4,7 @@
 #define NON_STP_BV_OBJECTS
 //#define DISPLAY_DISTANCE
 #define DO_TEST
+#define OUTPUT_FILE
 //#define LINES_DISPLAY
 
 //#define MULTI_OBJECTS_TEST
@@ -18,7 +19,7 @@ void display (void);
 
 struct TestMaterial
 {
-  ~TestMaterial();
+  TestMaterial();
 
   void DoTest();
 
@@ -27,6 +28,7 @@ struct TestMaterial
   void RandomTestSupportFunctionAllObjects();
 
   void initializeUniverse();
+  void initializeUniverse(const std::vector<std::string> & filenamelist);
 
   void TestPrecision();
 
@@ -39,10 +41,7 @@ struct TestMaterial
   unsigned int CurrentObj;
 
 private:
-  std::vector<sch::S_Object*> objectVector;
-  std::vector<sch::STP_BV*> stpObjects;
   std::vector<sch::STP_BV_P> stppObjects;
-  std::vector<sch::S_Polyhedron> polyObjects;
 };
 
 #endif //COMMON_TEST_H
