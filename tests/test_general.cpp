@@ -1,8 +1,6 @@
-#include "common.h"
+#include "shared-tests/tests/common.h"
 
 using namespace sch;
-
-TestMaterial universe;
 
 void display() {}
 
@@ -11,8 +9,9 @@ void display() {}
 */
 int main ()
 {
+  TestMaterial universe;
   universe.initializeUniverse();
-  universe.TestPrecision();
+  universe.GeneralTest();
   return 0;
 }
 
