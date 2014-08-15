@@ -195,9 +195,9 @@ bool verifyResult(const std::string & objI, const std::string & objJ,
   }
 
   bool res = true;
-  res = compare(distance, dd, "Error in distance: ") && res;
-  res = compare(p1, dp1, "Error in p1: ") && res;
-  res = compare(p2, dp2, "Error in p2: ") && res;
+  res = compare(distance, dd, "distance ("+objI +", "+objJ+"): ") && res;
+  res = compare(p1, dp1, "p1 ("+objI +", "+objJ+"): ") && res;
+  res = compare(p2, dp2, "p2 ("+objI +", "+objJ+"): ") && res;
   return res;
 }
 
