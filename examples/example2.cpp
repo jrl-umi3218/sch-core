@@ -17,6 +17,7 @@
  */
 
 #include <string>
+#include "example_common.h"
 
 #include <iostream>
 #include <math.h>
@@ -64,20 +65,20 @@ bool verifyResult(const std::string & objI, const std::string & objJ,
                   double distance,
                   const Point3 & p1, const Point3 & p2);
 
-int
-main (int , char **)
+void display (void);
+
+void Example::initializeUniverse()
 {
   //Scene (see example1.exe)
-  CD_Scene sObj;
 
   //**********
   //Polyhedrons
 
   //Create a polyhedron.
-  S_Polyhedron poly;
+  S_Polyhedron * poly = new S_Polyhedron ();
 
   //At creationm the polyhedron is empty, it has to be loaded from a file.
-  poly.constructFromFile("sample_polyhedron.otp");
+  poly->constructFromFile("sample_polyhedron.otp");
 
   //The file must have been generated with sch-creator, for details see
   //https://github.com/jrl-umi3218/sch-creator
@@ -88,12 +89,11 @@ main (int , char **)
   //see http://www.qhull.org/html/qconvex.htm for details on using qconvex.
 
   //Position/Orientation
-  poly.setPosition(0.1,0.7,0.9);
-  poly.setOrientation(0.1,1,-0.7);
+  poly->setPosition(0.1,0.7,0.9);
+  poly->setOrientation(0.1,1,-0.7);
 
   //Add to scene
-  sObj.addObject(&poly);
-  std::vector<std::string> objName;
+  sObj.addObject(poly);
   objName.push_back("poly");
 
   //*********
@@ -101,29 +101,31 @@ main (int , char **)
   //(see README.md for details)
 
   //Create a STP_BVs
-  STP_BV stp1;
-  STP_BV stp2;
+  STP_BV* stp1 = new STP_BV();
+  STP_BV* stp2 = new STP_BV();
 
   //Similarly to polyhedrons, it has to be loaded from file
-  stp1.constructFromFile("sample_stpbv1.txt");
-  stp2.constructFromFile("sample_stpbv2.txt");
+  stp1->constructFromFile("sample_stpbv1.txt");
+  stp2->constructFromFile("sample_stpbv2.txt");
 
 
   //Position/Orientation
-  stp1.setPosition(0.15,0.6,0.8);
-  stp1.setOrientation(0.4,-1.1,1.2);
+  stp1->setPosition(0.15,0.6,0.8);
+  stp1->setOrientation(0.4,-1.1,1.2);
 
   //Position/Orientation
-  stp2.setPosition(0.4,0.0,0.1);
-  stp2.setOrientation(0.7,-0.2,-1.1);
+  stp2->setPosition(0.4,0.0,0.1);
+  stp2->setOrientation(0.7,-0.2,-1.1);
 
   //Add to scene
-  sObj.addObject(&stp1);
-  sObj.addObject(&stp2);
+  sObj.addObject(stp1);
+  sObj.addObject(stp2);
   objName.push_back("stp1");
   objName.push_back("stp2");
+}
 
-
+bool Example::unittest()
+{
   //Scene proximity query (see example1.cpp)
   int collisionNbr = sObj.sceneProximityQuery();
 
@@ -162,9 +164,15 @@ main (int , char **)
       std::cout << std::endl;
     }
   }
-  return (comparison?0:1);
+
+  return comparison;
 }
 
+void Example::displayScene()
+{
+  sObj.sceneProximityQuery();
+  display();
+}
 
 
 bool verifyResult(const std::string & objI, const std::string & objJ,
