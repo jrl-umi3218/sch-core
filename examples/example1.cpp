@@ -17,6 +17,7 @@
  */
 
 #include <string>
+#include "example_common.h"
 
 #include <iostream>
 #include <math.h>
@@ -49,40 +50,39 @@ bool verifyResult(const std::string & objI, const std::string & objJ,
                   double distance, double penetration,
                   const Point3 & p1, const Point3 & p2);
 
-std::vector<std::string> objName;
-int main (int , char **)
+void Example::initializeUniverse()
 {
   //Objects initializations
-  S_Superellipsoid super1(1.0,0.2,0.5,0.3,0.1);
-  S_Superellipsoid super2(0.1,0.9,0.3,0.5,0.8);
-  S_Superellipsoid super3(0.4,0.4,1.7,0.8,0.1);
-  S_Box box1(0.2,0.1,0.4);
-  S_Box box2(2.1,1.1,0.8);
-  S_Box box3(1.4,4.1,1.2);
-  S_Sphere sphere1(0.3);
-  S_Sphere sphere2(0.5);
-  S_Sphere sphere3(0.2);
+  S_Superellipsoid * super1 = new S_Superellipsoid (1.0,0.2,0.5,0.3,0.1);
+  S_Superellipsoid * super2 = new S_Superellipsoid (0.1,0.9,0.3,0.5,0.8);
+  S_Superellipsoid * super3 = new S_Superellipsoid (0.4,0.4,1.7,0.8,0.1);
+  S_Box * box1 = new S_Box (0.2,0.1,0.4);
+  S_Box * box2 = new S_Box (2.1,1.1,0.8);
+  S_Box * box3 = new S_Box (1.4,4.1,1.2);
+  S_Sphere * sphere1 = new S_Sphere (0.3);
+  S_Sphere * sphere2 = new S_Sphere (0.5);
+  S_Sphere * sphere3 = new S_Sphere (0.2);
 
   //Positions/Orientations
-  super1.setPosition(1.0,0.2,0.5);
-  super2.setPosition(-2.2,-1.1,1.3);
-  super3.setPosition(0.4,0.4,-1.7);
-  box1.setPosition(-0.2,0.1,-0.4);
-  box2.setPosition(-2.1,-1.1,0.8);
-  box3.setPosition(-2.0,-1.0,1.2);
-  sphere1.setPosition(-2.1,1.1,0.8);
-  sphere2.setPosition(2.1,1.1,-0.4);
-  sphere3.setPosition(2.3,1.1,-0.5);
+  super1->setPosition(1.0,0.2,0.5);
+  super2->setPosition(-2.2,-1.1,1.3);
+  super3->setPosition(0.4,0.4,-1.7);
+  box1->setPosition(-0.2,0.1,-0.4);
+  box2->setPosition(-2.1,-1.1,0.8);
+  box3->setPosition(-2.0,-1.0,1.2);
+  sphere1->setPosition(-2.1,1.1,0.8);
+  sphere2->setPosition(2.1,1.1,-0.4);
+  sphere3->setPosition(2.3,1.1,-0.5);
 
-  super1. setOrientation(-2.1,1.1,0.8);
-  super2. setOrientation(2.1,1.1,-0.4);
-  super3. setOrientation(2.1,1.1,-0.5);
-  box1.   setOrientation(-0.2,0.1,-0.4);
-  box2.   setOrientation(-2.1,-1.1,0.8);
-  box3.   setOrientation(-2.0,-1.0,1.2);
-  sphere1.setOrientation(1.0,0.2,0.5);
-  sphere2.setOrientation(-2.2,-1.1,1.3);
-  sphere3.setOrientation(0.4,0.4,-1.7);
+  super1-> setOrientation(-2.1,1.1,0.8);
+  super2-> setOrientation(2.1,1.1,-0.4);
+  super3-> setOrientation(2.1,1.1,-0.5);
+  box1->   setOrientation(-0.2,0.1,-0.4);
+  box2->   setOrientation(-2.1,-1.1,0.8);
+  box3->   setOrientation(-2.0,-1.0,1.2);
+  sphere1->setOrientation(1.0,0.2,0.5);
+  sphere2->setOrientation(-2.2,-1.1,1.3);
+  sphere3->setOrientation(0.4,0.4,-1.7);
 
 
   //This makes 36 pairs. We can use the scene manager to simplify pairs
@@ -92,20 +92,19 @@ int main (int , char **)
   // This is a minimal implementation of a scene manager. It stores
   // pointers and generates automatically collision detection pairs.
   // The library can be used without this scene manager.
-  sch::CD_Scene sObj;
 
   //Adding objects to the manager is simple As fo pairs, the scene does not
   //copy the objects and requires only addresses of the objects. The user
   //creates and destroys the objects separately.
-  sObj.addObject(&super1);
-  sObj.addObject(&super2);
-  sObj.addObject(&super3);
-  sObj.addObject(&box1);
-  sObj.addObject(&box2);
-  sObj.addObject(&box3);
-  sObj.addObject(&sphere1);
-  sObj.addObject(&sphere2);
-  sObj.addObject(&sphere3);
+  sObj.addObject(super1);
+  sObj.addObject(super2);
+  sObj.addObject(super3);
+  sObj.addObject(box1);
+  sObj.addObject(box2);
+  sObj.addObject(box3);
+  sObj.addObject(sphere1);
+  sObj.addObject(sphere2);
+  sObj.addObject(sphere3);
 
   objName.push_back("super1");
   objName.push_back("super2");
@@ -116,7 +115,10 @@ int main (int , char **)
   objName.push_back("sphere1");
   objName.push_back("sphere2");
   objName.push_back("sphere3");
+}
 
+bool Example::unittest()
+{
   //Calls the computation of the distance (including penertation and witness
   //points) for all the scene, it returns the number of collisions.
   //Other implementations of the scene management could be considered for
@@ -165,13 +167,46 @@ int main (int , char **)
       std::cout <<"The distance without penetration "
                 << ptr->getDistanceWithoutPenetrationDepth() << std::endl;
 
-      comparison = verifyResult(objName[i], objName[j], distance, ptr->getDistanceWithoutPenetrationDepth(), p1, p2) && comparison;
+      comparison = verifyResult(objName[i], objName[j], distance,
+                                ptr->getDistanceWithoutPenetrationDepth(), p1, p2)
+                   && comparison;
       std::cout << std::endl;
     }
   }
 
-  return (comparison?0:1);
+  return comparison;
 }
+
+void Example::displayScene()
+{
+  //Calls the computation of the distance (including penertation and witness
+  //points) for all the scene, it returns the number of collisions.
+  //Other implementations of the scene management could be considered for
+  //future versions.
+  int collisionNbr = sObj.sceneProximityQuery();
+
+  for (unsigned i=0; i<sObj.size(); ++i)
+  {
+    for (unsigned j=0; j<i; ++j)
+    {
+      //Our witness points
+      Point3 p1,p2;
+
+      //Get the SQUARED distance and witness points of the last proximity
+      //query (see example0.cpp for details on output interpretation)
+      //Warning: this does not recompute the distance, even if one object
+      //moved after the scene proximity query.
+      sObj.getWitnessPoints(i,j,p1,p2);
+
+      //We can get access to the pairs of objects. This will recompute the
+      //distance if the objects moved. See example0 for details on how to
+      //use the pair object.
+      CD_Pair * ptr = sObj(i,j);
+      ptr->getDistanceWithoutPenetrationDepth();
+    }
+  }
+}
+
 
 bool verifyResult(const std::string & objI, const std::string & objJ,
                   double distance, double penetration,
