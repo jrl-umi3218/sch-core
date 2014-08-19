@@ -29,7 +29,12 @@ PKG_CONFIG_APPEND_LIBS("sch-core")
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(examples)
-ADD_SUBDIRECTORY(tests)
+IF(NOT DISABLE_TESTS)
+  ADD_SUBDIRECTORY(tests)
+ELSE()
+  MESSAGE(WARNING
+    "Tests should only be disabled for speficic cases. Do it at your own risk.")
+ENDIF()
 
 SETUP_PROJECT_FINALIZE()
 SETUP_PROJECT_CPACK()
