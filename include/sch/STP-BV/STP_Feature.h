@@ -32,7 +32,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_axis & m_cosangle & m_outerSTP;
+//      ar & m_axis & m_cosangle & m_outerSTP;
     }
 
     Vector3 m_axis;
@@ -65,7 +65,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_axis & m_cosangle & m_outerSTP;
+//      ar & m_axis & m_cosangle & m_outerSTP;
     }
 
     Vector3 m_axis;
@@ -86,7 +86,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_points & m_VVRlimits & m_reverse & m_BVID;
+//      ar & m_points & m_VVRlimits & m_reverse & m_BVID;
     }
 
     std::vector<Point3> m_points;
@@ -129,7 +129,7 @@ namespace sch
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
-      ar & m_nextBVPrime;
+//      ar & m_nextBVPrime;
     }
 
   protected:

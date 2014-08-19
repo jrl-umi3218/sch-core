@@ -87,14 +87,14 @@ void S_Polyhedron::loadFromBinary(const std::string & filename)
 
 void S_Polyhedron::saveToBinary(const std::string & filename)
 {
-  std::ofstream ofs(filename.c_str(), std::ios::binary);
-  if(!ofs.is_open())
-  {
-    std::cerr << "Could not open file: " << filename << std::endl;
-    return;
-  }
-  boost::archive::binary_oarchive oa(ofs);
-  oa << *this;
+//  std::ofstream ofs(filename.c_str(), std::ios::binary);
+//  if(!ofs.is_open())
+//  {
+//    std::cerr << "Could not open file: " << filename << std::endl;
+//    return;
+//  }
+//  boost::archive::binary_oarchive oa(ofs);
+//  oa << *this;
 }
 
 S_Object::S_ObjectType S_Polyhedron::getType() const

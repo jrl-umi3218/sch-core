@@ -309,28 +309,28 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 
 void STP_BV::loadFromBinary(const std::string & filename)
 {
-  try
-  {
-    std::ifstream ifs(filename.c_str(), std::ios::binary);
-    boost::archive::binary_iarchive ia(ifs);
-    ia >> *this;
-  }
-  catch(...)
-  {
-    std::cerr << "Could not load the object from: " << filename << std::endl;
-  }
+//  try
+//  {
+//    std::ifstream ifs(filename.c_str(), std::ios::binary);
+//    boost::archive::binary_iarchive ia(ifs);
+//    ia >> *this;
+//  }
+//  catch(...)
+//  {
+//    std::cerr << "Could not load the object from: " << filename << std::endl;
+//  }
 }
 
 void STP_BV::saveToBinary(const std::string & filename)
 {
-  std::ofstream ofs(filename.c_str(), std::ios::binary);
-  if(!ofs.is_open())
-  {
-    std::cerr << "Could not open file: " << filename << std::endl;
-    return;
-  }
-  boost::archive::binary_oarchive oa(ofs);
-  oa << *this;
+//  std::ofstream ofs(filename.c_str(), std::ios::binary);
+//  if(!ofs.is_open())
+//  {
+//    std::cerr << "Could not open file: " << filename << std::endl;
+//    return;
+//  }
+//  boost::archive::binary_oarchive oa(ofs);
+//  oa << *this;
 }
 
 
