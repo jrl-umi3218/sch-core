@@ -25,7 +25,7 @@ inline bool compare(const sch::Vector3 & a, const sch::Vector3 & b, const std::s
   if ((a-b).norm() >= epsilon)
   {
     std::cerr << "Error in "<< str << ":" << std::endl;
-    std::cerr << a << std::endl << b << std::endl;
+    std::cerr << a.transpose() << std::endl << b.transpose() << std::endl;
     return false;
   }
   return true;

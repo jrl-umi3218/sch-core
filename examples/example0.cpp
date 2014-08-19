@@ -125,8 +125,8 @@ main (int argc, char *argv[])
   std::cout <<"Collision: " << (collision ? "True" : "False") <<std::endl;
   std::cout <<"Distance: "  << d0 <<std::endl;
   std::cout <<"Witness points: "  << std::endl;
-  std::cout <<"P1: "<< p1 << std::endl;
-  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout <<"P1: "<< p1.transpose() << std::endl;
+  std::cout <<"P2: "<< p2.transpose() << std::endl;
   std::cout << std::endl;
 
   // compare the results for first query
@@ -163,8 +163,8 @@ main (int argc, char *argv[])
   std::cout <<"Distance: "  << d1 <<std::endl;
   std::cout <<"Depth: "  << d2 <<std::endl;
   std::cout <<"Witness points: "  << std::endl;
-  std::cout <<"P1: "<< p1 << std::endl;
-  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout <<"P1: "<< p1.transpose() << std::endl;
+  std::cout <<"P2: "<< p2.transpose() << std::endl;
   std::cout << std::endl;
 
   // compare the results for second query
@@ -217,16 +217,16 @@ main (int argc, char *argv[])
   std::cout <<"Third Query"<<std::endl;
   std::cout <<"Distance1 Squared: "  << d0 <<std::endl;
   std::cout <<"Witness points 1: "  << std::endl;
-  std::cout <<"P1: "<< p1 << std::endl;
-  std::cout <<"P2: "<< p2 << std::endl;
+  std::cout <<"P1: "<< p1.transpose() << std::endl;
+  std::cout <<"P2: "<< p2.transpose() << std::endl;
   std::cout <<"Distance2 Squared: "  << d1 <<std::endl;
   std::cout <<"Witness points 2: "  << std::endl;
-  std::cout <<"P1: "<< p3 << std::endl;
-  std::cout <<"P2: "<< p4 << std::endl;
+  std::cout <<"P1: "<< p3.transpose() << std::endl;
+  std::cout <<"P2: "<< p4.transpose() << std::endl;
   std::cout <<"Distance3 Squared: "  << d2 <<std::endl;
   std::cout <<"Witness points 3: "  << std::endl;
-  std::cout <<"P1: "<< p5 << std::endl;
-  std::cout <<"P2: "<< p6 << std::endl;
+  std::cout <<"P1: "<< p5.transpose() << std::endl;
+  std::cout <<"P2: "<< p6.transpose() << std::endl;
   std::cout << std::endl;
 
   return (comparison?0:1);

@@ -113,7 +113,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
     is()>>y[2];
     is.jumpSeparators();
 
-    t.normal.Set(y[0],y[1],y[2]);
+    t.normal << y[0],y[1],y[2];
     t.normal.normalize();
 
     is.find("vertices");//get the indexes

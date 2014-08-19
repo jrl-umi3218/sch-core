@@ -1,6 +1,7 @@
 #include <sch/CD/CD_Pair.h>
 #include <sch/CD/CD_Simplex.h>
 #include <sch/CD/CD_SimplexEnhanced.h>
+#include <Eigen/Dense>
 
 #include <iostream>
 
@@ -22,9 +23,7 @@ using namespace sch;
 
 inline Vector3 LinearSystem(Matrix3x3& A, Vector3& y)
 {
-  Matrix3x3 B;
-  A.Inversion(B);
-  return (B*y);
+  return A.colPivHouseholderQr().solve(y);
 }
 
 
@@ -142,7 +141,7 @@ Scalar CD_Pair::penetrationDepth()
     distance_=-depthPair.getPenetrationDepth(lastDirection_,p1_,p2_,sp_,s1_,s2_);
     if (distance_<0)
     {
-      lastDirection_.Set(0,1,0);
+      lastDirection_<<0,1,0;
     }
 
     return distance_;
@@ -224,7 +223,8 @@ Scalar CD_Pair::GJK()
       S01-=s[2];
       S02=s[0];
       S02-=s[2];
-      a1=S01*s[0],a2=S01*s[1],a3=S01*s[2],a4=S02*s[0],a5=S02*s[1],a6=S02*s[2];
+      a1=S01.dot(s[0]),a2=S01.dot(s[1]),a3=S01.dot(s[2]);
+      a4=S02.dot(s[0]),a5=S02.dot(s[1]),a6=S02.dot(s[2]);
 
       lambda0_=a2*a6-a3*a5;
       lambda1_=a3*a4-a1*a6;
@@ -243,8 +243,8 @@ Scalar CD_Pair::GJK()
       S01=s[1];
       S01-=s[0];
 
-      lambda0_=S01*s[1];
-      lambda1_=-(S01*s[0]);
+      lambda0_=S01.dot(s[1]);
+      lambda1_=-(S01.dot(s[0]));
       det_=1/(lambda0_+lambda1_);
       lambda0_*=det_;
       lambda1_*=det_;
@@ -258,7 +258,7 @@ Scalar CD_Pair::GJK()
     }
 
     }
-    Scalar newdist=proj.normsquared();
+    Scalar newdist=proj.squaredNorm();
 
     if (distance_ <= newdist) //the distance is not monotonous
     {
@@ -296,7 +296,7 @@ Scalar CD_Pair::GJK()
         sup=sup1;
         sup-=sup2;
 
-        if ((distance_-proj*sup)<(precision_*distance_))//precision reached
+        if ((distance_-proj.dot(sup))<(precision_*distance_))//precision reached
         {
           collision_=false;
           cont=false;
@@ -387,7 +387,8 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
       {
         Vector3 S01(s_[1]-s_[2]), S02(s_[0]-s_[2]);
 
-        Scalar a1=S01*s_[0],a2=S01*s_[1],a3=S01*s_[2],a4=S02*s_[0],a5=S02*s_[1],a6=S02*s_[2];
+        Scalar a1=S01.dot(s_[0]),a2=S01.dot(s_[1]),a3=S01.dot(s_[2]);
+        Scalar a4=S02.dot(s_[0]),a5=S02.dot(s_[1]),a6=S02.dot(s_[2]);
 
         lambda0_=a2*a6-a3*a5;
         lambda1_=a3*a4-a1*a6;
@@ -432,8 +433,8 @@ void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
     {
       Vector3 S01(s_[1]-s_[0]);
 
-      lambda1_=-(S01*s_[0]);
-      lambda0_=S01*s_[1];
+      lambda1_=-(S01.dot(s_[0]));
+      lambda0_=S01.dot(s_[1]);
 
       det_=1/(lambda0_+lambda1_);
 

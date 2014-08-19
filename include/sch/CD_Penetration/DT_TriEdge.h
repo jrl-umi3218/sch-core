@@ -145,7 +145,7 @@ namespace sch
     SCH_API bool isVisibleFrom(const Vector3 *verts, Index_t index) const
     {
       Vector3 lever = verts[index] - m_closest;
-      return (m_closest* lever) > Scalar(0.0);
+      return (m_closest.dot(lever)) > Scalar(0.0);
     }
 
     SCH_API Scalar getDist2() const

@@ -115,7 +115,7 @@ namespace sch
                                 const Scalar& r10,const Scalar& r11,const Scalar& r12,
                                 const Scalar& r20,const Scalar& r21,const Scalar& r22);
 
-    SCH_API void setOrientation(const Quaternion quaternion);
+//    SCH_API void setOrientation(const Quaternion quaternion);
 
     SCH_API void setOrientation(const Scalar& q0,const Scalar& q1,const  Scalar& q2,const  Scalar& q3);
 

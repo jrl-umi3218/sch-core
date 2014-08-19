@@ -46,12 +46,7 @@ InstallFiles(HEADERS_File_Parsing	"File_Parsing")
 
 
 SET(HEADERS_Matrix
-  Matrix/QuaternionT.h
   Matrix/SCH_Types.h
-  Matrix/SmallMatrix3x3T.h
-  Matrix/SmallMatrix4x4T.h
-  Matrix/SmallVector3T.h
-  Matrix/SmallVector4T.h
 )
 InstallFiles(HEADERS_Matrix  	"Matrix")
 

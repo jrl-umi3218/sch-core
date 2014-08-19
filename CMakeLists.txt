@@ -7,6 +7,9 @@ INCLUDE(cmake/cpack.cmake)
 
 set(CXX_DISABLE_WERROR True)
 set(CMAKE_VERBOSE_MAKEFILE ON)
+IF(UNIX)
+  ADD_DEFINITIONS(-mfpmath=sse -msse2)
+ENDIF(UNIX)
 
 # ----------------------------------------------------------------
 # --- Project declaration ----------------------------------------
@@ -25,6 +28,9 @@ SETUP_PROJECT()
 SET(BOOST_COMPONENTS serialization)
 SEARCH_FOR_BOOST()
 
+SEARCH_FOR_EIGEN()
+
+PKG_CONFIG_APPEND_CFLAGS("-I${Eigen_INCLUDE_DIR}")
 PKG_CONFIG_APPEND_LIBS("sch-core")
 
 ADD_SUBDIRECTORY(src)

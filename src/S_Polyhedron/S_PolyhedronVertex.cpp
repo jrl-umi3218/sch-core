@@ -57,7 +57,7 @@ void S_PolyhedronVertex::addNeighbor(S_PolyhedronVertex *n)
 
 Scalar S_PolyhedronVertex::supportH(const Vector3 &direction)const
 {
-  return direction*cordinates_;
+  return direction.dot(cordinates_);
 }
 
 bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currentsupportH)
@@ -92,7 +92,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
   nextVertex_=NULL;
   Scalar temp;
 
-  nextVertexH_=direction*cordinates_;
+  nextVertexH_=direction.dot(cordinates_);
 
   for (iterator_=fastNeighbors_; iterator_!=endNeighbors_; ++iterator_)
   {
@@ -113,7 +113,7 @@ unsigned S_PolyhedronVertex::getNumNeighbors()const
 
 void S_PolyhedronVertex::setCordinates(const Scalar &x,const  Scalar &y, const Scalar &z)
 {
-  cordinates_.Set(x,y,z);
+  cordinates_ << x,y,z;
 }
 
 void S_PolyhedronVertex::setCordinates(const Vector3 &v)

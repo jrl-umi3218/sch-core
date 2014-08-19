@@ -780,7 +780,7 @@ Scalar STP_Torus::supportH(const Vector3& v) const
   //return Scalar(1.0);
 
   // A.E // changed to usual definition
-  return v*support(v);
+  return v.dot(support(v));
 }
 
 Point3 STP_Torus::support(const Vector3& v) const
@@ -804,9 +804,9 @@ Point3 STP_Torus::support(const Vector3& v) const
   		return p;
   	}*/
 
-  w[0]= -v[0] + v*m_circle.m_normal * m_circle.m_normal[0];
-  w[1]= -v[1] + v*m_circle.m_normal * m_circle.m_normal[1];
-  w[2]= -v[2] + v*m_circle.m_normal * m_circle.m_normal[2];
+  w[0]= -v[0] + v.dot(m_circle.m_normal) * (m_circle.m_normal[0]);
+  w[1]= -v[1] + v.dot(m_circle.m_normal) * (m_circle.m_normal[1]);
+  w[2]= -v[2] + v.dot(m_circle.m_normal) * (m_circle.m_normal[2]);
 
   Scalar s = w.norm();
 

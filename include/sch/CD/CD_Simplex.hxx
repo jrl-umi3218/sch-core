@@ -279,11 +279,11 @@ inline Scalar CD_Simplex::squareDistanceAtOrigin(const Vector3 &v)const
   switch (type_)
   {
   case CD_Point:
-    return s1_.normsquared();
+    return s1_.squaredNorm();
 
   default:
-    Scalar d(v*s2_);
-    return d*d/v.normsquared();
+    Scalar d(v.dot(s2_));
+    return d*d/v.squaredNorm();
 
   }
 

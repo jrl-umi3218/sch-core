@@ -1,6 +1,6 @@
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p)
   : CD_Simplex(p)
-  , norm1_(p.normsquared())
+  , norm1_(p.squaredNorm())
   , norm2_(0)
   , norm3_(0)
   , norm4_(0)
@@ -9,8 +9,8 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p)
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2)
   : CD_Simplex(p1,p2)
-  , norm1_(p1.normsquared())
-  , norm2_(p2.normsquared())
+  , norm1_(p1.squaredNorm())
+  , norm2_(p2.squaredNorm())
   , norm3_(0)
   , norm4_(0)
 {
@@ -18,19 +18,19 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2)
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3)
   :CD_Simplex(p1,p2,p3)
-  , norm1_(p1.normsquared())
-  , norm2_(p2.normsquared())
-  , norm3_(p3.normsquared())
+  , norm1_(p1.squaredNorm())
+  , norm2_(p2.squaredNorm())
+  , norm3_(p3.squaredNorm())
   , norm4_(0)
 {
 }
 
 inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4)
   :CD_Simplex(p1,p2,p3,p4)
-  , norm1_(p1.normsquared())
-  , norm2_(p2.normsquared())
-  , norm3_(p3.normsquared())
-  , norm4_(p4.normsquared())
+  , norm1_(p1.squaredNorm())
+  , norm2_(p2.squaredNorm())
+  , norm3_(p3.squaredNorm())
+  , norm4_(p4.squaredNorm())
 {
 }
 
@@ -205,18 +205,18 @@ inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator+=(const Point3& p)
   {
   case CD_Point:
     s2_=p;
-    norm2_=s2_.normsquared();
+    norm2_=s2_.squaredNorm();
     type_=CD_Segment;
     return *this;
   case CD_Segment:
     s3_=p;
     type_=CD_Triangle;
-    norm3_=s3_.normsquared();
+    norm3_=s3_.squaredNorm();
     return *this;
   default:
     s4_=p;
     type_=CD_Tetrahedron;
-    norm4_=s4_.normsquared();
+    norm4_=s4_.squaredNorm();
     return *this;
   }
   return *this;
@@ -355,13 +355,16 @@ inline bool CD_SimplexEnhanced::isAffinelyDependent() const
   switch (type_)
   {
   case CD_Segment:
-    return ab_.normsquared()<=zero_*farthestPointDistance();
+    return ab_.squaredNorm()<=zero_*farthestPointDistance();
   case CD_Triangle:
   {
-    return (ab_^ac_).normsquared()<=square_(zero_*farthestPointDistance());
+    return (ab_.cross(ac_)).squaredNorm()<=square_(zero_*farthestPointDistance());
   }
   case CD_Tetrahedron:
-    return square_(fabs(Matrix3x3(ab_,ac_,ad_).determinant()))<=cube_(zero_*farthestPointDistance());
+  {
+    Matrix3x3 m; m << ab_,ac_,ad_;
+    return square_(fabs(m.determinant()))<=cube_(zero_*farthestPointDistance());
+  }
   default:
     return false;
   }

@@ -43,7 +43,7 @@ namespace sch
 
     Geometry(GeometryType t): type(t), color(0,0,0)
       , radius(0), center(0,0,0)
-      , rotation(1,0,0,  0,1,0,  0,0,1)
+      , rotation(Matrix3x3::Identity())
     {}
   };
 
