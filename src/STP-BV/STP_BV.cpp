@@ -452,7 +452,7 @@ void STP_BV::constructFromFile(const std::string& filename)
   STP_Torus* t = NULL;
   bool isRealTorus;
   int torusCount = 0;
-  double r;
+
   //toruslinkedBV relatedBV;
   Point3 arcCenter;
   Point3 p1, p2, p3, p4;
@@ -643,7 +643,7 @@ void STP_BV::constructFromFile(const std::string& filename)
       computedPoints.clear();
       computeArcPointsBetween(p1, p2, patchesCenter[dvvr[2].m_outerSTP], step, firstArc);
       computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], step, lastArc);
-      r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
+      double r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
       computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], step, computedPoints);
       for(int j = 1 ; j < step ; ++j)
       {

@@ -10,7 +10,7 @@ namespace sch
 {
 
   /*!
-  * \struct S_ObjectTimeStamp 
+  * \struct S_ObjectTimeStamp
   * the time stamp is used to check if objects moved or not between two proximity queries, if they didn't, computing the distance between them becomes useless.
   */
   typedef struct _TimeStamp

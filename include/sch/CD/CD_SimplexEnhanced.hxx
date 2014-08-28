@@ -1,27 +1,37 @@
-inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p):CD_Simplex(p)
+inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p)
+  : CD_Simplex(p)
+  , norm1_(p.normsquared())
+  , norm2_(0)
+  , norm3_(0)
+  , norm4_(0)
 {
-  norm1_=p.normsquared();
 }
 
-inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2):CD_Simplex(p1,p2)
+inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2)
+  : CD_Simplex(p1,p2)
+  , norm1_(p1.normsquared())
+  , norm2_(p2.normsquared())
+  , norm3_(0)
+  , norm4_(0)
 {
-  norm1_=p1.normsquared();
-  norm2_=p2.normsquared();
 }
 
-inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3):CD_Simplex(p1,p2,p3)
+inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3)
+  :CD_Simplex(p1,p2,p3)
+  , norm1_(p1.normsquared())
+  , norm2_(p2.normsquared())
+  , norm3_(p3.normsquared())
+  , norm4_(0)
 {
-  norm1_=p1.normsquared();
-  norm2_=p2.normsquared();
-  norm3_=p3.normsquared();
 }
 
-inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4):CD_Simplex(p1,p2,p3,p4)
+inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3,const Point3& p4)
+  :CD_Simplex(p1,p2,p3,p4)
+  , norm1_(p1.normsquared())
+  , norm2_(p2.normsquared())
+  , norm3_(p3.normsquared())
+  , norm4_(p4.normsquared())
 {
-  norm1_=p1.normsquared();
-  norm2_=p2.normsquared();
-  norm3_=p3.normsquared();
-  norm4_=p3.normsquared();
 }
 
 inline Scalar& CD_SimplexEnhanced::norms(const char i)

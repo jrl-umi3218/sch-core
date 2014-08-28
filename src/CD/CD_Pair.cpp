@@ -49,7 +49,7 @@ Scalar CD_Pair::getDistance()
   if ((stamp1_==sObj1_->checkStamp())&&(stamp2_==sObj2_->checkStamp()))
   {
     if (distance_==0)
-        penetrationDepth();
+      penetrationDepth();
     return distance_;
   }
   else
