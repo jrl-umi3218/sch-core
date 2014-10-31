@@ -20,6 +20,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <limits>
 
 /**********
  *The simplest proximity query
@@ -48,6 +49,10 @@ using namespace sch;
 int
 main (int argc, char *argv[])
 {
+  //Set output precision
+  std::cout.precision (std::numeric_limits<double>::digits10);
+  std::cerr.precision (std::numeric_limits<double>::digits10);
+
   //***********
   //Object initializations
 
@@ -131,8 +136,9 @@ main (int argc, char *argv[])
   comparison = compare(p2, (Vector3(0.0239874216807, -0.336387177086, -0.781275504057)), "First query, p2. ") && comparison;
 
   //Now we move the objects to enter in collision
+  //We avoid symmetries to always get the same witness points.
   box.setPosition(0,0,0);
-  sphere.setPosition(0,0,0);
+  sphere.setPosition(0.01,0,0);
 
   //Query again
   collision = pair1.isInCollision();
@@ -163,9 +169,9 @@ main (int argc, char *argv[])
 
   // compare the results for second query
   comparison = compare(d1, 0., "Second query, d1. ") && comparison;
-  comparison = compare(d2, 0.299512091292, "Second query, d2. ") && comparison;
-  comparison = compare(p1, (Vector3(-0.00434104104872, 0.05459580466,  0.0554891519385)), "Second query, p1. ") && comparison;
-  comparison = compare(p2, (Vector3( 0.168401731876,  -0.189548453895, 0.039333402279)), "Second query, p2. ") && comparison;
+  comparison = compare(d2, 0.293744618861213, "Second query, d2. ") && comparison;
+  comparison = compare(p1, (Vector3(0.0110146674327551, -0.0498945075944604, -0.0551780527427314)), "Second query, p1. ") && comparison;
+  comparison = compare(p2, (Vector3(-0.158401731667896, 0.18954845401356, -0.0393334018450828)), "Second query, p2. ") && comparison;
 
   //******************
   //More objects
@@ -194,17 +200,17 @@ main (int argc, char *argv[])
   d2 = pair3.getClosestPoints(p5,p6);
 
   // compare the results for third query
-  comparison = compare(d0, -0.0897074928302, "Third Query, d0") && comparison;
-  comparison = compare(p1, (Vector3(-0.00434104104872, 0.05459580466, 0.0554891519385)), "Third Query, p1") && comparison;
-  comparison = compare(p2, (Vector3(0.168401731876, -0.189548453895, 0.039333402279)), "Third Query, p2") && comparison;
+  comparison = compare(d0, -0.0862859011099191, "Third Query, d0") && comparison;
+  comparison = compare(p1, (Vector3(0.0110146674327551, -0.0498945075944604, -0.0551780527427314)), "Third Query, p1") && comparison;
+  comparison = compare(p2, (Vector3(-0.158401731667896, 0.18954845401356, -0.0393334018450828)), "Third Query, p2") && comparison;
 
   comparison = compare(d1,  0.659596933491, "Third Query, d1") && comparison;
   comparison = compare(p3, (Vector3(0.0707763740114, 0.0985548629043, 0.194364718711)), "Third Query, p3") && comparison;
   comparison = compare(p4, (Vector3(0.259412979986, 0.301096580075, 0.95790254828 )), "Third Query, p4") && comparison;
 
-  comparison = compare(d2, 0.519893514363, "Third Query, d2") && comparison;
-  comparison = compare(p5, (sch::Vector3(0.11715929646,  0.0390787247198, 0.296880292018)), "Third Query, p5") && comparison;
-  comparison = compare(p6, (sch::Vector3(0.296073498451, 0.242288276053,  0.965153515285)), "Third Query, p6") && comparison;
+  comparison = compare(d2, 0.516365498703901, "Third Query, d2") && comparison;
+  comparison = compare(p5, (sch::Vector3(0.126586144900461, 0.0390218116062935, 0.297048794226006)), "Third Query, p5") && comparison;
+  comparison = compare(p6, (sch::Vector3(0.300323477842992, 0.23919818987692, 0.964963650647371)), "Third Query, p6") && comparison;
 
 
   //Let's display all this stuff
@@ -231,30 +237,30 @@ main (int argc, char *argv[])
 
 First Query
 Collision: False
-Distance: 1.73205
+Distance: 1.75797057738094
 Witness points:
-P1: 0.0292236 0.601445 0.705635
-P2: 0.0239874 -0.336387 -0.781276
+P1: 0.0292236259885692 0.601445137095698 0.705635281288737
+P2: 0.0239874216806999 -0.336387177086141 -0.781275504057127
 
 Second Query
 Collision: True
 Distance: 0
-Depth: 0.299512
+Depth: 0.293744618861213
 Witness points:
-P1: -0.00434104 0.0545958 0.0554892
-P2: 0.168402 -0.189548 0.0393334
+P1: 0.0110146674327551 -0.0498945075944604 -0.0551780527427314
+P2: -0.158401731667896 0.18954845401356 -0.0393334018450828
 
 Third Query
-Distance1 Squared: -0.0897075
+Distance1 Squared: -0.0862859011099191
 Witness points 1:
-P1: -0.00434104 0.0545958 0.0554892
-P2: 0.168402 -0.189548 0.0393334
-Distance2 Squared: 0.659597
+P1: 0.0110146674327551 -0.0498945075944604 -0.0551780527427314
+P2: -0.158401731667896 0.18954845401356 -0.0393334018450828
+Distance2 Squared: 0.659596933490814
 Witness points 2:
-P1: 0.0707764 0.0985549 0.194365
-P2: 0.259413 0.301097 0.957903
-Distance3 Squared: 0.519894
+P1: 0.0707763740114308 0.0985548629043023 0.194364718711263
+P2: 0.259412979986433 0.301096580075066 0.957902548280017
+Distance3 Squared: 0.516365498703901
 Witness points 3:
-P1: 0.117159 0.0390787 0.29688
-P2: 0.296073 0.242288 0.965154
+P1: 0.126586144900461 0.0390218116062935 0.297048794226006
+P2: 0.300323477842992 0.23919818987692 0.964963650647371
 */
