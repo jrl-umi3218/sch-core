@@ -70,7 +70,9 @@ AddSourceGroup(SOURCES_STP_BV "STP-BV")
 link_directories(${Boost_LIBRARY_DIRS})
 ADD_LIBRARY(sch-core SHARED ${SOURCES} ${HEADERS})
 
-set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION})
+
+set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION}
+                                          COMPILE_OPTIONS "-Dsch_EXPORTS")
 target_link_libraries(sch-core ${Boost_LIBRARIES})
 
 

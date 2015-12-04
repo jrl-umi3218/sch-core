@@ -340,7 +340,7 @@ namespace CD_Matrix
 
     /*! Cross product */
     template <bool b>
-    inline struct Vector3T operator ^ (const struct Vector3T<T,b>& v2) const
+    inline Vector3T operator^ (const Vector3T<T, b>& v2) const
     {
       struct Vector3T vr;
       vr.m_x = m_y*v2.m_z - v2.m_y*m_z;

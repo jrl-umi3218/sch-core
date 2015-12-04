@@ -1,9 +1,9 @@
 [submodule "cmake"]
 	path = cmake
-	url = git://github.com/jrl-umi3218/jrl-cmakemodules.git
+	url = https://github.com/jrl-umi3218/jrl-cmakemodules.git
 [submodule ".travis"]
 	path = .travis
-	url = git://github.com/jrl-umi3218/jrl-travis
+	url = https://github.com/jrl-umi3218/jrl-travis
 [submodule "tests/shared-tests"]
 	path = tests/shared-tests
-	url = git://github.com/jrl-umi3218/sch-shared-tests
+	url = https://github.com/jrl-umi3218/sch-shared-tests
