@@ -473,10 +473,15 @@ bool verifyResult(const std::string & objI, const std::string & objJ,
   }
 
   bool res = true;
-  res = compare(distance, dd, "distance ("+objI +", "+objJ+"): ") && res;
-  res = compare(penetration, pd, "penetration ("+objI +", "+objJ+"): ") && res;
-  res = compare(p1, dp1, "p1 ("+objI +", "+objJ+"): ") && res;
-  res = compare(p2, dp2, "p2 ("+objI +", "+objJ+"): ") && res;
+#ifdef WIN32
+  double epsilon = 1e-10;
+#else
+  double epsilon = 1e-12;
+#endif
+  res = compare(distance, dd, "distance ("+objI +", "+objJ+"): ", epsilon) && res;
+  res = compare(penetration, pd, "penetration ("+objI +", "+objJ+"): ", epsilon) && res;
+  res = compare(p1, dp1, "p1 ("+objI +", "+objJ+"): ", epsilon) && res;
+  res = compare(p2, dp2, "p2 ("+objI +", "+objJ+"): ", epsilon) && res;
   return res;
 }
 
