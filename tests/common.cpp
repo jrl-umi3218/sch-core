@@ -287,17 +287,17 @@ void TestMaterial::TestPrecision()
 #ifdef DO_TEST
     sObj.sceneProximityQuery();
 
-# ifdef OUTPUT_FILE
     for (unsigned k=0; k<sObj.size(); k++)
     {
       for (unsigned j=0; j<k; j++)
       {
         Point3 p1,p2;
         Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
+# ifdef OUTPUT_FILE
         outfile<<p1<<p2<<distance<<std::endl;
+# endif
       }
     }
-# endif
 
 #ifdef IRREGULARITIES_COUNTERS
     Point3 p1,p2;
@@ -439,17 +439,17 @@ void TestMaterial::TestAnimation()
 #ifdef DO_TEST
     sObj.sceneProximityQuery();
 
-# ifdef OUTPUT_FILE
     for (unsigned k=0; k<sObj.size(); k++)
     {
       for (unsigned j=0; j<k; j++)
       {
         Point3 p1,p2;
         Scalar distance=sObj.getWitnessPoints(k,j,p1,p2);
+# ifdef OUTPUT_FILE
         outfile<<p1<<p2<<distance<<std::endl;
+# endif
       }
     }
-# endif
 
 # ifdef IRREGULARITIES_COUNTERS
     Point3 p1,p2;
