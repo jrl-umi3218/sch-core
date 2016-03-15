@@ -15,15 +15,6 @@ namespace sch
   {
     unsigned int a,b,c;
     Vector3 normal;
-  public:
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & a;
-//      ar & b;
-//      ar & c;
-//      ar & normal;
-    }
   };
 
   struct Polyhedron_algorithms
@@ -76,15 +67,6 @@ namespace sch
     */
 
     SCH_API void openFromFile(const std::string& filename);
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & vertexes_;
-//      ar & triangles_;
-      //ar & fastVertexes_;
-      //ar & lastVertexes_;
-    }
 
     std::vector<S_PolyhedronVertex*> vertexes_;
 

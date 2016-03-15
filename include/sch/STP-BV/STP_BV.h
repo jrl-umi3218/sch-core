@@ -10,11 +10,6 @@
 #include <list>
 #include <map>
 
-#ifdef WITH_BOOST_1_36
-#include <sch/boost/archive/detail/oserializer.hpp>
-#endif
-#include <boost/serialization/split_member.hpp>
-
 namespace sch
 {
 
@@ -55,11 +50,6 @@ namespace sch
   typedef struct s_toruslinkedBV
   {
     int buffer[4];
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & buffer;
-    }
   } toruslinkedBV;
 
   /*!  \struct s_Triangle
@@ -80,12 +70,6 @@ namespace sch
     *  \param vertex3 third vertex of the triangle
     */
     s_Triangle(const Point3& vertex1, const Point3& vertex2, const Point3& vertex3);
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & m_vertex1 & m_vertex2 & m_vertex3;
-    }
 
     Point3 m_vertex1;
     Point3 m_vertex2;
@@ -116,12 +100,6 @@ namespace sch
     *  \param currentStep
     */
     void operator ()(const Triangle& vertices, const int& currentStep) const;
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & m_vertices & m_step & m_sphereCenter & m_sphereRadius;
-    }
 
     std::vector<Point3>& m_vertices;
     int m_step;
@@ -157,12 +135,6 @@ namespace sch
     */
     bool operator ()(unsigned int id1, unsigned int id2) const;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & m_axis & m_points;
-    }
-
     Point3 m_axis;
     std::vector<Point3> m_points;
   } PointsComparator;
@@ -195,37 +167,11 @@ namespace sch
       constructFromFile(filename);
     }
 
-
-    /*!
-    *  \brief Load the object from a binary archive
-    *  \param filename path to the binary archive
-    */
-    SCH_API virtual void loadFromBinary(const std::string & filename);
-
-
-    /*!
-    *  \brief Save the object to a binary archive
-    *  \param filename path to the binary archive
-    */
-    SCH_API virtual void saveToBinary(const std::string & filename);
-
-    /*!
-    *  \brief
-    *  \param treefilename path to the binary file to contain the tree of the object
-    *  \param type kind of Boost archive to use. Currently either BINARY_ARCHIVE or TEXT_ARCHIVE (this is default value)
-    *  \warning Binary archives are platform dependent.
-    */
-    SCH_API void saveTreeInFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
-
     /*!
     *  \brief Adds a bouding volume to the object
     *  \param patch bounding volume to add to the object
     */
     SCH_API void addPatch(STP_Feature* patch);
-
-
-
-
 
     /*!
     *  \brief Print the support tree in a file
@@ -290,42 +236,11 @@ namespace sch
     *  \brief returns the vertex number in the STP-BV
     *
     */
-    SCH_API int getFeaturesNumber() const;
+    SCH_API std::size_t getFeaturesNumber() const;
 
     const std::vector<sch::Geometry> & getGeometries() const;
 
-    template<class Archive>
-    void load(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-//      ar & m_patches ;
-//      ar & m_patchesSize ;
-//      updateFastPatches();
-    }
-
-
-    template<class Archive>
-    void save(Archive & ar, const unsigned int /*version*/) const
-    {
-//      ar & boost::serialization::base_object<S_ObjectNormalized>(*this);
-//      ar & m_patches ;
-//      ar & m_patchesSize ;
-    }
-
-
-
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
-
   protected:
-
-    /*!
-    *  \brief Load the tree structure of the object from a file
-    *  \param treefilename path to the binary file containing the tree of the object
-    *
-    * This uses Boost serialization library.
-    */
-    SCH_API void loadTreeFromFile(const std::string& treefilename, ArchiveType type = TEXT_ARCHIVE);
-
     /*!
     *  \brief Computes the points of an arc
     *  \param p1 first point of the arc
@@ -379,7 +294,7 @@ namespace sch
 
     STP_Feature * * m_fastPatches;
     STP_Feature * * m_lastPatches;
-    int m_patchesSize;
+    std::size_t m_patchesSize;
 
     std::vector<Geometry> geometries_;
   };

@@ -144,7 +144,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
   Vector3 yBuf[MaxSupportPoints];
   TriangleHeap tHeap;
 
-  int num_verts;
+  Index_t num_verts;
 
   switch (s.getType())
   {
@@ -216,8 +216,8 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     Matrix3x3 rot_mat(rot);
 
     Vector3 aux1 = dir.cross(Vector3(axis == 0, axis == 1, axis == 2));
-    Vector3 aux2 = rot_mat * aux1;
-    Vector3 aux3 = rot_mat * aux2;
+    Vector3 aux2 = (rot_mat * aux1).eval();
+    Vector3 aux3 = (rot_mat * aux2).eval();
 
     pBuf[2] = sObj1_->support(aux1);
     qBuf[2] = sObj2_->support(-aux1);
@@ -389,7 +389,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
       qBuf[num_verts] = sObj2_->support(-triangle->getClosest());
       yBuf[num_verts] = pBuf[num_verts] - qBuf[num_verts];
 
-      int index = num_verts++;
+      Index_t index = num_verts++;
       Scalar far_dist = (yBuf[index].dot(triangle->getClosest()));
 
       // Make sure the support mapping is OK.

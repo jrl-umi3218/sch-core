@@ -5,11 +5,6 @@
 #include <sch/sch_api.h>
 #include <sch/S_Object/S_Object.h>
 
-#ifdef WITH_BOOST_1_36
-#include <sch/boost/archive/detail/oserializer.hpp>
-#endif
-#include <boost/serialization/base_object.hpp>
-
 namespace sch
 {
 
@@ -34,12 +29,6 @@ namespace sch
      *  \return returns the support point.
      */
     SCH_API virtual Point3 support(const Vector3& v, int & LastFeature) const;
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & boost::serialization::base_object<S_Object>(*this);
-    }
   };
 
 #include <sch/S_Object/S_ObjectNonNormalized.hxx>

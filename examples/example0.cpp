@@ -51,7 +51,7 @@
 using namespace sch;
 
 int
-main (int argc, char *argv[])
+main (int, char *[])
 {
   #ifdef __linux__
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);

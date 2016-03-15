@@ -17,12 +17,6 @@ namespace sch
   {
     unsigned long int value1,value2,value3,value4;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-      ar & value1 & value2 & value3 & value4;
-    }
-
     explicit _TimeStamp():value1(0),value2(0),value3(0),value4(0)
     {}
 
@@ -239,17 +233,6 @@ namespace sch
     * \brief returns the current time stamp
     */
     const S_ObjectTimeStamp& checkStamp()const;
-
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-      ar & stamp_;
-      ar & stacks_;
-      ar & slices_;
-      ar & mRot_;
-      ar & trans_;
-    }
 
   protected:
     S_ObjectTimeStamp stamp_;

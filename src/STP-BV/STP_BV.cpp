@@ -10,25 +10,14 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <iostream>
 #include <fstream>
 
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/base_object.hpp>
-#include <boost/serialization/vector.hpp>
 #include <boost/math/constants/constants.hpp>
 
 #include <exception>
 #include <sstream>
 
-/* Necessary includes and macro call for polymorph pointer serialization */
-#include <boost/serialization/export.hpp>
 #include <sch/STP-BV/STP_SmallSphere.h>
 #include <sch/STP-BV/STP_BigSphere.h>
 #include <sch/STP-BV/STP_Torus.h>
-BOOST_CLASS_EXPORT(sch::STP_Torus)
-BOOST_CLASS_EXPORT(sch::STP_SmallSphere)
-BOOST_CLASS_EXPORT(sch::STP_BigSphere)
-
 
 #define REMEMBER_LAST_FEATURE
 
@@ -304,33 +293,6 @@ Point3 STP_BV::computeLinesCommonPoint(const Point3& l1p1, const Point3& l1p2,
 
   //Point3 res;
   return Point3(l1p1[0] + t * v1[0], l1p1[1] + t * v1[1], l1p1[2] + t * v1[2]);
-}
-
-
-void STP_BV::loadFromBinary(const std::string & filename)
-{
-//  try
-//  {
-//    std::ifstream ifs(filename.c_str(), std::ios::binary);
-//    boost::archive::binary_iarchive ia(ifs);
-//    ia >> *this;
-//  }
-//  catch(...)
-//  {
-//    std::cerr << "Could not load the object from: " << filename << std::endl;
-//  }
-}
-
-void STP_BV::saveToBinary(const std::string & filename)
-{
-//  std::ofstream ofs(filename.c_str(), std::ios::binary);
-//  if(!ofs.is_open())
-//  {
-//    std::cerr << "Could not open file: " << filename << std::endl;
-//    return;
-//  }
-//  boost::archive::binary_oarchive oa(ofs);
-//  oa << *this;
 }
 
 
@@ -643,7 +605,6 @@ void STP_BV::constructFromFile(const std::string& filename)
       computedPoints.clear();
       computeArcPointsBetween(p1, p2, patchesCenter[dvvr[2].m_outerSTP], step, firstArc);
       computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], step, lastArc);
-      double r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
       computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], step, computedPoints);
       for(int j = 1 ; j < step ; ++j)
       {
@@ -651,10 +612,8 @@ void STP_BV::constructFromFile(const std::string& filename)
                                             patchesCenter[dvvr[1].m_outerSTP],
                                             patchesCenter[dvvr[2].m_outerSTP],
                                             firstArc[j]);
-        r = sRadius - (arcCenter - patchesCenter[dvvr[2].m_outerSTP]).norm();
         computeArcPointsBetween(firstArc[j], lastArc[j], arcCenter, step, computedPoints);
       }
-      r = sRadius - (patchesCenter[dvvr[1].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
       computeArcPointsBetween(p2, p3, patchesCenter[dvvr[1].m_outerSTP], step, computedPoints);
 
       //create the torus displayList
@@ -767,56 +726,6 @@ void STP_BV::constructFromFile(const std::string& filename)
 #ifdef writeos
   os.close(); //DEBUG
 #endif
-}
-
-
-
-void STP_BV::saveTreeInFile(const std::string& treefilename, ArchiveType type)
-{
-  std::ofstream os(treefilename.c_str(), std::ios::binary);
-
-  if(!os.is_open())
-  {
-    std::cout << "EXCEPTION in loadTreeFromFile : could not open given file" << std::endl;
-    throw std::exception();
-  }
-
-  std::cout << "START SAVING THE OBJECT TREE STRUCTURE" << std::endl;
-  if(type == BINARY_ARCHIVE)
-  {
-  }
-  else //(type == TEXT_ARCHIVE)
-  {
-  }
-
-  os.close();
-  std::cout << "THE OBJECT TREE STRUCTURE IS SAVED" << std::endl;
-}
-
-void STP_BV::loadTreeFromFile(const std::string& treefilename, ArchiveType type)
-{
-  std::ifstream is(treefilename.c_str(), std::ios::binary);
-
-  std::cout << "START LOADING THE OBJECT TREE STRUCTURE" << std::endl; //DEBUG
-#ifdef writeos2
-  os2 << "DEBUT LECTURE ARBRE" << std::endl;
-#endif
-  if(!is.is_open())
-  {
-    std::cout << "EXCEPTION in loadTreeFromFile : could not open given file" << std::endl;
-    throw std::exception();
-  }
-
-  if(type == BINARY_ARCHIVE)
-  {
-  }
-  else //(type == TEXT_ARCHIVE)
-  {
-  }
-
-  std::cout << "OBJECT TREE STRUCTURE LOADED" << std::endl; //DEBUG
-
-  is.close();
 }
 
 void STP_BV::addPatch(STP_Feature* patch)
@@ -1070,7 +979,7 @@ Point3 STP_BV::supportFirstNeighbourPrime(const Vector3& v,int& lastFeature) con
 
   bool found = false;
 
-  int i = 0;
+  std::size_t i = 0;
   int idp=-1; //previous id (used to remember from witch vvr we arrived in the current
 
   while( (i < m_patchesSize) && !(found = currentBV->isHereFirstNeighbourPrime(v,idp)) )
@@ -1116,7 +1025,7 @@ Point3 STP_BV::supportHybrid(const Vector3& v,int& lastFeature) const
 
   bool found = false;
 
-  int i = 0;
+  std::size_t i = 0;
   int idp=-1; //previous id (used to remember from witch vvr we arrived in the current
 
   while( (i < m_patchesSize) && !(found = currentBV->isHereHybrid(v,idp)) )
@@ -1155,7 +1064,7 @@ S_Object::S_ObjectType STP_BV::getType() const
   return S_Object::TSTP_BV;
 }
 
-int STP_BV::getFeaturesNumber() const
+std::size_t STP_BV::getFeaturesNumber() const
 {
   return m_patches.size();
 }

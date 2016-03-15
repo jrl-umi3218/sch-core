@@ -5,12 +5,6 @@
 #include <sch/sch_api.h>
 #include <sch/STP-BV/STP_Feature.h>
 
-#ifdef WITH_BOOST_1_36
-#include <sch/boost/archive/detail/oserializer.hpp>
-#endif
-#include <boost/serialization/base_object.hpp>
-
-
 namespace sch
 {
   class STP_BigSphere :
@@ -49,16 +43,6 @@ namespace sch
     SCH_API virtual int getNextBVPrime() const
     {
       return m_nextBVPrime;
-    }
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & boost::serialization::base_object<STP_Feature>(*this);
-//      ar & m_radius & m_center & m_VVR0 & m_VVR1 & m_VVR2;
-//      m_nextBV[0] = m_VVR0.m_outerSTP;
-//      m_nextBV[1] = m_VVR1.m_outerSTP;
-//      m_nextBV[2] = m_VVR2.m_outerSTP;
     }
 
   protected:

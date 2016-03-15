@@ -6,14 +6,6 @@
 #include <sch/STP-BV/STP_Feature.h>
 #include <vector>
 
-#ifdef WITH_BOOST_1_36
-#include <sch/boost/archive/detail/oserializer.hpp>
-#endif
-#include <boost/serialization/base_object.hpp>
-#include <boost/serialization/split_member.hpp>
-
-
-
 /*!  \class STP_SmallSphere
 *  \brief
 *  \author Cochet-Grasset Amelie
@@ -60,26 +52,6 @@ namespace sch
     {
       return m_nextBVPrime;
     }
-
-
-
-    template<class Archive>
-    void save(Archive & ar, unsigned int /*version*/) const
-    {
-//      ar & boost::serialization::base_object<STP_Feature>(*this);
-//      ar & m_radius & m_center & m_VVR & m_nextBV & m_nextBVPrime;
-    }
-
-    template<class Archive>
-    void load(Archive & ar, unsigned int /*version*/)
-    {
-//      ar & boost::serialization::base_object<STP_Feature>(*this);
-//      ar & m_radius & m_center & m_VVR & m_nextBV & m_nextBVPrime;
-//      updateVector();
-    }
-
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
-
   protected:
     Scalar m_radius;
     Point3 m_center;

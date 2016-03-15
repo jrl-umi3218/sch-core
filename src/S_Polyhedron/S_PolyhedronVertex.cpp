@@ -106,7 +106,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
   return (nextVertex_==NULL);
 }
 
-unsigned S_PolyhedronVertex::getNumNeighbors()const
+std::size_t S_PolyhedronVertex::getNumNeighbors()const
 {
   return neighbors_.size();
 }

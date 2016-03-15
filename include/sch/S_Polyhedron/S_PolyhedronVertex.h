@@ -82,22 +82,9 @@ namespace sch
     /*!
     * \brief gets the number of neighbors
     */
-    SCH_API unsigned getNumNeighbors()const;
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-//      ar & cordinates_;
-//      ar & neighbors_;
-      //ar & fastNeighbors_;
-      //ar & endNeighbors_;
-//      ar & number_;
-      //ar & nextVertex_;
-//      ar & nextVertexH_;
-    }
+    SCH_API std::size_t getNumNeighbors()const;
 
   private:
-
     Vector3 cordinates_;
 
     std::vector<S_PolyhedronVertex*> neighbors_;

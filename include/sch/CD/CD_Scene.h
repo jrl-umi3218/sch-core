@@ -46,7 +46,7 @@ namespace sch
 
     SCH_API int  sceneProximityQuery();
 
-    SCH_API S_Object * operator[](unsigned char i)const
+    SCH_API S_Object * operator[](std::size_t i)const
     {
       return objects_[i];
     }

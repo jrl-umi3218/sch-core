@@ -25,7 +25,6 @@ SETUP_PROJECT()
 
 # Search for dependencies.
 # Boost
-SET(BOOST_COMPONENTS serialization)
 SEARCH_FOR_BOOST()
 
 SEARCH_FOR_EIGEN()
