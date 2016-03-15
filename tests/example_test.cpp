@@ -1,6 +1,6 @@
 #include "shared-tests/examples/example_common.h"
 
-#ifdef __linux__
+#ifdef ENABLE_SIGFPE
   #include <fenv.h>
 #endif
 
@@ -8,7 +8,7 @@ void display() {}
 
 int main()
 {
-  #ifdef __linux__
+  #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
   Example universe;

@@ -32,6 +32,13 @@ SEARCH_FOR_EIGEN()
 PKG_CONFIG_APPEND_CFLAGS("-I${Eigen_INCLUDE_DIR}")
 PKG_CONFIG_APPEND_LIBS("sch-core")
 
+option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
+if(ENABLE_SIGFPE)
+  if(NOT WIN32)
+    add_definitions(-DENABLE_SIGFPE)
+  endif()
+endif()
+
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(examples)
 IF(NOT DISABLE_TESTS)

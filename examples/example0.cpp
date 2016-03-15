@@ -44,7 +44,7 @@
 //Inlude file for the verification of the result
 #include "example.hxx"
 
-#ifdef __linux__
+#ifdef ENABLE_SIGFPE
   #include <fenv.h>
 #endif
 
@@ -53,7 +53,7 @@ using namespace sch;
 int
 main (int, char *[])
 {
-  #ifdef __linux__
+  #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
 
