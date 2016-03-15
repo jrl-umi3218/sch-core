@@ -44,11 +44,19 @@
 //Inlude file for the verification of the result
 #include "example.hxx"
 
+#ifdef ENABLE_SIGFPE
+  #include <fenv.h>
+#endif
+
 using namespace sch;
 
 int
 main (int argc, char *argv[])
 {
+  #ifdef ENABLE_SIGFPE
+  feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
+  #endif
+
   //Set output precision
   std::cout.precision (std::numeric_limits<double>::digits10);
   std::cerr.precision (std::numeric_limits<double>::digits10);

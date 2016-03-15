@@ -27,6 +27,13 @@ SEARCH_FOR_BOOST()
 
 PKG_CONFIG_APPEND_LIBS("sch-core")
 
+option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
+if(ENABLE_SIGFPE)
+  if(NOT WIN32)
+    add_definitions(-DENABLE_SIGFPE)
+  endif()
+endif()
+
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(examples)
 IF(NOT DISABLE_TESTS)
