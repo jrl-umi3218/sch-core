@@ -1,0 +1,61 @@
+Source: sch-core
+Priority: optional
+Maintainer: Pierre Gergondet <pierre.gergondet+ppa@gmail.com>
+Standards-Version: 3.9.5
+Section: libs
+Homepage: http://github.com/jrl-umi3218/sch-core
+Vcs-Git: git://github.com/jrl-umi3218/sch-core -b debian
+Vcs-Browser: http://github.com/jrl-umi3218/sch-core
+Build-Depends: debhelper (>= 9),
+               pkg-config,
+               cmake,
+               doxygen,
+               libboost-serialization-dev
+
+Package: libsch-core-dev
+Section: libdevel
+Architecture: any
+Depends: pkg-config,
+         libsch-core1 (= ${binary:Version}),
+         ${misc:Depends}
+Suggests: libsch-core-doc
+Description: sch-core - development files
+ Efficient implementation of GJK algorithm for proximity
+ queries (collision detection, distance computations,
+ penetration depths and witness points) between convex
+ shapes.
+ .
+ This package contains development files (headers and shared library
+ symbolic link).
+
+
+Package: libsch-core1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: sch-core: Effective proximity queries
+ Efficient implementation of GJK algorithm for proximity
+ queries (collision detection, distance computations,
+ penetration depths and witness points) between convex
+ shapes.
+ .
+ The library can be extended to any convex shape for which
+ we can compute the support function, but it already
+ supports polyhedrons, boxes, spheres and ellipsoids, and it
+ is particularly optimized for strictly convex hulls
+ (SCH/STP-BV).
+
+Package: libsch-core-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Suggests: libsch-core-dev
+Description: sch-core API documentation
+ Efficient implementation of GJK algorithm for proximity
+ queries (collision detection, distance computations,
+ penetration depths and witness points) between convex
+ shapes.
+ .
+ This package provides the complete API documentation in HTML format.

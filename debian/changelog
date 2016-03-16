@@ -1,0 +1,5 @@
+sch-core (1.0-123-g7778-1trusty1) trusty; urgency=medium
+
+  * Initial release.
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Wed, 16 Mar 2016 10:47:17 +0900
