@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/eigen.cmake)
 INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/cpack.cmake)
+INCLUDE(cmake/msvc-specific.cmake)
 
 set(CXX_DISABLE_WERROR True)
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -17,6 +18,7 @@ SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Vol
 set(PROJECT_CONTACT francois.keith@lirmm.fr)
 SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+INCLUDE(cmake/msvc-specific.cmake)
 
 SETUP_PROJECT()
 
@@ -33,6 +35,12 @@ if(ENABLE_SIGFPE)
     add_definitions(-DENABLE_SIGFPE)
   endif()
 endif()
+
+# For MSVC, set local environment variable to enable finding the built dll
+# of the main library when launching ctest with RUN_TESTS
+IF(MSVC)
+  SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+ENDIF(MSVC)
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(examples)
