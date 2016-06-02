@@ -852,7 +852,7 @@ void STP_BV::updateFastPatches()
     }
 
     m_lastPatches=&m_fastPatches[m_patches.size()];
-    m_patchesSize=m_patches.size();
+    m_patchesSize=static_cast<int>(m_patches.size());
   }
   else
   {
@@ -1157,7 +1157,7 @@ S_Object::S_ObjectType STP_BV::getType() const
 
 int STP_BV::getFeaturesNumber() const
 {
-  return m_patches.size();
+  return static_cast<int>(m_patches.size());
 }
 
 const std::vector<sch::Geometry> & STP_BV::getGeometries() const

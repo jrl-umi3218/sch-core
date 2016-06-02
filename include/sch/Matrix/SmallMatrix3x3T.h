@@ -13,7 +13,7 @@ namespace CD_Matrix
 {
 
   template<typename U, bool b> struct Vector3T;
-  template<typename U> struct QuaternionT;
+  template<typename U> class QuaternionT;
 
   /*! Template to handle a  3x3 matrix*/
   template <typename T>
