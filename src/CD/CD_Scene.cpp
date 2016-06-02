@@ -13,7 +13,7 @@ CD_Scene::~CD_Scene(void)
       if(pairs_[i][j] != 0x0)
       {
         delete pairs_[i][j];
-        pairs_[i][j] == 0x0;
+        pairs_[i][j] = 0x0;
       }
 }
 

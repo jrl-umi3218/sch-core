@@ -104,5 +104,5 @@ S_Object::S_ObjectType S_Polyhedron::getType() const
 
 int S_Polyhedron::getTrianglesNumber() const
 {
-  return poly.triangles_.size();
+  return static_cast<int>(poly.triangles_.size());
 }

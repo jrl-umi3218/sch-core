@@ -108,7 +108,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
 
 unsigned S_PolyhedronVertex::getNumNeighbors()const
 {
-  return neighbors_.size();
+  return static_cast<unsigned int>(neighbors_.size());
 }
 
 void S_PolyhedronVertex::setCordinates(const Scalar &x,const  Scalar &y, const Scalar &z)

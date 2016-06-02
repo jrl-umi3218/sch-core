@@ -3,7 +3,9 @@
 #define _CD_SIMPLEX
 
 #pragma once
-#pragma GCC diagnostic ignored "-Wchar-subscripts"
+#ifndef _WIN32
+# pragma GCC diagnostic ignored "-Wchar-subscripts"
+#endif
 
 #include <sch/sch_api.h>
 #include <sch/Matrix/SCH_Types.h>
