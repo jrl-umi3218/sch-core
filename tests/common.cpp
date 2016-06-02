@@ -30,7 +30,7 @@ void TestMaterial::RandomTestSupportFunction()
   std::vector<Vector3> supportVector(RandomTestEnd);
 
   clock_t begin, end;
-  srand(time(NULL));
+  srand(static_cast<unsigned int>(time(NULL)));
 
   begin=clock();
 
@@ -70,7 +70,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
   std::cout << "RandomTestSupportFunctionAllObjects" << std::endl;
   std::vector<Vector3> supportVector(RandomTestEnd * sObj.size());
 
-  srand(time(NULL));
+  srand(static_cast<unsigned int>(time(NULL)));
   clock_t begin, end;
 
   begin=clock();
