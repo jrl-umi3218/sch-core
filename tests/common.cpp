@@ -12,11 +12,6 @@ const double PI=boost::math::constants::pi<double>();
 
 using namespace sch;
 
-TestMaterial::TestMaterial()
-  : sObj()
-  , CurrentObj(0)
-  , stppObjects()
-{}
 
 void TestMaterial::DoTest()
 {
@@ -32,7 +27,9 @@ void TestMaterial::RandomTestSupportFunction()
   clock_t begin, end;
   srand(static_cast<unsigned int>(time(NULL)));
 
-  begin=clock();
+
+
+  Vector3* v=new Vector3[RandomTestEnd];
 
   for (long j=0; j<RandomTestEnd; j++)
   {
@@ -42,10 +39,15 @@ void TestMaterial::RandomTestSupportFunction()
     double c = (rand()/double(RAND_MAX)) ;
     double d = (rand()/double(RAND_MAX)) ;
 
-    Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+    v[j]=Vector3(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+  }
 
+  begin=clock();
+
+  for (long j=0; j<RandomTestEnd; j++)
+  {
 #ifdef DO_TEST
-    supportVector[j] = sObj[CurrentObj]->support(v);
+    supportVector[j] = sObj[CurrentObj]->support(v[j]);
 #endif
   }
 
@@ -73,7 +75,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
   srand(static_cast<unsigned int>(time(NULL)));
   clock_t begin, end;
 
-  begin=clock();
+  Vector3* v=new Vector3[RandomTestEnd];
 
   for (long j=0; j<RandomTestEnd; j++)
   {
@@ -82,15 +84,21 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
     double c = (rand()/double(RAND_MAX)) ;
     double d = (rand()/double(RAND_MAX)) ;
 
-    Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+    v[j]=Vector3(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+  }
 
+  begin=clock();
+  for (long j=0; j<RandomTestEnd; j++)
+  {
 #ifdef DO_TEST
     for(size_t i=0; i<sObj.size(); i++)
-      supportVector[j*sObj.size() + i] = sObj[i]->support(v);
+      supportVector[j*sObj.size() + i] = sObj[i]->support(v[j]);
 #endif
   }
 
   end=clock();
+
+  delete[] v;
 
   std::cout << "  computation time: " << ((double)(end- begin) / CLOCKS_PER_SEC) <<  std::endl;
 
@@ -109,16 +117,18 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 
 void TestMaterial::initializeUniverse()
 {
-#ifdef NON_STP_BV_OBJECTS
-  sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Box(0.2,0.2,0.2));
-  sObj.addObject(new S_Sphere(0.1));
-  sObj.addObject(new S_Sphere(0.12));
+  if (nonSTPBV)
+  {
+    sObj.addObject(new S_Box(0.2,0.2,0.2));
+    sObj.addObject(new S_Box(0.2,0.2,0.2));
+    sObj.addObject(new S_Sphere(0.1));
+    sObj.addObject(new S_Sphere(0.12));
 
-  sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
-  sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
-#endif
+    sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
+    sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
 
+    std::cout << "6 Non-STP BV Objects added to scene" << std::endl;
+  }
 
 #ifdef MULTI_OBJECTS_TEST
   {
@@ -163,6 +173,8 @@ void TestMaterial::initializeUniverse()
     {
       sObj.addObject(&(stppObjects[j]));
     }
+
+    std::cout << "Multi Object loaded and added to the scene" << std::endl;
   }
 #else
   {
@@ -173,6 +185,7 @@ void TestMaterial::initializeUniverse()
     STP_BV* s2 = new STP_BV();
     s2->constructFromFileWithGL("sample_stpbv2.txt");
     sObj.addObject(s2);
+    std::cout << "2 STP-BVs loaded and added to the scene" << std::endl;
   }
 #endif
   for (size_t i=0; i<sObj.size(); i++)
@@ -234,8 +247,8 @@ void TestMaterial::TestPrecision()
 {
   std::cout << "TestPrecision" << std::endl;
 
-  Vector3 axe(0, 0, 1);
-  double angle=0;
+  Vector3* axe=new Vector3[AnimationEnd] ;
+  double* angle=new double[AnimationEnd] ;
 
   std::cout.precision(18);
 
@@ -247,7 +260,7 @@ void TestMaterial::TestPrecision()
 
   clock_t begin, end;
 
-  begin=clock();
+
 
 #ifdef OUTPUT_FILE
   std::fstream outfile;
@@ -268,21 +281,28 @@ void TestMaterial::TestPrecision()
 #endif
 
 
+
   for (long i=0; i<AnimationEnd; i++)
   {
-    axe[0] =  sin((42)*sin(0.2*AnimationSpeed)*(i%87%3));
-    axe[1] =  sin((-43)*sin(0.2*AnimationSpeed)*(i%73%3));
-    axe[2] =  cos((83)*sin(0.1*AnimationSpeed)*(i%89%3));
+    axe[i][0] =  sin((42)*sin(0.2*AnimationSpeed)*(i%87%3));
+    axe[i][1] =  sin((-43)*sin(0.2*AnimationSpeed)*(i%73%3));
+    axe[i][2] =  cos((83)*sin(0.1*AnimationSpeed)*(i%89%3));
 
-    angle=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed))*(i%79%3));
+    angle[i]=4*sin((97)*sin(0.2*sin(0.5*AnimationSpeed))*(i%79%3));
 
     /*sObj[j]->addTranslation(Vector3(sin((20*(1))*sin(0.2*AnimationSpeed))*(i%67%3),
     sin((71-140*(1))*sin(0.15*AnimationSpeed))*(i%59%3),
     sin((20)*sin(0.2*AnimationSpeed*(i%93%3))))*AnimationScale);
     */
+  }
 
+
+
+  begin=clock();
+  for (long i=0; i<AnimationEnd; i++)
+  {
     for (size_t j=0; j<sObj.size(); j++)
-      sObj[j]->addRotation(angle,axe);
+      sObj[j]->addRotation(angle[i],axe[i]);
 
 #ifdef DO_TEST
     sObj.sceneProximityQuery();
@@ -344,24 +364,27 @@ void TestMaterial::TestPrecision()
     display();
   }
 
+  end=clock();
+
+  delete [] axe;
+  delete [] angle;
+
 #ifdef OUTPUT_FILE
   outfile.close();
 #endif
 
-  end=clock();
 
-  std::cout << "  computation time: " << ((double)(end- begin) / CLOCKS_PER_SEC) << " : " << ((double)(end - begin) / CLOCKS_PER_SEC)/(AnimationEnd) << std::endl;
+
+  std::cout << "  computation time: " << ((double)(end- begin) / CLOCKS_PER_SEC) << " : " << ((double)(end - begin) / CLOCKS_PER_SEC)/(AnimationEnd) <<  std::endl;
 
 #ifdef IRREGULARITIES_COUNTERS
   std::cout<<"Irregularities : "<<irrCpt<<std::endl;
 #endif
 
 #ifdef COLLISION_COUNTERS
-  std::cout << "Collisions : "<<collCpt<< " Total pairs checked : "<<totalCpt<<std::endl;
+  std::cout << "Collisions : "<<collCpt<<std::endl;
 #endif
 }
-
-
 
 
 
@@ -394,7 +417,7 @@ void TestMaterial::TestAnimation()
 
   clock_t begin, end;
 
-  begin=clock();
+
 
 # ifdef OUTPUT_FILE
   std::fstream outfile;
@@ -413,6 +436,7 @@ void TestMaterial::TestAnimation()
   int totalCpt=0;
 #endif
 
+  begin=clock();
 
   for (long i=0; i<AnimationEnd; i++)
   {
@@ -532,7 +556,6 @@ void TestMaterial::TestAnimation()
 #endif
 
 }
-
 
 
 void TestMaterial::GeneralTest()

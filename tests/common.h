@@ -1,7 +1,7 @@
 #ifndef COMMON_TEST_H
 #define COMMON_TEST_H
 
-#define NON_STP_BV_OBJECTS
+//#define NON_STP_BV_OBJECTS
 //#define DISPLAY_DISTANCE
 #define DO_TEST
 //#define OUTPUT_FILE
@@ -19,7 +19,17 @@ void display (void);
 
 struct TestMaterial
 {
-  TestMaterial();
+  TestMaterial()
+    : sObj()
+    , CurrentObj(0)
+    , stppObjects()
+  {
+#ifdef NON_STP_BV_OBJECTS
+  nonSTPBV=1;
+#else
+  nonSTPBV=0;
+#endif // NON_STP_BV_OBJECTS
+  }
 
   void DoTest();
 
@@ -39,6 +49,8 @@ struct TestMaterial
   sch::CD_Scene sObj;
 
   unsigned int CurrentObj;
+
+ int nonSTPBV;
 
 private:
   std::vector<sch::STP_BV_P> stppObjects;
