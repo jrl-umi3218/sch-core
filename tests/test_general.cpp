@@ -1,3 +1,5 @@
+#define NON_STP_BV_OBJECTS
+
 #include "shared-tests/tests/common.h"
 
 #ifdef ENABLE_SIGFPE
