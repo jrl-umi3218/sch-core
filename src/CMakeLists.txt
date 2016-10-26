@@ -9,9 +9,6 @@ include(${PROJECT_INCLUDE_DIR}/sch/SourcesLib.cmake)
 
 # --- def, cflags and link flags ---
 
-include_directories(BEFORE ${PROJECT_INCLUDE_DIR})
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-link_directories(${Boost_LIBRARY_DIRS})
 
 
 
@@ -69,13 +66,27 @@ AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
 link_directories(${Boost_LIBRARY_DIRS})
 ADD_LIBRARY(sch-core SHARED ${SOURCES} ${HEADERS})
+target_include_directories(sch-core BEFORE PUBLIC  $<BUILD_INTERFACE:${PROJECT_INCLUDE_DIR}> $<INSTALL_INTERFACE:${include_install_destination}>)
+target_include_directories(sch-core SYSTEM PUBLIC ${Boost_INCLUDE_DIRS})
 
 
 set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION}
                                           COMPILE_OPTIONS "-Dsch_EXPORTS")
-target_link_libraries(sch-core ${Boost_LIBRARIES})
+target_link_libraries(sch-core PUBLIC ${Boost_LIBRARIES})
 
 
-install(TARGETS sch-core
-        RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+# Targets:
+#   * <prefix>/lib/libbar.a
+#   * <prefix>/lib/libbaz.a
+#   * header location after install: <prefix>/include/foo/Bar.hpp
+#   * headers can be included by C++ code `#include <foo/Bar.hpp>`
+install(
+    TARGETS sch-core
+    EXPORT "${targets_export_name}"
+    LIBRARY DESTINATION "lib"
+    ARCHIVE DESTINATION "lib"
+    RUNTIME DESTINATION "bin"
+    INCLUDES DESTINATION "${include_install_dir}"
+)
+install(FILES ${HEADERS} DESTINATION ${include_install_destination})
 
