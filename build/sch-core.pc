@@ -1,0 +1,22 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=/usr/local/lib
+bindir=/usr/local/bin
+pkglibdir=/usr/local/lib/sch-core
+includedir=/usr/local/include
+datarootdir=/usr/local/share
+pkgdatarootdir=/usr/local/share
+docdir=/usr/local/share/doc/sch-core
+doxygendocdir=/usr/local/share/doc/sch-core/doxygen-html
+
+Name: sch-core
+Description: Implementation of the Sphere-Torus Patches Bounding Volumes
+URL: http://idh.lirmm.fr/projects/stpbv
+Version: 1.0-131-gfd59-dirty
+Requires: 
+Conflicts: 
+Libs: -L${libdir}  -lsch-core
+Libs.private: 
+Cflags:  -I${includedir} -I/usr/include
+
+

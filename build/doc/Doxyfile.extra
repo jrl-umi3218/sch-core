@@ -1,0 +1,4 @@
+INPUT                  = /home/ahundt/src/jrl-umi3218/sch-core/include 
+IMAGE_PATH             = /home/ahundt/src/jrl-umi3218/sch-core/doc/pictures
+FILE_PATTERNS          = *.h *.hpp *.hxx
+EXAMPLE_PATH           = /home/ahundt/src/jrl-umi3218/sch-core/examples  /home/ahundt/src/jrl-umi3218/sch-core/tests/shared-tests/examples/
