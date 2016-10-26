@@ -82,11 +82,11 @@ target_link_libraries(sch-core PUBLIC ${Boost_LIBRARIES})
 #   * headers can be included by C++ code `#include <foo/Bar.hpp>`
 install(
     TARGETS sch-core
-    EXPORT "${targets_export_name}"
+    EXPORT "${TARGETS_EXPORT_NAME}"
     LIBRARY DESTINATION "lib"
     ARCHIVE DESTINATION "lib"
     RUNTIME DESTINATION "bin"
-    INCLUDES DESTINATION "${include_install_dir}"
+    INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}"
 )
-install(FILES ${HEADERS} DESTINATION ${include_install_destination})
+install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
 
