@@ -126,6 +126,7 @@ void TestMaterial::initializeUniverse()
 
     sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
     sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
+    sObj.addObject(new S_Point());
 
     std::cout << "6 Non-STP BV Objects added to scene" << std::endl;
   }
