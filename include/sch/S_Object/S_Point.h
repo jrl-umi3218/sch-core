@@ -1,7 +1,6 @@
 #ifndef _S_POINT_H
 #define _S_POINT_H
 
-#pragma once
 #include <sch/sch_api.h>
 #include <sch/S_Object/S_ObjectNonNormalized.h>
 
@@ -11,11 +10,11 @@ namespace sch
     public S_ObjectNonNormalized
   {
   public:
-    SCH_API S_Point(void);
-    SCH_API ~S_Point(void);
+    SCH_API S_Point();
+    SCH_API ~S_Point();
 
-    void setDisplayRadius( Scalar r){displayRadius_ = r;}
-    Scalar getDisplayRadius() const {return displayRadius_ ;}
+    SCH_API void setDisplayRadius( Scalar r);
+    SCH_API Scalar getDisplayRadius() const ;
 
 
   protected:
