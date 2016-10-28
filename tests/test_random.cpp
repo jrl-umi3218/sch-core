@@ -1,4 +1,4 @@
-#define NON_STP_BV_OBJECTS
+#define NON_STP_BV_OBJECTS true
 
 #include "shared-tests/tests/common.h"
 
@@ -18,7 +18,7 @@ int main ()
   #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
-  TestMaterial universe;
+  TestMaterial universe(NON_STP_BV_OBJECTS);
   universe.initializeUniverse();
   universe.RandomTestSupportFunction();
   universe.RandomTestSupportFunctionAllObjects();

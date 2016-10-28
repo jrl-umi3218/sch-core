@@ -16,7 +16,7 @@ int main ()
   #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
-  TestMaterial universe;
+  TestMaterial universe(false); //No other objects than STP-BVs
   universe.initializeUniverse();
   universe.TestAnimation();
   return 0;
