@@ -19,16 +19,12 @@ void display (void);
 
 struct TestMaterial
 {
-  TestMaterial()
+  TestMaterial(bool nonSTPBV)
     : sObj()
     , CurrentObj(0)
     , stppObjects()
   {
-#ifdef NON_STP_BV_OBJECTS
-  nonSTPBV=1;
-#else
-  nonSTPBV=0;
-#endif // NON_STP_BV_OBJECTS
+      nonSTPBV_=nonSTPBV;
   }
 
   void DoTest();
@@ -50,10 +46,11 @@ struct TestMaterial
 
   unsigned int CurrentObj;
 
- int nonSTPBV;
+
 
 private:
   std::vector<sch::STP_BV_P> stppObjects;
+  bool nonSTPBV_;
 };
 
 #endif //COMMON_TEST_H

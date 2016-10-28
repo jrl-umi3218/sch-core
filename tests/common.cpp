@@ -29,7 +29,7 @@ void TestMaterial::RandomTestSupportFunction()
 
 
 
-  Vector3* v=new Vector3[RandomTestEnd];
+  std::vector<Vector3> v(RandomTestEnd);
 
   for (long j=0; j<RandomTestEnd; j++)
   {
@@ -75,7 +75,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
   srand(static_cast<unsigned int>(time(NULL)));
   clock_t begin, end;
 
-  Vector3* v=new Vector3[RandomTestEnd];
+  std::vector<Vector3> v(RandomTestEnd);
 
   for (long j=0; j<RandomTestEnd; j++)
   {
@@ -98,8 +98,6 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 
   end=clock();
 
-  delete[] v;
-
   std::cout << "  computation time: " << ((double)(end- begin) / CLOCKS_PER_SEC) <<  std::endl;
 
 #ifdef DO_TEST
@@ -117,7 +115,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
 
 void TestMaterial::initializeUniverse()
 {
-  if (nonSTPBV)
+  if (nonSTPBV_)
   {
     sObj.addObject(new S_Box(0.2,0.2,0.2));
     sObj.addObject(new S_Box(0.2,0.2,0.2));
@@ -248,8 +246,8 @@ void TestMaterial::TestPrecision()
 {
   std::cout << "TestPrecision" << std::endl;
 
-  Vector3* axe=new Vector3[AnimationEnd] ;
-  double* angle=new double[AnimationEnd] ;
+  std::vector<Vector3> axe(AnimationEnd) ;
+  std::vector<double> angle(AnimationEnd) ;
 
   std::cout.precision(18);
 
@@ -367,8 +365,6 @@ void TestMaterial::TestPrecision()
 
   end=clock();
 
-  delete [] axe;
-  delete [] angle;
 
 #ifdef OUTPUT_FILE
   outfile.close();
