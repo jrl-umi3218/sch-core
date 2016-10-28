@@ -1,7 +1,7 @@
 #include "shared-tests/tests/common.h"
 
 #ifdef ENABLE_SIGFPE
-  #include <fenv.h>
+# include <fenv.h>
 #endif
 
 using namespace sch;
