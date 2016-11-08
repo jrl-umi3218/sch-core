@@ -48,13 +48,46 @@ And a description of strictly convext hulls is detailed in:
 Installation
 ------------
 
-Building using cmake:
-- create a new build directory
-- run `cmake ..` in this directory 
-  (you probably want to define `CMAKE_INSTALL_PREFIX`)
-- `make`
-- `make install`
 
+### Ubuntu 14.04 and 16.04 binary ppa install
+
+Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
+```bash
+sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
+sudo apt-get update
+sudo apt-get install libsch-core-dev libsch-core-doc
+```
+
+### Homebrew OS X install
+
+Install from the command line using [Homebrew](brew.sh):
+
+```bash
+# install homebrew package manager
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install caskroom application manager
+brew install caskroom/cask/brew-cask
+# tap homebrew-science package repository
+brew tap homebrew/science
+# tap ahundt-robotics repository
+brew tap ahundt/robotics
+# install tasks and all its dependencies
+brew install sch-core
+```
+
+## Manually build from source
+
+
+Building using cmake:
+
+```bash
+git clone https://github.com/jrl-umi3218/sch-core.git --recursive
+mkdir -p sch-core/build
+cd sch-core/build
+cmake .. # you probably want to define `CMAKE_INSTALL_PREFIX`
+make
+sudo make install
+```
 
 Indentation
 ------------
