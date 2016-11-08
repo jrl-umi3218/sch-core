@@ -55,7 +55,7 @@ Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+ar
 ```bash
 sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
 sudo apt-get update
-sudo apt-get install sch-core
+sudo apt-get install libsch-core-dev libsch-core-doc
 ```
 
 ### Homebrew OS X install
@@ -81,7 +81,7 @@ brew install sch-core
 Building using cmake:
 
 ```bash
-git clone https://github.com/jrl-umi3218/sch-core.git
+git clone https://github.com/jrl-umi3218/sch-core.git --recursive
 mkdir -p sch-core/build
 cd sch-core/build
 cmake .. # you probably want to define `CMAKE_INSTALL_PREFIX`
