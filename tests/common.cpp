@@ -199,6 +199,8 @@ void TestMaterial::initializeUniverse()
     sObj[i]->setPosition(position);
   }
 
+  std::cout << "A total of "<< sObj.size() <<" objects in the scene"<<std::endl;
+
   DoTest();
 }
 
