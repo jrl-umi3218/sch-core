@@ -1,7 +1,6 @@
 #ifndef _S_CAPSULE_H
 #define _S_CAPSULE_H
 
-#include <sch/sch_api.h>
 #include <sch/S_Object/S_ObjectNormalized.h>
 
 namespace sch

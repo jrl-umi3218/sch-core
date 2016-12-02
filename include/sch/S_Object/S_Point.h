@@ -1,7 +1,6 @@
 #ifndef _S_POINT_H
 #define _S_POINT_H
 
-#include <sch/sch_api.h>
 #include <sch/S_Object/S_ObjectNonNormalized.h>
 
 namespace sch
