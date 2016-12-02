@@ -125,8 +125,9 @@ void TestMaterial::initializeUniverse()
     sObj.addObject(new S_Superellipsoid(.25,.30,.30,0.9,0.2));
     sObj.addObject(new S_Superellipsoid(.11,.30,.14,0.4,0.8));
     sObj.addObject(new S_Point());
+    sObj.addObject(new S_Capsule(Point3(0.1,0.1,0.1),Point3(-0.1,-0.1,-0.1),0.2));
 
-    std::cout << "7 Non-STP BV Objects added to scene" << std::endl;
+    std::cout << "8 Non-STP BV Objects added to scene" << std::endl;
   }
 
 #ifdef MULTI_OBJECTS_TEST
@@ -197,6 +198,8 @@ void TestMaterial::initializeUniverse()
     position *= DispersionScale;
     sObj[i]->setPosition(position);
   }
+
+  std::cout << "A total of "<< sObj.size() <<" objects in the scene"<<std::endl;
 
   DoTest();
 }
