@@ -51,3 +51,4 @@ add_custom_command(TARGET test_animation POST_BUILD
   ${CMAKE_BINARY_DIR}/tests/
 )
 
+
