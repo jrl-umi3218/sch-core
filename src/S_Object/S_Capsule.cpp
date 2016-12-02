@@ -12,14 +12,18 @@ S_Capsule::~S_Capsule()
 Point3 S_Capsule::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {
   Point3 d(p2_);
-  d-=p1_;
+  d -= p1_;
 
   if (d*v>0)
-    d=p2_;
+  {
+    d = p2_;
+  }
   else
-    d=p1_;
+  {
+    d = p1_;
+  }
 
-  d+=v*radius_;
+  d += v*radius_;
 
   return d;
 }
