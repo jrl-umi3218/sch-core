@@ -20,7 +20,7 @@ namespace sch
     SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
     SCH_API virtual	S_ObjectType getType() const;
 
-    Scalar displayRadius_;
+    SCH_API Scalar displayRadius_;
   };
 }
 #endif

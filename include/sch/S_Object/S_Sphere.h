@@ -25,7 +25,7 @@ namespace sch
     SCH_API virtual Scalar getRadius() const;
 
   protected:
-    Scalar radius_;
+    SCH_API Scalar radius_;
   };
 }
 
