@@ -227,7 +227,9 @@ namespace sch
       TSphere,
       TBox,
       TSuperellipsoid,
-      TSTP_BV_WithPolyhedron
+      TSTP_BV_WithPolyhedron,
+      T_Point,
+      T_Capsule
     };
 
     /*!

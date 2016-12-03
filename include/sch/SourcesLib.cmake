@@ -66,6 +66,8 @@ SET(HEADERS_S_Object
   S_Object/S_Object.hxx
   S_Object/S_ObjectNonNormalized.hxx
   S_Object/S_ObjectNormalized.hxx
+  S_Object/S_Point.h
+  S_Object/S_Capsule.h
 )
 InstallFiles(HEADERS_S_Object	"S_Object")
 

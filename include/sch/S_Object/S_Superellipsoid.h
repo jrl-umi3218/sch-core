@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include <sch/sch_api.h>
 #include <sch/S_Object/S_ObjectNonNormalized.h>
 
 namespace sch
