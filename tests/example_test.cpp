@@ -1,7 +1,7 @@
 #include "shared-tests/examples/example_common.h"
 
 #ifdef ENABLE_SIGFPE
-  #include <fenv.h>
+# include <fenv.h>
 #endif
 
 void display() {}

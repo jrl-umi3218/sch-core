@@ -2,7 +2,6 @@
 #ifndef _S_SPHERE_H
 #define _S_SPHERE_H
 
-#include <sch/sch_api.h>
 #include <sch/S_Object/S_ObjectNormalized.h>
 
 namespace sch

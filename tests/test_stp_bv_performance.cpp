@@ -1,5 +1,3 @@
-#define NON_STP_BV_OBJECTS true
-
 #include "shared-tests/tests/common.h"
 
 #ifdef ENABLE_SIGFPE
@@ -18,7 +16,7 @@ int main ()
   #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
-  TestMaterial universe(NON_STP_BV_OBJECTS );
+  TestMaterial universe(false); //No other objects than STP-BVs
   universe.initializeUniverse();
   universe.TestAnimation();
   return 0;

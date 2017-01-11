@@ -36,6 +36,7 @@ addUnitTest(test_animation)
 addUnitTest(test_precision)
 addUnitTest(test_general)
 addUnitTest(test_random)
+addUnitTest(test_stp_bv_performance)
 
 #### Data
 set(DATA_FOLDER ${CMAKE_SOURCE_DIR}/tests/shared-tests/data/)
@@ -49,4 +50,5 @@ add_custom_command(TARGET test_animation POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy ${DATA_FOLDER}/sample_polyhedron.otp
   ${CMAKE_BINARY_DIR}/tests/
 )
+
 

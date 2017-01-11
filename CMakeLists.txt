@@ -15,10 +15,10 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 SET(PROJECT_NAME sch-core)
 SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Volumes")
-set(PROJECT_CONTACT francois.keith@lirmm.fr)
+set(PROJECT_CONTACT pierre.gergondet@gmail.com)
 SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
-INCLUDE(cmake/msvc-specific.cmake)
+SET(PROJECT_DEBUG_POSTFIX "_d")
 
 SETUP_PROJECT()
 
@@ -26,8 +26,6 @@ SETUP_PROJECT()
 # Boost
 SET(BOOST_COMPONENTS serialization)
 SEARCH_FOR_BOOST()
-
-PKG_CONFIG_APPEND_LIBS("sch-core")
 
 option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
 if(ENABLE_SIGFPE)
@@ -50,6 +48,8 @@ ELSE()
   MESSAGE(WARNING
     "Tests should only be disabled for speficic cases. Do it at your own risk.")
 ENDIF()
+
+PKG_CONFIG_APPEND_LIBS(sch-core)
 
 SETUP_PROJECT_FINALIZE()
 SETUP_PROJECT_CPACK()
