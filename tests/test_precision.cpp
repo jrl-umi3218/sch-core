@@ -18,7 +18,7 @@ int main ()
   #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
   #endif
-  TestMaterial universe(NON_STP_BV_OBJECTS);
+  TestMaterial universe = TestMaterial(NON_STP_BV_OBJECTS);
   universe.initializeUniverse();
   universe.TestPrecision();
   return 0;
