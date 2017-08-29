@@ -1,3 +1,9 @@
+sch-core (1.0.1-1ubuntu1) unstable; urgency=medium
+
+  * Increment package version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 29 Aug 2017 09:58:31 +0900
+
 sch-core (1.0-123-g7778-1trusty1) trusty; urgency=medium
 
   * Initial release.
