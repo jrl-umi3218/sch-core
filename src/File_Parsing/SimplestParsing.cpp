@@ -29,20 +29,7 @@ void SimplestParsing::load(const char* filename)
 
   }
 
-  std::string strbuf;
-  const unsigned BUF_SIZE = 500000;
-  char buf[BUF_SIZE];
-
-
-
-  do
-  {
-    tmp_is.read(buf, BUF_SIZE);
-    strbuf += std::string(buf, tmp_is.gcount());
-  }
-  while(!tmp_is.eof());
-
-  stream_.str(strbuf);
+  stream_ << tmp_is.rdbuf();
 }
 
 std::stringstream& SimplestParsing::operator()()
