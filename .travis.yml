@@ -6,7 +6,6 @@ env:
   - secure: docMUTjBQtm4uaLVtyRvv/rbq7JfmsuWGVPd/8Ay2lwZdkquAeFnK8YSptvi5+8x9VvJrv3Xu+gQZXtZSkETfpNEzORaaOVgZ4na8QzxKNQdw45leucZ28EbEQ7fBvg7e3s2l4EWjjjrAPz82+KTyQXUlNplRYaJk0CTBsbI29o=
   - secure: bMjZcr/JjHXZht+jJovEYW3NFpQam+btwZMuFLC2zlj+FsCcnWOUEtRqygE5sm/BukULxRrLTK5NxeaA7VGrbrlrAuJh5KK5NltCP03QTwvH/Zaah/JrihHZ1IkZt//Rxi8UcF2P45LEvCGulcLF8sY4YRJPklcm5VJViNimzn8=
   - LCOV_IGNORE_RULES="*tests* *examples*"
-  - MASTER_PPA="george-edison55/precise-backports"
 notifications:
   slack:
     secure: SAnQfxV4qW1gGCZ+6cTOJ01b9GUxGHfr15QOLNp2ird4HoTNwpF+hSATGXhsYUrqaBlaC62dSi3TfMDMVrDHbTXzlgLAqPf46ZeKzjU+3tXvXPDNbfFIy5vd3xIJ0K61Jgvt2xZ5tHo89zRdorTHHQ9nALzAgm6FKeIyGzmL4Xs=
