@@ -8,14 +8,8 @@ env:
   - LCOV_IGNORE_RULES="*tests* *examples*"
   - MASTER_PPA="george-edison55/precise-backports"
 notifications:
-  email:
-  - francois.keith@gmail.com
-branches:
-  only:
-  - master
-  - debian
-  - benchmark
-  - benchmark_eigen
+  slack:
+    secure: SAnQfxV4qW1gGCZ+6cTOJ01b9GUxGHfr15QOLNp2ird4HoTNwpF+hSATGXhsYUrqaBlaC62dSi3TfMDMVrDHbTXzlgLAqPf46ZeKzjU+3tXvXPDNbfFIy5vd3xIJ0K61Jgvt2xZ5tHo89zRdorTHHQ9nALzAgm6FKeIyGzmL4Xs=
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
