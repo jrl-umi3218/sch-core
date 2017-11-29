@@ -2,6 +2,10 @@
 
 #include <sch/File_Parsing/SimplestParsing.h>
 
+#include <fstream>
+#include <stdexcept>
+#include <string>
+
 
 using namespace sch;
 
@@ -70,26 +74,30 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 {
   clear();
 
-  FileParsing::SimplestParsing is;
+  std::ifstream is(filename.c_str());
+  if(!is.is_open())
+  {
+    std::stringstream errmsg;
+    errmsg << "EXCEPTION: Unable to open File " << filename << std::endl;
+    throw std::invalid_argument(errmsg.str());
+  }
 
-  is.load(filename.c_str());
+  std::string line;
 
-  int ent;
-  is.jumpSeparators();
-  is()>>ent;
-  is.jumpSeparators();
-  is()>>ent; //get the number of points
-  is.find("\n");
-  is.jumpSeparators();
-  for (int g=0; g<ent; g++)
+  // Discard first line
+  std::getline(is, line);
+  size_t nr_vertexes;
+  size_t nr_faces;
+  is>>nr_vertexes; //get the number of points
+  vertexes_.reserve(nr_vertexes);
+  is>>nr_faces;
+  triangles_.reserve(nr_faces);
+  // Discard the last number
+  std::getline(is, line);
+  for (size_t g=0; g<nr_vertexes; g++)
   {
     Scalar y[3];
-    is()>>y[0];//get the coords
-    is.jumpSeparators();
-    is()>>y[1];//get the coords
-    is.jumpSeparators();
-    is()>>y[2];//get the coords
-    is.jumpSeparators();
+    is >> y[0] >> y[1] >> y[2];//get the coords
 
     S_PolyhedronVertex *v;
     v=new S_PolyhedronVertex();
@@ -99,49 +107,60 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
   }
 
-  while (is.find("normal:"))//get the normals
+  //get the normals
+  const size_t normalSearchLen = 13;
+  const char normalSearch[normalSearchLen + 1] = "    - normal:";
+  const size_t verticesSearchLen = 15;
+  const char verticesSearch[verticesSearchLen + 1] = "    - vertices:";
+  while(std::getline(is, line).good())
   {
-    is.jumpSeparators();
-    Scalar y[3];
+    if(line.substr(0, normalSearchLen) == normalSearch)
+    {
+      std::stringstream ss;
+      ss << line.substr(normalSearchLen);
+      Scalar y[3];
 
-    PolyhedronTriangle t;
+      PolyhedronTriangle t;
 
-    is()>>y[0];
-    is.jumpSeparators();
-    is()>>y[1];
-    is.jumpSeparators();
-    is()>>y[2];
-    is.jumpSeparators();
+      ss>>y[0];
+      ss>>y[1];
+      ss>>y[2];
 
-    t.normal.Set(y[0],y[1],y[2]);
-    t.normal.normalize();
+      t.normal.Set(y[0],y[1],y[2]);
+      t.normal.normalize();
 
-    is.find("vertices");//get the indexes
-    is.find("p");
-    is()>>t.a;
-    is.find("p");
-    is.jumpSeparators();
-    is()>>t.b;
-    is.find("p");
-    is.jumpSeparators();
-    is()>>t.c;
+      while(std::getline(is, line).good())
+      {
+        if(line.substr(0, verticesSearchLen) == verticesSearch)
+        {
+          std::stringstream ss;
+          ss << line.substr(verticesSearchLen);
+          char c = '\0';
+          while(c!='p' && ss.good()) { ss.get(c); }
+          ss >> t.a;
+          c = '\0';
+          while(c!='p' && ss.good()) { ss.get(c); }
+          ss >> t.b;
+          c = '\0';
+          while(c!='p' && ss.good()) { ss.get(c); }
+          ss >> t.c;
 
+          //updatingNeighbors
+          vertexes_[t.a]->addNeighbor(vertexes_[t.b]);
+          vertexes_[t.a]->addNeighbor(vertexes_[t.c]);
 
+          vertexes_[t.b]->addNeighbor(vertexes_[t.a]);
+          vertexes_[t.b]->addNeighbor(vertexes_[t.c]);
 
-    //updatingNeighbors
-    vertexes_[t.a]->addNeighbor(vertexes_[t.b]);
-    vertexes_[t.a]->addNeighbor(vertexes_[t.c]);
+          vertexes_[t.c]->addNeighbor(vertexes_[t.a]);
+          vertexes_[t.c]->addNeighbor(vertexes_[t.b]);
 
-    vertexes_[t.b]->addNeighbor(vertexes_[t.a]);
-    vertexes_[t.b]->addNeighbor(vertexes_[t.c]);
+          triangles_.push_back(t);
 
-    vertexes_[t.c]->addNeighbor(vertexes_[t.a]);
-    vertexes_[t.c]->addNeighbor(vertexes_[t.b]);
-
-    triangles_.push_back(t);
-
-
-
+          break;
+        }
+      }
+    }
   }
 
   for (unsigned int i=0; i<vertexes_.size(); i++)
