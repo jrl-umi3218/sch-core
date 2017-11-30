@@ -23,7 +23,7 @@ void S_PolyhedronVertex::clearNeighbors()
 S_PolyhedronVertex* S_PolyhedronVertex::clone()
 {
   S_PolyhedronVertex* p=new S_PolyhedronVertex();
-  p->setCordinates(cordinates_);
+  p->setCoordinates(cordinates_);
   p->setNumber(number_);
   return p;
 }
