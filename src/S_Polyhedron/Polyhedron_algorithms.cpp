@@ -101,7 +101,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
     S_PolyhedronVertex *v;
     v=new S_PolyhedronVertex();
-    v->setCordinates(y[0],y[1],y[2]);
+    v->setCoordinates(y[0],y[1],y[2]);
     v->setNumber(unsigned (vertexes_.size()));
     vertexes_.push_back(v);
 
@@ -242,7 +242,7 @@ Point3 Polyhedron_algorithms::naiveSupport(const Vector3&v)const
 
   Scalar supportH=(*current)->supportH(v);
 
-  Vector3 best=(*current)->getCordinates();
+  Vector3 best=(*current)->getCoordinates();
 
   current++;
 
@@ -252,7 +252,7 @@ Point3 Polyhedron_algorithms::naiveSupport(const Vector3&v)const
     if ((*current)->supportH(v)>supportH)
     {
       supportH=(*current)->supportH(v);
-      best=(*current)->getCordinates();
+      best=(*current)->getCoordinates();
     }
 
     current++;
@@ -287,7 +287,7 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
   lastFeature=current->getNumber();
 
 
-  return current->getCordinates();
+  return current->getCoordinates();
 
 
 
