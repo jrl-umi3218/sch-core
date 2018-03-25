@@ -23,7 +23,7 @@ namespace sch
 
 
 
-    SCH_API virtual ~CD_SimplexEnhanced(void);
+    SCH_API virtual ~CD_SimplexEnhanced(void) override;
 
 
     /*!
@@ -31,7 +31,7 @@ namespace sch
     * \param k is the filter used to know wich vertexes will be kept and in wich order
     * \updateVetors must be called after this function to keep the vectors up to date.
     */
-    SCH_API virtual void filter(const CD_SimplexKeptPoints &k);
+    SCH_API virtual void filter(const CD_SimplexKeptPoints &k) override;
 
     /*!
     * \brief returns the distances of the simplex points to the origin

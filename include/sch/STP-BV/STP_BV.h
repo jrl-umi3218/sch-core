@@ -175,21 +175,21 @@ namespace sch
     SCH_API STP_BV(void);
     SCH_API STP_BV(const STP_BV&);
 
-    SCH_API virtual ~STP_BV(void);
+    SCH_API virtual ~STP_BV(void) override;
 
     SCH_API virtual STP_BV & operator=(const STP_BV&);
 
 
-    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const override;
 
-    SCH_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const override;
 
     /*!
     *  \brief Constructs the object from a file describing its STP_BV decomposition
     *  \param filename path to the file describing the STP_BV decomposition of the object
     *
     */
-    SCH_API virtual void constructFromFile(const std::string& filename);
+    SCH_API virtual void constructFromFile(const std::string& filename) override;
     SCH_API virtual void constructFromFileWithGL(const std::string& filename)
     {
       constructFromFile(filename);

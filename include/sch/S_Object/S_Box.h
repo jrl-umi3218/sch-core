@@ -18,12 +18,12 @@ namespace sch
     * \param depth, the depth of the box (z axis)
     */
     SCH_API S_Box(Scalar width,Scalar height,Scalar depth);
-    SCH_API virtual ~S_Box(void);
+    SCH_API virtual ~S_Box(void) override;
 
 
-    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const override;
 
-    SCH_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const override;
 
     SCH_API virtual void getBoxParameters(Scalar & a, Scalar & b, Scalar & c) const;
   protected :

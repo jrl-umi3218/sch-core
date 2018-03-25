@@ -21,32 +21,32 @@ namespace sch
     SCH_API STP_BigSphere();
     SCH_API STP_BigSphere(Scalar radius, Point3 center);
     SCH_API STP_BigSphere(const STP_BigSphere& s);
-    SCH_API ~STP_BigSphere();
+    SCH_API virtual ~STP_BigSphere() override;
 
     SCH_API const Point3& getCenter() const;
     //void setVVR(const Vector3* vvr);
     SCH_API void setVVR(const STP_VVR* vvr);
 
-    SCH_API virtual void print() const;
+    SCH_API virtual void print() const override;
 
-    SCH_API virtual bool isHere(const Vector3& v) const;
-    SCH_API virtual bool isHereFarthestNeighbour(const Vector3& v);
-    SCH_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v);
-    SCH_API virtual bool isHereFirstNeighbour(const Vector3& v);
-    SCH_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp);
-    SCH_API virtual bool isHereHybrid(const Vector3& v,int idp);
+    SCH_API virtual bool isHere(const Vector3& v) const override;
+    SCH_API virtual bool isHereFarthestNeighbour(const Vector3& v) override;
+    SCH_API virtual bool isHereFarthestNeighbourPrime(const Vector3& v) override;
+    SCH_API virtual bool isHereFirstNeighbour(const Vector3& v) override;
+    SCH_API virtual bool isHereFirstNeighbourPrime(const Vector3& v,int idp) override;
+    SCH_API virtual bool isHereHybrid(const Vector3& v,int idp) override;
 
-    SCH_API virtual int getNextBV(unsigned int id) const;
+    SCH_API virtual int getNextBV(unsigned int id) const override;
 
     SCH_API virtual Scalar supportH(const Vector3& v) const;
-    SCH_API virtual Point3 support(const Vector3& v) const;
+    SCH_API virtual Point3 support(const Vector3& v) const override;
 
     SCH_API virtual bool ray_cast(const Point3& source, const Point3& target,
                                   Scalar& param, Vector3& normal) const;
 
-    SCH_API virtual STP_Feature* clone() const;
+    SCH_API virtual STP_Feature* clone() const override;
 
-    SCH_API virtual int getNextBVPrime() const
+    SCH_API virtual int getNextBVPrime() const override
     {
       return m_nextBVPrime;
     }

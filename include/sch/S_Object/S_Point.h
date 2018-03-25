@@ -10,15 +10,15 @@ namespace sch
   {
   public:
     SCH_API S_Point();
-    SCH_API ~S_Point();
+    SCH_API virtual ~S_Point() override;
 
     SCH_API void setDisplayRadius( Scalar r);
     SCH_API Scalar getDisplayRadius() const ;
 
 
   protected:
-    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-    SCH_API virtual	S_ObjectType getType() const;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const override;
+    SCH_API virtual 	S_ObjectType getType() const override;
 
     Scalar displayRadius_;
   };
