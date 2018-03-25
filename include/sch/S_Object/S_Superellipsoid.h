@@ -13,11 +13,11 @@ namespace sch
   {
   public:
     SCH_API S_Superellipsoid(Scalar a,Scalar b,Scalar c,Scalar epsilon1,Scalar epsilon2);
-    SCH_API virtual ~S_Superellipsoid(void);
+    SCH_API virtual ~S_Superellipsoid(void) override;
 
-    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const override;
 
-    SCH_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const override;
 
     SCH_API virtual void getEllipsoidParameter(Scalar & a, Scalar & b, Scalar & c,
         Scalar & epsilon1, Scalar & epsilon2) const;

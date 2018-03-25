@@ -10,13 +10,13 @@ namespace sch
   {
   public:
     SCH_API S_Capsule(Point3 p1, Point3 p2, Scalar radius);
-    SCH_API ~S_Capsule();
+    SCH_API virtual ~S_Capsule() override;
 
 
 
   protected:
-    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-    SCH_API virtual	S_ObjectType getType() const;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const override;
+    SCH_API virtual 	S_ObjectType getType() const override;
 
     Point3 p1_, p2_;
 

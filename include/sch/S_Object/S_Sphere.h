@@ -16,11 +16,11 @@ namespace sch
     * \param radius, the sphere radius
     */
     SCH_API S_Sphere(const Scalar& radius);
-    SCH_API virtual ~S_Sphere();
+    SCH_API virtual ~S_Sphere() override;
 
-    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const override;
 
-    SCH_API virtual S_ObjectType getType() const;
+    SCH_API virtual S_ObjectType getType() const override;
 
     SCH_API virtual Scalar getRadius() const;
 

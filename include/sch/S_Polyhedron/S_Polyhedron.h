@@ -23,7 +23,7 @@ namespace sch
   public:
     SCH_API S_Polyhedron(void);
     SCH_API S_Polyhedron(const S_Polyhedron&);
-    SCH_API virtual ~S_Polyhedron(void);
+    SCH_API virtual ~S_Polyhedron(void) override;
 
     SCH_API const S_Polyhedron& operator =(const S_Polyhedron&);
 
@@ -31,7 +31,7 @@ namespace sch
     * \brief loads the polyhedron from a file. the file must be in the format of Qhull qconvex output, called with these options :
     * \ "qconvex TI <input_filename> TO <output_filename> Qt o f"
     */
-    SCH_API virtual void constructFromFile(const std::string& filename);
+    SCH_API virtual void constructFromFile(const std::string& filename) override;
 
     /*!
     *  \brief Load the object from a binary archive
@@ -99,8 +99,8 @@ namespace sch
     BOOST_SERIALIZATION_SPLIT_MEMBER()
 
   protected:
-    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-    SCH_API virtual	S_ObjectType getType() const;
+    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const override;
+    SCH_API virtual 	S_ObjectType getType() const override;
 
   protected:
 
