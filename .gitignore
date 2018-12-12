@@ -1,3 +1,9 @@
+*.swp
+*~
+CMakeLists.txt.user*
+*.autosave
+build/
+
 # Compiled Object files
 *.slo
 *.lo
