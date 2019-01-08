@@ -1,3 +1,4 @@
+
 # Compiled Object files
 *.slo
 *.lo
@@ -32,3 +33,10 @@ build/*
 xcodebuild/*
 build2/*
 xcodebuild2/*
+
+# Temp build swap and other
+*.swp
+*~
+CMakeLists.txt.user*
+*.autosave
+build/

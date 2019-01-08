@@ -23,7 +23,7 @@ void S_PolyhedronVertex::clearNeighbors()
 S_PolyhedronVertex* S_PolyhedronVertex::clone()
 {
   S_PolyhedronVertex* p=new S_PolyhedronVertex();
-  p->setCordinates(cordinates_);
+  p->setCoordinates(cordinates_);
   p->setNumber(number_);
   return p;
 }
@@ -113,15 +113,30 @@ unsigned S_PolyhedronVertex::getNumNeighbors()const
 
 void S_PolyhedronVertex::setCordinates(const Scalar &x,const  Scalar &y, const Scalar &z)
 {
+  setCoordinates(x, y, z);
+}
+
+void S_PolyhedronVertex::setCoordinates(const Scalar &x,const  Scalar &y, const Scalar &z)
+{
   cordinates_.Set(x,y,z);
 }
 
 void S_PolyhedronVertex::setCordinates(const Vector3 &v)
 {
+  setCoordinates(v);
+}
+
+void S_PolyhedronVertex::setCoordinates(const Vector3 &v)
+{
   cordinates_=v;
 }
 
 const Vector3& S_PolyhedronVertex::getCordinates()const
+{
+  return getCoordinates();
+}
+
+const Vector3& S_PolyhedronVertex::getCoordinates()const
 {
   return cordinates_;
 }

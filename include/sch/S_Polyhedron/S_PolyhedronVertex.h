@@ -7,6 +7,7 @@
 #include <boost/noncopyable.hpp>
 
 #include <sch/sch_api.h>
+#include <sch/core/deprecated.hh>
 #include <sch/Matrix/SCH_Types.h>
 
 namespace sch
@@ -21,11 +22,14 @@ namespace sch
 
     SCH_API Scalar supportH(const Vector3& direction)const;
 
-    SCH_API void setCordinates(const Vector3& v);
+    SCH_API SCH_CORE_DEPRECATED void setCordinates(const Vector3& v);
+    SCH_API void setCoordinates(const Vector3& v);
 
-    SCH_API void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
+    SCH_API SCH_CORE_DEPRECATED void setCordinates(const Scalar& x,const Scalar& y,const Scalar& z);
+    SCH_API void setCoordinates(const Scalar& x,const Scalar& y,const Scalar& z);
 
-    SCH_API const Vector3& getCordinates()const;
+    SCH_API SCH_CORE_DEPRECATED const Vector3& getCordinates()const;
+    SCH_API const Vector3& getCoordinates()const;
 
     /*!
     *  \brief Gives a copy of the current vertex, without the neighbors array, keeping just the cordinates and the number
