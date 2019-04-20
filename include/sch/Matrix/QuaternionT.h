@@ -40,6 +40,7 @@ namespace CD_Matrix
       this->m_x=A.m_x;
       this->m_y=A.m_y;
       this->m_z=A.m_z;
+      return *this;
     }
 
     QuaternionT<T> Conjugate() const
