@@ -1,12 +1,14 @@
 sch-core
 ========
 
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)/[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-green.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Build Status](https://travis-ci.org/jrl-umi3218/sch-core.svg?branch=master)](https://travis-ci.org/jrl-umi3218/sch-core)
 [![Coverage Status](https://coveralls.io/repos/jrl-umi3218/sch-core/badge.png)](https://coveralls.io/r/jrl-umi3218/sch-core)
 
 
 Documentation
 -------------
+
 Efficient implementation of GJK algorithm for proximity queries (collision detection, distance computations, penetration depths and witness points) between convex shapes.
 
 The library can be extended to any convex shape for which we can compute the support function, but it already supports polyhedrons, boxes, spheres and ellipsoids, and it is particularly optimized for strictly convex hulls (SCH/STP-BV).
@@ -43,13 +45,24 @@ And a description of strictly convext hulls is detailed in:
     }
 
 
+License
+-------
+
+This library is provided under two licenses:
+
+- The GPL-v2 version is the most complete, it includes inter-penetration depth computation based on the [SOLID](https://github.com/dtecta/solid3) code;
+- The BSD-2-Clause version does not include this algorithm;
+
+Note: the two versions have the same API and ABI.
 
 
 Installation
 ------------
 
 
-### Ubuntu 14.04 and 16.04 binary ppa install
+## Ubuntu LTS (14.04, 16.04, 18.04): PPA
+
+Note: the packaged version is the BSD-2-Clause library, if you require inter-penetration depth computation, you should build the library yourself
 
 Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
 ```bash
@@ -58,7 +71,7 @@ sudo apt-get update
 sudo apt-get install libsch-core-dev libsch-core-doc
 ```
 
-### Homebrew OS X install
+## Homebrew OS X install
 
 Install from the command line using [Homebrew](brew.sh):
 
@@ -88,6 +101,10 @@ cmake .. # you probably want to define `CMAKE_INSTALL_PREFIX`
 make
 sudo make install
 ```
+
+#### CMake options
+
+- `BUILD_BSD`: If ON, build the library without its GPL components (Default: OFF)
 
 Indentation
 ------------
