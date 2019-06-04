@@ -1,31 +1,29 @@
 cmake_minimum_required(VERSION 2.8)
 
-INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/eigen.cmake)
-INCLUDE(cmake/boost.cmake)
-INCLUDE(cmake/cpack.cmake)
-INCLUDE(cmake/msvc-specific.cmake)
+include(cmake/base.cmake)
+include(cmake/cpack.cmake)
+include(cmake/msvc-specific.cmake)
 
 set(CXX_DISABLE_WERROR True)
-set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # ----------------------------------------------------------------
 # --- Project declaration ----------------------------------------
 # ----------------------------------------------------------------
 
-SET(PROJECT_NAME sch-core)
-SET(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Volumes")
+set(PROJECT_NAME sch-core)
+set(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Volumes")
 set(PROJECT_CONTACT pierre.gergondet@gmail.com)
-SET(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
+set(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
-SET(PROJECT_DEBUG_POSTFIX "_d")
+set(PROJECT_DEBUG_POSTFIX "_d")
 
-SETUP_PROJECT()
+setup_project()
 
 # Search for dependencies.
 # Boost
-SET(BOOST_COMPONENTS serialization)
-SEARCH_FOR_BOOST()
+add_project_dependency(Boost COMPONENTS serialization)
+
+option(BUILD_BSD "Build without GPL components." OFF)
 
 option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
 if(ENABLE_SIGFPE)
@@ -36,21 +34,18 @@ endif()
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
-IF(MSVC)
-  SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
-ENDIF(MSVC)
+if(MSVC)
+  set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+endif(MSVC)
 
-ADD_SUBDIRECTORY(src)
-ADD_SUBDIRECTORY(examples)
-IF(NOT DISABLE_TESTS)
-  ADD_SUBDIRECTORY(tests)
-ELSE()
-  MESSAGE(WARNING
-    "Tests should only be disabled for speficic cases. Do it at your own risk.")
-ENDIF()
+add_subdirectory(src)
+add_subdirectory(examples)
+if(NOT DISABLE_TESTS)
+  add_subdirectory(tests)
+endif()
 
-PKG_CONFIG_APPEND_LIBS(sch-core)
+pkg_config_append_libs(sch-core)
 
-SETUP_PROJECT_FINALIZE()
-SETUP_PROJECT_CPACK()
-SETUP_PROJECT_PACKAGE_FINALIZE()
+setup_project_finalize()
+setup_project_cpack()
+setup_project_package_finalize()

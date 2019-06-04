@@ -11,16 +11,15 @@ macro(InstallFiles  files  sub_folder)
        PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
   )
 
-  list(APPEND  HEADERS 	${allfiles})
+  list(APPEND  HEADERS   ${allfiles})
 endmacro(InstallFiles)
 
-SET(HEADERS_ROOT
+set(HEADERS_ROOT
   sch_api.h
 )
 InstallFiles(HEADERS_ROOT  "")
 
-
-SET(HEADERS_CD
+set(HEADERS_CD
   CD/CD_Pair.h
   CD/CD_Scene.h
   CD/CD_SimplexEnhanced.h
@@ -29,23 +28,19 @@ SET(HEADERS_CD
   CD/CD_SimplexEnhanced.hxx
   CD/CD_Simplex.hxx
 )
-InstallFiles(HEADERS_CD  "CD")
+InstallFiles(HEADERS_CD "CD")
 
-
-SET(HEADERS_CD_Penetration
+set(HEADERS_CD_Penetration
   CD_Penetration/CD_Depth.h
-  CD_Penetration/DT_TriEdge.h
 )
-InstallFiles(HEADERS_CD_Penetration  	"CD_Penetration")
+InstallFiles(HEADERS_CD_Penetration "CD_Penetration")
 
-
-SET(HEADERS_File_Parsing
+set(HEADERS_File_Parsing
   File_Parsing/SimplestParsing.h
 )
-InstallFiles(HEADERS_File_Parsing	"File_Parsing")
+InstallFiles(HEADERS_File_Parsing  "File_Parsing")
 
-
-SET(HEADERS_Matrix
+set(HEADERS_Matrix
   Matrix/QuaternionT.h
   Matrix/SCH_Types.h
   Matrix/SmallMatrix3x3T.h
@@ -53,10 +48,9 @@ SET(HEADERS_Matrix
   Matrix/SmallVector3T.h
   Matrix/SmallVector4T.h
 )
-InstallFiles(HEADERS_Matrix  	"Matrix")
+InstallFiles(HEADERS_Matrix    "Matrix")
 
-
-SET(HEADERS_S_Object
+set(HEADERS_S_Object
   S_Object/S_Box.h
   S_Object/S_Object.h
   S_Object/S_ObjectNonNormalized.h
@@ -69,10 +63,9 @@ SET(HEADERS_S_Object
   S_Object/S_Point.h
   S_Object/S_Capsule.h
 )
-InstallFiles(HEADERS_S_Object	"S_Object")
+InstallFiles(HEADERS_S_Object  "S_Object")
 
-
-SET(HEADERS_S_Polyhedron
+set(HEADERS_S_Polyhedron
   S_Polyhedron/Polyhedron_algorithms.h
   S_Polyhedron/S_Polyhedron.h
   S_Polyhedron/S_PolyhedronVertex.h
@@ -80,8 +73,7 @@ SET(HEADERS_S_Polyhedron
 )
 InstallFiles(HEADERS_S_Polyhedron  "S_Polyhedron")
 
-
-SET(HEADERS_STP_BV
+set(HEADERS_STP_BV
   STP-BV/STP_BigSphere.h
   STP-BV/STP_BV.h
   STP-BV/STP_BV_P.h

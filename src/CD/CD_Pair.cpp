@@ -9,7 +9,9 @@
 //#endif
 
 //#define CD_SAFE_VERSION //use when the scalar has a perfect precision
+#ifndef BUILD_BSD
 #define PENETRATION_DEPTH
+#endif
 //#define CD_PAIR_VERBOUS_MODE
 //#define CD_ITERATION_LIMIT 50 //use when the real-time constraints are too high fo current performances while keeping the same global precision.
 //no theoretical guarantee on the precision nor the collision-safeness when used - Default value is 20

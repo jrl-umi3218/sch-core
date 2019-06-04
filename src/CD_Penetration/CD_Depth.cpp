@@ -8,6 +8,8 @@
 
 using namespace sch;
 
+#ifndef BUILD_BSD
+
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
 
@@ -74,6 +76,7 @@ struct TriangleHeap
   int  num_triangles;
 };
 
+#endif // ndef BUILD_BSD
 
 int furthestAxis(Vector3 v)
 {
@@ -136,6 +139,12 @@ CD_Depth::~CD_Depth(void)
 
 
 
+#ifdef BUILD_BSD
+Scalar CD_Depth::getPenetrationDepth(Vector3&, Point3&, Point3&, const CD_SimplexEnhanced&, const CD_Simplex&, const CD_Simplex&)
+{
+  return 0;
+}
+#else
 Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
                                      const CD_Simplex& s1_, const CD_Simplex& s2_)
 {
@@ -447,8 +456,9 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
   p1 = triangle->getClosestPoint(pBuf);
   p2 = triangle->getClosestPoint(qBuf);
   return v.normsquared();
-
 }
+#endif
+
 
 CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(_PRECISION_),epsilon_(_EPSILON_)
 {
