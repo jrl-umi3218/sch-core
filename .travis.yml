@@ -1,15 +1,35 @@
+dist: xenial
+addons:
+  apt:
+    packages:
+      - cmake
+      - doxygen
+      - doxygen-latex
+      - libboost-all-dev
+branches:
+  except:
+    - debian
+compiler:
+- gcc
+- clang
 language: cpp
-compiler: gcc
 env:
   global:
-  - APT_DEPENDENCIES="cmake cmake-data doxygen doxygen-latex libboost-all-dev"
+  - APT_DEPENDENCIES=""
   - secure: docMUTjBQtm4uaLVtyRvv/rbq7JfmsuWGVPd/8Ay2lwZdkquAeFnK8YSptvi5+8x9VvJrv3Xu+gQZXtZSkETfpNEzORaaOVgZ4na8QzxKNQdw45leucZ28EbEQ7fBvg7e3s2l4EWjjjrAPz82+KTyQXUlNplRYaJk0CTBsbI29o=
   - secure: bMjZcr/JjHXZht+jJovEYW3NFpQam+btwZMuFLC2zlj+FsCcnWOUEtRqygE5sm/BukULxRrLTK5NxeaA7VGrbrlrAuJh5KK5NltCP03QTwvH/Zaah/JrihHZ1IkZt//Rxi8UcF2P45LEvCGulcLF8sY4YRJPklcm5VJViNimzn8=
   - LCOV_IGNORE_RULES="*tests* *examples*"
+  matrix:
+    - CMAKE_BUILD_TYPE=RelWithDebInfo
+    - CMAKE_BUILD_TYPE=Debug
+    - BUILD_BSD=OFF
+    - BUILD_BSD=ON
 notifications:
   slack:
     secure: SAnQfxV4qW1gGCZ+6cTOJ01b9GUxGHfr15QOLNp2ird4HoTNwpF+hSATGXhsYUrqaBlaC62dSi3TfMDMVrDHbTXzlgLAqPf46ZeKzjU+3tXvXPDNbfFIy5vd3xIJ0K61Jgvt2xZ5tHo89zRdorTHHQ9nALzAgm6FKeIyGzmL4Xs=
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
-before_install: ./.travis/run before_install
+before_install:
+  - export CMAKE_ADDITIONAL_OPTIONS="${CMAKE_ADDITIONAL_OPTIONS} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DBUILD_BSD:BOOL=${BUILD_BSD}"
+  - ./.travis/run before_install
