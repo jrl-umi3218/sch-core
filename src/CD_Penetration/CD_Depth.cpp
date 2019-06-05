@@ -1,6 +1,7 @@
 #include <sch/CD_Penetration/CD_Depth.h>
-#include <sch/CD_Penetration/DT_TriEdge.h>
 #include <algorithm>
+
+#include "DT_TriEdge.h"
 
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
