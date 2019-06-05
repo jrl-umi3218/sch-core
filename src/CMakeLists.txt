@@ -70,8 +70,8 @@ SET(SOURCES_STP_BV
 AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
 add_library(sch-core SHARED ${SOURCES} ${HEADERS})
-target_include_directories(sch-core BEFORE PUBLIC  $<BUILD_INTERFACE:${PROJECT_INCLUDE_DIR}> $<INSTALL_INTERFACE:${include_install_destination}>)
-target_link_libraries(sch-core Boost::serialization)
+target_include_directories(sch-core PUBLIC  $<BUILD_INTERFACE:${PROJECT_INCLUDE_DIR}> $<INSTALL_INTERFACE:${include_install_destination}>)
+target_link_libraries(sch-core PUBLIC Boost::serialization Boost::disable_autolinking)
 if(${BUILD_BSD})
   target_compile_definitions(sch-core PRIVATE "-DBUILD_BSD")
 endif()
