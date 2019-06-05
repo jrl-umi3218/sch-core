@@ -32,4 +32,5 @@ after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
 before_install:
   - export CMAKE_ADDITIONAL_OPTIONS="${CMAKE_ADDITIONAL_OPTIONS} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DBUILD_BSD:BOOL=${BUILD_BSD}"
+  - git fetch --unshallow
   - ./.travis/run before_install
