@@ -21,7 +21,7 @@
  * use of this library.
  */
 
-#include <sch/CD_Penetration/DT_TriEdge.h>
+#include "DT_TriEdge.h"
 
 using namespace sch;
 
