@@ -19,6 +19,9 @@ set(PROJECT_DEBUG_POSTFIX "_d")
 
 setup_project()
 
+# We add a recent version of FindBoost.cmake in our path
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
+
 # Search for dependencies.
 # Boost
 add_project_dependency(Boost COMPONENTS serialization)
