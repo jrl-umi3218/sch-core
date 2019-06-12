@@ -17,6 +17,7 @@ Section: libdevel
 Architecture: any
 Depends: pkg-config,
          libsch-core1 (= ${binary:Version}),
+         libboost-serialization-dev,
          ${misc:Depends}
 Suggests: libsch-core-doc
 Description: sch-core - development files
