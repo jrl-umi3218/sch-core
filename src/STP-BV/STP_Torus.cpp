@@ -435,7 +435,7 @@ bool STP_Torus::isHereFarthestNeighbour(const Vector3& v)
           {
             int tmp = m_nextBV[0];
             m_nextBV[0] = m_nextBV[2];
-            m_nextBV[1] = m_nextBV[4];
+            m_nextBV[1] = m_nextBV[3];
             m_nextBV[2] = tmp;
           }
           else
