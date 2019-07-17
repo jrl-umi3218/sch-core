@@ -4,19 +4,16 @@
 #
 # Copyright CNRS/AIST
 
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-link_directories(${Boost_LIBRARY_DIRS})
-include_directories(${PROJECT_INCLUDE_DIR})
-
 #### examples
 macro(add_example name)
   add_executable(${name} shared-tests/examples/${name}.cpp example_test.cpp)
-  target_link_libraries(${name} sch-core ${Boost_LIBRARIES})
-  add_dependencies(${name} sch-core)
+  target_link_libraries(${name} sch-core)
   add_test(${name} ${name})
+  if(${BUILD_BSD})
+    target_compile_definitions(${name} PRIVATE "-DBUILD_BSD")
+  endif()
   # Adding a project configuration file (for MSVC only)
-  GENERATE_MSVC_DOT_USER_FILE(${name})
+  generate_msvc_dot_user_file(${name})
 endmacro(add_example)
 
 add_example(example1)
@@ -25,8 +22,7 @@ add_example(example2)
 #tests
 macro(addUnitTest name)
   add_executable(${name} ${name}.cpp shared-tests/tests/common.cpp shared-tests/tests/common.h shared-tests/tests/includes.h)
-  target_link_libraries(${name} sch-core ${Boost_LIBRARIES})
-  add_dependencies(${name} sch-core)
+  target_link_libraries(${name} sch-core)
   add_test(${name} ${CMAKE_CURRENT_BINARY_DIR}/${name})
   # Adding a project configuration file (for MSVC only)
   GENERATE_MSVC_DOT_USER_FILE(${name})

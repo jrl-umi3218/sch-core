@@ -28,8 +28,11 @@ AddSourceGroup(SOURCES_CD "CD")
 
 SET(SOURCES_CD_Penetration
   CD_Penetration/CD_Depth.cpp
-  CD_Penetration/DT_TriEdge.cpp
 )
+if(NOT ${BUILD_BSD})
+  list(APPEND SOURCES_CD_Penetration CD_Penetration/DT_TriEdge.h)
+  list(APPEND SOURCES_CD_Penetration CD_Penetration/DT_TriEdge.cpp)
+endif()
 AddSourceGroup(SOURCES_CD_Penetration "CD_Penetration")
 
 SET(SOURCES_File_Parsing
@@ -66,15 +69,16 @@ SET(SOURCES_STP_BV
 )
 AddSourceGroup(SOURCES_STP_BV "STP-BV")
 
-link_directories(${Boost_LIBRARY_DIRS})
-ADD_LIBRARY(sch-core SHARED ${SOURCES} ${HEADERS})
-target_include_directories(sch-core BEFORE PUBLIC  $<BUILD_INTERFACE:${PROJECT_INCLUDE_DIR}> $<INSTALL_INTERFACE:${include_install_destination}>)
-target_include_directories(sch-core SYSTEM PUBLIC ${Boost_INCLUDE_DIRS})
+add_library(sch-core SHARED ${SOURCES} ${HEADERS})
+target_include_directories(sch-core PUBLIC  $<BUILD_INTERFACE:${PROJECT_INCLUDE_DIR}> $<INSTALL_INTERFACE:${include_install_destination}>)
+target_link_libraries(sch-core PUBLIC Boost::serialization Boost::disable_autolinking)
+if(${BUILD_BSD})
+  target_compile_definitions(sch-core PRIVATE "-DBUILD_BSD")
+endif()
 
 
 set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION}
                                           COMPILE_OPTIONS "-Dsch_EXPORTS")
-target_link_libraries(sch-core PUBLIC ${Boost_LIBRARIES})
 
 
 # Targets:
