@@ -106,7 +106,7 @@ sudo make install
 
 #### CMake options
 
-- `BUILD_BSD`: If ON, build the library without its GPL components (Default: OFF)
+- `SCH_BUILD_BSD`: If ON, build the library without its GPL components (Default: OFF)
 
 Indentation
 ------------

@@ -34,7 +34,7 @@ class SCHCoreConan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions['DISABLE_TESTS'] = True
-        cmake.definitions['BUILD_BSD'] = True
+        cmake.definitions['SCH_BUILD_BSD'] = True
         cmake.configure()
         return cmake
 
