@@ -26,7 +26,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 # Boost
 add_project_dependency(Boost COMPONENTS serialization)
 
-option(BUILD_BSD "Build without GPL components." OFF)
+option(SCH_BUILD_BSD "Build without GPL components." OFF)
 
 option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
 if(ENABLE_SIGFPE)

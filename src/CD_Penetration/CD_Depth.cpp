@@ -9,7 +9,7 @@
 
 using namespace sch;
 
-#ifndef BUILD_BSD
+#ifndef SCH_BUILD_BSD
 
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;
@@ -77,7 +77,7 @@ struct TriangleHeap
   int  num_triangles;
 };
 
-#endif // ndef BUILD_BSD
+#endif // ndef SCH_BUILD_BSD
 
 int furthestAxis(Vector3 v)
 {
@@ -140,7 +140,7 @@ CD_Depth::~CD_Depth(void)
 
 
 
-#ifdef BUILD_BSD
+#ifdef SCH_BUILD_BSD
 Scalar CD_Depth::getPenetrationDepth(Vector3&, Point3&, Point3&, const CD_SimplexEnhanced&, const CD_Simplex&, const CD_Simplex&)
 {
   return 0;
