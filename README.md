@@ -6,6 +6,7 @@ sch-core
 [![Build status](https://ci.appveyor.com/api/projects/status/xqg3spxdftfwy5wc/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/sch-core/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jrl-umi3218/sch-core/badge.png)](https://coveralls.io/r/jrl-umi3218/sch-core)
 [ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/sch-core%3Agergondet/images/download.svg) ](https://bintray.com/gergondet/multi-contact/sch-core%3Agergondet/_latestVersion)
+[![Documentation](https://img.shields.io/badge/doxygen-online-brightgreen?logo=read-the-docs&style=flat)](http://jrl-umi3218.github.io/sch-core/doxygen/HEAD/index.html)
 
 
 Documentation
