@@ -77,7 +77,8 @@ if(${SCH_BUILD_BSD})
 endif()
 
 
-set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION}
+set_target_properties(sch-core PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}
+                                          VERSION ${PROJECT_VERSION}
                                           COMPILE_OPTIONS "-Dsch_EXPORTS")
 
 
