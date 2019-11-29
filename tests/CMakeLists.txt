@@ -16,7 +16,9 @@ macro(add_example name)
   generate_msvc_dot_user_file(${name})
 endmacro(add_example)
 
-add_example(example1)
+if(NOT APPLE)
+  add_example(example1)
+endif()
 add_example(example2)
 
 #tests
