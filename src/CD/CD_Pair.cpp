@@ -254,7 +254,7 @@ Scalar CD_Pair::GJK()
       proj=s[0]*lambda0_+s[1]*lambda1_;
       break;
     }
-    default:
+    default: ///CD_POINT
     {
       proj=s[0];
     }
@@ -262,12 +262,7 @@ Scalar CD_Pair::GJK()
     }
     Scalar newdist=proj.normsquared();
 
-    if (distance_ <= newdist) //the distance is not monotonous
-    {
-      cont=false;
-      useLastSimplex=false;
-    }
-    else
+    if (newdist < distance_) //the distance is monotonous
     {
       v=-proj;
       distance_= newdist;
@@ -340,6 +335,11 @@ Scalar CD_Pair::GJK()
           }
         }
       }
+    }
+    else //the distance is not monotonous
+    {
+      cont=false;
+      useLastSimplex=false;
     }
   }
 
