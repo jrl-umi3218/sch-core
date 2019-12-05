@@ -177,7 +177,7 @@ main (int argc, char *argv[])
 
   // compare the results for second query
   comparison = compare(d1, 0., "Second query, d1. ") && comparison;
-#ifdef BUILD_BSD
+#ifdef SCH_BUILD_BSD
   comparison = compare(d2, 0., "Second query, d2. ") && comparison;
   comparison = compare(p1, (Vector3(0.0292236259885692, 0.601445137095698, 0.705635281288737)), "Second query, p1. ") && comparison;
   comparison = compare(p2, (Vector3(0.0239874216806999, -0.336387177086141, -0.781275504057127)), "Second query, p2. ") && comparison;
@@ -214,7 +214,7 @@ main (int argc, char *argv[])
   d2 = pair3.getClosestPoints(p5,p6);
 
   // compare the results for third query
-#ifdef BUILD_BSD
+#ifdef SCH_BUILD_BSD
   comparison = compare(d0, 0., "Third Query, d0") && comparison;
   comparison = compare(p1, (Vector3(0.0292236259885692, 0.601445137095698, 0.705635281288737)), "Third Query, p1") && comparison;
   comparison = compare(p2, (Vector3(0.0239874216806999, -0.336387177086141, -0.781275504057127)), "Third Query, p2") && comparison;

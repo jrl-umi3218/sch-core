@@ -9,7 +9,7 @@
 //#endif
 
 //#define CD_SAFE_VERSION //use when the scalar has a perfect precision
-#ifndef BUILD_BSD
+#ifndef SCH_BUILD_BSD
 #define PENETRATION_DEPTH
 #endif
 //#define CD_PAIR_VERBOUS_MODE

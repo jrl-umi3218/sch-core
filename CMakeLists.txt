@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
-include(cmake/base.cmake)
-include(cmake/cpack.cmake)
-include(cmake/msvc-specific.cmake)
-
+if(POLICY CMP0048)
+  cmake_policy(SET CMP0048 NEW)
+endif()
 set(CXX_DISABLE_WERROR True)
 
 # ----------------------------------------------------------------
@@ -16,8 +15,14 @@ set(PROJECT_CONTACT pierre.gergondet@gmail.com)
 set(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set(PROJECT_DEBUG_POSTFIX "_d")
+set(PROJECT_VERSION 1.0.2)
+set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
-setup_project()
+include(cmake/base.cmake)
+include(cmake/cpack.cmake)
+include(cmake/msvc-specific.cmake)
+
+project(sch-core CXX)
 
 # We add a recent version of FindBoost.cmake in our path
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
@@ -26,7 +31,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 # Boost
 add_project_dependency(Boost COMPONENTS serialization)
 
-option(BUILD_BSD "Build without GPL components." OFF)
+option(SCH_BUILD_BSD "Build without GPL components." OFF)
 
 option(ENABLE_SIGFPE "Enable floating-point exceptions" OFF)
 if(ENABLE_SIGFPE)
@@ -43,12 +48,8 @@ endif(MSVC)
 
 add_subdirectory(src)
 add_subdirectory(examples)
-if(NOT DISABLE_TESTS)
+if(${BUILD_TESTING})
   add_subdirectory(tests)
 endif()
 
 pkg_config_append_libs(sch-core)
-
-setup_project_finalize()
-setup_project_cpack()
-setup_project_package_finalize()

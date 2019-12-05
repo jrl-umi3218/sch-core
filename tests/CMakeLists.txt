@@ -9,14 +9,16 @@ macro(add_example name)
   add_executable(${name} shared-tests/examples/${name}.cpp example_test.cpp)
   target_link_libraries(${name} sch-core)
   add_test(${name} ${name})
-  if(${BUILD_BSD})
+  if(${SCH_BUILD_BSD})
     target_compile_definitions(${name} PRIVATE "-DBUILD_BSD")
   endif()
   # Adding a project configuration file (for MSVC only)
   generate_msvc_dot_user_file(${name})
 endmacro(add_example)
 
-add_example(example1)
+if(NOT APPLE)
+  add_example(example1)
+endif()
 add_example(example2)
 
 #tests

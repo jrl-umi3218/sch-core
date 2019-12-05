@@ -1,0 +1,23 @@
+sch-core (1.0.2-1ubuntu1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 29 Nov 2019 14:31:47 +0800
+
+sch-core (1.0.1-1ubuntu2) unstable; urgency=medium
+
+  * Clean cmake package
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Thu, 06 Jun 2019 15:40:58 +0900
+
+sch-core (1.0.1-1ubuntu1) unstable; urgency=medium
+
+  * Increment package version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 29 Aug 2017 09:58:31 +0900
+
+sch-core (1.0-123-g7778-1trusty1) trusty; urgency=medium
+
+  * Initial release.
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Wed, 16 Mar 2016 10:47:17 +0900
