@@ -35,6 +35,7 @@ namespace sch
   typedef  CD_Matrix::Vector3T<Scalar,true> Vector3NormOptimized;
 
   static const Scalar infinity = DBL_MAX;
+  static const Scalar epsilon = 1e-24;
 }
 
 #endif
