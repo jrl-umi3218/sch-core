@@ -49,6 +49,7 @@ SET(SOURCES_S_Object
   S_Object/S_Superellipsoid.cpp
   S_Object/S_Point.cpp
   S_Object/S_Capsule.cpp
+  S_Object/S_Cone.cpp
 )
 AddSourceGroup(SOURCES_S_Object "S_Object")
 
