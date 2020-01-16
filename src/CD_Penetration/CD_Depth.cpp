@@ -1,8 +1,9 @@
 #include <sch/CD_Penetration/CD_Depth.h>
 #include <algorithm>
 
-#define _EPSILON_ 1e-24
-#define _PRECISION_ 1e-6
+
+#define _DEFAULT_PRECISION_ 1e-6
+
 
 using namespace sch;
 
@@ -460,7 +461,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 #endif
 
 
-CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(_PRECISION_),epsilon_(_EPSILON_)
+CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(_DEFAULT_PRECISION_),epsilon_(sch::epsilon)
 {
 
 }
