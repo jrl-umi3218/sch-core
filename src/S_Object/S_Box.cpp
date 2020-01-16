@@ -28,7 +28,7 @@ S_Object::S_ObjectType S_Box::getType() const
 
 void S_Box::getBoxParameters(Scalar & a, Scalar & b, Scalar & c) const
 {
-  a=a_;
-  b=b_;
-  c=c_;
+  a=a_*2;
+  b=b_*2;
+  c=c_*2;
 }
