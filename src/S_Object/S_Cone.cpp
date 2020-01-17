@@ -8,11 +8,11 @@ S_Cone::S_Cone(const Scalar& angle, const Scalar &  height)
 {
   if (fabs(angle) >= M_PI/2)
   {
-    throw std::domain_error("Ivalig angle for a cone. It should be < M_PI/2");
+    throw std::domain_error("Invalid angle for a cone. It should be < M_PI/2");
   }
   
   angle_=fabs(angle);
-  height_=fabs(angle);
+  height_=fabs(height);
   angleTan_=tan(angle_);
   baseRadius_=height_*angleTan_;
   
