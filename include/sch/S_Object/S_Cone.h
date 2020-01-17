@@ -35,8 +35,6 @@ namespace sch
     Scalar height_;
     Scalar angleTan_;
     Scalar baseRadius_;
-
-    static const Point3 origin_;
   };
 }
 

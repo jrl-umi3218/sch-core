@@ -2,7 +2,6 @@
 
 using namespace sch;
 
-const Point3 S_Cone::origin_(0,0,0);
 
 S_Cone::S_Cone(const Scalar& angle, const Scalar &  height) 
 
@@ -30,18 +29,18 @@ Point3 S_Cone::l_Support(const Vector3& v, int& /*lastFeature*/)const
   {
     if (v[2] >= 0)    
     {
-      return Point3(0, baseRadius_, height_);
+      return Point3(0., 0., height_);
     } 
     else
     {
-      return origin_;
+      return Point3(0.,0.,0.);
     }
   }
   else
   {
     if ( v[2] < - angleTan_ * norm)
     {
-      return origin_;
+      return Point3(0.,0.,0.);
     }
     else
     {
