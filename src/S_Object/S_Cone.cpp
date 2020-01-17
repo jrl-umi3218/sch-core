@@ -6,7 +6,7 @@ using namespace sch;
 S_Cone::S_Cone(const Scalar& angle, const Scalar &  height) 
 
 {
-  if (fabs(angle) >= M_PI/2)
+  if (fabs(angle) >= pi/2)
   {
     throw std::domain_error("Invalid angle for a cone. It should be < M_PI/2");
   }
