@@ -1,0 +1,28 @@
+var a00934 =
+[
+    [ "STP_Torus", "a00934.html#a1f63351e0038aebbd5f321d5d3246312", null ],
+    [ "STP_Torus", "a00934.html#a61fc26d245f16cf5c835f833914e5392", null ],
+    [ "STP_Torus", "a00934.html#a31e9b5ce66eb2c4c08db5a0580544f79", null ],
+    [ "~STP_Torus", "a00934.html#a490040dab54e2ce4d8cc06e69c5a63f8", null ],
+    [ "clone", "a00934.html#a17be83bd420a5ba3ae3921f47beb805a", null ],
+    [ "getNextBV", "a00934.html#ab6ce0b71cb59eda18cf93ab0ee3f0c52", null ],
+    [ "getNextBVPrime", "a00934.html#a5a299cb67bdbb90e7f4926870666e840", null ],
+    [ "isHere", "a00934.html#a0792e14da372288fdbf500b07c2c0ff9", null ],
+    [ "isHereFarthestNeighbour", "a00934.html#a4101c76048fbc163a87bc1a56015fbe8", null ],
+    [ "isHereFarthestNeighbourPrime", "a00934.html#a447642ec9a8d83f97b69425ace60e5fa", null ],
+    [ "isHereFirstNeighbour", "a00934.html#a2f9f902ede7547eb275e9b19af4b281a", null ],
+    [ "isHereFirstNeighbourPrime", "a00934.html#afd5ed2cb237ade7711583ad4780f559e", null ],
+    [ "isHereHybrid", "a00934.html#a6aee2580643b23b5a2ce094a62564093", null ],
+    [ "print", "a00934.html#a9b10afcf6bbee6444091490f581a0fb4", null ],
+    [ "serialize", "a00934.html#a4c67fc28d5be783bf4dd79bc46fe4820", null ],
+    [ "setVVR", "a00934.html#a3a7cc807403d247f19f497ac014cd933", null ],
+    [ "support", "a00934.html#a4d5aa8bd0fba88d9f839216f7ca073c7", null ],
+    [ "supportH", "a00934.html#a0ec976e5eecc4fabb1e9bce424d4c099", null ],
+    [ "m_circle", "a00934.html#a43cde3b454c7c7c679d05ff87c033332", null ],
+    [ "m_nextBV", "a00934.html#ad63017d67e9ff32e17b7745f12ba71c2", null ],
+    [ "m_sphereRadius", "a00934.html#a36044a090ad607f5d7f0c74cb2433cd6", null ],
+    [ "m_VVR0", "a00934.html#aface1e25323aefdbfb35e1996078ef2c", null ],
+    [ "m_VVR1", "a00934.html#a9f44c48148ddadb89b3a0ab7f62aecc4", null ],
+    [ "m_VVR2", "a00934.html#a0be30889289af19e390a3838cb103c9c", null ],
+    [ "m_VVR3", "a00934.html#aeefd7327dd1a6b17ed97e85bbd08facc", null ]
+];

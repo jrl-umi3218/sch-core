@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
-<title>sch-core: CD_Matrix Namespace Reference</title>
+<title>sch-core: boost::archive::detail Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -68,46 +68,75 @@ $(document).ready(function(){initNavTree('a00147.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">CD_Matrix Namespace Reference</div>  </div>
+<div class="title">boost::archive::detail Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00799.html">Matrix3x3T</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00702.html">oserializer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00803.html">Matrix4x4T</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00706.html">pointer_oserializer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00807.html">Norm</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00754.html">save_array_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00811.html">Norm&lt; T, false &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00750.html">save_enum_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00791.html">QuaternionT</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00710.html">save_non_pointer_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00795.html">Vector3T</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00730.html">save_pointer_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00815.html">Vector4T</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template to handle 3 dimensional vector.  <a href="a00815.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a36a969c98d97fb6bba03fb0646613a94"><td class="memTemplParams" colspan="2">template&lt;class Archive , class T &gt; </td></tr>
+<tr class="memitem:a36a969c98d97fb6bba03fb0646613a94"><td class="memTemplItemLeft" align="right" valign="top">BOOST_DLLEXPORT const basic_pointer_oserializer &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00147.html#a36a969c98d97fb6bba03fb0646613a94">instantiate_pointer_oserializer</a> (Archive *, T *) BOOST_USED</td></tr>
+<tr class="separator:a36a969c98d97fb6bba03fb0646613a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is a very fast and simple implementation of a 3D matrix class of double.</p>
-<p>(c) Olivier Stasse, JRL, CNRS-AIST, ISRI, 2007</p>
-<p>This is a very fast and simple implementation of a 3D vector class of double.</p>
-<p>(c) Olivier Stasse, JRL, CNRS-AIST, ISRI, 2007</p>
-<p>This is a very fast and simple implementation of a 4D vector class of double.</p>
-<p>01/02/2007</p>
-<p>(c) Olivier Stasse, JRL, CNRS-AIST, ISRI, 2007 </p>
-</div></div><!-- contents -->
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a36a969c98d97fb6bba03fb0646613a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36a969c98d97fb6bba03fb0646613a94">&#9670;&nbsp;</a></span>instantiate_pointer_oserializer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Archive , class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOST_DLLEXPORT const basic_pointer_oserializer &amp; boost::archive::detail::instantiate_pointer_oserializer </td>
+          <td>(</td>
+          <td class="paramtype">Archive *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="a00754.html#a830993f7f8f0370f925318b5a4c52231">boost::archive::detail::save_array_type&lt; Archive, T &gt;::invoke()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00147.html">CD_Matrix</a></li>
-    <li class="footer">Generated on Thu Dec 5 2019 07:27:28 for sch-core by
+    <li class="navelem"><a class="el" href="a00144.html">boost</a></li><li class="navelem"><a class="el" href="a00146.html">archive</a></li><li class="navelem"><a class="el" href="a00147.html">detail</a></li>
+    <li class="footer">Generated on Fri Jan 17 2020 10:46:46 for sch-core by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

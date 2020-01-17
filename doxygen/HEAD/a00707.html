@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
-<title>sch-core: boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt; Struct Template Reference</title>
+<title>sch-core: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -49,7 +49,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('a00707.html','');});
+$(document).ready(function(){initNavTree('a00710.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -67,103 +67,22 @@ $(document).ready(function(){initNavTree('a00707.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="a00704.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt; Struct Template Reference</div>  </div>
+<div class="title">boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt; Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;sch/boost/archive/detail/oserializer.hpp&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00723.html">save_conditional</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00715.html">save_only</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00711.html">save_primitive</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00719.html">save_standard</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a69886c441e62b1215ee0286b7348df3f"><td class="memItemLeft" align="right" valign="top">typedef BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::implementation_level&lt; T &gt;, mpl::int_&lt; boost::serialization::primitive_type &gt; &gt;, mpl::identity&lt; <a class="el" href="a00711.html">save_primitive</a> &gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::greater_equal&lt; boost::serialization::implementation_level&lt; T &gt;, mpl::int_&lt; boost::serialization::object_class_info &gt; &gt;, mpl::identity&lt; <a class="el" href="a00719.html">save_standard</a> &gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::tracking_level&lt; T &gt;, mpl::int_&lt; boost::serialization::track_never &gt; &gt;, mpl::identity&lt; <a class="el" href="a00715.html">save_only</a> &gt;, mpl::identity&lt; <a class="el" href="a00723.html">save_conditional</a> &gt; &gt; &gt; &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00707.html#a69886c441e62b1215ee0286b7348df3f">typex</a></td></tr>
-<tr class="separator:a69886c441e62b1215ee0286b7348df3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aec0688f844b739d1d07839bc7a253a94"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00707.html#aec0688f844b739d1d07839bc7a253a94">invoke</a> (Archive &amp;ar, const T &amp;t)</td></tr>
-<tr class="separator:aec0688f844b739d1d07839bc7a253a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a69886c441e62b1215ee0286b7348df3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69886c441e62b1215ee0286b7348df3f">&#9670;&nbsp;</a></span>typex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Archive , class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::implementation_level&lt;T&gt;, mpl::int_&lt;boost::serialization::primitive_type&gt; &gt;, mpl::identity&lt;<a class="el" href="a00711.html">save_primitive</a>&gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::greater_equal&lt; boost::serialization::implementation_level&lt;T&gt;, mpl::int_&lt;boost::serialization::object_class_info&gt; &gt;, mpl::identity&lt;<a class="el" href="a00719.html">save_standard</a>&gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::tracking_level&lt;T&gt;, mpl::int_&lt;boost::serialization::track_never&gt; &gt;, mpl::identity&lt;<a class="el" href="a00715.html">save_only</a>&gt;, mpl::identity&lt;<a class="el" href="a00723.html">save_conditional</a>&gt; &gt; &gt; &gt;::type <a class="el" href="a00707.html">boost::archive::detail::save_non_pointer_type</a>&lt; Archive, T &gt;::<a class="el" href="a00707.html#a69886c441e62b1215ee0286b7348df3f">typex</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="aec0688f844b739d1d07839bc7a253a94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec0688f844b739d1d07839bc7a253a94">&#9670;&nbsp;</a></span>invoke()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Archive , class T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void <a class="el" href="a00707.html">boost::archive::detail::save_non_pointer_type</a>&lt; Archive, T &gt;::invoke </td>
-          <td>(</td>
-          <td class="paramtype">Archive &amp;&#160;</td>
-          <td class="paramname"><em>ar</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<p>This is the complete list of members for <a class="el" href="a00710.html">boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt;</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="a00710.html#aec0688f844b739d1d07839bc7a253a94">invoke</a>(Archive &amp;ar, const T &amp;t)</td><td class="entry"><a class="el" href="a00710.html">boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00710.html#a69886c441e62b1215ee0286b7348df3f">typex</a> typedef</td><td class="entry"><a class="el" href="a00710.html">boost::archive::detail::save_non_pointer_type&lt; Archive, T &gt;</a></td><td class="entry"></td></tr>
+</table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00141.html">boost</a></li><li class="navelem"><a class="el" href="a00143.html">archive</a></li><li class="navelem"><a class="el" href="a00144.html">detail</a></li><li class="navelem"><a class="el" href="a00707.html">save_non_pointer_type</a></li>
-    <li class="footer">Generated on Thu Dec 5 2019 07:27:28 for sch-core by
+    <li class="footer">Generated on Fri Jan 17 2020 10:46:46 for sch-core by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

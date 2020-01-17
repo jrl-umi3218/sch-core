@@ -1,10 +1,9 @@
 var a00147 =
 [
-    [ "Matrix3x3T", "a00799.html", "a00799" ],
-    [ "Matrix4x4T", "a00803.html", "a00803" ],
-    [ "Norm", "a00807.html", "a00807" ],
-    [ "Norm< T, false >", "a00811.html", "a00811" ],
-    [ "QuaternionT", "a00791.html", "a00791" ],
-    [ "Vector3T", "a00795.html", "a00795" ],
-    [ "Vector4T", "a00815.html", "a00815" ]
+    [ "oserializer", "a00702.html", "a00702" ],
+    [ "pointer_oserializer", "a00706.html", "a00706" ],
+    [ "save_array_type", "a00754.html", "a00754" ],
+    [ "save_enum_type", "a00750.html", "a00750" ],
+    [ "save_non_pointer_type", "a00710.html", "a00710" ],
+    [ "save_pointer_type", "a00730.html", "a00730" ]
 ];

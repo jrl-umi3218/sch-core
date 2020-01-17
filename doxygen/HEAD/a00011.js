@@ -1,7 +1,7 @@
 var a00011 =
 [
-    [ "CD_SimplexKeptPoints", "a00767.html", "a00767" ],
-    [ "CD_Simplex", "a00771.html", "a00771" ],
+    [ "CD_SimplexKeptPoints", "a00770.html", "a00770" ],
+    [ "CD_Simplex", "a00774.html", "a00774" ],
     [ "CD_SimplexType", "a00011.html#a930a706e3c80e6ede6f68e34809da11b", [
       [ "CD_Point", "a00011.html#a930a706e3c80e6ede6f68e34809da11baa5c6082a32a66d4af6003761ea6deda3", null ],
       [ "CD_Segment", "a00011.html#a930a706e3c80e6ede6f68e34809da11bab36aa1ddee8b169c10a889a4e3ab1b5b", null ],

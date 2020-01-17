@@ -8,5 +8,7 @@ var a00035 =
     [ "Vector3", "a00035.html#a26a421e6cdc08aedcfc5b9c68277f657", null ],
     [ "Vector3NormOptimized", "a00035.html#a49d67c4c14d4386acdf2f084e68d4700", null ],
     [ "Vector4", "a00035.html#a4054ebd9c67e205f14399d288090905b", null ],
-    [ "infinity", "a00035.html#a27f844328430dc3778ba427657947cd2", null ]
+    [ "epsilon", "a00035.html#a31e80eef95883c72655520224a9e26db", null ],
+    [ "infinity", "a00035.html#a27f844328430dc3778ba427657947cd2", null ],
+    [ "pi", "a00035.html#a9888c5013c7bd49b12648f60f81ee9a8", null ]
 ];
