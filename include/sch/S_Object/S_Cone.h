@@ -17,7 +17,6 @@ namespace sch
     * and directed above
     * \param angle is the angle between the axis of the cone and the side of
     *         the cone. Make sure the angle is less than pi/2 
-    *         otherwise the behavior is not defined
     * \param height is the height of the cone.
     */
     SCH_API S_Cone(const Scalar& angle, const Scalar& height );
