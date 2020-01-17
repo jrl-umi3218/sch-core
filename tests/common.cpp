@@ -8,7 +8,6 @@ const double AnimationSpeed=0.003;
 const double AnimationScale=0.6;
 const long AnimationEnd =10000;
 const long RandomTestEnd=1000000;
-const double PI=boost::math::constants::pi<double>();
 
 using namespace sch;
 
@@ -48,7 +47,7 @@ void TestMaterial::RandomTestSupportFunction()
     double c = (rand()/double(RAND_MAX)) ;
     double d = (rand()/double(RAND_MAX)) ;
 
-    Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+    Vector3 v(sqrt(-2*log(a))*cos(2*pi*b),sqrt(-2*log(b))*cos(2*pi*a),sqrt(-2*log(c))*cos(2*pi*d));
 
 #ifdef DO_TEST
     supportVector[j] = sObj[CurrentObj]->support(v);
@@ -88,7 +87,7 @@ void TestMaterial::RandomTestSupportFunctionAllObjects()
     double c = (rand()/double(RAND_MAX)) ;
     double d = (rand()/double(RAND_MAX)) ;
 
-    Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+    Vector3 v(sqrt(-2*log(a))*cos(2*pi*b),sqrt(-2*log(b))*cos(2*pi*a),sqrt(-2*log(c))*cos(2*pi*d));
 
 #ifdef DO_TEST
     for(size_t i=0; i<sObj.size(); i++)
@@ -548,7 +547,7 @@ void TestMaterial::GeneralTest()
       double b = (rand()/double(RAND_MAX)) ;
       double c = (rand()/double(RAND_MAX)) ;
       double d = (rand()/double(RAND_MAX)) ;
-      Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+      Vector3 v(sqrt(-2*log(a))*cos(2*pi*b),sqrt(-2*log(b))*cos(2*pi*a),sqrt(-2*log(c))*cos(2*pi*d));
     }
     end=clock();
 
@@ -562,7 +561,7 @@ void TestMaterial::GeneralTest()
       double c = (rand()/double(RAND_MAX)) ;
       double d = (rand()/double(RAND_MAX)) ;
 
-      Vector3 v(sqrt(-2*log(a))*cos(2*PI*b),sqrt(-2*log(b))*cos(2*PI*a),sqrt(-2*log(c))*cos(2*PI*d));
+      Vector3 v(sqrt(-2*log(a))*cos(2*pi*b),sqrt(-2*log(b))*cos(2*pi*a),sqrt(-2*log(c))*cos(2*pi*d));
 
 #ifdef DO_TEST
       Point3 p=testscene[1]->support(v);
