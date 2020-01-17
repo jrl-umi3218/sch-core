@@ -11,10 +11,10 @@ S_Cone::S_Cone(const Scalar& angle, const Scalar &  height)
     throw std::domain_error("Invalid angle for a cone. It should be < M_PI/2");
   }
   
-  angle_=fabs(angle);
-  height_=fabs(height);
-  angleTan_=tan(angle_);
-  baseRadius_=height_*angleTan_;
+  angle_ = fabs(angle);
+  height_ = fabs(height);
+  angleTan_ = tan(angle_);
+  baseRadius_ = height_*angleTan_;
   
   slices_ = 100;
   stacks_ = 4; /// we don't need many stacks to display a cone
