@@ -1,5 +1,7 @@
 #include <sch/S_Object/S_Cone.h>
 
+#include <stdexcept>
+
 using namespace sch;
 
 
