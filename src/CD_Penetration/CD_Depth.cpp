@@ -1,15 +1,14 @@
 #include <sch/CD_Penetration/CD_Depth.h>
 #include <algorithm>
 
-#include "DT_TriEdge.h"
-
 #define _EPSILON_ 1e-24
 #define _PRECISION_ 1e-6
-
 
 using namespace sch;
 
 #ifndef SCH_BUILD_BSD
+
+#include "DT_TriEdge.h"
 
 const int       MaxSupportPoints = 100;
 const int       MaxFacets         = 200;

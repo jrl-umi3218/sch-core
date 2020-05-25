@@ -13,7 +13,7 @@ macro(add_example name)
   target_link_libraries(${name} sch-core)
   add_test(${name} ${name})
   if(${SCH_BUILD_BSD})
-    target_compile_definitions(${name} PRIVATE "-DBUILD_BSD")
+    target_compile_definitions(${name} PRIVATE "-DSCH_BUILD_BSD")
   endif()
 endmacro(add_example)
 

@@ -8,4 +8,4 @@
 	dh $@ --parallel
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DBUILD_BSD:BOOL=ON
+	dh_auto_configure -- -DSCH_BUILD_BSD:BOOL=ON
