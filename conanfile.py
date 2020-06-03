@@ -40,7 +40,7 @@ list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}")
         # Install the up-to-date FindBoost.cmake
         pattern = 'add_subdirectory(src)'
         replacement = '''{}
-install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/RBDyn)'''.format(pattern)
+install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/sch-core)'''.format(pattern)
         tools.replace_in_file('CMakeListsOriginal.txt', pattern, replacement)
         # Link with Boost::Boost if consumed by conan
         pattern = "Boost::serialization Boost::disable_autolinking"
