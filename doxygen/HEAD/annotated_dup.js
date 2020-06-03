@@ -1,11 +1,11 @@
 var annotated_dup =
 [
-    [ "boost", "a00144.html", "a00144" ],
-    [ "CD_Matrix", "a00150.html", "a00150" ],
-    [ "FileParsing", "a00149.html", "a00149" ],
-    [ "sch", "a00148.html", "a00148" ],
-    [ "GJK", "a00782.html", "a00782" ],
-    [ "S_ObjectTimeStamp", "a00938.html", null ],
-    [ "s_STN_STBVData", "a00942.html", null ],
-    [ "STP_SmallSphere", "a00946.html", null ]
+    [ "boost", "namespaceboost.html", "namespaceboost" ],
+    [ "CD_Matrix", "namespaceCD__Matrix.html", "namespaceCD__Matrix" ],
+    [ "FileParsing", "namespaceFileParsing.html", "namespaceFileParsing" ],
+    [ "sch", "namespacesch.html", "namespacesch" ],
+    [ "GJK", "classGJK.html", "classGJK" ],
+    [ "S_ObjectTimeStamp", "structS__ObjectTimeStamp.html", null ],
+    [ "s_STN_STBVData", "structs__STN__STBVData.html", null ],
+    [ "STP_SmallSphere", "classSTP__SmallSphere.html", null ]
 ];

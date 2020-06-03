@@ -1,0 +1,28 @@
+var classsch_1_1STP__Torus =
+[
+    [ "STP_Torus", "classsch_1_1STP__Torus.html#a1f63351e0038aebbd5f321d5d3246312", null ],
+    [ "STP_Torus", "classsch_1_1STP__Torus.html#a61fc26d245f16cf5c835f833914e5392", null ],
+    [ "STP_Torus", "classsch_1_1STP__Torus.html#a31e9b5ce66eb2c4c08db5a0580544f79", null ],
+    [ "~STP_Torus", "classsch_1_1STP__Torus.html#a490040dab54e2ce4d8cc06e69c5a63f8", null ],
+    [ "clone", "classsch_1_1STP__Torus.html#a17be83bd420a5ba3ae3921f47beb805a", null ],
+    [ "getNextBV", "classsch_1_1STP__Torus.html#ab6ce0b71cb59eda18cf93ab0ee3f0c52", null ],
+    [ "getNextBVPrime", "classsch_1_1STP__Torus.html#a5a299cb67bdbb90e7f4926870666e840", null ],
+    [ "isHere", "classsch_1_1STP__Torus.html#a0792e14da372288fdbf500b07c2c0ff9", null ],
+    [ "isHereFarthestNeighbour", "classsch_1_1STP__Torus.html#a4101c76048fbc163a87bc1a56015fbe8", null ],
+    [ "isHereFarthestNeighbourPrime", "classsch_1_1STP__Torus.html#a447642ec9a8d83f97b69425ace60e5fa", null ],
+    [ "isHereFirstNeighbour", "classsch_1_1STP__Torus.html#a2f9f902ede7547eb275e9b19af4b281a", null ],
+    [ "isHereFirstNeighbourPrime", "classsch_1_1STP__Torus.html#afd5ed2cb237ade7711583ad4780f559e", null ],
+    [ "isHereHybrid", "classsch_1_1STP__Torus.html#a6aee2580643b23b5a2ce094a62564093", null ],
+    [ "print", "classsch_1_1STP__Torus.html#a9b10afcf6bbee6444091490f581a0fb4", null ],
+    [ "serialize", "classsch_1_1STP__Torus.html#a4c67fc28d5be783bf4dd79bc46fe4820", null ],
+    [ "setVVR", "classsch_1_1STP__Torus.html#a3a7cc807403d247f19f497ac014cd933", null ],
+    [ "support", "classsch_1_1STP__Torus.html#a4d5aa8bd0fba88d9f839216f7ca073c7", null ],
+    [ "supportH", "classsch_1_1STP__Torus.html#a0ec976e5eecc4fabb1e9bce424d4c099", null ],
+    [ "m_circle", "classsch_1_1STP__Torus.html#a43cde3b454c7c7c679d05ff87c033332", null ],
+    [ "m_nextBV", "classsch_1_1STP__Torus.html#ad63017d67e9ff32e17b7745f12ba71c2", null ],
+    [ "m_sphereRadius", "classsch_1_1STP__Torus.html#a36044a090ad607f5d7f0c74cb2433cd6", null ],
+    [ "m_VVR0", "classsch_1_1STP__Torus.html#aface1e25323aefdbfb35e1996078ef2c", null ],
+    [ "m_VVR1", "classsch_1_1STP__Torus.html#a9f44c48148ddadb89b3a0ab7f62aecc4", null ],
+    [ "m_VVR2", "classsch_1_1STP__Torus.html#a0be30889289af19e390a3838cb103c9c", null ],
+    [ "m_VVR3", "classsch_1_1STP__Torus.html#aeefd7327dd1a6b17ed97e85bbd08facc", null ]
+];

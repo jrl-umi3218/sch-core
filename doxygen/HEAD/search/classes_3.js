@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['geometry',['Geometry',['../a00882.html',1,'sch']]],
-  ['gjk',['GJK',['../a00782.html',1,'']]]
+  ['geometry',['Geometry',['../structsch_1_1Geometry.html',1,'sch']]],
+  ['gjk',['GJK',['../classGJK.html',1,'']]]
 ];

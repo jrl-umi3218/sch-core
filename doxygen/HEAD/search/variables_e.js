@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['p1_5f',['p1_',['../a00762.html#a05ea76d65ef4534ee98d7d8bd5d67f7e',1,'sch::CD_Pair::p1_()'],['../a00826.html#a702aa8590e1479f3873065c4d3315ff9',1,'sch::S_Capsule::p1_()']]],
-  ['p2_5f',['p2_',['../a00762.html#a5a85a1e772f5975d5b8a77bc2494fce5',1,'sch::CD_Pair::p2_()'],['../a00826.html#a355c7a61518e7638baa882edfb3c0f4c',1,'sch::S_Capsule::p2_()']]],
-  ['pairs_5f',['pairs_',['../a00766.html#a6959134ab5b1a57b58876bdfae93307d',1,'sch::CD_Scene']]],
-  ['pi',['pi',['../a00148.html#a9888c5013c7bd49b12648f60f81ee9a8',1,'sch']]],
-  ['poly',['poly',['../a00870.html#a510cc7c126cda8905e8dcae347db3fc6',1,'sch::S_Polyhedron']]],
-  ['precision_5f',['precision_',['../a00762.html#a1dbaed6dcf22777a58cf45ab44e53732',1,'sch::CD_Pair::precision_()'],['../a00786.html#a95fdfc3e9a303d32429695acc105f8a9',1,'sch::CD_Depth::precision_()']]],
-  ['projectioncomputed_5f',['projectionComputed_',['../a00762.html#a7ec3d81701472ce3e6bb3f72aedd7135',1,'sch::CD_Pair']]]
+  ['radius',['radius',['../structsch_1_1Geometry.html#a376eb83f7897d7ae15df7cb1275d86ec',1,'sch::Geometry']]],
+  ['radius_5f',['radius_',['../classsch_1_1S__Capsule.html#a1b9e478e3c5936b0502f6c052aa0cb75',1,'sch::S_Capsule::radius_()'],['../classsch_1_1S__Sphere.html#ac256f91125108c84090dc0c92f896e6a',1,'sch::S_Sphere::radius_()']]],
+  ['rotation',['rotation',['../structsch_1_1Geometry.html#a07a939c19e9feeb7c077d5d1dc87ea5f',1,'sch::Geometry']]]
 ];

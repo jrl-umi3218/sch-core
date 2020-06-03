@@ -1,7 +1,7 @@
 var namespaces =
 [
-    [ "boost", "a00144.html", "a00144" ],
-    [ "CD_Matrix", "a00150.html", null ],
-    [ "FileParsing", "a00149.html", null ],
-    [ "sch", "a00148.html", null ]
+    [ "boost", "namespaceboost.html", "namespaceboost" ],
+    [ "CD_Matrix", "namespaceCD__Matrix.html", null ],
+    [ "FileParsing", "namespaceFileParsing.html", null ],
+    [ "sch", "namespacesch.html", null ]
 ];
