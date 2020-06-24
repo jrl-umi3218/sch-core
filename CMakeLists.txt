@@ -14,7 +14,10 @@ set(PROJECT_DESCRIPTION "Implementation of the Sphere-Torus Patches Bounding Vol
 set(PROJECT_CONTACT pierre.gergondet@gmail.com)
 set(PROJECT_URL "http://idh.lirmm.fr/projects/stpbv")
 set(PROJECT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
-set(PROJECT_DEBUG_POSTFIX "_d")
+if (NOT DEFINED PROJECT_DEBUG_POSTFIX)
+    set(PROJECT_DEBUG_POSTFIX "_d")
+endif()
+
 set(PROJECT_VERSION 1.0.3)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
