@@ -23,7 +23,7 @@ inline Point3 S_ObjectNormalized::support(const Vector3& v,int &LastFeature) con
   Vector3 vp(v);
   vp= v * mRot_; //ie : mRot.transpose*v (applying inverse transformation on the support vector)
   Scalar norm=vp.norm();
-  if (norm> sch::epsilon )
+  if (norm> sch::epsilon)
   {
     vp/=norm;
   }
