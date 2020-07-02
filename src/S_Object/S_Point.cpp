@@ -26,5 +26,5 @@ Point3 S_Point::l_Support(const Vector3& /*v*/, int& /*lastFeature*/)const
 
 S_Object::S_ObjectType S_Point::getType() const
 {
-  return S_Object::T_Point;
+  return S_Object::TPoint;
 }

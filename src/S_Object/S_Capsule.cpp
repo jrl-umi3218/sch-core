@@ -30,5 +30,5 @@ Point3 S_Capsule::l_Support(const Vector3& v, int& /*lastFeature*/)const
 
 S_Object::S_ObjectType S_Capsule::getType() const
 {
-  return S_Object::T_Capsule;
+  return S_Object::TCapsule;
 }

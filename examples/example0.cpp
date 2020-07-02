@@ -51,7 +51,7 @@
 using namespace sch;
 
 int
-main (int argc, char *argv[])
+main (int /*argc*/, char * /*argv*/[])
 {
   #ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
