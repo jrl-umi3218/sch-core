@@ -3361,15 +3361,15 @@
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
-      <name>T_Point</name>
+      <name>TPoint</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
-      <anchor>abe9b175195c12ac74eb9ee1dbf620482a1422b7e190614a221f070d384a016b33</anchor>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
-      <name>T_Capsule</name>
+      <name>TCapsule</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
-      <anchor>abe9b175195c12ac74eb9ee1dbf620482a4503eae1b90e741af0b9c80447949700</anchor>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
@@ -3421,15 +3421,15 @@
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
-      <name>T_Point</name>
+      <name>TPoint</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
-      <anchor>abe9b175195c12ac74eb9ee1dbf620482a1422b7e190614a221f070d384a016b33</anchor>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
-      <name>T_Capsule</name>
+      <name>TCapsule</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
-      <anchor>abe9b175195c12ac74eb9ee1dbf620482a4503eae1b90e741af0b9c80447949700</anchor>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">

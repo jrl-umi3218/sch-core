@@ -8,8 +8,8 @@ var classsch_1_1S__Object =
       [ "TBox", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a2921263798ef1699352e5c83c9598ca0", null ],
       [ "TSuperellipsoid", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a18a371a6641655dd42ee5a0785d80f4c", null ],
       [ "TSTP_BV_WithPolyhedron", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482ad3fb102f41b56995bf95a95a35358093", null ],
-      [ "T_Point", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a1422b7e190614a221f070d384a016b33", null ],
-      [ "T_Capsule", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a4503eae1b90e741af0b9c80447949700", null ],
+      [ "TPoint", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320", null ],
+      [ "TCapsule", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a", null ],
       [ "TCone", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254", null ]
     ] ],
     [ "S_Object", "classsch_1_1S__Object.html#a9ca1a84a6484ccb18d67538dc96e11cc", null ],
