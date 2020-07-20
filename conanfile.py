@@ -18,7 +18,7 @@ class SCHCoreConan(ConanFile):
     license = "BSD-2-Clause"
     exports = ["LICENSE"]
     exports_sources = ["CMakeLists.txt", "conan/CMakeLists.txt", "cmake/*", "CMakeModules/*", "doc/*", "examples/*", "include/*", "src/*", "README.md", "conan/FindBoost.cmake"]
-    generators = ["cmake_find_package", "cmake_paths"]
+    generators = ["cmake_paths"]
     settings = "os", "arch", "compiler", "build_type"
 
     requires = (
@@ -31,25 +31,26 @@ class SCHCoreConan(ConanFile):
         shutil.move("CMakeLists.txt", "CMakeListsOriginal.txt")
         shutil.move(os.path.join("conan", "CMakeLists.txt"), "CMakeLists.txt")
         # Make sure we find conan's Boost not system Boost
-        pattern = 'include(CMakeFindDependencyMacro)'
-        replacement = '''set(BOOST_ROOT "${{PACKAGE_PREFIX_DIR}}")
+        replacement = '''if(CONAN_BOOST_ROOT)
+  set(BOOST_ROOT "${{CONAN_BOOST_ROOT}}")
+else()
+  set(BOOST_ROOT "${{PACKAGE_PREFIX_DIR}}")
+endif()
 set(Boost_NO_SYSTEM_PATHS ON)
 list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}")
 {}'''.format(pattern)
         tools.replace_in_file('cmake/Config.cmake.in', pattern, replacement)
         # Install the up-to-date FindBoost.cmake
         pattern = 'add_subdirectory(src)'
-        replacement = '''{}
-install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/sch-core)'''.format(pattern)
+        replacement = '''list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}/conan")
+{}
+install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/RBDyn)'''.format(pattern)
         tools.replace_in_file('CMakeListsOriginal.txt', pattern, replacement)
-        # Link with Boost::Boost if consumed by conan
-        pattern = "Boost::serialization Boost::disable_autolinking"
-        replacement = "$<BUILD_INTERFACE:Boost::Boost>$<INSTALL_INTERFACE:$<IF:$<BOOL:CONAN_BOOST_ROOT>,Boost::Boost,{}>>".format(pattern.replace(' ', '$<SEMICOLON>'))
-        tools.replace_in_file('src/CMakeLists.txt', pattern, replacement)
 
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions['BUILD_TESTING'] = False
+        cmake.definitions['INSTALL_DOCUMENTATION'] = False
         cmake.definitions['SCH_BUILD_BSD'] = True
         cmake.configure()
         return cmake
@@ -60,10 +61,6 @@ install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/sch-core)'''.format(pa
 
     def package(self):
         cmake = self._configure_cmake()
-        pattern = "BOOL:CONAN_BOOST_ROOT"
-        replacement = "BOOL:${CONAN_BOOST_ROOT}"
-        generated = os.path.join(self.build_folder, 'CMakeFiles', 'Export', 'lib', 'cmake', self.name, '{}Targets.cmake'.format(self.name))
-        tools.replace_in_file(generated, pattern, replacement)
         cmake.install()
 
     def deploy(self):
