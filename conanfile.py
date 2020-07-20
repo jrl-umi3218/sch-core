@@ -42,9 +42,11 @@ list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}")
 {}'''.format(pattern)
         tools.replace_in_file('cmake/Config.cmake.in', pattern, replacement)
         # Install the up-to-date FindBoost.cmake
-        pattern = 'add_subdirectory(src)'
-        replacement = '''list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}/conan")
-{}
+        pattern = 'project(sch-core CXX)'
+        replacement = '''{}
+set(BOOST_ROOT "${{CONAN_BOOST_ROOT}}")
+set(Boost_NO_SYSTEM_PATHS ON)
+list(APPEND CMAKE_MODULE_PATH "${{CMAKE_CURRENT_LIST_DIR}}/conan")
 install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/RBDyn)'''.format(pattern)
         tools.replace_in_file('CMakeListsOriginal.txt', pattern, replacement)
 
@@ -55,6 +57,9 @@ install(FILES conan/FindBoost.cmake DESTINATION lib/cmake/RBDyn)'''.format(patte
         cmake.definitions['SCH_BUILD_BSD'] = True
         cmake.configure()
         return cmake
+
+    def configure(self):
+        self.options['boost'].shared = True
 
     def build(self):
         cmake = self._configure_cmake()
