@@ -31,6 +31,7 @@ class SCHCoreConan(ConanFile):
         shutil.move("CMakeLists.txt", "CMakeListsOriginal.txt")
         shutil.move(os.path.join("conan", "CMakeLists.txt"), "CMakeLists.txt")
         # Make sure we find conan's Boost not system Boost
+        pattern = 'include(CMakeFindDependencyMacro)'
         replacement = '''if(CONAN_BOOST_ROOT)
   set(BOOST_ROOT "${{CONAN_BOOST_ROOT}}")
 else()
