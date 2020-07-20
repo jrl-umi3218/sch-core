@@ -10,6 +10,9 @@ on:
     - doc/**
     - README.md
     - ".github/workflows/build.yml"
+    - ".github/workflows/conan.yml"
+    - conan/**
+    - conanfile.py
     branches:
     - "**"
     tags:
