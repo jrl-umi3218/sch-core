@@ -32,7 +32,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 
 # Search for dependencies.
 # Boost
-add_project_dependency(Boost COMPONENTS serialization)
+add_project_dependency(Boost REQUIRED COMPONENTS serialization)
 
 option(SCH_BUILD_BSD "Build without GPL components." OFF)
 
