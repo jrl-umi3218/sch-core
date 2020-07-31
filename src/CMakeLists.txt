@@ -50,6 +50,7 @@ SET(SOURCES_S_Object
   S_Object/S_Point.cpp
   S_Object/S_Capsule.cpp
   S_Object/S_Cone.cpp
+  S_Object/S_Cylinder.cpp
 )
 AddSourceGroup(SOURCES_S_Object "S_Object")
 
