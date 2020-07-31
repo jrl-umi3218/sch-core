@@ -4,8 +4,8 @@ using namespace sch;
 
 S_Cylinder::S_Cylinder(Point3 p1, Point3 p2, Scalar radius): p1_(p1),p2_(p2),radius_(radius)
 {
-  assert(p1_ != p2_);
   normal_ = p2_ - p1_;
+  assert(normal_.norm() != 0);
   normal_.normalize();
 }
 
