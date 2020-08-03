@@ -25,9 +25,12 @@ Point3 S_Cylinder::l_Support(const Vector3& v, int& /*lastFeature*/)const
   double proj_norm = proj.norm();
   if(proj_norm != 0)
   {
-    return d + proj * radius_ / proj_norm;
+    return d + proj * (radius_ / proj_norm);
   }
-  return d;
+  else
+  {
+    return d;
+  }
 }
 
 S_Object::S_ObjectType S_Cylinder::getType() const
