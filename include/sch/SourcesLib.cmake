@@ -63,6 +63,7 @@ set(HEADERS_S_Object
   S_Object/S_Point.h
   S_Object/S_Capsule.h
   S_Object/S_Cone.h
+  S_Object/S_Cylinder.h
 )
 InstallFiles(HEADERS_S_Object  "S_Object")
 

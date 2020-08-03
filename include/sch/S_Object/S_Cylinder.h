@@ -1,16 +1,16 @@
-#ifndef _S_CAPSULE_H
-#define _S_CAPSULE_H
+#ifndef _S_CYLINDER_H
+#define _S_CYLINDER_H
 
 #include <sch/S_Object/S_ObjectNormalized.h>
 
 namespace sch
 {
-  class S_Capsule :
+  class S_Cylinder :
     public S_ObjectNormalized
   {
   public:
-    SCH_API S_Capsule(Point3 p1, Point3 p2, Scalar radius);
-    SCH_API ~S_Capsule();
+    SCH_API S_Cylinder(Point3 p1, Point3 p2, Scalar radius);
+    SCH_API ~S_Cylinder();
 
     SCH_API const Point3 & getP1() const;
 
@@ -24,7 +24,10 @@ namespace sch
 
     Point3 p1_, p2_;
 
+    Vector3 normal_;
+
     Scalar radius_;
   };
 }
-#endif //_S_CAPSULE_H
+#endif //_S_CYLINDER_H
+

@@ -230,7 +230,8 @@ namespace sch
       TSTP_BV_WithPolyhedron,
       TPoint,
       TCapsule,
-      TCone
+      TCone,
+      TCylinder
     };
 
     /*!
