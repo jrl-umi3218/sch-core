@@ -1,7 +1,7 @@
 var searchData=
 [
   ['radius',['radius',['../structsch_1_1Geometry.html#a376eb83f7897d7ae15df7cb1275d86ec',1,'sch::Geometry']]],
-  ['radius_5f',['radius_',['../classsch_1_1S__Capsule.html#a1b9e478e3c5936b0502f6c052aa0cb75',1,'sch::S_Capsule::radius_()'],['../classsch_1_1S__Sphere.html#ac256f91125108c84090dc0c92f896e6a',1,'sch::S_Sphere::radius_()']]],
+  ['radius_5f',['radius_',['../classsch_1_1S__Capsule.html#a1b9e478e3c5936b0502f6c052aa0cb75',1,'sch::S_Capsule::radius_()'],['../classsch_1_1S__Cylinder.html#a0230c5bb1149b66eb2bd5201cd8c6fef',1,'sch::S_Cylinder::radius_()'],['../classsch_1_1S__Sphere.html#ac256f91125108c84090dc0c92f896e6a',1,'sch::S_Sphere::radius_()']]],
   ['ray_5fcast',['ray_cast',['../classsch_1_1STP__BigSphere.html#a2a34f1e7c711748bef6337777abacaa5',1,'sch::STP_BigSphere::ray_cast()'],['../classsch_1_1STP__BV.html#a91370d90618616d734e08ed4f100c4d8',1,'sch::STP_BV::ray_cast()'],['../classsch_1_1STP__SmallSphere.html#a9fd6e84945084bf9c0b99dca2f63142c',1,'sch::STP_SmallSphere::ray_cast()']]],
   ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
   ['recomputeclosestpoints',['reComputeClosestPoints',['../classsch_1_1CD__Pair.html#ae4df31d3c1959d7a952aae8fdccad5d9',1,'sch::CD_Pair']]],

@@ -13,6 +13,7 @@ var namespacesch =
     [ "S_Box", "classsch_1_1S__Box.html", "classsch_1_1S__Box" ],
     [ "S_Capsule", "classsch_1_1S__Capsule.html", "classsch_1_1S__Capsule" ],
     [ "S_Cone", "classsch_1_1S__Cone.html", "classsch_1_1S__Cone" ],
+    [ "S_Cylinder", "classsch_1_1S__Cylinder.html", "classsch_1_1S__Cylinder" ],
     [ "S_Object", "classsch_1_1S__Object.html", "classsch_1_1S__Object" ],
     [ "S_ObjectNonNormalized", "classsch_1_1S__ObjectNonNormalized.html", "classsch_1_1S__ObjectNonNormalized" ],
     [ "S_ObjectNormalized", "classsch_1_1S__ObjectNormalized.html", "classsch_1_1S__ObjectNormalized" ],

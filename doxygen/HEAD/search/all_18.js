@@ -13,6 +13,7 @@ var searchData=
   ['_7es_5fbox',['~S_Box',['../classsch_1_1S__Box.html#a5ef4ded015dc202edd718b8164724f64',1,'sch::S_Box']]],
   ['_7es_5fcapsule',['~S_Capsule',['../classsch_1_1S__Capsule.html#a35cd7305cb2b3c2b0f23abf11b52db8e',1,'sch::S_Capsule']]],
   ['_7es_5fcone',['~S_Cone',['../classsch_1_1S__Cone.html#a2f1e132fc9d8d8b7c2fa5287a2db07d6',1,'sch::S_Cone']]],
+  ['_7es_5fcylinder',['~S_Cylinder',['../classsch_1_1S__Cylinder.html#aeebeb2f8f079000975582b1eebbfcfad',1,'sch::S_Cylinder']]],
   ['_7es_5fobject',['~S_Object',['../classsch_1_1S__Object.html#aa3bfbb36b15c273ef28b5fe421445f21',1,'sch::S_Object']]],
   ['_7es_5fobjectnonnormalized',['~S_ObjectNonNormalized',['../classsch_1_1S__ObjectNonNormalized.html#ac664e926923b203be9a53d01634d2418',1,'sch::S_ObjectNonNormalized']]],
   ['_7es_5fobjectnormalized',['~S_ObjectNormalized',['../classsch_1_1S__ObjectNormalized.html#aa0a24bc5e5202b98939ec304c0d00832',1,'sch::S_ObjectNormalized']]],

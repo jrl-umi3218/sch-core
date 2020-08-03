@@ -99,6 +99,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad464b3c1a0903f0c5d67fad63ebc6715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35cd7305cb2b3c2b0f23abf11b52db8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Capsule.html#a35cd7305cb2b3c2b0f23abf11b52db8e">~S_Capsule</a> ()</td></tr>
 <tr class="separator:a35cd7305cb2b3c2b0f23abf11b52db8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a010a8ee5610bac57ef3e7f0b082ab6b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#ab0c5b1c6e2f86393e75ee9e55e346509">Point3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Capsule.html#a010a8ee5610bac57ef3e7f0b082ab6b5">getP1</a> () const</td></tr>
+<tr class="separator:a010a8ee5610bac57ef3e7f0b082ab6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552dd6c5ca59cefd614e9df500988dff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#ab0c5b1c6e2f86393e75ee9e55e346509">Point3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Capsule.html#a552dd6c5ca59cefd614e9df500988dff">getP2</a> () const</td></tr>
+<tr class="separator:a552dd6c5ca59cefd614e9df500988dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9ae157bbde47527f19fc2f66f9c9bd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> <a class="el" href="namespacesch.html#a23db84571b7527634d5e5d5fd69995e6">Scalar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Capsule.html#ae9ae157bbde47527f19fc2f66f9c9bd7">getRadius</a> () const</td></tr>
+<tr class="separator:ae9ae157bbde47527f19fc2f66f9c9bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classsch_1_1S__ObjectNormalized"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsch_1_1S__ObjectNormalized')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classsch_1_1S__ObjectNormalized.html">sch::S_ObjectNormalized</a></td></tr>
 <tr class="memitem:a2efd9c3fb299c93b2076e65fbdfffeaf inherit pub_methods_classsch_1_1S__ObjectNormalized"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__ObjectNormalized.html#a2efd9c3fb299c93b2076e65fbdfffeaf">S_ObjectNormalized</a> (void)</td></tr>
 <tr class="separator:a2efd9c3fb299c93b2076e65fbdfffeaf inherit pub_methods_classsch_1_1S__ObjectNormalized"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,7 +244,8 @@ Additional Inherited Members</h2></td></tr>
 <a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320">TPoint</a>, 
 <br />
 &#160;&#160;<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a">TCapsule</a>, 
-<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254">TCone</a>
+<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254">TCone</a>, 
+<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed">TCylinder</a>
 <br />
  }<tr class="memdesc:abe9b175195c12ac74eb9ee1dbf620482"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of a solid object. Don't use it to cast !  <a href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482">More...</a><br /></td></tr>
 </td></tr>
@@ -297,6 +304,57 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a010a8ee5610bac57ef3e7f0b082ab6b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010a8ee5610bac57ef3e7f0b082ab6b5">&#9670;&nbsp;</a></span>getP1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#ab0c5b1c6e2f86393e75ee9e55e346509">Point3</a>&amp; sch::S_Capsule::getP1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a552dd6c5ca59cefd614e9df500988dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a552dd6c5ca59cefd614e9df500988dff">&#9670;&nbsp;</a></span>getP2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#ab0c5b1c6e2f86393e75ee9e55e346509">Point3</a>&amp; sch::S_Capsule::getP2 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9ae157bbde47527f19fc2f66f9c9bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ae157bbde47527f19fc2f66f9c9bd7">&#9670;&nbsp;</a></span>getRadius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> <a class="el" href="namespacesch.html#a23db84571b7527634d5e5d5fd69995e6">Scalar</a> sch::S_Capsule::getRadius </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a81d1c731f0c731442de201646108e339"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81d1c731f0c731442de201646108e339">&#9670;&nbsp;</a></span>getType()</h2>
 

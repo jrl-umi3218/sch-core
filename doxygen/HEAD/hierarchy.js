@@ -49,6 +49,7 @@ var hierarchy =
       ] ],
       [ "sch::S_ObjectNormalized", "classsch_1_1S__ObjectNormalized.html", [
         [ "sch::S_Capsule", "classsch_1_1S__Capsule.html", null ],
+        [ "sch::S_Cylinder", "classsch_1_1S__Cylinder.html", null ],
         [ "sch::S_Sphere", "classsch_1_1S__Sphere.html", null ],
         [ "sch::STP_BV", "classsch_1_1STP__BV.html", [
           [ "sch::STP_BV_P", "classsch_1_1STP__BV__P.html", null ]

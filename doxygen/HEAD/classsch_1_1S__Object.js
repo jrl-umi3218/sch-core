@@ -10,7 +10,8 @@ var classsch_1_1S__Object =
       [ "TSTP_BV_WithPolyhedron", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482ad3fb102f41b56995bf95a95a35358093", null ],
       [ "TPoint", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320", null ],
       [ "TCapsule", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a", null ],
-      [ "TCone", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254", null ]
+      [ "TCone", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254", null ],
+      [ "TCylinder", "classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed", null ]
     ] ],
     [ "S_Object", "classsch_1_1S__Object.html#a9ca1a84a6484ccb18d67538dc96e11cc", null ],
     [ "~S_Object", "classsch_1_1S__Object.html#aa3bfbb36b15c273ef28b5fe421445f21", null ],

@@ -107,7 +107,8 @@ Public Types</h2></td></tr>
 <a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320">TPoint</a>, 
 <br />
 &#160;&#160;<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a">TCapsule</a>, 
-<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254">TCone</a>
+<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254">TCone</a>, 
+<a class="el" href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed">TCylinder</a>
 <br />
  }<tr class="memdesc:abe9b175195c12ac74eb9ee1dbf620482"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of a solid object. Don't use it to cast !  <a href="classsch_1_1S__Object.html#abe9b175195c12ac74eb9ee1dbf620482">More...</a><br /></td></tr>
 </td></tr>
@@ -248,6 +249,7 @@ Protected Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="abe9b175195c12ac74eb9ee1dbf620482a4cfd0d78203d3c0a023ebd04f2ca6320"></a>TPoint&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="abe9b175195c12ac74eb9ee1dbf620482a2c8f96f733838b5a5a85c435dce6b35a"></a>TCapsule&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254"></a>TCone&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed"></a>TCylinder&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -867,7 +869,7 @@ Protected Attributes</h2></td></tr>
 
 <p>must be overloaded to return the type </p>
 
-<p>Reimplemented in <a class="el" href="classsch_1_1STP__BV.html#a68ae4781ea6ab4daab91a949cece0e9a">sch::STP_BV</a>, <a class="el" href="classsch_1_1S__Polyhedron.html#accee47d7b3149736f670070f1006e037">sch::S_Polyhedron</a>, <a class="el" href="classsch_1_1STP__BV__P.html#ac659304d3e1b983d6053192ae9d0248f">sch::STP_BV_P</a>, <a class="el" href="classsch_1_1S__Cone.html#a92944c58b07e80186719bb62fcc6b76a">sch::S_Cone</a>, <a class="el" href="classsch_1_1S__Box.html#ab97ffc94d3b65f19a0c43774364cf261">sch::S_Box</a>, <a class="el" href="classsch_1_1S__Sphere.html#a0e298ed9e98159265742fa6d30d05991">sch::S_Sphere</a>, <a class="el" href="classsch_1_1S__Point.html#a0c596d23e5619d49bcab0e31b2736b28">sch::S_Point</a>, <a class="el" href="classsch_1_1S__Superellipsoid.html#a3ca58a6b2e6c79f4fa61ceb9080920ef">sch::S_Superellipsoid</a>, and <a class="el" href="classsch_1_1S__Capsule.html#a81d1c731f0c731442de201646108e339">sch::S_Capsule</a>.</p>
+<p>Reimplemented in <a class="el" href="classsch_1_1STP__BV.html#a68ae4781ea6ab4daab91a949cece0e9a">sch::STP_BV</a>, <a class="el" href="classsch_1_1S__Polyhedron.html#accee47d7b3149736f670070f1006e037">sch::S_Polyhedron</a>, <a class="el" href="classsch_1_1STP__BV__P.html#ac659304d3e1b983d6053192ae9d0248f">sch::STP_BV_P</a>, <a class="el" href="classsch_1_1S__Cone.html#a92944c58b07e80186719bb62fcc6b76a">sch::S_Cone</a>, <a class="el" href="classsch_1_1S__Box.html#ab97ffc94d3b65f19a0c43774364cf261">sch::S_Box</a>, <a class="el" href="classsch_1_1S__Capsule.html#a81d1c731f0c731442de201646108e339">sch::S_Capsule</a>, <a class="el" href="classsch_1_1S__Cylinder.html#a1a11d3d693c30bbe8f6f16efb91a2800">sch::S_Cylinder</a>, <a class="el" href="classsch_1_1S__Sphere.html#a0e298ed9e98159265742fa6d30d05991">sch::S_Sphere</a>, <a class="el" href="classsch_1_1S__Point.html#a0c596d23e5619d49bcab0e31b2736b28">sch::S_Point</a>, and <a class="el" href="classsch_1_1S__Superellipsoid.html#a3ca58a6b2e6c79f4fa61ceb9080920ef">sch::S_Superellipsoid</a>.</p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="example1_8cpp-example.html#a7">example1.cpp</a>, and <a class="el" href="example2_8cpp-example.html#a8">example2.cpp</a>.</dd>
 </dl>
 </div>
@@ -916,7 +918,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>returns the support point. </dd></dl>
 
-<p>Implemented in <a class="el" href="classsch_1_1STP__BV.html#a5edbb0b6f22e83cf600de59476564ee4">sch::STP_BV</a>, <a class="el" href="classsch_1_1S__Polyhedron.html#a30fc5d9086c51624c05f1bb4910fd5e0">sch::S_Polyhedron</a>, <a class="el" href="classsch_1_1S__Cone.html#acbfa8c6dbe364cd2fe7f1a3fe4e9c00f">sch::S_Cone</a>, <a class="el" href="classsch_1_1S__Box.html#a2f7c2a71a97782142685503965b3e77e">sch::S_Box</a>, <a class="el" href="classsch_1_1S__Sphere.html#a6af2fe347bceaff36ed0fec86b2d5f60">sch::S_Sphere</a>, <a class="el" href="classsch_1_1S__Point.html#acdac8f9ea44e7187a81ef2641a3dedd6">sch::S_Point</a>, <a class="el" href="classsch_1_1STP__BV__P.html#a1f744488c2aeff2cfc79d7090b11266d">sch::STP_BV_P</a>, <a class="el" href="classsch_1_1S__Capsule.html#a86cea08557d819376473969e083f23a2">sch::S_Capsule</a>, and <a class="el" href="classsch_1_1S__Superellipsoid.html#aae100abaa449e132eb2611722d618937">sch::S_Superellipsoid</a>.</p>
+<p>Implemented in <a class="el" href="classsch_1_1STP__BV.html#a5edbb0b6f22e83cf600de59476564ee4">sch::STP_BV</a>, <a class="el" href="classsch_1_1S__Polyhedron.html#a30fc5d9086c51624c05f1bb4910fd5e0">sch::S_Polyhedron</a>, <a class="el" href="classsch_1_1S__Cone.html#acbfa8c6dbe364cd2fe7f1a3fe4e9c00f">sch::S_Cone</a>, <a class="el" href="classsch_1_1S__Box.html#a2f7c2a71a97782142685503965b3e77e">sch::S_Box</a>, <a class="el" href="classsch_1_1S__Capsule.html#a86cea08557d819376473969e083f23a2">sch::S_Capsule</a>, <a class="el" href="classsch_1_1S__Cylinder.html#a80c7642061d2fa10cf68ad86121b4cd4">sch::S_Cylinder</a>, <a class="el" href="classsch_1_1S__Sphere.html#a6af2fe347bceaff36ed0fec86b2d5f60">sch::S_Sphere</a>, <a class="el" href="classsch_1_1S__Point.html#acdac8f9ea44e7187a81ef2641a3dedd6">sch::S_Point</a>, <a class="el" href="classsch_1_1STP__BV__P.html#a1f744488c2aeff2cfc79d7090b11266d">sch::STP_BV_P</a>, and <a class="el" href="classsch_1_1S__Superellipsoid.html#aae100abaa449e132eb2611722d618937">sch::S_Superellipsoid</a>.</p>
 
 </div>
 </div>

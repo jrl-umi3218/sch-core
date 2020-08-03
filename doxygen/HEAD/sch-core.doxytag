@@ -334,6 +334,14 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>S_Cylinder.h</name>
+    <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
+    <filename>S__Cylinder_8h</filename>
+    <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
+    <class kind="class">sch::S_Cylinder</class>
+    <namespace>sch</namespace>
+  </compound>
+  <compound kind="file">
     <name>S_Object.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
     <filename>S__Object_8h</filename>
@@ -3197,6 +3205,27 @@
       <anchor>a35cd7305cb2b3c2b0f23abf11b52db8e</anchor>
       <arglist>()</arglist>
     </member>
+    <member kind="function">
+      <type>SCH_API const Point3 &amp;</type>
+      <name>getP1</name>
+      <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
+      <anchor>a010a8ee5610bac57ef3e7f0b082ab6b5</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API const Point3 &amp;</type>
+      <name>getP2</name>
+      <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
+      <anchor>a552dd6c5ca59cefd614e9df500988dff</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API Scalar</type>
+      <name>getRadius</name>
+      <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
+      <anchor>ae9ae157bbde47527f19fc2f66f9c9bd7</anchor>
+      <arglist>() const</arglist>
+    </member>
     <member kind="function" protection="protected" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
       <name>l_Support</name>
@@ -3309,6 +3338,88 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>sch::S_Cylinder</name>
+    <filename>classsch_1_1S__Cylinder.html</filename>
+    <base>sch::S_ObjectNormalized</base>
+    <member kind="function">
+      <type>SCH_API</type>
+      <name>S_Cylinder</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a7c4f108702249197de9077449c0e9106</anchor>
+      <arglist>(Point3 p1, Point3 p2, Scalar radius)</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API</type>
+      <name>~S_Cylinder</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>aeebeb2f8f079000975582b1eebbfcfad</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API const Point3 &amp;</type>
+      <name>getP1</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a46369b2dacf1d4f0efb05f2bcf063c0f</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API const Point3 &amp;</type>
+      <name>getP2</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>abba619e11450be22a4235e0c0eddb9bb</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API Scalar</type>
+      <name>getRadius</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a1743c6ab74bbabfa6a17c109a4a3ae1f</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual SCH_API Point3</type>
+      <name>l_Support</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a80c7642061d2fa10cf68ad86121b4cd4</anchor>
+      <arglist>(const Vector3 &amp;v, int &amp;lastFeature) const</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual SCH_API S_ObjectType</type>
+      <name>getType</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a1a11d3d693c30bbe8f6f16efb91a2800</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Point3</type>
+      <name>p1_</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a8eaba4b0ae66b11ff3aa3544183650f4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Point3</type>
+      <name>p2_</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>ab4fc31d1a261527ab6383e44664fe94a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Vector3</type>
+      <name>normal_</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a573f4ca5a5da11fe564b7dd311595e4b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Scalar</type>
+      <name>radius_</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>a0230c5bb1149b66eb2bd5201cd8c6fef</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>sch::S_Object</name>
     <filename>classsch_1_1S__Object.html</filename>
     <member kind="enumeration">
@@ -3379,6 +3490,12 @@
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
+      <name>TCylinder</name>
+      <anchorfile>classsch_1_1S__Object.html</anchorfile>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
       <name>TS_Object</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>abe9b175195c12ac74eb9ee1dbf620482a5dfbe65b9bdbf92b7f4ca8930d78d5c6</anchor>
@@ -3436,6 +3553,12 @@
       <name>TCone</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>abe9b175195c12ac74eb9ee1dbf620482a931a0b05f7114adb92b6343c4a78d254</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>TCylinder</name>
+      <anchorfile>classsch_1_1S__Object.html</anchorfile>
+      <anchor>abe9b175195c12ac74eb9ee1dbf620482a88261628520492d15796b86c94f987ed</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
@@ -5591,6 +5714,10 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>STP_SmallSphere</name>
+    <filename>classSTP__SmallSphere.html</filename>
+  </compound>
+  <compound kind="class">
     <name>sch::STP_SmallSphere</name>
     <filename>classsch_1_1STP__SmallSphere.html</filename>
     <base>sch::STP_Feature</base>
@@ -5811,10 +5938,6 @@
       <anchor>a49b0a8b55f598884530b9f240515f66b</anchor>
       <arglist></arglist>
     </member>
-  </compound>
-  <compound kind="class">
-    <name>STP_SmallSphere</name>
-    <filename>classSTP__SmallSphere.html</filename>
   </compound>
   <compound kind="class">
     <name>sch::STP_Torus</name>
@@ -6751,6 +6874,7 @@
     <class kind="class">sch::S_Box</class>
     <class kind="class">sch::S_Capsule</class>
     <class kind="class">sch::S_Cone</class>
+    <class kind="class">sch::S_Cylinder</class>
     <class kind="class">sch::S_Object</class>
     <class kind="class">sch::S_ObjectNonNormalized</class>
     <class kind="class">sch::S_ObjectNormalized</class>

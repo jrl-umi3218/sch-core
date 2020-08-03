@@ -3,6 +3,7 @@ var searchData=
   ['s_5fbox',['S_Box',['../classsch_1_1S__Box.html',1,'sch']]],
   ['s_5fcapsule',['S_Capsule',['../classsch_1_1S__Capsule.html',1,'sch']]],
   ['s_5fcone',['S_Cone',['../classsch_1_1S__Cone.html',1,'sch']]],
+  ['s_5fcylinder',['S_Cylinder',['../classsch_1_1S__Cylinder.html',1,'sch']]],
   ['s_5fobject',['S_Object',['../classsch_1_1S__Object.html',1,'sch']]],
   ['s_5fobjectnonnormalized',['S_ObjectNonNormalized',['../classsch_1_1S__ObjectNonNormalized.html',1,'sch']]],
   ['s_5fobjectnormalized',['S_ObjectNormalized',['../classsch_1_1S__ObjectNormalized.html',1,'sch']]],
@@ -35,6 +36,6 @@ var searchData=
   ['stp_5fbv',['STP_BV',['../classsch_1_1STP__BV.html',1,'sch']]],
   ['stp_5fbv_5fp',['STP_BV_P',['../classsch_1_1STP__BV__P.html',1,'sch']]],
   ['stp_5ffeature',['STP_Feature',['../classsch_1_1STP__Feature.html',1,'sch']]],
-  ['stp_5fsmallsphere',['STP_SmallSphere',['../classsch_1_1STP__SmallSphere.html',1,'sch::STP_SmallSphere'],['../classSTP__SmallSphere.html',1,'STP_SmallSphere']]],
+  ['stp_5fsmallsphere',['STP_SmallSphere',['../classSTP__SmallSphere.html',1,'STP_SmallSphere'],['../classsch_1_1STP__SmallSphere.html',1,'sch::STP_SmallSphere']]],
   ['stp_5ftorus',['STP_Torus',['../classsch_1_1STP__Torus.html',1,'sch']]]
 ];
