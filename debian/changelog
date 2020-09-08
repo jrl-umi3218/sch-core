@@ -1,3 +1,9 @@
+sch-core (1.1.0-1ubuntu1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 08 Sep 2020 19:05:22 +0800
+
 sch-core (1.0.3-1ubuntu1) unstable; urgency=medium
 
   * Fix out-of-bounds access (PR #23)
