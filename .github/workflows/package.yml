@@ -145,6 +145,7 @@ jobs:
         - dist: focal
           arch: i386
     runs-on: ubuntu-18.04
+    if: github.ref == 'refs/heads/master' && github.repository == 'jrl-umi3218/sch-core'
     steps:
     - uses: actions/checkout@v2
       with:
