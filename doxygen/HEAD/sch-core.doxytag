@@ -539,10 +539,10 @@
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>sch::s_PointsComparator</type>
+      <type>struct sch::s_PointsComparator</type>
       <name>PointsComparator</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>aeac2d6f203d6cda404d023b7b9e19178</anchor>
+      <anchor>a44c4f840424fb70e78a6f19f89fd08c8</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumeration">
@@ -6982,10 +6982,10 @@
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>sch::s_PointsComparator</type>
+      <type>struct sch::s_PointsComparator</type>
       <name>PointsComparator</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>aeac2d6f203d6cda404d023b7b9e19178</anchor>
+      <anchor>a44c4f840424fb70e78a6f19f89fd08c8</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">

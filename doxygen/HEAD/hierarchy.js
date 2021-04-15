@@ -8,9 +8,6 @@ var hierarchy =
     [ "basic_oserializer", null, [
       [ "boost::archive::detail::oserializer< Archive, T >", "classboost_1_1archive_1_1detail_1_1oserializer.html", null ]
     ] ],
-    [ "binary_function", null, [
-      [ "sch::s_PointsComparator", "structsch_1_1s__PointsComparator.html", null ]
-    ] ],
     [ "sch::CD_Depth", "classsch_1_1CD__Depth.html", null ],
     [ "sch::CD_Pair", "classsch_1_1CD__Pair.html", null ],
     [ "sch::CD_Scene", "classsch_1_1CD__Scene.html", null ],
@@ -57,6 +54,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "S_ObjectTimeStamp", "structS__ObjectTimeStamp.html", null ],
+    [ "sch::s_PointsComparator", "structsch_1_1s__PointsComparator.html", null ],
     [ "sch::s_SphereApproxim", "structsch_1_1s__SphereApproxim.html", null ],
     [ "s_STN_STBVData", "structs__STN__STBVData.html", null ],
     [ "sch::s_STN_VVR", "structsch_1_1s__STN__VVR.html", null ],

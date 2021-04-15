@@ -6,7 +6,7 @@ var STP__BV_8h =
     [ "s_SphereApproxim", "structsch_1_1s__SphereApproxim.html", "structsch_1_1s__SphereApproxim" ],
     [ "s_PointsComparator", "structsch_1_1s__PointsComparator.html", "structsch_1_1s__PointsComparator" ],
     [ "STP_BV", "classsch_1_1STP__BV.html", "classsch_1_1STP__BV" ],
-    [ "PointsComparator", "STP__BV_8h.html#aeac2d6f203d6cda404d023b7b9e19178", null ],
+    [ "PointsComparator", "STP__BV_8h.html#a44c4f840424fb70e78a6f19f89fd08c8", null ],
     [ "SphereApproxim", "STP__BV_8h.html#a50488b6de166145f7320dc22de55de99", null ],
     [ "toruslinkedBV", "STP__BV_8h.html#a5acd0335a65507856bfecf941193515e", null ],
     [ "Triangle", "STP__BV_8h.html#ad02b3d5e368caaabe1eff7ad33d557ae", null ],
