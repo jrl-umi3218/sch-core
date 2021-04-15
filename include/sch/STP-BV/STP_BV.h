@@ -136,7 +136,7 @@ namespace sch
   *
   *
   */
-  typedef struct s_PointsComparator: public std::binary_function<const Point3&, const Point3&, bool>
+  typedef struct s_PointsComparator
   {
     /*!
     *  \brief Default constructor
