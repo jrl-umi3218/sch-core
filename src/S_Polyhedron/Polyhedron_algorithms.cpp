@@ -265,6 +265,13 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
   S_PolyhedronVertex* current;
   Scalar supportH;
 
+  if (numberOfVertices_==0)
+  {
+    std::stringstream errmsg;
+    errmsg << "The polyhedron is empty, impossible to compute support function " << std::endl;
+    throw std::length_error(errmsg.str());
+  }
+
   if (lastFeature==-1)
   {
     current=*fastVertexes_;
