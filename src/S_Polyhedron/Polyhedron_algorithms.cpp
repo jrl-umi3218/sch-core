@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <string>
 
+//#define CD_POLYHEDRON_ALGORITHM_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
 
 using namespace sch;
 
@@ -296,6 +297,9 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
     ///the best is te return the support computed using the naive version 
     if (iterations>numberOfVertices_) 
     {
+#ifdef CD_POLYHEDRON_ALGORITHM_VERBOSE_MODE
+      std::cout << "Problem Support Polyhedron, Naive method triggered" << std::endl;
+#endif
       return naiveSupport(v);
     }
   }
