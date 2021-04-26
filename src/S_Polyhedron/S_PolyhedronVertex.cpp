@@ -82,7 +82,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
     }
   }
 
-  return (currentsupportH >= nextVertexH_ + sch::epsilon);
+  return (currentsupportH + sch::epsilon10 >= nextVertexH_); /// epsilon checks ensure that the improvement of the new support point is substantial
 }
 
 
@@ -103,8 +103,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
     }
   }
 
-  if ((nextVertex_!=NULL)
-    &&(nextVertexH_>curVertexH_+sch::epsilon))
+  if ((nextVertex_ != NULL) && (nextVertexH_ > curVertexH_ + sch::epsilon10))
   {
     return false;
   }
