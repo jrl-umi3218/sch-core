@@ -283,20 +283,27 @@ Point3 Polyhedron_algorithms::support(const Vector3&v,int &lastFeature)const
 
   bool b=current->isHere(v);
 
+  unsigned iterations = 0;
+
   while (!b)
   {
     supportH= current->getNextVertexH();
     current = current->getNextVertex();
     b=current->isHere(v,supportH);
+    ++iterations;
+
+    /// if the number of iterations is bigger than the number of vertices it means that we entered an infinite loop
+    ///the best is te return the support computed using the naive version 
+    if (iterations>numberOfVertices_) 
+    {
+      return naiveSupport(v);
+    }
   }
 
   lastFeature=current->getNumber();
 
 
   return current->getCoordinates();
-
-
-
 }
 
 void Polyhedron_algorithms::deleteVertexesWithoutNeighbors()
