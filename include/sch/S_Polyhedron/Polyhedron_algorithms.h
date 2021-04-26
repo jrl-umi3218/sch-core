@@ -89,8 +89,10 @@ namespace sch
     std::vector<S_PolyhedronVertex*> vertexes_;
 
     std::vector<PolyhedronTriangle> triangles_;
-    S_PolyhedronVertex ** fastVertexes_;
+
+    S_PolyhedronVertex **fastVertexes_;
     S_PolyhedronVertex ** lastVertexes_;
+    unsigned numberOfVertices_;
   };
 }
 

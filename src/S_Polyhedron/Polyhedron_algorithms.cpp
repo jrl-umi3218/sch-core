@@ -10,8 +10,9 @@
 using namespace sch;
 
 Polyhedron_algorithms::Polyhedron_algorithms(void)
-  :fastVertexes_(0x0)
-  ,lastVertexes_(0x0)
+    : fastVertexes_(0x0),
+      lastVertexes_(0x0),
+      numberOfVertices_(0)
 {
 
 }
@@ -218,15 +219,16 @@ void Polyhedron_algorithms::updateFastArrays()
   {
     delete[] fastVertexes_;
   }
-  if (vertexes_.size()>0)
+  numberOfVertices_ = unsigned(vertexes_.size());
+  if (numberOfVertices_ > 0)
   {
-    fastVertexes_=new S_PolyhedronVertex*[vertexes_.size()];
-    for (unsigned int i=0; i<vertexes_.size(); ++i)
+    fastVertexes_ = new S_PolyhedronVertex *[numberOfVertices_];
+    for (unsigned int i = 0; i < numberOfVertices_; ++i)
     {
       fastVertexes_[i]=vertexes_[i];
     }
 
-    lastVertexes_=&(fastVertexes_[vertexes_.size()]);
+    lastVertexes_ = &(fastVertexes_[numberOfVertices_]);
   }
   else
   {
@@ -246,16 +248,13 @@ Point3 Polyhedron_algorithms::naiveSupport(const Vector3&v)const
 
   current++;
 
-  while (current<lastVertexes_)
+  for (unsigned i = 1; i < numberOfVertices_; i++, current++)
   {
-
-    if ((*current)->supportH(v)>supportH)
+    if ((*current)->supportH(v) > supportH)
     {
-      supportH=(*current)->supportH(v);
-      best=(*current)->getCoordinates();
+      supportH = (*current)->supportH(v);
+      best = (*current)->getCoordinates();
     }
-
-    current++;
   }
 
   return best;
