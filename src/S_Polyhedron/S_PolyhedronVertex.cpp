@@ -82,7 +82,7 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currents
     }
   }
 
-  return (currentsupportH>=nextVertexH_);
+  return (currentsupportH >= nextVertexH_ + sch::epsilon);
 }
 
 
@@ -91,8 +91,8 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
   S_PolyhedronVertex** iterator_;
   nextVertex_=NULL;
   Scalar temp;
-
-  nextVertexH_=direction*cordinates_;
+  double curVertexH_ = direction * cordinates_;
+  nextVertexH_ = curVertexH_;
 
   for (iterator_=fastNeighbors_; iterator_!=endNeighbors_; ++iterator_)
   {
@@ -103,7 +103,15 @@ bool S_PolyhedronVertex::isHere(const Vector3 &direction)
     }
   }
 
-  return (nextVertex_==NULL);
+  if ((nextVertex_!=NULL)
+    &&(nextVertexH_>curVertexH_+sch::epsilon))
+  {
+    return false;
+  }
+  else 
+  {
+    return true;
+  } 
 }
 
 unsigned S_PolyhedronVertex::getNumNeighbors()const
