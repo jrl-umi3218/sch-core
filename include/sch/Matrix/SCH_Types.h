@@ -37,6 +37,7 @@ namespace sch
 
   static const Scalar infinity = std::numeric_limits<Scalar>::max();
   static const Scalar epsilon = std::numeric_limits<Scalar>::epsilon();
+  static const Scalar epsilon10 = std::numeric_limits<Scalar>::epsilon()*10;
   static const Scalar defaultPrecision = 1e-6;
   static const Scalar pi = 3.141592653589793238462643383279502884;
 }
