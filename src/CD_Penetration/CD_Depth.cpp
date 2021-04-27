@@ -259,7 +259,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     num_verts = 4;
 
   }
-  // Fall through allowed!!
+  // fall through
   case 4:
   {
     int bad_vertex = originInTetrahedron(yBuf[0], yBuf[1], yBuf[2], yBuf[3]);
@@ -304,7 +304,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
     num_verts = 3;
 
   }
-  // Fall through allowed!!
+  // fall through
   case 3:
   {
     // We have a triangle inside the Minkowski sum containing
@@ -396,7 +396,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
       qBuf[num_verts] = sObj2_->support(-triangle->getClosest());
       yBuf[num_verts] = pBuf[num_verts] - qBuf[num_verts];
 
-      Index_t index = num_verts++;
+      Index_t index = Index_t(num_verts++);
       Scalar far_dist = (yBuf[index]* triangle->getClosest());
 
       // Make sure the support mapping is OK.

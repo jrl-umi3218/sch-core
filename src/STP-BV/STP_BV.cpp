@@ -643,7 +643,6 @@ void STP_BV::constructFromFile(const std::string& filename)
       computedPoints.clear();
       computeArcPointsBetween(p1, p2, patchesCenter[dvvr[2].m_outerSTP], step, firstArc);
       computeArcPointsBetween(p4, p3, patchesCenter[dvvr[3].m_outerSTP], step, lastArc);
-      double r = sRadius - (patchesCenter[dvvr[0].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
       computeArcPointsBetween(p1, p4, patchesCenter[dvvr[0].m_outerSTP], step, computedPoints);
       for(int j = 1 ; j < step ; ++j)
       {
@@ -651,10 +650,8 @@ void STP_BV::constructFromFile(const std::string& filename)
                                             patchesCenter[dvvr[1].m_outerSTP],
                                             patchesCenter[dvvr[2].m_outerSTP],
                                             firstArc[j]);
-        r = sRadius - (arcCenter - patchesCenter[dvvr[2].m_outerSTP]).norm();
         computeArcPointsBetween(firstArc[j], lastArc[j], arcCenter, step, computedPoints);
       }
-      r = sRadius - (patchesCenter[dvvr[1].m_outerSTP] - patchesCenter[dvvr[2].m_outerSTP]).norm();
       computeArcPointsBetween(p2, p3, patchesCenter[dvvr[1].m_outerSTP], step, computedPoints);
 
       //create the torus displayList

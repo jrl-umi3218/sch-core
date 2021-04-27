@@ -280,8 +280,9 @@ Scalar CD_Pair::GJK()
 
 #ifdef CD_PAIR_VERBOUS_MODE
 
-        std::cout<<"Last features"<<lf1<<" "<<lf2<<std::endl;
-        std::cout<<"supports"<<sup1<<" "<<sup2<<std::endl;
+        std::cout<<"Last features "<<lf1<<" "<<lf2<<std::endl;
+        std::cout<<"Supports "<<sup1<<" "<<sup2<<std::endl;
+        std::cout<<"Distance " << distance_ << std::endl;
 #	ifdef CD_ITERATION_LIMIT
         std::cout<<"Iterations"<<cnt<<std::endl;
 #	endif
