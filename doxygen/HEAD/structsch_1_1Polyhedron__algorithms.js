@@ -15,6 +15,7 @@ var structsch_1_1Polyhedron__algorithms =
     [ "updateVertexNeighbors", "structsch_1_1Polyhedron__algorithms.html#ad6edd9bee4355c6c0e5d71957b7f31ac", null ],
     [ "fastVertexes_", "structsch_1_1Polyhedron__algorithms.html#a4af7877df4daa150e2be4aab034f84da", null ],
     [ "lastVertexes_", "structsch_1_1Polyhedron__algorithms.html#a893b3ab22cad4db324f0a3d6e6a89377", null ],
+    [ "numberOfVertices_", "structsch_1_1Polyhedron__algorithms.html#a50435002cf65766b7f16bc5a445ae362", null ],
     [ "triangles_", "structsch_1_1Polyhedron__algorithms.html#aa67352db192d31663127df8500de1f50", null ],
     [ "vertexes_", "structsch_1_1Polyhedron__algorithms.html#ac2cb717ec5e0c527be76d515c64ef397", null ]
 ];

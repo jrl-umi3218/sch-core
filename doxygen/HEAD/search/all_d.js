@@ -17,5 +17,6 @@ var searchData=
   ['normoutdated',['normOutdated',['../structCD__Matrix_1_1Norm.html#a2303fac58e5f0373080335b3e140f7ef',1,'CD_Matrix::Norm::normOutdated()'],['../structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html#adc3a482f3e98674d0d0677a53b6f43b2',1,'CD_Matrix::Norm&lt; T, false &gt;::normOutdated()']]],
   ['normoutdated_5f',['normOutdated_',['../structCD__Matrix_1_1Norm.html#a3494051f778e2953510da9fa4a3acc69',1,'CD_Matrix::Norm']]],
   ['norms',['norms',['../classsch_1_1CD__SimplexEnhanced.html#a73fbe131a368041fb504ef638b76fc56',1,'sch::CD_SimplexEnhanced::norms(const char i) const'],['../classsch_1_1CD__SimplexEnhanced.html#a17a9b17a253a6e0db9e3a9a8650045dd',1,'sch::CD_SimplexEnhanced::norms(const char i)']]],
-  ['normsquared',['normsquared',['../structCD__Matrix_1_1Vector3T.html#aaa5038b90264907668b3d88026afc7ed',1,'CD_Matrix::Vector3T::normsquared()'],['../classCD__Matrix_1_1Vector4T.html#a6dc8e02bfbc362aac8ccdc47bf13b39f',1,'CD_Matrix::Vector4T::normsquared()']]]
+  ['normsquared',['normsquared',['../structCD__Matrix_1_1Vector3T.html#aaa5038b90264907668b3d88026afc7ed',1,'CD_Matrix::Vector3T::normsquared()'],['../classCD__Matrix_1_1Vector4T.html#a6dc8e02bfbc362aac8ccdc47bf13b39f',1,'CD_Matrix::Vector4T::normsquared()']]],
+  ['numberofvertices_5f',['numberOfVertices_',['../structsch_1_1Polyhedron__algorithms.html#a50435002cf65766b7f16bc5a445ae362',1,'sch::Polyhedron_algorithms']]]
 ];

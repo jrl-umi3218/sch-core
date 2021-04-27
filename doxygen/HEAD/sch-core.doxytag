@@ -3005,6 +3005,13 @@
       <anchor>a893b3ab22cad4db324f0a3d6e6a89377</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable">
+      <type>unsigned</type>
+      <name>numberOfVertices_</name>
+      <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
+      <anchor>a50435002cf65766b7f16bc5a445ae362</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="struct">
     <name>sch::PolyhedronTriangle</name>
