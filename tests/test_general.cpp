@@ -1,6 +1,6 @@
 #define NON_STP_BV_OBJECTS true
 
-#include "shared-tests/tests/common.h"
+#include "clone_test_universe.h""
 
 #ifdef ENABLE_SIGFPE
 # include <fenv.h>
@@ -21,6 +21,10 @@ int main ()
   TestMaterial universe = TestMaterial(NON_STP_BV_OBJECTS);
   universe.initializeUniverse();
   universe.GeneralTest();
+  {
+    TestMaterial clone_universe = CloneUniverse(universe, NON_STP_BV_OBJECTS);
+    clone_universe.GeneralTest();
+  }
   return 0;
 }
 

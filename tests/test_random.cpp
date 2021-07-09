@@ -1,6 +1,6 @@
 #define NON_STP_BV_OBJECTS true
 
-#include "shared-tests/tests/common.h"
+#include "clone_test_universe.h"
 
 #ifdef ENABLE_SIGFPE
 # include <fenv.h>
@@ -22,6 +22,11 @@ int main ()
   universe.initializeUniverse();
   universe.RandomTestSupportFunction();
   universe.RandomTestSupportFunctionAllObjects();
+  {
+    TestMaterial clone_universe = CloneUniverse(universe, NON_STP_BV_OBJECTS);
+    clone_universe.RandomTestSupportFunction();
+    clone_universe.RandomTestSupportFunctionAllObjects();
+  }
 
   return 0;
 }
