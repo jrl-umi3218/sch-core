@@ -2,9 +2,8 @@
 
 #include "shared-tests/examples/example_common.h"
 
-inline Example CloneUniverse(Example & in)
+inline void CloneUniverse(Example & in, Example & out)
 {
-  Example out;
   // Initialize the universe to have the correct names
   out.initializeUniverse();
   // Clear the scene
@@ -13,5 +12,4 @@ inline Example CloneUniverse(Example & in)
   {
     out.sObj.addObject(in.sObj[i]->clone());
   }
-  return out;
 }

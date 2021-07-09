@@ -22,7 +22,8 @@ int main ()
   universe.initializeUniverse();
   universe.TestPrecision();
   {
-    TestMaterial clone_universe = CloneUniverse(universe, NON_STP_BV_OBJECTS);
+    TestMaterial clone_universe(NON_STP_BV_OBJECTS);
+    CloneUniverse(universe, clone_universe);
     clone_universe.TestPrecision();
   }
   return 0;

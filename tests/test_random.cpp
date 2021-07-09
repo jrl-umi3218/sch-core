@@ -23,7 +23,8 @@ int main ()
   universe.RandomTestSupportFunction();
   universe.RandomTestSupportFunctionAllObjects();
   {
-    TestMaterial clone_universe = CloneUniverse(universe, NON_STP_BV_OBJECTS);
+    TestMaterial clone_universe(NON_STP_BV_OBJECTS);
+    CloneUniverse(universe, clone_universe);
     clone_universe.RandomTestSupportFunction();
     clone_universe.RandomTestSupportFunctionAllObjects();
   }

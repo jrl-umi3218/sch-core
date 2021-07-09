@@ -2,12 +2,10 @@
 
 #include "shared-tests/tests/common.h"
 
-inline TestMaterial CloneUniverse(TestMaterial & in, bool nonSTPBV)
+inline void CloneUniverse(TestMaterial & in, TestMaterial & out)
 {
-  TestMaterial out(nonSTPBV);
   for(size_t i = 0; i < in.sObj.size(); ++i)
   {
     out.sObj.addObject(in.sObj[i]->clone());
   }
-  return out;
 }

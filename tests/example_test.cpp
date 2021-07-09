@@ -15,7 +15,8 @@ int main()
   universe.initializeUniverse();
   bool success = universe.unittest();
   {
-    Example clone_universe = CloneUniverse(universe);
+    Example clone_universe;
+    CloneUniverse(universe, clone_universe);
     success = clone_universe.unittest() && success;
   }
   return (success? 0:1);
