@@ -3,18 +3,18 @@ name: conan packaging for sch-core
 on:
   repository_dispatch:
     types: [conan-master, conan-release]
-  push:
-    paths-ignore:
-      - "debian/**"
-      - ".github/workflows/package.yml"
-      - ".github/workflows/build.yml"
-    branches:
-      - '**'
-    tags:
-      - v*
-  pull_request:
-    branches:
-      - '**'
+  #push:
+  #  paths-ignore:
+  #    - "debian/**"
+  #    - ".github/workflows/package.yml"
+  #    - ".github/workflows/build.yml"
+  #  branches:
+  #    - '**'
+  #  tags:
+  #    - v*
+  #pull_request:
+  #  branches:
+  #    - '**'
 
 jobs:
   build:
