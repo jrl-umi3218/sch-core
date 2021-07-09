@@ -51,6 +51,7 @@ jobs:
         compiler: ${{ matrix.compiler }}
         build-type: ${{ matrix.build-type }}
         options: -DSCH_BUILD_BSD:BOOL=${{ matrix.build-bsd }}
+        macos-options: -DCMAKE_CXX_STANDARD=11
     - name: Upload documentation
       # Only run on master branch and for one configuration
       if: matrix.os == 'ubuntu-18.04' && matrix.build-type == 'RelWithDebInfo' && matrix.compiler == 'gcc' && github.ref == 'refs/heads/master'
