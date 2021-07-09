@@ -217,6 +217,11 @@ STP_BV & STP_BV::operator =(const STP_BV & bv)
   return *this;
 }
 
+STP_BV * STP_BV::clone() const
+{
+  return new STP_BV(*this);
+}
+
 void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
                                      const Point3& center, int step,
                                      std::vector<Point3>& res) const

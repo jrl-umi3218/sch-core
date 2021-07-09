@@ -18,6 +18,8 @@ namespace sch
     SCH_API S_Sphere(const Scalar& radius);
     SCH_API virtual ~S_Sphere();
 
+    SCH_API virtual S_Sphere * clone() const;
+
     SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
 
     SCH_API virtual S_ObjectType getType() const;

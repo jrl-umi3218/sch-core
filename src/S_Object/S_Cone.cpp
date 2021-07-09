@@ -4,6 +4,10 @@
 
 using namespace sch;
 
+S_Cone * S_Cone::clone() const
+{
+  return new S_Cone(*this);
+}
 
 S_Cone::S_Cone(const Scalar& angle, const Scalar &  height) 
 

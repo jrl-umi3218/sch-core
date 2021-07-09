@@ -12,6 +12,8 @@ namespace sch
     SCH_API S_Point();
     SCH_API ~S_Point();
 
+    SCH_API virtual S_Point * clone() const;
+
     SCH_API void setDisplayRadius( Scalar r);
     SCH_API Scalar getDisplayRadius() const ;
 

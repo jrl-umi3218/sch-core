@@ -179,6 +179,7 @@ namespace sch
 
     SCH_API virtual STP_BV & operator=(const STP_BV&);
 
+    SCH_API virtual STP_BV * clone() const;
 
     SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 

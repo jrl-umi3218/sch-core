@@ -80,6 +80,11 @@ namespace sch
 
     SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const=0;
 
+    /*!
+    *  \brief Returns a copy of this S_Object
+    */
+    SCH_API virtual S_Object * clone() const = 0;
+
   public:
 
     SCH_API S_Object(void);

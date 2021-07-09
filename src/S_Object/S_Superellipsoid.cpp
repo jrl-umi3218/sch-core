@@ -26,6 +26,11 @@ S_Superellipsoid::~S_Superellipsoid(void)
 {
 }
 
+S_Superellipsoid * S_Superellipsoid::clone() const
+{
+  return new S_Superellipsoid(*this);
+}
+
 Point3 S_Superellipsoid::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {
   Scalar anx,bny,cnz;

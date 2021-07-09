@@ -36,6 +36,11 @@ const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
   return *this;
 }
 
+S_Polyhedron * S_Polyhedron::clone() const
+{
+  return new S_Polyhedron(*this);
+}
+
 void S_Polyhedron::updateVertexNeighbors()
 {
   poly.updateVertexNeighbors();

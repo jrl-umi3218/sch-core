@@ -9,6 +9,11 @@ S_Point::~S_Point()
 {
 }
 
+S_Point * S_Point::clone() const
+{
+  return new S_Point(*this);
+}
+
 void S_Point::setDisplayRadius(Scalar r)
 {
   displayRadius_ = r;

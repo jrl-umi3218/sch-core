@@ -20,6 +20,7 @@ namespace sch
     SCH_API S_Box(Scalar width,Scalar height,Scalar depth);
     SCH_API virtual ~S_Box(void);
 
+    SCH_API virtual S_Box * clone() const;
 
     SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 

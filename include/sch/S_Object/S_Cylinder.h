@@ -12,6 +12,8 @@ namespace sch
     SCH_API S_Cylinder(Point3 p1, Point3 p2, Scalar radius);
     SCH_API ~S_Cylinder();
 
+    SCH_API virtual S_Cylinder * clone() const;
+
     SCH_API const Point3 & getP1() const;
 
     SCH_API const Point3 & getP2() const;
