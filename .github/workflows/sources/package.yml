@@ -33,6 +33,9 @@ on:
       - '**'
     tags:
       - v*
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   # For a given tag vX.Y.Z, this checks:

@@ -11,6 +11,10 @@ S_Sphere::~S_Sphere(void)
 {
 }
 
+S_Sphere * S_Sphere::clone() const
+{
+  return new S_Sphere(*this);
+}
 
 Point3 S_Sphere::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {

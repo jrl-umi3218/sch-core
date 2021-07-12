@@ -12,6 +12,8 @@ namespace sch
     SCH_API S_Capsule(Point3 p1, Point3 p2, Scalar radius);
     SCH_API ~S_Capsule();
 
+    SCH_API virtual S_Capsule * clone() const;
+
     SCH_API const Point3 & getP1() const;
 
     SCH_API const Point3 & getP2() const;

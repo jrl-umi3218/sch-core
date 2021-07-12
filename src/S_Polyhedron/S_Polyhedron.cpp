@@ -17,7 +17,7 @@ S_Polyhedron::S_Polyhedron(void):poly()
 {
 }
 
-S_Polyhedron::S_Polyhedron(const S_Polyhedron& p):poly(p.poly)
+S_Polyhedron::S_Polyhedron(const S_Polyhedron& p): S_ObjectNonNormalized(p), poly(p.poly)
 {
 }
 
@@ -27,8 +27,18 @@ S_Polyhedron::~S_Polyhedron(void)
 
 const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
 {
+  if(&p == this)
+  {
+    return *this;
+  }
+  static_cast<S_ObjectNonNormalized &>(*this) = static_cast<const S_ObjectNonNormalized &>(p);
   poly=p.poly;
   return *this;
+}
+
+S_Polyhedron * S_Polyhedron::clone() const
+{
+  return new S_Polyhedron(*this);
 }
 
 void S_Polyhedron::updateVertexNeighbors()

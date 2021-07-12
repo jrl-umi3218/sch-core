@@ -16,6 +16,8 @@ namespace sch
   public:
     SCH_API STP_BV_P(void);
 
+    SCH_API virtual STP_BV_P * clone() const;
+
     SCH_API virtual Point3  l_Support(const Vector3& v, int& lastFeature)const;
 
     /*!

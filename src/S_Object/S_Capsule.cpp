@@ -10,6 +10,11 @@ S_Capsule::~S_Capsule()
 {
 }
 
+S_Capsule * S_Capsule::clone() const
+{
+  return new S_Capsule(*this);
+}
+
 Point3 S_Capsule::l_Support(const Vector3& v, int& /*lastFeature*/)const
 {
   Point3 d(p2_);

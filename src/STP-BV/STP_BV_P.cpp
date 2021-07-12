@@ -10,6 +10,11 @@ STP_BV_P::~STP_BV_P(void)
 {
 }
 
+STP_BV_P * STP_BV_P::clone() const
+{
+  return new STP_BV_P(*this);
+}
+
 void STP_BV_P::constructFromFile(const std::string &filename)
 {
   STP_BV::constructFromFile(filename);

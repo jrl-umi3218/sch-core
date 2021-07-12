@@ -177,7 +177,8 @@ STP_BV::STP_BV()
 
 
 STP_BV::STP_BV(const STP_BV & bv)
-  :m_fastPatches(NULL)
+  :S_ObjectNormalized(bv),
+   m_fastPatches(NULL)
   ,m_lastPatches(NULL)
   ,geometries_(bv.geometries_)
 {
@@ -201,17 +202,24 @@ STP_BV::~STP_BV()
 
 STP_BV & STP_BV::operator =(const STP_BV & bv)
 {
-  if (&bv!=this)
+  if(&bv == this)
   {
-    m_patches.clear();
-    for (size_t i=0; i<bv.m_patches.size(); i++)
-    {
-      m_patches.push_back(bv.m_patches[i]->clone());
-    }
-    updateFastPatches();
-    geometries_ = bv.geometries_;
+    return *this;
   }
+  static_cast<S_ObjectNormalized &>(*this) = static_cast<const S_ObjectNormalized &>(bv);
+  m_patches.clear();
+  for (size_t i=0; i<bv.m_patches.size(); i++)
+  {
+    m_patches.push_back(bv.m_patches[i]->clone());
+  }
+  updateFastPatches();
+  geometries_ = bv.geometries_;
   return *this;
+}
+
+STP_BV * STP_BV::clone() const
+{
+  return new STP_BV(*this);
 }
 
 void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
