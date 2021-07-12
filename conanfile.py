@@ -9,7 +9,7 @@ import shutil
 
 class SCHCoreConan(ConanFile):
     name = "sch-core"
-    version = "1.1.0"
+    version = "1.2.0"
     description = "Efficient implementation of GJK algorithm for proximity queries (collision detection, distance computations, penetration depths and witness points) between convex shapes."
     topics = ("robotics", "collision", "proximity", "convex")
     url = "https://github.com/jrl-umi3218/sch-core"

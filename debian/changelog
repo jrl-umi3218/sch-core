@@ -1,3 +1,9 @@
+sch-core (1.2.0-1debian1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Mon, 12 Jul 2021 11:54:41 +0800
+
 sch-core (1.1.0-1ubuntu1) unstable; urgency=medium
 
   * Update upstream version

@@ -18,7 +18,7 @@ if (NOT DEFINED PROJECT_DEBUG_POSTFIX)
     set(PROJECT_DEBUG_POSTFIX "_d")
 endif()
 
-set(PROJECT_VERSION 1.1.0)
+set(PROJECT_VERSION 1.2.0)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 include(cmake/base.cmake)
