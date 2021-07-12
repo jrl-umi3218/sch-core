@@ -28,6 +28,7 @@ var classsch_1_1S__Object =
     [ "addTranslation", "classsch_1_1S__Object.html#aaef0a307dbb1d0f0165a6d2e8644dbf4", null ],
     [ "addTranslation", "classsch_1_1S__Object.html#a5e10b0170f7c3fa59c27565cd873b197", null ],
     [ "checkStamp", "classsch_1_1S__Object.html#ac424e6918998c3a7280da4998847a194", null ],
+    [ "clone", "classsch_1_1S__Object.html#a0eae1bc01d12339a96000e96f52507d0", null ],
     [ "constructFromFile", "classsch_1_1S__Object.html#a6cbda84b503e44119ec762ae0ef758b7", null ],
     [ "getOrientation", "classsch_1_1S__Object.html#a8e1e088ccb9a57d7049fc1db8342bbab", null ],
     [ "getPosition", "classsch_1_1S__Object.html#a8c3cc541c2823ffe91ba9609263cfd3f", null ],

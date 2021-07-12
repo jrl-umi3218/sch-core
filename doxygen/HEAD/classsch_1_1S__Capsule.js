@@ -2,6 +2,7 @@ var classsch_1_1S__Capsule =
 [
     [ "S_Capsule", "classsch_1_1S__Capsule.html#ad464b3c1a0903f0c5d67fad63ebc6715", null ],
     [ "~S_Capsule", "classsch_1_1S__Capsule.html#a35cd7305cb2b3c2b0f23abf11b52db8e", null ],
+    [ "clone", "classsch_1_1S__Capsule.html#a4efb530e9994d7dbe89a34877e893d8d", null ],
     [ "getP1", "classsch_1_1S__Capsule.html#a010a8ee5610bac57ef3e7f0b082ab6b5", null ],
     [ "getP2", "classsch_1_1S__Capsule.html#a552dd6c5ca59cefd614e9df500988dff", null ],
     [ "getRadius", "classsch_1_1S__Capsule.html#ae9ae157bbde47527f19fc2f66f9c9bd7", null ],

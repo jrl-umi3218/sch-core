@@ -41,8 +41,9 @@ var NAVTREEINDEX =
 [
 "CD__Depth_8h.html",
 "classsch_1_1CD__Simplex.html#a150cf2791dbbe0e1b60a022999a5145a",
-"classsch_1_1S__Object.html#a6cbda84b503e44119ec762ae0ef758b7",
-"structCD__Matrix_1_1Matrix3x3T.html#a6f511d59a710e8b0e2aa63d0bafb4808"
+"classsch_1_1S__Object.html#a2cbde8713835787904c9646f8615baf8",
+"structCD__Matrix_1_1Matrix3x3T.html#a32de43567bb6418793560c467549f9ed",
+"structsch_1_1s__Triangle.html#a3a5dc40260c9390ba094a0bda5f970dd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

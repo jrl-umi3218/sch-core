@@ -3152,6 +3152,13 @@
       <arglist>(void)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Box *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Box.html</anchorfile>
+      <anchor>a8d97e61e8af8ff5674f0a152ac5a1a92</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
       <name>l_Support</name>
       <anchorfile>classsch_1_1S__Box.html</anchorfile>
@@ -3211,6 +3218,13 @@
       <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
       <anchor>a35cd7305cb2b3c2b0f23abf11b52db8e</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Capsule *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
+      <anchor>a4efb530e9994d7dbe89a34877e893d8d</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>SCH_API const Point3 &amp;</type>
@@ -3288,6 +3302,13 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Cone *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Cone.html</anchorfile>
+      <anchor>aff3137d55844f3ac7c13e11fd396b34f</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
       <name>l_Support</name>
       <anchorfile>classsch_1_1S__Cone.html</anchorfile>
@@ -3361,6 +3382,13 @@
       <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
       <anchor>aeebeb2f8f079000975582b1eebbfcfad</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Cylinder *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
+      <anchor>aab20a73b495fa4185b851d4240977ed4</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>SCH_API const Point3 &amp;</type>
@@ -3574,6 +3602,13 @@
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>a9e8b81c26e80d77eea72d5ee9968123b</anchor>
       <arglist>(const Vector3 &amp;v, int &amp;lastFeature) const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual SCH_API S_Object *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Object.html</anchorfile>
+      <anchor>a0eae1bc01d12339a96000e96f52507d0</anchor>
+      <arglist>() const =0</arglist>
     </member>
     <member kind="function">
       <type>SCH_API</type>
@@ -3993,6 +4028,13 @@
       <anchor>aadf29a4687521a8927a21c3a1f4c3988</anchor>
       <arglist>()</arglist>
     </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Point *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Point.html</anchorfile>
+      <anchor>a20ad7cc4197316f7aa79bfd953638e86</anchor>
+      <arglist>() const</arglist>
+    </member>
     <member kind="function">
       <type>SCH_API void</type>
       <name>setDisplayRadius</name>
@@ -4106,6 +4148,13 @@
       <anchorfile>classsch_1_1S__Polyhedron.html</anchorfile>
       <anchor>a650896bcf3d712ab1ce7a2ffb7a35667</anchor>
       <arglist>(const S_Polyhedron &amp;)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Polyhedron *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Polyhedron.html</anchorfile>
+      <anchor>a0568a0bae4573867b251fb43c0e14a16</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual SCH_API void</type>
@@ -4388,6 +4437,13 @@
       <anchorfile>classsch_1_1S__Sphere.html</anchorfile>
       <anchor>adcbe1554998eef32743141518e456c3e</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Sphere *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Sphere.html</anchorfile>
+      <anchor>aa060ef63bd50967432f36ae3fd9d470a</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
@@ -4774,6 +4830,13 @@
       <anchorfile>classsch_1_1S__Superellipsoid.html</anchorfile>
       <anchor>a90101be9477ce34d4be29bb59fca5984</anchor>
       <arglist>(void)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API S_Superellipsoid *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1S__Superellipsoid.html</anchorfile>
+      <anchor>a5f227e18a709f2586e6bd1db9390070b</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
@@ -5347,6 +5410,13 @@
       <arglist>(const STP_BV &amp;)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API STP_BV *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1STP__BV.html</anchorfile>
+      <anchor>abd8d028418e72cbe42e771b4488c0b60</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>
       <name>l_Support</name>
       <anchorfile>classsch_1_1STP__BV.html</anchorfile>
@@ -5581,6 +5651,13 @@
       <anchorfile>classsch_1_1STP__BV__P.html</anchorfile>
       <anchor>a219d0e8c56366f518b17bb7dfecf501b</anchor>
       <arglist>(void)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual SCH_API STP_BV_P *</type>
+      <name>clone</name>
+      <anchorfile>classsch_1_1STP__BV__P.html</anchorfile>
+      <anchor>a5782cb566683930692eee48c03a8edab</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual SCH_API Point3</type>

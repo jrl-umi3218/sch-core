@@ -2,6 +2,7 @@ var classsch_1_1S__Cylinder =
 [
     [ "S_Cylinder", "classsch_1_1S__Cylinder.html#a7c4f108702249197de9077449c0e9106", null ],
     [ "~S_Cylinder", "classsch_1_1S__Cylinder.html#aeebeb2f8f079000975582b1eebbfcfad", null ],
+    [ "clone", "classsch_1_1S__Cylinder.html#aab20a73b495fa4185b851d4240977ed4", null ],
     [ "getP1", "classsch_1_1S__Cylinder.html#a46369b2dacf1d4f0efb05f2bcf063c0f", null ],
     [ "getP2", "classsch_1_1S__Cylinder.html#abba619e11450be22a4235e0c0eddb9bb", null ],
     [ "getRadius", "classsch_1_1S__Cylinder.html#a1743c6ab74bbabfa6a17c109a4a3ae1f", null ],

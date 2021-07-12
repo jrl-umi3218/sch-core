@@ -5,6 +5,7 @@ var classsch_1_1S__Polyhedron =
     [ "~S_Polyhedron", "classsch_1_1S__Polyhedron.html#ad6b6bdc6b65d72ae8b9666dad3ac46e0", null ],
     [ "clear", "classsch_1_1S__Polyhedron.html#a81da841833ce2b5efa98fce13c673db9", null ],
     [ "clearNeighbors", "classsch_1_1S__Polyhedron.html#a4b46a8aaf0e796b65903fd48dc7edbd3", null ],
+    [ "clone", "classsch_1_1S__Polyhedron.html#a0568a0bae4573867b251fb43c0e14a16", null ],
     [ "constructFromFile", "classsch_1_1S__Polyhedron.html#a62e27360640d760e615ef63b369ee022", null ],
     [ "deleteVertexesWithoutNeighbors", "classsch_1_1S__Polyhedron.html#ab3aadd37543713ebdba4aa9215d74e6f", null ],
     [ "getPolyhedronAlgorithm", "classsch_1_1S__Polyhedron.html#ad41837a17e79dcfbf47bfe42ac6d91db", null ],

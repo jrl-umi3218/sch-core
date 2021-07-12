@@ -119,6 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e8b81c26e80d77eea72d5ee9968123b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> <a class="el" href="namespacesch.html#ab0c5b1c6e2f86393e75ee9e55e346509">Point3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Object.html#a9e8b81c26e80d77eea72d5ee9968123b">l_Support</a> (const <a class="el" href="namespacesch.html#a26a421e6cdc08aedcfc5b9c68277f657">Vector3</a> &amp;v, int &amp;lastFeature) const =0</td></tr>
 <tr class="memdesc:a9e8b81c26e80d77eea72d5ee9968123b"><td class="mdescLeft">&#160;</td><td class="mdescRight">gives the support point for a given vector in local cordinates and a given last feature. MUST BE OVERLOADED.  <a href="#a9e8b81c26e80d77eea72d5ee9968123b">More...</a><br /></td></tr>
 <tr class="separator:a9e8b81c26e80d77eea72d5ee9968123b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eae1bc01d12339a96000e96f52507d0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> <a class="el" href="classsch_1_1S__Object.html">S_Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Object.html#a0eae1bc01d12339a96000e96f52507d0">clone</a> () const =0</td></tr>
+<tr class="memdesc:a0eae1bc01d12339a96000e96f52507d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of this <a class="el" href="classsch_1_1S__Object.html">S_Object</a>.  <a href="#a0eae1bc01d12339a96000e96f52507d0">More...</a><br /></td></tr>
+<tr class="separator:a0eae1bc01d12339a96000e96f52507d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca1a84a6484ccb18d67538dc96e11cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Object.html#a9ca1a84a6484ccb18d67538dc96e11cc">S_Object</a> (void)</td></tr>
 <tr class="separator:a9ca1a84a6484ccb18d67538dc96e11cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3bfbb36b15c273ef28b5fe421445f21"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1S__Object.html#aa3bfbb36b15c273ef28b5fe421445f21">~S_Object</a> (void)</td></tr>
@@ -681,6 +684,35 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>returns the current time stamp </p>
+
+</div>
+</div>
+<a id="a0eae1bc01d12339a96000e96f52507d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eae1bc01d12339a96000e96f52507d0">&#9670;&nbsp;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> <a class="el" href="classsch_1_1S__Object.html">S_Object</a>* sch::S_Object::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a copy of this <a class="el" href="classsch_1_1S__Object.html">S_Object</a>. </p>
+
+<p>Implemented in <a class="el" href="classsch_1_1STP__BV.html#abd8d028418e72cbe42e771b4488c0b60">sch::STP_BV</a>, <a class="el" href="classsch_1_1S__Polyhedron.html#a0568a0bae4573867b251fb43c0e14a16">sch::S_Polyhedron</a>, <a class="el" href="classsch_1_1S__Cone.html#aff3137d55844f3ac7c13e11fd396b34f">sch::S_Cone</a>, <a class="el" href="classsch_1_1S__Box.html#a8d97e61e8af8ff5674f0a152ac5a1a92">sch::S_Box</a>, <a class="el" href="classsch_1_1S__Sphere.html#aa060ef63bd50967432f36ae3fd9d470a">sch::S_Sphere</a>, <a class="el" href="classsch_1_1STP__BV__P.html#a5782cb566683930692eee48c03a8edab">sch::STP_BV_P</a>, <a class="el" href="classsch_1_1S__Superellipsoid.html#a5f227e18a709f2586e6bd1db9390070b">sch::S_Superellipsoid</a>, <a class="el" href="classsch_1_1S__Capsule.html#a4efb530e9994d7dbe89a34877e893d8d">sch::S_Capsule</a>, <a class="el" href="classsch_1_1S__Cylinder.html#aab20a73b495fa4185b851d4240977ed4">sch::S_Cylinder</a>, and <a class="el" href="classsch_1_1S__Point.html#a20ad7cc4197316f7aa79bfd953638e86">sch::S_Point</a>.</p>
 
 </div>
 </div>

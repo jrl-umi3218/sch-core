@@ -2,6 +2,7 @@ var classsch_1_1S__Superellipsoid =
 [
     [ "S_Superellipsoid", "classsch_1_1S__Superellipsoid.html#a40bd2cfeca0c2dd5c3b59931459f0c8b", null ],
     [ "~S_Superellipsoid", "classsch_1_1S__Superellipsoid.html#a90101be9477ce34d4be29bb59fca5984", null ],
+    [ "clone", "classsch_1_1S__Superellipsoid.html#a5f227e18a709f2586e6bd1db9390070b", null ],
     [ "getEllipsoidParameter", "classsch_1_1S__Superellipsoid.html#a612737e0a1fb72466d509acc9b91aadf", null ],
     [ "getType", "classsch_1_1S__Superellipsoid.html#a3ca58a6b2e6c79f4fa61ceb9080920ef", null ],
     [ "l_Support", "classsch_1_1S__Superellipsoid.html#aae100abaa449e132eb2611722d618937", null ],

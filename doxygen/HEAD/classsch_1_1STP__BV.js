@@ -4,6 +4,7 @@ var classsch_1_1STP__BV =
     [ "STP_BV", "classsch_1_1STP__BV.html#a6e3c9d05f6f07d080ef14ae39908834d", null ],
     [ "~STP_BV", "classsch_1_1STP__BV.html#ad9aa580fb205a0cb5b9a2aa76f453a38", null ],
     [ "addPatch", "classsch_1_1STP__BV.html#a4ba9dc25062a02dd3de3106b43ec92d8", null ],
+    [ "clone", "classsch_1_1STP__BV.html#abd8d028418e72cbe42e771b4488c0b60", null ],
     [ "computeArcPointsBetween", "classsch_1_1STP__BV.html#a99965c6640a0117277c8170e878e2e9c", null ],
     [ "computeCenter", "classsch_1_1STP__BV.html#a406ac638acd0f4f8964e897ca183eb71", null ],
     [ "computeConePointsBetween", "classsch_1_1STP__BV.html#a21cb966f5872d39322ca2314461fbf2a", null ],
