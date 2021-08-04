@@ -71,6 +71,44 @@ const Polyhedron_algorithms& Polyhedron_algorithms::operator =(const Polyhedron_
 }
 
 
+int Polyhedron_algorithms::getEdgeKey(PolyhedronEdge e)
+{
+  return ((e.a<e.b)?(e.a*vertexes_.size()+e.b):(e.b*vertexes_.size()+e.a));
+}
+
+void Polyhedron_algorithms::getEdges()
+{
+  PolyhedronEdge edge;
+  std::vector<PolyhedronEdge> triangleEdges;
+  std::set<int, std::greater<int>> edgesSet;
+  for(size_t i = 0; i < triangles_.size(); i++)
+  {
+    edge.a = triangles_[i].a;
+    edge.b = triangles_[i].b;
+    edge.computeEdge(vertexes_);
+    triangleEdges.push_back(edge);
+    
+    edge.a = triangles_[i].b;
+    edge.b = triangles_[i].c;
+    edge.computeEdge(vertexes_);
+    triangleEdges.push_back(edge);
+    
+    edge.a = triangles_[i].c;
+    edge.b = triangles_[i].a;
+    edge.computeEdge(vertexes_);
+    triangleEdges.push_back(edge);
+
+    for(auto j = triangleEdges.begin(); j != triangleEdges.end(); j++)
+    {
+      if(!edgesSet.count(getEdgeKey(*j)))
+      {
+        edges_.push_back(*j);
+        edgesSet.insert(getEdgeKey(*j));
+      }
+    }
+    triangleEdges.clear();
+  }
+}
 
 void Polyhedron_algorithms::openFromFile(const std::string &filename)
 {
@@ -114,6 +152,8 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
   const char normalSearch[normalSearchLen + 1] = "    - normal:";
   const size_t verticesSearchLen = 15;
   const char verticesSearch[verticesSearchLen + 1] = "    - vertices:";
+  PolyhedronEdge edge;
+  Vector3 p1, p2;
   while(std::getline(is, line).good())
   {
     if(line.substr(0, normalSearchLen) == normalSearch)
@@ -171,6 +211,8 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
   }
 
   deleteVertexesWithoutNeighbors();
+
+  getEdges();
 }
 
 void Polyhedron_algorithms::updateVertexNeighbors()

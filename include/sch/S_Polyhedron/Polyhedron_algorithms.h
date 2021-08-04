@@ -7,7 +7,9 @@
 #include <sch/S_Polyhedron/S_PolyhedronVertex.h>
 
 #include <string>
+#include <algorithm>
 #include <vector>
+#include <set>
 
 namespace sch
 {
@@ -23,6 +25,27 @@ namespace sch
       ar & b;
       ar & c;
       ar & normal;
+    }
+  };
+
+  struct PolyhedronEdge
+  {
+    size_t a, b;
+    Vector3 edge;
+  public:
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int /*version*/)
+    {
+      ar & a;
+      ar & b;
+      ar & edge;
+    }
+    void computeEdge(const std::vector<S_PolyhedronVertex*> & v)
+    {
+      Vector3 p1, p2;
+      p1 = v[a]->getCoordinates();
+      p2 = v[b]->getCoordinates();
+      edge = p1-p2;
     }
   };
 
@@ -77,6 +100,9 @@ namespace sch
 
     SCH_API void openFromFile(const std::string& filename);
 
+    SCH_API void getEdges();
+    SCH_API int getEdgeKey(PolyhedronEdge e);
+
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
@@ -89,6 +115,7 @@ namespace sch
     std::vector<S_PolyhedronVertex*> vertexes_;
 
     std::vector<PolyhedronTriangle> triangles_;
+    std::vector<PolyhedronEdge> edges_;
 
     S_PolyhedronVertex **fastVertexes_;
     S_PolyhedronVertex ** lastVertexes_;
