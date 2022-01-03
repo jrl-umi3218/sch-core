@@ -5,7 +5,10 @@
 # Copyright CNRS/AIST
 
 #### examples
-macro(add_example name)
+function(add_example name)
+  if(CMAKE_SYSTEM_PROCESSOR STREQUAL aarch64)
+    return()
+  endif()
   add_executable(${name} shared-tests/examples/${name}.cpp example_test.cpp)
   target_link_libraries(${name} sch-core)
   add_test(${name} ${name})
@@ -14,7 +17,7 @@ macro(add_example name)
   endif()
   # Adding a project configuration file (for MSVC only)
   generate_msvc_dot_user_file(${name})
-endmacro(add_example)
+endfunction()
 
 if(NOT APPLE)
   add_example(example1)
