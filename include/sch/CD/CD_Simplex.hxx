@@ -102,6 +102,11 @@ inline const Point3& CD_Simplex:: operator[](unsigned char i) const
   return ((i==0) ? s1_: (i==1)? s2_: (i==2) ? s3_ : s4_);
 }
 
+inline CD_Simplex::CD_Simplex(const CD_Simplex & rhs)
+{
+  *this = rhs;
+}
+
 inline CD_Simplex& CD_Simplex::operator=(const CD_Simplex& s)
 {
   type_=s.type_;

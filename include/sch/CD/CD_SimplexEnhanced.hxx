@@ -152,7 +152,10 @@ inline CD_SimplexEnhanced::CD_SimplexEnhanced(const Point3& p1,const Point3& p2,
 {
 }
 
-
+inline CD_SimplexEnhanced::CD_SimplexEnhanced(const CD_SimplexEnhanced & rhs):CD_Simplex(rhs)
+{
+  *this = rhs;
+}
 
 inline CD_SimplexEnhanced& CD_SimplexEnhanced::operator=(const CD_SimplexEnhanced& s)
 {

@@ -253,7 +253,7 @@ void STP_BV::computeArcPointsBetween(const Point3& p1, const Point3& p2,
   Scalar a=angle;
   for (int i=1; i<step; i++)
   {
-    Point3 tmp((const Scalar)cos(a),(const Scalar)(sin(a)),(const Scalar)0);
+    Point3 tmp((Scalar)cos(a),(Scalar)(sin(a)),(Scalar)0);
     tmp=(m*tmp)*k+center;
     res.push_back(tmp);
     a+=angle;

@@ -58,6 +58,8 @@ namespace sch
   class CD_Simplex
   {
   public:
+    SCH_API CD_Simplex(const CD_Simplex & rhs);
+
     SCH_API CD_Simplex(const Point3& p);
     SCH_API CD_Simplex(const Point3& p1,const Point3& p2);
     SCH_API CD_Simplex(const Point3& p1,const Point3& p2,const Point3& p3);
