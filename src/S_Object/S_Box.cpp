@@ -2,7 +2,7 @@
 
 using namespace sch;
 
-inline short sign(Scalar i)
+inline Scalar sign(Scalar i)
 {
   return (i>0)? 1:-1;
 }

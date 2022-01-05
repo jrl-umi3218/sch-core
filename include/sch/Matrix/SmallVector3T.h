@@ -140,7 +140,7 @@ namespace CD_Matrix
 
     /*! Assignement operator */
     template <bool b>
-    inline Vector3T operator= (const struct Vector3T<T,b> &v)
+    inline Vector3T & operator= (const struct Vector3T<T,b> &v)
     {
       m_x = v.m_x;
       m_y = v.m_y;
