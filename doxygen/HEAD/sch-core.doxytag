@@ -1202,6 +1202,13 @@
       <type>SCH_API</type>
       <name>CD_Simplex</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
+      <anchor>a2aa242e4bbe2c912730e5e8425db337e</anchor>
+      <arglist>(const CD_Simplex &amp;rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API</type>
+      <name>CD_Simplex</name>
+      <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>ab9297e756491968d2c8216e369c1339c</anchor>
       <arglist>(const Point3 &amp;p)</arglist>
     </member>
@@ -1427,6 +1434,13 @@
     <name>sch::CD_SimplexEnhanced</name>
     <filename>classsch_1_1CD__SimplexEnhanced.html</filename>
     <base>sch::CD_Simplex</base>
+    <member kind="function">
+      <type>SCH_API</type>
+      <name>CD_SimplexEnhanced</name>
+      <anchorfile>classsch_1_1CD__SimplexEnhanced.html</anchorfile>
+      <anchor>a952e80246682b7bcdcd62dc191b890fd</anchor>
+      <arglist>(const CD_SimplexEnhanced &amp;rhs)</arglist>
+    </member>
     <member kind="function">
       <type>SCH_API</type>
       <name>CD_SimplexEnhanced</name>
@@ -1857,6 +1871,13 @@
       <arglist>(const struct Matrix3x3T&lt; T &gt; &amp;v)</arglist>
     </member>
     <member kind="function">
+      <type>Matrix3x3T&lt; T &gt; &amp;</type>
+      <name>operator=</name>
+      <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
+      <anchor>a7d76f79b56e0786ee9926d0b115ef4ec</anchor>
+      <arglist>(const Matrix3x3T&lt; T &gt; &amp;v)</arglist>
+    </member>
+    <member kind="function">
       <type></type>
       <name>Matrix3x3T</name>
       <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
@@ -2209,6 +2230,13 @@
       <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
       <anchor>adc4c5edb70e45fcd21f00cfecb5670a0</anchor>
       <arglist>(const Scalar &amp;roll, const Scalar &amp;pitch, const Scalar &amp;yaw)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3x3T&lt; Scalar &gt; &amp;</type>
+      <name>operator=</name>
+      <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
+      <anchor>a7d76f79b56e0786ee9926d0b115ef4ec</anchor>
+      <arglist>(const Matrix3x3T&lt; Scalar &gt; &amp;v)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -6266,10 +6294,10 @@
       <arglist>(const struct Vector3T&lt; T, b &gt; &amp;v)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3T</type>
+      <type>Vector3T &amp;</type>
       <name>operator=</name>
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
-      <anchor>af04357fc55be15e5753313d5ca019222</anchor>
+      <anchor>a39682b37cc76ba0b6264377e3d42c5cd</anchor>
       <arglist>(const struct Vector3T&lt; T, b &gt; &amp;v)</arglist>
     </member>
     <member kind="function">
@@ -6516,10 +6544,10 @@
       <arglist>(const Scalar *const p)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3T</type>
+      <type>Vector3T &amp;</type>
       <name>operator=</name>
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
-      <anchor>af04357fc55be15e5753313d5ca019222</anchor>
+      <anchor>a39682b37cc76ba0b6264377e3d42c5cd</anchor>
       <arglist>(const struct Vector3T&lt; Scalar, b &gt; &amp;v)</arglist>
     </member>
     <member kind="function">

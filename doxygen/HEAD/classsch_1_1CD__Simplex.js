@@ -1,5 +1,6 @@
 var classsch_1_1CD__Simplex =
 [
+    [ "CD_Simplex", "classsch_1_1CD__Simplex.html#a2aa242e4bbe2c912730e5e8425db337e", null ],
     [ "CD_Simplex", "classsch_1_1CD__Simplex.html#ab9297e756491968d2c8216e369c1339c", null ],
     [ "CD_Simplex", "classsch_1_1CD__Simplex.html#a3825945e9842c44f931f522519d73c71", null ],
     [ "CD_Simplex", "classsch_1_1CD__Simplex.html#ae540e77e79cae28d6b2f9e50fd88f8f8", null ],

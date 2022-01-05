@@ -28,6 +28,7 @@ var structCD__Matrix_1_1Matrix3x3T =
     [ "operator+=", "structCD__Matrix_1_1Matrix3x3T.html#a0d8eab6ed0cde4aa30d03fdcec0b5592", null ],
     [ "operator-", "structCD__Matrix_1_1Matrix3x3T.html#ae2b4dd4fabd8d47dbe639610a5bb1ec0", null ],
     [ "operator-=", "structCD__Matrix_1_1Matrix3x3T.html#adbb52deae8f3579760f5f5b873ca06ae", null ],
+    [ "operator=", "structCD__Matrix_1_1Matrix3x3T.html#a7d76f79b56e0786ee9926d0b115ef4ec", null ],
     [ "operator[]", "structCD__Matrix_1_1Matrix3x3T.html#a3b6ad6e8166b21779a2c9423c07a3115", null ],
     [ "operator[]", "structCD__Matrix_1_1Matrix3x3T.html#ace26a8faca64de9a3dad1bbf836795da", null ],
     [ "serialize", "structCD__Matrix_1_1Matrix3x3T.html#a98dd6acd98e137dc434d9337e06b999b", null ],

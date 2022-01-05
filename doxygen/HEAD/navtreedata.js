@@ -41,9 +41,9 @@ var NAVTREEINDEX =
 [
 "CD__Depth_8h.html",
 "classsch_1_1CD__Simplex.html#a150cf2791dbbe0e1b60a022999a5145a",
-"classsch_1_1S__Object.html#a2cbde8713835787904c9646f8615baf8",
-"structCD__Matrix_1_1Matrix3x3T.html#a32de43567bb6418793560c467549f9ed",
-"structsch_1_1s__Triangle.html#a3a5dc40260c9390ba094a0bda5f970dd"
+"classsch_1_1S__Object.html#a279eabaf853d351387362942b162eeb5",
+"structCD__Matrix_1_1Matrix3x3T.html#a2718109086f9f3f0956c55505abb46df",
+"structsch_1_1s__SphereApproxim.html#af9477226068b07023a7fd94299ed22a9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

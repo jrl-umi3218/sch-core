@@ -1,5 +1,8 @@
 var NAVTREEINDEX4 =
 {
+"structsch_1_1s__SphereApproxim.html#af9477226068b07023a7fd94299ed22a9":[1,0,3,22,6],
+"structsch_1_1s__Triangle.html":[1,0,3,29],
+"structsch_1_1s__Triangle.html#a05fcaa0efd62e56d83d868235ca577ba":[1,0,3,29,0],
 "structsch_1_1s__Triangle.html#a3a5dc40260c9390ba094a0bda5f970dd":[1,0,3,29,3],
 "structsch_1_1s__Triangle.html#a87c07b2aa036c5b614f7dca118b639fe":[1,0,3,29,5],
 "structsch_1_1s__Triangle.html#a94fefcc4b27b97ce51a52c580ccd9c24":[1,0,3,29,4],
