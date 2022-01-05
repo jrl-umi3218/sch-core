@@ -106,6 +106,21 @@ namespace CD_Matrix
       m[8] = v.m[8];
     }
 
+    /*! Copy operator */
+    Matrix3x3T<T> & operator=(const Matrix3x3T<T> & v)
+    {
+      m[0] = v.m[0];
+      m[1] = v.m[1];
+      m[2] = v.m[2];
+      m[3] = v.m[3];
+      m[4] = v.m[4];
+      m[5] = v.m[5];
+      m[6] = v.m[6];
+      m[7] = v.m[7];
+      m[8] = v.m[8];
+      return *this;
+    }
+
     /*! Hybrid copy constructor */
     template <typename T2>
     Matrix3x3T<T> (const struct Matrix3x3T<T2> &v)

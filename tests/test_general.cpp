@@ -1,6 +1,6 @@
 #define NON_STP_BV_OBJECTS true
 
-#include "clone_test_universe.h""
+#include "clone_test_universe.h"
 
 #ifdef ENABLE_SIGFPE
 # include <fenv.h>

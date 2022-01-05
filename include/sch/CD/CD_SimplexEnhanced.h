@@ -11,6 +11,8 @@ namespace sch
     public CD_Simplex
   {
   public:
+    SCH_API CD_SimplexEnhanced(const CD_SimplexEnhanced & rhs);
+
     SCH_API CD_SimplexEnhanced(const Point3& p);
     SCH_API CD_SimplexEnhanced(const Point3& p1,const Point3& p2);
     SCH_API CD_SimplexEnhanced(const Point3& p1,const Point3& p2,const Point3& p3);
