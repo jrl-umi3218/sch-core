@@ -6,9 +6,6 @@
 
 #### examples
 function(add_example name)
-  if(CMAKE_SYSTEM_PROCESSOR STREQUAL aarch64)
-    return()
-  endif()
   add_executable(${name} shared-tests/examples/${name}.cpp example_test.cpp)
   target_link_libraries(${name} sch-core)
   add_test(${name} ${name})
