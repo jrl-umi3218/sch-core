@@ -7,10 +7,7 @@
 #include <sch/S_Polyhedron/S_PolyhedronVertex.h>
 
 #include <string>
-#include <algorithm>
 #include <vector>
-#include <set>
-
 namespace sch
 {
   struct PolyhedronTriangle

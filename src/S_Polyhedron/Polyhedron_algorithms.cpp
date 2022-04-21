@@ -5,6 +5,8 @@
 #include <fstream>
 #include <stdexcept>
 #include <string>
+#include <algorithm>
+#include <set>
 
 //#define CD_POLYHEDRON_ALGORITHM_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
 
