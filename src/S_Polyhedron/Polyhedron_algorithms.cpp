@@ -78,7 +78,7 @@ int Polyhedron_algorithms::getEdgeKey(PolyhedronEdge e)
   return ((e.a<e.b)?(e.a*vertexes_.size()+e.b):(e.b*vertexes_.size()+e.a));
 }
 
-void Polyhedron_algorithms::getEdges()
+void Polyhedron_algorithms::fillEdges()
 {
   edges_.clear();
   PolyhedronEdge edge;
@@ -215,7 +215,7 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
 
   deleteVertexesWithoutNeighbors();
 
-  getEdges();
+  fillEdges();
 }
 
 void Polyhedron_algorithms::updateVertexNeighbors()

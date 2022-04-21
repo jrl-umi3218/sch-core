@@ -97,7 +97,7 @@ namespace sch
 
     SCH_API void openFromFile(const std::string& filename);
 
-    SCH_API void getEdges();
+    SCH_API void fillEdges();
     SCH_API int getEdgeKey(PolyhedronEdge e);
 
     template<class Archive>
