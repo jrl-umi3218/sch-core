@@ -106,7 +106,7 @@ namespace sch
      *\brief get the key of an edge computed automatically from its vertices
      */
 
-    SCH_API int getEdgeKey(PolyhedronEdge e);
+    SCH_API size_t getEdgeKey(PolyhedronEdge e);
 
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)

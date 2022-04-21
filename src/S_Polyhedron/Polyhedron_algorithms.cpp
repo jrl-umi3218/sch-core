@@ -72,8 +72,7 @@ const Polyhedron_algorithms& Polyhedron_algorithms::operator =(const Polyhedron_
   }
 }
 
-
-int Polyhedron_algorithms::getEdgeKey(PolyhedronEdge e)
+size_t Polyhedron_algorithms::getEdgeKey(PolyhedronEdge e)
 {
   return ((e.a<e.b)?(e.a*vertexes_.size()+e.b):(e.b*vertexes_.size()+e.a));
 }
@@ -83,7 +82,7 @@ void Polyhedron_algorithms::fillEdges()
   edges_.clear();
   PolyhedronEdge edge;
   std::vector<PolyhedronEdge> triangleEdges;
-  std::set<int, std::greater<int>> edgesSet;
+  std::set<size_t, std::greater<int>> edgesSet;
   for(size_t i = 0; i < triangles_.size(); i++)
   {
     edge.a = triangles_[i].a;
