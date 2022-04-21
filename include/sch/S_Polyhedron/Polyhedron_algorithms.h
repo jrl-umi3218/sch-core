@@ -96,7 +96,16 @@ namespace sch
 
     SCH_API void openFromFile(const std::string& filename);
 
+    /*!
+     *\brief Fill the edges_ variable using the data from the polyhedron
+     */
+
     SCH_API void fillEdges();
+
+    /*!
+     *\brief get the key of an edge computed automatically from its vertices
+     */
+
     SCH_API int getEdgeKey(PolyhedronEdge e);
 
     template<class Archive>
