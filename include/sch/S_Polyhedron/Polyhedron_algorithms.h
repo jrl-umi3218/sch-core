@@ -117,7 +117,7 @@ namespace sch
       //ar & lastVertexes_;
     }
 
-    std::vector<S_PolyhedronVertex*> vertexes_;
+    std::vector<S_PolyhedronVertex *> vertexes_;
 
     std::vector<PolyhedronTriangle> triangles_;
     std::vector<PolyhedronEdge> edges_;
