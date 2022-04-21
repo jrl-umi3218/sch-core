@@ -80,6 +80,7 @@ int Polyhedron_algorithms::getEdgeKey(PolyhedronEdge e)
 
 void Polyhedron_algorithms::getEdges()
 {
+  edges_.clear();
   PolyhedronEdge edge;
   std::vector<PolyhedronEdge> triangleEdges;
   std::set<int, std::greater<int>> edgesSet;
@@ -246,6 +247,7 @@ void Polyhedron_algorithms::clear()
   }
   vertexes_.clear();
   triangles_.clear();
+  edges_.clear();
   updateFastArrays();
 }
 
