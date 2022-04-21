@@ -39,9 +39,8 @@ namespace sch
     }
     void computeEdge(const std::vector<S_PolyhedronVertex*> & v)
     {
-      Vector3 p1, p2;
-      p1 = v[a]->getCoordinates();
-      p2 = v[b]->getCoordinates();
+      const Vector3 &p1 = v[a]->getCoordinates();
+      const Vector3 &p2 = v[b]->getCoordinates();
       edge = p1-p2;
     }
   };
