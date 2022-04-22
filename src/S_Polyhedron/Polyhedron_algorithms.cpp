@@ -154,7 +154,6 @@ void Polyhedron_algorithms::openFromFile(const std::string &filename)
   const char normalSearch[normalSearchLen + 1] = "    - normal:";
   const size_t verticesSearchLen = 15;
   const char verticesSearch[verticesSearchLen + 1] = "    - vertices:";
-  PolyhedronEdge edge;
 
   while(std::getline(is, line).good())
   {
