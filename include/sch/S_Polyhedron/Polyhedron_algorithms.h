@@ -8,7 +8,6 @@
 
 #include <string>
 #include <vector>
-
 namespace sch
 {
   struct PolyhedronTriangle
@@ -23,6 +22,26 @@ namespace sch
       ar & b;
       ar & c;
       ar & normal;
+    }
+  };
+
+  struct PolyhedronEdge
+  {
+    size_t a, b;
+    Vector3 edge;
+  public:
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int /*version*/)
+    {
+      ar & a;
+      ar & b;
+      ar & edge;
+    }
+    void computeEdge(const std::vector<S_PolyhedronVertex*> & v)
+    {
+      const Vector3 &p1 = v[a]->getCoordinates();
+      const Vector3 &p2 = v[b]->getCoordinates();
+      edge = p1-p2;
     }
   };
 
@@ -77,6 +96,18 @@ namespace sch
 
     SCH_API void openFromFile(const std::string& filename);
 
+    /*!
+     *\brief Fill the edges_ variable using the data from the polyhedron
+     */
+
+    SCH_API void fillEdges();
+
+    /*!
+     *\brief get the key of an edge computed automatically from its vertices
+     */
+
+    SCH_API size_t getEdgeKey(PolyhedronEdge e);
+
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /*version*/)
     {
@@ -86,9 +117,10 @@ namespace sch
       //ar & lastVertexes_;
     }
 
-    std::vector<S_PolyhedronVertex*> vertexes_;
+    std::vector<S_PolyhedronVertex *> vertexes_;
 
     std::vector<PolyhedronTriangle> triangles_;
+    std::vector<PolyhedronEdge> edges_;
 
     S_PolyhedronVertex **fastVertexes_;
     S_PolyhedronVertex ** lastVertexes_;

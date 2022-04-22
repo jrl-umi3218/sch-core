@@ -313,6 +313,16 @@ namespace sch
       ar & m_patchesSize ;
     }
 
+    Scalar getBigRadius() const
+    {
+      return _R;
+    }
+
+    Scalar getSmallRadius() const
+    {
+      return _r;
+    }
+
 
 
     BOOST_SERIALIZATION_SPLIT_MEMBER()
@@ -381,6 +391,8 @@ namespace sch
     STP_Feature * * m_fastPatches;
     STP_Feature * * m_lastPatches;
     int m_patchesSize;
+    Scalar _r,_R;
+
 
     std::vector<Geometry> geometries_;
   };

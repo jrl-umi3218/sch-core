@@ -307,6 +307,14 @@ namespace CD_Matrix
       m_z *= in;
     }
 
+    /*! Normalized . */
+    inline Vector3T normalized() const
+    {
+      T in = static_cast<T>(1.0 / sqrt(m_x * m_x + m_y * m_y + m_z * m_z));
+
+      return Vector3T(m_x * in, m_y * in, m_z * in);
+    }
+
     /*! Get the norm. */
     inline T norm()  const
     {

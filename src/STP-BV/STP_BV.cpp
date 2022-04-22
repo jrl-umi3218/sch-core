@@ -368,7 +368,6 @@ void STP_BV::constructFromFile(const std::string& filename)
   }
 
   //small spheres
-  Scalar _r,_R;
   is >>_r>>_R>> ssnum;
   if(ssnum <= 0)
   {
