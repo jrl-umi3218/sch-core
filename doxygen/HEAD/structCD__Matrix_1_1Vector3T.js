@@ -8,6 +8,7 @@ var structCD__Matrix_1_1Vector3T =
     [ "IsZero", "structCD__Matrix_1_1Vector3T.html#a1e82bb347c5a88794e0e70328c08ba00", null ],
     [ "norm", "structCD__Matrix_1_1Vector3T.html#aae25ededb041bda5530c74d28ef08ba7", null ],
     [ "normalize", "structCD__Matrix_1_1Vector3T.html#a54f2833fabdfca2c6102d4e1df1b9af7", null ],
+    [ "normalized", "structCD__Matrix_1_1Vector3T.html#aac1639b6fc3aa1eb15b830450a00ed98", null ],
     [ "normsquared", "structCD__Matrix_1_1Vector3T.html#aaa5038b90264907668b3d88026afc7ed", null ],
     [ "operator()", "structCD__Matrix_1_1Vector3T.html#a18c518c0d48d57dbc64e2e18ca3bac74", null ],
     [ "operator*", "structCD__Matrix_1_1Vector3T.html#a92b9b34943d71391eb4451a9e4670c7f", null ],

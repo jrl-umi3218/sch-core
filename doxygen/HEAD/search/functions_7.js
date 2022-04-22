@@ -2,6 +2,7 @@ var searchData=
 [
   ['geometry',['Geometry',['../structsch_1_1Geometry.html#a9f5137e8a1732a8f6c1ae2315260d87b',1,'sch::Geometry']]],
   ['getangle',['getAngle',['../classsch_1_1S__Cone.html#aea1308922354279301e94e5294ac7cfd',1,'sch::S_Cone']]],
+  ['getbigradius',['getBigRadius',['../classsch_1_1STP__BV.html#a7eb3fe2dcce9559b3cb42b71da893b55',1,'sch::STP_BV']]],
   ['getboxparameters',['getBoxParameters',['../classsch_1_1S__Box.html#a71bcd0e73d5d73c2ea50462c0781b21c',1,'sch::S_Box']]],
   ['getcenter',['getCenter',['../classsch_1_1STP__BigSphere.html#a375b22cf23b0d12928724bcd0405c75d',1,'sch::STP_BigSphere::getCenter()'],['../classsch_1_1STP__SmallSphere.html#ae24e7d8e22deebb1b4bd2aca9edd7c8a',1,'sch::STP_SmallSphere::getCenter()']]],
   ['getclosestpoints',['getClosestPoints',['../classsch_1_1CD__Pair.html#adc3e58868da3f623f42e1c74b2ca47a9',1,'sch::CD_Pair']]],
@@ -11,6 +12,7 @@ var searchData=
   ['getdisplayradius',['getDisplayRadius',['../classsch_1_1S__Point.html#aab1508f8f4b5ac5bb289893c72b91725',1,'sch::S_Point']]],
   ['getdistance',['getDistance',['../classsch_1_1CD__Pair.html#a393c0bafa00d23201c8b03e683835b15',1,'sch::CD_Pair::getDistance()'],['../structsch_1_1s__STP__VVR.html#a4ce6edbec9d474bed69ddbdc2716de3e',1,'sch::s_STP_VVR::getDistance()'],['../structsch_1_1s__STN__VVR.html#a5b3f442d54da453752947998aff81d43',1,'sch::s_STN_VVR::getDistance()']]],
   ['getdistancewithoutpenetrationdepth',['getDistanceWithoutPenetrationDepth',['../classsch_1_1CD__Pair.html#aac6d390af7d244c617942080bf4e15c1',1,'sch::CD_Pair']]],
+  ['getedgekey',['getEdgeKey',['../structsch_1_1Polyhedron__algorithms.html#a7226c0351c3b794e27c23b65af53bdf2',1,'sch::Polyhedron_algorithms']]],
   ['getellipsoidparameter',['getEllipsoidParameter',['../classsch_1_1S__Superellipsoid.html#a612737e0a1fb72466d509acc9b91aadf',1,'sch::S_Superellipsoid']]],
   ['getfeaturesnumber',['getFeaturesNumber',['../classsch_1_1STP__BV.html#a12f086f48ba7c0df82a56d8fd3903a74',1,'sch::STP_BV']]],
   ['getgeometries',['getGeometries',['../classsch_1_1STP__BV.html#abf1d08f03c0dfc718f3a69eb9b144961',1,'sch::STP_BV']]],
@@ -30,6 +32,7 @@ var searchData=
   ['getposition',['getPosition',['../classsch_1_1S__Object.html#a8c3cc541c2823ffe91ba9609263cfd3f',1,'sch::S_Object']]],
   ['getradius',['getRadius',['../classsch_1_1S__Capsule.html#ae9ae157bbde47527f19fc2f66f9c9bd7',1,'sch::S_Capsule::getRadius()'],['../classsch_1_1S__Cylinder.html#a1743c6ab74bbabfa6a17c109a4a3ae1f',1,'sch::S_Cylinder::getRadius()'],['../classsch_1_1S__Sphere.html#a553f09bf076d60eec59cd26c40d95fff',1,'sch::S_Sphere::getRadius()'],['../classsch_1_1STP__SmallSphere.html#ac7fb9663161b6b9fd6a5238a0cf8dea5',1,'sch::STP_SmallSphere::getRadius()']]],
   ['getslices',['getSlices',['../classsch_1_1S__Object.html#a509117d2e9dfa7765f0855b9ace2f643',1,'sch::S_Object']]],
+  ['getsmallradius',['getSmallRadius',['../classsch_1_1STP__BV.html#afd8e5714d2ab99030770374339491aa0',1,'sch::STP_BV']]],
   ['getstacks',['getStacks',['../classsch_1_1S__Object.html#aa1dff4f9f693cc9d0eb24a913999f060',1,'sch::S_Object']]],
   ['gettransformationmatrix',['getTransformationMatrix',['../classsch_1_1S__Object.html#a5feabd94b8a16b206f38dab7cf77f85a',1,'sch::S_Object']]],
   ['gettrianglesnumber',['getTrianglesNumber',['../classsch_1_1S__Polyhedron.html#ad5a5dcfa2cc3b9d96163677e14d5021d',1,'sch::S_Polyhedron']]],

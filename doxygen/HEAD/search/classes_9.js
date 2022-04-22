@@ -36,6 +36,6 @@ var searchData=
   ['stp_5fbv',['STP_BV',['../classsch_1_1STP__BV.html',1,'sch']]],
   ['stp_5fbv_5fp',['STP_BV_P',['../classsch_1_1STP__BV__P.html',1,'sch']]],
   ['stp_5ffeature',['STP_Feature',['../classsch_1_1STP__Feature.html',1,'sch']]],
-  ['stp_5fsmallsphere',['STP_SmallSphere',['../classSTP__SmallSphere.html',1,'STP_SmallSphere'],['../classsch_1_1STP__SmallSphere.html',1,'sch::STP_SmallSphere']]],
+  ['stp_5fsmallsphere',['STP_SmallSphere',['../classsch_1_1STP__SmallSphere.html',1,'sch::STP_SmallSphere'],['../classSTP__SmallSphere.html',1,'STP_SmallSphere']]],
   ['stp_5ftorus',['STP_Torus',['../classsch_1_1STP__Torus.html',1,'sch']]]
 ];

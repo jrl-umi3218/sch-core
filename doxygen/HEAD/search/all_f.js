@@ -10,6 +10,7 @@ var searchData=
   ['poly',['poly',['../classsch_1_1S__Polyhedron.html#a510cc7c126cda8905e8dcae347db3fc6',1,'sch::S_Polyhedron']]],
   ['polyhedron_5falgorithms',['Polyhedron_algorithms',['../structsch_1_1Polyhedron__algorithms.html',1,'sch::Polyhedron_algorithms'],['../structsch_1_1Polyhedron__algorithms.html#a5652c2d531019c959e14235b6ae8f589',1,'sch::Polyhedron_algorithms::Polyhedron_algorithms(void)'],['../structsch_1_1Polyhedron__algorithms.html#aadc8b7e0e4ff590ce1dcf83040b90050',1,'sch::Polyhedron_algorithms::Polyhedron_algorithms(const Polyhedron_algorithms &amp;)']]],
   ['polyhedron_5falgorithms_2eh',['Polyhedron_algorithms.h',['../Polyhedron__algorithms_8h.html',1,'']]],
+  ['polyhedronedge',['PolyhedronEdge',['../structsch_1_1PolyhedronEdge.html',1,'sch']]],
   ['polyhedrontriangle',['PolyhedronTriangle',['../structsch_1_1PolyhedronTriangle.html',1,'sch']]],
   ['polymorphic',['polymorphic',['../structboost_1_1archive_1_1detail_1_1save__pointer__type_1_1polymorphic.html',1,'boost::archive::detail::save_pointer_type']]],
   ['precision_5f',['precision_',['../classsch_1_1CD__Pair.html#a1dbaed6dcf22777a58cf45ab44e53732',1,'sch::CD_Pair::precision_()'],['../classsch_1_1CD__Depth.html#a95fdfc3e9a303d32429695acc105f8a9',1,'sch::CD_Depth::precision_()']]],

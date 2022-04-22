@@ -446,6 +446,7 @@
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
     <includes id="S__PolyhedronVertex_8h" name="S_PolyhedronVertex.h" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.h</includes>
     <class kind="struct">sch::PolyhedronTriangle</class>
+    <class kind="struct">sch::PolyhedronEdge</class>
     <class kind="struct">sch::Polyhedron_algorithms</class>
     <namespace>sch</namespace>
     <member kind="define">
@@ -2999,6 +3000,20 @@
       <arglist>(const std::string &amp;filename)</arglist>
     </member>
     <member kind="function">
+      <type>SCH_API void</type>
+      <name>fillEdges</name>
+      <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
+      <anchor>a4b3fee50dddeee36f4aaf4563f01c6eb</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>SCH_API size_t</type>
+      <name>getEdgeKey</name>
+      <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
+      <anchor>a7226c0351c3b794e27c23b65af53bdf2</anchor>
+      <arglist>(PolyhedronEdge e)</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>serialize</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
@@ -3009,7 +3024,7 @@
       <type>std::vector&lt; S_PolyhedronVertex * &gt;</type>
       <name>vertexes_</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
-      <anchor>ac2cb717ec5e0c527be76d515c64ef397</anchor>
+      <anchor>a8dff4c5f8ff8ab57d695f0a5311bd6b6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3017,6 +3032,13 @@
       <name>triangles_</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
       <anchor>aa67352db192d31663127df8500de1f50</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::vector&lt; PolyhedronEdge &gt;</type>
+      <name>edges_</name>
+      <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
+      <anchor>adc342fe5262df7febbd5fd74d60a90c6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3038,6 +3060,45 @@
       <name>numberOfVertices_</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
       <anchor>a50435002cf65766b7f16bc5a445ae362</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>sch::PolyhedronEdge</name>
+    <filename>structsch_1_1PolyhedronEdge.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>serialize</name>
+      <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
+      <anchor>add6dc0e4913e9dab32ac8475dcd18a2b</anchor>
+      <arglist>(Archive &amp;ar, const unsigned int)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>computeEdge</name>
+      <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
+      <anchor>ae1c2036d1f8ae03dea07e3e65646fa77</anchor>
+      <arglist>(const std::vector&lt; S_PolyhedronVertex *&gt; &amp;v)</arglist>
+    </member>
+    <member kind="variable">
+      <type>size_t</type>
+      <name>a</name>
+      <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
+      <anchor>a31a2c1f40262b2580b0469677e845ba2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>size_t</type>
+      <name>b</name>
+      <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
+      <anchor>ad52713b9e0e6332f96275c57cc38d0c6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Vector3</type>
+      <name>edge</name>
+      <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
+      <anchor>a69dce98aab32e12c15917bd2460d4ab2</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -5591,6 +5652,20 @@
       <anchor>a4934d41c1cb70e5f2343567852868eb0</anchor>
       <arglist>(Archive &amp;ar, const unsigned int) const</arglist>
     </member>
+    <member kind="function">
+      <type>Scalar</type>
+      <name>getBigRadius</name>
+      <anchorfile>classsch_1_1STP__BV.html</anchorfile>
+      <anchor>a7eb3fe2dcce9559b3cb42b71da893b55</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Scalar</type>
+      <name>getSmallRadius</name>
+      <anchorfile>classsch_1_1STP__BV.html</anchorfile>
+      <anchor>afd8e5714d2ab99030770374339491aa0</anchor>
+      <arglist>() const</arglist>
+    </member>
     <member kind="function" protection="protected">
       <type>SCH_API void</type>
       <name>loadTreeFromFile</name>
@@ -5659,6 +5734,20 @@
       <name>m_patchesSize</name>
       <anchorfile>classsch_1_1STP__BV.html</anchorfile>
       <anchor>a4868142b2700bad682dfe87ba4534a48</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Scalar</type>
+      <name>_r</name>
+      <anchorfile>classsch_1_1STP__BV.html</anchorfile>
+      <anchor>aa8e871fc586255b5b3cdb6450e5268bc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Scalar</type>
+      <name>_R</name>
+      <anchorfile>classsch_1_1STP__BV.html</anchorfile>
+      <anchor>ab41a6b93eda6036325467abb4e80f1f0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -5824,10 +5913,6 @@
       <anchor>a5dcc3b0e3b2eb3817e7ec2111419e711</anchor>
       <arglist></arglist>
     </member>
-  </compound>
-  <compound kind="class">
-    <name>STP_SmallSphere</name>
-    <filename>classSTP__SmallSphere.html</filename>
   </compound>
   <compound kind="class">
     <name>sch::STP_SmallSphere</name>
@@ -6050,6 +6135,10 @@
       <anchor>a49b0a8b55f598884530b9f240515f66b</anchor>
       <arglist></arglist>
     </member>
+  </compound>
+  <compound kind="class">
+    <name>STP_SmallSphere</name>
+    <filename>classSTP__SmallSphere.html</filename>
   </compound>
   <compound kind="class">
     <name>sch::STP_Torus</name>
@@ -6420,6 +6509,13 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>Vector3T</type>
+      <name>normalized</name>
+      <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
+      <anchor>aac1639b6fc3aa1eb15b830450a00ed98</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>T</type>
       <name>norm</name>
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
@@ -6668,6 +6764,13 @@
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
       <anchor>a54f2833fabdfca2c6102d4e1df1b9af7</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>Vector3T</type>
+      <name>normalized</name>
+      <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
+      <anchor>aac1639b6fc3aa1eb15b830450a00ed98</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>Scalar</type>
@@ -6982,6 +7085,7 @@
     <class kind="struct">sch::CD_SimplexKeptPoints</class>
     <class kind="struct">sch::Geometry</class>
     <class kind="struct">sch::Polyhedron_algorithms</class>
+    <class kind="struct">sch::PolyhedronEdge</class>
     <class kind="struct">sch::PolyhedronTriangle</class>
     <class kind="class">sch::S_Box</class>
     <class kind="class">sch::S_Capsule</class>

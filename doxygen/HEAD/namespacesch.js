@@ -9,6 +9,7 @@ var namespacesch =
     [ "CD_SimplexKeptPoints", "structsch_1_1CD__SimplexKeptPoints.html", "structsch_1_1CD__SimplexKeptPoints" ],
     [ "Geometry", "structsch_1_1Geometry.html", "structsch_1_1Geometry" ],
     [ "Polyhedron_algorithms", "structsch_1_1Polyhedron__algorithms.html", "structsch_1_1Polyhedron__algorithms" ],
+    [ "PolyhedronEdge", "structsch_1_1PolyhedronEdge.html", "structsch_1_1PolyhedronEdge" ],
     [ "PolyhedronTriangle", "structsch_1_1PolyhedronTriangle.html", "structsch_1_1PolyhedronTriangle" ],
     [ "S_Box", "classsch_1_1S__Box.html", "classsch_1_1S__Box" ],
     [ "S_Capsule", "classsch_1_1S__Capsule.html", "classsch_1_1S__Capsule" ],

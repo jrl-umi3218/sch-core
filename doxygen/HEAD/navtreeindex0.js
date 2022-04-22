@@ -28,7 +28,7 @@ var NAVTREEINDEX0 =
 "GJK_8h.html#a90fb392d13e9dfe378c78d607c1184dc":[2,0,0,0,1,6,1],
 "GJK_8h_source.html":[2,0,0,0,1,6],
 "Polyhedron__algorithms_8h.html":[2,0,0,0,6,0],
-"Polyhedron__algorithms_8h.html#a83fbcda08c7dea3769e1282c69dc9cd9":[2,0,0,0,6,0,2],
+"Polyhedron__algorithms_8h.html#a83fbcda08c7dea3769e1282c69dc9cd9":[2,0,0,0,6,0,3],
 "Polyhedron__algorithms_8h_source.html":[2,0,0,0,6,0],
 "QuaternionT_8h.html":[2,0,0,0,4,0],
 "QuaternionT_8h_source.html":[2,0,0,0,4,0],

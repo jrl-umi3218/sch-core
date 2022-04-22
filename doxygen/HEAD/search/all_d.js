@@ -14,6 +14,7 @@ var searchData=
   ['normal',['normal',['../structsch_1_1PolyhedronTriangle.html#af62e6405741ccc540c5edf72808290b6',1,'sch::PolyhedronTriangle::normal()'],['../structsch_1_1Geometry.html#a28909c0e3214c670f66612b61e6673bf',1,'sch::Geometry::normal()']]],
   ['normal_5f',['normal_',['../classsch_1_1S__Cylinder.html#a573f4ca5a5da11fe564b7dd311595e4b',1,'sch::S_Cylinder']]],
   ['normalize',['normalize',['../structCD__Matrix_1_1Vector3T.html#a54f2833fabdfca2c6102d4e1df1b9af7',1,'CD_Matrix::Vector3T::normalize()'],['../classCD__Matrix_1_1Vector4T.html#a7dff2ac0213f928bc8ddba4644a7b33a',1,'CD_Matrix::Vector4T::normalize()']]],
+  ['normalized',['normalized',['../structCD__Matrix_1_1Vector3T.html#aac1639b6fc3aa1eb15b830450a00ed98',1,'CD_Matrix::Vector3T']]],
   ['normoutdated',['normOutdated',['../structCD__Matrix_1_1Norm.html#a2303fac58e5f0373080335b3e140f7ef',1,'CD_Matrix::Norm::normOutdated()'],['../structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html#adc3a482f3e98674d0d0677a53b6f43b2',1,'CD_Matrix::Norm&lt; T, false &gt;::normOutdated()']]],
   ['normoutdated_5f',['normOutdated_',['../structCD__Matrix_1_1Norm.html#a3494051f778e2953510da9fa4a3acc69',1,'CD_Matrix::Norm']]],
   ['norms',['norms',['../classsch_1_1CD__SimplexEnhanced.html#a73fbe131a368041fb504ef638b76fc56',1,'sch::CD_SimplexEnhanced::norms(const char i) const'],['../classsch_1_1CD__SimplexEnhanced.html#a17a9b17a253a6e0db9e3a9a8650045dd',1,'sch::CD_SimplexEnhanced::norms(const char i)']]],

@@ -19,6 +19,7 @@ var searchData=
   ['computearcpointsbetween',['computeArcPointsBetween',['../classsch_1_1STP__BV.html#a99965c6640a0117277c8170e878e2e9c',1,'sch::STP_BV']]],
   ['computecenter',['computeCenter',['../classsch_1_1STP__BV.html#a406ac638acd0f4f8964e897ca183eb71',1,'sch::STP_BV']]],
   ['computeconepointsbetween',['computeConePointsBetween',['../classsch_1_1STP__BV.html#a21cb966f5872d39322ca2314461fbf2a',1,'sch::STP_BV']]],
+  ['computeedge',['computeEdge',['../structsch_1_1PolyhedronEdge.html#ae1c2036d1f8ae03dea07e3e65646fa77',1,'sch::PolyhedronEdge']]],
   ['computelinescommonpoint',['computeLinesCommonPoint',['../classsch_1_1STP__BV.html#a94fd56a0c954734b061bc4c00a187338',1,'sch::STP_BV']]],
   ['conjugate',['Conjugate',['../classCD__Matrix_1_1QuaternionT.html#a5ef05eb4b92cdc256052358367823767',1,'CD_Matrix::QuaternionT']]],
   ['conjugateit',['ConjugateIt',['../classCD__Matrix_1_1QuaternionT.html#a42680d1584acc58eab89e476082b7b60',1,'CD_Matrix::QuaternionT']]],

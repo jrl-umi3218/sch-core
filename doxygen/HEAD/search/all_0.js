@@ -6,6 +6,7 @@ var searchData=
   ['_5f2on2_5fe2',['_2on2_e2',['../classsch_1_1S__Superellipsoid.html#a3c746ec0186ec233bc7b206a896c09b2',1,'sch::S_Superellipsoid']]],
   ['_5fclass_5fgjk',['_CLASS_GJK',['../GJK_8h.html#a90fb392d13e9dfe378c78d607c1184dc',1,'GJK.h']]],
   ['_5fpolyhedron_5falgorithms',['_POLYHEDRON_ALGORITHMS',['../Polyhedron__algorithms_8h.html#a83fbcda08c7dea3769e1282c69dc9cd9',1,'Polyhedron_algorithms.h']]],
+  ['_5fr',['_r',['../classsch_1_1STP__BV.html#aa8e871fc586255b5b3cdb6450e5268bc',1,'sch::STP_BV::_r()'],['../classsch_1_1STP__BV.html#ab41a6b93eda6036325467abb4e80f1f0',1,'sch::STP_BV::_R()']]],
   ['_5fs_5fcone_5fh_5fsch',['_S_CONE_H_SCH',['../S__Cone_8h.html#a9023e820063d5ca8997414a080c947ee',1,'S_Cone.h']]],
   ['_5fs_5fobject',['_S_OBJECT',['../S__Object_8h.html#a1b00a525f4f424ad2691a0e5a25bd8a4',1,'S_Object.h']]],
   ['_5fs_5fobjectnormalized_5fh',['_S_OBJECTNORMALIZED_H',['../S__ObjectNormalized_8h.html#a8720b059fcbf32d307191516f62f3299',1,'S_ObjectNormalized.h']]],

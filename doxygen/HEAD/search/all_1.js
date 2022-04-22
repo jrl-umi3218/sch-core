@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a',['a',['../structsch_1_1PolyhedronTriangle.html#a816075aab5b905610a8b7770a13865a7',1,'sch::PolyhedronTriangle']]],
+  ['a',['a',['../structsch_1_1PolyhedronTriangle.html#a816075aab5b905610a8b7770a13865a7',1,'sch::PolyhedronTriangle::a()'],['../structsch_1_1PolyhedronEdge.html#a31a2c1f40262b2580b0469677e845ba2',1,'sch::PolyhedronEdge::a()']]],
   ['a_5f',['a_',['../classsch_1_1S__Box.html#a99e5b9b6186ff32f02783206a0ce75bd',1,'sch::S_Box::a_()'],['../classsch_1_1S__Superellipsoid.html#a5f2076a123341895b1c38f4a661f74c8',1,'sch::S_Superellipsoid::a_()']]],
   ['ab',['AB',['../classsch_1_1CD__Simplex.html#a6aaf2c7c7aa5e0a791aef307836d8187',1,'sch::CD_Simplex']]],
   ['ab_5f',['ab_',['../classsch_1_1CD__Simplex.html#ab94cfad038d7a76c3e62e54612aa3097',1,'sch::CD_Simplex']]],

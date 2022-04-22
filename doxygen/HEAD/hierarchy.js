@@ -34,6 +34,7 @@ var hierarchy =
     ] ],
     [ "CD_Matrix::Norm< T, false >", "structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html", null ],
     [ "sch::Polyhedron_algorithms", "structsch_1_1Polyhedron__algorithms.html", null ],
+    [ "sch::PolyhedronEdge", "structsch_1_1PolyhedronEdge.html", null ],
     [ "sch::PolyhedronTriangle", "structsch_1_1PolyhedronTriangle.html", null ],
     [ "boost::archive::detail::save_pointer_type< Archive, TPtr >::polymorphic< T >", "structboost_1_1archive_1_1detail_1_1save__pointer__type_1_1polymorphic.html", null ],
     [ "sch::S_Object", "classsch_1_1S__Object.html", [

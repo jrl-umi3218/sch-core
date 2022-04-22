@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b',['b',['../structsch_1_1PolyhedronTriangle.html#a0c264091669014b48326ef999c54ff13',1,'sch::PolyhedronTriangle']]],
+  ['b',['b',['../structsch_1_1PolyhedronTriangle.html#a0c264091669014b48326ef999c54ff13',1,'sch::PolyhedronTriangle::b()'],['../structsch_1_1PolyhedronEdge.html#ad52713b9e0e6332f96275c57cc38d0c6',1,'sch::PolyhedronEdge::b()']]],
   ['b1',['b1',['../structsch_1_1CD__SimplexKeptPoints.html#acf5cec3715b997ac6a16320527ca89b6',1,'sch::CD_SimplexKeptPoints']]],
   ['b2',['b2',['../structsch_1_1CD__SimplexKeptPoints.html#a002b48706ced2c2d24de628768aba606',1,'sch::CD_SimplexKeptPoints']]],
   ['b3',['b3',['../structsch_1_1CD__SimplexKeptPoints.html#a7360485de663c73bd3445d35a8832353',1,'sch::CD_SimplexKeptPoints']]],

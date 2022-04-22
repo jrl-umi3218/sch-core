@@ -118,16 +118,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ee7bb4a890a8c1a1a9b33acf195ae19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a8ee7bb4a890a8c1a1a9b33acf195ae19">openFromFile</a> (const std::string &amp;filename)</td></tr>
 <tr class="memdesc:a8ee7bb4a890a8c1a1a9b33acf195ae19"><td class="mdescLeft">&#160;</td><td class="mdescRight">loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options : \ "qconvex.exe TI &lt;input_filename&gt; TO &lt;output_filename&gt; Qt o f"  <a href="#a8ee7bb4a890a8c1a1a9b33acf195ae19">More...</a><br /></td></tr>
 <tr class="separator:a8ee7bb4a890a8c1a1a9b33acf195ae19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3fee50dddeee36f4aaf4563f01c6eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a4b3fee50dddeee36f4aaf4563f01c6eb">fillEdges</a> ()</td></tr>
+<tr class="memdesc:a4b3fee50dddeee36f4aaf4563f01c6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the edges_ variable using the data from the polyhedron.  <a href="#a4b3fee50dddeee36f4aaf4563f01c6eb">More...</a><br /></td></tr>
+<tr class="separator:a4b3fee50dddeee36f4aaf4563f01c6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7226c0351c3b794e27c23b65af53bdf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a7226c0351c3b794e27c23b65af53bdf2">getEdgeKey</a> (<a class="el" href="structsch_1_1PolyhedronEdge.html">PolyhedronEdge</a> e)</td></tr>
+<tr class="memdesc:a7226c0351c3b794e27c23b65af53bdf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the key of an edge computed automatically from its vertices  <a href="#a7226c0351c3b794e27c23b65af53bdf2">More...</a><br /></td></tr>
+<tr class="separator:a7226c0351c3b794e27c23b65af53bdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd71094e0347b1810df7c4066fbd37c7"><td class="memTemplParams" colspan="2">template&lt;class Archive &gt; </td></tr>
 <tr class="memitem:afd71094e0347b1810df7c4066fbd37c7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#afd71094e0347b1810df7c4066fbd37c7">serialize</a> (Archive &amp;ar, const unsigned int)</td></tr>
 <tr class="separator:afd71094e0347b1810df7c4066fbd37c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac2cb717ec5e0c527be76d515c64ef397"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#ac2cb717ec5e0c527be76d515c64ef397">vertexes_</a></td></tr>
-<tr class="separator:ac2cb717ec5e0c527be76d515c64ef397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dff4c5f8ff8ab57d695f0a5311bd6b6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a8dff4c5f8ff8ab57d695f0a5311bd6b6">vertexes_</a></td></tr>
+<tr class="separator:a8dff4c5f8ff8ab57d695f0a5311bd6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa67352db192d31663127df8500de1f50"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsch_1_1PolyhedronTriangle.html">PolyhedronTriangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#aa67352db192d31663127df8500de1f50">triangles_</a></td></tr>
 <tr class="separator:aa67352db192d31663127df8500de1f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc342fe5262df7febbd5fd74d60a90c6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsch_1_1PolyhedronEdge.html">PolyhedronEdge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#adc342fe5262df7febbd5fd74d60a90c6">edges_</a></td></tr>
+<tr class="separator:adc342fe5262df7febbd5fd74d60a90c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4af7877df4daa150e2be4aab034f84da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a4af7877df4daa150e2be4aab034f84da">fastVertexes_</a></td></tr>
 <tr class="separator:a4af7877df4daa150e2be4aab034f84da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a893b3ab22cad4db324f0a3d6e6a89377"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsch_1_1Polyhedron__algorithms.html#a893b3ab22cad4db324f0a3d6e6a89377">lastVertexes_</a></td></tr>
@@ -245,6 +253,45 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>deletes aal the vertexes that dont have neighbors; </p>
+
+</div>
+</div>
+<a id="a4b3fee50dddeee36f4aaf4563f01c6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3fee50dddeee36f4aaf4563f01c6eb">&#9670;&nbsp;</a></span>fillEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> void sch::Polyhedron_algorithms::fillEdges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fill the edges_ variable using the data from the polyhedron. </p>
+
+</div>
+</div>
+<a id="a7226c0351c3b794e27c23b65af53bdf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7226c0351c3b794e27c23b65af53bdf2">&#9670;&nbsp;</a></span>getEdgeKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> size_t sch::Polyhedron_algorithms::getEdgeKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsch_1_1PolyhedronEdge.html">PolyhedronEdge</a>&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the key of an edge computed automatically from its vertices </p>
 
 </div>
 </div>
@@ -411,6 +458,20 @@ template&lt;class Archive &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="adc342fe5262df7febbd5fd74d60a90c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc342fe5262df7febbd5fd74d60a90c6">&#9670;&nbsp;</a></span>edges_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structsch_1_1PolyhedronEdge.html">PolyhedronEdge</a>&gt; sch::Polyhedron_algorithms::edges_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4af7877df4daa150e2be4aab034f84da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4af7877df4daa150e2be4aab034f84da">&#9670;&nbsp;</a></span>fastVertexes_</h2>
 
@@ -467,14 +528,14 @@ template&lt;class Archive &gt; </div>
 
 </div>
 </div>
-<a id="ac2cb717ec5e0c527be76d515c64ef397"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2cb717ec5e0c527be76d515c64ef397">&#9670;&nbsp;</a></span>vertexes_</h2>
+<a id="a8dff4c5f8ff8ab57d695f0a5311bd6b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dff4c5f8ff8ab57d695f0a5311bd6b6">&#9670;&nbsp;</a></span>vertexes_</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a>*&gt; sch::Polyhedron_algorithms::vertexes_</td>
+          <td class="memname">std::vector&lt;<a class="el" href="classsch_1_1S__PolyhedronVertex.html">S_PolyhedronVertex</a> *&gt; sch::Polyhedron_algorithms::vertexes_</td>
         </tr>
       </table>
 </div><div class="memdoc">
