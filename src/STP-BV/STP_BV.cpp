@@ -15,7 +15,6 @@ the Triangle and SphereApproxim structures and the PointsComparator functor
 #include <boost/serialization/serialization.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/vector.hpp>
-#include <boost/math/constants/constants.hpp>
 
 #include <exception>
 #include <sstream>

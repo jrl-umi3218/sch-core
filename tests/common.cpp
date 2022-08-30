@@ -1,8 +1,6 @@
 #include "common.h"
 #include <fstream>
 
-#include <boost/math/constants/constants.hpp>
-
 const double DispersionScale=0.2;
 const double AnimationSpeed=0.003;
 const double AnimationScale=0.6;
