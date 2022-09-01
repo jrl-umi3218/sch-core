@@ -82,7 +82,7 @@ void Polyhedron_algorithms::fillEdges()
   edges_.clear();
   PolyhedronEdge edge;
   std::vector<PolyhedronEdge> triangleEdges;
-  std::set<size_t, std::greater<int>> edgesSet;
+  std::set<size_t, std::greater<int> > edgesSet;
   for(size_t i = 0; i < triangles_.size(); i++)
   {
     edge.a = triangles_[i].a;
@@ -100,7 +100,7 @@ void Polyhedron_algorithms::fillEdges()
     edge.computeEdge(vertexes_);
     triangleEdges.push_back(edge);
 
-    for(auto j = triangleEdges.begin(); j != triangleEdges.end(); j++)
+    for(std::vector<PolyhedronEdge>::iterator j = triangleEdges.begin(); j != triangleEdges.end(); j++)
     {
       if(!edgesSet.count(getEdgeKey(*j)))
       {
