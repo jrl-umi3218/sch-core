@@ -877,6 +877,13 @@
       <arglist>(const Vector3 &amp;)</arglist>
     </member>
     <member kind="function">
+      <type>SCH_API const Vector3 &amp;</type>
+      <name>getVector</name>
+      <anchorfile>classsch_1_1CD__Pair.html</anchorfile>
+      <anchor>a71327c1b211c8b80ce9b62dffc32c76f</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>SCH_API void</type>
       <name>setRelativePrecision</name>
       <anchorfile>classsch_1_1CD__Pair.html</anchorfile>

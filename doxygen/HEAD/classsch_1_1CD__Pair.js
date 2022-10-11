@@ -5,6 +5,7 @@ var classsch_1_1CD__Pair =
     [ "getClosestPoints", "classsch_1_1CD__Pair.html#adc3e58868da3f623f42e1c74b2ca47a9", null ],
     [ "getDistance", "classsch_1_1CD__Pair.html#a393c0bafa00d23201c8b03e683835b15", null ],
     [ "getDistanceWithoutPenetrationDepth", "classsch_1_1CD__Pair.html#aac6d390af7d244c617942080bf4e15c1", null ],
+    [ "getVector", "classsch_1_1CD__Pair.html#a71327c1b211c8b80ce9b62dffc32c76f", null ],
     [ "GJK", "classsch_1_1CD__Pair.html#a2ddeeded589eba6c0b8814f258a04488", null ],
     [ "isInCollision", "classsch_1_1CD__Pair.html#ac69524f4a85c188a2986638aa7eeb71c", null ],
     [ "operator[]", "classsch_1_1CD__Pair.html#a3549fc5639962774041d74f8639b0218", null ],

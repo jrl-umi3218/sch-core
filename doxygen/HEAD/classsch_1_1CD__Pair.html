@@ -111,6 +111,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3ab1aa2bfa738bf1ff2a008f9860f73c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1CD__Pair.html#a3ab1aa2bfa738bf1ff2a008f9860f73c">setVector</a> (const <a class="el" href="namespacesch.html#a26a421e6cdc08aedcfc5b9c68277f657">Vector3</a> &amp;)</td></tr>
 <tr class="memdesc:a3ab1aa2bfa738bf1ff2a008f9860f73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intializes the direction vector (the vector between expected closest points) with a given value.  <a href="#a3ab1aa2bfa738bf1ff2a008f9860f73c">More...</a><br /></td></tr>
 <tr class="separator:a3ab1aa2bfa738bf1ff2a008f9860f73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71327c1b211c8b80ce9b62dffc32c76f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#a26a421e6cdc08aedcfc5b9c68277f657">Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1CD__Pair.html#a71327c1b211c8b80ce9b62dffc32c76f">getVector</a> () const</td></tr>
+<tr class="memdesc:a71327c1b211c8b80ce9b62dffc32c76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last direction vector (can be used to get a normal vector, especially when the distance is zero)  <a href="#a71327c1b211c8b80ce9b62dffc32c76f">More...</a><br /></td></tr>
+<tr class="separator:a71327c1b211c8b80ce9b62dffc32c76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261bf27865bbe12facf5a7fabbfebeb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsch_1_1CD__Pair.html#a261bf27865bbe12facf5a7fabbfebeb6">setRelativePrecision</a> (<a class="el" href="namespacesch.html#a23db84571b7527634d5e5d5fd69995e6">Scalar</a> precision)</td></tr>
 <tr class="memdesc:a261bf27865bbe12facf5a7fabbfebeb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3.  <a href="#a261bf27865bbe12facf5a7fabbfebeb6">More...</a><br /></td></tr>
 <tr class="separator:a261bf27865bbe12facf5a7fabbfebeb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,6 +327,25 @@ Protected Attributes</h2></td></tr>
 <p>function that returns the distance SQUARED between two convex objects, no interpenetration depth computations done the distance is set to zero in this case </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="example0_8cpp-example.html#a13">example0.cpp</a>, and <a class="el" href="example1_8cpp-example.html#a9">example1.cpp</a>.</dd>
 </dl>
+</div>
+</div>
+<a id="a71327c1b211c8b80ce9b62dffc32c76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71327c1b211c8b80ce9b62dffc32c76f">&#9670;&nbsp;</a></span>getVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sch__api_8h.html#a6d0fc78a96bfd5665b3f0c88eed31bdf">SCH_API</a> const <a class="el" href="namespacesch.html#a26a421e6cdc08aedcfc5b9c68277f657">Vector3</a>&amp; sch::CD_Pair::getVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the last direction vector (can be used to get a normal vector, especially when the distance is zero) </p>
+
 </div>
 </div>
 <a id="a2ddeeded589eba6c0b8814f258a04488"></a>
