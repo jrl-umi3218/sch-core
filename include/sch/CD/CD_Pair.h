@@ -61,6 +61,11 @@ namespace sch
     *\brief Intializes the direction vector (the vector between expected closest points) with a given value.
     */
     SCH_API void setVector(const Vector3 &);
+    
+    /*!
+    *\brief Gets the last direction vector (can be used to get a normal vector, especially when the distance is zero)
+    */
+    SCH_API const Vector3 & getVector() const;
 
     /*!
     *\brief sets the relative precision of the proximity queries to a given value. The effective precision is precision^2 . Default is precision=1e-3.
