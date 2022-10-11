@@ -363,6 +363,11 @@ void CD_Pair::setVector(const Vector3 &v)
   lastDirection_=v;
 }
 
+const Vector3 & CD_Pair::getVector() const 
+{
+  return lastDirection_;
+}
+
 void CD_Pair::witPoints(Point3 &p1, Point3 &p2)
 {
   Point3 proj;
