@@ -10,7 +10,7 @@ var searchData=
   ['getclosestpoints',['getClosestPoints',['../classsch_1_1CD__Pair.html#adc3e58868da3f623f42e1c74b2ca47a9',1,'sch::CD_Pair']]],
   ['getclosestsubsimplexgjk',['getClosestSubSimplexGJK',['../classsch_1_1CD__SimplexEnhanced.html#af6fd1a8235def825b4a63765b17a361d',1,'sch::CD_SimplexEnhanced']]],
   ['getcoordinates',['getCoordinates',['../classsch_1_1S__PolyhedronVertex.html#a439dda6577a68e3bde99c0b3b286e4f1',1,'sch::S_PolyhedronVertex']]],
-  ['getcordinates',['getCordinates',['../classsch_1_1S__PolyhedronVertex.html#aaa26b669fd4ca9efc497b7802d3d1eab',1,'sch::S_PolyhedronVertex']]],
+  ['getcordinates',['getCordinates',['../classsch_1_1S__PolyhedronVertex.html#aadcc0ee5690c974c12a9d2e1aa73ce3b',1,'sch::S_PolyhedronVertex']]],
   ['getdisplayradius',['getDisplayRadius',['../classsch_1_1S__Point.html#aab1508f8f4b5ac5bb289893c72b91725',1,'sch::S_Point']]],
   ['getdistance',['getDistance',['../classsch_1_1CD__Pair.html#a393c0bafa00d23201c8b03e683835b15',1,'sch::CD_Pair::getDistance()'],['../structsch_1_1s__STP__VVR.html#a4ce6edbec9d474bed69ddbdc2716de3e',1,'sch::s_STP_VVR::getDistance()'],['../structsch_1_1s__STN__VVR.html#a5b3f442d54da453752947998aff81d43',1,'sch::s_STN_VVR::getDistance()']]],
   ['getdistancewithoutpenetrationdepth',['getDistanceWithoutPenetrationDepth',['../classsch_1_1CD__Pair.html#aac6d390af7d244c617942080bf4e15c1',1,'sch::CD_Pair']]],

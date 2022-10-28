@@ -45,10 +45,10 @@ digraph "include/sch/S_Polyhedron/S_Polyhedron.h"
   Node19 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node18 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node20 [label="boost/noncopyable.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node18 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node18 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node21 [label="sch/core/deprecated.hh",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node18 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node18 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node22 [label="sch/S_Polyhedron/S\l_PolyhedronVertex.hxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$S__PolyhedronVertex_8hxx.html"];
   Node0 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

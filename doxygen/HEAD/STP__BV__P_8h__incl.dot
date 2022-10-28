@@ -67,10 +67,10 @@ digraph "include/sch/STP-BV/STP_BV_P.h"
   Node27 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node27 -> Node28 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node28 [label="boost/noncopyable.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node27 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node27 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node29 [label="sch/core/deprecated.hh",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node27 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node27 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node30 [label="sch/S_Polyhedron/S\l_PolyhedronVertex.hxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$S__PolyhedronVertex_8hxx.html"];
   Node26 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

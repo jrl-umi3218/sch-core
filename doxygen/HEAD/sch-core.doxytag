@@ -472,8 +472,8 @@
     <name>S_PolyhedronVertex.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Polyhedron/</path>
     <filename>S__PolyhedronVertex_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="S__PolyhedronVertex_8hxx" name="S_PolyhedronVertex.hxx" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.hxx</includes>
     <class kind="class">sch::S_PolyhedronVertex</class>
     <namespace>sch</namespace>
@@ -4397,10 +4397,10 @@
       <arglist>(const Vector3 &amp;direction) const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API SCH_CORE_DEPRECATED void</type>
+      <type>SCH_CORE_DEPRECATED SCH_API void</type>
       <name>setCordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>a584640dc745ceec455cff8b775badd15</anchor>
+      <anchor>aefb543164dd8d1444c93be4ad45e6dd7</anchor>
       <arglist>(const Vector3 &amp;v)</arglist>
     </member>
     <member kind="function">
@@ -4411,10 +4411,10 @@
       <arglist>(const Vector3 &amp;v)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API SCH_CORE_DEPRECATED void</type>
+      <type>SCH_CORE_DEPRECATED SCH_API void</type>
       <name>setCordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>acefa619d1ec7909bf534569f38da6534</anchor>
+      <anchor>aa5a1e8bb29152f44705bf21f6d43fb22</anchor>
       <arglist>(const Scalar &amp;x, const Scalar &amp;y, const Scalar &amp;z)</arglist>
     </member>
     <member kind="function">
@@ -4425,10 +4425,10 @@
       <arglist>(const Scalar &amp;x, const Scalar &amp;y, const Scalar &amp;z)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API SCH_CORE_DEPRECATED const Vector3 &amp;</type>
+      <type>SCH_CORE_DEPRECATED SCH_API const Vector3 &amp;</type>
       <name>getCordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>aaa26b669fd4ca9efc497b7802d3d1eab</anchor>
+      <anchor>aadcc0ee5690c974c12a9d2e1aa73ce3b</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">

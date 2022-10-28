@@ -31,11 +31,11 @@ digraph "include/sch/S_Polyhedron/Polyhedron_algorithms.h"
   Node13 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node12 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="boost/noncopyable.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node12 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="sch/sch_api.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sch__api_8h.html"];
-  Node12 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="sch/core/deprecated.hh",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node12 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="sch/core/deprecated.hh",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node12 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="sch/sch_api.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sch__api_8h.html"];
   Node12 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node17 [label="sch/S_Polyhedron/S\l_PolyhedronVertex.hxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$S__PolyhedronVertex_8hxx.html"];
   Node0 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
