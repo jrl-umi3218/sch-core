@@ -275,6 +275,8 @@ Scalar CD_Pair::GJK()
       {
         collision_=true;
         cont=false;
+        p1_ = sup1; ///despite the collision we set the witness points rather than nothing
+        p2_ = sup2;
       }
       else
       {
@@ -326,6 +328,8 @@ Scalar CD_Pair::GJK()
               s2+=sup2;
               collision_=true;
               distance_=0.;
+              p1_ = sup1; ///despite the collision we set these witness points rather than nothing
+              p2_ = sup2;
             }
             else
             {
