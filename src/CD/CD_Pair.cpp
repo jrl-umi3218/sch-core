@@ -141,12 +141,7 @@ Scalar CD_Pair::penetrationDepth()
 #ifdef PENETRATION_DEPTH
   if (collision_)//Objects are in collision
   {
-    distance_=-depthPair.getPenetrationDepth(lastDirection_,p1_,p2_,sp_,s1_,s2_);
-    if (distance_<0)
-    {
-      lastDirection_.Set(0,1,0);
-    }
-
+    distance_ = -depthPair.getPenetrationDepth(lastDirection_, p1_, p2_, sp_, s1_, s2_);
     return distance_;
   }
   else
