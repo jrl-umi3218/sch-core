@@ -28,10 +28,14 @@ namespace sch
 
     /*!
     *\brief function that returns the distance SQUARED between two convex objects, and computes the witness points, the distance is set to negative if interpentration
+    *\details The witness points are on the surface of the objects with opposite normals. Iif there is a collision and the penetration depth computation is deactivated 
+    * then the witness points will only reflect the last step of the distance computation algorithm. Otherwise the witness points are points each on the surface of the other,
+    *  having opposite normals and being the closest each to the other. In any case the returned distance should be used to obtain the distance.
     *\param p1 is the witness point on the first object
     *\param p2 is the witness point on the second object
+    *\return the distance squared (set to negative when there is penetration)
     */
-    SCH_API Scalar getClosestPoints(Point3& p1,Point3& p2);
+    SCH_API Scalar getClosestPoints(Point3 &p1, Point3 &p2);
 
     /*!
     *\brief function that returns the distance SQUARED between two convex objects, restarting the computations from the beginning and computes the witness points, the distance is set to negative if interpentration
