@@ -116,8 +116,11 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
       witPointsAreComputed_=true;
       witPoints(p1,p2);
     }
-    p1=p1_;
-    p2=p2_;
+    else
+    {
+      p1 = p1_;
+      p2 = p2_;
+    }
     return distance_;
   }
   else
