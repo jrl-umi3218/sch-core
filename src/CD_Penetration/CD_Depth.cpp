@@ -51,7 +51,7 @@ struct TriangleHeap
       std::push_heap(&triangleHeap[0], &triangleHeap[num_triangles], triangleComp);
 #ifdef sch_DEBUG
       std::cout << " accepted" << std::endl;
-#endif
+#endif // ndefsch_DEBUG
     }
     else
     {
@@ -66,7 +66,7 @@ struct TriangleHeap
         std::cout << "triangle is further than upper bound";
       }
       std::cout << std::endl;
-#endif
+#endif // ndef sch_DEBUG
     }
   }
 
@@ -142,7 +142,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3&, Point3&, Point3&, const CD_Simple
 {
   return 0;
 }
-#else
+#else // def SCH_BUILD_BSD
 Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const CD_SimplexEnhanced& s,
                                      const CD_Simplex& s1_, const CD_Simplex& s2_)
 {
@@ -387,7 +387,7 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
       {
 #ifdef sch_DEBUG
         std::cout << "Ouch, no convergence!!!" << std::endl;
-#endif
+#endif //def sch_DEBUG
         assert(false);
         break;
       }
@@ -410,11 +410,9 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
       Scalar error = far_dist - triangle->getDist2();
       if (error <= GEN_max(precision_ * far_dist, epsilon_)
 #if 1
-          || yBuf[index] == yBuf[(*triangle)[0]]
-          || yBuf[index] == yBuf[(*triangle)[1]]
-          || yBuf[index] == yBuf[(*triangle)[2]]
-#endif
-         )
+          || yBuf[index] == yBuf[(*triangle)[0]] || yBuf[index] == yBuf[(*triangle)[1]] || yBuf[index] == yBuf[(*triangle)[2]]
+#endif // 1
+      )
       {
         break;
       }
@@ -448,15 +446,14 @@ Scalar CD_Depth::getPenetrationDepth(Vector3& v, Point3 &p1,  Point3 &p2,const C
 
 #ifdef sch_DEBUG
   std::cout << "#triangles left = " << num_triangles << std::endl;
-#endif
+#endif //def sch_DEBUG
 
   v = triangle->getClosest();
   p1 = triangle->getClosestPoint(pBuf);
   p2 = triangle->getClosestPoint(qBuf);
   return v.normsquared();
 }
-#endif
-
+#endif // def SCH_BUILD_BSD
 
 CD_Depth::CD_Depth(S_Object *Obj1, S_Object *Obj2):sObj1_(Obj1),sObj2_(Obj2),precision_(defaultPrecision),epsilon_(sch::epsilon)
 {
