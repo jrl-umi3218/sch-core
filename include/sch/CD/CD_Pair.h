@@ -61,10 +61,11 @@ namespace sch
     *\brief Intializes the direction vector (the vector between expected closest points) with a given value.
     */
     SCH_API void setVector(const Vector3 &);
-    
+
     /*!
-    *\brief Gets the last direction vector (can be used to get a normal vector, especially when the distance is zero)
-    */
+     *\brief Gets the last direction vector (can be used to get a normal vector, especially when the distance is zero).
+     * This vector is likely NOT normalized
+     */
     SCH_API const Vector3 & getVector() const;
 
     /*!
