@@ -319,7 +319,7 @@ Scalar CD_Pair::GJK()
             s1+=sup1;
             s2+=sup2;
 
-            if (sp_.getType()==CD_Tetrahedron)
+            if (sp_.getType() == CD_Tetrahedron) // the origin is in the Minkovsky sum
             {
               cont=false;
               s1+=sup1;
