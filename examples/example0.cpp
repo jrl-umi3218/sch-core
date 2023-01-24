@@ -179,8 +179,8 @@ main (int /*argc*/, char * /*argv*/[])
   comparison = compare(d1, 0., "Second query, d1. ") && comparison;
 #ifdef SCH_BUILD_BSD
   comparison = compare(d2, 0., "Second query, d2. ") && comparison;
-  comparison = compare(p1, (Vector3(0.0292236259885692, 0.601445137095698, 0.705635281288737)), "Second query, p1. ") && comparison;
-  comparison = compare(p2, (Vector3(0.0239874216806999, -0.336387177086141, -0.781275504057127)), "Second query, p2. ") && comparison;
+  comparison = compare(p1, (Vector3(-0.211100297803413, -0.0866553324786505, -0.0206764992279858)), "Second query, p1. ") && comparison;
+  comparison = compare(p2, (Vector3(0.201035958824805, -0.171232378087511, 0.066080909954798)), "Second query, p2. ") && comparison;
 #else
   comparison = compare(d2, 0.293744618861213, "Second query, d2. ") && comparison;
   comparison = compare(p1, (Vector3(0.0110146674327551, -0.0498945075944604, -0.0551780527427314)), "Second query, p1. ") && comparison;
@@ -216,8 +216,8 @@ main (int /*argc*/, char * /*argv*/[])
   // compare the results for third query
 #ifdef SCH_BUILD_BSD
   comparison = compare(d0, 0., "Third Query, d0") && comparison;
-  comparison = compare(p1, (Vector3(0.0292236259885692, 0.601445137095698, 0.705635281288737)), "Third Query, p1") && comparison;
-  comparison = compare(p2, (Vector3(0.0239874216806999, -0.336387177086141, -0.781275504057127)), "Third Query, p2") && comparison;
+  comparison = compare(p1, (Vector3(-0.211100297803413, -0.0866553324786505, -0.0206764992279858)), "Third Query, p1") && comparison;
+  comparison = compare(p2, (Vector3(0.201035958824805, -0.171232378087511, 0.066080909954798)), "Third Query, p2") && comparison;
 #else
   comparison = compare(d0, -0.0862859011099191, "Third Query, d0") && comparison;
   comparison = compare(p1, (Vector3(0.0110146674327551, -0.0498945075944604, -0.0551780527427314)), "Third Query, p1") && comparison;

@@ -116,8 +116,11 @@ Scalar CD_Pair::getClosestPoints(Point3 &p1, Point3 &p2)
       witPointsAreComputed_=true;
       witPoints(p1,p2);
     }
-    p1=p1_;
-    p2=p2_;
+    else
+    {
+      p1 = p1_;
+      p2 = p2_;
+    }
     return distance_;
   }
   else
@@ -138,12 +141,7 @@ Scalar CD_Pair::penetrationDepth()
 #ifdef PENETRATION_DEPTH
   if (collision_)//Objects are in collision
   {
-    distance_=-depthPair.getPenetrationDepth(lastDirection_,p1_,p2_,sp_,s1_,s2_);
-    if (distance_<0)
-    {
-      lastDirection_.Set(0,1,0);
-    }
-
+    distance_ = -depthPair.getPenetrationDepth(lastDirection_, p1_, p2_, sp_, s1_, s2_);
     return distance_;
   }
   else
@@ -272,6 +270,8 @@ Scalar CD_Pair::GJK()
       {
         collision_=true;
         cont=false;
+        p1_ = sup1; ///despite the collision we set the witness points rather than nothing
+        p2_ = sup2;
       }
       else
       {
@@ -316,13 +316,15 @@ Scalar CD_Pair::GJK()
             s1+=sup1;
             s2+=sup2;
 
-            if (sp_.getType()==CD_Tetrahedron)
+            if (sp_.getType() == CD_Tetrahedron) // the origin is in the Minkovsky sum
             {
               cont=false;
               s1+=sup1;
               s2+=sup2;
               collision_=true;
               distance_=0.;
+              p1_ = sup1; ///despite the collision we set these witness points rather than nothing
+              p2_ = sup2;
             }
             else
             {
