@@ -26,12 +26,7 @@ var hierarchy =
     [ "noncopyable", null, [
       [ "sch::S_PolyhedronVertex", "classsch_1_1S__PolyhedronVertex.html", null ]
     ] ],
-    [ "CD_Matrix::Norm< T, normOptimization >", "structCD__Matrix_1_1Norm.html", [
-      [ "CD_Matrix::Vector3T< T, normOptimization >", "structCD__Matrix_1_1Vector3T.html", null ]
-    ] ],
-    [ "CD_Matrix::Norm< Scalar, normOptimization >", "structCD__Matrix_1_1Norm.html", [
-      [ "CD_Matrix::Vector3T< Scalar, false >", "structCD__Matrix_1_1Vector3T.html", null ]
-    ] ],
+    [ "CD_Matrix::Norm< T, normOptimization >", "structCD__Matrix_1_1Norm.html", null ],
     [ "CD_Matrix::Norm< T, false >", "structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html", null ],
     [ "sch::Polyhedron_algorithms", "structsch_1_1Polyhedron__algorithms.html", null ],
     [ "sch::PolyhedronEdge", "structsch_1_1PolyhedronEdge.html", null ],
@@ -80,6 +75,8 @@ var hierarchy =
       [ "sch::STP_Torus", "classsch_1_1STP__Torus.html", null ]
     ] ],
     [ "STP_SmallSphere", "classSTP__SmallSphere.html", null ],
+    [ "CD_Matrix::Vector3T< T, normOptimization >", "structCD__Matrix_1_1Vector3T.html", null ],
+    [ "CD_Matrix::Vector3T< Scalar, false >", "structCD__Matrix_1_1Vector3T.html", null ],
     [ "CD_Matrix::Vector4T< T >", "classCD__Matrix_1_1Vector4T.html", [
       [ "CD_Matrix::QuaternionT< T >", "classCD__Matrix_1_1QuaternionT.html", null ]
     ] ]

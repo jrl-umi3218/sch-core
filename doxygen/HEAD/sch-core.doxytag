@@ -3,7 +3,7 @@
   <compound kind="file">
     <name>oserializer.hpp</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/boost/archive/detail/</path>
-    <filename>oserializer_8hpp</filename>
+    <filename>oserializer_8hpp.html</filename>
     <class kind="class">boost::archive::save_access</class>
     <class kind="class">boost::archive::detail::oserializer</class>
     <class kind="class">boost::archive::detail::pointer_oserializer</class>
@@ -25,10 +25,10 @@
     <namespace>boost::archive</namespace>
     <namespace>boost::archive::detail</namespace>
     <member kind="function">
-      <type>BOOST_DLLEXPORT const basic_pointer_oserializer &amp;</type>
+      <type>const BOOST_DLLEXPORT basic_pointer_oserializer &amp;</type>
       <name>instantiate_pointer_oserializer</name>
       <anchorfile>namespaceboost_1_1archive_1_1detail.html</anchorfile>
-      <anchor>a36a969c98d97fb6bba03fb0646613a94</anchor>
+      <anchor>a9efd5b525284047e3e2f55a4850d647b</anchor>
       <arglist>(Archive *, T *) BOOST_USED</arglist>
     </member>
     <member kind="function">
@@ -49,30 +49,30 @@
   <compound kind="file">
     <name>CD_Pair.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__Pair_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
-    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <filename>CD__Pair_8h.html</filename>
     <includes id="CD__SimplexEnhanced_8h" name="CD_SimplexEnhanced.h" local="no" imported="no">sch/CD/CD_SimplexEnhanced.h</includes>
     <includes id="CD__Depth_8h" name="CD_Depth.h" local="no" imported="no">sch/CD_Penetration/CD_Depth.h</includes>
+    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::CD_Pair</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>CD_Scene.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__Scene_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
-    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <filename>CD__Scene_8h.html</filename>
     <includes id="CD__Pair_8h" name="CD_Pair.h" local="no" imported="no">sch/CD/CD_Pair.h</includes>
+    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::CD_Scene</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>CD_Simplex.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__Simplex_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>CD__Simplex_8h.html</filename>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="CD__Simplex_8hxx" name="CD_Simplex.hxx" local="yes" imported="no">CD_Simplex.hxx</includes>
     <class kind="struct">sch::CD_SimplexKeptPoints</class>
     <class kind="class">sch::CD_Simplex</class>
@@ -114,25 +114,11 @@
       <anchor>a930a706e3c80e6ede6f68e34809da11bacf450d6b46df39b660bbb358db5141e1</anchor>
       <arglist></arglist>
     </member>
-    <member kind="function">
-      <type>void</type>
-      <name>CD_SimplexExchangeTest</name>
-      <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a284a80995524c3d5eaed3ea51da13643</anchor>
-      <arglist>(T &amp;a, T &amp;b, T &amp;c)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>CD_SimplexExchange</name>
-      <anchorfile>namespacesch.html</anchorfile>
-      <anchor>abdc7bf615642be512fefd34ee873f968</anchor>
-      <arglist>(T &amp;a, T &amp;b, T &amp;c)</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>CD_Simplex.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__Simplex_8hxx</filename>
+    <filename>CD__Simplex_8hxx.html</filename>
     <member kind="function">
       <type>void</type>
       <name>CD_SimplexExchangeTest</name>
@@ -151,9 +137,9 @@
   <compound kind="file">
     <name>CD_SimplexEnhanced.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__SimplexEnhanced_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>CD__SimplexEnhanced_8h.html</filename>
     <includes id="CD__Simplex_8h" name="CD_Simplex.h" local="no" imported="no">sch/CD/CD_Simplex.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="CD__SimplexEnhanced_8hxx" name="CD_SimplexEnhanced.hxx" local="yes" imported="no">CD_SimplexEnhanced.hxx</includes>
     <class kind="class">sch::CD_SimplexEnhanced</class>
     <namespace>sch</namespace>
@@ -161,12 +147,12 @@
   <compound kind="file">
     <name>CD_SimplexEnhanced.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>CD__SimplexEnhanced_8hxx</filename>
+    <filename>CD__SimplexEnhanced_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>GJK.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD/</path>
-    <filename>GJK_8h</filename>
+    <filename>GJK_8h.html</filename>
     <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">GJK</class>
     <member kind="define">
@@ -180,36 +166,38 @@
   <compound kind="file">
     <name>CD_Depth.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/CD_Penetration/</path>
-    <filename>CD__Depth_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
-    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <filename>CD__Depth_8h.html</filename>
     <includes id="CD__SimplexEnhanced_8h" name="CD_SimplexEnhanced.h" local="no" imported="no">sch/CD/CD_SimplexEnhanced.h</includes>
+    <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::CD_Depth</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>SimplestParsing.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/File_Parsing/</path>
-    <filename>SimplestParsing_8h</filename>
+    <filename>SimplestParsing_8h.html</filename>
     <class kind="class">FileParsing::SimplestParsing</class>
     <namespace>FileParsing</namespace>
   </compound>
   <compound kind="file">
     <name>QuaternionT.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>QuaternionT_8h</filename>
+    <filename>QuaternionT_8h.html</filename>
+    <includes id="SmallVector3T_8h" name="SmallVector3T.h" local="no" imported="no">sch/Matrix/SmallVector3T.h</includes>
+    <includes id="SmallVector4T_8h" name="SmallVector4T.h" local="no" imported="no">sch/Matrix/SmallVector4T.h</includes>
     <class kind="class">CD_Matrix::QuaternionT</class>
     <namespace>CD_Matrix</namespace>
   </compound>
   <compound kind="file">
     <name>SCH_Types.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>SCH__Types_8h</filename>
+    <filename>SCH__Types_8h.html</filename>
+    <includes id="QuaternionT_8h" name="QuaternionT.h" local="no" imported="no">sch/Matrix/QuaternionT.h</includes>
     <includes id="SmallMatrix3x3T_8h" name="SmallMatrix3x3T.h" local="no" imported="no">sch/Matrix/SmallMatrix3x3T.h</includes>
+    <includes id="SmallMatrix4x4T_8h" name="SmallMatrix4x4T.h" local="no" imported="no">sch/Matrix/SmallMatrix4x4T.h</includes>
     <includes id="SmallVector3T_8h" name="SmallVector3T.h" local="no" imported="no">sch/Matrix/SmallVector3T.h</includes>
     <includes id="SmallVector4T_8h" name="SmallVector4T.h" local="no" imported="no">sch/Matrix/SmallVector4T.h</includes>
-    <includes id="SmallMatrix4x4T_8h" name="SmallMatrix4x4T.h" local="no" imported="no">sch/Matrix/SmallMatrix4x4T.h</includes>
-    <includes id="QuaternionT_8h" name="QuaternionT.h" local="no" imported="no">sch/Matrix/QuaternionT.h</includes>
     <namespace>sch</namespace>
     <member kind="typedef">
       <type>double</type>
@@ -222,7 +210,7 @@
       <type>CD_Matrix::Vector3T&lt; Scalar, false &gt;</type>
       <name>Vector3</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a26a421e6cdc08aedcfc5b9c68277f657</anchor>
+      <anchor>afdcef47dc69ec2fa44012c2716b20518</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
@@ -264,14 +252,14 @@
       <type>CD_Matrix::Vector3T&lt; Scalar, true &gt;</type>
       <name>Vector3NormOptimized</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a49d67c4c14d4386acdf2f084e68d4700</anchor>
+      <anchor>ae19dcdbbd2dc051f741ea1b2013c40ae</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="file">
     <name>SmallMatrix3x3T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>SmallMatrix3x3T_8h</filename>
+    <filename>SmallMatrix3x3T_8h.html</filename>
     <class kind="struct">CD_Matrix::Vector3T</class>
     <class kind="class">CD_Matrix::QuaternionT</class>
     <class kind="struct">CD_Matrix::Matrix3x3T</class>
@@ -280,14 +268,14 @@
   <compound kind="file">
     <name>SmallMatrix4x4T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>SmallMatrix4x4T_8h</filename>
+    <filename>SmallMatrix4x4T_8h.html</filename>
     <class kind="struct">CD_Matrix::Matrix4x4T</class>
     <namespace>CD_Matrix</namespace>
   </compound>
   <compound kind="file">
     <name>SmallVector3T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>SmallVector3T_8h</filename>
+    <filename>SmallVector3T_8h.html</filename>
     <class kind="struct">CD_Matrix::Matrix3x3T</class>
     <class kind="struct">CD_Matrix::Norm</class>
     <class kind="struct">CD_Matrix::Norm&lt; T, false &gt;</class>
@@ -297,7 +285,7 @@
   <compound kind="file">
     <name>SmallVector4T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
-    <filename>SmallVector4T_8h</filename>
+    <filename>SmallVector4T_8h.html</filename>
     <class kind="struct">CD_Matrix::Matrix4x4T</class>
     <class kind="class">CD_Matrix::Vector4T</class>
     <namespace>CD_Matrix</namespace>
@@ -305,7 +293,7 @@
   <compound kind="file">
     <name>S_Box.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Box_8h</filename>
+    <filename>S__Box_8h.html</filename>
     <includes id="S__ObjectNonNormalized_8h" name="S_ObjectNonNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.h</includes>
     <class kind="class">sch::S_Box</class>
     <namespace>sch</namespace>
@@ -313,7 +301,7 @@
   <compound kind="file">
     <name>S_Capsule.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Capsule_8h</filename>
+    <filename>S__Capsule_8h.html</filename>
     <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
     <class kind="class">sch::S_Capsule</class>
     <namespace>sch</namespace>
@@ -321,7 +309,7 @@
   <compound kind="file">
     <name>S_Cone.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Cone_8h</filename>
+    <filename>S__Cone_8h.html</filename>
     <includes id="S__ObjectNonNormalized_8h" name="S_ObjectNonNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.h</includes>
     <class kind="class">sch::S_Cone</class>
     <namespace>sch</namespace>
@@ -336,7 +324,7 @@
   <compound kind="file">
     <name>S_Cylinder.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Cylinder_8h</filename>
+    <filename>S__Cylinder_8h.html</filename>
     <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
     <class kind="class">sch::S_Cylinder</class>
     <namespace>sch</namespace>
@@ -344,9 +332,9 @@
   <compound kind="file">
     <name>S_Object.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Object_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>S__Object_8h.html</filename>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="S__Object_8hxx" name="S_Object.hxx" local="no" imported="no">sch/S_Object/S_Object.hxx</includes>
     <class kind="struct">sch::_TimeStamp</class>
     <class kind="class">sch::S_Object</class>
@@ -362,21 +350,21 @@
       <type>struct sch::_TimeStamp</type>
       <name>S_ObjectTimeStamp</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ab167976403857dc3577c4cd022c6c13f</anchor>
+      <anchor>aea742d6acbab0c9ce1412c5c0080af2e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="file">
     <name>S_Object.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Object_8hxx</filename>
+    <filename>S__Object_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>S_ObjectNonNormalized.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__ObjectNonNormalized_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>S__ObjectNonNormalized_8h.html</filename>
     <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="S__ObjectNonNormalized_8hxx" name="S_ObjectNonNormalized.hxx" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.hxx</includes>
     <class kind="class">sch::S_ObjectNonNormalized</class>
     <namespace>sch</namespace>
@@ -384,14 +372,14 @@
   <compound kind="file">
     <name>S_ObjectNonNormalized.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__ObjectNonNormalized_8hxx</filename>
+    <filename>S__ObjectNonNormalized_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>S_ObjectNormalized.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__ObjectNormalized_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>S__ObjectNormalized_8h.html</filename>
     <includes id="S__Object_8h" name="S_Object.h" local="no" imported="no">sch/S_Object/S_Object.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="S__ObjectNormalized_8hxx" name="S_ObjectNormalized.hxx" local="no" imported="no">sch/S_Object/S_ObjectNormalized.hxx</includes>
     <class kind="class">sch::S_ObjectNormalized</class>
     <namespace>sch</namespace>
@@ -406,12 +394,12 @@
   <compound kind="file">
     <name>S_ObjectNormalized.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__ObjectNormalized_8hxx</filename>
+    <filename>S__ObjectNormalized_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>S_Point.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Point_8h</filename>
+    <filename>S__Point_8h.html</filename>
     <includes id="S__ObjectNonNormalized_8h" name="S_ObjectNonNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.h</includes>
     <class kind="class">sch::S_Point</class>
     <namespace>sch</namespace>
@@ -419,7 +407,7 @@
   <compound kind="file">
     <name>S_Sphere.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Sphere_8h</filename>
+    <filename>S__Sphere_8h.html</filename>
     <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
     <class kind="class">sch::S_Sphere</class>
     <namespace>sch</namespace>
@@ -434,7 +422,7 @@
   <compound kind="file">
     <name>S_Superellipsoid.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Object/</path>
-    <filename>S__Superellipsoid_8h</filename>
+    <filename>S__Superellipsoid_8h.html</filename>
     <includes id="S__ObjectNonNormalized_8h" name="S_ObjectNonNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.h</includes>
     <class kind="class">sch::S_Superellipsoid</class>
     <namespace>sch</namespace>
@@ -442,7 +430,7 @@
   <compound kind="file">
     <name>Polyhedron_algorithms.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Polyhedron/</path>
-    <filename>Polyhedron__algorithms_8h</filename>
+    <filename>Polyhedron__algorithms_8h.html</filename>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
     <includes id="S__PolyhedronVertex_8h" name="S_PolyhedronVertex.h" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.h</includes>
     <class kind="struct">sch::PolyhedronTriangle</class>
@@ -460,18 +448,18 @@
   <compound kind="file">
     <name>S_Polyhedron.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Polyhedron/</path>
-    <filename>S__Polyhedron_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>S__Polyhedron_8h.html</filename>
     <includes id="S__ObjectNonNormalized_8h" name="S_ObjectNonNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNonNormalized.h</includes>
-    <includes id="S__PolyhedronVertex_8h" name="S_PolyhedronVertex.h" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.h</includes>
     <includes id="Polyhedron__algorithms_8h" name="Polyhedron_algorithms.h" local="no" imported="no">sch/S_Polyhedron/Polyhedron_algorithms.h</includes>
+    <includes id="S__PolyhedronVertex_8h" name="S_PolyhedronVertex.h" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::S_Polyhedron</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>S_PolyhedronVertex.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Polyhedron/</path>
-    <filename>S__PolyhedronVertex_8h</filename>
+    <filename>S__PolyhedronVertex_8h.html</filename>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
     <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="S__PolyhedronVertex_8hxx" name="S_PolyhedronVertex.hxx" local="no" imported="no">sch/S_Polyhedron/S_PolyhedronVertex.hxx</includes>
@@ -481,12 +469,12 @@
   <compound kind="file">
     <name>S_PolyhedronVertex.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/S_Polyhedron/</path>
-    <filename>S__PolyhedronVertex_8hxx</filename>
+    <filename>S__PolyhedronVertex_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>sch_api.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/</path>
-    <filename>sch__api_8h</filename>
+    <filename>sch__api_8h.html</filename>
     <member kind="define">
       <type>#define</type>
       <name>SCH_API</name>
@@ -498,19 +486,19 @@
   <compound kind="file">
     <name>STP_BigSphere.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__BigSphere_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>STP__BigSphere_8h.html</filename>
     <includes id="STP__Feature_8h" name="STP_Feature.h" local="no" imported="no">sch/STP-BV/STP_Feature.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::STP_BigSphere</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>STP_BV.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__BV_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
-    <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
+    <filename>STP__BV_8h.html</filename>
     <includes id="STP__Feature_8h" name="STP_Feature.h" local="no" imported="no">sch/STP-BV/STP_Feature.h</includes>
+    <includes id="S__ObjectNormalized_8h" name="S_ObjectNormalized.h" local="no" imported="no">sch/S_Object/S_ObjectNormalized.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="struct">sch::Geometry</class>
     <class kind="struct">sch::s_toruslinkedBV</class>
     <class kind="struct">sch::s_Triangle</class>
@@ -522,28 +510,28 @@
       <type>struct sch::s_toruslinkedBV</type>
       <name>toruslinkedBV</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a5acd0335a65507856bfecf941193515e</anchor>
+      <anchor>a0fd6a51cbe94bfac112e063949e103c4</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_Triangle</type>
       <name>Triangle</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ad02b3d5e368caaabe1eff7ad33d557ae</anchor>
+      <anchor>a033318c410c92cc193036ce3c2389f11</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_SphereApproxim</type>
       <name>SphereApproxim</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a50488b6de166145f7320dc22de55de99</anchor>
+      <anchor>a24dd204f509a5abcd41d480845096aa5</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_PointsComparator</type>
       <name>PointsComparator</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a44c4f840424fb70e78a6f19f89fd08c8</anchor>
+      <anchor>a78b4a6a0d85831d6d4cb411623d52b8c</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumeration">
@@ -569,19 +557,19 @@
   <compound kind="file">
     <name>STP_BV_P.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__BV__P_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>STP__BV__P_8h.html</filename>
     <includes id="STP__BV_8h" name="STP_BV.h" local="no" imported="no">sch/STP-BV/STP_BV.h</includes>
     <includes id="Polyhedron__algorithms_8h" name="Polyhedron_algorithms.h" local="no" imported="no">sch/S_Polyhedron/Polyhedron_algorithms.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::STP_BV_P</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>STP_Feature.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__Feature_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>STP__Feature_8h.html</filename>
     <includes id="SCH__Types_8h" name="SCH_Types.h" local="no" imported="no">sch/Matrix/SCH_Types.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <includes id="STP__Feature_8hxx" name="STP_Feature.hxx" local="no" imported="no">sch/STP-BV/STP_Feature.hxx</includes>
     <class kind="struct">sch::s_STP_VVR</class>
     <class kind="struct">sch::s_STN_VVR</class>
@@ -592,21 +580,21 @@
       <type>struct sch::s_STP_VVR</type>
       <name>STP_VVR</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>abbeaad29b70f4c43093dcb7daecf9b02</anchor>
+      <anchor>a67ad377198cf92f463fbd6636f60218f</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STN_VVR</type>
       <name>STN_VVR</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a43b208a34398f097c2c7e5cb780c5da6</anchor>
+      <anchor>a15eb9959b71d54b197b5a9fa02c3901d</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STP_STBVData</type>
       <name>STP_STBVData</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a386e496f31b5959dc743fcb86b42b513</anchor>
+      <anchor>a98acb2c2352c1eff27c27460fc231fd2</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumeration">
@@ -638,23 +626,23 @@
   <compound kind="file">
     <name>STP_Feature.hxx</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__Feature_8hxx</filename>
+    <filename>STP__Feature_8hxx.html</filename>
   </compound>
   <compound kind="file">
     <name>STP_SmallSphere.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__SmallSphere_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>STP__SmallSphere_8h.html</filename>
     <includes id="STP__Feature_8h" name="STP_Feature.h" local="no" imported="no">sch/STP-BV/STP_Feature.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="class">sch::STP_SmallSphere</class>
     <namespace>sch</namespace>
   </compound>
   <compound kind="file">
     <name>STP_Torus.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/STP-BV/</path>
-    <filename>STP__Torus_8h</filename>
-    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
+    <filename>STP__Torus_8h.html</filename>
     <includes id="STP__Feature_8h" name="STP_Feature.h" local="no" imported="no">sch/STP-BV/STP_Feature.h</includes>
+    <includes id="sch__api_8h" name="sch_api.h" local="no" imported="no">sch/sch_api.h</includes>
     <class kind="struct">sch::s_STP_Circle</class>
     <class kind="class">sch::STP_Torus</class>
     <namespace>sch</namespace>
@@ -662,14 +650,14 @@
       <type>struct sch::s_STP_Circle</type>
       <name>STP_Circle</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ae46e0ff886e55423b0e240b172cf46bf</anchor>
+      <anchor>acc1bcb58009e3fe9fd6e41145663e0ee</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="file">
     <name>README.md</name>
     <path>/home/runner/work/sch-core/sch-core/</path>
-    <filename>README_8md</filename>
+    <filename>README_8md.html</filename>
   </compound>
   <compound kind="struct">
     <name>sch::_TimeStamp</name>
@@ -877,10 +865,10 @@
       <arglist>(const Vector3 &amp;)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>getVector</name>
       <anchorfile>classsch_1_1CD__Pair.html</anchorfile>
-      <anchor>a71327c1b211c8b80ce9b62dffc32c76f</anchor>
+      <anchor>a26ee5d3da46380b151c875d9d71b2c21</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -1178,28 +1166,28 @@
       <type>std::vector&lt; S_Object * &gt;</type>
       <name>objects_</name>
       <anchorfile>classsch_1_1CD__Scene.html</anchorfile>
-      <anchor>a169aa56e87a751b792777b4acf39411c</anchor>
+      <anchor>a3f39203907fdcdd918acf0b38f2416e0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; std::vector&lt; CD_Pair * &gt; &gt;</type>
       <name>pairs_</name>
       <anchorfile>classsch_1_1CD__Scene.html</anchorfile>
-      <anchor>a6959134ab5b1a57b58876bdfae93307d</anchor>
+      <anchor>a159d3037830186f5a1fa32f4de786f40</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; std::vector&lt; Point3 &gt; &gt;</type>
       <name>witness_</name>
       <anchorfile>classsch_1_1CD__Scene.html</anchorfile>
-      <anchor>a71b22fb2901fae34caf3f9a76b478e5e</anchor>
+      <anchor>a8cc74967cd8be8baee7463aaaad21259</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; std::vector&lt; Scalar &gt; &gt;</type>
       <name>distances_</name>
       <anchorfile>classsch_1_1CD__Scene.html</anchorfile>
-      <anchor>a67f4b2ce652c19500e85d09db577160e</anchor>
+      <anchor>ae52c7290076c4b82392216be9c7435be</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -1256,17 +1244,17 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>operator[]</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
-      <anchor>a8460ad8efee73885d0642d8d62a43cde</anchor>
+      <anchor>a3a54c86abe3cdaf35936801cd1bdd21c</anchor>
       <arglist>(unsigned char) const</arglist>
     </member>
     <member kind="function">
       <type>SCH_API Point3 &amp;</type>
       <name>operator[]</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
-      <anchor>a928233c5f1f1cea3316b9413082e3e88</anchor>
+      <anchor>ac906b11ab43ca15b1d048fb6e0c7c6c4</anchor>
       <arglist>(unsigned char)</arglist>
     </member>
     <member kind="function">
@@ -1333,21 +1321,21 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>AB</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>a6aaf2c7c7aa5e0a791aef307836d8187</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>AC</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>ac262b42ba79ced20a599fd32b5db1de8</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>AD</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>ae4027955e2ea43b2852bb5d045215944</anchor>
@@ -1679,7 +1667,7 @@
       <type>BOOST_DEDUCED_TYPENAME mpl::if_&lt; BOOST_DEDUCED_TYPENAME mpl::equal_to&lt; serialization::tracking_level&lt; T &gt;, mpl::int_&lt; serialization::track_never &gt; &gt;, mpl::not_&lt; is_pointer&lt; T &gt; &gt;, is_const&lt; T &gt; &gt;::type</type>
       <name>typex</name>
       <anchorfile>structboost_1_1archive_1_1check__tracking.html</anchorfile>
-      <anchor>ae57f7ff0592682ff59fa3bdb834e2e96</anchor>
+      <anchor>a23f57a4ca72bd69dd068e2d93c7ccf9d</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1835,7 +1823,7 @@
   <compound kind="struct">
     <name>CD_Matrix::Matrix3x3T</name>
     <filename>structCD__Matrix_1_1Matrix3x3T.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="function">
       <type>void</type>
       <name>serialize</name>
@@ -2043,7 +2031,7 @@
       <type>Vector3T&lt; T, b &gt;</type>
       <name>operator*</name>
       <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
-      <anchor>a7bc72b362243445559e5355e013dc525</anchor>
+      <anchor>af95d6950661523829d590f287f7511a4</anchor>
       <arglist>(const Vector3T&lt; T, b &gt; &amp;v) const</arglist>
     </member>
     <member kind="function">
@@ -2369,7 +2357,7 @@
       <type>Vector3T&lt; Scalar, b &gt;</type>
       <name>operator*</name>
       <anchorfile>structCD__Matrix_1_1Matrix3x3T.html</anchorfile>
-      <anchor>a7bc72b362243445559e5355e013dc525</anchor>
+      <anchor>af95d6950661523829d590f287f7511a4</anchor>
       <arglist>(const Vector3T&lt; Scalar, b &gt; &amp;v) const</arglist>
     </member>
     <member kind="function">
@@ -2474,7 +2462,7 @@
   <compound kind="struct">
     <name>CD_Matrix::Matrix4x4T</name>
     <filename>structCD__Matrix_1_1Matrix4x4T.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="function">
       <type></type>
       <name>Matrix4x4T</name>
@@ -2584,7 +2572,7 @@
       <type>Vector3T&lt; T, b &gt;</type>
       <name>operator*</name>
       <anchorfile>structCD__Matrix_1_1Matrix4x4T.html</anchorfile>
-      <anchor>a4176d7660f94a73df13921e1baf212fe</anchor>
+      <anchor>a3560b5612d93d3d4d53008cff72126a1</anchor>
       <arglist>(const Vector3T&lt; T, b &gt; &amp;B) const</arglist>
     </member>
     <member kind="function">
@@ -2692,7 +2680,7 @@
   <compound kind="struct">
     <name>CD_Matrix::Norm</name>
     <filename>structCD__Matrix_1_1Norm.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <templarg>normOptimization</templarg>
     <member kind="function">
       <type></type>
@@ -2744,59 +2732,6 @@
       <arglist></arglist>
     </member>
   </compound>
-  <compound kind="class">
-    <name>Norm&lt; Scalar, normOptimization &gt;</name>
-    <filename>structCD__Matrix_1_1Norm.html</filename>
-    <member kind="function">
-      <type></type>
-      <name>Norm</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>a01cda2301ffb89e0e493e215b3cfd40b</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setNorm</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>a9c00278fcc9658efd5da47a3ed35c4ae</anchor>
-      <arglist>(const Scalar &amp;n)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>outdateNorm</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>ae62abb3d7364736d0746c06dcc205cc7</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>normOutdated</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>a2303fac58e5f0373080335b3e140f7ef</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>Scalar</type>
-      <name>getNorm</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>a6cb64bd7ac23c0a5ce2ec087505a90f4</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>Scalar</type>
-      <name>norm_</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>af3b449dace09078a2ef31a8c1e070d8b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>bool</type>
-      <name>normOutdated_</name>
-      <anchorfile>structCD__Matrix_1_1Norm.html</anchorfile>
-      <anchor>a3494051f778e2953510da9fa4a3acc69</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
   <compound kind="struct">
     <name>CD_Matrix::Norm&lt; T, false &gt;</name>
     <filename>structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html</filename>
@@ -2833,8 +2768,8 @@
   <compound kind="class">
     <name>boost::archive::detail::oserializer</name>
     <filename>classboost_1_1archive_1_1detail_1_1oserializer.html</filename>
-    <templarg>Archive</templarg>
-    <templarg>T</templarg>
+    <templarg></templarg>
+    <templarg></templarg>
     <member kind="function" virtualness="virtual">
       <type>virtual BOOST_DLLEXPORT void</type>
       <name>save_object_data</name>
@@ -2888,8 +2823,8 @@
   <compound kind="class">
     <name>boost::archive::detail::pointer_oserializer</name>
     <filename>classboost_1_1archive_1_1detail_1_1pointer__oserializer.html</filename>
-    <templarg>T</templarg>
-    <templarg>Archive</templarg>
+    <templarg></templarg>
+    <templarg></templarg>
     <member kind="function" virtualness="virtual">
       <type>virtual</type>
       <name>~pointer_oserializer</name>
@@ -2898,24 +2833,24 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static BOOST_DLLEXPORT const pointer_oserializer &amp;</type>
+      <type>static const BOOST_DLLEXPORT pointer_oserializer &amp;</type>
       <name>instantiate</name>
       <anchorfile>classboost_1_1archive_1_1detail_1_1pointer__oserializer.html</anchorfile>
-      <anchor>ae4180f7913b802368369a199d4bb1689</anchor>
+      <anchor>a5351ba093084dbe95828e64ec5224a77</anchor>
       <arglist>() BOOST_USED</arglist>
     </member>
     <member kind="variable">
       <type>void(*const</type>
       <name>m</name>
       <anchorfile>classboost_1_1archive_1_1detail_1_1pointer__oserializer.html</anchorfile>
-      <anchor>a8771feb00bbd744758ae29e90c18c681</anchor>
+      <anchor>a9ca6df3b8cb97b5eaf0f05dcabc595b5</anchor>
       <arglist>)(Archive &amp;, T &amp;, const unsigned)</arglist>
     </member>
     <member kind="variable">
       <type>boost::serialization::extended_type_info *(*</type>
       <name>e</name>
       <anchorfile>classboost_1_1archive_1_1detail_1_1pointer__oserializer.html</anchorfile>
-      <anchor>a650bb63bba4aba1c54500a0339ef7b59</anchor>
+      <anchor>ab37aa1945dfb9393ddde1bbe94bee1b5</anchor>
       <arglist>)()</arglist>
     </member>
   </compound>
@@ -2944,10 +2879,10 @@
       <arglist>(void)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Polyhedron_algorithms &amp;</type>
+      <type>const SCH_API Polyhedron_algorithms &amp;</type>
       <name>operator=</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
-      <anchor>af995d28a2fbc98fd9f7cd9f2dc4fd534</anchor>
+      <anchor>a81f3a396e0d6ac49b6ac38417db94ef3</anchor>
       <arglist>(const Polyhedron_algorithms &amp;)</arglist>
     </member>
     <member kind="function">
@@ -3084,8 +3019,8 @@
       <type>void</type>
       <name>computeEdge</name>
       <anchorfile>structsch_1_1PolyhedronEdge.html</anchorfile>
-      <anchor>ae1c2036d1f8ae03dea07e3e65646fa77</anchor>
-      <arglist>(const std::vector&lt; S_PolyhedronVertex *&gt; &amp;v)</arglist>
+      <anchor>a871918376fb318b803359306b08d5b9c</anchor>
+      <arglist>(const std::vector&lt; S_PolyhedronVertex * &gt; &amp;v)</arglist>
     </member>
     <member kind="variable">
       <type>size_t</type>
@@ -3163,7 +3098,7 @@
   <compound kind="class">
     <name>CD_Matrix::QuaternionT</name>
     <filename>classCD__Matrix_1_1QuaternionT.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <base protection="private">CD_Matrix::Vector4T</base>
     <member kind="function">
       <type></type>
@@ -3323,17 +3258,17 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getP1</name>
       <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
-      <anchor>a010a8ee5610bac57ef3e7f0b082ab6b5</anchor>
+      <anchor>a72ad427a4561ed2951b19c269ac6745e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getP2</name>
       <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
-      <anchor>a552dd6c5ca59cefd614e9df500988dff</anchor>
+      <anchor>a99ec79b4735f5bab4a69711aa446b695</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3487,17 +3422,17 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getP1</name>
       <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
-      <anchor>a46369b2dacf1d4f0efb05f2bcf063c0f</anchor>
+      <anchor>a96c54170cc92a20ab0830154d46bf931</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getP2</name>
       <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
-      <anchor>abba619e11450be22a4235e0c0eddb9bb</anchor>
+      <anchor>ad3cad559a6d1435d0b3c61aa79efebd8</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3889,14 +3824,14 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>getPosition</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>a8c3cc541c2823ffe91ba9609263cfd3f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Matrix3x3 &amp;</type>
+      <type>const SCH_API Matrix3x3 &amp;</type>
       <name>getOrientation</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>a8e1e088ccb9a57d7049fc1db8342bbab</anchor>
@@ -4239,10 +4174,10 @@
       <arglist>(void)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const S_Polyhedron &amp;</type>
+      <type>const SCH_API S_Polyhedron &amp;</type>
       <name>operator=</name>
       <anchorfile>classsch_1_1S__Polyhedron.html</anchorfile>
-      <anchor>a650896bcf3d712ab1ce7a2ffb7a35667</anchor>
+      <anchor>ae1f0890fea978ebed880c15afa087f00</anchor>
       <arglist>(const S_Polyhedron &amp;)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
@@ -4425,17 +4360,17 @@
       <arglist>(const Scalar &amp;x, const Scalar &amp;y, const Scalar &amp;z)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_CORE_DEPRECATED SCH_API const Vector3 &amp;</type>
+      <type>SCH_CORE_DEPRECATED const SCH_API Vector3 &amp;</type>
       <name>getCordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>aadcc0ee5690c974c12a9d2e1aa73ce3b</anchor>
+      <anchor>a4f6d5a38c2eaab8575469a61f6926c89</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Vector3 &amp;</type>
+      <type>const SCH_API Vector3 &amp;</type>
       <name>getCoordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>a439dda6577a68e3bde99c0b3b286e4f1</anchor>
+      <anchor>ab6a3294985090cce4775cfdfda10f43d</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
@@ -5151,7 +5086,7 @@
       <type>BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::implementation_level&lt; T &gt;, mpl::int_&lt; boost::serialization::primitive_type &gt; &gt;, mpl::identity&lt; save_primitive &gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::greater_equal&lt; boost::serialization::implementation_level&lt; T &gt;, mpl::int_&lt; boost::serialization::object_class_info &gt; &gt;, mpl::identity&lt; save_standard &gt;, BOOST_DEDUCED_TYPENAME mpl::eval_if&lt; mpl::equal_to&lt; boost::serialization::tracking_level&lt; T &gt;, mpl::int_&lt; boost::serialization::track_never &gt; &gt;, mpl::identity&lt; save_only &gt;, mpl::identity&lt; save_conditional &gt; &gt; &gt; &gt;::type</type>
       <name>typex</name>
       <anchorfile>structboost_1_1archive_1_1detail_1_1save__non__pointer__type.html</anchorfile>
-      <anchor>a69886c441e62b1215ee0286b7348df3f</anchor>
+      <anchor>a6a1fe3e6242f25366e8cb21e9a331c5d</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" static="yes">
@@ -5319,10 +5254,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getCenter</name>
       <anchorfile>classsch_1_1STP__BigSphere.html</anchorfile>
-      <anchor>a375b22cf23b0d12928724bcd0405c75d</anchor>
+      <anchor>ac29c5fedbdcbd7eff6940c635b6b802e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -5719,21 +5654,21 @@
       <type>std::vector&lt; STP_Feature * &gt;</type>
       <name>m_patches</name>
       <anchorfile>classsch_1_1STP__BV.html</anchorfile>
-      <anchor>a247686915b2d1bc23e07a53365c104e4</anchor>
+      <anchor>a82f8be6b9d84b95f710738ec0c111645</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>STP_Feature **</type>
       <name>m_fastPatches</name>
       <anchorfile>classsch_1_1STP__BV.html</anchorfile>
-      <anchor>a6aea938ef489dbc647c72795792cf791</anchor>
+      <anchor>a6d0f3309c1e083129caf104deeb883ed</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>STP_Feature **</type>
       <name>m_lastPatches</name>
       <anchorfile>classsch_1_1STP__BV.html</anchorfile>
-      <anchor>a122e883ca48665f52cdf493bf59282a5</anchor>
+      <anchor>ad9101901a4850b529cdce5bbbf39ca64</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -5922,6 +5857,10 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>STP_SmallSphere</name>
+    <filename>classSTP__SmallSphere.html</filename>
+  </compound>
+  <compound kind="class">
     <name>sch::STP_SmallSphere</name>
     <filename>classsch_1_1STP__SmallSphere.html</filename>
     <base>sch::STP_Feature</base>
@@ -5961,17 +5900,17 @@
       <arglist>(const STP_SmallSphere &amp;s)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Point3 &amp;</type>
+      <type>const SCH_API Point3 &amp;</type>
       <name>getCenter</name>
       <anchorfile>classsch_1_1STP__SmallSphere.html</anchorfile>
-      <anchor>ae24e7d8e22deebb1b4bd2aca9edd7c8a</anchor>
+      <anchor>a40b65c6c76769f405d2f25c2a43b0861</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>SCH_API const Scalar &amp;</type>
+      <type>const SCH_API Scalar &amp;</type>
       <name>getRadius</name>
       <anchorfile>classsch_1_1STP__SmallSphere.html</anchorfile>
-      <anchor>ac7fb9663161b6b9fd6a5238a0cf8dea5</anchor>
+      <anchor>a5f152dc09fc636c39cd31fce9d5f6454</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -6142,10 +6081,6 @@
       <anchor>a49b0a8b55f598884530b9f240515f66b</anchor>
       <arglist></arglist>
     </member>
-  </compound>
-  <compound kind="class">
-    <name>STP_SmallSphere</name>
-    <filename>classSTP__SmallSphere.html</filename>
   </compound>
   <compound kind="class">
     <name>sch::STP_Torus</name>
@@ -6330,14 +6265,13 @@
   <compound kind="struct">
     <name>CD_Matrix::Vector3T</name>
     <filename>structCD__Matrix_1_1Vector3T.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <templarg>normOptimization</templarg>
-    <base protection="protected">CD_Matrix::Norm</base>
     <member kind="typedef">
       <type>Vector3T&lt; T, normOptimization &gt;</type>
       <name>Vector</name>
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
-      <anchor>afdfb94c0efeea9d9ccbf98a9cc146def</anchor>
+      <anchor>a0309a5469e7157225f62c5418c1c396c</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -6589,12 +6523,11 @@
   <compound kind="class">
     <name>Vector3T&lt; Scalar, false &gt;</name>
     <filename>structCD__Matrix_1_1Vector3T.html</filename>
-    <base protection="protected">Norm&lt; Scalar, normOptimization &gt;</base>
     <member kind="typedef">
       <type>Vector3T&lt; Scalar, normOptimization &gt;</type>
       <name>Vector</name>
       <anchorfile>structCD__Matrix_1_1Vector3T.html</anchorfile>
-      <anchor>afdfb94c0efeea9d9ccbf98a9cc146def</anchor>
+      <anchor>a0309a5469e7157225f62c5418c1c396c</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -6846,7 +6779,7 @@
   <compound kind="class">
     <name>CD_Matrix::Vector4T</name>
     <filename>classCD__Matrix_1_1Vector4T.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="function">
       <type></type>
       <name>Vector4T</name>
@@ -7053,10 +6986,10 @@
     <class kind="struct">boost::archive::detail::save_non_pointer_type</class>
     <class kind="struct">boost::archive::detail::save_pointer_type</class>
     <member kind="function">
-      <type>BOOST_DLLEXPORT const basic_pointer_oserializer &amp;</type>
+      <type>const BOOST_DLLEXPORT basic_pointer_oserializer &amp;</type>
       <name>instantiate_pointer_oserializer</name>
       <anchorfile>namespaceboost_1_1archive_1_1detail.html</anchorfile>
-      <anchor>a36a969c98d97fb6bba03fb0646613a94</anchor>
+      <anchor>a9efd5b525284047e3e2f55a4850d647b</anchor>
       <arglist>(Archive *, T *) BOOST_USED</arglist>
     </member>
   </compound>
@@ -7131,7 +7064,7 @@
       <type>CD_Matrix::Vector3T&lt; Scalar, false &gt;</type>
       <name>Vector3</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a26a421e6cdc08aedcfc5b9c68277f657</anchor>
+      <anchor>afdcef47dc69ec2fa44012c2716b20518</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
@@ -7173,70 +7106,70 @@
       <type>CD_Matrix::Vector3T&lt; Scalar, true &gt;</type>
       <name>Vector3NormOptimized</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a49d67c4c14d4386acdf2f084e68d4700</anchor>
+      <anchor>ae19dcdbbd2dc051f741ea1b2013c40ae</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::_TimeStamp</type>
       <name>S_ObjectTimeStamp</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ab167976403857dc3577c4cd022c6c13f</anchor>
+      <anchor>aea742d6acbab0c9ce1412c5c0080af2e</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_toruslinkedBV</type>
       <name>toruslinkedBV</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a5acd0335a65507856bfecf941193515e</anchor>
+      <anchor>a0fd6a51cbe94bfac112e063949e103c4</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_Triangle</type>
       <name>Triangle</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ad02b3d5e368caaabe1eff7ad33d557ae</anchor>
+      <anchor>a033318c410c92cc193036ce3c2389f11</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_SphereApproxim</type>
       <name>SphereApproxim</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a50488b6de166145f7320dc22de55de99</anchor>
+      <anchor>a24dd204f509a5abcd41d480845096aa5</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_PointsComparator</type>
       <name>PointsComparator</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a44c4f840424fb70e78a6f19f89fd08c8</anchor>
+      <anchor>a78b4a6a0d85831d6d4cb411623d52b8c</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STP_VVR</type>
       <name>STP_VVR</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>abbeaad29b70f4c43093dcb7daecf9b02</anchor>
+      <anchor>a67ad377198cf92f463fbd6636f60218f</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STN_VVR</type>
       <name>STN_VVR</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a43b208a34398f097c2c7e5cb780c5da6</anchor>
+      <anchor>a15eb9959b71d54b197b5a9fa02c3901d</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STP_STBVData</type>
       <name>STP_STBVData</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a386e496f31b5959dc743fcb86b42b513</anchor>
+      <anchor>a98acb2c2352c1eff27c27460fc231fd2</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>struct sch::s_STP_Circle</type>
       <name>STP_Circle</name>
       <anchorfile>namespacesch.html</anchorfile>
-      <anchor>ae46e0ff886e55423b0e240b172cf46bf</anchor>
+      <anchor>acc1bcb58009e3fe9fd6e41145663e0ee</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumeration">
@@ -7319,20 +7252,6 @@
       <anchorfile>namespacesch.html</anchorfile>
       <anchor>aaa9a2e71c9a9687a84c75aa15b75f384ae7bbb858d6b41ad95de52f0347a57688</anchor>
       <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>CD_SimplexExchangeTest</name>
-      <anchorfile>namespacesch.html</anchorfile>
-      <anchor>a284a80995524c3d5eaed3ea51da13643</anchor>
-      <arglist>(T &amp;a, T &amp;b, T &amp;c)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>CD_SimplexExchange</name>
-      <anchorfile>namespacesch.html</anchorfile>
-      <anchor>abdc7bf615642be512fefd34ee873f968</anchor>
-      <arglist>(T &amp;a, T &amp;b, T &amp;c)</arglist>
     </member>
   </compound>
   <compound kind="page">

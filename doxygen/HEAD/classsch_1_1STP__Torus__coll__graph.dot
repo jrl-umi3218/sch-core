@@ -1,25 +1,16 @@
 digraph "sch::STP_Torus"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node2 [label="sch::STP_Torus",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="sch::STP_Feature",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1STP__Feature.html"];
-  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_VVR0\nm_VVR1\nm_VVR2\nm_VVR3" ,fontname="Helvetica"];
-  Node4 [label="sch::s_STP_VVR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__VVR.html"];
-  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_axis" ,fontname="Helvetica"];
-  Node5 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html"];
-  Node6 -> Node5 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="CD_Matrix::Norm\< Scalar,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html"];
-  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_circle" ,fontname="Helvetica"];
-  Node7 [label="sch::s_STP_Circle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__Circle.html"];
-  Node5 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_normal" ,fontname="Helvetica"];
-  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_center" ,fontname="Helvetica"];
-  Node8 [label="CD_Matrix::Vector3T\l\< T, normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html"];
-  Node9 -> Node8 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="CD_Matrix::Norm\< T,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html"];
-  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" norm_" ,fontname="Helvetica"];
-  Node10 [label="T",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node10 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_z\nm_x\nm_y" ,fontname="Helvetica"];
+  Node1 [label="sch::STP_Torus",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="sch::STP_Feature",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1STP__Feature.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_VVR0\nm_VVR1\nm_VVR2\nm_VVR3" ,fontname="Helvetica"];
+  Node3 [label="sch::s_STP_VVR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__VVR.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_axis" ,fontname="Helvetica"];
+  Node4 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html",tooltip=" "];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_circle" ,fontname="Helvetica"];
+  Node5 [label="sch::s_STP_Circle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__Circle.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_center\nm_normal" ,fontname="Helvetica"];
 }

@@ -37,8 +37,8 @@ var classsch_1_1STP__BV =
     [ "_r", "classsch_1_1STP__BV.html#aa8e871fc586255b5b3cdb6450e5268bc", null ],
     [ "_R", "classsch_1_1STP__BV.html#ab41a6b93eda6036325467abb4e80f1f0", null ],
     [ "geometries_", "classsch_1_1STP__BV.html#aeee20aadf85e04b86790615c76c0e64f", null ],
-    [ "m_fastPatches", "classsch_1_1STP__BV.html#a6aea938ef489dbc647c72795792cf791", null ],
-    [ "m_lastPatches", "classsch_1_1STP__BV.html#a122e883ca48665f52cdf493bf59282a5", null ],
-    [ "m_patches", "classsch_1_1STP__BV.html#a247686915b2d1bc23e07a53365c104e4", null ],
+    [ "m_fastPatches", "classsch_1_1STP__BV.html#a6d0f3309c1e083129caf104deeb883ed", null ],
+    [ "m_lastPatches", "classsch_1_1STP__BV.html#ad9101901a4850b529cdce5bbbf39ca64", null ],
+    [ "m_patches", "classsch_1_1STP__BV.html#a82f8be6b9d84b95f710738ec0c111645", null ],
     [ "m_patchesSize", "classsch_1_1STP__BV.html#a4868142b2700bad682dfe87ba4534a48", null ]
 ];

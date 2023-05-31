@@ -16,7 +16,7 @@ var oserializer_8hpp =
     [ "save_enum_type", "structboost_1_1archive_1_1detail_1_1save__enum__type.html", null ],
     [ "save_array_type", "structboost_1_1archive_1_1detail_1_1save__array__type.html", null ],
     [ "check_tracking", "structboost_1_1archive_1_1check__tracking.html", "structboost_1_1archive_1_1check__tracking" ],
-    [ "instantiate_pointer_oserializer", "oserializer_8hpp.html#a36a969c98d97fb6bba03fb0646613a94", null ],
+    [ "instantiate_pointer_oserializer", "oserializer_8hpp.html#a9efd5b525284047e3e2f55a4850d647b", null ],
     [ "save", "oserializer_8hpp.html#a75235f1208f1e4e1e183768d5e02944a", null ],
     [ "save", "oserializer_8hpp.html#abd00bd2825ffa3546381a676b8d0cec5", null ]
 ];

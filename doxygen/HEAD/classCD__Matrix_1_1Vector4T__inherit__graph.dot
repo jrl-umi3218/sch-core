@@ -1,8 +1,9 @@
 digraph "CD_Matrix::Vector4T&lt; T &gt;"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="CD_Matrix::Vector4T\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="CD_Matrix::QuaternionT\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCD__Matrix_1_1QuaternionT.html"];
+  Node1 [label="CD_Matrix::Vector4T\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Template to handle 3 dimensional vector."];
+  Node1 -> Node2 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="CD_Matrix::QuaternionT\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCD__Matrix_1_1QuaternionT.html",tooltip=" "];
 }

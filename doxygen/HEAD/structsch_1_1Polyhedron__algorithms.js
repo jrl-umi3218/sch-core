@@ -10,7 +10,7 @@ var structsch_1_1Polyhedron__algorithms =
     [ "getEdgeKey", "structsch_1_1Polyhedron__algorithms.html#a7226c0351c3b794e27c23b65af53bdf2", null ],
     [ "naiveSupport", "structsch_1_1Polyhedron__algorithms.html#ac7bf24ed93d694096ef3ae89c49582fa", null ],
     [ "openFromFile", "structsch_1_1Polyhedron__algorithms.html#a8ee7bb4a890a8c1a1a9b33acf195ae19", null ],
-    [ "operator=", "structsch_1_1Polyhedron__algorithms.html#af995d28a2fbc98fd9f7cd9f2dc4fd534", null ],
+    [ "operator=", "structsch_1_1Polyhedron__algorithms.html#a81f3a396e0d6ac49b6ac38417db94ef3", null ],
     [ "serialize", "structsch_1_1Polyhedron__algorithms.html#afd71094e0347b1810df7c4066fbd37c7", null ],
     [ "support", "structsch_1_1Polyhedron__algorithms.html#a693c21cd00484d21433862a4e911ba74", null ],
     [ "updateFastArrays", "structsch_1_1Polyhedron__algorithms.html#a3398a5b33545b903ff0d064fd973bb0a", null ],

@@ -1,21 +1,20 @@
 digraph "sch::STP_BV"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node4 [label="sch::STP_BV",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="sch::S_ObjectNormalized",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1S__ObjectNormalized.html"];
-  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="sch::S_Object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1S__Object.html"];
-  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" trans_" ,fontname="Helvetica"];
-  Node7 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html"];
-  Node8 -> Node7 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="CD_Matrix::Norm\< Scalar,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html"];
-  Node9 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mRot_" ,fontname="Helvetica"];
-  Node9 [label="CD_Matrix::Matrix3x3T\l\< Scalar \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Matrix3x3T.html"];
-  Node10 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" stamp_" ,fontname="Helvetica"];
-  Node10 [label="sch::_TimeStamp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1__TimeStamp.html"];
-  Node11 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_fastPatches\nm_lastPatches" ,fontname="Helvetica"];
-  Node11 [label="sch::STP_Feature",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1STP__Feature.html"];
+  Node1 [label="sch::STP_BV",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="sch::S_ObjectNormalized",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1S__ObjectNormalized.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="sch::S_Object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1S__Object.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" trans_" ,fontname="Helvetica"];
+  Node4 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html",tooltip=" "];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mRot_" ,fontname="Helvetica"];
+  Node5 [label="CD_Matrix::Matrix3x3T\l\< Scalar \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Matrix3x3T.html",tooltip=" "];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" stamp_" ,fontname="Helvetica"];
+  Node6 [label="sch::_TimeStamp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1__TimeStamp.html",tooltip=" "];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_fastPatches\nm_lastPatches" ,fontname="Helvetica"];
+  Node7 [label="sch::STP_Feature",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1STP__Feature.html",tooltip=" "];
 }

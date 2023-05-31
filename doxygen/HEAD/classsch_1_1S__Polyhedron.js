@@ -15,7 +15,7 @@ var classsch_1_1S__Polyhedron =
     [ "load", "classsch_1_1S__Polyhedron.html#aea80ccb0b4b19b5f49c3367d14c6bf78", null ],
     [ "loadFromBinary", "classsch_1_1S__Polyhedron.html#ab715d958f257219790a588813ebf8388", null ],
     [ "naiveSupport", "classsch_1_1S__Polyhedron.html#a503f72a1b260268f8c5a056455f9eeb6", null ],
-    [ "operator=", "classsch_1_1S__Polyhedron.html#a650896bcf3d712ab1ce7a2ffb7a35667", null ],
+    [ "operator=", "classsch_1_1S__Polyhedron.html#ae1f0890fea978ebed880c15afa087f00", null ],
     [ "save", "classsch_1_1S__Polyhedron.html#a19829548e2aff1818a6daa60b9536c33", null ],
     [ "saveToBinary", "classsch_1_1S__Polyhedron.html#a6e9a1d3dfeace08db532ec2b44a90724", null ],
     [ "updateFastArrays", "classsch_1_1S__Polyhedron.html#aca638ff34cc3b193bca9206fb1735a15", null ],

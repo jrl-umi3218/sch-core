@@ -1,6 +1,6 @@
 var structsch_1_1PolyhedronEdge =
 [
-    [ "computeEdge", "structsch_1_1PolyhedronEdge.html#ae1c2036d1f8ae03dea07e3e65646fa77", null ],
+    [ "computeEdge", "structsch_1_1PolyhedronEdge.html#a871918376fb318b803359306b08d5b9c", null ],
     [ "serialize", "structsch_1_1PolyhedronEdge.html#add6dc0e4913e9dab32ac8475dcd18a2b", null ],
     [ "a", "structsch_1_1PolyhedronEdge.html#a31a2c1f40262b2580b0469677e845ba2", null ],
     [ "b", "structsch_1_1PolyhedronEdge.html#ad52713b9e0e6332f96275c57cc38d0c6", null ],
