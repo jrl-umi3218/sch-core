@@ -1,38 +1,31 @@
-#include <sch/S_Polyhedron/S_Polyhedron.h>
-#include <exception>
-#include <iostream>
-#include <fstream>
-
-#include <sch/File_Parsing/SimplestParsing.h>
-
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
-#include <boost/serialization/serialization.hpp>
 #include <boost/serialization/base_object.hpp>
+#include <boost/serialization/serialization.hpp>
 #include <boost/serialization/vector.hpp>
+
+#include <exception>
+#include <fstream>
+#include <iostream>
+#include <sch/File_Parsing/SimplestParsing.h>
+#include <sch/S_Polyhedron/S_Polyhedron.h>
 
 using namespace sch;
 
-S_Polyhedron::S_Polyhedron(void):poly()
-{
-}
+S_Polyhedron::S_Polyhedron(void) : poly() {}
 
-S_Polyhedron::S_Polyhedron(const S_Polyhedron& p): S_ObjectNonNormalized(p), poly(p.poly)
-{
-}
+S_Polyhedron::S_Polyhedron(const S_Polyhedron & p) : S_ObjectNonNormalized(p), poly(p.poly) {}
 
-S_Polyhedron::~S_Polyhedron(void)
-{
-}
+S_Polyhedron::~S_Polyhedron(void) {}
 
-const S_Polyhedron& S_Polyhedron::operator =(const S_Polyhedron &p)
+const S_Polyhedron & S_Polyhedron::operator=(const S_Polyhedron & p)
 {
   if(&p == this)
   {
     return *this;
   }
   static_cast<S_ObjectNonNormalized &>(*this) = static_cast<const S_ObjectNonNormalized &>(p);
-  poly=p.poly;
+  poly = p.poly;
   return *this;
 }
 
@@ -61,14 +54,14 @@ void S_Polyhedron::updateFastArrays()
   poly.updateFastArrays();
 }
 
-Point3 S_Polyhedron::naiveSupport(const Vector3& v)const
+Point3 S_Polyhedron::naiveSupport(const Vector3 & v) const
 {
   return poly.naiveSupport(v);
 }
 
-Point3 S_Polyhedron::l_Support(const Vector3& v,int &lastFeature)const
+Point3 S_Polyhedron::l_Support(const Vector3 & v, int & lastFeature) const
 {
-  return poly.support(v,lastFeature);
+  return poly.support(v, lastFeature);
 }
 
 void S_Polyhedron::deleteVertexesWithoutNeighbors()
@@ -76,7 +69,7 @@ void S_Polyhedron::deleteVertexesWithoutNeighbors()
   poly.deleteVertexesWithoutNeighbors();
 }
 
-void S_Polyhedron::constructFromFile(const std::string& filename)
+void S_Polyhedron::constructFromFile(const std::string & filename)
 {
   poly.openFromFile(filename);
 }

@@ -121,5 +121,3 @@ Indentation
 ------------
 
     astyle --style=allman --lineend=linux --indent=spaces=2 --indent-namespaces
-
-

@@ -2,25 +2,21 @@
 
 using namespace sch;
 
-S_Capsule::S_Capsule(Point3 p1, Point3 p2, Scalar radius): p1_(p1),p2_(p2),radius_(radius)
-{
-}
+S_Capsule::S_Capsule(Point3 p1, Point3 p2, Scalar radius) : p1_(p1), p2_(p2), radius_(radius) {}
 
-S_Capsule::~S_Capsule()
-{
-}
+S_Capsule::~S_Capsule() {}
 
 S_Capsule * S_Capsule::clone() const
 {
   return new S_Capsule(*this);
 }
 
-Point3 S_Capsule::l_Support(const Vector3& v, int& /*lastFeature*/)const
+Point3 S_Capsule::l_Support(const Vector3 & v, int & /*lastFeature*/) const
 {
   Point3 d(p2_);
   d -= p1_;
 
-  if (d*v>0)
+  if(d * v > 0)
   {
     d = p2_;
   }
@@ -29,7 +25,7 @@ Point3 S_Capsule::l_Support(const Vector3& v, int& /*lastFeature*/)const
     d = p1_;
   }
 
-  d += v*radius_;
+  d += v * radius_;
 
   return d;
 }

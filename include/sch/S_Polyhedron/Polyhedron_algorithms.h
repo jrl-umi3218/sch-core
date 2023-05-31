@@ -1,131 +1,132 @@
 #pragma once
 
 #ifndef _POLYHEDRON_ALGORITHMS
-#define _POLYHEDRON_ALGORITHMS
+#  define _POLYHEDRON_ALGORITHMS
 
-#include <sch/Matrix/SCH_Types.h>
-#include <sch/S_Polyhedron/S_PolyhedronVertex.h>
-
-#include <string>
-#include <vector>
+#  include <sch/Matrix/SCH_Types.h>
+#  include <sch/S_Polyhedron/S_PolyhedronVertex.h>
+#  include <string>
+#  include <vector>
 namespace sch
 {
-  struct PolyhedronTriangle
+struct PolyhedronTriangle
+{
+  unsigned int a, b, c;
+  Vector3 normal;
+
+public:
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /*version*/)
   {
-    unsigned int a,b,c;
-    Vector3 normal;
-  public:
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-      ar & a;
-      ar & b;
-      ar & c;
-      ar & normal;
-    }
-  };
+    ar & a;
+    ar & b;
+    ar & c;
+    ar & normal;
+  }
+};
 
-  struct PolyhedronEdge
+struct PolyhedronEdge
+{
+  size_t a, b;
+  Vector3 edge;
+
+public:
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /*version*/)
   {
-    size_t a, b;
-    Vector3 edge;
-  public:
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-      ar & a;
-      ar & b;
-      ar & edge;
-    }
-    void computeEdge(const std::vector<S_PolyhedronVertex*> & v)
-    {
-      const Vector3 &p1 = v[a]->getCoordinates();
-      const Vector3 &p2 = v[b]->getCoordinates();
-      edge = p1-p2;
-    }
-  };
-
-  struct Polyhedron_algorithms
+    ar & a;
+    ar & b;
+    ar & edge;
+  }
+  void computeEdge(const std::vector<S_PolyhedronVertex *> & v)
   {
-  public:
-    SCH_API Polyhedron_algorithms(void);
-    SCH_API Polyhedron_algorithms(const Polyhedron_algorithms&);
+    const Vector3 & p1 = v[a]->getCoordinates();
+    const Vector3 & p2 = v[b]->getCoordinates();
+    edge = p1 - p2;
+  }
+};
 
-    SCH_API ~Polyhedron_algorithms(void);
+struct Polyhedron_algorithms
+{
+public:
+  SCH_API Polyhedron_algorithms(void);
+  SCH_API Polyhedron_algorithms(const Polyhedron_algorithms &);
 
-    SCH_API const Polyhedron_algorithms & operator=(const Polyhedron_algorithms&);
+  SCH_API ~Polyhedron_algorithms(void);
 
-    /*!
-    *  \brief updates the fast access arrays, must be called after each polyhedron modification
-    */
-    SCH_API void updateFastArrays();
+  SCH_API const Polyhedron_algorithms & operator=(const Polyhedron_algorithms &);
 
-    SCH_API Point3 naiveSupport(const Vector3& v)const;
+  /*!
+   *  \brief updates the fast access arrays, must be called after each polyhedron modification
+   */
+  SCH_API void updateFastArrays();
 
-    /*!
-    *  \brief updates the Neighborhood of the vertexes, must be called on polyhedron
-    *  \which vertexes have no neighbors, or after calling clearNeighbors.
-    */
-    SCH_API void updateVertexNeighbors();
+  SCH_API Point3 naiveSupport(const Vector3 & v) const;
 
-    /*!
-    *  \brief clears the neighbors tables;
-    */
-    SCH_API void clearNeighbors();
+  /*!
+   *  \brief updates the Neighborhood of the vertexes, must be called on polyhedron
+   *  \which vertexes have no neighbors, or after calling clearNeighbors.
+   */
+  SCH_API void updateVertexNeighbors();
 
-    /*!
-    *  \brief clears all the polyhedron;
-    */
-    SCH_API void clear();
+  /*!
+   *  \brief clears the neighbors tables;
+   */
+  SCH_API void clearNeighbors();
 
-    /*!
-    * \brief deletes aal the vertexes that dont have neighbors;
-    */
-    SCH_API void deleteVertexesWithoutNeighbors();
+  /*!
+   *  \brief clears all the polyhedron;
+   */
+  SCH_API void clear();
 
-    /*!
-    *\brief Computes the support point of the polyhedron
-    */
+  /*!
+   * \brief deletes aal the vertexes that dont have neighbors;
+   */
+  SCH_API void deleteVertexesWithoutNeighbors();
 
-    SCH_API Point3 support(const Vector3& v, int& lastFeature)const;
+  /*!
+   *\brief Computes the support point of the polyhedron
+   */
 
-    /*!
-    * \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with these options :
-    * \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f"
-    */
+  SCH_API Point3 support(const Vector3 & v, int & lastFeature) const;
 
-    SCH_API void openFromFile(const std::string& filename);
+  /*!
+   * \brief loads the polyhedron from a file. the file must be in the format of Qhull conconvex.exe output, called with
+   * these options : \ "qconvex.exe TI <input_filename> TO <output_filename> Qt o f"
+   */
 
-    /*!
-     *\brief Fill the edges_ variable using the data from the polyhedron
-     */
+  SCH_API void openFromFile(const std::string & filename);
 
-    SCH_API void fillEdges();
+  /*!
+   *\brief Fill the edges_ variable using the data from the polyhedron
+   */
 
-    /*!
-     *\brief get the key of an edge computed automatically from its vertices
-     */
+  SCH_API void fillEdges();
 
-    SCH_API size_t getEdgeKey(PolyhedronEdge e);
+  /*!
+   *\brief get the key of an edge computed automatically from its vertices
+   */
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int /*version*/)
-    {
-      ar & vertexes_;
-      ar & triangles_;
-      //ar & fastVertexes_;
-      //ar & lastVertexes_;
-    }
+  SCH_API size_t getEdgeKey(PolyhedronEdge e);
 
-    std::vector<S_PolyhedronVertex *> vertexes_;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /*version*/)
+  {
+    ar & vertexes_;
+    ar & triangles_;
+    // ar & fastVertexes_;
+    // ar & lastVertexes_;
+  }
 
-    std::vector<PolyhedronTriangle> triangles_;
-    std::vector<PolyhedronEdge> edges_;
+  std::vector<S_PolyhedronVertex *> vertexes_;
 
-    S_PolyhedronVertex **fastVertexes_;
-    S_PolyhedronVertex ** lastVertexes_;
-    unsigned numberOfVertices_;
-  };
-}
+  std::vector<PolyhedronTriangle> triangles_;
+  std::vector<PolyhedronEdge> edges_;
+
+  S_PolyhedronVertex ** fastVertexes_;
+  S_PolyhedronVertex ** lastVertexes_;
+  unsigned numberOfVertices_;
+};
+} // namespace sch
 
 #endif

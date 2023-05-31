@@ -1,26 +1,23 @@
 #include <sch/S_Object/S_Sphere.h>
 
 using namespace sch;
-S_Sphere::S_Sphere(const Scalar& Rad): radius_(Rad)
+S_Sphere::S_Sphere(const Scalar & Rad) : radius_(Rad)
 {
   slices_ = 100;
   stacks_ = 50;
 }
 
-S_Sphere::~S_Sphere(void)
-{
-}
+S_Sphere::~S_Sphere(void) {}
 
 S_Sphere * S_Sphere::clone() const
 {
   return new S_Sphere(*this);
 }
 
-Point3 S_Sphere::l_Support(const Vector3& v, int& /*lastFeature*/)const
+Point3 S_Sphere::l_Support(const Vector3 & v, int & /*lastFeature*/) const
 {
-  return v*radius_;
+  return v * radius_;
 }
-
 
 S_Object::S_ObjectType S_Sphere::getType() const
 {

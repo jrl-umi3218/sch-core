@@ -5,24 +5,22 @@
 
 namespace sch
 {
-  class S_Point :
-    public S_ObjectNonNormalized
-  {
-  public:
-    SCH_API S_Point();
-    SCH_API ~S_Point();
+class S_Point : public S_ObjectNonNormalized
+{
+public:
+  SCH_API S_Point();
+  SCH_API ~S_Point();
 
-    SCH_API virtual S_Point * clone() const;
+  SCH_API virtual S_Point * clone() const;
 
-    SCH_API void setDisplayRadius( Scalar r);
-    SCH_API Scalar getDisplayRadius() const ;
+  SCH_API void setDisplayRadius(Scalar r);
+  SCH_API Scalar getDisplayRadius() const;
 
+protected:
+  SCH_API virtual Point3 l_Support(const Vector3 & v, int & lastFeature) const;
+  SCH_API virtual S_ObjectType getType() const;
 
-  protected:
-    SCH_API virtual Point3 l_Support(const Vector3& v, int& lastFeature)const;
-    SCH_API virtual	S_ObjectType getType() const;
-
-    Scalar displayRadius_;
-  };
-}
+  Scalar displayRadius_;
+};
+} // namespace sch
 #endif

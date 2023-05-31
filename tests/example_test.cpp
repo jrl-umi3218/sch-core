@@ -1,16 +1,16 @@
 #include "clone_example_universe.h"
 
 #ifdef ENABLE_SIGFPE
-# include <fenv.h>
+#  include <fenv.h>
 #endif
 
 void display() {}
 
 int main()
 {
-  #ifdef ENABLE_SIGFPE
+#ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
-  #endif
+#endif
   Example universe;
   universe.initializeUniverse();
   bool success = universe.unittest();
@@ -19,6 +19,5 @@ int main()
     CloneUniverse(universe, clone_universe);
     success = clone_universe.unittest() && success;
   }
-  return (success? 0:1);
+  return (success ? 0 : 1);
 }
-

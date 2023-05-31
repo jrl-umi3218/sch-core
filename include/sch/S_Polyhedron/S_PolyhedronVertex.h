@@ -2,13 +2,12 @@
 #define _S_POLYHEDRONVERTEX
 
 #pragma once
-#include <vector>
-
 #include <boost/noncopyable.hpp>
 
 #include <sch/Matrix/SCH_Types.h>
 #include <sch/core/deprecated.hh>
 #include <sch/sch_api.h>
+#include <vector>
 
 namespace sch
 {

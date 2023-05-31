@@ -1,6 +1,6 @@
-#include <sch/S_Object/S_Sphere.h>
-#include <sch/S_Object/S_Box.h>
 #include <sch/CD/CD_Pair.h>
+#include <sch/S_Object/S_Box.h>
+#include <sch/S_Object/S_Sphere.h>
 
 int main()
 {

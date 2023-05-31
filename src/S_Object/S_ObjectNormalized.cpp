@@ -2,10 +2,6 @@
 
 using namespace sch;
 
-S_ObjectNormalized::S_ObjectNormalized(void)
-{
-}
+S_ObjectNormalized::S_ObjectNormalized(void) {}
 
-S_ObjectNormalized::~S_ObjectNormalized(void)
-{
-}
+S_ObjectNormalized::~S_ObjectNormalized(void) {}

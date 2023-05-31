@@ -1,6 +1,4 @@
-# Mehdi Benallegue, JRL, CNRS/AIST
-# Creation: 19/08/2010
-# History:
+# Mehdi Benallegue, JRL, CNRS/AIST Creation: 19/08/2010 History:
 #
 # Copyright CNRS/AIST
 
@@ -18,4 +16,3 @@ function(add_example name)
 endfunction()
 
 add_example(example0)
-

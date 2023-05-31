@@ -3,7 +3,7 @@
 #include "clone_test_universe.h"
 
 #ifdef ENABLE_SIGFPE
-# include <fenv.h>
+#  include <fenv.h>
 #endif
 
 using namespace sch;
@@ -11,13 +11,13 @@ using namespace sch;
 void display() {}
 
 /*
-* main - this is the main programme.
-*/
-int main ()
+ * main - this is the main programme.
+ */
+int main()
 {
-  #ifdef ENABLE_SIGFPE
+#ifdef ENABLE_SIGFPE
   feenableexcept(FE_ALL_EXCEPT & ~FE_INEXACT);
-  #endif
+#endif
   TestMaterial universe = TestMaterial(NON_STP_BV_OBJECTS);
   universe.initializeUniverse();
   universe.RandomTestSupportFunction();
@@ -31,5 +31,3 @@ int main ()
 
   return 0;
 }
-
-

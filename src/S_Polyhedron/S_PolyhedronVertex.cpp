@@ -1,15 +1,13 @@
 #include <sch/S_Polyhedron/S_PolyhedronVertex.h>
 
-//#define CD_POLYHEDRON_VERTEX_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
+// #define CD_POLYHEDRON_VERTEX_VERBOSE_MODE //VERBOSE mode (slows down the algorithm) default is commented
 
 using namespace sch;
-S_PolyhedronVertex::S_PolyhedronVertex(void):fastNeighbors_(NULL),endNeighbors_(NULL)
-{
-}
+S_PolyhedronVertex::S_PolyhedronVertex(void) : fastNeighbors_(NULL), endNeighbors_(NULL) {}
 
 S_PolyhedronVertex::~S_PolyhedronVertex(void)
 {
-  if (fastNeighbors_!=NULL)
+  if(fastNeighbors_ != NULL)
   {
     delete[] fastNeighbors_;
   }
@@ -20,9 +18,9 @@ void S_PolyhedronVertex::clearNeighbors()
   neighbors_.clear();
 }
 
-S_PolyhedronVertex* S_PolyhedronVertex::clone()
+S_PolyhedronVertex * S_PolyhedronVertex::clone()
 {
-  S_PolyhedronVertex* p=new S_PolyhedronVertex();
+  S_PolyhedronVertex * p = new S_PolyhedronVertex();
   p->setCoordinates(cordinates_);
   p->setNumber(number_);
   return p;
@@ -30,130 +28,130 @@ S_PolyhedronVertex* S_PolyhedronVertex::clone()
 
 void S_PolyhedronVertex::updateFastArrays()
 {
-  if (fastNeighbors_!=NULL)
+  if(fastNeighbors_ != NULL)
   {
     delete[] fastNeighbors_;
   }
-  if (neighbors_.size()>0)
+  if(neighbors_.size() > 0)
   {
-    fastNeighbors_=new S_PolyhedronVertex*[neighbors_.size()];
-    for (unsigned int i=0; i<neighbors_.size(); i++)
+    fastNeighbors_ = new S_PolyhedronVertex *[neighbors_.size()];
+    for(unsigned int i = 0; i < neighbors_.size(); i++)
     {
-      fastNeighbors_[i]=neighbors_[i];
+      fastNeighbors_[i] = neighbors_[i];
     }
 
-    endNeighbors_=&(fastNeighbors_[neighbors_.size()]);
+    endNeighbors_ = &(fastNeighbors_[neighbors_.size()]);
   }
   else
   {
-    fastNeighbors_=endNeighbors_=NULL;
+    fastNeighbors_ = endNeighbors_ = NULL;
   }
 }
 
-void S_PolyhedronVertex::addNeighbor(S_PolyhedronVertex *n)
+void S_PolyhedronVertex::addNeighbor(S_PolyhedronVertex * n)
 {
   neighbors_.push_back(n);
 }
 
-Scalar S_PolyhedronVertex::supportH(const Vector3 &direction)const
+Scalar S_PolyhedronVertex::supportH(const Vector3 & direction) const
 {
-  return direction*cordinates_;
+  return direction * cordinates_;
 }
 
-bool S_PolyhedronVertex::isHere(const Vector3 &direction,const  Scalar &currentsupportH)
+bool S_PolyhedronVertex::isHere(const Vector3 & direction, const Scalar & currentsupportH)
 {
-  S_PolyhedronVertex** iterator_;
-  nextVertex_=NULL;
+  S_PolyhedronVertex ** iterator_;
+  nextVertex_ = NULL;
   Scalar temp;
 
-  nextVertexH_=currentsupportH;
+  nextVertexH_ = currentsupportH;
 
-  for (iterator_=fastNeighbors_; iterator_!=endNeighbors_; ++iterator_)
+  for(iterator_ = fastNeighbors_; iterator_ != endNeighbors_; ++iterator_)
   {
-    temp=(*iterator_)->supportH(direction);
-    if (temp>nextVertexH_)
+    temp = (*iterator_)->supportH(direction);
+    if(temp > nextVertexH_)
     {
 #ifdef CD_POLYHEDRON_VERTEX_VERBOSE_MODE
       std::cout.precision(20);
-      std::cout<<"new H "<<temp<<" last H "<<nextVertexH_<<std::endl;
+      std::cout << "new H " << temp << " last H " << nextVertexH_ << std::endl;
 #endif
-      nextVertexH_=temp;
-      nextVertex_=*iterator_;
+      nextVertexH_ = temp;
+      nextVertex_ = *iterator_;
     }
   }
 
-  return (currentsupportH + sch::epsilon10 >= nextVertexH_); /// epsilon checks ensure that the improvement of the new support point is substantial
+  return (currentsupportH + sch::epsilon10
+          >= nextVertexH_); /// epsilon checks ensure that the improvement of the new support point is substantial
 }
 
-
-bool S_PolyhedronVertex::isHere(const Vector3 &direction)
+bool S_PolyhedronVertex::isHere(const Vector3 & direction)
 {
-  S_PolyhedronVertex** iterator_;
-  nextVertex_=NULL;
+  S_PolyhedronVertex ** iterator_;
+  nextVertex_ = NULL;
   Scalar temp;
   double curVertexH_ = direction * cordinates_;
   nextVertexH_ = curVertexH_;
 
-  for (iterator_=fastNeighbors_; iterator_!=endNeighbors_; ++iterator_)
+  for(iterator_ = fastNeighbors_; iterator_ != endNeighbors_; ++iterator_)
   {
-    if ((temp=(*iterator_)->supportH(direction))>nextVertexH_)
+    if((temp = (*iterator_)->supportH(direction)) > nextVertexH_)
     {
-      nextVertexH_=temp;
-      nextVertex_=*iterator_;
+      nextVertexH_ = temp;
+      nextVertex_ = *iterator_;
     }
   }
 
-  if ((nextVertex_ != NULL) && (nextVertexH_ > curVertexH_ + sch::epsilon10))
+  if((nextVertex_ != NULL) && (nextVertexH_ > curVertexH_ + sch::epsilon10))
   {
     return false;
   }
-  else 
+  else
   {
     return true;
-  } 
+  }
 }
 
-unsigned S_PolyhedronVertex::getNumNeighbors()const
+unsigned S_PolyhedronVertex::getNumNeighbors() const
 {
   return static_cast<unsigned int>(neighbors_.size());
 }
 
-void S_PolyhedronVertex::setCordinates(const Scalar &x,const  Scalar &y, const Scalar &z)
+void S_PolyhedronVertex::setCordinates(const Scalar & x, const Scalar & y, const Scalar & z)
 {
   setCoordinates(x, y, z);
 }
 
-void S_PolyhedronVertex::setCoordinates(const Scalar &x,const  Scalar &y, const Scalar &z)
+void S_PolyhedronVertex::setCoordinates(const Scalar & x, const Scalar & y, const Scalar & z)
 {
-  cordinates_.Set(x,y,z);
+  cordinates_.Set(x, y, z);
 }
 
-void S_PolyhedronVertex::setCordinates(const Vector3 &v)
+void S_PolyhedronVertex::setCordinates(const Vector3 & v)
 {
   setCoordinates(v);
 }
 
-void S_PolyhedronVertex::setCoordinates(const Vector3 &v)
+void S_PolyhedronVertex::setCoordinates(const Vector3 & v)
 {
-  cordinates_=v;
+  cordinates_ = v;
 }
 
-const Vector3& S_PolyhedronVertex::getCordinates()const
+const Vector3 & S_PolyhedronVertex::getCordinates() const
 {
   return getCoordinates();
 }
 
-const Vector3& S_PolyhedronVertex::getCoordinates()const
+const Vector3 & S_PolyhedronVertex::getCoordinates() const
 {
   return cordinates_;
 }
 
 void S_PolyhedronVertex::setNumber(unsigned int n)
 {
-  number_=n;
+  number_ = n;
 }
 
-S_PolyhedronVertex* S_PolyhedronVertex::getNextVertex() const
+S_PolyhedronVertex * S_PolyhedronVertex::getNextVertex() const
 {
   return nextVertex_;
 }
