@@ -12,6 +12,7 @@ on:
     - ".github/workflows/conan.yml"
     - conan/**
     - conanfile.py
+    - ".pre-commit-config.yaml"
     branches:
     - "**"
     tags:
