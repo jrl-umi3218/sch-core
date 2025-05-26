@@ -19,8 +19,7 @@ int CD_Scene::addObject(S_Object * O)
 {
   unsigned int i;
   /*looking for an empty place*/
-  for(i = 0; (i < objects_.size()) && (objects_[i] != NULL); ++i)
-    ;
+  for(i = 0; (i < objects_.size()) && (objects_[i] != NULL); ++i);
 
   /*filling objects and possibly updating _pairs and _witness matrix*/
   if(i == objects_.size())
