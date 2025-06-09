@@ -41,8 +41,7 @@ struct Matrix4x4T
   /*! Constructor form a scalar */
   Matrix4x4T<T>(const T x)
   {
-    for(int i = 0; i < 16; m[i++] = x)
-      ;
+    for(int i = 0; i < 16; m[i++] = x);
   }
 
   /*! Copy constructor */
