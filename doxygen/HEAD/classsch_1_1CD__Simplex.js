@@ -18,7 +18,7 @@ var classsch_1_1CD__Simplex =
     [ "operator=", "classsch_1_1CD__Simplex.html#af392d805ad38291ca39a6e30ad0dd023", null ],
     [ "operator==", "classsch_1_1CD__Simplex.html#a55d2c153ba56fd7b6469801f28422279", null ],
     [ "operator[]", "classsch_1_1CD__Simplex.html#ac906b11ab43ca15b1d048fb6e0c7c6c4", null ],
-    [ "operator[]", "classsch_1_1CD__Simplex.html#a3a54c86abe3cdaf35936801cd1bdd21c", null ],
+    [ "operator[]", "classsch_1_1CD__Simplex.html#aef4c5722b0baaaf4f55ba824f1b36721", null ],
     [ "squareDistanceAtOrigin", "classsch_1_1CD__Simplex.html#a9b8f473a30232eecd473e1ed26b85450", null ],
     [ "updateVectors", "classsch_1_1CD__Simplex.html#ac8fc0c98be8985bf8929237168d111c9", null ],
     [ "ab_", "classsch_1_1CD__Simplex.html#ab94cfad038d7a76c3e62e54612aa3097", null ],

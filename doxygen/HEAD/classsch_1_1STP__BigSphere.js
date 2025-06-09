@@ -5,7 +5,7 @@ var classsch_1_1STP__BigSphere =
     [ "STP_BigSphere", "classsch_1_1STP__BigSphere.html#ad0d2a1ff9caa73738b47e8cc1e0ce3bb", null ],
     [ "~STP_BigSphere", "classsch_1_1STP__BigSphere.html#aa63f7a6506a1724dcc91ba540a5724dd", null ],
     [ "clone", "classsch_1_1STP__BigSphere.html#a5ed4fb808414850d6b66858075123732", null ],
-    [ "getCenter", "classsch_1_1STP__BigSphere.html#ac29c5fedbdcbd7eff6940c635b6b802e", null ],
+    [ "getCenter", "classsch_1_1STP__BigSphere.html#a375b22cf23b0d12928724bcd0405c75d", null ],
     [ "getNextBV", "classsch_1_1STP__BigSphere.html#a460b6b23d2a67b3b157cb6991993432e", null ],
     [ "getNextBVPrime", "classsch_1_1STP__BigSphere.html#a355d960838e2609ec8cd61c0bd8b5e4a", null ],
     [ "isHere", "classsch_1_1STP__BigSphere.html#a0e355ba4e3c433d31690955d64219151", null ],

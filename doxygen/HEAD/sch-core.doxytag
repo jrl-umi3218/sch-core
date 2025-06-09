@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile>
+<tagfile doxygen_version="1.9.1">
   <compound kind="file">
     <name>oserializer.hpp</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/boost/archive/detail/</path>
@@ -25,10 +25,10 @@
     <namespace>boost::archive</namespace>
     <namespace>boost::archive::detail</namespace>
     <member kind="function">
-      <type>const BOOST_DLLEXPORT basic_pointer_oserializer &amp;</type>
+      <type>BOOST_DLLEXPORT const basic_pointer_oserializer &amp;</type>
       <name>instantiate_pointer_oserializer</name>
       <anchorfile>namespaceboost_1_1archive_1_1detail.html</anchorfile>
-      <anchor>a9efd5b525284047e3e2f55a4850d647b</anchor>
+      <anchor>a36a969c98d97fb6bba03fb0646613a94</anchor>
       <arglist>(Archive *, T *) BOOST_USED</arglist>
     </member>
     <member kind="function">
@@ -260,8 +260,6 @@
     <name>SmallMatrix3x3T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
     <filename>SmallMatrix3x3T_8h.html</filename>
-    <class kind="struct">CD_Matrix::Vector3T</class>
-    <class kind="class">CD_Matrix::QuaternionT</class>
     <class kind="struct">CD_Matrix::Matrix3x3T</class>
     <namespace>CD_Matrix</namespace>
   </compound>
@@ -276,7 +274,6 @@
     <name>SmallVector3T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
     <filename>SmallVector3T_8h.html</filename>
-    <class kind="struct">CD_Matrix::Matrix3x3T</class>
     <class kind="struct">CD_Matrix::Norm</class>
     <class kind="struct">CD_Matrix::Norm&lt; T, false &gt;</class>
     <class kind="struct">CD_Matrix::Vector3T</class>
@@ -286,7 +283,6 @@
     <name>SmallVector4T.h</name>
     <path>/home/runner/work/sch-core/sch-core/include/sch/Matrix/</path>
     <filename>SmallVector4T_8h.html</filename>
-    <class kind="struct">CD_Matrix::Matrix4x4T</class>
     <class kind="class">CD_Matrix::Vector4T</class>
     <namespace>CD_Matrix</namespace>
   </compound>
@@ -865,10 +861,10 @@
       <arglist>(const Vector3 &amp;)</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>getVector</name>
       <anchorfile>classsch_1_1CD__Pair.html</anchorfile>
-      <anchor>a26ee5d3da46380b151c875d9d71b2c21</anchor>
+      <anchor>a71327c1b211c8b80ce9b62dffc32c76f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -1244,10 +1240,10 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>operator[]</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
-      <anchor>a3a54c86abe3cdaf35936801cd1bdd21c</anchor>
+      <anchor>aef4c5722b0baaaf4f55ba824f1b36721</anchor>
       <arglist>(unsigned char) const</arglist>
     </member>
     <member kind="function">
@@ -1321,21 +1317,21 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>AB</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>a6aaf2c7c7aa5e0a791aef307836d8187</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>AC</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>ac262b42ba79ced20a599fd32b5db1de8</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>AD</name>
       <anchorfile>classsch_1_1CD__Simplex.html</anchorfile>
       <anchor>ae4027955e2ea43b2852bb5d045215944</anchor>
@@ -2833,10 +2829,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static const BOOST_DLLEXPORT pointer_oserializer &amp;</type>
+      <type>static BOOST_DLLEXPORT const pointer_oserializer &amp;</type>
       <name>instantiate</name>
       <anchorfile>classboost_1_1archive_1_1detail_1_1pointer__oserializer.html</anchorfile>
-      <anchor>a5351ba093084dbe95828e64ec5224a77</anchor>
+      <anchor>ae4180f7913b802368369a199d4bb1689</anchor>
       <arglist>() BOOST_USED</arglist>
     </member>
     <member kind="variable">
@@ -2879,10 +2875,10 @@
       <arglist>(void)</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Polyhedron_algorithms &amp;</type>
+      <type>SCH_API const Polyhedron_algorithms &amp;</type>
       <name>operator=</name>
       <anchorfile>structsch_1_1Polyhedron__algorithms.html</anchorfile>
-      <anchor>a81f3a396e0d6ac49b6ac38417db94ef3</anchor>
+      <anchor>af995d28a2fbc98fd9f7cd9f2dc4fd534</anchor>
       <arglist>(const Polyhedron_algorithms &amp;)</arglist>
     </member>
     <member kind="function">
@@ -3258,17 +3254,17 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getP1</name>
       <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
-      <anchor>a72ad427a4561ed2951b19c269ac6745e</anchor>
+      <anchor>a010a8ee5610bac57ef3e7f0b082ab6b5</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getP2</name>
       <anchorfile>classsch_1_1S__Capsule.html</anchorfile>
-      <anchor>a99ec79b4735f5bab4a69711aa446b695</anchor>
+      <anchor>a552dd6c5ca59cefd614e9df500988dff</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3422,17 +3418,17 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getP1</name>
       <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
-      <anchor>a96c54170cc92a20ab0830154d46bf931</anchor>
+      <anchor>a46369b2dacf1d4f0efb05f2bcf063c0f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getP2</name>
       <anchorfile>classsch_1_1S__Cylinder.html</anchorfile>
-      <anchor>ad3cad559a6d1435d0b3c61aa79efebd8</anchor>
+      <anchor>abba619e11450be22a4235e0c0eddb9bb</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3824,14 +3820,14 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>getPosition</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>a8c3cc541c2823ffe91ba9609263cfd3f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Matrix3x3 &amp;</type>
+      <type>SCH_API const Matrix3x3 &amp;</type>
       <name>getOrientation</name>
       <anchorfile>classsch_1_1S__Object.html</anchorfile>
       <anchor>a8e1e088ccb9a57d7049fc1db8342bbab</anchor>
@@ -4174,10 +4170,10 @@
       <arglist>(void)</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API S_Polyhedron &amp;</type>
+      <type>SCH_API const S_Polyhedron &amp;</type>
       <name>operator=</name>
       <anchorfile>classsch_1_1S__Polyhedron.html</anchorfile>
-      <anchor>ae1f0890fea978ebed880c15afa087f00</anchor>
+      <anchor>a650896bcf3d712ab1ce7a2ffb7a35667</anchor>
       <arglist>(const S_Polyhedron &amp;)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
@@ -4360,17 +4356,17 @@
       <arglist>(const Scalar &amp;x, const Scalar &amp;y, const Scalar &amp;z)</arglist>
     </member>
     <member kind="function">
-      <type>SCH_CORE_DEPRECATED const SCH_API Vector3 &amp;</type>
+      <type>SCH_CORE_DEPRECATED SCH_API const Vector3 &amp;</type>
       <name>getCordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>a4f6d5a38c2eaab8575469a61f6926c89</anchor>
+      <anchor>aadcc0ee5690c974c12a9d2e1aa73ce3b</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Vector3 &amp;</type>
+      <type>SCH_API const Vector3 &amp;</type>
       <name>getCoordinates</name>
       <anchorfile>classsch_1_1S__PolyhedronVertex.html</anchorfile>
-      <anchor>ab6a3294985090cce4775cfdfda10f43d</anchor>
+      <anchor>a439dda6577a68e3bde99c0b3b286e4f1</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" virtualness="virtual">
@@ -5254,10 +5250,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getCenter</name>
       <anchorfile>classsch_1_1STP__BigSphere.html</anchorfile>
-      <anchor>ac29c5fedbdcbd7eff6940c635b6b802e</anchor>
+      <anchor>a375b22cf23b0d12928724bcd0405c75d</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -5857,10 +5853,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>STP_SmallSphere</name>
-    <filename>classSTP__SmallSphere.html</filename>
-  </compound>
-  <compound kind="class">
     <name>sch::STP_SmallSphere</name>
     <filename>classsch_1_1STP__SmallSphere.html</filename>
     <base>sch::STP_Feature</base>
@@ -5900,17 +5892,17 @@
       <arglist>(const STP_SmallSphere &amp;s)</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Point3 &amp;</type>
+      <type>SCH_API const Point3 &amp;</type>
       <name>getCenter</name>
       <anchorfile>classsch_1_1STP__SmallSphere.html</anchorfile>
-      <anchor>a40b65c6c76769f405d2f25c2a43b0861</anchor>
+      <anchor>ae24e7d8e22deebb1b4bd2aca9edd7c8a</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const SCH_API Scalar &amp;</type>
+      <type>SCH_API const Scalar &amp;</type>
       <name>getRadius</name>
       <anchorfile>classsch_1_1STP__SmallSphere.html</anchorfile>
-      <anchor>a5f152dc09fc636c39cd31fce9d5f6454</anchor>
+      <anchor>ac7fb9663161b6b9fd6a5238a0cf8dea5</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -6081,6 +6073,10 @@
       <anchor>a49b0a8b55f598884530b9f240515f66b</anchor>
       <arglist></arglist>
     </member>
+  </compound>
+  <compound kind="class">
+    <name>STP_SmallSphere</name>
+    <filename>classSTP__SmallSphere.html</filename>
   </compound>
   <compound kind="class">
     <name>sch::STP_Torus</name>
@@ -6267,6 +6263,7 @@
     <filename>structCD__Matrix_1_1Vector3T.html</filename>
     <templarg></templarg>
     <templarg>normOptimization</templarg>
+    <base protection="protected">CD_Matrix::Norm</base>
     <member kind="typedef">
       <type>Vector3T&lt; T, normOptimization &gt;</type>
       <name>Vector</name>
@@ -6523,6 +6520,7 @@
   <compound kind="class">
     <name>Vector3T&lt; Scalar, false &gt;</name>
     <filename>structCD__Matrix_1_1Vector3T.html</filename>
+    <base protection="protected">CD_Matrix::Norm</base>
     <member kind="typedef">
       <type>Vector3T&lt; Scalar, normOptimization &gt;</type>
       <name>Vector</name>
@@ -6959,8 +6957,8 @@
     <name>boost::archive</name>
     <filename>namespaceboost_1_1archive.html</filename>
     <namespace>boost::archive::detail</namespace>
-    <class kind="struct">boost::archive::check_tracking</class>
     <class kind="class">boost::archive::save_access</class>
+    <class kind="struct">boost::archive::check_tracking</class>
     <member kind="function">
       <type>void</type>
       <name>save</name>
@@ -6981,15 +6979,15 @@
     <filename>namespaceboost_1_1archive_1_1detail.html</filename>
     <class kind="class">boost::archive::detail::oserializer</class>
     <class kind="class">boost::archive::detail::pointer_oserializer</class>
-    <class kind="struct">boost::archive::detail::save_array_type</class>
-    <class kind="struct">boost::archive::detail::save_enum_type</class>
     <class kind="struct">boost::archive::detail::save_non_pointer_type</class>
     <class kind="struct">boost::archive::detail::save_pointer_type</class>
+    <class kind="struct">boost::archive::detail::save_enum_type</class>
+    <class kind="struct">boost::archive::detail::save_array_type</class>
     <member kind="function">
-      <type>const BOOST_DLLEXPORT basic_pointer_oserializer &amp;</type>
+      <type>BOOST_DLLEXPORT const basic_pointer_oserializer &amp;</type>
       <name>instantiate_pointer_oserializer</name>
       <anchorfile>namespaceboost_1_1archive_1_1detail.html</anchorfile>
-      <anchor>a9efd5b525284047e3e2f55a4850d647b</anchor>
+      <anchor>a36a969c98d97fb6bba03fb0646613a94</anchor>
       <arglist>(Archive *, T *) BOOST_USED</arglist>
     </member>
   </compound>
@@ -7000,12 +6998,12 @@
   <compound kind="namespace">
     <name>CD_Matrix</name>
     <filename>namespaceCD__Matrix.html</filename>
+    <class kind="class">CD_Matrix::QuaternionT</class>
+    <class kind="struct">CD_Matrix::Vector3T</class>
     <class kind="struct">CD_Matrix::Matrix3x3T</class>
     <class kind="struct">CD_Matrix::Matrix4x4T</class>
     <class kind="struct">CD_Matrix::Norm</class>
     <class kind="struct">CD_Matrix::Norm&lt; T, false &gt;</class>
-    <class kind="class">CD_Matrix::QuaternionT</class>
-    <class kind="struct">CD_Matrix::Vector3T</class>
     <class kind="class">CD_Matrix::Vector4T</class>
   </compound>
   <compound kind="namespace">
@@ -7016,42 +7014,42 @@
   <compound kind="namespace">
     <name>sch</name>
     <filename>namespacesch.html</filename>
-    <class kind="struct">sch::_TimeStamp</class>
-    <class kind="class">sch::CD_Depth</class>
     <class kind="class">sch::CD_Pair</class>
     <class kind="class">sch::CD_Scene</class>
+    <class kind="struct">sch::CD_SimplexKeptPoints</class>
     <class kind="class">sch::CD_Simplex</class>
     <class kind="class">sch::CD_SimplexEnhanced</class>
-    <class kind="struct">sch::CD_SimplexKeptPoints</class>
-    <class kind="struct">sch::Geometry</class>
-    <class kind="struct">sch::Polyhedron_algorithms</class>
-    <class kind="struct">sch::PolyhedronEdge</class>
-    <class kind="struct">sch::PolyhedronTriangle</class>
+    <class kind="class">sch::CD_Depth</class>
     <class kind="class">sch::S_Box</class>
     <class kind="class">sch::S_Capsule</class>
     <class kind="class">sch::S_Cone</class>
     <class kind="class">sch::S_Cylinder</class>
+    <class kind="struct">sch::_TimeStamp</class>
     <class kind="class">sch::S_Object</class>
     <class kind="class">sch::S_ObjectNonNormalized</class>
     <class kind="class">sch::S_ObjectNormalized</class>
     <class kind="class">sch::S_Point</class>
-    <class kind="class">sch::s_PointsComparator</class>
+    <class kind="class">sch::S_Sphere</class>
+    <class kind="class">sch::S_Superellipsoid</class>
+    <class kind="struct">sch::PolyhedronTriangle</class>
+    <class kind="struct">sch::PolyhedronEdge</class>
+    <class kind="struct">sch::Polyhedron_algorithms</class>
     <class kind="class">sch::S_Polyhedron</class>
     <class kind="class">sch::S_PolyhedronVertex</class>
-    <class kind="class">sch::S_Sphere</class>
-    <class kind="struct">sch::s_SphereApproxim</class>
-    <class kind="struct">sch::s_STN_VVR</class>
-    <class kind="struct">sch::s_STP_Circle</class>
-    <class kind="struct">sch::s_STP_STBVData</class>
-    <class kind="struct">sch::s_STP_VVR</class>
-    <class kind="class">sch::S_Superellipsoid</class>
+    <class kind="class">sch::STP_BigSphere</class>
+    <class kind="struct">sch::Geometry</class>
     <class kind="struct">sch::s_toruslinkedBV</class>
     <class kind="struct">sch::s_Triangle</class>
-    <class kind="class">sch::STP_BigSphere</class>
+    <class kind="struct">sch::s_SphereApproxim</class>
+    <class kind="class">sch::s_PointsComparator</class>
     <class kind="class">sch::STP_BV</class>
     <class kind="class">sch::STP_BV_P</class>
+    <class kind="struct">sch::s_STP_VVR</class>
+    <class kind="struct">sch::s_STN_VVR</class>
+    <class kind="struct">sch::s_STP_STBVData</class>
     <class kind="class">sch::STP_Feature</class>
     <class kind="class">sch::STP_SmallSphere</class>
+    <class kind="struct">sch::s_STP_Circle</class>
     <class kind="class">sch::STP_Torus</class>
     <member kind="typedef">
       <type>double</type>
@@ -7257,6 +7255,7 @@
   <compound kind="page">
     <name>index</name>
     <title>sch-core</title>
-    <filename>index</filename>
+    <filename>index.html</filename>
+    <docanchor file="index.html">md_README</docanchor>
   </compound>
 </tagfile>

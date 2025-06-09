@@ -8,7 +8,9 @@ digraph "sch::STP_BigSphere"
   Node2 [label="sch::STP_Feature",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1STP__Feature.html",tooltip=" "];
   Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_center" ,fontname="Helvetica"];
   Node3 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html",tooltip=" "];
-  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_VVR0\nm_VVR1\nm_VVR2" ,fontname="Helvetica"];
-  Node4 [label="sch::s_STP_VVR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__VVR.html",tooltip=" "];
-  Node3 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_axis" ,fontname="Helvetica"];
+  Node4 -> Node3 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="CD_Matrix::Norm\< T,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html",tooltip=" "];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_VVR0\nm_VVR1\nm_VVR2" ,fontname="Helvetica"];
+  Node5 [label="sch::s_STP_VVR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__VVR.html",tooltip=" "];
+  Node3 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_axis" ,fontname="Helvetica"];
 }

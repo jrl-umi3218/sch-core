@@ -23,10 +23,13 @@ var hierarchy =
     [ "CD_Matrix::Matrix4x4T< T >", "structCD__Matrix_1_1Matrix4x4T.html", null ],
     [ "boost::archive::detail::save_pointer_type< Archive, TPtr >::non_abstract< T >", "structboost_1_1archive_1_1detail_1_1save__pointer__type_1_1non__abstract.html", null ],
     [ "boost::archive::detail::save_pointer_type< Archive, TPtr >::non_polymorphic< T >", "structboost_1_1archive_1_1detail_1_1save__pointer__type_1_1non__polymorphic.html", null ],
-    [ "noncopyable", null, [
+    [ "boost::noncopyable", null, [
       [ "sch::S_PolyhedronVertex", "classsch_1_1S__PolyhedronVertex.html", null ]
     ] ],
-    [ "CD_Matrix::Norm< T, normOptimization >", "structCD__Matrix_1_1Norm.html", null ],
+    [ "CD_Matrix::Norm< T, normOptimization >", "structCD__Matrix_1_1Norm.html", [
+      [ "CD_Matrix::Vector3T< Scalar, false >", "structCD__Matrix_1_1Vector3T.html", null ],
+      [ "CD_Matrix::Vector3T< T, normOptimization >", "structCD__Matrix_1_1Vector3T.html", null ]
+    ] ],
     [ "CD_Matrix::Norm< T, false >", "structCD__Matrix_1_1Norm_3_01T_00_01false_01_4.html", null ],
     [ "sch::Polyhedron_algorithms", "structsch_1_1Polyhedron__algorithms.html", null ],
     [ "sch::PolyhedronEdge", "structsch_1_1PolyhedronEdge.html", null ],
@@ -41,12 +44,12 @@ var hierarchy =
         [ "sch::S_Superellipsoid", "classsch_1_1S__Superellipsoid.html", null ]
       ] ],
       [ "sch::S_ObjectNormalized", "classsch_1_1S__ObjectNormalized.html", [
-        [ "sch::S_Capsule", "classsch_1_1S__Capsule.html", null ],
-        [ "sch::S_Cylinder", "classsch_1_1S__Cylinder.html", null ],
-        [ "sch::S_Sphere", "classsch_1_1S__Sphere.html", null ],
         [ "sch::STP_BV", "classsch_1_1STP__BV.html", [
           [ "sch::STP_BV_P", "classsch_1_1STP__BV__P.html", null ]
-        ] ]
+        ] ],
+        [ "sch::S_Capsule", "classsch_1_1S__Capsule.html", null ],
+        [ "sch::S_Cylinder", "classsch_1_1S__Cylinder.html", null ],
+        [ "sch::S_Sphere", "classsch_1_1S__Sphere.html", null ]
       ] ]
     ] ],
     [ "S_ObjectTimeStamp", "structS__ObjectTimeStamp.html", null ],
@@ -75,8 +78,6 @@ var hierarchy =
       [ "sch::STP_Torus", "classsch_1_1STP__Torus.html", null ]
     ] ],
     [ "STP_SmallSphere", "classSTP__SmallSphere.html", null ],
-    [ "CD_Matrix::Vector3T< T, normOptimization >", "structCD__Matrix_1_1Vector3T.html", null ],
-    [ "CD_Matrix::Vector3T< Scalar, false >", "structCD__Matrix_1_1Vector3T.html", null ],
     [ "CD_Matrix::Vector4T< T >", "classCD__Matrix_1_1Vector4T.html", [
       [ "CD_Matrix::QuaternionT< T >", "classCD__Matrix_1_1QuaternionT.html", null ]
     ] ]

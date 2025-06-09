@@ -5,12 +5,14 @@ digraph "sch::CD_Depth"
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
   Node1 [label="sch::CD_Depth",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sObj2_\nsObj1_" ,fontname="Helvetica"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sObj1_\nsObj2_" ,fontname="Helvetica"];
   Node2 [label="sch::S_Object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1S__Object.html",tooltip=" "];
   Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" trans_" ,fontname="Helvetica"];
   Node3 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html",tooltip=" "];
-  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mRot_" ,fontname="Helvetica"];
-  Node4 [label="CD_Matrix::Matrix3x3T\l\< Scalar \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Matrix3x3T.html",tooltip=" "];
-  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" stamp_" ,fontname="Helvetica"];
-  Node5 [label="sch::_TimeStamp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1__TimeStamp.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="CD_Matrix::Norm\< T,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html",tooltip=" "];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mRot_" ,fontname="Helvetica"];
+  Node5 [label="CD_Matrix::Matrix3x3T\l\< Scalar \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Matrix3x3T.html",tooltip=" "];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" stamp_" ,fontname="Helvetica"];
+  Node6 [label="sch::_TimeStamp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1__TimeStamp.html",tooltip=" "];
 }

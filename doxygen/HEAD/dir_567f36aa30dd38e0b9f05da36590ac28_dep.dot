@@ -4,8 +4,8 @@ digraph "include/sch/S_Object" {
   edge [ labelfontsize="10", labelfontname="Helvetica"];
   subgraph clusterdir_61da0f9624285bbe00d2dad11a7f8156 {
     graph [ bgcolor="#ddddee", pencolor="black", label="sch" fontname="Helvetica", fontsize="10", URL="dir_61da0f9624285bbe00d2dad11a7f8156.html"]
+  dir_641b9e840680e121bb045da3132ae11e [shape=box label="Matrix" URL="dir_641b9e840680e121bb045da3132ae11e.html"];
   dir_567f36aa30dd38e0b9f05da36590ac28 [shape=box, label="S_Object", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_567f36aa30dd38e0b9f05da36590ac28.html"];
   }
-  dir_641b9e840680e121bb045da3132ae11e [shape=box label="Matrix" URL="dir_641b9e840680e121bb045da3132ae11e.html"];
   dir_567f36aa30dd38e0b9f05da36590ac28->dir_641b9e840680e121bb045da3132ae11e [headlabel="1", labeldistance=1.5 headhref="dir_000009_000008.html"];
 }

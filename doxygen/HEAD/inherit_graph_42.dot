@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="sch::s_STN_VVR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STN__VVR.html",tooltip=" "];
+  Node0 [label="sch::s_STP_STBVData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsch_1_1s__STP__STBVData.html",tooltip=" "];
 }

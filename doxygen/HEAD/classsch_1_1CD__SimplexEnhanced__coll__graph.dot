@@ -6,6 +6,8 @@ digraph "sch::CD_SimplexEnhanced"
   Node1 [label="sch::CD_SimplexEnhanced",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="sch::CD_Simplex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsch_1_1CD__Simplex.html",tooltip=" "];
-  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" s4_\ns3_\nad_\ns2_\nac_\ns1_\nab_" ,fontname="Helvetica"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ab_\nac_\nad_\ns1_\ns2_\ns3_\ns4_" ,fontname="Helvetica"];
   Node3 [label="CD_Matrix::Vector3T\l\< Scalar, false \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Vector3T.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="CD_Matrix::Norm\< T,\l normOptimization \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCD__Matrix_1_1Norm.html",tooltip=" "];
 }
