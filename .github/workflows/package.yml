@@ -27,7 +27,7 @@ jobs:
       deps: '["jrl-umi3218/sch-core-python"]'
       matrix: |
           {
-            "dist": ["bionic", "focal", "jammy", "noble"],
+            "dist": ["jammy", "noble", "resolute"],
             "arch": ["amd64"],
             "include":
             [
