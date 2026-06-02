@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.22)
 
 if(POLICY CMP0048)
   cmake_policy(SET CMP0048 NEW)
@@ -19,7 +19,7 @@ if(NOT DEFINED PROJECT_DEBUG_POSTFIX)
   set(PROJECT_DEBUG_POSTFIX "_d")
 endif()
 
-set(PROJECT_VERSION 1.4.3)
+set(PROJECT_VERSION 1.4.4)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 include(cmake/base.cmake)
