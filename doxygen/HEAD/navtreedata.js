@@ -28,10 +28,15 @@ var NAVTREE =
     [ "Documentation", "index.html#autotoc_md0", null ],
     [ "License", "index.html#autotoc_md1", null ],
     [ "Installation", "index.html#autotoc_md2", null ],
-    [ "Ubuntu LTS (16.04, 18.04, 20.04)", "index.html#autotoc_md3", null ],
-    [ "Conan", "index.html#autotoc_md4", null ],
-    [ "Manually build from source", "index.html#autotoc_md5", null ],
-    [ "Indentation", "index.html#autotoc_md7", null ],
+    [ "Nix", "index.html#autotoc_md3", [
+      [ "Build", "index.html#autotoc_md4", null ],
+      [ "Develop", "index.html#autotoc_md5", null ],
+      [ "Overlay", "index.html#autotoc_md6", null ]
+    ] ],
+    [ "Ubuntu LTS (22.04, 24.04, 26.04)", "index.html#autotoc_md7", null ],
+    [ "Conan", "index.html#autotoc_md8", null ],
+    [ "Manually build from source", "index.html#autotoc_md9", null ],
+    [ "Indentation", "index.html#autotoc_md11", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -73,8 +78,8 @@ var NAVTREEINDEX =
 "CD__Depth_8h.html",
 "classsch_1_1CD__Simplex.html#a2aa242e4bbe2c912730e5e8425db337e",
 "classsch_1_1S__Object.html#a13ee6e3dac6c66a93e408301d4bbff8d",
-"namespacesch.html#a4054ebd9c67e205f14399d288090905b",
-"structsch_1_1s__STN__VVR.html#a1c9c5ea5dabf16dd47ed040d045137c6"
+"namespacesch.html#a15eb9959b71d54b197b5a9fa02c3901d",
+"structsch_1_1s__PointsComparator.html#abbc5e5c411b0e36cfed833b19098f1bb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
