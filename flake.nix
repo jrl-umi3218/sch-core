@@ -8,9 +8,12 @@
     inputs.mc-rtc-nix.lib.mkFlakoboros inputs (
       { lib, ... }:
       {
-        overrideAttrs.sch-core = {
-          src = lib.cleanSource ./.;
-        };
+        overrideAttrs.sch-core =
+          { drv-prev, pkgs-final, ... }:
+          {
+            src = lib.cleanSource ./.;
+            nativeBuildInputs = drv-prev.nativeBuildInputs ++ [ pkgs-final.jrl-cmakemodules ];
+          };
       }
     );
 }

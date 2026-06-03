@@ -60,8 +60,32 @@ Note: the two versions have the same API and ABI.
 Installation
 ------------
 
+## Nix
 
-## Ubuntu LTS (16.04, 18.04, 20.04)
+### Build
+To build this software simply use
+
+```sh
+nix build github:jrl-umi3218/sch-core#sch-core
+```
+
+### Develop
+To work on the project, use a development shell
+
+```sh
+gh repo clone jrl-umi3218/sch-core
+git submodule init -update
+cd sch-core
+direnv allow
+cmake -B build $cmakeFlags
+cmake --build build
+```
+
+### Overlay
+To use in your own nix flakes, you may use the overlay provided in https://github.com/mc-rtc/nixpkgs or add this repository's flake to your flake inputs.
+
+
+## Ubuntu LTS (22.04, 24.04, 26.04)
 
 Note: the packaged version is the BSD-2-Clause library, if you require inter-penetration depth computation, you should build the library yourself.
 
