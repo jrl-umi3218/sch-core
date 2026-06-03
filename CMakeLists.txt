@@ -19,7 +19,7 @@ if(NOT DEFINED PROJECT_DEBUG_POSTFIX)
   set(PROJECT_DEBUG_POSTFIX "_d")
 endif()
 
-set(PROJECT_VERSION 1.4.4)
+set(PROJECT_VERSION 1.4.5)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 # Check if the submodule cmake have been initialized
