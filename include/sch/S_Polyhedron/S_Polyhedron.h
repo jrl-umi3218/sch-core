@@ -1,18 +1,18 @@
 #ifndef _S_POLYHEDRON
-#  define _S_POLYHEDRON
+#define _S_POLYHEDRON
 
-#  pragma once
-#  include <sch/S_Object/S_ObjectNonNormalized.h>
-#  include <sch/S_Polyhedron/Polyhedron_algorithms.h>
-#  include <sch/S_Polyhedron/S_PolyhedronVertex.h>
-#  include <sch/sch_api.h>
-#  include <string>
-#  include <vector>
+#pragma once
+#include <sch/S_Object/S_ObjectNonNormalized.h>
+#include <sch/S_Polyhedron/Polyhedron_algorithms.h>
+#include <sch/S_Polyhedron/S_PolyhedronVertex.h>
+#include <sch/sch_api.h>
+#include <string>
+#include <vector>
 
-#  ifdef WITH_BOOST_1_36
-#    include <sch/boost/archive/detail/oserializer.hpp>
-#  endif
-#  include <boost/serialization/split_member.hpp>
+#ifdef WITH_BOOST_1_36
+#  include <sch/boost/archive/detail/oserializer.hpp>
+#endif
+#include <boost/serialization/split_member.hpp>
 
 namespace sch
 {
