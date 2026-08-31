@@ -1,9 +1,9 @@
 #ifndef _S_BOX_H
-#  define _S_BOX_H
+#define _S_BOX_H
 
-#  pragma once
+#pragma once
 
-#  include <sch/S_Object/S_ObjectNonNormalized.h>
+#include <sch/S_Object/S_ObjectNonNormalized.h>
 
 namespace sch
 {
