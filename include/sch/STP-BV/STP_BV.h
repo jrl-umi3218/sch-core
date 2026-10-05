@@ -1,18 +1,18 @@
 #ifndef __STP_BV_H
-#  define __STP_BV_H
+#define __STP_BV_H
 
-#  pragma once
-#  include <list>
-#  include <map>
-#  include <sch/STP-BV/STP_Feature.h>
-#  include <sch/S_Object/S_ObjectNormalized.h>
-#  include <sch/sch_api.h>
-#  include <vector>
+#pragma once
+#include <list>
+#include <map>
+#include <sch/STP-BV/STP_Feature.h>
+#include <sch/S_Object/S_ObjectNormalized.h>
+#include <sch/sch_api.h>
+#include <vector>
 
-#  ifdef WITH_BOOST_1_36
-#    include <sch/boost/archive/detail/oserializer.hpp>
-#  endif
-#  include <boost/serialization/split_member.hpp>
+#ifdef WITH_BOOST_1_36
+#  include <sch/boost/archive/detail/oserializer.hpp>
+#endif
+#include <boost/serialization/split_member.hpp>
 
 namespace sch
 {
