@@ -1,12 +1,12 @@
 #ifndef _CD_SCENE
-#  define _CD_SCENE
+#define _CD_SCENE
 
-#  pragma once
+#pragma once
 
-#  include <sch/CD/CD_Pair.h>
-#  include <sch/S_Object/S_Object.h>
-#  include <sch/sch_api.h>
-#  include <vector>
+#include <sch/CD/CD_Pair.h>
+#include <sch/S_Object/S_Object.h>
+#include <sch/sch_api.h>
+#include <vector>
 
 namespace sch
 {
